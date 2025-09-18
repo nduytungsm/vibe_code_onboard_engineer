@@ -1,0 +1,30 @@
+{
+  "content_hash": "5f0a08403b753db39d2ab3b563ad28c2",
+  "timestamp": "2025-09-18T13:03:57.202528+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for ESLint with TypeScript and React support",
+    "key_types": [
+      "Object",
+      "Array"
+    ],
+    "functions": [
+      "config"
+    ],
+    "imports": [
+      "@eslint/js",
+      "globals",
+      "eslint-plugin-react-hooks",
+      "eslint-plugin-react-refresh",
+      "typescript-eslint",
+      "eslint/config"
+    ],
+    "side_effects": [
+      "Modifies ESLint configuration"
+    ],
+    "risks": [
+      "Potential misconfiguration leading to linting issues"
+    ],
+    "complexity": "medium"
+  }
+}

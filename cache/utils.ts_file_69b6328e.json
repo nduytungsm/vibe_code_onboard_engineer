@@ -1,0 +1,19 @@
+{
+  "content_hash": "5a6fd53fdcf2be529e9cc0b718fde352",
+  "timestamp": "2025-09-18T13:04:02.802066+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Utility function to merge class names and handle conditional classes.",
+    "key_types": [
+      "ClassValue"
+    ],
+    "functions": [
+      "cn"
+    ],
+    "imports": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "complexity": "low"
+  }
+}

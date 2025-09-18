@@ -1,0 +1,43 @@
+{
+  "content_hash": "29fe39ed9a02910ccc02ea2522c969de",
+  "timestamp": "2025-09-18T13:02:03.89845+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines configuration structures and functions to load and validate application configuration from a YAML file with environment variable substitution.",
+    "key_types": [
+      "Config",
+      "OpenAIConfig",
+      "RateLimitingConfig",
+      "FileProcessingConfig",
+      "CacheConfig",
+      "SecurityConfig",
+      "OutputConfig"
+    ],
+    "functions": [
+      "LoadConfig",
+      "Validate",
+      "ensureDirectories",
+      "expandEnvVars",
+      "GetCacheTTL",
+      "IsFileSupported",
+      "IsSecretFile"
+    ],
+    "imports": [
+      "fmt",
+      "os",
+      "path/filepath",
+      "strings",
+      "time",
+      "github.com/joho/godotenv",
+      "gopkg.in/yaml.v3"
+    ],
+    "side_effects": [
+      "Loads environment variables from a .env file if it exists.",
+      "Creates directories specified in the configuration if they do not exist."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if the API key or other secrets are logged or mishandled."
+    ],
+    "complexity": "medium"
+  }
+}

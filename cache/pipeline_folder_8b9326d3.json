@@ -1,0 +1,101 @@
+{
+  "content_hash": "9b336bdfb6401a76a9648597cbdaef19",
+  "timestamp": "2025-09-18T13:02:31.322918+07:00",
+  "result": {
+    "path": "internal/pipeline",
+    "purpose": "This folder/module is responsible for implementing an analysis pipeline that orchestrates the analysis of files and folders in a project using a map-reduce approach and discovering and filtering files based on certain criteria.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "analyzer.go",
+      "crawler.go"
+    ],
+    "dependencies": [
+      "context",
+      "fmt",
+      "path/filepath",
+      "sync",
+      "repo-explanation/cache",
+      "repo-explanation/config",
+      "repo-explanation/internal/chunker",
+      "repo-explanation/internal/openai",
+      "io/fs",
+      "os",
+      "strings",
+      "repo-explanation/internal/gitignore"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to the analysis and crawling of files, promoting separation of concerns and reusability.",
+    "file_summaries": {
+      "internal/pipeline/analyzer.go": {
+        "language": "Go",
+        "purpose": "This file implements an analysis pipeline that orchestrates the analysis of files and folders in a project using a map-reduce approach.",
+        "key_types": [
+          "Analyzer",
+          "AnalysisResult",
+          "fileResult"
+        ],
+        "functions": [
+          "NewAnalyzer",
+          "AnalyzeProject",
+          "mapPhase",
+          "fileWorker",
+          "analyzeFile",
+          "reducePhaseFolder",
+          "reducePhaseProject"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "path/filepath",
+          "sync",
+          "repo-explanation/cache",
+          "repo-explanation/config",
+          "repo-explanation/internal/chunker",
+          "repo-explanation/internal/openai"
+        ],
+        "side_effects": [
+          "Prints progress and errors to the console",
+          "Caches analysis results"
+        ],
+        "risks": [
+          "Potential for race conditions due to concurrent processing",
+          "Error handling may not cover all edge cases"
+        ],
+        "complexity": "medium"
+      },
+      "internal/pipeline/crawler.go": {
+        "language": "Go",
+        "purpose": "This file implements a file crawler that discovers and filters files in a directory based on certain criteria.",
+        "key_types": [
+          "FileInfo",
+          "Crawler"
+        ],
+        "functions": [
+          "NewCrawler",
+          "CrawlFiles",
+          "ReadFile",
+          "redactSecrets",
+          "GetFileStats"
+        ],
+        "imports": [
+          "fmt",
+          "io/fs",
+          "os",
+          "path/filepath",
+          "strings",
+          "repo-explanation/config",
+          "repo-explanation/internal/gitignore"
+        ],
+        "side_effects": [
+          "Reads files from the filesystem",
+          "Modifies file content by redacting secrets"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if redaction is not properly implemented"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

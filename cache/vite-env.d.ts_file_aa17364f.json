@@ -1,0 +1,14 @@
+{
+  "content_hash": "0352474ba2918efe13895edbc3780d94",
+  "timestamp": "2025-09-18T13:04:02.340141+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file provides type definitions for Vite client.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "vite/client"
+    ],
+    "complexity": "low"
+  }
+}

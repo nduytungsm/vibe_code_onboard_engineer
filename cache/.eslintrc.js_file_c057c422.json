@@ -1,0 +1,22 @@
+{
+  "content_hash": "4512d943c2e95a3de5535dbd64fb1b59",
+  "timestamp": "2025-09-18T13:03:57.558641+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for ESLint to enforce coding standards and best practices in a JavaScript/React project.",
+    "key_types": [
+      "Object",
+      "Array"
+    ],
+    "functions": [
+      "module.exports"
+    ],
+    "imports": [
+      "eslint",
+      "plugin:react",
+      "plugin:@typescript-eslint",
+      "prettier"
+    ],
+    "complexity": "low"
+  }
+}

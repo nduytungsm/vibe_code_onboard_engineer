@@ -1,0 +1,90 @@
+# Repo Explanation Tool Configuration
+
+# OpenAI API Configuration
+openai:
+  api_key: "${OPENAI_API_KEY}" # Set via environment variable
+  model: "gpt-4o-mini"         # Cost-effective model for analysis
+  max_tokens_per_request: 4000 # Max tokens per API call
+  temperature: 0.1             # Low temperature for consistent results
+  base_url: "https://api.openai.com/v1"
+
+# Rate Limiting Configuration
+rate_limiting:
+  requests_per_minute: 500     # Adjust based on your tier
+  requests_per_day: 10000      # Daily limit
+  concurrent_workers: 5        # Number of concurrent workers
+
+# File Processing Configuration
+file_processing:
+  max_file_size_mb: 10         # Skip files larger than this
+  chunk_size_tokens: 3000      # Target tokens per chunk
+  supported_extensions:
+    - ".go"
+    - ".js"
+    - ".ts"
+    - ".py"
+    - ".java"
+    - ".cpp"
+    - ".c"
+    - ".h"
+    - ".hpp"
+    - ".rs"
+    - ".rb"
+    - ".php"
+    - ".cs"
+    - ".kt"
+    - ".swift"
+    - ".scala"
+    - ".clj"
+    - ".hs"
+    - ".ml"
+    - ".r"
+    - ".sql"
+    - ".sh"
+    - ".bash"
+    - ".zsh"
+    - ".ps1"
+    - ".html"
+    - ".css"
+    - ".scss"
+    - ".less"
+    - ".json"
+    - ".xml"
+    - ".yaml"
+    - ".yml"
+    - ".toml"
+    - ".ini"
+    - ".cfg"
+    - ".md"
+    - ".rst"
+    - ".txt"
+    - ".dockerfile"
+    - ".makefile"
+
+# Cache Configuration  
+cache:
+  enabled: true
+  directory: "./cache"
+  ttl_hours: 24               # Cache validity in hours
+
+# Security Configuration
+security:
+  redact_secrets: true        # Redact potential secrets from content
+  skip_secret_files:          # Files to skip entirely
+    - ".env"
+    - ".env.local"
+    - ".env.production"
+    - "secrets.yaml"
+    - "secrets.json"
+    - "id_rsa"
+    - "id_ed25519"
+    - "*.key"
+    - "*.pem"
+    - "*.p12"
+    - "*.pfx"
+
+# Output Configuration
+output:
+  summary_max_length: 500     # Max characters in final summary
+  save_intermediate_results: true
+  output_directory: "./analysis_results"

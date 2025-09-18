@@ -1,0 +1,39 @@
+{
+  "content_hash": "ed60e840c26dd2007f16962be0a1abac",
+  "timestamp": "2025-09-18T13:02:23.393062+07:00",
+  "result": {
+    "path": "controllers",
+    "purpose": "This folder/module is responsible for handling HTTP requests and responses related to application health checks.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "health_controller.go"
+    ],
+    "dependencies": [
+      "github.com/labstack/echo/v4"
+    ],
+    "architecture": "The folder follows a controller pattern, where each controller manages specific routes and business logic related to its domain.",
+    "file_summaries": {
+      "controllers/health_controller.go": {
+        "language": "Go",
+        "purpose": "This file defines a health check controller for an HTTP server.",
+        "key_types": [
+          "HealthController"
+        ],
+        "functions": [
+          "NewHealthController",
+          "HealthCheck"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/labstack/echo/v4"
+        ],
+        "side_effects": [
+          "Returns a JSON response indicating server health"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

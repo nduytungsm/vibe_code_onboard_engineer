@@ -1,0 +1,14 @@
+{
+  "content_hash": "7fc2c248caebd9ac1be337bbada648aa",
+  "timestamp": "2025-09-18T13:04:02.161149+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Configuration file for TypeScript compiler options in a React application.",
+    "key_types": [
+      "compilerOptions"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

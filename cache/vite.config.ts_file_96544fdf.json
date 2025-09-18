@@ -1,0 +1,25 @@
+{
+  "content_hash": "364dc9de349ea9d7d44ba903931febc4",
+  "timestamp": "2025-09-18T13:04:05.721443+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Configuration file for Vite build tool with React and Tailwind CSS support",
+    "key_types": [
+      "Config",
+      "Plugin"
+    ],
+    "functions": [
+      "defineConfig"
+    ],
+    "imports": [
+      "vite",
+      "@vitejs/plugin-react",
+      "@tailwindcss/vite",
+      "path"
+    ],
+    "side_effects": [
+      "Configures Vite to use React and Tailwind CSS"
+    ],
+    "complexity": "low"
+  }
+}

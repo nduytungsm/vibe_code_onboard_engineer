@@ -1,0 +1,448 @@
+{
+  "content_hash": "46757e62b87e60e7598fd22b9ca0e5a6",
+  "timestamp": "2025-09-18T13:04:30.342657+07:00",
+  "result": {
+    "purpose": "This project is a React application built using TypeScript and Vite as the build tool. It aims to provide a modular and reusable structure for developing web applications with a focus on modern UI components and styling using Tailwind CSS.",
+    "architecture": "The project follows a modular architecture pattern, organizing configuration files, source code, and documentation for a React application using TypeScript and Vite.",
+    "data_models": [],
+    "external_services": [],
+    "languages": {
+      "CSS": 5,
+      "HTML": 1,
+      "JSON": 7,
+      "JavaScript": 4,
+      "Markdown": 1,
+      "TypeScript": 3
+    },
+    "folder_summaries": {
+      "root": {
+        "path": "root",
+        "purpose": "This folder/module is responsible for a React application setup using TypeScript and Vite as the build tool.",
+        "languages": {
+          "HTML": 1,
+          "JSON": 7,
+          "JavaScript": 3,
+          "Markdown": 1,
+          "TypeScript": 1
+        },
+        "key_modules": [
+          ".eslintrc.js",
+          "eslint.config.js",
+          "package.json",
+          "vite.config.ts",
+          "README.md"
+        ],
+        "dependencies": [
+          "@hello-pangea/dnd",
+          "@mynaui/icons-react",
+          "@radix-ui/react-checkbox",
+          "@radix-ui/react-dialog",
+          "@radix-ui/react-label",
+          "@radix-ui/react-popover",
+          "@radix-ui/react-slot",
+          "class-variance-authority",
+          "clsx",
+          "date-fns",
+          "dayjs",
+          "lucide-react",
+          "react",
+          "react-custom-roulette",
+          "react-day-picker",
+          "react-dom",
+          "react-icons",
+          "react-router-dom",
+          "tailwind-merge",
+          "uuid",
+          "zustand",
+          "@eslint/js",
+          "@tailwindcss/postcss",
+          "@tailwindcss/vite",
+          "@types/node",
+          "@types/react",
+          "@types/react-beautiful-dnd",
+          "@types/react-dom",
+          "@typescript-eslint/eslint-plugin",
+          "@typescript-eslint/parser",
+          "@vitejs/plugin-react",
+          "autoprefixer",
+          "eslint",
+          "eslint-config-prettier",
+          "eslint-plugin-react",
+          "eslint-plugin-react-hooks",
+          "eslint-plugin-react-refresh",
+          "globals",
+          "postcss",
+          "prettier",
+          "tailwindcss",
+          "tw-animate-css",
+          "typescript",
+          "typescript-eslint",
+          "vite"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, organizing configuration files, source code, and documentation for a React application using TypeScript and Vite.",
+        "file_summaries": {
+          ".eslintrc.js": {
+            "language": "JavaScript",
+            "purpose": "Configuration file for ESLint to enforce coding standards and best practices in a JavaScript/React project.",
+            "key_types": [
+              "Object",
+              "Array"
+            ],
+            "functions": [
+              "module.exports"
+            ],
+            "imports": [
+              "eslint",
+              "plugin:react",
+              "plugin:@typescript-eslint",
+              "prettier"
+            ],
+            "complexity": "low"
+          },
+          "README.md": {
+            "language": "Markdown",
+            "purpose": "Documentation for a React + TypeScript + Vite template setup",
+            "key_types": [],
+            "functions": [],
+            "imports": [
+              "@vitejs/plugin-react",
+              "@vitejs/plugin-react-swc",
+              "eslint-plugin-react-x",
+              "eslint-plugin-react-dom"
+            ],
+            "complexity": "low"
+          },
+          "components.json": {
+            "language": "JSON",
+            "purpose": "Configuration file for a UI component library",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "eslint.config.js": {
+            "language": "JavaScript",
+            "purpose": "Configuration file for ESLint with TypeScript and React support",
+            "key_types": [
+              "Object",
+              "Array"
+            ],
+            "functions": [
+              "config"
+            ],
+            "imports": [
+              "@eslint/js",
+              "globals",
+              "eslint-plugin-react-hooks",
+              "eslint-plugin-react-refresh",
+              "typescript-eslint",
+              "eslint/config"
+            ],
+            "side_effects": [
+              "Modifies ESLint configuration"
+            ],
+            "risks": [
+              "Potential misconfiguration leading to linting issues"
+            ],
+            "complexity": "medium"
+          },
+          "index.html": {
+            "language": "HTML",
+            "purpose": "This file serves as the main entry point for a web application using Vite, React, and TypeScript.",
+            "key_types": [],
+            "functions": [],
+            "imports": [
+              "/src/index.css",
+              "/src/main.tsx"
+            ],
+            "complexity": "low"
+          },
+          "package-lock.json": {
+            "language": "JSON",
+            "purpose": "This file is a package lock file for a Node.js project, specifying the exact versions of dependencies and their sub-dependencies.",
+            "key_types": [
+              "object",
+              "string"
+            ],
+            "functions": [],
+            "imports": [
+              "@hello-pangea/dnd",
+              "@mynaui/icons-react",
+              "@radix-ui/react-checkbox",
+              "@radix-ui/react-dialog",
+              "@radix-ui/react-label",
+              "@radix-ui/react-popover",
+              "@radix-ui/react-slot",
+              "class-variance-authority",
+              "clsx",
+              "date-fns",
+              "dayjs",
+              "lucide-react",
+              "react",
+              "react-custom-roulette",
+              "react-day-picker",
+              "react-dom",
+              "react-icons",
+              "react-router-dom",
+              "tailwind-merge",
+              "uuid",
+              "zustand",
+              "@eslint/js",
+              "@tailwindcss/postcss",
+              "@tailwindcss/vite",
+              "@types/node",
+              "@types/react",
+              "@types/react-beautiful-dnd",
+              "@types/react-dom",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "@vitejs/plugin-react",
+              "autoprefixer",
+              "eslint",
+              "eslint-config-prettier",
+              "eslint-plugin-react",
+              "eslint-plugin-react-hooks",
+              "eslint-plugin-react-refresh",
+              "globals",
+              "postcss",
+              "prettier",
+              "tailwindcss",
+              "tw-animate-css",
+              "typescript",
+              "typescript-eslint",
+              "vite"
+            ],
+            "complexity": "medium"
+          },
+          "package.json": {
+            "language": "JSON",
+            "purpose": "Configuration file for a React application using Vite as the build tool.",
+            "key_types": [
+              "dependencies",
+              "devDependencies",
+              "scripts"
+            ],
+            "functions": [
+              "dev",
+              "build",
+              "lint",
+              "preview"
+            ],
+            "imports": [
+              "@hello-pangea/dnd",
+              "@mynaui/icons-react",
+              "@radix-ui/react-checkbox",
+              "@radix-ui/react-dialog",
+              "@radix-ui/react-label",
+              "@radix-ui/react-popover",
+              "@radix-ui/react-slot",
+              "class-variance-authority",
+              "clsx",
+              "date-fns",
+              "dayjs",
+              "lucide-react",
+              "react",
+              "react-custom-roulette",
+              "react-day-picker",
+              "react-dom",
+              "react-icons",
+              "react-router-dom",
+              "tailwind-merge",
+              "uuid",
+              "zustand"
+            ],
+            "side_effects": [
+              "Installation of dependencies and devDependencies may affect the project environment."
+            ],
+            "risks": [
+              "Potential for outdated dependencies leading to security vulnerabilities."
+            ],
+            "complexity": "medium"
+          },
+          "tsconfig.app.json": {
+            "language": "JSON",
+            "purpose": "Configuration file for TypeScript compiler options in a React application.",
+            "key_types": [
+              "compilerOptions"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "tsconfig.json": {
+            "language": "JSON",
+            "purpose": "Configuration file for TypeScript compiler options and project references",
+            "key_types": [
+              "compilerOptions",
+              "references"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "tsconfig.node.json": {
+            "language": "JSON",
+            "purpose": "Configuration file for TypeScript compiler options in a Node.js environment",
+            "key_types": [
+              "compilerOptions"
+            ],
+            "functions": [],
+            "imports": [
+              "vite.config.ts"
+            ],
+            "complexity": "low"
+          },
+          "vite.config.ts": {
+            "language": "TypeScript",
+            "purpose": "Configuration file for Vite build tool with React and Tailwind CSS support",
+            "key_types": [
+              "Config",
+              "Plugin"
+            ],
+            "functions": [
+              "defineConfig"
+            ],
+            "imports": [
+              "vite",
+              "@vitejs/plugin-react",
+              "@tailwindcss/vite",
+              "path"
+            ],
+            "side_effects": [
+              "Configures Vite to use React and Tailwind CSS"
+            ],
+            "complexity": "low"
+          }
+        }
+      },
+      "src": {
+        "path": "src",
+        "purpose": "Contains styles and type definitions for a web application built with Vite and Tailwind CSS.",
+        "languages": {
+          "CSS": 2,
+          "TypeScript": 1
+        },
+        "key_modules": [
+          "App.css",
+          "index.css",
+          "vite-env.d.ts"
+        ],
+        "dependencies": [
+          "tailwindcss",
+          "tw-animate-css",
+          "vite/client"
+        ],
+        "architecture": "The folder follows a modular architecture, separating styles and type definitions to maintain clarity and reusability.",
+        "file_summaries": {
+          "src/App.css": {
+            "language": "CSS",
+            "purpose": "Styling for a web application, including layout, animations, and theme management.",
+            "key_types": [
+              "@import",
+              "@custom-variant",
+              "@media",
+              ":root",
+              ".dark"
+            ],
+            "functions": [
+              "@keyframes",
+              "@layer"
+            ],
+            "imports": [
+              "tw-animate-css"
+            ],
+            "side_effects": [
+              "Custom scrollbar styles for different browsers",
+              "Hover effects on logo",
+              "Animations on logo"
+            ],
+            "complexity": "medium"
+          },
+          "src/index.css": {
+            "language": "CSS",
+            "purpose": "Styling for a web application using Tailwind CSS and custom styles.",
+            "key_types": [],
+            "functions": [],
+            "imports": [
+              "tailwindcss"
+            ],
+            "side_effects": [
+              "Modifies scrollbar visibility",
+              "Applies styles based on color scheme preference"
+            ],
+            "complexity": "medium"
+          },
+          "src/vite-env.d.ts": {
+            "language": "TypeScript",
+            "purpose": "This file provides type definitions for Vite client.",
+            "key_types": [],
+            "functions": [],
+            "imports": [
+              "vite/client"
+            ],
+            "complexity": "low"
+          }
+        }
+      },
+      "src/components": {
+        "path": "src/components",
+        "purpose": "Contains reusable UI components and their associated styles for the web application.",
+        "languages": {
+          "CSS": 1
+        },
+        "key_modules": [
+          "styles.css"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a component-based architecture, where each component can have its own styles defined in separate CSS files.",
+        "file_summaries": {
+          "src/components/styles.css": {
+            "language": "CSS",
+            "purpose": "Defines styles for a web application, including layout, typography, and button designs.",
+            "key_types": [
+              "class",
+              "id",
+              "selector"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "medium"
+          }
+        }
+      },
+      "src/lib": {
+        "path": "src/lib",
+        "purpose": "Contains utility functions for the application, specifically for handling class names and conditional classes.",
+        "languages": {
+          "TypeScript": 1
+        },
+        "key_modules": [
+          "utils.ts"
+        ],
+        "dependencies": [
+          "clsx",
+          "tailwind-merge"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, focusing on reusable utility functions.",
+        "file_summaries": {
+          "src/lib/utils.ts": {
+            "language": "TypeScript",
+            "purpose": "Utility function to merge class names and handle conditional classes.",
+            "key_types": [
+              "ClassValue"
+            ],
+            "functions": [
+              "cn"
+            ],
+            "imports": [
+              "clsx",
+              "tailwind-merge"
+            ],
+            "complexity": "low"
+          }
+        }
+      }
+    },
+    "summary": "This project is a React application built using TypeScript and Vite as the build tool. It aims to provide a modular and reusable structure for developing web applications with a focus on modern UI components and styling using Tailwind CSS."
+  }
+}

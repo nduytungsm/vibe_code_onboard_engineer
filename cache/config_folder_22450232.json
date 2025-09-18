@@ -1,0 +1,60 @@
+{
+  "content_hash": "0bccb71fd191106d32528283bc456c30",
+  "timestamp": "2025-09-18T13:02:49.734215+07:00",
+  "result": {
+    "path": "config",
+    "purpose": "This folder/module is responsible for defining configuration structures and functions to load and validate application configuration from a YAML file with environment variable substitution.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "config/config.go"
+    ],
+    "dependencies": [
+      "github.com/joho/godotenv",
+      "gopkg.in/yaml.v3"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration-related functionalities in a single file, promoting separation of concerns and ease of maintenance.",
+    "file_summaries": {
+      "config/config.go": {
+        "language": "Go",
+        "purpose": "This file defines configuration structures and functions to load and validate application configuration from a YAML file with environment variable substitution.",
+        "key_types": [
+          "Config",
+          "OpenAIConfig",
+          "RateLimitingConfig",
+          "FileProcessingConfig",
+          "CacheConfig",
+          "SecurityConfig",
+          "OutputConfig"
+        ],
+        "functions": [
+          "LoadConfig",
+          "Validate",
+          "ensureDirectories",
+          "expandEnvVars",
+          "GetCacheTTL",
+          "IsFileSupported",
+          "IsSecretFile"
+        ],
+        "imports": [
+          "fmt",
+          "os",
+          "path/filepath",
+          "strings",
+          "time",
+          "github.com/joho/godotenv",
+          "gopkg.in/yaml.v3"
+        ],
+        "side_effects": [
+          "Loads environment variables from a .env file if it exists.",
+          "Creates directories specified in the configuration if they do not exist."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if the API key or other secrets are logged or mishandled."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,752 @@
+{
+  "content_hash": "687e1d905466a29827feca8016d8de68",
+  "timestamp": "2025-09-18T13:02:58.081662+07:00",
+  "result": {
+    "purpose": "This project is a Golang application designed to analyze and explain codebases, providing insights into their structure and configuration. It includes a command-line interface and a web server for user interaction and utilizes caching and API integrations for efficient processing.",
+    "architecture": "The project follows a modular architecture pattern, separating concerns across various components such as caching, command handling, web server setup, and analysis pipelines.",
+    "data_models": [
+      "Cache",
+      "CacheEntry",
+      "CommandHandler",
+      "REPL",
+      "Config",
+      "HealthController",
+      "Analyzer",
+      "Crawler"
+    ],
+    "external_services": [
+      "OpenAI API",
+      "Echo framework"
+    ],
+    "languages": {
+      "Bash": 1,
+      "Go": 20,
+      "Markdown": 1,
+      "YAML": 1
+    },
+    "folder_summaries": {
+      "cache": {
+        "path": "cache",
+        "purpose": "This folder/module is responsible for implementing a caching mechanism for storing and retrieving analysis results of files, folders, and projects.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "cache/cache.go"
+        ],
+        "dependencies": [
+          "crypto/md5",
+          "encoding/json",
+          "fmt",
+          "os",
+          "path/filepath",
+          "time",
+          "repo-explanation/config",
+          "repo-explanation/internal/openai"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating caching logic within a single Go file that manages cache entries and their lifecycle.",
+        "file_summaries": {
+          "cache/cache.go": {
+            "language": "Go",
+            "purpose": "This file implements a caching mechanism for storing and retrieving analysis results of files, folders, and projects.",
+            "key_types": [
+              "Cache",
+              "CacheEntry"
+            ],
+            "functions": [
+              "NewCache",
+              "GetFileSummary",
+              "SetFileSummary",
+              "GetFolderSummary",
+              "SetFolderSummary",
+              "GetProjectSummary",
+              "SetProjectSummary",
+              "ClearCache",
+              "hashContent",
+              "hashFileSummaries",
+              "hashFolderSummaries",
+              "getFileCachePath",
+              "loadCacheEntry",
+              "saveCacheEntry",
+              "isExpired"
+            ],
+            "imports": [
+              "crypto/md5",
+              "encoding/json",
+              "fmt",
+              "os",
+              "path/filepath",
+              "time",
+              "repo-explanation/config",
+              "repo-explanation/internal/openai"
+            ],
+            "side_effects": [
+              "File system operations for reading and writing cache entries",
+              "Potentially modifies the file system by creating or deleting cache files"
+            ],
+            "risks": [
+              "Potential exposure of sensitive data if cache files are not properly secured",
+              "Denial of service if cache directory is filled with too many files"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "cli": {
+        "path": "cli",
+        "purpose": "Responsible for defining a command handling system and implementing a command-line interface for analyzing a repository's structure and configuration.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "commands.go",
+          "repl.go"
+        ],
+        "dependencies": [
+          "bufio",
+          "context",
+          "fmt",
+          "os",
+          "os/user",
+          "path/filepath",
+          "strings",
+          "time",
+          "repo-explanation/config",
+          "repo-explanation/internal/pipeline"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating command handling and REPL functionalities in separate files, promoting separation of concerns.",
+        "file_summaries": {
+          "cli/commands.go": {
+            "language": "Go",
+            "purpose": "Defines a command handling system with various command implementations.",
+            "key_types": [
+              "CommandHandler",
+              "TryMeCommand",
+              "EndCommand",
+              "UnsupportedCommand",
+              "CommandRegistry"
+            ],
+            "functions": [
+              "Handle",
+              "NewCommandRegistry",
+              "Execute"
+            ],
+            "imports": [],
+            "complexity": "medium"
+          },
+          "cli/repl.go": {
+            "language": "Go",
+            "purpose": "Implements a command-line interface (CLI) for analyzing a repository's structure and configuration.",
+            "key_types": [
+              "REPL"
+            ],
+            "functions": [
+              "NewREPL",
+              "Start",
+              "promptForPath",
+              "expandPath",
+              "countFolders",
+              "loadConfig",
+              "analyzeRepository",
+              "displayAnalysisResults",
+              "processCommand"
+            ],
+            "imports": [
+              "bufio",
+              "context",
+              "fmt",
+              "os",
+              "os/user",
+              "path/filepath",
+              "strings",
+              "time",
+              "repo-explanation/config",
+              "repo-explanation/internal/pipeline"
+            ],
+            "side_effects": [
+              "Reads user input from the command line",
+              "Prints output to the console",
+              "Modifies the state of the REPL instance"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if API keys are mishandled",
+              "File system access may lead to unauthorized access if not properly validated"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/cli": {
+        "path": "cmd/cli",
+        "purpose": "This folder contains the entry point for a command-line interface (CLI) application.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "repo-explanation/cli"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, focusing on a single entry point that initializes and starts the CLI application.",
+        "file_summaries": {
+          "cmd/cli/main.go": {
+            "language": "Go",
+            "purpose": "This file serves as the entry point for a command-line interface (CLI) application.",
+            "key_types": [
+              "REPL"
+            ],
+            "functions": [
+              "main",
+              "NewREPL",
+              "Start"
+            ],
+            "imports": [
+              "repo-explanation/cli"
+            ],
+            "side_effects": [
+              "Starts a REPL session"
+            ],
+            "complexity": "low"
+          }
+        }
+      },
+      "cmd/server": {
+        "path": "cmd/server",
+        "purpose": "This folder/module is responsible for setting up and starting a web server using the Echo framework.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "github.com/labstack/echo/v4",
+          "github.com/labstack/echo/v4/middleware",
+          "repo-explanation/controllers",
+          "repo-explanation/routes"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, focusing on separation of concerns by organizing server setup, routing, and controller logic.",
+        "file_summaries": {
+          "cmd/server/main.go": {
+            "language": "Go",
+            "purpose": "This file sets up and starts a web server using the Echo framework.",
+            "key_types": [
+              "echo.Echo",
+              "controllers.HealthController"
+            ],
+            "functions": [
+              "main"
+            ],
+            "imports": [
+              "github.com/labstack/echo/v4",
+              "github.com/labstack/echo/v4/middleware",
+              "repo-explanation/controllers",
+              "repo-explanation/routes"
+            ],
+            "side_effects": [
+              "Starts a web server",
+              "Logs requests",
+              "Handles CORS"
+            ],
+            "risks": [
+              "Potential exposure of server to unauthorized access if not properly configured"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "config": {
+        "path": "config",
+        "purpose": "This folder/module is responsible for defining configuration structures and functions to load and validate application configuration from a YAML file with environment variable substitution.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "config/config.go"
+        ],
+        "dependencies": [
+          "github.com/joho/godotenv",
+          "gopkg.in/yaml.v3"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating configuration-related functionalities in a single file, promoting separation of concerns and ease of maintenance.",
+        "file_summaries": {
+          "config/config.go": {
+            "language": "Go",
+            "purpose": "This file defines configuration structures and functions to load and validate application configuration from a YAML file with environment variable substitution.",
+            "key_types": [
+              "Config",
+              "OpenAIConfig",
+              "RateLimitingConfig",
+              "FileProcessingConfig",
+              "CacheConfig",
+              "SecurityConfig",
+              "OutputConfig"
+            ],
+            "functions": [
+              "LoadConfig",
+              "Validate",
+              "ensureDirectories",
+              "expandEnvVars",
+              "GetCacheTTL",
+              "IsFileSupported",
+              "IsSecretFile"
+            ],
+            "imports": [
+              "fmt",
+              "os",
+              "path/filepath",
+              "strings",
+              "time",
+              "github.com/joho/godotenv",
+              "gopkg.in/yaml.v3"
+            ],
+            "side_effects": [
+              "Loads environment variables from a .env file if it exists.",
+              "Creates directories specified in the configuration if they do not exist."
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if the API key or other secrets are logged or mishandled."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "controllers": {
+        "path": "controllers",
+        "purpose": "This folder/module is responsible for handling HTTP requests and responses related to application health checks.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "health_controller.go"
+        ],
+        "dependencies": [
+          "github.com/labstack/echo/v4"
+        ],
+        "architecture": "The folder follows a controller pattern, where each controller manages specific routes and business logic related to its domain.",
+        "file_summaries": {
+          "controllers/health_controller.go": {
+            "language": "Go",
+            "purpose": "This file defines a health check controller for an HTTP server.",
+            "key_types": [
+              "HealthController"
+            ],
+            "functions": [
+              "NewHealthController",
+              "HealthCheck"
+            ],
+            "imports": [
+              "net/http",
+              "github.com/labstack/echo/v4"
+            ],
+            "side_effects": [
+              "Returns a JSON response indicating server health"
+            ],
+            "complexity": "low"
+          }
+        }
+      },
+      "internal/chunker": {
+        "path": "internal/chunker",
+        "purpose": "This folder/module is responsible for splitting file content into manageable chunks based on token limits.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "chunker.go"
+        ],
+        "dependencies": [
+          "bufio",
+          "fmt",
+          "strings",
+          "unicode/utf8"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to content chunking in a single file.",
+        "file_summaries": {
+          "internal/chunker/chunker.go": {
+            "language": "Go",
+            "purpose": "This file defines a chunker that splits file content into manageable chunks based on token limits.",
+            "key_types": [
+              "Chunk"
+            ],
+            "functions": [
+              "ChunkFile",
+              "splitContent",
+              "estimateTokens",
+              "countLines",
+              "SummarizeChunkInfo"
+            ],
+            "imports": [
+              "bufio",
+              "fmt",
+              "strings",
+              "unicode/utf8"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "internal/gitignore": {
+        "path": "internal/gitignore",
+        "purpose": "Responsible for parsing .gitignore files and determining if file paths should be ignored based on defined patterns.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "parser.go"
+        ],
+        "dependencies": [
+          "bufio",
+          "os",
+          "path/filepath",
+          "regexp",
+          "strings"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality related to .gitignore parsing in a single module.",
+        "file_summaries": {
+          "internal/gitignore/parser.go": {
+            "language": "Go",
+            "purpose": "Parses .gitignore files and checks if file paths should be ignored based on the patterns defined in those files.",
+            "key_types": [
+              "GitIgnore",
+              "pattern"
+            ],
+            "functions": [
+              "NewGitIgnore",
+              "LoadFromFile",
+              "AddPattern",
+              "IsIgnored",
+              "matchesPattern",
+              "convertToRegex",
+              "LoadDefault"
+            ],
+            "imports": [
+              "bufio",
+              "os",
+              "path/filepath",
+              "regexp",
+              "strings"
+            ],
+            "side_effects": [
+              "Reads from the filesystem to load patterns from .gitignore files."
+            ],
+            "risks": [
+              "Potential for regex compilation errors if patterns are malformed."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "internal/openai": {
+        "path": "internal/openai",
+        "purpose": "This folder/module is responsible for interacting with the OpenAI API, including client functionality and rate limiting.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "client.go",
+          "ratelimiter.go"
+        ],
+        "dependencies": [
+          "github.com/sashabaranov/go-openai",
+          "repo-explanation/config"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating API client functionality and rate limiting in separate files for better maintainability and separation of concerns.",
+        "file_summaries": {
+          "internal/openai/client.go": {
+            "language": "Go",
+            "purpose": "This file defines a client for interacting with the OpenAI API, including methods for analyzing files, folders, and projects.",
+            "key_types": [
+              "Client",
+              "FileSummary",
+              "FolderSummary",
+              "ProjectSummary"
+            ],
+            "functions": [
+              "NewClient",
+              "AnalyzeFile",
+              "AnalyzeFolder",
+              "AnalyzeProject",
+              "buildFileAnalysisPrompt",
+              "buildFolderAnalysisPrompt",
+              "buildProjectAnalysisPrompt"
+            ],
+            "imports": [
+              "context",
+              "encoding/json",
+              "fmt",
+              "github.com/sashabaranov/go-openai",
+              "repo-explanation/config"
+            ],
+            "side_effects": [
+              "Rate limiting on API requests"
+            ],
+            "risks": [
+              "Potential exposure of API keys",
+              "Rate limiting may lead to request failures"
+            ],
+            "complexity": "medium"
+          },
+          "internal/openai/ratelimiter.go": {
+            "language": "Go",
+            "purpose": "Implements a token bucket rate limiting mechanism for API calls.",
+            "key_types": [
+              "RateLimiter"
+            ],
+            "functions": [
+              "NewRateLimiter",
+              "Wait",
+              "canProceed",
+              "consumeToken",
+              "refillTokens",
+              "getWaitTime",
+              "GetStats"
+            ],
+            "imports": [
+              "context",
+              "sync",
+              "time"
+            ],
+            "side_effects": [
+              "Blocks execution until a request can be made according to rate limits.",
+              "May wait indefinitely if context is not cancelled."
+            ],
+            "risks": [
+              "Potential deadlock if mutexes are not handled correctly."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "internal/pipeline": {
+        "path": "internal/pipeline",
+        "purpose": "This folder/module is responsible for implementing an analysis pipeline that orchestrates the analysis of files and folders in a project using a map-reduce approach and discovering and filtering files based on certain criteria.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "analyzer.go",
+          "crawler.go"
+        ],
+        "dependencies": [
+          "context",
+          "fmt",
+          "path/filepath",
+          "sync",
+          "repo-explanation/cache",
+          "repo-explanation/config",
+          "repo-explanation/internal/chunker",
+          "repo-explanation/internal/openai",
+          "io/fs",
+          "os",
+          "strings",
+          "repo-explanation/internal/gitignore"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to the analysis and crawling of files, promoting separation of concerns and reusability.",
+        "file_summaries": {
+          "internal/pipeline/analyzer.go": {
+            "language": "Go",
+            "purpose": "This file implements an analysis pipeline that orchestrates the analysis of files and folders in a project using a map-reduce approach.",
+            "key_types": [
+              "Analyzer",
+              "AnalysisResult",
+              "fileResult"
+            ],
+            "functions": [
+              "NewAnalyzer",
+              "AnalyzeProject",
+              "mapPhase",
+              "fileWorker",
+              "analyzeFile",
+              "reducePhaseFolder",
+              "reducePhaseProject"
+            ],
+            "imports": [
+              "context",
+              "fmt",
+              "path/filepath",
+              "sync",
+              "repo-explanation/cache",
+              "repo-explanation/config",
+              "repo-explanation/internal/chunker",
+              "repo-explanation/internal/openai"
+            ],
+            "side_effects": [
+              "Prints progress and errors to the console",
+              "Caches analysis results"
+            ],
+            "risks": [
+              "Potential for race conditions due to concurrent processing",
+              "Error handling may not cover all edge cases"
+            ],
+            "complexity": "medium"
+          },
+          "internal/pipeline/crawler.go": {
+            "language": "Go",
+            "purpose": "This file implements a file crawler that discovers and filters files in a directory based on certain criteria.",
+            "key_types": [
+              "FileInfo",
+              "Crawler"
+            ],
+            "functions": [
+              "NewCrawler",
+              "CrawlFiles",
+              "ReadFile",
+              "redactSecrets",
+              "GetFileStats"
+            ],
+            "imports": [
+              "fmt",
+              "io/fs",
+              "os",
+              "path/filepath",
+              "strings",
+              "repo-explanation/config",
+              "repo-explanation/internal/gitignore"
+            ],
+            "side_effects": [
+              "Reads files from the filesystem",
+              "Modifies file content by redacting secrets"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if redaction is not properly implemented"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "root": {
+        "path": "root",
+        "purpose": "This folder/module is responsible for a Golang application that analyzes and explains codebases.",
+        "languages": {
+          "Bash": 1,
+          "Go": 1,
+          "Markdown": 1,
+          "YAML": 1
+        },
+        "key_modules": [
+          "README.md",
+          "config.yaml",
+          "main.go",
+          "test_cli.sh"
+        ],
+        "dependencies": [
+          "github.com/labstack/echo/v4",
+          "github.com/labstack/echo/v4/middleware"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, separating configuration, main application logic, and testing scripts.",
+        "file_summaries": {
+          "README.md": {
+            "language": "Markdown",
+            "purpose": "Documentation for a Golang application that analyzes and explains codebases.",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "config.yaml": {
+            "language": "YAML",
+            "purpose": "Configuration file for a repository explanation tool, detailing API settings, rate limiting, file processing, caching, security, and output options.",
+            "key_types": [
+              "openai",
+              "rate_limiting",
+              "file_processing",
+              "cache",
+              "security",
+              "output"
+            ],
+            "functions": [],
+            "imports": [],
+            "risks": [
+              "Exposure of sensitive information if the API key or other secrets are not properly redacted."
+            ],
+            "complexity": "low"
+          },
+          "main.go": {
+            "language": "Go",
+            "purpose": "This file sets up a web server or a command-line interface based on the provided mode.",
+            "key_types": [
+              "echo.Echo",
+              "cli.REPL",
+              "controllers.HealthController"
+            ],
+            "functions": [
+              "main",
+              "runServer",
+              "runCLI"
+            ],
+            "imports": [
+              "flag",
+              "fmt",
+              "os",
+              "github.com/labstack/echo/v4",
+              "github.com/labstack/echo/v4/middleware",
+              "repo-explanation/cli",
+              "repo-explanation/controllers",
+              "repo-explanation/routes"
+            ],
+            "side_effects": [
+              "Starts a web server on port 8080",
+              "Exits the program on unknown mode"
+            ],
+            "complexity": "medium"
+          },
+          "test_cli.sh": {
+            "language": "bash",
+            "purpose": "This file tests the command-line interface (CLI) functionality of a program.",
+            "key_types": [],
+            "functions": [
+              "echo"
+            ],
+            "imports": [
+              "./bin/repo-explanation"
+            ],
+            "side_effects": [
+              "executes a command-line program",
+              "outputs text to the console"
+            ],
+            "complexity": "low"
+          }
+        }
+      },
+      "routes": {
+        "path": "routes",
+        "purpose": "Sets up HTTP routes for a web application using the Echo framework.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "routes/routes.go"
+        ],
+        "dependencies": [
+          "github.com/labstack/echo/v4",
+          "repo-explanation/controllers"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, focusing on routing and controller separation for handling HTTP requests.",
+        "file_summaries": {
+          "routes/routes.go": {
+            "language": "Go",
+            "purpose": "Sets up HTTP routes for a web application using the Echo framework.",
+            "key_types": [
+              "echo.Echo",
+              "controllers.HealthController"
+            ],
+            "functions": [
+              "SetupRoutes"
+            ],
+            "imports": [
+              "github.com/labstack/echo/v4",
+              "repo-explanation/controllers"
+            ],
+            "side_effects": [
+              "Registers a health check route with the Echo server."
+            ],
+            "complexity": "low"
+          }
+        }
+      }
+    },
+    "summary": "This project is a Golang application designed to analyze and explain codebases, providing insights into their structure and configuration. It includes a command-line interface and a web server for user interaction and utilizes caching and API integrations for efficient processing."
+  }
+}

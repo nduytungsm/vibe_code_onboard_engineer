@@ -1,0 +1,22 @@
+{
+  "content_hash": "367e62151654a457d67351ced4d0f63e",
+  "timestamp": "2025-09-18T13:01:58.351363+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a command handling system with various command implementations.",
+    "key_types": [
+      "CommandHandler",
+      "TryMeCommand",
+      "EndCommand",
+      "UnsupportedCommand",
+      "CommandRegistry"
+    ],
+    "functions": [
+      "Handle",
+      "NewCommandRegistry",
+      "Execute"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

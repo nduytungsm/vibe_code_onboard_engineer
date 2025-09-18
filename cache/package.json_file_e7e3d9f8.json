@@ -1,0 +1,49 @@
+{
+  "content_hash": "a90784dcfbab14f9e8aa1de1c68b5c61",
+  "timestamp": "2025-09-18T13:04:03.64627+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Configuration file for a React application using Vite as the build tool.",
+    "key_types": [
+      "dependencies",
+      "devDependencies",
+      "scripts"
+    ],
+    "functions": [
+      "dev",
+      "build",
+      "lint",
+      "preview"
+    ],
+    "imports": [
+      "@hello-pangea/dnd",
+      "@mynaui/icons-react",
+      "@radix-ui/react-checkbox",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-label",
+      "@radix-ui/react-popover",
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "clsx",
+      "date-fns",
+      "dayjs",
+      "lucide-react",
+      "react",
+      "react-custom-roulette",
+      "react-day-picker",
+      "react-dom",
+      "react-icons",
+      "react-router-dom",
+      "tailwind-merge",
+      "uuid",
+      "zustand"
+    ],
+    "side_effects": [
+      "Installation of dependencies and devDependencies may affect the project environment."
+    ],
+    "risks": [
+      "Potential for outdated dependencies leading to security vulnerabilities."
+    ],
+    "complexity": "medium"
+  }
+}

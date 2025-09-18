@@ -1,0 +1,41 @@
+{
+  "content_hash": "a6a6355ba37555b99c812665bacaef91",
+  "timestamp": "2025-09-18T13:02:09.882694+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements an analysis pipeline that orchestrates the analysis of files and folders in a project using a map-reduce approach.",
+    "key_types": [
+      "Analyzer",
+      "AnalysisResult",
+      "fileResult"
+    ],
+    "functions": [
+      "NewAnalyzer",
+      "AnalyzeProject",
+      "mapPhase",
+      "fileWorker",
+      "analyzeFile",
+      "reducePhaseFolder",
+      "reducePhaseProject"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "path/filepath",
+      "sync",
+      "repo-explanation/cache",
+      "repo-explanation/config",
+      "repo-explanation/internal/chunker",
+      "repo-explanation/internal/openai"
+    ],
+    "side_effects": [
+      "Prints progress and errors to the console",
+      "Caches analysis results"
+    ],
+    "risks": [
+      "Potential for race conditions due to concurrent processing",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

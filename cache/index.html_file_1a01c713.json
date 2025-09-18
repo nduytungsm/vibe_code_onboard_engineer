@@ -1,0 +1,15 @@
+{
+  "content_hash": "4bf3f3d5dab62644a7aada21abcf2caf",
+  "timestamp": "2025-09-18T13:03:56.777716+07:00",
+  "result": {
+    "language": "HTML",
+    "purpose": "This file serves as the main entry point for a web application using Vite, React, and TypeScript.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "/src/index.css",
+      "/src/main.tsx"
+    ],
+    "complexity": "low"
+  }
+}

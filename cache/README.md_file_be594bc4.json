@@ -1,0 +1,12 @@
+{
+  "content_hash": "4669411fb745f76c90d2dc40395ca23c",
+  "timestamp": "2025-09-18T13:01:57.706344+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for a Golang application that analyzes and explains codebases.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

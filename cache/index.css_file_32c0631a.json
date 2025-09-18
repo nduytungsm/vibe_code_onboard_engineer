@@ -1,0 +1,18 @@
+{
+  "content_hash": "100cd7b3b70ceea4e3d5553e78347dd2",
+  "timestamp": "2025-09-18T13:04:00.232509+07:00",
+  "result": {
+    "language": "CSS",
+    "purpose": "Styling for a web application using Tailwind CSS and custom styles.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "tailwindcss"
+    ],
+    "side_effects": [
+      "Modifies scrollbar visibility",
+      "Applies styles based on color scheme preference"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "content_hash": "a580db0962efc8797ef5953107b63570",
+  "timestamp": "2025-09-18T13:02:15.881355+07:00",
+  "result": {
+    "path": "internal/gitignore",
+    "purpose": "Responsible for parsing .gitignore files and determining if file paths should be ignored based on defined patterns.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "parser.go"
+    ],
+    "dependencies": [
+      "bufio",
+      "os",
+      "path/filepath",
+      "regexp",
+      "strings"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality related to .gitignore parsing in a single module.",
+    "file_summaries": {
+      "internal/gitignore/parser.go": {
+        "language": "Go",
+        "purpose": "Parses .gitignore files and checks if file paths should be ignored based on the patterns defined in those files.",
+        "key_types": [
+          "GitIgnore",
+          "pattern"
+        ],
+        "functions": [
+          "NewGitIgnore",
+          "LoadFromFile",
+          "AddPattern",
+          "IsIgnored",
+          "matchesPattern",
+          "convertToRegex",
+          "LoadDefault"
+        ],
+        "imports": [
+          "bufio",
+          "os",
+          "path/filepath",
+          "regexp",
+          "strings"
+        ],
+        "side_effects": [
+          "Reads from the filesystem to load patterns from .gitignore files."
+        ],
+        "risks": [
+          "Potential for regex compilation errors if patterns are malformed."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

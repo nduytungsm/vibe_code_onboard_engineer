@@ -1,0 +1,48 @@
+{
+  "content_hash": "00d638809f0d6d4c7cb1b2fcee4535ba",
+  "timestamp": "2025-09-18T13:02:01.57724+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a caching mechanism for storing and retrieving analysis results of files, folders, and projects.",
+    "key_types": [
+      "Cache",
+      "CacheEntry"
+    ],
+    "functions": [
+      "NewCache",
+      "GetFileSummary",
+      "SetFileSummary",
+      "GetFolderSummary",
+      "SetFolderSummary",
+      "GetProjectSummary",
+      "SetProjectSummary",
+      "ClearCache",
+      "hashContent",
+      "hashFileSummaries",
+      "hashFolderSummaries",
+      "getFileCachePath",
+      "loadCacheEntry",
+      "saveCacheEntry",
+      "isExpired"
+    ],
+    "imports": [
+      "crypto/md5",
+      "encoding/json",
+      "fmt",
+      "os",
+      "path/filepath",
+      "time",
+      "repo-explanation/config",
+      "repo-explanation/internal/openai"
+    ],
+    "side_effects": [
+      "File system operations for reading and writing cache entries",
+      "Potentially modifies the file system by creating or deleting cache files"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data if cache files are not properly secured",
+      "Denial of service if cache directory is filled with too many files"
+    ],
+    "complexity": "medium"
+  }
+}

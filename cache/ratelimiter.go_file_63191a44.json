@@ -1,0 +1,33 @@
+{
+  "content_hash": "f0dcf8b0c883d805fecd58142c3a952f",
+  "timestamp": "2025-09-18T13:02:06.679841+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements a token bucket rate limiting mechanism for API calls.",
+    "key_types": [
+      "RateLimiter"
+    ],
+    "functions": [
+      "NewRateLimiter",
+      "Wait",
+      "canProceed",
+      "consumeToken",
+      "refillTokens",
+      "getWaitTime",
+      "GetStats"
+    ],
+    "imports": [
+      "context",
+      "sync",
+      "time"
+    ],
+    "side_effects": [
+      "Blocks execution until a request can be made according to rate limits.",
+      "May wait indefinitely if context is not cancelled."
+    ],
+    "risks": [
+      "Potential deadlock if mutexes are not handled correctly."
+    ],
+    "complexity": "medium"
+  }
+}

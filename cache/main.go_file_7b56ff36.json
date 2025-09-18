@@ -1,0 +1,33 @@
+{
+  "content_hash": "0a9feb6d4eb10fcae1f98a94184b43d5",
+  "timestamp": "2025-09-18T13:02:12.887079+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file sets up a web server or a command-line interface based on the provided mode.",
+    "key_types": [
+      "echo.Echo",
+      "cli.REPL",
+      "controllers.HealthController"
+    ],
+    "functions": [
+      "main",
+      "runServer",
+      "runCLI"
+    ],
+    "imports": [
+      "flag",
+      "fmt",
+      "os",
+      "github.com/labstack/echo/v4",
+      "github.com/labstack/echo/v4/middleware",
+      "repo-explanation/cli",
+      "repo-explanation/controllers",
+      "repo-explanation/routes"
+    ],
+    "side_effects": [
+      "Starts a web server on port 8080",
+      "Exits the program on unknown mode"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "content_hash": "4c0b204b4fc7fc7438d29e52a2283a16",
+  "timestamp": "2025-09-18T13:02:05.272038+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a chunker that splits file content into manageable chunks based on token limits.",
+    "key_types": [
+      "Chunk"
+    ],
+    "functions": [
+      "ChunkFile",
+      "splitContent",
+      "estimateTokens",
+      "countLines",
+      "SummarizeChunkInfo"
+    ],
+    "imports": [
+      "bufio",
+      "fmt",
+      "strings",
+      "unicode/utf8"
+    ],
+    "complexity": "medium"
+  }
+}

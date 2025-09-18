@@ -1,0 +1,73 @@
+{
+  "content_hash": "acfd18ecd3381cb203bf29817d5e3774",
+  "timestamp": "2025-09-18T13:04:25.910352+07:00",
+  "result": {
+    "path": "src",
+    "purpose": "Contains styles and type definitions for a web application built with Vite and Tailwind CSS.",
+    "languages": {
+      "CSS": 2,
+      "TypeScript": 1
+    },
+    "key_modules": [
+      "App.css",
+      "index.css",
+      "vite-env.d.ts"
+    ],
+    "dependencies": [
+      "tailwindcss",
+      "tw-animate-css",
+      "vite/client"
+    ],
+    "architecture": "The folder follows a modular architecture, separating styles and type definitions to maintain clarity and reusability.",
+    "file_summaries": {
+      "src/App.css": {
+        "language": "CSS",
+        "purpose": "Styling for a web application, including layout, animations, and theme management.",
+        "key_types": [
+          "@import",
+          "@custom-variant",
+          "@media",
+          ":root",
+          ".dark"
+        ],
+        "functions": [
+          "@keyframes",
+          "@layer"
+        ],
+        "imports": [
+          "tw-animate-css"
+        ],
+        "side_effects": [
+          "Custom scrollbar styles for different browsers",
+          "Hover effects on logo",
+          "Animations on logo"
+        ],
+        "complexity": "medium"
+      },
+      "src/index.css": {
+        "language": "CSS",
+        "purpose": "Styling for a web application using Tailwind CSS and custom styles.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "tailwindcss"
+        ],
+        "side_effects": [
+          "Modifies scrollbar visibility",
+          "Applies styles based on color scheme preference"
+        ],
+        "complexity": "medium"
+      },
+      "src/vite-env.d.ts": {
+        "language": "TypeScript",
+        "purpose": "This file provides type definitions for Vite client.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "vite/client"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

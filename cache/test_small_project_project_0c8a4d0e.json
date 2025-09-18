@@ -1,0 +1,47 @@
+{
+  "content_hash": "072fe13abc3d3c6cf02c24ca5a55abcc",
+  "timestamp": "2025-09-18T13:03:24.343066+07:00",
+  "result": {
+    "purpose": "This project is a simple application that prints 'Hello World' to the console. It serves as an introductory example for understanding basic Go programming concepts.",
+    "architecture": "Simple procedural architecture with a single entry point.",
+    "data_models": [],
+    "external_services": [],
+    "languages": {
+      "Go": 1
+    },
+    "folder_summaries": {
+      "root": {
+        "path": "root",
+        "purpose": "This folder/module is responsible for printing 'Hello World' to the console.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "fmt"
+        ],
+        "architecture": "Simple procedural architecture with a single entry point.",
+        "file_summaries": {
+          "main.go": {
+            "language": "Go",
+            "purpose": "This file prints 'Hello World' to the console.",
+            "key_types": [],
+            "functions": [
+              "main"
+            ],
+            "imports": [
+              "fmt"
+            ],
+            "side_effects": [
+              "Prints output to the console"
+            ],
+            "complexity": "low"
+          }
+        }
+      }
+    },
+    "summary": "This project demonstrates a basic Go application that outputs a greeting message. It helps beginners learn the fundamentals of Go programming."
+  }
+}

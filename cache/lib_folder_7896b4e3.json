@@ -1,0 +1,36 @@
+{
+  "content_hash": "a54cdc6fbd5c1ef11e2f9d67cc2235be",
+  "timestamp": "2025-09-18T13:04:23.212758+07:00",
+  "result": {
+    "path": "src/lib",
+    "purpose": "Contains utility functions for the application, specifically for handling class names and conditional classes.",
+    "languages": {
+      "TypeScript": 1
+    },
+    "key_modules": [
+      "utils.ts"
+    ],
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, focusing on reusable utility functions.",
+    "file_summaries": {
+      "src/lib/utils.ts": {
+        "language": "TypeScript",
+        "purpose": "Utility function to merge class names and handle conditional classes.",
+        "key_types": [
+          "ClassValue"
+        ],
+        "functions": [
+          "cn"
+        ],
+        "imports": [
+          "clsx",
+          "tailwind-merge"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}
