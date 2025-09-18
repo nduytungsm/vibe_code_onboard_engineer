@@ -1,0 +1,22 @@
+{
+  "content_hash": "99cecfa5671e3dcd1539c52731f2a81f",
+  "timestamp": "2025-09-18T14:29:22.383957+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for push notifications and provides a method to return its string representation.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "String"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information due to redacted fields."
+    ],
+    "complexity": "medium"
+  }
+}

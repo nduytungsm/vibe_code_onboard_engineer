@@ -1,0 +1,58 @@
+{
+  "content_hash": "d667676604ddcab780fb122366614984",
+  "timestamp": "2025-09-18T14:30:29.579802+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a Moralis provider for interacting with Ethereum Virtual Machine (EVM) based blockchain services, including fetching portfolio balances and NFT items.",
+    "key_types": [
+      "moralisProvider",
+      "PortfolioTokenItem",
+      "PortfolioNftItem",
+      "GetFungibleBalance",
+      "GetNftItems"
+    ],
+    "functions": [
+      "MoralisProviderName",
+      "EvmMoralisProviderCreator",
+      "IsMethodSupported",
+      "Name",
+      "wrapError",
+      "GetPortfolioBalance",
+      "ListPortfolioNFTItems",
+      "getUserNftItems",
+      "findBalanceFetcher",
+      "getERC20Balance",
+      "getBothBalance",
+      "getNativeBalance",
+      "getFungibleBalance"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "math",
+      "net/http",
+      "runtime",
+      "strconv",
+      "strings",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/categorize",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/moralis",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

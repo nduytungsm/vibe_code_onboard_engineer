@@ -9,6 +9,7 @@ import (
 	"repo-explanation/cache"
 	"repo-explanation/config"
 	"repo-explanation/internal/chunker"
+	"repo-explanation/internal/detector"
 	"repo-explanation/internal/openai"
 )
 
@@ -25,6 +26,7 @@ type AnalysisResult struct {
 	ProjectSummary  *openai.ProjectSummary           `json:"project_summary"`
 	FolderSummaries map[string]*openai.FolderSummary `json:"folder_summaries"`
 	FileSummaries   map[string]*openai.FileSummary   `json:"file_summaries"`
+	ProjectType     *detector.DetectionResult        `json:"project_type"`
 	Stats           map[string]interface{}           `json:"stats"`
 }
 
@@ -55,6 +57,27 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 	
 	stats := a.crawler.GetFileStats(files)
 	fmt.Printf("📁 Found %d files (%.2f MB)\n", stats["total_files"], stats["total_size_mb"])
+	
+	// Phase 1.5: Detect project type based on file structure
+	fmt.Println("🔍 Detecting project type...")
+	projectDetector := detector.NewProjectDetector()
+	
+	// Convert pipeline.FileInfo to detector.FileInfo to avoid import cycle
+	detectorFiles := make([]detector.FileInfo, len(files))
+	for i, file := range files {
+		detectorFiles[i] = detector.FileInfo{
+			Path:         file.Path,
+			RelativePath: file.RelativePath,
+			Size:         file.Size,
+			Extension:    file.Extension,
+			IsDir:        file.IsDir,
+		}
+	}
+	
+	projectType := projectDetector.DetectProjectType(detectorFiles)
+	
+	// Display project type detection results
+	projectType.DisplayResult()
 	
 	// Phase 2: Map - Analyze individual files
 	fmt.Println("🧠 Analyzing files...")
@@ -87,6 +110,7 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 		ProjectSummary:  projectSummary,
 		FolderSummaries: folderSummaries,
 		FileSummaries:   fileSummaries,
+		ProjectType:     projectType,
 		Stats:           stats,
 	}, nil
 }

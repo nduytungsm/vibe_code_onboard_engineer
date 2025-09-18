@@ -1,0 +1,42 @@
+{
+  "content_hash": "cff21e385518c9e82e45866e4fda9afc",
+  "timestamp": "2025-09-18T14:30:29.640054+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Utility functions for handling NFT and transaction metadata in a proxy service.",
+    "key_types": [
+      "loopFetcher",
+      "onNextCursor",
+      "transferDecodeResult"
+    ],
+    "functions": [
+      "extractMetadataAttributes",
+      "displayTypeMapper",
+      "snakeCaseToReadable",
+      "getTransferDirection",
+      "decodeTx",
+      "marshalMoralisMetadata",
+      "marshalMoralisErc20Transfers",
+      "marshalMoralisNftTransfers",
+      "marshalMoralisApprovals",
+      "marshalNativeTransfers",
+      "copyGenerics",
+      "copyToken"
+    ],
+    "imports": [
+      "fmt",
+      "math",
+      "math/big",
+      "strings",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/moralis",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

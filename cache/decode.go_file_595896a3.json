@@ -1,0 +1,20 @@
+{
+  "content_hash": "1f85dd81f56c64e0f3059f96206f8a40",
+  "timestamp": "2025-09-18T14:31:04.280449+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for decoding Ethereum transactions and logs.",
+    "key_types": [
+      "DecodeCall",
+      "DecodeLog",
+      "DecodeTx"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "low"
+  }
+}

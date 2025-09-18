@@ -1,0 +1,19 @@
+{
+  "content_hash": "1a815b6331ba5d9a05f8c09c2eccd822",
+  "timestamp": "2025-09-18T14:31:19.027083+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines device platforms and provides methods to retrieve their values.",
+    "key_types": [
+      "DevicePlatform"
+    ],
+    "functions": [
+      "Value",
+      "Values"
+    ],
+    "imports": [
+      "github.com/samber/lo"
+    ],
+    "complexity": "low"
+  }
+}

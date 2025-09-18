@@ -1,0 +1,51 @@
+{
+  "content_hash": "24818d96412311651579465cf3d88de2",
+  "timestamp": "2025-09-18T14:32:29.714612+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains functions for managing user rewards in a quest system, including finding eligible rewards, distributing rewards, and updating user quest statuses.",
+    "key_types": [
+      "userReward",
+      "UserQuestReward",
+      "QuestListingItem",
+      "QuestRewardExtra",
+      "UserQuestItem",
+      "UserAction",
+      "RewardPoolExtra"
+    ],
+    "functions": [
+      "findEligibleUserRewards",
+      "queueDistributeOrderV4",
+      "getOnChainAmounts",
+      "getOffChainAmounts",
+      "createUserRewards",
+      "prepareUpdateFns",
+      "assureQuestInProgress",
+      "assureActionVerifiable",
+      "assureActionUpdated"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "strings",
+      "time",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/samber/lo",
+      "github.com/shopspring/decimal",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/reward-distribution",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "side_effects": [
+      "Modifies user quest and reward data in the database",
+      "Enqueues tasks for reward distribution"
+    ],
+    "risks": [
+      "Potential for incorrect reward distribution if business logic fails",
+      "Error handling may expose sensitive information if not managed properly"
+    ],
+    "complexity": "medium"
+  }
+}

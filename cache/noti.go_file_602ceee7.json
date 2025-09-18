@@ -1,0 +1,19 @@
+{
+  "content_hash": "966fbef7ad0aeb7ee8450cf23302b3a7",
+  "timestamp": "2025-09-18T14:28:35.286434+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for notification responses in a notification management system.",
+    "key_types": [
+      "UpsertNoti",
+      "NotiButton",
+      "NotiListingItem",
+      "WhitelistNoti"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+    ],
+    "complexity": "medium"
+  }
+}

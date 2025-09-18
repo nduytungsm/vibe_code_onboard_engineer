@@ -1,0 +1,20 @@
+{
+  "content_hash": "adc0b9e87d9d87a5a0171104fd9ca72f",
+  "timestamp": "2025-09-18T14:28:13.875987+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines response structures and a function to create a new response with a status code.",
+    "key_types": [
+      "Response",
+      "Paging",
+      "Paginated"
+    ],
+    "functions": [
+      "NewResponse"
+    ],
+    "imports": [
+      "net/http"
+    ],
+    "complexity": "medium"
+  }
+}

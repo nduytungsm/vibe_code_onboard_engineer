@@ -1,0 +1,54 @@
+{
+  "content_hash": "10ea06b8c0a9a40f7dde59a697c30bc3",
+  "timestamp": "2025-09-18T14:32:23.244631+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles user quest functionalities including taking quests, listing user quests, and exporting audit results.",
+    "key_types": [
+      "UserQuest",
+      "userQuest",
+      "spawnQuestInfo"
+    ],
+    "functions": [
+      "NewUserQuestHandler",
+      "wrapErr",
+      "findSpawnData",
+      "SpawnUserQuest",
+      "GetUserQuest"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "encoding/csv",
+      "errors",
+      "sort",
+      "strconv",
+      "strings",
+      "time",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-verifiers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/reward-randomize",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/samber/lo"
+    ],
+    "side_effects": [
+      "Interacts with external services to manage user quests.",
+      "Logs errors and events using zap logger."
+    ],
+    "risks": [
+      "Potential for race conditions when accessing shared resources.",
+      "Error handling may expose sensitive information if not managed properly."
+    ],
+    "complexity": "medium"
+  }
+}

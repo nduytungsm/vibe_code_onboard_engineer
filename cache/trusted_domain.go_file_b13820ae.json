@@ -1,0 +1,22 @@
+{
+  "content_hash": "28ca741ff6834a21ca4ee412f50ffab6",
+  "timestamp": "2025-09-18T14:30:52.90942+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing trusted domains in a database using GORM.",
+    "key_types": [
+      "TrustedDomainRepo",
+      "trustedDomainRepo"
+    ],
+    "functions": [
+      "NewTrustedDomainRepo",
+      "Find"
+    ],
+    "imports": [
+      "context",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/trusted-domain/models"
+    ],
+    "complexity": "medium"
+  }
+}

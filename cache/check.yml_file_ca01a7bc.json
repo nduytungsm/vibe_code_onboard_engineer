@@ -1,0 +1,25 @@
+{
+  "content_hash": "7e75461929571d0659e99b1e656a994e",
+  "timestamp": "2025-09-18T14:25:39.818849+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for security checks and builds on push to the main branch.",
+    "key_types": [
+      "job",
+      "workflow"
+    ],
+    "functions": [
+      "security_scan"
+    ],
+    "imports": [
+      "axieinfinity/workflows-samples/.github/workflows/security-basic-scan.yml"
+    ],
+    "side_effects": [
+      "Triggers a security scan on code push"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data in workflows"
+    ],
+    "complexity": "low"
+  }
+}

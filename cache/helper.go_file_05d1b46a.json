@@ -1,0 +1,36 @@
+{
+  "content_hash": "6276c77ae376126b35f27b30c4942f7e",
+  "timestamp": "2025-09-18T14:31:01.482361+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains helper functions and types for categorizing and managing balances of tokens and NFTs in a web3 context.",
+    "key_types": [
+      "balance"
+    ],
+    "functions": [
+      "countTokens",
+      "countNfts",
+      "noOfTokens",
+      "noOfNFTs",
+      "isEmpty",
+      "countBalance",
+      "transferID",
+      "accTransfer",
+      "computeBalance",
+      "assetKind"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "modifies the balance maps based on transfer data"
+    ],
+    "risks": [
+      "potential for incorrect balance calculations if transfer data is malformed"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "content_hash": "eb634c36255293a53e7a568d87c61b69",
+  "timestamp": "2025-09-18T14:28:43.556914+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines handlers for managing notifications in a web service, including creating, listing, updating, and deleting notifications.",
+    "key_types": [
+      "InternalNotiHandler",
+      "NotiHandler"
+    ],
+    "functions": [
+      "NewInternalNotiHandler",
+      "NewNotiHandler",
+      "Setup",
+      "whitelistNoti",
+      "getNotiByID",
+      "listUserNoti",
+      "deleteNoti",
+      "listNoti",
+      "upsertNewsNoti",
+      "extractWhitelistAddress",
+      "validateTriggerTime",
+      "validateLayout",
+      "validateBtns"
+    ],
+    "imports": [
+      "bufio",
+      "errors",
+      "fmt",
+      "strings",
+      "time",
+      "github.com/labstack/echo/v4",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Modifies notification data in the database",
+      "Reads files from the request context"
+    ],
+    "risks": [
+      "Potential for invalid address formats leading to errors",
+      "Improper handling of user input could lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "content_hash": "3bf7e0979b57826ed3244b61677ce4b7",
+  "timestamp": "2025-09-18T14:30:18.81+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides caching functionality for portfolio-related data in a multi-chain environment.",
+    "key_types": [
+      "CachedProvider",
+      "cacheInstances",
+      "fiatTokenCacheKey",
+      "tokenFiatCodec"
+    ],
+    "functions": [
+      "GetPortfolioBalance",
+      "ListPortfolioNFTItems",
+      "GetTokenFiatInfo",
+      "GetPortfolioNftCollections",
+      "GetPortfolioActivities",
+      "GetCollectionDetail",
+      "GetFungibleTxs",
+      "GetNftTransfers",
+      "ExecuteRpc",
+      "NewCachedProvider",
+      "Name",
+      "IsMethodSupported",
+      "IsAddressSupported"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

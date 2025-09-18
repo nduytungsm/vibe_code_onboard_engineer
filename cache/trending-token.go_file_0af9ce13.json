@@ -1,0 +1,28 @@
+{
+  "content_hash": "348fc3ff28f128224078840ba42b9b91",
+  "timestamp": "2025-09-18T14:28:26.577681+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for handling trending tokens and their attributes.",
+    "key_types": [
+      "SortDimension",
+      "TimeRange",
+      "TrendingToken",
+      "TransactionCount"
+    ],
+    "functions": [
+      "Value",
+      "Values",
+      "TimeRangeFromString",
+      "Count"
+    ],
+    "imports": [
+      "strings",
+      "time",
+      "github.com/samber/lo",
+      "github.com/shopspring/decimal",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

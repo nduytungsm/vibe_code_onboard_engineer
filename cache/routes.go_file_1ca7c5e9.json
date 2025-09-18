@@ -1,0 +1,24 @@
+{
+  "content_hash": "75aab74d000def6eeaf423099032c78a",
+  "timestamp": "2025-09-18T14:27:13.339715+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines routes for a wallet manager service, including public and private groups with associated handlers and middlewares.",
+    "key_types": [
+      "PublicGroup",
+      "PrivateGroup"
+    ],
+    "functions": [
+      "NewPrivateGroup",
+      "NewPublicGroup"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/labstack/echo/v4"
+    ],
+    "complexity": "medium"
+  }
+}

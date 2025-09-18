@@ -1,0 +1,40 @@
+{
+  "content_hash": "0b73b8dc950145bb94a6b8e65c02e909",
+  "timestamp": "2025-09-18T14:27:30.152756+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for a service related to wallet quests, defining various settings for services, clients, and parameters.",
+    "key_types": [
+      "profiler",
+      "server",
+      "x_service_v2",
+      "turnstile",
+      "wallet_proxy",
+      "quest_svc_cfg",
+      "profiling",
+      "sentry",
+      "game",
+      "siwe",
+      "logging",
+      "postgres",
+      "redis",
+      "id_generator",
+      "skynet_service",
+      "alert_service",
+      "check_in_service",
+      "reward_distribution",
+      "async_queue",
+      "discord",
+      "hmac_internal",
+      "nft_collections",
+      "waypoint"
+    ],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Exposure of sensitive information due to redacted fields",
+      "Potential misconfiguration leading to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "content_hash": "08e0e84a74cfad9b0dc7b383744b338f",
+  "timestamp": "2025-09-18T14:32:11.508245+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a Shop interface and its implementation for managing shop categories, tiers, items, and user inventory in a service.",
+    "key_types": [
+      "Shop",
+      "shop",
+      "requests.CreateShopCategory",
+      "responses.ShopCategory",
+      "responses.ShopTier",
+      "responses.ShopItem",
+      "responses.CreatePurchaseResponse",
+      "responses.ShopInventory",
+      "responses.UserItemQuantity"
+    ],
+    "functions": [
+      "NewShopHandler",
+      "CreateCategory",
+      "UpdateCategory",
+      "DeleteCategory",
+      "GetCategory",
+      "ListCategories",
+      "CreateTier",
+      "UpdateTier",
+      "DeleteTier",
+      "GetTiersByCategoryID",
+      "CreateItem",
+      "UpdateItem",
+      "DeleteItem",
+      "GetItemsByTier",
+      "UpdateItemQuantity",
+      "CreatePurchase",
+      "GetUserInventory",
+      "GetUserItemQuantity",
+      "UpdateUserInventory",
+      "AddToUserInventory"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "go.uber.org/zap"
+    ],
+    "complexity": "medium"
+  }
+}

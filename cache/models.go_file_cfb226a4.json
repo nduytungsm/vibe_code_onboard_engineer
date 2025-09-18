@@ -1,0 +1,18 @@
+{
+  "content_hash": "fc3c5b6bebf79f8ee92c1773344442d5",
+  "timestamp": "2025-09-18T14:32:55.837035+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for push notification requests.",
+    "key_types": [
+      "PostNotificationRequest",
+      "Payload",
+      "Recipient"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "content_hash": "70884ea3644b984b000a2a22854fec47",
+  "timestamp": "2025-09-18T14:27:33.510972+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a multi-container Docker application with services for PostgreSQL, Redis, Kafka, and a Kafka console.",
+    "key_types": [
+      "services"
+    ],
+    "functions": [],
+    "imports": [],
+    "side_effects": [
+      "Exposes ports for database and messaging services",
+      "Sets environment variables for service configuration"
+    ],
+    "risks": [
+      "Potential exposure of sensitive environment variables",
+      "Misconfiguration of service ports"
+    ],
+    "complexity": "medium"
+  }
+}

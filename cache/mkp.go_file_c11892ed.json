@@ -1,0 +1,22 @@
+{
+  "content_hash": "34223cb49ad0688385fc1a74c283e516",
+  "timestamp": "2025-09-18T14:31:01.886146+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Categorizes transactions related to NFTs based on user balance and transfers.",
+    "key_types": [
+      "Marketplace",
+      "Input",
+      "TransactionCategory",
+      "DecodedLabel"
+    ],
+    "functions": [
+      "Categorize"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "content_hash": "f9a9bd0b0e19de7b95e8b92feee6c030",
+  "timestamp": "2025-09-18T14:29:18.695772+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines models for push notification handling including recipient filters, payloads, and request/response structures.",
+    "key_types": [
+      "RecipientFilter",
+      "Recipient",
+      "Payload",
+      "PostNotificationRequest",
+      "PushRequest",
+      "PushNotificationResponse",
+      "PushStatus",
+      "PushResponse"
+    ],
+    "functions": [
+      "String"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums"
+    ],
+    "complexity": "medium"
+  }
+}

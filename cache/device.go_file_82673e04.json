@@ -1,0 +1,45 @@
+{
+  "content_hash": "7527272af520c4c414c2d9e60ae59945",
+  "timestamp": "2025-09-18T14:28:12.073706+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a DeviceService interface and its implementation for managing device records, including registration, updating, and syncing device addresses.",
+    "key_types": [
+      "DeviceService",
+      "deviceService",
+      "Device",
+      "DeviceFilter",
+      "Paging",
+      "OrderBy",
+      "WAddress"
+    ],
+    "functions": [
+      "NewDeviceService",
+      "RegisterDevice",
+      "UpdateDevices",
+      "GetDevices",
+      "SyncDeviceAddresses",
+      "getExistingDeviceMap"
+    ],
+    "imports": [
+      "context",
+      "net/http",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Modifies device records in the repository",
+      "Logs information about device records"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if PushToken is not handled securely"
+    ],
+    "complexity": "medium"
+  }
+}

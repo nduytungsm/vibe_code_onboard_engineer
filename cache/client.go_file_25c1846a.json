@@ -1,0 +1,34 @@
+{
+  "content_hash": "ded33d6d7a07237878e0567b2a22466e",
+  "timestamp": "2025-09-18T14:32:52.2892+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines an EVM client for interacting with Moralis API to fetch various blockchain-related data such as balances, NFT items, and transaction details.",
+    "key_types": [
+      "evmPathConfig",
+      "EvmCli",
+      "evmCli"
+    ],
+    "functions": [
+      "NewEvmCli",
+      "GetFungibleBalance",
+      "GetNativeBalance",
+      "GetNftItems",
+      "GetNftCollections",
+      "GetTokensFiat",
+      "GetActivities",
+      "GetAccountCollectionBalance",
+      "GetCollectionDetail",
+      "GetTxDetail"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "net/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "complexity": "medium"
+  }
+}

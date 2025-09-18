@@ -1,0 +1,22 @@
+{
+  "content_hash": "31f9e0f4ccadc48c6c69f3ea993aea27",
+  "timestamp": "2025-09-18T14:31:08.155591+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for transactions, transfers, and approvals in a web3 context.",
+    "key_types": [
+      "Transfer",
+      "Approval",
+      "SimpleTx"
+    ],
+    "functions": [
+      "AssetAddressOrNative (Transfer)",
+      "AssetAddressOrNative (Approval)"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

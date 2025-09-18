@@ -1,0 +1,19 @@
+{
+  "content_hash": "32a4ff9a7b73ee964da5e0760a6c8836",
+  "timestamp": "2025-09-18T14:25:43.220637+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines route handlers for private and public groups in an API.",
+    "key_types": [
+      "PrivateGroup",
+      "PublicGroup"
+    ],
+    "functions": [
+      "NewPrivateGroup"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "complexity": "low"
+  }
+}

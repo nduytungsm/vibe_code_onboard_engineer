@@ -1,0 +1,14 @@
+{
+  "content_hash": "5e74753dd5df0918c4b8d3d786ad4bf9",
+  "timestamp": "2025-09-18T14:29:36.21855+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a data structure for checking the existence of a user profile based on an address.",
+    "key_types": [
+      "CheckProfileExistence"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

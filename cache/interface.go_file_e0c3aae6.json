@@ -1,0 +1,29 @@
+{
+  "content_hash": "57fc34704dde3fd22c00acc11bf73e5d",
+  "timestamp": "2025-09-18T14:29:25.27377+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an interface for push notification clients and a function to create a client based on configuration.",
+    "key_types": [
+      "Client",
+      "clientContractor",
+      "Config"
+    ],
+    "functions": [
+      "SendNotification",
+      "SendToTopic",
+      "NewClient"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums"
+    ],
+    "risks": [
+      "Potential for nil pointer dereference if the configuration is invalid."
+    ],
+    "complexity": "medium"
+  }
+}

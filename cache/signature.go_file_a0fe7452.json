@@ -1,0 +1,35 @@
+{
+  "content_hash": "a9359bc24faa709dbce6d6def00d7f99",
+  "timestamp": "2025-09-18T14:31:19.433165+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service for managing signatures, including upserting and finding signatures in a repository.",
+    "key_types": [
+      "SignatureService",
+      "signatureService",
+      "models.Signature",
+      "repos.SignatureRepo",
+      "types.WAddress"
+    ],
+    "functions": [
+      "NewSignatureService",
+      "Upsert",
+      "Find"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/repos",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Modifies existing signatures in the repository if they exist and have lower priority."
+    ],
+    "risks": [
+      "Potential for data inconsistency if the priority logic is not correctly implemented."
+    ],
+    "complexity": "medium"
+  }
+}

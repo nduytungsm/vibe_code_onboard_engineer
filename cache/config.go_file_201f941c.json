@@ -1,0 +1,32 @@
+{
+  "content_hash": "e438bf42ad8105d7dc15ff4c6b5c2c44",
+  "timestamp": "2025-09-18T14:27:11.975344+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration schema for a wallet manager application.",
+    "key_types": [
+      "configSchema",
+      "applications.ApplicationConfig",
+      "xhttp.ServerConfig",
+      "loggers.LoggerConfig",
+      "storages.PostgresConfig",
+      "services.AuthCfg",
+      "async_queue.ClientConfigV2",
+      "generator.IDGeneratorConfig",
+      "xhttp.ClientConfig",
+      "waypoint.Config"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
+    ],
+    "complexity": "medium"
+  }
+}

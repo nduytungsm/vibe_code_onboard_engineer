@@ -1,0 +1,53 @@
+{
+  "content_hash": "dcf958a4c80975f8eae55e6917773650",
+  "timestamp": "2025-09-18T14:28:01.357592+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a bridge service that interacts with various providers to get information about supported chains, tokens, and quotes for transactions.",
+    "key_types": [
+      "BridgeService",
+      "bridgeService",
+      "dtos.Provider",
+      "dtos.Token",
+      "dtos.BestQuoteResponse",
+      "dtos.FeeBalance"
+    ],
+    "functions": [
+      "NewBridgeService",
+      "wrapErr",
+      "GetProvidersInfo",
+      "GetProviderTokens",
+      "FindBestQuote",
+      "isChainSupported",
+      "findProviderByID",
+      "GetFeeBalance"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "maps",
+      "net/http",
+      "runtime",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/handlers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/services/providers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/bridge",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Logs errors when provider information retrieval fails",
+      "Wraps internal server errors for external exposure"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information in error messages",
+      "Dependency on external provider services which may fail or return unexpected results"
+    ],
+    "complexity": "medium"
+  }
+}

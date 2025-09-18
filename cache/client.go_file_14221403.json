@@ -1,0 +1,34 @@
+{
+  "content_hash": "381acebdd7198961c084e8eda6b92f9d",
+  "timestamp": "2025-09-18T14:32:45.995774+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a client for interacting with the Kyberswap API, providing methods to swap routes, build routes, check price impacts, and retrieve tokens.",
+    "key_types": [
+      "Config",
+      "Client",
+      "clientHTTP"
+    ],
+    "functions": [
+      "NewClient",
+      "SwapRoute",
+      "BuildRoute",
+      "PriceImpact",
+      "GetTokens",
+      "GetTokensByAddresses",
+      "chainSlug"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "net/url",
+      "strings",
+      "github.com/samber/lo",
+      "github.com/samber/mo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "content_hash": "4bbf7b6f1999bf1153eca1df80b3b6f5",
+  "timestamp": "2025-09-18T14:32:54.718678+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for interacting with the Moralis Solana API, including token balances, NFT details, and media items.",
+    "key_types": [
+      "ErrorMessage",
+      "GetAllTokenBalance",
+      "GetFungibleBalance",
+      "GetByWallet",
+      "GetNativeBalance",
+      "GetSplBalance",
+      "GetNftItems",
+      "MediaCollectionItem",
+      "GetMultipleTokenPrices",
+      "NativeBalance",
+      "SplToken",
+      "NftAttribute",
+      "NftCollection",
+      "NftToken",
+      "PortfolioTokens",
+      "TokenPrice"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

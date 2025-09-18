@@ -1,0 +1,39 @@
+{
+  "content_hash": "b3eb828c6c87f4cd4d1135d83912fa11",
+  "timestamp": "2025-09-18T14:28:53.417072+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository interface and its implementation for managing operator entities in a database.",
+    "key_types": [
+      "OperatorRepo",
+      "operatorRepo",
+      "context.Context",
+      "gorm.DB",
+      "models.OperatorEntity",
+      "models.HistoryEntity"
+    ],
+    "functions": [
+      "NewOperatorRepo",
+      "NewTx",
+      "FindActive",
+      "CreateHistory",
+      "Create",
+      "Delete",
+      "List"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Database transactions",
+      "Modifications to the database state"
+    ],
+    "risks": [
+      "Potential SQL injection if input is not properly sanitized",
+      "Transaction management issues if not handled correctly"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "content_hash": "5e35543fb4808fc4f6a1c0005df80903",
+  "timestamp": "2025-09-18T14:26:58.618558+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file generates dependency injection code for the reward distributor application using Wire.",
+    "key_types": [
+      "applications.Application",
+      "rewardDistributorConfig",
+      "async_queue.ServerConfig",
+      "async_queue.RedisConfig",
+      "reward_distribution.ProcessorConfig",
+      "http.ClientConfig",
+      "metrics.Service"
+    ],
+    "functions": [
+      "wireRewardDistributorApp",
+      "provideSugarLogger",
+      "provideAsyncQueueServerConfig",
+      "provideAsyncQueueRedisConfig",
+      "provideTaskMonitorConfig",
+      "provideProcessorConfig",
+      "provideHTTPClientConfig",
+      "provideHttpMetric",
+      "provideRewardDistributorService",
+      "provideMetricService",
+      "provideConsumerApp",
+      "providePostgresConfig"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/reward-distribution",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/hibiken/asynq",
+      "go.uber.org/zap"
+    ],
+    "complexity": "medium"
+  }
+}

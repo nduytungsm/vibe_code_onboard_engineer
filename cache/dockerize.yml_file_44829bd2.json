@@ -1,0 +1,14 @@
+{
+  "content_hash": "d282403bf05bad576f535cdd5f07ab5b",
+  "timestamp": "2025-09-18T14:25:39.302936+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for Dockerizing Ronin wallet services.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml"
+    ],
+    "complexity": "low"
+  }
+}

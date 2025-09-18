@@ -1,0 +1,22 @@
+{
+  "content_hash": "995fae02ea72713ba0b6824448ba6353",
+  "timestamp": "2025-09-18T14:30:46.024962+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines event handlers for managing events and user events in a web application.",
+    "key_types": [
+      "EventHandler",
+      "InternalEventHandler"
+    ],
+    "functions": [
+      "NewEventHandler",
+      "NewInternalEventHandler",
+      "Setup"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "complexity": "medium"
+  }
+}

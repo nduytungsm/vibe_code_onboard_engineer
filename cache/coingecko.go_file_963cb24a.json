@@ -1,0 +1,22 @@
+{
+  "content_hash": "a4a21079395d91392adb01f0185b591c",
+  "timestamp": "2025-09-18T14:29:47.154706+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a model for managing Coingecko platform data including mappings between platform names, IDs, and native tokens.",
+    "key_types": [
+      "CoingeckoPlatforms",
+      "ChainID",
+      "TokenID"
+    ],
+    "functions": [
+      "NewCoingeckoPlatforms",
+      "PlatformID2Name",
+      "PlatformName2ID",
+      "OfNativeToken",
+      "Add"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

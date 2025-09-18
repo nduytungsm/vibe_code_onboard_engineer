@@ -234,6 +234,12 @@ func (r *REPL) displayAnalysisResults(result *pipeline.AnalysisResult) {
 	fmt.Println("📊 REPOSITORY ANALYSIS RESULTS")
 	fmt.Println(strings.Repeat("=", 80))
 
+	// Display project type summary at the top
+	if result.ProjectType != nil {
+		result.ProjectType.PrintSummary()
+		fmt.Println()
+	}
+
 	if result.ProjectSummary != nil {
 		fmt.Println("\n🎯 PURPOSE:")
 		fmt.Printf("   %s\n", result.ProjectSummary.Purpose)

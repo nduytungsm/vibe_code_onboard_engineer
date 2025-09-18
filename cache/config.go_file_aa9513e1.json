@@ -1,0 +1,38 @@
+{
+  "content_hash": "c4d4aaf44e4c026d7e02d290f67e0f77",
+  "timestamp": "2025-09-18T14:26:47.868711+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the configuration schema for the quest center application.",
+    "key_types": [
+      "configSchema",
+      "apiInfo",
+      "Sentry",
+      "IDGeneratorConfig",
+      "managerCfg"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/indexer",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/turnstile",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/x",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/discord",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-verifiers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
+    ],
+    "complexity": "medium"
+  }
+}

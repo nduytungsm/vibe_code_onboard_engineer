@@ -1,0 +1,17 @@
+{
+  "content_hash": "e1cadb2291fb551002e9cf56cfb4a8dd",
+  "timestamp": "2025-09-18T14:31:49.978367+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines various error messages related to quest and reward operations.",
+    "key_types": [
+      "error"
+    ],
+    "functions": [],
+    "imports": [
+      "errors",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+    ],
+    "complexity": "low"
+  }
+}

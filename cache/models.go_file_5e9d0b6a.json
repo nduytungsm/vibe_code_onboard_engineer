@@ -1,0 +1,26 @@
+{
+  "content_hash": "c1fc92c67a5a44817ae7dee5ab4aaada",
+  "timestamp": "2025-09-18T14:33:13.705888+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for waypoint-related models including error handling, wallet information, user profiles, and point redemption.",
+    "key_types": [
+      "WaypointErr",
+      "Wallet",
+      "PublicProfile",
+      "WalletInfo",
+      "LinkedAccount",
+      "Metadata",
+      "RedeemMetadata",
+      "AwardPointsRequest",
+      "AwardPointsResponse",
+      "ProfileUser",
+      "OnchainItem",
+      "RedeemPointsRequest",
+      "RedeemPointsResponse"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

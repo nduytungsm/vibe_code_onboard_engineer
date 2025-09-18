@@ -1,0 +1,27 @@
+{
+  "content_hash": "1afdeaf9afd792efed620bc489aa4bf5",
+  "timestamp": "2025-09-18T14:28:47.653261+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains helper functions for managing database transactions using GORM in a context.",
+    "key_types": [
+      "context.Context",
+      "gorm.DB"
+    ],
+    "functions": [
+      "bindTx",
+      "txFromContext"
+    ],
+    "imports": [
+      "context",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Modifies context by adding a transaction to it"
+    ],
+    "risks": [
+      "Potential for nil pointer dereference if context does not contain a transaction"
+    ],
+    "complexity": "low"
+  }
+}

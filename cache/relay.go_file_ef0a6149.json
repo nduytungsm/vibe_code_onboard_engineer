@@ -1,0 +1,56 @@
+{
+  "content_hash": "e41e9b93650476d57bab548d9f210dd0",
+  "timestamp": "2025-09-18T14:28:00.963786+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a relay service for token transactions, including fetching supported chains and quotes.",
+    "key_types": [
+      "Relay",
+      "Provider",
+      "Config",
+      "GetQuoteParams",
+      "Quote"
+    ],
+    "functions": [
+      "NewRelayProvider",
+      "wrapErr",
+      "ID",
+      "IsPrimary",
+      "IsCrosschainSupport",
+      "Info",
+      "GetTokens",
+      "marshalQuoteConfig",
+      "marshalQuoteResponse",
+      "GetQuote"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "runtime",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/handlers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/bridge",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/relay",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "github.com/shopspring/decimal",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Logs errors when operations fail",
+      "Caches quotes for future use"
+    ],
+    "risks": [
+      "Potential for insufficient liquidity errors",
+      "Error handling may expose internal error messages"
+    ],
+    "complexity": "medium"
+  }
+}

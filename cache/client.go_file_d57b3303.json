@@ -1,0 +1,34 @@
+{
+  "content_hash": "a12d83cc33dbe89a70597947f32c84d3",
+  "timestamp": "2025-09-18T14:32:55.329589+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a client for interacting with the OpenAI API, specifically for completing chat requests.",
+    "key_types": [
+      "Client",
+      "Config",
+      "openAISvc",
+      "RequestBody",
+      "ChatCompletionResponse",
+      "APIErrorResponse"
+    ],
+    "functions": [
+      "NewClient",
+      "CompleteChat"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Makes HTTP requests to an external API"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data through API requests",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

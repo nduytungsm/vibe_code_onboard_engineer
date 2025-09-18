@@ -1,0 +1,31 @@
+{
+  "content_hash": "e0fd8155a915e4d8173eae87d8392fed",
+  "timestamp": "2025-09-18T14:32:07.921298+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a user handler for managing user-related operations, including finding users by their addresses.",
+    "key_types": [
+      "User",
+      "user",
+      "UserItem",
+      "UserEntity"
+    ],
+    "functions": [
+      "NewUserHandler",
+      "wrapErr",
+      "FindUsers"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "strings",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/samber/lo",
+      "go.uber.org/zap"
+    ],
+    "complexity": "medium"
+  }
+}

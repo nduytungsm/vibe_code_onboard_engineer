@@ -1,0 +1,16 @@
+{
+  "content_hash": "b4e2a3a64fa184e74a3e6dda7525c855",
+  "timestamp": "2025-09-18T14:32:58.521666+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines custom error messages for the Skynet package.",
+    "key_types": [
+      "error"
+    ],
+    "functions": [],
+    "imports": [
+      "errors"
+    ],
+    "complexity": "low"
+  }
+}

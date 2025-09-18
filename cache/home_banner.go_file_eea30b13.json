@@ -1,0 +1,38 @@
+{
+  "content_hash": "6a4b9dcd088c0763133c172e3c827ea5",
+  "timestamp": "2025-09-18T14:33:35.752643+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository interface and its implementation for managing home banners in a database, including creating, finding, deleting, and listing banners.",
+    "key_types": [
+      "HomeBanner",
+      "homeBanner",
+      "HomeBannerEntity",
+      "HistoryEntity",
+      "WidgetItemHomeBanner"
+    ],
+    "functions": [
+      "NewHomeBanner",
+      "CreateHomeBanner",
+      "FindActiveHomeBanner",
+      "DeleteBanner",
+      "ListHomeBanners",
+      "GetWidgetItems"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Database transactions for creating and deleting banners"
+    ],
+    "risks": [
+      "Potential SQL injection if input is not properly sanitized",
+      "Data integrity issues if transactions fail"
+    ],
+    "complexity": "medium"
+  }
+}

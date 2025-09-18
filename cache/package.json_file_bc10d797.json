@@ -1,0 +1,17 @@
+{
+  "content_hash": "f93f3d584ce8d3eecaf250b564b6074d",
+  "timestamp": "2025-09-18T13:14:34.468232+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the metadata and dependencies for a Node.js application.",
+    "key_types": [
+      "object"
+    ],
+    "functions": [],
+    "imports": [
+      "react",
+      "react-dom"
+    ],
+    "complexity": "low"
+  }
+}

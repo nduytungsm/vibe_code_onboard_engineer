@@ -1,0 +1,21 @@
+{
+  "content_hash": "1c01d78b8ad2ebbe198a077a3e68ad0c",
+  "timestamp": "2025-09-18T13:19:39.250131+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file defines a UserController class for handling user-related operations.",
+    "key_types": [
+      "UserController"
+    ],
+    "functions": [
+      "getUsers",
+      "createUser"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Interacts with the database to retrieve or create users",
+      "Sends JSON responses"
+    ],
+    "complexity": "medium"
+  }
+}

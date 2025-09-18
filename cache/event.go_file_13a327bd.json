@@ -1,0 +1,51 @@
+{
+  "content_hash": "2d379b33b2f2d694b182cbbcdad01ddf",
+  "timestamp": "2025-09-18T14:31:58.104123+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines an event handler for managing events, including creating, deleting, and listing events, as well as retrieving associated pools.",
+    "key_types": [
+      "EventCfg",
+      "Event",
+      "event"
+    ],
+    "functions": [
+      "NewEventHandler",
+      "wrapErr",
+      "wrapNotFound",
+      "UpsertEvent",
+      "DeleteEvent",
+      "ListEvents",
+      "GetPoolsOfEvent",
+      "GetOngoingEvent"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "net/http",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Modifies the state of events in the database",
+      "Updates the cache for events"
+    ],
+    "risks": [
+      "Potential for race conditions when modifying events",
+      "Improper error handling could lead to inconsistent state"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "content_hash": "e53da0cdf8b8d79df8c48571b2aece18",
+  "timestamp": "2025-09-18T14:27:19.855593+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is used for dependency injection in a wallet manager application using the Wire framework.",
+    "key_types": [
+      "applications.Application",
+      "http.Server",
+      "generator.IDGenerator",
+      "zap.SugaredLogger",
+      "gorm.DB",
+      "asynq.Client"
+    ],
+    "functions": [
+      "wireWalletManager",
+      "provideHttpServer",
+      "provideServices",
+      "provideZapLogger",
+      "provideAsyncQueueClient"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/hibiken/asynq",
+      "github.com/labstack/echo/v4/middleware",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/validation",
+      "github.com/google/wire",
+      "go.uber.org/zap"
+    ],
+    "complexity": "medium"
+  }
+}

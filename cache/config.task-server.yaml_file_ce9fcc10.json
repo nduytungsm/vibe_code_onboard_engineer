@@ -1,0 +1,30 @@
+{
+  "content_hash": "8fc4d67270cd70a2fa62389f57aacbab",
+  "timestamp": "2025-09-18T14:27:30.692162+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for the wallet task server, defining application settings, database connections, task configurations, and logging settings.",
+    "key_types": [
+      "application",
+      "metrics",
+      "postgres",
+      "redis",
+      "async_queue_server",
+      "async_queue_client",
+      "databases",
+      "tasks",
+      "default_http_client",
+      "providers",
+      "logging",
+      "wallet_manager",
+      "notification_producer"
+    ],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Exposure of sensitive information due to redacted fields",
+      "Potential misconfiguration of database and service connections"
+    ],
+    "complexity": "medium"
+  }
+}

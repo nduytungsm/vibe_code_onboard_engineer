@@ -1,0 +1,30 @@
+{
+  "content_hash": "8aa025462027c6a92e38f824b50ed284",
+  "timestamp": "2025-09-18T14:27:56.181793+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines provider interfaces and configuration structures for a bridge service.",
+    "key_types": [
+      "Provider",
+      "SupportedProviderCfg",
+      "Config"
+    ],
+    "functions": [
+      "ID",
+      "IsPrimary",
+      "IsCrosschainSupport",
+      "Info",
+      "GetTokens",
+      "GetQuote",
+      "GetFeeBalance"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/handlers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "complexity": "medium"
+  }
+}

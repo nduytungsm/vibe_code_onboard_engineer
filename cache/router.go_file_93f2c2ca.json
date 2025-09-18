@@ -1,0 +1,55 @@
+{
+  "content_hash": "6db6d3cd491162f625c7c52bbb52ddd3",
+  "timestamp": "2025-09-18T14:28:27.156702+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a service for routing and managing token exchanges in a decentralized exchange (DEX) environment.",
+    "key_types": [
+      "DexRouterService",
+      "DexRouterConfig",
+      "dexRouterService"
+    ],
+    "functions": [
+      "NewDexRouterService",
+      "IsNoExtraFeeRegion",
+      "bigToDec",
+      "calcAmountUsd",
+      "fetchFiat",
+      "getRouteFiatValues",
+      "GetRoute",
+      "BuildRoute",
+      "ListTokens",
+      "SupportedChains",
+      "errBadRequest"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "net/http",
+      "strings",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "github.com/shopspring/decimal",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/services/provider",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Logs errors when fetching token fiat info fails",
+      "Logs errors when getting routes fails"
+    ],
+    "risks": [
+      "Potential for errors in handling fiat conversion leading to incorrect pricing",
+      "Possible exposure of sensitive information in error messages"
+    ],
+    "complexity": "medium"
+  }
+}

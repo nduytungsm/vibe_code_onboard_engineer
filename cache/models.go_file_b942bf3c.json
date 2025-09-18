@@ -1,0 +1,17 @@
+{
+  "content_hash": "3aa33e9721e1fea386a81c516b405636",
+  "timestamp": "2025-09-18T14:32:33.500374+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for handling exchange rate prices.",
+    "key_types": [
+      "Price",
+      "Response"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/shopspring/decimal"
+    ],
+    "complexity": "low"
+  }
+}

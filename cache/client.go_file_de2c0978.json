@@ -1,0 +1,46 @@
+{
+  "content_hash": "a2aef3eeccd0ac569384f1dacf9047f8",
+  "timestamp": "2025-09-18T14:33:02.644087+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a client interface and its implementation for interacting with a Skynet service, handling transactions, logs, tokens, and account information.",
+    "key_types": [
+      "Client",
+      "Config",
+      "skynetSvc",
+      "TransactionItem",
+      "Log",
+      "TxTransferResult",
+      "Token",
+      "NftToken",
+      "Account",
+      "ServerResponse"
+    ],
+    "functions": [
+      "NewClient",
+      "GetAllLogs",
+      "GetTx",
+      "GetTxTransfer",
+      "GetTokens",
+      "GetAccountByAddress",
+      "GetTokenByAddress",
+      "GetNFTTokenMetadata",
+      "doGet"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "net/http",
+      "strings",
+      "github.com/ethereum/go-ethereum/common",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data through HTTP requests",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

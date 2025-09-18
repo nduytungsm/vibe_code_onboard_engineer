@@ -1,0 +1,12 @@
+{
+  "content_hash": "19fb60b6dc40a61292c11d57e76e4485",
+  "timestamp": "2025-09-18T14:25:39.08341+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "This file serves as a template for pull requests, guiding contributors on what information to provide.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

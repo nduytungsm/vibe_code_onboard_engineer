@@ -1,0 +1,17 @@
+{
+  "content_hash": "676e8407aca00fbd18170daedb91e508",
+  "timestamp": "2025-09-18T14:30:34.05021+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the ABI and signature for a smart contract function related to casting a proposal vote.",
+    "key_types": [
+      "struct Proposal.ProposalDetail",
+      "enum Ballot.VoteType"
+    ],
+    "functions": [
+      "castProposalVoteForCurrentNetwork"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

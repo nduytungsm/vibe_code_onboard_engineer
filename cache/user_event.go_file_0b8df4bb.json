@@ -1,0 +1,56 @@
+{
+  "content_hash": "fde7780d24c19e5144519a4e03962514",
+  "timestamp": "2025-09-18T14:32:16.062132+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles user events including verifying premium status, joining events, and retrieving analytics.",
+    "key_types": [
+      "UserEvent",
+      "userEvent",
+      "req.VerifyPremiumUser",
+      "res.VerifyPremiumUser",
+      "req.JoinEvent",
+      "res.GetUserEventAnalytics",
+      "models.UserEvent",
+      "analytics",
+      "analyticInfo"
+    ],
+    "functions": [
+      "NewUserEventHandler",
+      "wrapErr",
+      "VerifyPremiumStatus",
+      "JoinEvent",
+      "GetAnalytics",
+      "aggregateAnalytics",
+      "findUserEvFallbackFn",
+      "findEvFn",
+      "findPoolsAnalyticsFn"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/samber/lo",
+      "github.com/samber/mo",
+      "go.uber.org/zap",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Database operations for user events and analytics",
+      "Caching premium user status"
+    ],
+    "risks": [
+      "Potential for SQL injection if inputs are not sanitized",
+      "Error handling may expose sensitive information"
+    ],
+    "complexity": "medium"
+  }
+}

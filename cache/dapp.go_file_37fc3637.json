@@ -1,0 +1,50 @@
+{
+  "content_hash": "0aee3d6a79258ec73400ae8e769bcf84",
+  "timestamp": "2025-09-18T14:30:11.735242+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a service for managing decentralized application (DApp) domains, including retrieving, deleting, and scanning them for malicious activity.",
+    "key_types": [
+      "DAppService",
+      "dappService",
+      "DAppSite",
+      "DAppScanResult"
+    ],
+    "functions": [
+      "NewDAppService",
+      "GetDApp",
+      "DeleteDApp",
+      "Scan",
+      "scanByProviderWithCache",
+      "scanByProvider",
+      "findCachedResult",
+      "updateCache",
+      "normDomain"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "strings",
+      "time",
+      "github.com/blockaid-official/blockaid-client-go",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/trusted-domain/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/blockaid",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "side_effects": [
+      "Updates cache with scan results",
+      "Logs errors when scanning fails",
+      "Performs asynchronous cache updates"
+    ],
+    "risks": [
+      "Potential exposure of sensitive domain information",
+      "Reliance on external services for scanning may introduce vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

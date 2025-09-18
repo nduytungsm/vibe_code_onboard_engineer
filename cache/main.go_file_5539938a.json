@@ -1,0 +1,35 @@
+{
+  "content_hash": "4e204dc4d5898601230a4c3cc1df0895",
+  "timestamp": "2025-09-18T14:25:47.825006+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains the main entry point for a reward distributor application, initializing configuration and logging.",
+    "key_types": [
+      "context.Context",
+      "configs.Config",
+      "loggers.Logger"
+    ],
+    "functions": [
+      "main",
+      "NewConfig",
+      "MustNewLogger",
+      "WithCancel",
+      "Start"
+    ],
+    "imports": [
+      "context",
+      "log",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/configs",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
+    ],
+    "side_effects": [
+      "Logs configuration loading and application startup",
+      "Flushes logger on exit"
+    ],
+    "risks": [
+      "Potential for logging sensitive configuration details",
+      "Error handling may expose application state"
+    ],
+    "complexity": "medium"
+  }
+}

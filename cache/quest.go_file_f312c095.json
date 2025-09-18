@@ -1,0 +1,53 @@
+{
+  "content_hash": "ab52c72783461f7a013d8214a2fcf3e1",
+  "timestamp": "2025-09-18T14:32:02.432276+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a Quest handler that manages quest-related operations such as creating, updating, and retrieving quests.",
+    "key_types": [
+      "Quest",
+      "quest",
+      "req.UpsertQuestParams",
+      "res.QuestInfo",
+      "res.QuestListingItem",
+      "res.Paginated"
+    ],
+    "functions": [
+      "NewQuest",
+      "StoreServiceCredentials",
+      "PublishQuest",
+      "GetQuestPublicItem",
+      "GetQuestListingItem",
+      "ListQuests",
+      "UpsertQuest"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "slices",
+      "strconv",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-verifiers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
+    ],
+    "side_effects": [
+      "Interacts with the database to store and retrieve quest information.",
+      "Caches credentials for different services."
+    ],
+    "risks": [
+      "Potential for SQL injection if inputs are not properly sanitized.",
+      "Handling of sensitive tokens may lead to security vulnerabilities if not managed correctly."
+    ],
+    "complexity": "medium"
+  }
+}

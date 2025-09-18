@@ -1,0 +1,39 @@
+{
+  "content_hash": "1f0ad056274ac8504d4842ec7bd4596a",
+  "timestamp": "2025-09-18T14:29:21.746468+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements an APNs (Apple Push Notification service) client for sending push notifications.",
+    "key_types": [
+      "apnsPushClient",
+      "Config",
+      "PushRequest",
+      "PushResponse",
+      "APNSPushResponse"
+    ],
+    "functions": [
+      "SendNotification",
+      "SendToTopic",
+      "newAPNSPushClient"
+    ],
+    "imports": [
+      "context",
+      "encoding/base64",
+      "errors",
+      "fmt",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "side_effects": [
+      "Sends HTTP requests to APNs",
+      "Logs errors and responses"
+    ],
+    "risks": [
+      "Potential exposure of sensitive certificate data",
+      "Improper error handling may lead to information leakage"
+    ],
+    "complexity": "medium"
+  }
+}

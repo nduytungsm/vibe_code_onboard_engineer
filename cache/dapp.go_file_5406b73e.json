@@ -1,0 +1,15 @@
+{
+  "content_hash": "08d1f4323aa0ab6446df241f5c4dc4a8",
+  "timestamp": "2025-09-18T14:29:32.120723+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for DApp requests.",
+    "key_types": [
+      "DAppByURL",
+      "DAppScan"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

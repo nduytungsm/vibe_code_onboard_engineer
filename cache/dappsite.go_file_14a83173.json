@@ -1,0 +1,32 @@
+{
+  "content_hash": "720721720935eacb5fcc1fbe70857335",
+  "timestamp": "2025-09-18T14:29:55.396314+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository interface and its implementation for managing DApp sites in a database.",
+    "key_types": [
+      "DAppSiteRepo",
+      "dappSiteRepo",
+      "models.DAppSite"
+    ],
+    "functions": [
+      "NewDAppSiteRepo",
+      "Get",
+      "Delete",
+      "Upsert"
+    ],
+    "imports": [
+      "context",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models"
+    ],
+    "side_effects": [
+      "Database operations that modify the state of the database."
+    ],
+    "risks": [
+      "Potential SQL injection if user input is not properly sanitized."
+    ],
+    "complexity": "medium"
+  }
+}

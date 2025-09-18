@@ -1,0 +1,48 @@
+{
+  "content_hash": "a7dd2c76804ee613fb1825adbc103fec",
+  "timestamp": "2025-09-18T14:29:02.746883+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository interface and its implementation for managing notifications and their associated whitelists in a database.",
+    "key_types": [
+      "NotiRepo",
+      "notiRepo",
+      "NotificationListingItem",
+      "NotificationEntity",
+      "NotiWhitelistEntity",
+      "HistoryEntity",
+      "ListNotiFilter",
+      "NotiWhitelistCount",
+      "Preference"
+    ],
+    "functions": [
+      "FindActiveNoti",
+      "UpsertNoti",
+      "WhitelistNoti",
+      "HardDeleteWhitelist",
+      "FindActiveWhitelists",
+      "CreateHistory",
+      "NewTx",
+      "ListNoti",
+      "CountWhitelist",
+      "FindUserWhitelists",
+      "FindUserPreference",
+      "CountReceiveNewsDevices"
+    ],
+    "imports": [
+      "context",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause"
+    ],
+    "side_effects": [
+      "Database operations that modify data (insert, update, delete) may affect the state of the database."
+    ],
+    "risks": [
+      "Potential SQL injection if user inputs are not properly sanitized.",
+      "Data consistency issues if transactions are not handled correctly."
+    ],
+    "complexity": "medium"
+  }
+}

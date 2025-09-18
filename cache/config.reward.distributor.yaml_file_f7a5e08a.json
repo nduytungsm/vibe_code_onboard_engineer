@@ -1,0 +1,19 @@
+{
+  "content_hash": "8a41d0eb6fdd86d4b7ab77658da704f6",
+  "timestamp": "2025-09-18T14:27:28.668444+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for the wallet quest reward distributor service.",
+    "key_types": [
+      "processor",
+      "async_queue_server",
+      "logger",
+      "metric",
+      "task_monitor",
+      "postgres"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "content_hash": "19de458bd763d97166b0e8d0b8dbdeb6",
+  "timestamp": "2025-09-18T14:26:16.007997+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is used for dependency injection in a device manager application using the Wire framework.",
+    "key_types": [
+      "applications.Application",
+      "deviceManagerConfig",
+      "repos.DeviceRepo",
+      "services.DeviceService",
+      "http.Server",
+      "metrics.Service"
+    ],
+    "functions": [
+      "wireDeviceManager",
+      "provideSugarLogger",
+      "provideHttpServer",
+      "provideMetricsService",
+      "provideServices"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/services",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/validation",
+      "github.com/labstack/echo/v4/middleware",
+      "github.com/prometheus/client_golang/prometheus",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Creates and configures a new HTTP server",
+      "Establishes a connection to a PostgreSQL database",
+      "Initializes logging and metrics services"
+    ],
+    "risks": [
+      "Potential database connection errors",
+      "Improper configuration leading to application failures",
+      "Dependency injection errors if services are not correctly provided"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "content_hash": "95363ed8125d728f8a05bfd73fa4c854",
+  "timestamp": "2025-09-18T14:31:52.733878+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles product-related operations such as creating, updating, deleting, and retrieving products.",
+    "key_types": [
+      "Product",
+      "product",
+      "discovery_requests.HandlerCreateProduct",
+      "discovery_requests.UpdateItemStatus",
+      "discovery_responses.ProductItem",
+      "discovery_responses.ListProductItem",
+      "responses.PaginationDTO"
+    ],
+    "functions": [
+      "NewProductHandler",
+      "CreateProduct",
+      "ListProducts",
+      "DeleteProduct",
+      "RestoreProduct",
+      "UpdateProduct",
+      "GetProductByID",
+      "verifyUpdateProduct",
+      "verifyCreateProduct",
+      "verifyGamePlatforms"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "github.com/google/wire",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery"
+    ],
+    "risks": [
+      "Potential for invalid product types leading to errors.",
+      "Improper handling of game platforms could lead to unsupported operations."
+    ],
+    "complexity": "medium"
+  }
+}

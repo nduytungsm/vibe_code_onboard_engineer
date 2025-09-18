@@ -1,0 +1,38 @@
+{
+  "content_hash": "ed76eb69f431d42101fb48ace8e3c13c",
+  "timestamp": "2025-09-18T14:33:00.122111+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a client for interacting with a relay service, providing methods to get chains, tokens, quotes, and fee balances.",
+    "key_types": [
+      "Config",
+      "Client",
+      "client",
+      "ChainListResponse",
+      "TokenResponse",
+      "QuoteResponse",
+      "FeeBalanceResponse",
+      "RelayError",
+      "GetQuoteParams",
+      "ListTokenParams"
+    ],
+    "functions": [
+      "NewClient",
+      "GetChains",
+      "GetTokens",
+      "GetQuote",
+      "GetFeeBalance"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "net/url",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "go.uber.org/zap"
+    ],
+    "complexity": "medium"
+  }
+}

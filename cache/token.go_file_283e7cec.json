@@ -1,0 +1,20 @@
+{
+  "content_hash": "a26d0effcc47124544868809518bbda7",
+  "timestamp": "2025-09-18T14:27:58.954015+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines models related to deception status and token information.",
+    "key_types": [
+      "DeceptionStatus",
+      "Token",
+      "DeceptionResult"
+    ],
+    "functions": [
+      "IsSafe"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

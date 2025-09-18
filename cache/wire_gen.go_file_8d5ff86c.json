@@ -1,0 +1,42 @@
+{
+  "content_hash": "455dc3eea813620ba66b8ced96cb8ddf",
+  "timestamp": "2025-09-18T14:26:44.546484+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is generated code for setting up dependency injection for a push notification application.",
+    "key_types": [
+      "applications.Application",
+      "pushNotificationConfig",
+      "http.Server",
+      "metrics.Service",
+      "kafka.Consumer[*models.PostNotificationMessage]"
+    ],
+    "functions": [
+      "wirePushNotificationApp",
+      "provideSugarLogger",
+      "provideHttpServer",
+      "provideMetricsService",
+      "provideServices",
+      "provideDeviceManagerClient",
+      "provideSubscriber"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/consumers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/consumers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/devicemanager",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/validation",
+      "github.com/labstack/echo/v4/middleware",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "time"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "content_hash": "b456113ee495fe626ba14451630793bc",
+  "timestamp": "2025-09-18T13:19:48.758176+07:00",
+  "result": {
+    "path": "migrations",
+    "purpose": "Responsible for managing database schema changes through SQL migration files.",
+    "languages": {
+      "SQL": 2
+    },
+    "key_modules": [
+      "001_create_users_table.sql",
+      "002_add_profile_fields.sql"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a linear migration pattern where each file represents a sequential change to the database schema.",
+    "file_summaries": {
+      "migrations/001_create_users_table.sql": {
+        "language": "SQL",
+        "purpose": "Create a users table with necessary fields and an index on the email column.",
+        "key_types": [
+          "TABLE",
+          "INDEX"
+        ],
+        "functions": [
+          "CREATE TABLE",
+          "CREATE INDEX"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Creates a new table in the database",
+          "Creates an index on the email column"
+        ],
+        "risks": [
+          "Potential for SQL injection if user input is not properly sanitized"
+        ],
+        "complexity": "low"
+      },
+      "migrations/002_add_profile_fields.sql": {
+        "language": "SQL",
+        "purpose": "This file adds new profile fields to the users table in the database.",
+        "key_types": [
+          "TABLE",
+          "COLUMN"
+        ],
+        "functions": [],
+        "imports": [],
+        "side_effects": [
+          "Modifies the database schema by adding new columns to the users table"
+        ],
+        "risks": [
+          "Potential data loss if existing data is not handled properly during migration"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

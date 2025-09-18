@@ -1,0 +1,51 @@
+{
+  "content_hash": "c1c2aff532cb03cba8455d9fbc2fcc7d",
+  "timestamp": "2025-09-18T14:28:22.667231+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a provider for the KyberSwap decentralized exchange, handling token swaps and route calculations.",
+    "key_types": [
+      "KyberSwap",
+      "Config",
+      "RouteRequest",
+      "RouteResponse",
+      "ExtraFee"
+    ],
+    "functions": [
+      "NewKyberSwap",
+      "ID",
+      "CrossChainSupported",
+      "GetRoutes",
+      "calcKyberExtraFee",
+      "BuildCallData",
+      "Tokens",
+      "TokenByAddress",
+      "SupportedChains"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "github.com/samber/mo",
+      "github.com/shopspring/decimal",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/kyberswap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Logs errors using the logger if certain conditions are met."
+    ],
+    "risks": [
+      "Potential for errors in external API calls leading to unhandled exceptions.",
+      "Improper handling of user input could lead to unexpected behavior."
+    ],
+    "complexity": "medium"
+  }
+}

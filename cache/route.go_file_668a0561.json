@@ -1,0 +1,31 @@
+{
+  "content_hash": "1474976051bd4ec4feef8f0eb1d64806",
+  "timestamp": "2025-09-18T14:28:16.325333+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and types for handling routes and transactions in a blockchain context.",
+    "key_types": [
+      "CallData",
+      "Token",
+      "RoutePool",
+      "Route",
+      "Gas",
+      "CalldataBuilderStrategy",
+      "CallDataBuilder",
+      "RouteResponse",
+      "RouteRequest",
+      "BuildRouteRequest",
+      "BuiltRouteResponse",
+      "PriceImpact",
+      "ExtraFee"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/shopspring/decimal",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

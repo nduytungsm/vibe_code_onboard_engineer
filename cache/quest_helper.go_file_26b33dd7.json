@@ -1,0 +1,49 @@
+{
+  "content_hash": "1912c84ccda16a48a58779ab829443b6",
+  "timestamp": "2025-09-18T14:32:03.25041+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains handlers for validating and processing quest-related data in a web service.",
+    "key_types": [
+      "quest",
+      "models.QuestEntity",
+      "quest_center_services.QuestRelatedInfo",
+      "responses.ListFilterDTO",
+      "responses.Paginated",
+      "models.QuestWhitelistEntity"
+    ],
+    "functions": [
+      "wrapErr",
+      "wrapNotFound",
+      "validateActions",
+      "validateRewards",
+      "validatePublishInfo",
+      "copySponsorFilter",
+      "copyRewardsFilter",
+      "createWhitelistObjects"
+    ],
+    "imports": [
+      "errors",
+      "fmt",
+      "net/http",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/samber/lo"
+    ],
+    "side_effects": [
+      "Error handling for various validation failures",
+      "Creation of whitelist objects from normalized addresses"
+    ],
+    "risks": [
+      "Potential for invalid data to be processed if validation fails",
+      "Improper handling of URLs could lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

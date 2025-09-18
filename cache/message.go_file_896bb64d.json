@@ -1,0 +1,21 @@
+{
+  "content_hash": "aef75dc288c23e142d637ec2daea740e",
+  "timestamp": "2025-09-18T14:29:17.349515+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a message structure for post notifications and provides methods to retrieve the created time and idempotency key.",
+    "key_types": [
+      "PostNotificationMessage",
+      "PostNotificationRequest"
+    ],
+    "functions": [
+      "CreatedTime",
+      "GetIdempotencyKey"
+    ],
+    "imports": [
+      "fmt",
+      "time"
+    ],
+    "complexity": "medium"
+  }
+}

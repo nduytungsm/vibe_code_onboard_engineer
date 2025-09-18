@@ -1,0 +1,18 @@
+{
+  "content_hash": "a18d9db9b07de93f6ca05c8a310b2a7c",
+  "timestamp": "2025-09-18T14:33:36.024585+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for contact entities and related information.",
+    "key_types": [
+      "ContactEntity",
+      "ContactWithExtraInfo",
+      "WidgetItemContact"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

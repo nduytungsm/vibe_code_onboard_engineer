@@ -1,0 +1,36 @@
+{
+  "content_hash": "875c71731648e8441fbc043c081c6a17",
+  "timestamp": "2025-09-18T14:31:13.577696+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the CRUD operations of the PgSignatureRepo.",
+    "key_types": [
+      "PgSignatureRepo",
+      "Signature",
+      "Category",
+      "TransactionCategory"
+    ],
+    "functions": [
+      "TestPgSignatureRepo_CRUD",
+      "Insert",
+      "Get",
+      "Update",
+      "Find"
+    ],
+    "imports": [
+      "context",
+      "testing",
+      "time",
+      "github.com/test-go/testify/require",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/docker",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Starts and stops a PostgreSQL container for testing."
+    ],
+    "complexity": "medium"
+  }
+}

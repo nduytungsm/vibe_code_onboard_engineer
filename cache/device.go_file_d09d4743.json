@@ -1,0 +1,49 @@
+{
+  "content_hash": "b52822f4598a446416bf2b0b12a5ac68",
+  "timestamp": "2025-09-18T14:28:11.129613+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository interface and its implementation for managing device records in a database.",
+    "key_types": [
+      "DeviceRepo",
+      "repo",
+      "device",
+      "models.Device",
+      "models.DeviceFilter",
+      "models.OrderBy",
+      "models.Paging"
+    ],
+    "functions": [
+      "GetDevice",
+      "GetDeviceList",
+      "CreateDevice",
+      "DeleteDevice",
+      "UpdateDevice",
+      "SaveDevice",
+      "BatchSaveDevices",
+      "UpdateDevices",
+      "SaveDevices",
+      "NewDeviceRepo",
+      "paginate"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "github.com/samber/lo",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums"
+    ],
+    "side_effects": [
+      "Database transactions for CRUD operations",
+      "Potential changes to device records in the database"
+    ],
+    "risks": [
+      "Potential SQL injection if filter conditions are not properly sanitized",
+      "Data integrity issues if concurrent updates are not handled correctly"
+    ],
+    "complexity": "medium"
+  }
+}

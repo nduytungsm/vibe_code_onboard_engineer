@@ -1,0 +1,34 @@
+{
+  "content_hash": "9812c7778da3b85bfe468737e30017f6",
+  "timestamp": "2025-09-18T14:31:39.210863+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles event-related operations for discovery, including creating, deleting, and listing events.",
+    "key_types": [
+      "Event",
+      "event"
+    ],
+    "functions": [
+      "NewEventHandler",
+      "CreateEventItem",
+      "ListRoninMarketEvents",
+      "DeleteEventItem"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "strconv",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "risks": [
+      "Potential for invalid event types leading to errors.",
+      "Improper handling of timestamps could lead to incorrect event creation."
+    ],
+    "complexity": "medium"
+  }
+}

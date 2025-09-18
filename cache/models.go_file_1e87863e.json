@@ -1,0 +1,38 @@
+{
+  "content_hash": "34ef6ae675601a190c91bdf2c1bb92b9",
+  "timestamp": "2025-09-18T14:32:51.280529+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for handling routes and token transactions in a decentralized finance application.",
+    "key_types": [
+      "ChargeFeeBy",
+      "ExtraFee",
+      "GetRoutesRequest",
+      "APIResponse",
+      "Route",
+      "RouteSummary",
+      "SwapRouteData",
+      "BuildRoutesRequest",
+      "BuildRouteData",
+      "PriceImpactRequest",
+      "PriceImpactData",
+      "Token",
+      "TokensData",
+      "Pagination"
+    ],
+    "functions": [
+      "AsQueryParams",
+      "Address"
+    ],
+    "imports": [
+      "errors",
+      "strconv",
+      "strings",
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/samber/mo",
+      "github.com/shopspring/decimal",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

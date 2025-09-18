@@ -1,0 +1,31 @@
+{
+  "content_hash": "405413ec251e137fac5119ec04d92654",
+  "timestamp": "2025-09-18T14:28:01.533755+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service to detect deception tokens and classify them as suspicious or safe.",
+    "key_types": [
+      "DeceptionTokenService",
+      "deceptionTokenServiceImpl",
+      "models.Token",
+      "models.DeceptionResult"
+    ],
+    "functions": [
+      "NewDeceptionTokenService",
+      "DetectToken",
+      "normString"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "regexp",
+      "golang.org/x/text/unicode/norm",
+      "mvdan.cc/xurls/v2",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information in the redacted sections."
+    ],
+    "complexity": "medium"
+  }
+}

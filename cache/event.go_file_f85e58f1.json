@@ -1,0 +1,39 @@
+{
+  "content_hash": "da9c6fadb6dc819c473f766b2becd501",
+  "timestamp": "2025-09-18T14:33:30.157616+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines an interface and a struct for managing event-related database operations in a discovery repository.",
+    "key_types": [
+      "Event",
+      "event",
+      "EventEntity",
+      "WidgetItemEvent"
+    ],
+    "functions": [
+      "NewEventRepo",
+      "Create",
+      "ListRMActiveEvents",
+      "GetWidgetEvents",
+      "FindByID",
+      "DeleteEvItem",
+      "SaveRoninMarketEv"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause"
+    ],
+    "side_effects": [
+      "Database modifications through create, update, and delete operations."
+    ],
+    "risks": [
+      "Potential SQL injection if user inputs are not properly sanitized."
+    ],
+    "complexity": "medium"
+  }
+}

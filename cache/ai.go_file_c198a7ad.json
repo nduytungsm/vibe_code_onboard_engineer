@@ -1,0 +1,20 @@
+{
+  "content_hash": "563981aabc8af43f4fb240fb2362c2fb",
+  "timestamp": "2025-09-18T14:29:37.422328+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for responses related to chat completions and tool calls.",
+    "key_types": [
+      "ChatCompletionResponse",
+      "ToolCall",
+      "Choice",
+      "Message",
+      "Usage",
+      "PromptTokensDetails",
+      "CompletionTokensDetails"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

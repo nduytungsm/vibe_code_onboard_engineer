@@ -1,0 +1,30 @@
+{
+  "content_hash": "773191b3590193b00ddc1c358f8f68dd",
+  "timestamp": "2025-09-18T14:29:48.038392+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and functions for managing user cursors in a proxy model.",
+    "key_types": [
+      "Entities",
+      "UserCursorKey",
+      "UserCursor"
+    ],
+    "functions": [
+      "NewUserCursor",
+      "FindUserCursor",
+      "Merge",
+      "AddCursor",
+      "InitializeCursor",
+      "NewKey",
+      "KeyFromStr"
+    ],
+    "imports": [
+      "errors",
+      "fmt",
+      "strconv",
+      "strings",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

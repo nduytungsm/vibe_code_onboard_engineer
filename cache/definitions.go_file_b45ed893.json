@@ -1,0 +1,17 @@
+{
+  "content_hash": "8dac5960b146798d55be96367ec2c16f",
+  "timestamp": "2025-09-18T14:33:22.080603+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines constants and error variables for database table names and error handling in a repository context.",
+    "key_types": [
+      "const",
+      "error"
+    ],
+    "functions": [],
+    "imports": [
+      "errors"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "content_hash": "5db3527d5428a5b8a61bb0cd5e5d2320",
+  "timestamp": "2025-09-18T14:27:52.38489+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Decodes Ethereum token transfer logs into structured token transfer information.",
+    "key_types": [
+      "TransferDecoder",
+      "transferDecoder",
+      "models.Log",
+      "models.TokenTransfer",
+      "erc20.Erc20Transfer",
+      "erc721.Erc721Transfer",
+      "erc1155.Erc1155TransferSingle",
+      "erc1155.Erc1155TransferBatch"
+    ],
+    "functions": [
+      "NewTransferDecoder",
+      "Decode",
+      "erc20Target",
+      "erc721Target",
+      "erc1155SingleTarget",
+      "erc1155BatchTarget",
+      "erc1155BatchTargetFromTransfer",
+      "logToERC20Transfer",
+      "logToERC721Transfer",
+      "logToERC1155SingleTransfer",
+      "logToERC1155BatchTransfer",
+      "ethLog",
+      "isAbleToIgnoreParsingErr"
+    ],
+    "imports": [
+      "math/big",
+      "strings",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/metachris/eth-go-bindings/erc1155",
+      "github.com/metachris/eth-go-bindings/erc20",
+      "github.com/metachris/eth-go-bindings/erc721",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "github.com/ethereum/go-ethereum/core/types",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

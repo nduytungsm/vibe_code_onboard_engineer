@@ -1,0 +1,38 @@
+{
+  "content_hash": "3fb1c891447079264cfaddd1a91a0c75",
+  "timestamp": "2025-09-18T14:28:52.352376+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing mandatory updates in a database using GORM.",
+    "key_types": [
+      "mandatoryUpdateRepo",
+      "MandatoryUpdateRepo",
+      "context.Context",
+      "models.MandatoryUpdateEntity",
+      "enums.CliPlatform"
+    ],
+    "functions": [
+      "NewMandatoryUpdateRepo",
+      "NewTx",
+      "Create",
+      "DeleteAll",
+      "Find",
+      "Delete",
+      "Exists"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Database transactions may modify the state of the database."
+    ],
+    "risks": [
+      "Potential SQL injection if inputs are not properly sanitized."
+    ],
+    "complexity": "medium"
+  }
+}

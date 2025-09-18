@@ -1,0 +1,46 @@
+{
+  "content_hash": "f09ca44f6a03e7c367693013d7701849",
+  "timestamp": "2025-09-18T14:29:54.930295+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines models and types related to tokens and their platforms for a proxy service.",
+    "key_types": [
+      "ChainID",
+      "TokenID",
+      "Currency",
+      "TokenPlatformSource",
+      "Token",
+      "InternalToken",
+      "TokenPlatform",
+      "InternalTokenPlatform",
+      "Quote",
+      "Quotes",
+      "TokenPlatformsBuilder",
+      "TimeRange",
+      "ChartItem",
+      "PriceChart"
+    ],
+    "functions": [
+      "String()",
+      "AsToken()",
+      "AsTokenPlatform()",
+      "NewTokenPlatformsBuilder()",
+      "key()",
+      "Add()",
+      "Build()",
+      "Value()",
+      "Values()",
+      "NumberOfDays()"
+    ],
+    "imports": [
+      "fmt",
+      "strconv",
+      "strings",
+      "time",
+      "github.com/samber/lo",
+      "github.com/samber/mo",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy"
+    ],
+    "complexity": "medium"
+  }
+}

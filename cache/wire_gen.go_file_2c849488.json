@@ -1,0 +1,58 @@
+{
+  "content_hash": "2be1fefe035bd5e561cbcf0e16de81c1",
+  "timestamp": "2025-09-18T14:26:30.354551+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains code for generating dependency injection using Wire for a discovery application in a wallet service.",
+    "key_types": [
+      "DiscoveryConfig",
+      "services.RestfulService",
+      "zap.SugaredLogger",
+      "redis.Client",
+      "ManagerRepo"
+    ],
+    "functions": [
+      "wireDiscoveryApp",
+      "provideAuthSvc",
+      "provideHttpMetric",
+      "provideHttpRestful",
+      "provideManagerServices",
+      "provideZapLogger",
+      "provideRedisClient",
+      "provideGeckoTerminalClient"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/discovery/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/google/wire",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "net/http",
+      "time"
+    ],
+    "side_effects": [
+      "Database connections are established.",
+      "Redis client is created.",
+      "HTTP server is configured and may start listening on a port."
+    ],
+    "risks": [
+      "Potential for panics if database connections fail.",
+      "Sensitive information may be exposed if error handling is not properly managed."
+    ],
+    "complexity": "medium"
+  }
+}

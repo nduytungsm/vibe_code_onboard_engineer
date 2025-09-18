@@ -1,0 +1,58 @@
+{
+  "content_hash": "f7386baddfdf400fd4bcf68f9ad89793",
+  "timestamp": "2025-09-18T14:27:21.400728+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file sets up dependency injection for a task server using Google Wire.",
+    "key_types": [
+      "Config",
+      "TasksConfig",
+      "ProvidersConfig",
+      "proxyDB",
+      "managerDB"
+    ],
+    "functions": [
+      "wireTaskServer",
+      "provideTokenCrawlerTask",
+      "provideSkynetTokenCrawlerTask",
+      "provideTokenTaskGeneratorTask",
+      "provideABICrawlTaskGeneratorTask",
+      "provideABICrawlerTaskHandler",
+      "provideTaskHandlers",
+      "provideAsyncQueueClient",
+      "provideAsyncQueueServer",
+      "provideServices",
+      "desugar",
+      "provideProxyDB",
+      "provideManagerDB",
+      "provideTokenRepo",
+      "provideSignatureRepo",
+      "provideNotiRepo"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
+      "github.com/google/wire",
+      "github.com/hibiken/asynq",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services/tasks",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/tasks",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/tasks",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/coingecko",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/explorer",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
+    ],
+    "complexity": "medium"
+  }
+}
