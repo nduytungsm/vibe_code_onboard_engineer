@@ -1,0 +1,39 @@
+{
+  "content_hash": "d2561a41fb1d9728186095ef389cf9a0",
+  "timestamp": "2025-09-20T20:45:56.53777+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines public API routes for health checks, NFT mappings, and blockchain interactions.",
+    "key_types": [
+      "APIVersion",
+      "echo.Echo",
+      "config.Schema",
+      "handlers.BlockchainHandler",
+      "handlers.NFTMappingHandler",
+      "handlers.CoinbaseHandler"
+    ],
+    "functions": [
+      "HealthCheck",
+      "registerPublic"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/labstack/echo/v4",
+      "github.com/labstack/echo/v4/middleware",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ronin-wallet-proxy/config",
+      "github.com/axieinfinity/ronin-wallet-proxy/handlers",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase"
+    ],
+    "side_effects": [
+      "Modifies HTTP response based on API calls",
+      "Sets up middleware for CORS and static file serving"
+    ],
+    "risks": [
+      "Potential exposure of sensitive API specifications if not properly secured",
+      "Improper handling of user input could lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

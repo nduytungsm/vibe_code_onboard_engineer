@@ -1,14 +1,10 @@
 {
   "content_hash": "608811939aeef75e1bd1fe211b545719",
-  "timestamp": "2025-09-18T13:03:59.836044+07:00",
+  "timestamp": "2025-09-20T20:20:46.304702+07:00",
   "result": {
     "language": "CSS",
     "purpose": "Defines styles for a web application, including layout, typography, and button designs.",
-    "key_types": [
-      "class",
-      "id",
-      "selector"
-    ],
+    "key_types": [],
     "functions": [],
     "imports": [],
     "complexity": "medium"

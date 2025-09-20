@@ -1,0 +1,144 @@
+{
+  "content_hash": "fad4aa57cd61524f9f985f1ecdb7db21",
+  "timestamp": "2025-09-20T20:49:05.650678+07:00",
+  "result": {
+    "path": "pkg/crypto/hmac",
+    "purpose": "This folder/module is responsible for providing HMAC signing and validation functionalities, including configuration management and unit testing.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "config.go",
+      "funcs.go",
+      "funcs_test.go",
+      "hmac.go",
+      "init.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ecosystem-go-common/hmac",
+      "crypto/hmac",
+      "crypto/sha256",
+      "crypto/sha512",
+      "encoding/base64",
+      "errors",
+      "fmt",
+      "sort",
+      "strings",
+      "testing",
+      "time",
+      "sync"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating HMAC-related functionalities and configurations in separate files, promoting separation of concerns and testability.",
+    "file_summaries": {
+      "pkg/crypto/hmac/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for HMAC with a whitelist of addresses.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ecosystem-go-common/hmac"
+        ],
+        "complexity": "low"
+      },
+      "pkg/crypto/hmac/funcs.go": {
+        "language": "Go",
+        "purpose": "Provides HMAC signing functions using SHA256 and SHA512 algorithms.",
+        "key_types": [
+          "[]byte",
+          "map[string]string"
+        ],
+        "functions": [
+          "SHA256",
+          "SHA512",
+          "Sign"
+        ],
+        "imports": [
+          "crypto/hmac",
+          "crypto/sha256",
+          "crypto/sha512",
+          "encoding/base64",
+          "errors",
+          "fmt",
+          "sort",
+          "strings"
+        ],
+        "risks": [
+          "Potential for timing attacks if not handled properly in signature verification."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/crypto/hmac/funcs_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for HMAC signing functionality",
+        "key_types": [
+          "struct",
+          "map",
+          "string",
+          "byte"
+        ],
+        "functions": [
+          "TestSign"
+        ],
+        "imports": [
+          "testing",
+          "time"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/crypto/hmac/hmac.go": {
+        "language": "Go",
+        "purpose": "Provides HMAC validation functionality including signature verification and clock skew validation.",
+        "key_types": [
+          "HMAC",
+          "Config"
+        ],
+        "functions": [
+          "New",
+          "validateClockSkew",
+          "ValidateSignature"
+        ],
+        "imports": [
+          "encoding/base64",
+          "errors",
+          "fmt",
+          "math",
+          "net/http",
+          "sort",
+          "time"
+        ],
+        "side_effects": [
+          "Prints error messages to console"
+        ],
+        "risks": [
+          "Potential for time-based attacks if clock skew is not properly managed"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/crypto/hmac/init.go": {
+        "language": "Go",
+        "purpose": "This file initializes a singleton instance of the HMAC structure with a configuration.",
+        "key_types": [
+          "HMAC",
+          "Config"
+        ],
+        "functions": [
+          "init",
+          "InitInstance"
+        ],
+        "imports": [
+          "sync"
+        ],
+        "side_effects": [
+          "Initializes a global instance of HMAC",
+          "Modifies global configuration"
+        ],
+        "risks": [
+          "Potential race conditions if InitInstance is called concurrently without proper synchronization"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

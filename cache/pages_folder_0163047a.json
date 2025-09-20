@@ -1,0 +1,39 @@
+{
+  "content_hash": "78455282723a13f29a5d079c0046f194",
+  "timestamp": "2025-09-20T20:26:46.678703+07:00",
+  "result": {
+    "path": "src/pages",
+    "purpose": "This folder is responsible for housing the main page components of the application, specifically for user interactions and data collection.",
+    "languages": {
+      "JavaScript": 1
+    },
+    "key_modules": [
+      "RecipientProfile.js"
+    ],
+    "dependencies": [
+      "React"
+    ],
+    "architecture": "The folder follows a component-based architecture typical of React applications, where each file represents a self-contained component managing its own state and behavior.",
+    "file_summaries": {
+      "src/pages/RecipientProfile.js": {
+        "language": "JavaScript",
+        "purpose": "A React component for collecting recipient profile information.",
+        "key_types": [
+          "RecipientProfile"
+        ],
+        "functions": [
+          "handleSubmit"
+        ],
+        "imports": [
+          "React",
+          "useState"
+        ],
+        "side_effects": [
+          "Updates state based on user input",
+          "Triggers onProfileComplete callback on form submission"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

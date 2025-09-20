@@ -1,0 +1,87 @@
+{
+  "content_hash": "2c930f567c5d1cee9e43a6ad0a2d84da",
+  "timestamp": "2025-09-20T20:49:18.149668+07:00",
+  "result": {
+    "path": "pkg/exchangerate",
+    "purpose": "Responsible for providing services related to fetching and managing cryptocurrency token prices, including configuration management.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "config.go",
+      "skynet.go"
+    ],
+    "dependencies": [
+      "github.com/kataras/iris/v12/x/mathx",
+      "github.com/patrickmn/go-cache",
+      "github.com/rs/zerolog/log",
+      "golang.org/x/exp/maps",
+      "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic related to exchange rates in separate files.",
+    "file_summaries": {
+      "pkg/exchangerate/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for an exchange rate service.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "pkg/exchangerate/skynet.go": {
+        "language": "Go",
+        "purpose": "This file provides a service for fetching cryptocurrency token prices and managing them using caching.",
+        "key_types": [
+          "TokenAddress",
+          "Currency",
+          "TokenPrice",
+          "Service",
+          "service",
+          "skynetTokenResp",
+          "skynetTokenBySymbolResp",
+          "skynetError"
+        ],
+        "functions": [
+          "getPriceByAddresses",
+          "getPriceBySymbol",
+          "getErc20TokensPrice",
+          "getSymbolTokenPrice",
+          "calcTokensPrice",
+          "calcTokenPrice",
+          "GetTokensPrice",
+          "GetTokenPrice",
+          "unixTime24HoursAgo",
+          "NewServiceV2"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "net/http",
+          "net/url",
+          "slices",
+          "strconv",
+          "strings",
+          "time",
+          "github.com/kataras/iris/v12/x/mathx",
+          "github.com/patrickmn/go-cache",
+          "github.com/rs/zerolog/log",
+          "golang.org/x/exp/maps",
+          "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+        ],
+        "side_effects": [
+          "Logs errors when fetching prices fails"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if error messages are logged without sanitization"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

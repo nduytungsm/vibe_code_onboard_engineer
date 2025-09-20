@@ -1,0 +1,19 @@
+{
+  "content_hash": "500a6f4c98255809c9e24d268ae159be",
+  "timestamp": "2025-09-20T20:43:46.780617+07:00",
+  "result": {
+    "language": "HTML",
+    "purpose": "This file serves as the main HTML document for the Wallet Proxy Rest API, providing a user interface for the API documentation.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "assets/swagger-ui.css",
+      "assets/index.css",
+      "assets/fav.ico",
+      "scripts/swagger-ui-bundle.js",
+      "scripts/swagger-ui-standalone-preset.js",
+      "scripts/swagger-initializer.js"
+    ],
+    "complexity": "low"
+  }
+}

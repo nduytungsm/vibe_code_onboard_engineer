@@ -1,0 +1,23 @@
+{
+  "content_hash": "d0e8cb05e5faa5e451239a382956eac3",
+  "timestamp": "2025-09-20T20:43:48.858601+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file is part of the Swagger UI library, which is used to generate interactive API documentation.",
+    "key_types": [
+      "object",
+      "function"
+    ],
+    "functions": [
+      "module.exports"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Defines a module for use in CommonJS or as a global variable."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if the bundle is not properly secured."
+    ],
+    "complexity": "medium"
+  }
+}

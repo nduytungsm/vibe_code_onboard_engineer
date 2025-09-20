@@ -1,0 +1,193 @@
+{
+  "content_hash": "06f180a4f8d3d2e1acaebfd3c005011c",
+  "timestamp": "2025-09-20T20:46:20.658404+07:00",
+  "result": {
+    "path": "_api_specs/scripts",
+    "purpose": "This folder contains scripts for initializing and configuring Swagger UI for API documentation display.",
+    "languages": {
+      "JavaScript": 6
+    },
+    "key_modules": [
+      "swagger-initializer.js",
+      "swagger-ui-bundle.js",
+      "swagger-ui-es-bundle-core.js",
+      "swagger-ui-es-bundle.js",
+      "swagger-ui-standalone-preset.js",
+      "swagger-ui.js"
+    ],
+    "dependencies": [
+      "react",
+      "react-redux",
+      "lodash",
+      "dompurify",
+      "swagger-client",
+      "js-yaml",
+      "xml-but-prettier",
+      "classnames",
+      "js-file-download",
+      "immutable",
+      "base64-js",
+      "prop-types",
+      "redux",
+      "serialize-error",
+      "url-parse",
+      "remarkable/linkify",
+      "zenscroll"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, with each script serving a specific purpose related to the Swagger UI library, allowing for easy integration and maintenance.",
+    "file_summaries": {
+      "_api_specs/scripts/swagger-initializer.js": {
+        "language": "JavaScript",
+        "purpose": "Initializes Swagger UI for API documentation display",
+        "key_types": [
+          "SwaggerUIBundle"
+        ],
+        "functions": [
+          "window.onload"
+        ],
+        "imports": [
+          "SwaggerUIBundle",
+          "SwaggerUIStandalonePreset"
+        ],
+        "side_effects": [
+          "Modifies the DOM to display Swagger UI"
+        ],
+        "risks": [
+          "Potential exposure of API documentation if not secured"
+        ],
+        "complexity": "low"
+      },
+      "_api_specs/scripts/swagger-ui-bundle.js": {
+        "language": "JavaScript",
+        "purpose": "This file is part of the Swagger UI library, which is used to generate interactive API documentation.",
+        "key_types": [
+          "object",
+          "function"
+        ],
+        "functions": [
+          "module.exports"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Defines a module for use in CommonJS or as a global variable."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if the bundle is not properly secured."
+        ],
+        "complexity": "medium"
+      },
+      "_api_specs/scripts/swagger-ui-es-bundle-core.js": {
+        "language": "JavaScript",
+        "purpose": "This file is part of the Swagger UI library, which is used to generate interactive API documentation.",
+        "key_types": [
+          "React Component",
+          "Immutable Data Structures",
+          "Promise",
+          "Function",
+          "Object"
+        ],
+        "functions": [
+          "import",
+          "reduce",
+          "zipObject",
+          "debounce",
+          "set",
+          "assocPath",
+          "camelCase",
+          "upperFirst",
+          "find",
+          "eq",
+          "sanitize-url",
+          "stringify",
+          "assign",
+          "memoize",
+          "omit"
+        ],
+        "imports": [
+          "react-immutable-pure-component",
+          "remarkable/linkify",
+          "dompurify",
+          "zenscroll",
+          "lodash",
+          "swagger-client",
+          "react",
+          "react-redux",
+          "react-syntax-highlighter",
+          "prop-types",
+          "redux",
+          "serialize-error",
+          "url-parse",
+          "js-yaml",
+          "immutable",
+          "base64-js",
+          "classnames",
+          "js-file-download",
+          "xml-but-prettier"
+        ],
+        "side_effects": [
+          "Modifies the DOM",
+          "May perform network requests"
+        ],
+        "risks": [
+          "Potential XSS vulnerabilities if user input is not sanitized",
+          "Dependency on external libraries may introduce vulnerabilities"
+        ],
+        "complexity": "high"
+      },
+      "_api_specs/scripts/swagger-ui-es-bundle.js": {
+        "language": "JavaScript",
+        "purpose": "This file is part of the Swagger UI library, which is used to generate interactive API documentation.",
+        "key_types": [
+          "Object",
+          "Function"
+        ],
+        "functions": [
+          "initializeSwaggerUI",
+          "renderDocumentation"
+        ],
+        "imports": [
+          "swagger-ui"
+        ],
+        "side_effects": [
+          "Modifies the DOM to display API documentation"
+        ],
+        "risks": [
+          "Potential exposure of sensitive API information if not properly secured"
+        ],
+        "complexity": "medium"
+      },
+      "_api_specs/scripts/swagger-ui-standalone-preset.js": {
+        "language": "JavaScript",
+        "purpose": "This file is part of the Swagger UI library, providing a standalone preset for displaying API documentation.",
+        "key_types": [
+          "Object",
+          "Function"
+        ],
+        "functions": [
+          "module.exports"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Defines a module that can be exported for use in other files."
+        ],
+        "complexity": "medium"
+      },
+      "_api_specs/scripts/swagger-ui.js": {
+        "language": "JavaScript",
+        "purpose": "This file is likely part of the Swagger UI library, which is used for displaying API documentation in a user-friendly format.",
+        "key_types": [
+          "Object",
+          "Function"
+        ],
+        "functions": [
+          "module.exports"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Defines a module for use in CommonJS environments"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

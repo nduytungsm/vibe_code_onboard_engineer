@@ -1,0 +1,20 @@
+{
+  "content_hash": "3ee0c54a6ce5ad686f5c77df77590edd",
+  "timestamp": "2025-09-20T20:44:22.509918+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for pagination and response handling.",
+    "key_types": [
+      "Paging",
+      "ListResponse"
+    ],
+    "functions": [
+      "GetPage",
+      "GetOffset",
+      "GetSize",
+      "GetSizeWithDefault"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

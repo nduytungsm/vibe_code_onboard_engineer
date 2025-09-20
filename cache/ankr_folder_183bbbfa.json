@@ -1,0 +1,89 @@
+{
+  "content_hash": "43683aa2a0251d06e4937a18d9c91cb9",
+  "timestamp": "2025-09-20T20:47:37.242013+07:00",
+  "result": {
+    "path": "pkg/providers/ankr",
+    "purpose": "Provides services and data structures for interacting with the Ankr blockchain provider, specifically for retrieving account balances.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "ankr_svc.go",
+      "config.go",
+      "models.go"
+    ],
+    "dependencies": [
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+      "github.com/axieinfinity/ronin-wallet-proxy/models"
+    ],
+    "architecture": "The folder follows a service-oriented architecture, encapsulating service logic, configuration, and data models related to the Ankr provider.",
+    "file_summaries": {
+      "pkg/providers/ankr/ankr_svc.go": {
+        "language": "Go",
+        "purpose": "Provides a service to get account balance for a specified wallet address on a blockchain.",
+        "key_types": [
+          "Service",
+          "service",
+          "Config",
+          "GetAccountBalanceResponse",
+          "RPCRequest",
+          "GetAccountBalanceParams"
+        ],
+        "functions": [
+          "GetAccountBalance",
+          "getAPIKey",
+          "buildRequestEndpoint",
+          "NewService"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "math/rand",
+          "net/http",
+          "time",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/axieinfinity/ronin-wallet-proxy/httpclient"
+        ],
+        "risks": [
+          "Potential exposure of API keys if not handled securely."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/ankr/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for the Ankr provider.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "pkg/providers/ankr/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures and methods for handling RPC requests and responses related to account balances in a blockchain context.",
+        "key_types": [
+          "RPCRequest",
+          "SyncStatus",
+          "RPCResponse",
+          "GetAccountBalanceParams",
+          "AccountBalanceItem",
+          "GetAccountBalanceResult",
+          "GetAccountBalanceResponse"
+        ],
+        "functions": [
+          "ToTokenBalance"
+        ],
+        "imports": [
+          "strings",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/axieinfinity/ronin-wallet-proxy/models"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "content_hash": "17c8435c5b6addc2add814bfedae2690",
+  "timestamp": "2025-09-20T20:43:46.533344+07:00",
+  "result": {
+    "language": "HTML/JavaScript",
+    "purpose": "Handles OAuth2 redirection and authorization response processing.",
+    "key_types": [
+      "oauth2",
+      "window",
+      "location",
+      "JSON"
+    ],
+    "functions": [
+      "run",
+      "decodeURIComponent"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies window state",
+      "Closes the window after processing"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information in error messages",
+      "Cross-site scripting (XSS) if not properly sanitized"
+    ],
+    "complexity": "medium"
+  }
+}

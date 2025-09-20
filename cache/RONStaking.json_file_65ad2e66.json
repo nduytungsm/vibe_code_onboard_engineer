@@ -1,0 +1,15 @@
+{
+  "content_hash": "e8d9eec6faf6efd3af5bdd8b61267c09",
+  "timestamp": "2025-09-20T20:45:39.604756+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines the errors and events related to staking functionality in a smart contract.",
+    "key_types": [
+      "error",
+      "event"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

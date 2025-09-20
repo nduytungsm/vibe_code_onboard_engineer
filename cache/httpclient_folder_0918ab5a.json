@@ -1,0 +1,57 @@
+{
+  "content_hash": "be0c239aa937f9751207e741e01967e9",
+  "timestamp": "2025-09-20T20:47:14.870091+07:00",
+  "result": {
+    "path": "httpclient",
+    "purpose": "This folder/module is responsible for implementing an HTTP client with methods for GET and POST requests, handling responses and errors.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "httpclient/httpclient.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/labstack/echo/v4",
+      "github.com/rs/zerolog/log"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating HTTP client functionalities and promoting separation of concerns.",
+    "file_summaries": {
+      "httpclient/httpclient.go": {
+        "language": "Go",
+        "purpose": "This file implements an HTTP client with methods for GET and POST requests, handling responses and errors.",
+        "key_types": [
+          "Client",
+          "client"
+        ],
+        "functions": [
+          "NewClient",
+          "GetData",
+          "GetRawData",
+          "PostData",
+          "PostReturnRawData",
+          "processError"
+        ],
+        "imports": [
+          "bytes",
+          "context",
+          "encoding/json",
+          "io",
+          "net/http",
+          "time",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/labstack/echo/v4",
+          "github.com/rs/zerolog/log"
+        ],
+        "side_effects": [
+          "Logs the duration of HTTP requests"
+        ],
+        "risks": [
+          "Potential for denial of service if the server is unresponsive",
+          "Improper error handling may expose sensitive information"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

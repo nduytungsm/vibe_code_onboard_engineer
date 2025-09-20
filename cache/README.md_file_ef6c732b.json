@@ -1,0 +1,12 @@
+{
+  "content_hash": "c6ff24403e7402e2d1cd1a82c71d89a1",
+  "timestamp": "2025-09-20T20:41:11.517445+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for a microservices e-commerce platform built with Go.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

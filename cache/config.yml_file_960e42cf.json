@@ -1,0 +1,26 @@
+{
+  "content_hash": "58e1dc7d0f4cf2d5ae9885cbd60249a6",
+  "timestamp": "2025-09-20T20:44:03.780608+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration settings for a wallet proxy service including server settings, profiling, logging, and blockchain chain configurations.",
+    "key_types": [
+      "profiler",
+      "server",
+      "profiling",
+      "sentry",
+      "logging",
+      "hmac_internal",
+      "chains",
+      "exchange_rate_service",
+      "providers"
+    ],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Exposure of sensitive information due to redacted fields",
+      "Potential misconfiguration leading to service downtime"
+    ],
+    "complexity": "medium"
+  }
+}

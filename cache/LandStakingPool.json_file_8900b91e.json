@@ -1,0 +1,33 @@
+{
+  "content_hash": "c3630f00e0ca177f800d54526115ad4c",
+  "timestamp": "2025-09-20T20:45:39.05675+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines the events and functions for a land staking pool contract.",
+    "key_types": [
+      "constructor",
+      "event",
+      "function"
+    ],
+    "functions": [
+      "claimPendingRewards",
+      "emergencyUnstake",
+      "emergencyUnstakeSome",
+      "getPendingRewards",
+      "getStakedLandTypes",
+      "getStakedLands",
+      "getStakingAmount",
+      "getStakingTotal",
+      "getTotalStakedPerLandType",
+      "initialize"
+    ],
+    "imports": [],
+    "side_effects": [
+      "State changes in the contract's storage when functions are called."
+    ],
+    "risks": [
+      "Potential for reentrancy attacks if not properly handled."
+    ],
+    "complexity": "medium"
+  }
+}

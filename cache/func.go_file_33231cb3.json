@@ -1,0 +1,24 @@
+{
+  "content_hash": "e6657bb765ef73bf2945a2e35d2442a3",
+  "timestamp": "2025-09-20T20:45:14.050883+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functions to convert JSON keys from camelCase to snake_case and to handle JSON objects and arrays.",
+    "key_types": [
+      "json.RawMessage",
+      "map[string]json.RawMessage",
+      "[]json.RawMessage"
+    ],
+    "functions": [
+      "convertKeys",
+      "convertKeysForObject",
+      "convertKeysForArray",
+      "fixKey"
+    ],
+    "imports": [
+      "encoding/json",
+      "strings"
+    ],
+    "complexity": "medium"
+  }
+}

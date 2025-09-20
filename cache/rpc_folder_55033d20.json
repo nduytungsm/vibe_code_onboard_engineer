@@ -1,0 +1,94 @@
+{
+  "content_hash": "f80342666b761211411fb974af6e1de0",
+  "timestamp": "2025-09-20T20:46:29.222881+07:00",
+  "result": {
+    "path": "httpclient/rpc",
+    "purpose": "Responsible for implementing an RPC client to interact with Ethereum smart contracts and retrieve token balances.",
+    "languages": {
+      "Go": 1,
+      "JSON": 2
+    },
+    "key_modules": [
+      "erc20ABI.json",
+      "multicallContractABI.json",
+      "rpc.go"
+    ],
+    "dependencies": [
+      "github.com/ethereum/go-ethereum",
+      "github.com/forta-network/go-multicall",
+      "github.com/rs/zerolog/log",
+      "golang.org/x/exp/slices"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, separating ABI definitions in JSON files and the RPC client implementation in Go, facilitating clear interaction with Ethereum smart contracts.",
+    "file_summaries": {
+      "httpclient/rpc/erc20ABI.json": {
+        "language": "JSON",
+        "purpose": "Defines the ABI for an ERC20 token contract, specifically the balanceOf function.",
+        "key_types": [
+          "object",
+          "array"
+        ],
+        "functions": [
+          "balanceOf"
+        ],
+        "imports": [],
+        "complexity": "low"
+      },
+      "httpclient/rpc/multicallContractABI.json": {
+        "language": "JSON",
+        "purpose": "Defines the ABI for a smart contract function that aggregates multiple calls.",
+        "key_types": [
+          "tuple",
+          "address",
+          "bytes",
+          "uint256"
+        ],
+        "functions": [
+          "aggregate"
+        ],
+        "imports": [],
+        "complexity": "low"
+      },
+      "httpclient/rpc/rpc.go": {
+        "language": "Go",
+        "purpose": "This file implements an RPC client for interacting with Ethereum smart contracts to retrieve token balances.",
+        "key_types": [
+          "Config",
+          "Client",
+          "rpcClient",
+          "MulticallData"
+        ],
+        "functions": [
+          "GetCurrentBlockNumber",
+          "MulticallGetBalances",
+          "getNativeTokenBalance",
+          "getERC20TokenBalances",
+          "NewRPCClient"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "math/big",
+          "strings",
+          "sync",
+          "time",
+          "github.com/ethereum/go-ethereum",
+          "github.com/ethereum/go-ethereum/accounts/abi",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/ethereum/go-ethereum/ethclient",
+          "github.com/forta-network/go-multicall",
+          "github.com/rs/zerolog/log",
+          "golang.org/x/exp/slices",
+          "github.com/axieinfinity/ronin-wallet-proxy/models"
+        ],
+        "side_effects": [
+          "Logs errors when RPC calls fail"
+        ],
+        "risks": [
+          "Potential for context cancellation errors not being handled properly"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

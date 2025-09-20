@@ -1,0 +1,17 @@
+{
+  "content_hash": "e6f8209b7b77c63ced5086f534e5e7c7",
+  "timestamp": "2025-09-20T20:44:12.315813+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the ABI for an ERC20 token contract, specifically the balanceOf function.",
+    "key_types": [
+      "object",
+      "array"
+    ],
+    "functions": [
+      "balanceOf"
+    ],
+    "imports": [],
+    "complexity": "low"
+  }
+}

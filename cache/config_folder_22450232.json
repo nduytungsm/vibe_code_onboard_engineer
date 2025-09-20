@@ -1,57 +1,96 @@
 {
-  "content_hash": "0bccb71fd191106d32528283bc456c30",
-  "timestamp": "2025-09-18T13:02:49.734215+07:00",
+  "content_hash": "66f4d19d17f7fea12bd249bf03831bbe",
+  "timestamp": "2025-09-20T20:47:11.950051+07:00",
   "result": {
     "path": "config",
-    "purpose": "This folder/module is responsible for defining configuration structures and functions to load and validate application configuration from a YAML file with environment variable substitution.",
+    "purpose": "Configuration management for a server application, including loading settings from a config file and environment variables.",
     "languages": {
-      "Go": 1
+      "Go": 1,
+      "YAML": 1
     },
     "key_modules": [
-      "config/config.go"
+      "config.go",
+      "config.yml"
     ],
     "dependencies": [
-      "github.com/joho/godotenv",
-      "gopkg.in/yaml.v3"
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/mitchellh/mapstructure",
+      "github.com/rs/zerolog",
+      "github.com/spf13/viper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/cmc",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/exchangerate",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration-related functionalities in a single file, promoting separation of concerns and ease of maintenance.",
+    "architecture": "The folder follows a modular architecture pattern, separating configuration management into distinct files for Go code and YAML settings, facilitating easy management and loading of application configurations.",
     "file_summaries": {
       "config/config.go": {
         "language": "Go",
-        "purpose": "This file defines configuration structures and functions to load and validate application configuration from a YAML file with environment variable substitution.",
+        "purpose": "Configuration management for a server application, including loading settings from a config file and environment variables.",
         "key_types": [
-          "Config",
-          "OpenAIConfig",
-          "RateLimitingConfig",
-          "FileProcessingConfig",
-          "CacheConfig",
-          "SecurityConfig",
-          "OutputConfig"
+          "Schema",
+          "Server",
+          "Sentry",
+          "TLSConfig",
+          "Logging",
+          "Profiling"
         ],
         "functions": [
-          "LoadConfig",
-          "Validate",
-          "ensureDirectories",
-          "expandEnvVars",
-          "GetCacheTTL",
-          "IsFileSupported",
-          "IsSecretFile"
+          "Init"
         ],
         "imports": [
           "fmt",
-          "os",
-          "path/filepath",
+          "strconv",
           "strings",
+          "sync",
           "time",
-          "github.com/joho/godotenv",
-          "gopkg.in/yaml.v3"
+          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+          "github.com/mitchellh/mapstructure",
+          "github.com/rs/zerolog",
+          "github.com/spf13/viper",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/cmc",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/exchangerate",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker"
         ],
         "side_effects": [
-          "Loads environment variables from a .env file if it exists.",
-          "Creates directories specified in the configuration if they do not exist."
+          "Panic on configuration file read errors",
+          "Sets global logging level"
         ],
         "risks": [
-          "Potential exposure of sensitive information if the API key or other secrets are logged or mishandled."
+          "Potential exposure of sensitive information in logs or errors"
+        ],
+        "complexity": "medium"
+      },
+      "config/config.yml": {
+        "language": "YAML",
+        "purpose": "Configuration settings for a wallet proxy service including server settings, profiling, logging, and blockchain chain configurations.",
+        "key_types": [
+          "profiler",
+          "server",
+          "profiling",
+          "sentry",
+          "logging",
+          "hmac_internal",
+          "chains",
+          "exchange_rate_service",
+          "providers"
+        ],
+        "functions": [],
+        "imports": [],
+        "risks": [
+          "Exposure of sensitive information due to redacted fields",
+          "Potential misconfiguration leading to service downtime"
         ],
         "complexity": "medium"
       }

@@ -1,0 +1,57 @@
+{
+  "content_hash": "3d296b79af8e6334b831cb556ef7cc9c",
+  "timestamp": "2025-09-20T20:46:08.487132+07:00",
+  "result": {
+    "path": "httpclient/graphql/internal/jsonutil",
+    "purpose": "Provides functions for decoding JSON into a GraphQL query data structure.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "graphql.go"
+    ],
+    "dependencies": [
+      "bytes",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "io",
+      "reflect",
+      "strings"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, focusing on JSON decoding specific to GraphQL, encapsulating related functionalities within a single file.",
+    "file_summaries": {
+      "httpclient/graphql/internal/jsonutil/graphql.go": {
+        "language": "Go",
+        "purpose": "Provides functions for decoding JSON into a GraphQL query data structure.",
+        "key_types": [
+          "decoder",
+          "reflect.Value"
+        ],
+        "functions": [
+          "UnmarshalGraphQL",
+          "Decode",
+          "decode",
+          "pushState",
+          "popState",
+          "state",
+          "popAllVs",
+          "fieldByGraphQLName",
+          "hasGraphQLName",
+          "isGraphQLFragment",
+          "unmarshalValue"
+        ],
+        "imports": [
+          "bytes",
+          "encoding/json",
+          "errors",
+          "fmt",
+          "io",
+          "reflect",
+          "strings"
+        ],
+        "complexity": "high"
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "content_hash": "ee1a43ca296b625a92e856bbfe12c359",
+  "timestamp": "2025-09-20T20:48:06.504718+07:00",
+  "result": {
+    "path": "pkg/share",
+    "purpose": "This folder/module is responsible for providing shared functionalities and types related to blockchain interactions, including custom data types, constants, and error handling.",
+    "languages": {
+      "Go": 6
+    },
+    "key_modules": [
+      "big_int.go",
+      "big_int_test.go",
+      "const_chain.go",
+      "const_provider.go",
+      "error.go",
+      "response.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/share",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/axieinfinity/ronin-wallet-proxy/models"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for better maintainability and testability.",
+    "file_summaries": {
+      "pkg/share/big_int.go": {
+        "language": "Go",
+        "purpose": "Defines a custom big integer type with JSON marshaling and unmarshaling capabilities.",
+        "key_types": [
+          "MyBigInt",
+          "big.Int"
+        ],
+        "functions": [
+          "Marshal",
+          "UnmarshalJSON"
+        ],
+        "imports": [
+          "bytes",
+          "encoding/json",
+          "fmt",
+          "math/big"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/share/big_int_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for the MyBigInt type in the share package.",
+        "key_types": [
+          "TokenBalanceResponse",
+          "MyBigInt"
+        ],
+        "functions": [
+          "TestMyBigInt"
+        ],
+        "imports": [
+          "encoding/json",
+          "fmt",
+          "testing",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+        ],
+        "side_effects": [
+          "Prints the token balance response to the console",
+          "Errors are reported if the balance is incorrect"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/share/const_chain.go": {
+        "language": "Go",
+        "purpose": "Defines constants for various blockchain networks and gas suggestion types.",
+        "key_types": [
+          "string"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "pkg/share/const_provider.go": {
+        "language": "Go",
+        "purpose": "Defines constants for various providers and functions related to blockchain interactions.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "pkg/share/error.go": {
+        "language": "Go",
+        "purpose": "Defines error variables for handling specific error cases in the application.",
+        "key_types": [
+          "error"
+        ],
+        "functions": [
+          "errors.NewWithCode"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/axieinfinity/ecosystem-go-common/errors"
+        ],
+        "complexity": "low"
+      },
+      "pkg/share/response.go": {
+        "language": "Go",
+        "purpose": "Defines an empty response structure for transaction lists.",
+        "key_types": [
+          "GetTransactionsRes",
+          "ListResponse",
+          "Transaction"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-proxy/models"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

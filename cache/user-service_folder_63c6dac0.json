@@ -1,0 +1,57 @@
+{
+  "content_hash": "278ca7c1ee7a995507e8e479ac93c23f",
+  "timestamp": "2025-09-20T20:41:20.075467+07:00",
+  "result": {
+    "path": "cmd/user-service",
+    "purpose": "A user service that provides RESTful API endpoints for managing users.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [
+      "github.com/labstack/echo/v4",
+      "github.com/labstack/echo/v4/middleware",
+      "gorm.io/gorm",
+      "gorm.io/driver/postgres"
+    ],
+    "architecture": "The folder follows a microservices architecture pattern, implementing a RESTful API using the Echo framework for routing and GORM for database interactions.",
+    "file_summaries": {
+      "cmd/user-service/main.go": {
+        "language": "Go",
+        "purpose": "A user service that provides RESTful API endpoints for managing users.",
+        "key_types": [
+          "User"
+        ],
+        "functions": [
+          "main",
+          "initDatabase",
+          "getUsers",
+          "getUser",
+          "createUser",
+          "updateUser",
+          "deleteUser",
+          "healthCheck"
+        ],
+        "imports": [
+          "net/http",
+          "os",
+          "github.com/labstack/echo/v4",
+          "github.com/labstack/echo/v4/middleware",
+          "gorm.io/gorm",
+          "gorm.io/driver/postgres"
+        ],
+        "side_effects": [
+          "Database connection initialization",
+          "Logging middleware usage"
+        ],
+        "risks": [
+          "Potential SQL injection if input is not properly sanitized",
+          "Exposure of sensitive information if environment variables are not managed securely"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

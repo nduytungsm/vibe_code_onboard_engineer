@@ -1,0 +1,22 @@
+{
+  "content_hash": "858c524968e7273fbcf0853e4442e301",
+  "timestamp": "2025-09-20T20:44:27.720178+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for handling items in a game, including their metadata.",
+    "key_types": [
+      "OriginBaseItem",
+      "MetadataExporter",
+      "RuneItem",
+      "GetRunesResponse",
+      "CharmItem",
+      "GetCharmsResponse"
+    ],
+    "functions": [
+      "ToMetadata() for RuneItem",
+      "ToMetadata() for CharmItem"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

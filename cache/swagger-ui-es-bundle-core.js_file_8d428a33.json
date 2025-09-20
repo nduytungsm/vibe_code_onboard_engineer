@@ -1,0 +1,62 @@
+{
+  "content_hash": "6cd9c17e2acb4fdace66184258b73050",
+  "timestamp": "2025-09-20T20:43:52.631435+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file is part of the Swagger UI library, which is used to generate interactive API documentation.",
+    "key_types": [
+      "React Component",
+      "Immutable Data Structures",
+      "Promise",
+      "Function",
+      "Object"
+    ],
+    "functions": [
+      "import",
+      "reduce",
+      "zipObject",
+      "debounce",
+      "set",
+      "assocPath",
+      "camelCase",
+      "upperFirst",
+      "find",
+      "eq",
+      "sanitize-url",
+      "stringify",
+      "assign",
+      "memoize",
+      "omit"
+    ],
+    "imports": [
+      "react-immutable-pure-component",
+      "remarkable/linkify",
+      "dompurify",
+      "zenscroll",
+      "lodash",
+      "swagger-client",
+      "react",
+      "react-redux",
+      "react-syntax-highlighter",
+      "prop-types",
+      "redux",
+      "serialize-error",
+      "url-parse",
+      "js-yaml",
+      "immutable",
+      "base64-js",
+      "classnames",
+      "js-file-download",
+      "xml-but-prettier"
+    ],
+    "side_effects": [
+      "Modifies the DOM",
+      "May perform network requests"
+    ],
+    "risks": [
+      "Potential XSS vulnerabilities if user input is not sanitized",
+      "Dependency on external libraries may introduce vulnerabilities"
+    ],
+    "complexity": "high"
+  }
+}

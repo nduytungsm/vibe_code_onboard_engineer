@@ -11,14 +11,18 @@ import (
 	"time"
 
 	"repo-explanation/config"
+	"repo-explanation/internal/commands"
+	"repo-explanation/internal/openai"
 	"repo-explanation/internal/pipeline"
 )
 
 type REPL struct {
-	scanner    *bufio.Scanner
-	running    bool
-	pathSet    bool
-	targetPath string
+	scanner         *bufio.Scanner
+	running         bool
+	pathSet         bool
+	targetPath      string
+	analysisResult  *pipeline.AnalysisResult
+	onboardingCmds  *commands.OnboardingCommands
 }
 
 func NewREPL() *REPL {
@@ -39,6 +43,7 @@ func (r *REPL) Start() {
 
 	// Then start command loop
 	fmt.Println("Type 'try me' to test, '/end' to exit")
+	fmt.Println("Onboarding commands: 'list services', 'set config'")
 	fmt.Print("> ")
 
 	for r.running && r.scanner.Scan() {
@@ -223,6 +228,10 @@ func (r *REPL) analyzeRepository() error {
 	duration := time.Since(startTime)
 	fmt.Printf("\n⏱️  Analysis completed in %.2f seconds\n", duration.Seconds())
 
+	// Store analysis results and initialize onboarding commands
+	r.analysisResult = result
+	r.onboardingCmds = commands.NewOnboardingCommands(result)
+
 	// Display results
 	r.displayAnalysisResults(result)
 
@@ -237,6 +246,12 @@ func (r *REPL) displayAnalysisResults(result *pipeline.AnalysisResult) {
 	// Display project type summary at the top
 	if result.ProjectType != nil {
 		result.ProjectType.PrintSummary()
+		fmt.Println()
+	}
+
+	// Display detailed architectural analysis if available
+	if result.ProjectSummary != nil && result.ProjectSummary.DetailedAnalysis != nil {
+		r.displayDetailedAnalysis(result.ProjectSummary.DetailedAnalysis)
 		fmt.Println()
 	}
 
@@ -261,8 +276,7 @@ func (r *REPL) displayAnalysisResults(result *pipeline.AnalysisResult) {
 			}
 		}
 
-		fmt.Println("\n📝 SUMMARY:")
-		fmt.Printf("   %s\n", result.ProjectSummary.Summary)
+
 	}
 
 	// Show statistics
@@ -286,6 +300,95 @@ func (r *REPL) displayAnalysisResults(result *pipeline.AnalysisResult) {
 	fmt.Println("\n" + strings.Repeat("=", 80))
 }
 
+func (r *REPL) displayDetailedAnalysis(analysis *openai.RepositoryAnalysis) {
+	fmt.Println("🔬 DETAILED ARCHITECTURAL ANALYSIS")
+	fmt.Println(strings.Repeat("-", 50))
+
+	// Repository summary line
+	if analysis.RepoSummaryLine != "" {
+		fmt.Printf("📋 SUMMARY: %s\n", analysis.RepoSummaryLine)
+	}
+
+	// Architecture and layout
+	fmt.Printf("🏗️  ARCHITECTURE: %s\n", analysis.Architecture)
+	fmt.Printf("📦 LAYOUT: %s\n", analysis.RepoLayout)
+
+	// Main stacks
+	if len(analysis.MainStacks) > 0 {
+		fmt.Println("🛠️  MAIN TECH STACKS:")
+		for _, stack := range analysis.MainStacks {
+			fmt.Printf("   • %s\n", stack)
+		}
+	}
+
+	// Monorepo services (if applicable)
+	if analysis.RepoLayout == "monorepo" && len(analysis.MonorepoServices) > 0 {
+		fmt.Println("🏢 MONOREPO SERVICES:")
+		for _, service := range analysis.MonorepoServices {
+			fmt.Printf("   • %s (%s) - %s\n", service.Name, service.Language, service.ShortPurpose)
+			fmt.Printf("     Path: %s\n", service.Path)
+			
+			// Display API type and port if available
+			if service.APIType != "" {
+				if service.Port != "" {
+					fmt.Printf("     API: %s (port %s)\n", strings.ToUpper(service.APIType), service.Port)
+				} else {
+					fmt.Printf("     API: %s\n", strings.ToUpper(service.APIType))
+				}
+			}
+			
+			// Display entry point if available
+			if service.EntryPoint != "" {
+				fmt.Printf("     Entry: %s\n", service.EntryPoint)
+			}
+		}
+	}
+
+	// Evidence paths
+	if len(analysis.EvidencePaths) > 0 {
+		fmt.Println("📂 EVIDENCE FILES:")
+		for _, path := range analysis.EvidencePaths {
+			fmt.Printf("   • %s\n", path)
+		}
+	}
+
+	// Confidence
+	confidenceBar := r.generateConfidenceBar(analysis.Confidence)
+	fmt.Printf("📊 ANALYSIS CONFIDENCE: %.1f/1.0 %s\n", analysis.Confidence, confidenceBar)
+}
+
+func (r *REPL) generateConfidenceBar(confidence float64) string {
+	maxBars := 10
+	filledBars := int(confidence * 10)
+	if filledBars > maxBars {
+		filledBars = maxBars
+	}
+
+	bar := "["
+	for i := 0; i < filledBars; i++ {
+		bar += "█"
+	}
+	for i := filledBars; i < maxBars; i++ {
+		bar += "░"
+	}
+	bar += "]"
+
+	// Add confidence level
+	if confidence >= 0.8 {
+		bar += " (Very High)"
+	} else if confidence >= 0.6 {
+		bar += " (High)"
+	} else if confidence >= 0.4 {
+		bar += " (Medium)"
+	} else if confidence >= 0.2 {
+		bar += " (Low)"
+	} else {
+		bar += " (Very Low)"
+	}
+
+	return bar
+}
+
 func (r *REPL) processCommand(input string) {
 	switch input {
 	case "try me":
@@ -295,7 +398,30 @@ func (r *REPL) processCommand(input string) {
 		r.running = false
 	case "":
 		// Do nothing for empty input
+	case "list services", "services":
+		r.handleOnboardingCommand(input)
+	case "set config", "config":
+		r.handleOnboardingCommand(input)
 	default:
 		fmt.Println("unsupported function")
+		if r.analysisResult != nil {
+			fmt.Println("Available onboarding commands: 'list services', 'set config'")
+		}
+	}
+}
+
+func (r *REPL) handleOnboardingCommand(command string) {
+	if r.onboardingCmds == nil {
+		fmt.Println("┌─────────────────────────────────────────────┐")
+		fmt.Println("│ ❌ Analysis Required                        │")
+		fmt.Println("│                                             │")
+		fmt.Println("│ Please analyze a project first before      │")
+		fmt.Println("│ using onboarding commands.                 │")
+		fmt.Println("└─────────────────────────────────────────────┘")
+		return
+	}
+
+	if err := r.onboardingCmds.ExecuteCommand(command); err != nil {
+		fmt.Println(err)
 	}
 }

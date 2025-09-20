@@ -1,27 +1,24 @@
 {
   "content_hash": "03e353fbe833123e79b113ede63ee894",
-  "timestamp": "2025-09-18T13:04:00.257422+07:00",
+  "timestamp": "2025-09-20T20:20:46.835238+07:00",
   "result": {
     "language": "CSS",
-    "purpose": "Styling for a web application, including layout, animations, and theme management.",
+    "purpose": "Styles for a web application, including layout, animations, and theming.",
     "key_types": [
       "@import",
-      "@custom-variant",
-      "@media",
-      ":root",
-      ".dark"
+      "custom-variant",
+      "keyframes",
+      "media queries",
+      "CSS variables"
     ],
-    "functions": [
-      "@keyframes",
-      "@layer"
-    ],
+    "functions": [],
     "imports": [
       "tw-animate-css"
     ],
     "side_effects": [
-      "Custom scrollbar styles for different browsers",
-      "Hover effects on logo",
-      "Animations on logo"
+      "Modifies scrollbar visibility",
+      "Applies animations on hover",
+      "Defines custom themes"
     ],
     "complexity": "medium"
   }

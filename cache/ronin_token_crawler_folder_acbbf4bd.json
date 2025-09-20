@@ -1,0 +1,67 @@
+{
+  "content_hash": "741be5c95a308139c1e91d7f2cf19774",
+  "timestamp": "2025-09-20T20:49:24.023922+07:00",
+  "result": {
+    "path": "cmd/ronin_token_crawler",
+    "purpose": "Crawl market information from CoinGecko for a list of tokens used on Ronin.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/getsentry/sentry-go",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-proxy/config",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the crawling functionality in a single main file that interacts with various services and a database.",
+    "file_summaries": {
+      "cmd/ronin_token_crawler/main.go": {
+        "language": "Go",
+        "purpose": "Crawl market information from CoinGecko for a list of tokens used on Ronin.",
+        "key_types": [
+          "context.Context",
+          "time.Time",
+          "postgresql.Client",
+          "coingecko.Service",
+          "map[string]interface{}"
+        ],
+        "functions": [
+          "main",
+          "sentry.Init",
+          "postgresql.NewClient",
+          "coingecko.NewService"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "time",
+          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+          "github.com/getsentry/sentry-go",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-proxy/config",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+        ],
+        "side_effects": [
+          "Logs errors and information during execution.",
+          "Initializes Sentry for error tracking.",
+          "Updates market information in the database."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information in logs.",
+          "Database connection errors may lead to application failure."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

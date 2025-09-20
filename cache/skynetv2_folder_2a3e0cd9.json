@@ -1,0 +1,155 @@
+{
+  "content_hash": "f28398f6a63a2428c4c8660a525b7a70",
+  "timestamp": "2025-09-20T20:47:27.842253+07:00",
+  "result": {
+    "path": "pkg/providers/skynetv2",
+    "purpose": "Responsible for providing functionalities to interact with a blockchain wallet, including retrieving token balances, NFT collections, and transaction details.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "config.go",
+      "models.go",
+      "skn_v2_svc.go",
+      "types.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers/gas-collector",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/ethereum/go-ethereum/ethclient",
+      "github.com/ethereum/go-ethereum/rpc",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/models/skymavis",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/share",
+      "github.com/axieinfinity/ecosystem-go-common/errors"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for configuration, models, services, and types.",
+    "file_summaries": {
+      "pkg/providers/skynetv2/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for the Skynet V2 provider.",
+        "key_types": [
+          "Config",
+          "time.Duration",
+          "gascollector.Config"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers/gas-collector"
+        ],
+        "complexity": "low"
+      },
+      "pkg/providers/skynetv2/models.go": {
+        "language": "Go",
+        "purpose": "Defines data models and request/response structures for interacting with a blockchain API.",
+        "key_types": [
+          "PagingReq",
+          "PagingResponse",
+          "PagingResListItems",
+          "SortItem",
+          "ErrorMessage",
+          "AddressRequest",
+          "BlockRequest",
+          "TimeRequest",
+          "TokenBalance",
+          "TokenBalancesRes",
+          "TransactionItem",
+          "LogResponse",
+          "NFTItemResponse",
+          "SearchNFTsReq",
+          "SearchNFTsRes",
+          "SearchTokenTransfersReq",
+          "TokenTransferItem"
+        ],
+        "functions": [
+          "BuildQueryParams",
+          "GetTotal",
+          "Error",
+          "ToTokenBalance",
+          "ToTransaction",
+          "ToNFTItem"
+        ],
+        "imports": [
+          "encoding/json",
+          "math/big",
+          "net/url",
+          "strconv",
+          "strings",
+          "time",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/models/skymavis",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/skynetv2/skn_v2_svc.go": {
+        "language": "Go",
+        "purpose": "This file defines a service for interacting with a blockchain wallet, providing functionalities to retrieve token balances, NFT collections, and transaction details.",
+        "key_types": [
+          "Service",
+          "service",
+          "TokenBalancesRes",
+          "PagingReq",
+          "TransactionItem",
+          "SearchNFTsRes",
+          "GetNFTByCollectionAndTokenIDRes"
+        ],
+        "functions": [
+          "GetTokenBalances",
+          "GetNFTCollections",
+          "GetTransactionByHash",
+          "GetNFTsOfCollectionForAddr",
+          "GetNFTByCollectionAndTokenID"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "math/big",
+          "net/http",
+          "net/url",
+          "slices",
+          "strconv",
+          "strings",
+          "sync",
+          "time",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/ethereum/go-ethereum/ethclient",
+          "github.com/ethereum/go-ethereum/rpc",
+          "github.com/rs/zerolog/log",
+          "golang.org/x/exp/maps",
+          "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/models/skymavis",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers/gas-collector",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/skynetv2/types.go": {
+        "language": "Go",
+        "purpose": "Defines types and constants related to token standards, transfer types, activity types, action types, and transaction statuses.",
+        "key_types": [
+          "PagingStyle",
+          "TokenStandard",
+          "TransferType",
+          "ActivityType",
+          "ActionType",
+          "TxStatus"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

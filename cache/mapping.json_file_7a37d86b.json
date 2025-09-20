@@ -1,0 +1,17 @@
+{
+  "content_hash": "1e2f528508b6401121f2dc6044607de3",
+  "timestamp": "2025-09-20T20:43:50.460212+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines metadata mappings for various NFT types in a gaming context.",
+    "key_types": [
+      "object",
+      "string",
+      "number",
+      "array"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

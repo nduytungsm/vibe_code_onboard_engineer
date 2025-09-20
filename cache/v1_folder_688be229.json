@@ -1,0 +1,31 @@
+{
+  "content_hash": "0ba8354c293a7b87a11e6e1926561763",
+  "timestamp": "2025-09-20T20:48:55.969516+07:00",
+  "result": {
+    "path": "_nft_metadata_mapping/ronin/v1",
+    "purpose": "Defines metadata mappings for various NFT types in a gaming context.",
+    "languages": {
+      "JSON": 1
+    },
+    "key_modules": [
+      "mapping.json"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a simple structure where metadata mappings are defined in a single JSON file, indicating a low complexity architecture focused on data representation.",
+    "file_summaries": {
+      "_nft_metadata_mapping/ronin/v1/mapping.json": {
+        "language": "JSON",
+        "purpose": "Defines metadata mappings for various NFT types in a gaming context.",
+        "key_types": [
+          "object",
+          "string",
+          "number",
+          "array"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

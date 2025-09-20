@@ -1,0 +1,99 @@
+{
+  "content_hash": "6bdc4997cbe825774e31cbbe3e4dba21",
+  "timestamp": "2025-09-18T15:30:23.901665+07:00",
+  "result": {
+    "purpose": "This project is a microservices-based application that provides authentication and user management services. It aims to facilitate secure user access and management through dedicated services.",
+    "architecture": "The project follows a microservices architecture pattern, with separate services for authentication and user management, each implemented as an HTTP server.",
+    "data_models": [
+      "User",
+      "Token"
+    ],
+    "external_services": [
+      "github.com/labstack/echo/v4",
+      "net/http"
+    ],
+    "languages": {
+      "Go": 2
+    },
+    "folder_summaries": {
+      "services/auth-service": {
+        "path": "services/auth-service",
+        "purpose": "Auth service handles authentication and authorization",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "github.com/labstack/echo/v4",
+          "net/http"
+        ],
+        "architecture": "The folder follows a microservices architecture pattern, focusing on handling authentication and authorization through an HTTP server.",
+        "file_summaries": {
+          "services/auth-service/main.go": {
+            "language": "Go",
+            "purpose": "Auth service handles authentication and authorization",
+            "key_types": [
+              "echo.Context"
+            ],
+            "functions": [
+              "main",
+              "login",
+              "validateToken"
+            ],
+            "imports": [
+              "github.com/labstack/echo/v4",
+              "net/http"
+            ],
+            "side_effects": [
+              "Starts an HTTP server on port 3002"
+            ],
+            "risks": [
+              "Potential exposure of sensitive token information"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "services/user-service": {
+        "path": "services/user-service",
+        "purpose": "handles user management operations",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "github.com/labstack/echo/v4",
+          "net/http"
+        ],
+        "architecture": "The folder follows a microservices architecture pattern, focusing on user management with a web server implementation.",
+        "file_summaries": {
+          "services/user-service/main.go": {
+            "language": "Go",
+            "purpose": "handles user management operations",
+            "key_types": [
+              "echo.Context"
+            ],
+            "functions": [
+              "main",
+              "createUser",
+              "getUser"
+            ],
+            "imports": [
+              "github.com/labstack/echo/v4",
+              "net/http"
+            ],
+            "side_effects": [
+              "starts a web server on port 3001"
+            ],
+            "complexity": "medium"
+          }
+        }
+      }
+    },
+    "summary": "This project is designed to manage user authentication and user-related operations through dedicated microservices. It helps achieve secure access control and efficient user management in applications."
+  }
+}

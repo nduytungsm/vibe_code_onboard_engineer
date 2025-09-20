@@ -1,0 +1,33 @@
+{
+  "content_hash": "86bcde8b3ae4edc3e9d32b10a2465e44",
+  "timestamp": "2025-09-20T20:45:35.286245+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines a smart contract for managing liquidity in a decentralized exchange.",
+    "key_types": [
+      "address",
+      "uint256"
+    ],
+    "functions": [
+      "constructor",
+      "fallback",
+      "WRON",
+      "addLiquidity",
+      "addLiquidityRON",
+      "factory",
+      "getAmountIn",
+      "getAmountOut",
+      "getAmountsIn",
+      "getAmountsOut",
+      "quote",
+      "removeLiquidity",
+      "removeLiquidityRON"
+    ],
+    "imports": [],
+    "risks": [
+      "Potential for reentrancy attacks in payable functions",
+      "Incorrect handling of liquidity can lead to loss of funds"
+    ],
+    "complexity": "medium"
+  }
+}

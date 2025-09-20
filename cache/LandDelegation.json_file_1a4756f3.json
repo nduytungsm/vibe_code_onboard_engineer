@@ -1,0 +1,22 @@
+{
+  "content_hash": "71799d7336c206d2c4e14e739279bbee",
+  "timestamp": "2025-09-20T20:45:34.98369+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines the structure and errors for land delegation in a smart contract.",
+    "key_types": [
+      "error",
+      "event",
+      "function"
+    ],
+    "functions": [
+      "delegateLand",
+      "delegateLandBatch",
+      "delegationAmountsMap",
+      "delegationMap",
+      "DEFAULT_ADMIN_ROLE"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

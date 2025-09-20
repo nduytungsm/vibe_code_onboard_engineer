@@ -1,0 +1,12 @@
+{
+  "content_hash": "54fdd628e48969ad325a0b370af12f53",
+  "timestamp": "2025-09-20T20:43:44.400178+07:00",
+  "result": {
+    "language": "CSS",
+    "purpose": "Defines styles for HTML elements including box-sizing and body background.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

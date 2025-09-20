@@ -1,0 +1,35 @@
+{
+  "content_hash": "ee12ecfeba0639065c041eb491bde8dd",
+  "timestamp": "2025-09-20T20:46:56.454488+07:00",
+  "result": {
+    "path": "_api_specs/assets",
+    "purpose": "Contains stylesheets for the API specifications, including general styles and specific styles for the Swagger UI component.",
+    "languages": {
+      "CSS": 2
+    },
+    "key_modules": [
+      "index.css",
+      "swagger-ui.css"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a simple structure focused on styling, with separate CSS files for general and component-specific styles.",
+    "file_summaries": {
+      "_api_specs/assets/index.css": {
+        "language": "CSS",
+        "purpose": "Defines styles for HTML elements including box-sizing and body background.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "_api_specs/assets/swagger-ui.css": {
+        "language": "CSS",
+        "purpose": "Defines styles for the Swagger UI component.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

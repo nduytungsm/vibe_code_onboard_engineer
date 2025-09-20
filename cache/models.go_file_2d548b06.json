@@ -1,0 +1,18 @@
+{
+  "content_hash": "308505bb66b2b572f352afb65ed450ad",
+  "timestamp": "2025-09-20T20:45:03.313819+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for handling gas fee history in Ethereum transactions.",
+    "key_types": [
+      "GetFeesHistoryResponse",
+      "Block",
+      "big.Int"
+    ],
+    "functions": [],
+    "imports": [
+      "math/big"
+    ],
+    "complexity": "low"
+  }
+}

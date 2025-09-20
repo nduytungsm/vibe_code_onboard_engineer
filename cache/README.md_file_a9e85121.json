@@ -1,0 +1,12 @@
+{
+  "content_hash": "5ad7df303886f35ee759333672310320",
+  "timestamp": "2025-09-18T15:04:14.15757+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for an e-commerce platform built with a microservices architecture.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

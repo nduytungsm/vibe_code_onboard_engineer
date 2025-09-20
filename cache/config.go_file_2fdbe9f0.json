@@ -1,0 +1,16 @@
+{
+  "content_hash": "258c2c4df1b38b1ce96fe583f542501b",
+  "timestamp": "2025-09-20T20:44:56.530615+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for a gas collector",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

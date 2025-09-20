@@ -1,0 +1,20 @@
+{
+  "content_hash": "88203579c62272b1bef415e40b4fe339",
+  "timestamp": "2025-09-18T15:50:06.753939+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the configuration and dependencies for a React application.",
+    "key_types": [
+      "object"
+    ],
+    "functions": [
+      "start",
+      "build",
+      "dev"
+    ],
+    "imports": [
+      "react"
+    ],
+    "complexity": "low"
+  }
+}

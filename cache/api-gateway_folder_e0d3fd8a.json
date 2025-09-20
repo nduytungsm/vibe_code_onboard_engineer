@@ -1,0 +1,55 @@
+{
+  "content_hash": "d80624984e3857d51c176c96cd8922b9",
+  "timestamp": "2025-09-20T20:41:17.240086+07:00",
+  "result": {
+    "path": "cmd/api-gateway",
+    "purpose": "This folder/module is responsible for implementing an API gateway that routes requests to authentication and user services, and provides health check and profile/dashboard endpoints.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [
+      "github.com/labstack/echo/v4",
+      "github.com/labstack/echo/v4/middleware"
+    ],
+    "architecture": "The folder follows a microservices architecture pattern, where the API gateway acts as a single entry point for client requests, routing them to appropriate backend services.",
+    "file_summaries": {
+      "cmd/api-gateway/main.go": {
+        "language": "Go",
+        "purpose": "This file implements an API gateway that routes requests to authentication and user services, and provides health check and profile/dashboard endpoints.",
+        "key_types": [
+          "echo.Echo",
+          "http.Request",
+          "http.Response",
+          "http.HandlerFunc"
+        ],
+        "functions": [
+          "main",
+          "authMiddleware",
+          "getProfile",
+          "getDashboard",
+          "healthCheck"
+        ],
+        "imports": [
+          "net/http",
+          "net/http/httputil",
+          "net/url",
+          "os",
+          "github.com/labstack/echo/v4",
+          "github.com/labstack/echo/v4/middleware"
+        ],
+        "side_effects": [
+          "Starts an HTTP server",
+          "Logs requests and responses"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if token validation fails",
+          "Dependency on external services for authentication and user data"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

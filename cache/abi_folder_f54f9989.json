@@ -1,0 +1,548 @@
+{
+  "content_hash": "82360b1477bcf7445c68da826a66542f",
+  "timestamp": "2025-09-20T20:46:50.627457+07:00",
+  "result": {
+    "path": "pkg/roninabi/abi",
+    "purpose": "This folder contains the ABI (Application Binary Interface) definitions and smart contract implementations for various components of the Ronin blockchain ecosystem, including staking pools, token standards, and auction management.",
+    "languages": {
+      "JSON": 10,
+      "Solidity": 22
+    },
+    "key_modules": [
+      "AXSStakingPool.json",
+      "AtiaBlessing.json",
+      "Axie.json",
+      "AxieAccessoryCollection.json",
+      "AxieCharm.json",
+      "AxieRune.json",
+      "ClockAution.json",
+      "ERC1155.json",
+      "ERC20.json",
+      "ERC20StakingPool.json",
+      "ERC721.json",
+      "Exchange.json",
+      "KatanaRouter.json",
+      "LandDelegation.json",
+      "LandItem.json",
+      "LandPlot.json",
+      "LandStakingPool.json",
+      "MarketGateway.json",
+      "OrderExchange.json",
+      "Portal.json",
+      "RONStaking.json",
+      "RewardDispender.json",
+      "RoninGatewayV2.json",
+      "SideChainGateway.json"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture, where each file represents a distinct smart contract or ABI definition, allowing for clear separation of concerns and easier maintenance.",
+    "file_summaries": {
+      "pkg/roninabi/abi/AXSStakingPool.json": {
+        "language": "Solidity",
+        "purpose": "Defines events and functions for an AXS Staking Pool contract.",
+        "key_types": [
+          "event",
+          "function"
+        ],
+        "functions": [
+          "admin",
+          "changeAdmin",
+          "claimPendingRewards",
+          "emergencyUnstake",
+          "getPendingRewards",
+          "getStakingAmount",
+          "getStakingTotal",
+          "methodPaused",
+          "pause",
+          "pauseAll",
+          "paused",
+          "removeAdmin",
+          "restakeRewards",
+          "stake",
+          "unpause",
+          "unpauseAll",
+          "unstake"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/AtiaBlessing.json": {
+        "language": "Solidity",
+        "purpose": "Defines a smart contract with various functions and events related to user streaks and role management.",
+        "key_types": [
+          "constructor",
+          "error",
+          "event",
+          "function"
+        ],
+        "functions": [
+          "activateStreak",
+          "getStreak",
+          "initialize",
+          "grantRole",
+          "revokeRole",
+          "hasRole",
+          "getRoleMember",
+          "getRoleMemberCount",
+          "getRoleAdmin",
+          "hasCurrentlyActivated",
+          "activeStreakLifeTime",
+          "DEFAULT_ADMIN_ROLE",
+          "startedAtBlock",
+          "supportsInterface"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/Axie.json": {
+        "language": "Solidity",
+        "purpose": "Defines events and a constructor for an Axie-related smart contract.",
+        "key_types": [
+          "constructor",
+          "event",
+          "tuple",
+          "struct"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/AxieAccessoryCollection.json": {
+        "language": "JSON",
+        "purpose": "Defines the structure of an Axie accessory collection with events and roles.",
+        "key_types": [
+          "constructor",
+          "event",
+          "tuple",
+          "bytes32"
+        ],
+        "functions": [
+          "DEFAULT_ADMIN_ROLE",
+          "MINTER_ROLE"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/AxieCharm.json": {
+        "language": "JSON",
+        "purpose": "Defines the structure of an Ethereum smart contract ABI for AxieCharm, including events and functions.",
+        "key_types": [
+          "constructor",
+          "event",
+          "function"
+        ],
+        "functions": [
+          "DEFAULT_ADMIN_ROLE",
+          "MINTER_ROLE",
+          "PAUSER_ROLE",
+          "balanceOf",
+          "balanceOfBatch",
+          "burn",
+          "burnBatch",
+          "getRoleAdmin"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/AxieRune.json": {
+        "language": "JSON",
+        "purpose": "Defines the structure of an Ethereum smart contract ABI for AxieRune, including events and functions.",
+        "key_types": [
+          "constructor",
+          "event",
+          "function"
+        ],
+        "functions": [
+          "DEFAULT_ADMIN_ROLE",
+          "MINTER_ROLE",
+          "PAUSER_ROLE",
+          "balanceOf",
+          "balanceOfBatch",
+          "burn",
+          "burnBatch",
+          "getRoleAdmin"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/ClockAution.json": {
+        "language": "Solidity",
+        "purpose": "Defines events and functions for managing auctions in a smart contract.",
+        "key_types": [
+          "address",
+          "uint256",
+          "bytes"
+        ],
+        "functions": [
+          "addOperators",
+          "admin",
+          "auctions",
+          "batchCreateAuctions",
+          "cancelAuction",
+          "changeAdmin",
+          "completeInitilization",
+          "createAuction"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/ERC1155.json": {
+        "language": "JSON",
+        "purpose": "Defines the ERC1155 token standard events and functions for a smart contract.",
+        "key_types": [
+          "event",
+          "function"
+        ],
+        "functions": [
+          "balanceOf",
+          "balanceOfBatch",
+          "isApprovedForAll",
+          "safeBatchTransferFrom",
+          "safeTransferFrom",
+          "setApprovalForAll",
+          "supportsInterface"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/ERC20.json": {
+        "language": "Solidity",
+        "purpose": "Defines the ERC20 token standard events and functions.",
+        "key_types": [
+          "event",
+          "function"
+        ],
+        "functions": [
+          "allowance",
+          "approve",
+          "balanceOf",
+          "totalSupply",
+          "transfer",
+          "transferFrom"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/ERC20StakingPool.json": {
+        "language": "Solidity",
+        "purpose": "Defines events and functions for an ERC20 staking pool contract.",
+        "key_types": [
+          "address",
+          "uint256",
+          "IERC20"
+        ],
+        "functions": [
+          "admin",
+          "changeAdmin",
+          "claimPendingRewards",
+          "emergencyUnstake",
+          "getPendingRewards",
+          "getStakingAmount",
+          "getStakingTotal",
+          "methodPaused",
+          "pause",
+          "pauseAll",
+          "paused",
+          "removeAdmin",
+          "restakeRewards",
+          "stake",
+          "unpause",
+          "unpauseAll",
+          "unstake",
+          "unstakeAll"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/ERC721.json": {
+        "language": "JSON",
+        "purpose": "Defines the ABI (Application Binary Interface) for an ERC721 token contract, specifying events and functions.",
+        "key_types": [
+          "event",
+          "function"
+        ],
+        "functions": [
+          "approve",
+          "balanceOf",
+          "getApproved",
+          "isApprovedForAll",
+          "ownerOf",
+          "safeTransferFrom",
+          "setApprovalForAll",
+          "transferFrom"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/Exchange.json": {
+        "language": "JSON",
+        "purpose": "Defines the ABI (Application Binary Interface) for the Exchange contract, including its events, functions, and constructor.",
+        "key_types": [
+          "IERC20",
+          "AbstractAuction"
+        ],
+        "functions": [
+          "addAuctionType",
+          "changeAdmin",
+          "createOrGetListing",
+          "getListing",
+          "getListingState",
+          "removeAdmin",
+          "canFacilitateListing",
+          "admin",
+          "auctionTypes",
+          "autoRevalidate",
+          "listings"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/KatanaRouter.json": {
+        "language": "Solidity",
+        "purpose": "Defines a smart contract for managing liquidity in a decentralized exchange.",
+        "key_types": [
+          "address",
+          "uint256"
+        ],
+        "functions": [
+          "constructor",
+          "fallback",
+          "WRON",
+          "addLiquidity",
+          "addLiquidityRON",
+          "factory",
+          "getAmountIn",
+          "getAmountOut",
+          "getAmountsIn",
+          "getAmountsOut",
+          "quote",
+          "removeLiquidity",
+          "removeLiquidityRON"
+        ],
+        "imports": [],
+        "risks": [
+          "Potential for reentrancy attacks in payable functions",
+          "Incorrect handling of liquidity can lead to loss of funds"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/LandDelegation.json": {
+        "language": "Solidity",
+        "purpose": "Defines the structure and errors for land delegation in a smart contract.",
+        "key_types": [
+          "error",
+          "event",
+          "function"
+        ],
+        "functions": [
+          "delegateLand",
+          "delegateLandBatch",
+          "delegationAmountsMap",
+          "delegationMap",
+          "DEFAULT_ADMIN_ROLE"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/LandItem.json": {
+        "language": "Solidity",
+        "purpose": "Defines a smart contract for managing land items with functionalities for admin management, approvals, and minting.",
+        "key_types": [
+          "constructor",
+          "event"
+        ],
+        "functions": [
+          "addMinters",
+          "changeAdmin",
+          "approve",
+          "balanceOf",
+          "deconstructItemId"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/LandPlot.json": {
+        "language": "Solidity",
+        "purpose": "Defines a smart contract for managing land plots, including events for admin changes, approvals, and minting.",
+        "key_types": [
+          "constructor",
+          "event",
+          "function"
+        ],
+        "functions": [
+          "addMinters",
+          "admin",
+          "approve",
+          "balanceOf",
+          "batchMint",
+          "changeAdmin",
+          "getEstateData",
+          "isApprovedForAll",
+          "isMinter",
+          "landOfOwner"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/LandStakingPool.json": {
+        "language": "Solidity",
+        "purpose": "Defines the events and functions for a land staking pool contract.",
+        "key_types": [
+          "constructor",
+          "event",
+          "function"
+        ],
+        "functions": [
+          "claimPendingRewards",
+          "emergencyUnstake",
+          "emergencyUnstakeSome",
+          "getPendingRewards",
+          "getStakedLandTypes",
+          "getStakedLands",
+          "getStakingAmount",
+          "getStakingTotal",
+          "getTotalStakedPerLandType",
+          "initialize"
+        ],
+        "imports": [],
+        "side_effects": [
+          "State changes in the contract's storage when functions are called."
+        ],
+        "risks": [
+          "Potential for reentrancy attacks if not properly handled."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/MarketGateway.json": {
+        "language": "Solidity",
+        "purpose": "Defines the ABI for the MarketGateway contract, including events and functions related to market operations.",
+        "key_types": [
+          "constructor",
+          "event",
+          "function"
+        ],
+        "functions": [
+          "DEFAULT_ADMIN_ROLE",
+          "DOMAIN_SEPARATOR",
+          "WRON",
+          "getInterface",
+          "getReferralConfig",
+          "getRoleAdmin",
+          "getRoleMember",
+          "getRoleMemberCount",
+          "grantRole",
+          "hasRole"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/OrderExchange.json": {
+        "language": "Solidity",
+        "purpose": "Defines the ABI for an order exchange contract, including events and functions related to order management.",
+        "key_types": [
+          "constructor",
+          "event",
+          "function"
+        ],
+        "functions": [
+          "cancelOrder",
+          "getRoleAdmin",
+          "getRoleMember",
+          "getRoleMemberCount",
+          "DEFAULT_ADMIN_ROLE",
+          "INTERFACE_NAME",
+          "MARKET_OPERATOR"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/Portal.json": {
+        "language": "Solidity",
+        "purpose": "Defines the structure and events for a smart contract related to a portal system.",
+        "key_types": [
+          "constructor",
+          "event",
+          "function",
+          "struct MarketAsset.Asset",
+          "struct PortalAsset.AssetWithRarity"
+        ],
+        "functions": [
+          "DEFAULT_ADMIN_ROLE",
+          "DOMAIN_SEPARATOR",
+          "PORTAL_OPERATOR",
+          "burnSLP",
+          "burnedSLP",
+          "calculateWithdrawalFee"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/RONStaking.json": {
+        "language": "Solidity",
+        "purpose": "Defines the errors and events related to staking functionality in a smart contract.",
+        "key_types": [
+          "error",
+          "event"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "pkg/roninabi/abi/RewardDispender.json": {
+        "language": "Solidity",
+        "purpose": "Defines the ABI for a reward dispenser contract, including events, errors, and functions related to managing reward pools.",
+        "key_types": [
+          "error",
+          "event",
+          "function"
+        ],
+        "functions": [
+          "cancelPool",
+          "createRewardPool",
+          "dispendRewardBatch",
+          "getPoolInfo",
+          "getPoolRewardList",
+          "getPools"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/abi/RoninGatewayV2.json": {
+        "language": "Solidity",
+        "purpose": "Defines errors and events for the Ronin Gateway contract.",
+        "key_types": [
+          "error",
+          "event"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "pkg/roninabi/abi/SideChainGateway.json": {
+        "language": "JSON",
+        "purpose": "Defines the ABI (Application Binary Interface) for the SideChainGateway contract, including events and functions.",
+        "key_types": [
+          "event",
+          "function"
+        ],
+        "functions": [
+          "acknowledWithdrawalOnMainchain",
+          "admin",
+          "changeAdmin",
+          "deposits",
+          "getPendingWithdrawals",
+          "getWithdrawalSignatures",
+          "getWithdrawalSigners",
+          "maxPendingWithdrawal",
+          "pause",
+          "paused",
+          "registry",
+          "removeAdmin",
+          "requestSignatureAgain"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      }
+    }
+  }
+}

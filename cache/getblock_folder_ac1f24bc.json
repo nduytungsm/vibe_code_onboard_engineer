@@ -1,0 +1,123 @@
+{
+  "content_hash": "89e6eaf93493b7b29c896d4801a1a19c",
+  "timestamp": "2025-09-20T20:48:52.71325+07:00",
+  "result": {
+    "path": "pkg/providers/getblock",
+    "purpose": "This module is responsible for interacting with blockchain RPC endpoints to manage Ethereum fee history and suggest gas fees.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "config.go",
+      "func.go",
+      "getblock_svc.go",
+      "models.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers/gas-collector",
+      "github.com/ethereum/go-ethereum",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/share",
+      "github.com/ethereum/go-ethereum/ethclient",
+      "github.com/ethereum/go-ethereum/rpc",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-proxy/httpclient"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, providing a clear separation of concerns with configuration, service logic, and data models.",
+    "file_summaries": {
+      "pkg/providers/getblock/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for the GetBlock provider.",
+        "key_types": [
+          "Config",
+          "map[string]string",
+          "time.Duration",
+          "uint64",
+          "[]float64"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers/gas-collector"
+        ],
+        "complexity": "low"
+      },
+      "pkg/providers/getblock/func.go": {
+        "language": "Go",
+        "purpose": "This file provides functions to format Ethereum fee history and calculate gas suggestions based on that history.",
+        "key_types": [
+          "BlockGasFeeHistory",
+          "GasSuggestion"
+        ],
+        "functions": [
+          "formatFeeHistory",
+          "calculateGasSuggestion"
+        ],
+        "imports": [
+          "math/big",
+          "github.com/ethereum/go-ethereum",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/getblock/getblock_svc.go": {
+        "language": "Go",
+        "purpose": "Provides a service for interacting with blockchain RPC endpoints to send requests and suggest gas fees.",
+        "key_types": [
+          "Service",
+          "service",
+          "Config",
+          "md.GetGasSuggestionRes",
+          "md.LegacyGasSuggestion",
+          "Block"
+        ],
+        "functions": [
+          "SendRPC",
+          "GasFeeSuggestion",
+          "NewService"
+        ],
+        "imports": [
+          "bytes",
+          "context",
+          "errors",
+          "fmt",
+          "io",
+          "math/big",
+          "net/http",
+          "github.com/ethereum/go-ethereum/ethclient",
+          "github.com/ethereum/go-ethereum/rpc",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+        ],
+        "side_effects": [
+          "Logs errors if RPC requests fail",
+          "Creates HTTP clients with specified timeouts"
+        ],
+        "risks": [
+          "Potential for context cancellation leading to unhandled errors",
+          "Improper handling of blockchain endpoints may lead to unsupported operations"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/getblock/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures for handling fee history in Ethereum transactions.",
+        "key_types": [
+          "GetFeesHistoryResponse",
+          "BlockGasFeeHistory",
+          "Block"
+        ],
+        "functions": [],
+        "imports": [
+          "math/big"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

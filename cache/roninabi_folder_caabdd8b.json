@@ -1,0 +1,54 @@
+{
+  "content_hash": "bd16f55d25c7c04c359d12e571ee27d8",
+  "timestamp": "2025-09-20T20:46:59.338806+07:00",
+  "result": {
+    "path": "pkg/roninabi",
+    "purpose": "Responsible for defining and managing Ethereum contract ABIs and related methods for token swaps and liquidity management.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "abi.go",
+      "katana_method.go"
+    ],
+    "dependencies": [
+      "github.com/ethereum/go-ethereum/accounts/abi"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to Ethereum contract ABIs and token management in separate Go files.",
+    "file_summaries": {
+      "pkg/roninabi/abi.go": {
+        "language": "Go",
+        "purpose": "Defines constants and embeds ABI JSON files for various Ethereum contracts, and initializes a map of contract names to their ABIs.",
+        "key_types": [
+          "string",
+          "map[string]string",
+          "map[string]*abi.ABI"
+        ],
+        "functions": [
+          "parseABI",
+          "init"
+        ],
+        "imports": [
+          "embed",
+          "strings",
+          "github.com/ethereum/go-ethereum/accounts/abi"
+        ],
+        "side_effects": [
+          "Panic on error during ABI parsing"
+        ],
+        "risks": [
+          "Potential panic if ABI JSON is malformed"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/roninabi/katana_method.go": {
+        "language": "Go",
+        "purpose": "Defines constants for various Katana methods related to token swaps and liquidity management.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

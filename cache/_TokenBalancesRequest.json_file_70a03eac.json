@@ -1,0 +1,17 @@
+{
+  "content_hash": "b9058ab24152c0d6c531cdc981ab53a1",
+  "timestamp": "2025-09-20T20:43:43.61475+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines a request structure for token balances including native tokens and specified token standards.",
+    "key_types": [
+      "object",
+      "boolean",
+      "array",
+      "string"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

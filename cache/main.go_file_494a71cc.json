@@ -1,0 +1,52 @@
+{
+  "content_hash": "f1354e66446312ea678f7050d6266d30",
+  "timestamp": "2025-09-20T20:44:01.418214+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Crawl token information from CoinMarketCap and store it in a database.",
+    "key_types": [
+      "context.Context",
+      "error",
+      "sync.WaitGroup",
+      "map[string]string",
+      "repositories.TokenInfoRepositories",
+      "cmc.Service",
+      "worker.Dispatcher"
+    ],
+    "functions": [
+      "main",
+      "addNewRetrieveMetadataJob",
+      "retrieveTokenMetadata"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "slices",
+      "sync",
+      "time",
+      "github.com/getsentry/sentry-go",
+      "github.com/rs/zerolog/log",
+      "gorm.io/gorm",
+      "gorm.io/gorm/logger",
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/axieinfinity/ronin-wallet-proxy/config",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/cmc",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker",
+      "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+    ],
+    "side_effects": [
+      "Database operations",
+      "Network requests to CoinMarketCap",
+      "Publishing events to Redis"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information in logs",
+      "Error handling may not cover all edge cases",
+      "Dependency on external services (CoinMarketCap, Redis)"
+    ],
+    "complexity": "medium"
+  }
+}

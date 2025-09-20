@@ -1,0 +1,39 @@
+{
+  "content_hash": "c7feba179c52fe9f8306fb8c61615ae5",
+  "timestamp": "2025-09-20T20:46:31.116158+07:00",
+  "result": {
+    "path": "_api_specs/_errors",
+    "purpose": "Defines error response structures for the API",
+    "languages": {
+      "JSON": 2
+    },
+    "key_modules": [
+      "_ErrInternalServer.json",
+      "_ErrWalletAddressRequired.json"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, where each file defines a specific error response structure in JSON format.",
+    "file_summaries": {
+      "_api_specs/_errors/_ErrInternalServer.json": {
+        "language": "JSON",
+        "purpose": "Defines the structure for an internal server error response",
+        "key_types": [
+          "object"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "_api_specs/_errors/_ErrWalletAddressRequired.json": {
+        "language": "JSON",
+        "purpose": "Defines an error response for a missing wallet address in an API",
+        "key_types": [
+          "object"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

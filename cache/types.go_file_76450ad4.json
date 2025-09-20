@@ -1,0 +1,19 @@
+{
+  "content_hash": "68af12c00069ed66916fbf5aa0c9de12",
+  "timestamp": "2025-09-20T20:45:15.338394+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines types and constants related to token standards, transfer types, and activities in a blockchain context.",
+    "key_types": [
+      "PagingStyle",
+      "TokenStandard",
+      "TransferType",
+      "ActivityType",
+      "ActionType",
+      "TxStatus"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

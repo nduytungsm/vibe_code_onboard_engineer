@@ -1,0 +1,184 @@
+{
+  "content_hash": "0304a3c30a59936666088bd6bdb642bd",
+  "timestamp": "2025-09-20T20:49:14.091682+07:00",
+  "result": {
+    "path": "pkg/providers/skynet",
+    "purpose": "This folder/module is responsible for providing functionalities related to token balances and NFT collections on the Ethereum blockchain.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "config.go",
+      "func.go",
+      "models.go",
+      "skn_svc.go",
+      "types.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-proxy",
+      "github.com/ethereum/go-ethereum",
+      "github.com/rs/zerolog/log",
+      "github.com/orcaman/concurrent-map/v2"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files while maintaining a cohesive structure for handling blockchain interactions.",
+    "file_summaries": {
+      "pkg/providers/skynet/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for the Skynet provider with various API endpoints and settings.",
+        "key_types": [
+          "Config",
+          "time.Duration",
+          "appaxie.Config"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/appaxie"
+        ],
+        "complexity": "low"
+      },
+      "pkg/providers/skynet/func.go": {
+        "language": "Go",
+        "purpose": "This file provides functions to convert JSON keys from camelCase to snake_case and to handle JSON objects and arrays.",
+        "key_types": [
+          "json.RawMessage",
+          "map[string]json.RawMessage",
+          "[]json.RawMessage"
+        ],
+        "functions": [
+          "convertKeys",
+          "convertKeysForObject",
+          "convertKeysForArray",
+          "fixKey"
+        ],
+        "imports": [
+          "encoding/json",
+          "strings"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/skynet/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures and methods for handling token balances and NFT items in a blockchain context.",
+        "key_types": [
+          "PagingRequest",
+          "PagingResponse",
+          "PagingResponseListItems",
+          "SortItem",
+          "ErrorMessage",
+          "SearchTokenBalancesSummaryForAddrRequest",
+          "TokenBalance",
+          "TokenBalancesResponse",
+          "NFTItemResponse",
+          "SearchNFTsRequest",
+          "SearchNFTsResponse",
+          "AddressRequest",
+          "BlockRequest",
+          "TimeRequest",
+          "SearchTokenTransferSearchRequest",
+          "TokenTransferItem",
+          "SearchTokenTransferResponse",
+          "SearchTransactionsRequest",
+          "LogResponse"
+        ],
+        "functions": [
+          "GetTotal",
+          "Error",
+          "ToTokenBalance",
+          "ToNFTItem",
+          "ToNFTItemWithoutOwner",
+          "ToTransaction"
+        ],
+        "imports": [
+          "encoding/json",
+          "fmt",
+          "math/big",
+          "strconv",
+          "strings",
+          "time",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/models/skymavis",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/skynet/skn_svc.go": {
+        "language": "Go",
+        "purpose": "This file defines a service for interacting with token balances and NFT collections on the Ethereum blockchain.",
+        "key_types": [
+          "Service",
+          "service",
+          "TokenBalancesResponse",
+          "PagingRequest",
+          "GetAccountInfoResponse"
+        ],
+        "functions": [
+          "SearchTokenBalancesSummaryForAddr",
+          "SearchTokenBalancesForAddr",
+          "SearchNFTItemBalanceOfCollectionForAddr",
+          "SearchNFTsOfCollectionForAddr",
+          "SearchNFTByTokenID",
+          "SearchNFTsByIDs",
+          "SearchTransactions",
+          "SearchTokenTransfer",
+          "GetTransactionByHash",
+          "GetRonTransactions",
+          "GetGasSuggestion",
+          "GetTokenStandard",
+          "SearchActivities",
+          "SearchActivitiesV2",
+          "SearchTokenBalanceOfERC1155CollectionForAddr",
+          "getKnownContracts",
+          "getTokenBalanceForHome",
+          "searchTokenBalancesSummaryForAddrV2"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "errors",
+          "fmt",
+          "math/big",
+          "net/http",
+          "slices",
+          "sort",
+          "strconv",
+          "strings",
+          "sync",
+          "time",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/ethereum/go-ethereum/ethclient",
+          "github.com/ethereum/go-ethereum/rpc",
+          "github.com/orcaman/concurrent-map/v2",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+          "github.com/axieinfinity/ronin-wallet-proxy/httpclient/rpc",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/models/skymavis",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/skynet/types.go": {
+        "language": "Go",
+        "purpose": "Defines types and constants related to token standards, transfer types, and activities in a blockchain context.",
+        "key_types": [
+          "PagingStyle",
+          "TokenStandard",
+          "TransferType",
+          "ActivityType",
+          "ActionType",
+          "TxStatus"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "content_hash": "802cb954c4e1236230235af01ac03942",
+  "timestamp": "2025-09-20T20:45:50.83061+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing NFT display mappings, including saving, searching, and batch operations.",
+    "key_types": [
+      "NFTDisplayMappingRepo",
+      "nftDisplayMappingRepo",
+      "NFTMapping",
+      "NFTMappingFilter",
+      "Paging"
+    ],
+    "functions": [
+      "Save",
+      "SaveBatch",
+      "SearchOne",
+      "SearchList",
+      "NewNFTMappingRepo"
+    ],
+    "imports": [
+      "context",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ronin-wallet-proxy/models"
+    ],
+    "side_effects": [
+      "Database transactions for saving and searching NFT mappings."
+    ],
+    "risks": [
+      "Potential SQL injection if filter.ToMap() is not properly sanitized."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "content_hash": "87605421662c58c15a93ffbf0ab490fd",
+  "timestamp": "2025-09-20T20:46:45.387029+07:00",
+  "result": {
+    "path": ".github/workflows",
+    "purpose": "This folder is responsible for defining GitHub Actions workflows for various automation tasks related to CI/CD processes.",
+    "languages": {
+      "YAML": 4
+    },
+    "key_modules": [
+      "check.yml",
+      "dockerize.yml",
+      "golangci-lint.yml",
+      "sentry.yml"
+    ],
+    "dependencies": [
+      "axieinfinity/workflows-samples"
+    ],
+    "architecture": "The folder follows a modular architecture pattern where each YAML file defines a specific workflow for automation tasks, allowing for easy integration and management of CI/CD processes.",
+    "file_summaries": {
+      ".github/workflows/check.yml": {
+        "language": "YAML",
+        "purpose": "Defines a GitHub Actions workflow for checking security and building on pull requests to the main branch.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "axieinfinity/workflows-samples/.github/workflows/security-basic-scan.yml@ce8adf700c0cd05672ebd7154c828d396631c153"
+        ],
+        "complexity": "low"
+      },
+      ".github/workflows/dockerize.yml": {
+        "language": "YAML",
+        "purpose": "Defines a GitHub Actions workflow for Dockerizing a mobile wallet manager.",
+        "key_types": [
+          "workflow",
+          "job",
+          "permissions"
+        ],
+        "functions": [
+          "on",
+          "jobs",
+          "uses",
+          "with",
+          "secrets"
+        ],
+        "imports": [
+          "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml"
+        ],
+        "side_effects": [
+          "Triggers on push and pull request events",
+          "Uses secrets for secure operations"
+        ],
+        "risks": [
+          "Exposure of sensitive information if secrets are not managed properly"
+        ],
+        "complexity": "medium"
+      },
+      ".github/workflows/golangci-lint.yml": {
+        "language": "YAML",
+        "purpose": "Configuration file for GitHub Actions to run golangci-lint on push and pull request events.",
+        "key_types": [
+          "job",
+          "workflow"
+        ],
+        "functions": [
+          "golangci"
+        ],
+        "imports": [
+          "axieinfinity/workflows-samples/.github/workflows/testing-go.yml"
+        ],
+        "side_effects": [
+          "Triggers linting process on code changes"
+        ],
+        "risks": [
+          "Exposure of secrets if not properly managed"
+        ],
+        "complexity": "low"
+      },
+      ".github/workflows/sentry.yml": {
+        "language": "YAML",
+        "purpose": "Defines a GitHub Actions workflow for Sentry release management.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "axieinfinity/workflows-samples/.github/workflows/sentry-release.yml@main"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

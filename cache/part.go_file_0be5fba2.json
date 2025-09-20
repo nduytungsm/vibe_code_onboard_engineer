@@ -1,0 +1,25 @@
+{
+  "content_hash": "b8d6095395491d7eb23fee2c09b36e38",
+  "timestamp": "2025-09-20T20:44:28.700174+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines types and constants for parts of a game character, including their attributes and abilities.",
+    "key_types": [
+      "PartType",
+      "PartSkin",
+      "PartSkinWrap",
+      "Part",
+      "PartAbility"
+    ],
+    "functions": [
+      "String()",
+      "Gen256IntToPartSkin(int) PartSkin",
+      "Gen512IntToPartSkin(int) PartSkin",
+      "NewPartSkinCounter() PartSkinCounter"
+    ],
+    "imports": [
+      "fmt"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "content_hash": "c38265ac3ed9aa66e93f7fa138d23dbf",
+  "timestamp": "2025-09-20T20:47:33.533443+07:00",
+  "result": {
+    "path": "pkg/helper",
+    "purpose": "Provides various utility functions and helpers for handling data types, binding, JSON conversion, authentication, and more within the application.",
+    "languages": {
+      "Go": 12
+    },
+    "key_modules": [
+      "big.go",
+      "binder.go",
+      "convert_json_key_to_snake_case.go",
+      "hmac_token.go",
+      "mapstruct_hook.go",
+      "par.go",
+      "pointer.go",
+      "ronin.go",
+      "slice.go",
+      "strings.go",
+      "tls.go",
+      "user_agent.go"
+    ],
+    "dependencies": [
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
+      "github.com/Masterminds/semver",
+      "github.com/inhies/go-bytesize",
+      "github.com/mitchellh/mapstructure",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/ethereum/go-ethereum/crypto"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing utility functions and types into separate files for better maintainability and reusability.",
+    "file_summaries": {
+      "pkg/helper/big.go": {
+        "language": "Go",
+        "purpose": "Provides a function to determine the maximum of two big integers.",
+        "key_types": [
+          "*big.Int"
+        ],
+        "functions": [
+          "Max"
+        ],
+        "imports": [
+          "math/big"
+        ],
+        "complexity": "low"
+      },
+      "pkg/helper/binder.go": {
+        "language": "Go",
+        "purpose": "Provides binding functionality for Echo framework with support for headers.",
+        "key_types": [
+          "BindFunc",
+          "echo.Context",
+          "echo.Binder"
+        ],
+        "functions": [
+          "Bind",
+          "NewBindWithHeaders"
+        ],
+        "imports": [
+          "github.com/labstack/echo/v4"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/convert_json_key_to_snake_case.go": {
+        "language": "Go",
+        "purpose": "Converts JSON keys from camelCase to snake_case.",
+        "key_types": [
+          "json.RawMessage",
+          "map[string]json.RawMessage",
+          "[]json.RawMessage"
+        ],
+        "functions": [
+          "ConvertKeysToSnakeCase",
+          "_convertKeysForObject",
+          "_convertKeysForArray",
+          "_fixKey"
+        ],
+        "imports": [
+          "encoding/json",
+          "strings"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/hmac_token.go": {
+        "language": "Go",
+        "purpose": "Generates an HMAC access token for authentication purposes.",
+        "key_types": [
+          "string",
+          "error"
+        ],
+        "functions": [
+          "GenerateHMACAccessToken"
+        ],
+        "imports": [
+          "fmt",
+          "strings",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/mapstruct_hook.go": {
+        "language": "Go",
+        "purpose": "Provides decode hook functions for converting string representations to specific types.",
+        "key_types": [
+          "mapstructure.DecodeHookFunc",
+          "reflect.Type",
+          "bytesize.ByteSize",
+          "semver.Constraints"
+        ],
+        "functions": [
+          "StringToByteSizeHookFunc",
+          "StringToSemverConditionHookFunc"
+        ],
+        "imports": [
+          "reflect",
+          "github.com/Masterminds/semver",
+          "github.com/inhies/go-bytesize",
+          "github.com/mitchellh/mapstructure"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/par.go": {
+        "language": "Go",
+        "purpose": "This file provides a helper for handling results of functions that may return an error, including parallel execution of such functions.",
+        "key_types": [
+          "Result[T]"
+        ],
+        "functions": [
+          "IsOk",
+          "IsError",
+          "Error",
+          "MustGet",
+          "TupleToResult",
+          "ParDo"
+        ],
+        "imports": [
+          "sync"
+        ],
+        "side_effects": [
+          "Panic if MustGet is called on an error result"
+        ],
+        "risks": [
+          "Potential race conditions if not handled properly in ParDo"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/pointer.go": {
+        "language": "Go",
+        "purpose": "Defines a generic function to create a pointer to a value of any type.",
+        "key_types": [
+          "T"
+        ],
+        "functions": [
+          "NewPointer"
+        ],
+        "imports": [],
+        "complexity": "low"
+      },
+      "pkg/helper/ronin.go": {
+        "language": "Go",
+        "purpose": "Provides utility functions for normalizing Ethereum addresses, hashing messages, and validating signatures.",
+        "key_types": [
+          "string",
+          "common.Hash"
+        ],
+        "functions": [
+          "NormalizeAddress",
+          "HashMessage",
+          "IsValidSignature"
+        ],
+        "imports": [
+          "fmt",
+          "strings",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/ethereum/go-ethereum/crypto"
+        ],
+        "risks": [
+          "Potential for incorrect address normalization leading to security issues.",
+          "Improper handling of signature validation could allow unauthorized access."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/slice.go": {
+        "language": "Go",
+        "purpose": "Provides utility functions for manipulating slices, including filtering, finding indices, converting slices to maps, and mapping items.",
+        "key_types": [
+          "slice",
+          "map",
+          "function"
+        ],
+        "functions": [
+          "Filter",
+          "IndexOf",
+          "SliceToMap",
+          "Map",
+          "ItemInSlice"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/helper/strings.go": {
+        "language": "Go",
+        "purpose": "Truncates a string to a specified maximum length, ensuring it does not cut off words.",
+        "key_types": [
+          "string"
+        ],
+        "functions": [
+          "EllipticalTruncate"
+        ],
+        "imports": [
+          "unicode"
+        ],
+        "complexity": "low"
+      },
+      "pkg/helper/tls.go": {
+        "language": "Go",
+        "purpose": "This file provides a function to convert provided certificate and key data into a TLS configuration.",
+        "key_types": [
+          "tls.Config",
+          "tls.Certificate",
+          "x509.CertPool"
+        ],
+        "functions": [
+          "ConvertToTLSConfig"
+        ],
+        "imports": [
+          "crypto/tls",
+          "crypto/x509"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/user_agent.go": {
+        "language": "Go",
+        "purpose": "This file provides functionality to parse and handle user agent strings in the context of a web application.",
+        "key_types": [
+          "UserAgent"
+        ],
+        "functions": [
+          "UserAgentFromContext"
+        ],
+        "imports": [
+          "fmt",
+          "strings",
+          "github.com/labstack/echo/v4"
+        ],
+        "risks": [
+          "Potential for malformed user agent strings leading to errors"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

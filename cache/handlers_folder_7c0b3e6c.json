@@ -1,0 +1,153 @@
+{
+  "content_hash": "f7ad190e32235b7079b1416b8bfae820",
+  "timestamp": "2025-09-20T20:46:16.343394+07:00",
+  "result": {
+    "path": "handlers",
+    "purpose": "This folder contains handlers for various operations related to blockchain, NFTs, and token information, facilitating communication between the web server and external services.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "blockchain_handler.go",
+      "coinbase_handler.go",
+      "nft_mapping_handler.go",
+      "token_info_handler.go"
+    ],
+    "dependencies": [
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/nft_mapping"
+    ],
+    "architecture": "The folder follows a modular architecture pattern where each handler is responsible for a specific domain of functionality, promoting separation of concerns and maintainability.",
+    "file_summaries": {
+      "handlers/blockchain_handler.go": {
+        "language": "Go",
+        "purpose": "This file defines a handler for blockchain-related operations, including fetching token balances, transaction history, NFT collections, and gas suggestions.",
+        "key_types": [
+          "BlockchainHandler",
+          "blockchainHandler"
+        ],
+        "functions": [
+          "GetConfig",
+          "GetTokenBalances",
+          "GetTransactionsHistory",
+          "GetTransactionsByHash",
+          "GetNFTCollections",
+          "GetNFTItems",
+          "GetNFTItem",
+          "GetTokenInfo",
+          "GetPriceChart",
+          "GetGasSuggestion",
+          "SendRPC",
+          "SearchToken",
+          "PostSearchToken",
+          "GetTransactionsHistoryV2",
+          "NewBlockchainHandler"
+        ],
+        "imports": [
+          "cmp",
+          "net/http",
+          "slices",
+          "time",
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo"
+        ],
+        "complexity": "medium"
+      },
+      "handlers/coinbase_handler.go": {
+        "language": "Go",
+        "purpose": "Handles requests related to Coinbase buy options.",
+        "key_types": [
+          "CoinbaseHandler",
+          "coinbaseHandler",
+          "coinbase.Service",
+          "coinbase.GetBuyOptionsRequest"
+        ],
+        "functions": [
+          "GetBuyOptions",
+          "NewCoinbaseHandler"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase"
+        ],
+        "side_effects": [
+          "Interacts with external services to fetch buy options",
+          "Returns JSON response to the client"
+        ],
+        "risks": [
+          "Potential for handling sensitive financial data",
+          "Error handling may expose internal service errors"
+        ],
+        "complexity": "medium"
+      },
+      "handlers/nft_mapping_handler.go": {
+        "language": "Go",
+        "purpose": "Handles NFT mapping operations including saving, retrieving, and listing NFT mappings.",
+        "key_types": [
+          "NFTMappingHandler",
+          "nftMappingHandler",
+          "Service",
+          "SaveNFTMappingRequest",
+          "SaveBatchNFTMappingRequest",
+          "GetNFTMappingsListRequest",
+          "GetOneNFTMappingRequest",
+          "ListResponse",
+          "NFTMapping"
+        ],
+        "functions": [
+          "InternalSaveMapping",
+          "InternalSaveBatchMapping",
+          "InternalGetList",
+          "PublicGetOne",
+          "PublicGetList",
+          "NewNFTMappingHandler"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/nft_mapping"
+        ],
+        "complexity": "medium"
+      },
+      "handlers/token_info_handler.go": {
+        "language": "Go",
+        "purpose": "Handles token information requests and responses in a web server context.",
+        "key_types": [
+          "TokenInfoHandler",
+          "tokenInfoHandler",
+          "tokeninfo.Service"
+        ],
+        "functions": [
+          "GetTokenInfosList",
+          "SaveTokenInfo",
+          "InternalCrawlMetadata",
+          "NewTokenInfoHandler"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

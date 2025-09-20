@@ -4,12 +4,14 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"strings"
 	"sync"
 
 	"repo-explanation/cache"
 	"repo-explanation/config"
 	"repo-explanation/internal/chunker"
 	"repo-explanation/internal/detector"
+	"repo-explanation/internal/microservices"
 	"repo-explanation/internal/openai"
 )
 
@@ -102,6 +104,37 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 	projectSummary, err := a.reducePhaseProject(ctx, folderSummaries)
 	if err != nil {
 		return nil, fmt.Errorf("project reduce phase failed: %v", err)
+	}
+	
+	// Phase 5: Detailed architectural analysis
+	fmt.Println("🔍 Performing detailed architectural analysis...")
+	importantFiles := a.extractImportantFiles(files)
+	
+	// Convert pointer maps to value maps for the detailed analysis
+	fileSummariesForAnalysis := make(map[string]openai.FileSummary)
+	for k, v := range fileSummaries {
+		fileSummariesForAnalysis[k] = *v
+	}
+	
+	folderSummariesForAnalysis := make(map[string]openai.FolderSummary)
+	for k, v := range folderSummaries {
+		folderSummariesForAnalysis[k] = *v
+	}
+	
+	detailedAnalysis, err := a.openaiClient.AnalyzeRepositoryDetails(ctx, a.crawler.basePath, folderSummariesForAnalysis, fileSummariesForAnalysis, importantFiles)
+	if err != nil {
+		fmt.Printf("⚠️  Detailed analysis failed: %v\n", err)
+		// Continue without detailed analysis
+	} else {
+		projectSummary.DetailedAnalysis = detailedAnalysis
+		fmt.Println("✅ Detailed analysis complete!")
+	}
+	
+	// Phase 6: Enhance with intelligent microservice discovery if it's a monorepo
+	if projectSummary.DetailedAnalysis != nil && projectSummary.DetailedAnalysis.RepoLayout == "monorepo" {
+		fmt.Println("🔍 Discovering microservices...")
+		a.enhanceWithMicroserviceDiscovery(ctx, files, projectType, projectSummary)
+		fmt.Println("✅ Microservice discovery complete!")
 	}
 	
 	fmt.Println("✅ Project analysis complete!")
@@ -315,4 +348,215 @@ func (a *Analyzer) reducePhaseProject(ctx context.Context, folderSummaries map[s
 	}
 	
 	return summary, nil
+}
+
+// extractImportantFiles extracts key files that are important for architectural analysis
+func (a *Analyzer) extractImportantFiles(files []FileInfo) map[string]string {
+	importantFiles := make(map[string]string)
+	
+	// Define important file patterns
+	importantPatterns := []string{
+		"readme", "readme.md", "readme.txt",
+		"package.json", "go.mod", "pyproject.toml", "requirements.txt", "pom.xml", "build.gradle",
+		"docker-compose.yml", "docker-compose.yaml", "dockerfile",
+		"turbo.json", "lerna.json", "nx.json", "pnpm-workspace.yaml", "go.work",
+		"makefile", "cargo.toml", "composer.json", "gemfile",
+		".github/workflows", "k8s", "kubernetes", "terraform",
+	}
+	
+	for _, file := range files {
+		filename := strings.ToLower(filepath.Base(file.Path))
+		filepath_lower := strings.ToLower(file.RelativePath)
+		
+		// Check if file matches important patterns
+		for _, pattern := range importantPatterns {
+			if strings.Contains(filename, pattern) || strings.Contains(filepath_lower, pattern) {
+				// Read file content (limit to first 2000 characters for analysis)
+				content, err := a.crawler.ReadFile(file)
+				if err == nil {
+					if len(content) > 2000 {
+						content = content[:2000] + "..."
+					}
+					importantFiles[file.RelativePath] = content
+				}
+				break
+			}
+		}
+	}
+	
+	return importantFiles
+}
+
+// enhanceWithMicroserviceDiscovery enhances the analysis with intelligent microservice discovery
+func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files []FileInfo, projectType *detector.DetectionResult, projectSummary *openai.ProjectSummary) {
+	if projectSummary.DetailedAnalysis == nil {
+		return
+	}
+
+	// Determine project language/type for service discovery
+	var projectTypeStr string
+	if projectType != nil {
+		switch strings.ToLower(string(projectType.PrimaryType)) {
+		case "backend":
+			// Check if it's Go or Node.js based on files
+			if a.hasGoFiles(files) {
+				projectTypeStr = "go"
+			} else if a.hasNodeFiles(files) {
+				projectTypeStr = "node.js"
+			}
+		case "frontend", "fullstack":
+			if a.hasReactFiles(files) {
+				projectTypeStr = "react.js"
+			} else if a.hasNodeFiles(files) {
+				projectTypeStr = "node.js"
+			}
+		}
+	}
+
+	if projectTypeStr == "" {
+		return // Unsupported project type for microservice discovery
+	}
+
+	// Create service discovery instance
+	discovery := microservices.NewServiceDiscovery(a.crawler.basePath, projectTypeStr)
+
+	// Convert files to map for discovery
+	fileMap := make(map[string]string)
+	folderStructure := make([]string, 0)
+	
+	for _, file := range files {
+		content, err := a.crawler.ReadFile(file)
+		if err == nil {
+			fileMap[file.RelativePath] = content
+		}
+		
+		// Build folder structure
+		dir := filepath.Dir(file.RelativePath)
+		if dir != "." {
+			folderStructure = append(folderStructure, dir)
+		}
+	}
+
+	// Discover services
+	discoveredServices, err := discovery.DiscoverServices(fileMap, folderStructure)
+	if err != nil {
+		fmt.Printf("⚠️  Service discovery failed: %v\n", err)
+		return
+	}
+
+	// Convert discovered services to MonorepoService format
+	var enhancedServices []openai.MonorepoService
+	for _, service := range discoveredServices {
+		enhancedService := openai.MonorepoService{
+			Name:         service.Name,
+			Path:         service.Path,
+			Language:     a.getLanguageFromProjectType(projectTypeStr),
+			ShortPurpose: a.generateServicePurpose(service.Name, service.APIType),
+			APIType:      string(service.APIType),
+			Port:         service.Port,
+			EntryPoint:   service.EntryPoint,
+		}
+		enhancedServices = append(enhancedServices, enhancedService)
+	}
+
+	// Replace or enhance existing MonorepoServices with discovered ones
+	if len(enhancedServices) > 0 {
+		projectSummary.DetailedAnalysis.MonorepoServices = enhancedServices
+		fmt.Printf("📦 Discovered %d microservices with external APIs\n", len(enhancedServices))
+	}
+}
+
+// hasGoFiles checks if the project contains Go files
+func (a *Analyzer) hasGoFiles(files []FileInfo) bool {
+	for _, file := range files {
+		if strings.HasSuffix(file.Path, ".go") {
+			return true
+		}
+	}
+	return false
+}
+
+// hasNodeFiles checks if the project contains Node.js files
+func (a *Analyzer) hasNodeFiles(files []FileInfo) bool {
+	for _, file := range files {
+		if strings.HasSuffix(file.RelativePath, "package.json") ||
+		   strings.HasSuffix(file.Path, ".js") ||
+		   strings.HasSuffix(file.Path, ".ts") {
+			return true
+		}
+	}
+	return false
+}
+
+// hasReactFiles checks if the project contains React files
+func (a *Analyzer) hasReactFiles(files []FileInfo) bool {
+	for _, file := range files {
+		if strings.HasSuffix(file.RelativePath, "package.json") {
+			content, err := a.crawler.ReadFile(file)
+			if err == nil && strings.Contains(content, "\"react\"") {
+				return true
+			}
+		}
+		if strings.HasSuffix(file.Path, ".jsx") || strings.HasSuffix(file.Path, ".tsx") {
+			return true
+		}
+	}
+	return false
+}
+
+// getLanguageFromProjectType converts project type to language string
+func (a *Analyzer) getLanguageFromProjectType(projectType string) string {
+	switch strings.ToLower(projectType) {
+	case "go", "golang":
+		return "Go"
+	case "node.js", "nodejs":
+		return "Node.js"
+	case "react.js", "reactjs":
+		return "JavaScript/TypeScript"
+	default:
+		return "Unknown"
+	}
+}
+
+// generateServicePurpose generates a purpose description based on service name and type
+func (a *Analyzer) generateServicePurpose(serviceName string, apiType microservices.ServiceType) string {
+	nameWords := strings.Split(strings.ToLower(serviceName), "-")
+	
+	// Generate purpose based on common service name patterns
+	for _, word := range nameWords {
+		switch word {
+		case "auth", "authentication":
+			return "Handles user authentication and authorization"
+		case "user", "users":
+			return "Manages user accounts and profiles"
+		case "payment", "payments":
+			return "Processes payments and billing operations"
+		case "order", "orders":
+			return "Manages order processing and fulfillment"
+		case "product", "products", "catalog":
+			return "Manages product catalog and inventory"
+		case "notification", "notifications":
+			return "Handles notifications and messaging"
+		case "api", "gateway":
+			return "API gateway routing requests to microservices"
+		case "admin":
+			return "Administrative interface and operations"
+		case "search":
+			return "Provides search and indexing capabilities"
+		case "analytics":
+			return "Analytics and reporting functionality"
+		}
+	}
+	
+	// Default purpose based on API type
+	switch apiType {
+	case microservices.HTTPService:
+		return fmt.Sprintf("HTTP API service: %s", serviceName)
+	case microservices.GRPCService:
+		return fmt.Sprintf("gRPC service: %s", serviceName)
+	case microservices.GraphQLService:
+		return fmt.Sprintf("GraphQL API: %s", serviceName)
+	default:
+		return fmt.Sprintf("Service: %s", serviceName)
+	}
 }

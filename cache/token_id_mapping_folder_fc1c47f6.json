@@ -1,0 +1,77 @@
+{
+  "content_hash": "37e513d7c723f59a7d6da28c152ff2fe",
+  "timestamp": "2025-09-20T20:47:04.558593+07:00",
+  "result": {
+    "path": "cmd/token_id_mapping",
+    "purpose": "This folder/module is responsible for mapping CoinGecko token IDs to contract addresses and decimals, handling token metadata and caching.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/getsentry/sentry-go",
+      "github.com/rs/zerolog/log",
+      "gorm.io/gorm",
+      "gorm.io/gorm/logger",
+      "github.com/axieinfinity/ronin-wallet-proxy/config",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker",
+      "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to token ID mapping and utilizing various external services for data handling and error tracking.",
+    "file_summaries": {
+      "cmd/token_id_mapping/main.go": {
+        "language": "Go",
+        "purpose": "This file maps CoinGecko token IDs to contract addresses and decimals, handling token metadata and caching.",
+        "key_types": [
+          "context.Context",
+          "sync.WaitGroup",
+          "time.Time",
+          "repositories.TokenInfoRepositories",
+          "coingecko.Service",
+          "md.TokenInfo"
+        ],
+        "functions": [
+          "main",
+          "crawlTokenContractInfo",
+          "retrieveTokenMetadata",
+          "migrateSomeBridgeTokenContracts",
+          "removeDuplicateContract"
+        ],
+        "imports": [
+          "context",
+          "sync",
+          "time",
+          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+          "github.com/getsentry/sentry-go",
+          "github.com/rs/zerolog/log",
+          "gorm.io/gorm",
+          "gorm.io/gorm/logger",
+          "github.com/axieinfinity/ronin-wallet-proxy/config",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker",
+          "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+        ],
+        "side_effects": [
+          "Initializes Sentry for error tracking",
+          "Interacts with a PostgreSQL database",
+          "Publishes events to Redis"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information in logs",
+          "Error handling may not cover all edge cases"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "content_hash": "98297d58206284840d0368567a580d30",
+  "timestamp": "2025-09-20T20:45:59.632588+07:00",
+  "result": {
+    "path": "repositories",
+    "purpose": "Responsible for managing database interactions related to NFTs and tokens, including pagination and various CRUD operations.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "default.go",
+      "nft_display_mapping.go",
+      "token.go"
+    ],
+    "dependencies": [
+      "gorm.io/gorm",
+      "context",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ronin-wallet-proxy/models"
+    ],
+    "architecture": "The folder follows a repository pattern, encapsulating database access logic and providing a clean API for data operations.",
+    "file_summaries": {
+      "repositories/default.go": {
+        "language": "Go",
+        "purpose": "Provides a pagination function for database queries using GORM.",
+        "key_types": [
+          "int",
+          "func",
+          "*gorm.DB"
+        ],
+        "functions": [
+          "paginate"
+        ],
+        "imports": [
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Modifies the database query parameters based on pagination logic."
+        ],
+        "complexity": "medium"
+      },
+      "repositories/nft_display_mapping.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing NFT display mappings, including saving, searching, and batch operations.",
+        "key_types": [
+          "NFTDisplayMappingRepo",
+          "nftDisplayMappingRepo",
+          "NFTMapping",
+          "NFTMappingFilter",
+          "Paging"
+        ],
+        "functions": [
+          "Save",
+          "SaveBatch",
+          "SearchOne",
+          "SearchList",
+          "NewNFTMappingRepo"
+        ],
+        "imports": [
+          "context",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ronin-wallet-proxy/models"
+        ],
+        "side_effects": [
+          "Database transactions for saving and searching NFT mappings."
+        ],
+        "risks": [
+          "Potential SQL injection if filter.ToMap() is not properly sanitized."
+        ],
+        "complexity": "medium"
+      },
+      "repositories/token.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository interface and its implementation for managing token information in a database.",
+        "key_types": [
+          "TokenInfoRepositories",
+          "tokenInfoRepo",
+          "TokenInfo"
+        ],
+        "functions": [
+          "GetByID",
+          "CreateNewTokenInfo",
+          "UpsertTokenInfo",
+          "UpsertListOfTokenInfo",
+          "UpdateTokenDescription",
+          "UpdateTokenMetadata",
+          "GetByCoingeckoIDs",
+          "GetTokenByID",
+          "GetAllTokens",
+          "GetTokenNoDescription",
+          "SearchByNameAndSymbol",
+          "DeleteTokenInfoByIDs",
+          "NewTokenInfoRepo"
+        ],
+        "imports": [
+          "context",
+          "slices",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause",
+          "github.com/axieinfinity/ronin-wallet-proxy/models"
+        ],
+        "side_effects": [
+          "Database transactions are initiated and may modify the database state."
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not properly sanitized.",
+          "Error handling may expose sensitive information if not managed correctly."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

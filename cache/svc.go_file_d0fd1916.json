@@ -1,0 +1,69 @@
+{
+  "content_hash": "02aac27a311abd0f438d30442a01a906",
+  "timestamp": "2025-09-20T20:45:31.992811+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for managing token balances, transactions, and NFT collections in a blockchain context.",
+    "key_types": [
+      "Service",
+      "service",
+      "ChainConfig",
+      "ProviderConfig",
+      "CacheConfig",
+      "TokenPrices",
+      "TokenInfo"
+    ],
+    "functions": [
+      "GetSupportedChains",
+      "GetTokenBalances",
+      "GetTransactions",
+      "GetTransactionByHash",
+      "GetNFTCollections",
+      "GetNFTItems",
+      "GetNFTItem",
+      "GetGasSuggestion",
+      "SendRPC",
+      "GetTokenInfo",
+      "GetPriceChart"
+    ],
+    "imports": [
+      "cmp",
+      "context",
+      "encoding/json",
+      "fmt",
+      "io",
+      "math/big",
+      "math/rand",
+      "net/http",
+      "strconv",
+      "strings",
+      "sync",
+      "time",
+      "github.com/getsentry/sentry-go",
+      "github.com/labstack/echo/v4",
+      "github.com/redis/go-redis/v9",
+      "github.com/rs/zerolog/log",
+      "github.com/samber/lo",
+      "golang.org/x/exp/maps",
+      "golang.org/x/exp/slices",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/axieinfinity/ronin-wallet-proxy/middleware",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/exchangerate",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/share",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo",
+      "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+    ],
+    "side_effects": [
+      "Caching token balances and transactions",
+      "Logging errors and warnings"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data in logs",
+      "Caching may lead to stale data if not managed properly"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "content_hash": "55ee9ce7c6a2f172b6c9fffc3fd8256b",
+  "timestamp": "2025-09-20T20:48:22.322652+07:00",
+  "result": {
+    "path": "pkg/providers/gas-collector",
+    "purpose": "Responsible for collecting and suggesting gas fees for Ethereum transactions based on EIP-1559 and legacy methods.",
+    "languages": {
+      "Go": 6
+    },
+    "key_modules": [
+      "config.go",
+      "eip_1559_gas_collector.go",
+      "func.go",
+      "gas_collector.go",
+      "legacy_gas_collector.go",
+      "models.go"
+    ],
+    "dependencies": [
+      "github.com/ethereum/go-ethereum/ethclient",
+      "github.com/ethereum/go-ethereum/rpc",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, with separate files handling configuration, data structures, and different gas collection strategies.",
+    "file_summaries": {
+      "pkg/providers/gas-collector/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for a gas collector",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "pkg/providers/gas-collector/eip_1559_gas_collector.go": {
+        "language": "Go",
+        "purpose": "This file implements a gas collector for Ethereum's EIP-1559 fee structure, providing gas fee suggestions based on historical data.",
+        "key_types": [
+          "EIP1559GasCollector",
+          "Config",
+          "GetGasSuggestionRes",
+          "EIP1559GasSuggestion"
+        ],
+        "functions": [
+          "GetGasSuggestion",
+          "newEIP1559GasCollector"
+        ],
+        "imports": [
+          "context",
+          "math/big",
+          "net/http",
+          "github.com/ethereum/go-ethereum/ethclient",
+          "github.com/ethereum/go-ethereum/rpc",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+        ],
+        "side_effects": [
+          "Establishes a connection to an Ethereum client if not provided."
+        ],
+        "risks": [
+          "Potential for denial of service if the RPC endpoint is unresponsive.",
+          "Logging sensitive configuration details if an error occurs."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/gas-collector/func.go": {
+        "language": "Go",
+        "purpose": "This file implements functions to collect and calculate gas fees for Ethereum transactions using EIP-1559.",
+        "key_types": [
+          "AvgBlock",
+          "EIP1559GasCollector",
+          "ethereum.FeeHistory"
+        ],
+        "functions": [
+          "safeDivCeil",
+          "getFeeHistory",
+          "getExactBaseFee",
+          "emptyFeeHistory",
+          "safeMulFloatCeil",
+          "avgBaseFee",
+          "avgMinerTip",
+          "avgGasUsedRatio"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "math/big",
+          "github.com/ethereum/go-ethereum",
+          "github.com/ethereum/go-ethereum/rpc"
+        ],
+        "risks": [
+          "Potential division by zero in safeDivCeil function"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/gas-collector/gas_collector.go": {
+        "language": "Go",
+        "purpose": "This file defines a GasCollector interface and a function to create a new GasCollector based on configuration.",
+        "key_types": [
+          "GasCollector",
+          "Config"
+        ],
+        "functions": [
+          "NewGasCollector"
+        ],
+        "imports": [
+          "context",
+          "strings",
+          "github.com/ethereum/go-ethereum/ethclient",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/gas-collector/legacy_gas_collector.go": {
+        "language": "Go",
+        "purpose": "This file implements a legacy gas collector that suggests gas prices for Ethereum transactions.",
+        "key_types": [
+          "LegacyGasCollector",
+          "Config",
+          "GetGasSuggestionRes",
+          "LegacyGasSuggestion"
+        ],
+        "functions": [
+          "roundToNearestTenMillion",
+          "GetGasSuggestion",
+          "newLegacyGasCollector"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "math/big",
+          "net/http",
+          "github.com/ethereum/go-ethereum/ethclient",
+          "github.com/ethereum/go-ethereum/rpc",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+        ],
+        "side_effects": [
+          "Establishes a connection to an Ethereum client",
+          "Logs fatal errors if configuration parsing fails"
+        ],
+        "risks": [
+          "Potential for denial of service if the RPC endpoint is unresponsive",
+          "Logging sensitive configuration details could expose them"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/providers/gas-collector/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures for handling gas fee history in Ethereum transactions.",
+        "key_types": [
+          "GetFeesHistoryResponse",
+          "Block",
+          "big.Int"
+        ],
+        "functions": [],
+        "imports": [
+          "math/big"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

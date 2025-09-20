@@ -1,301 +1,102 @@
 {
-  "content_hash": "d9e74c10b23df366294aa53e90ffebf8",
-  "timestamp": "2025-09-18T13:21:32.566378+07:00",
+  "content_hash": "ae218a591da5c38da9c04b157fae7992",
+  "timestamp": "2025-09-20T20:46:06.377476+07:00",
   "result": {
     "path": "root",
-    "purpose": "This folder/module is responsible for setting up a React application using TypeScript and Vite as the build tool, along with ESLint for code quality and Tailwind CSS for styling.",
+    "purpose": "This folder/module is responsible for the Ronin Wallet proxy, providing functionality for querying wallet information and managing services.",
     "languages": {
-      "HTML": 1,
-      "JSON": 7,
-      "JavaScript": 3,
-      "Markdown": 1,
-      "TypeScript": 1
+      "Markdown": 2,
+      "YAML": 2,
+      "bash": 1
     },
     "key_modules": [
-      ".eslintrc.js",
-      "eslint.config.js",
-      "package.json",
-      "vite.config.ts",
-      "README.md"
+      "README.md",
+      "SECURITY.md",
+      "docker-compose.yml",
+      "entrypoint.sh",
+      ".golangci.yaml"
     ],
     "dependencies": [
-      "@hello-pangea/dnd",
-      "@mynaui/icons-react",
-      "@radix-ui/react-checkbox",
-      "@radix-ui/react-dialog",
-      "@radix-ui/react-label",
-      "@radix-ui/react-popover",
-      "@radix-ui/react-slot",
-      "class-variance-authority",
-      "clsx",
-      "date-fns",
-      "dayjs",
-      "lucide-react",
-      "react",
-      "react-custom-roulette",
-      "react-day-picker",
-      "react-dom",
-      "react-icons",
-      "react-router-dom",
-      "tailwind-merge",
-      "uuid",
-      "zustand",
-      "@eslint/js",
-      "@tailwindcss/postcss",
-      "@tailwindcss/vite",
-      "@types/node",
-      "@types/react",
-      "@types/react-beautiful-dnd",
-      "@types/react-dom",
-      "@typescript-eslint/eslint-plugin",
-      "@typescript-eslint/parser",
-      "@vitejs/plugin-react",
-      "autoprefixer",
-      "eslint",
-      "eslint-config-prettier",
-      "eslint-plugin-react",
-      "eslint-plugin-react-hooks",
-      "eslint-plugin-react-refresh",
-      "globals",
-      "postcss",
-      "prettier",
-      "tailwindcss",
-      "tw-animate-css",
-      "typescript",
-      "typescript-eslint",
-      "vite"
+      "Skynet API",
+      "Moralis",
+      "Getblock.io",
+      "Coingecko"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing configuration files, source code, and documentation in a structured manner to facilitate development and maintainability.",
+    "architecture": "The folder follows a microservices architecture pattern, utilizing Docker for service management and configuration files for linting and documentation.",
     "file_summaries": {
-      ".eslintrc.js": {
-        "language": "JavaScript",
-        "purpose": "Configuration file for ESLint to enforce coding standards and best practices in a JavaScript/React project.",
+      ".golangci.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for GolangCI-Lint, specifying linter settings and rules.",
         "key_types": [
-          "Object",
-          "Array"
+          "linters-settings",
+          "rules",
+          "files",
+          "deny",
+          "settings"
         ],
-        "functions": [
-          "module.exports"
-        ],
-        "imports": [
-          "eslint",
-          "plugin:react",
-          "plugin:@typescript-eslint",
-          "prettier"
-        ],
-        "complexity": "low"
+        "functions": [],
+        "imports": [],
+        "complexity": "medium"
       },
       "README.md": {
         "language": "Markdown",
-        "purpose": "Documentation for a React + TypeScript + Vite template setup",
+        "purpose": "Documentation for the Ronin Wallet proxy, detailing its functionality and usage.",
         "key_types": [],
-        "functions": [],
+        "functions": [
+          "Query account balance and erc20 token balances",
+          "Query owned NFT collections",
+          "Query owned NFT items belonging to a collection",
+          "Query NFT item detail with metadata",
+          "Query native token transfer transactions (for Ronin network only)",
+          "Query recent transactions made by a wallet",
+          "Query token transfer transactions relating to a wallet",
+          "Query transaction detail",
+          "Query gas fee suggestion",
+          "Submit RPC call"
+        ],
         "imports": [
-          "@vitejs/plugin-react",
-          "@vitejs/plugin-react-swc",
-          "eslint-plugin-react-x",
-          "eslint-plugin-react-dom"
+          "Skynet API",
+          "Moralis",
+          "Getblock.io",
+          "Coingecko"
         ],
         "complexity": "low"
       },
-      "components.json": {
-        "language": "JSON",
-        "purpose": "Configuration file for a UI component library",
+      "SECURITY.md": {
+        "language": "Markdown",
+        "purpose": "Documentation of the security policy for the project, including supported versions and vulnerability reporting.",
         "key_types": [],
         "functions": [],
         "imports": [],
         "complexity": "low"
       },
-      "eslint.config.js": {
-        "language": "JavaScript",
-        "purpose": "Configuration file for ESLint with TypeScript and React support",
+      "docker-compose.yml": {
+        "language": "YAML",
+        "purpose": "Defines services for a Docker application including PostgreSQL and Redis.",
         "key_types": [
-          "Object",
-          "Array"
+          "services",
+          "environment"
         ],
-        "functions": [
-          "config"
-        ],
-        "imports": [
-          "@eslint/js",
-          "globals",
-          "eslint-plugin-react-hooks",
-          "eslint-plugin-react-refresh",
-          "typescript-eslint",
-          "eslint/config"
-        ],
+        "functions": [],
+        "imports": [],
         "side_effects": [
-          "Modifies ESLint configuration"
+          "Creates Docker containers for PostgreSQL and Redis services."
         ],
         "risks": [
-          "Potential misconfiguration leading to linting issues"
+          "Exposing database ports to the host may lead to unauthorized access."
         ],
-        "complexity": "medium"
+        "complexity": "low"
       },
-      "index.html": {
-        "language": "HTML",
-        "purpose": "This file serves as the main entry point for a web application using Vite, React, and TypeScript.",
+      "entrypoint.sh": {
+        "language": "bash",
+        "purpose": "This script serves as an entry point to run a service application.",
         "key_types": [],
-        "functions": [],
-        "imports": [
-          "/src/index.css",
-          "/src/main.tsx"
-        ],
-        "complexity": "low"
-      },
-      "package-lock.json": {
-        "language": "JSON",
-        "purpose": "This file is a package lock file for a Node.js project, specifying the exact versions of dependencies and their sub-dependencies.",
-        "key_types": [
-          "object",
-          "string"
-        ],
-        "functions": [],
-        "imports": [
-          "@hello-pangea/dnd",
-          "@mynaui/icons-react",
-          "@radix-ui/react-checkbox",
-          "@radix-ui/react-dialog",
-          "@radix-ui/react-label",
-          "@radix-ui/react-popover",
-          "@radix-ui/react-slot",
-          "class-variance-authority",
-          "clsx",
-          "date-fns",
-          "dayjs",
-          "lucide-react",
-          "react",
-          "react-custom-roulette",
-          "react-day-picker",
-          "react-dom",
-          "react-icons",
-          "react-router-dom",
-          "tailwind-merge",
-          "uuid",
-          "zustand",
-          "@eslint/js",
-          "@tailwindcss/postcss",
-          "@tailwindcss/vite",
-          "@types/node",
-          "@types/react",
-          "@types/react-beautiful-dnd",
-          "@types/react-dom",
-          "@typescript-eslint/eslint-plugin",
-          "@typescript-eslint/parser",
-          "@vitejs/plugin-react",
-          "autoprefixer",
-          "eslint",
-          "eslint-config-prettier",
-          "eslint-plugin-react",
-          "eslint-plugin-react-hooks",
-          "eslint-plugin-react-refresh",
-          "globals",
-          "postcss",
-          "prettier",
-          "tailwindcss",
-          "tw-animate-css",
-          "typescript",
-          "typescript-eslint",
-          "vite"
-        ],
-        "complexity": "medium"
-      },
-      "package.json": {
-        "language": "JSON",
-        "purpose": "Configuration file for a React application using Vite as the build tool.",
-        "key_types": [
-          "dependencies",
-          "devDependencies",
-          "scripts"
-        ],
         "functions": [
-          "dev",
-          "build",
-          "lint",
-          "preview"
+          "main"
         ],
-        "imports": [
-          "@hello-pangea/dnd",
-          "@mynaui/icons-react",
-          "@radix-ui/react-checkbox",
-          "@radix-ui/react-dialog",
-          "@radix-ui/react-label",
-          "@radix-ui/react-popover",
-          "@radix-ui/react-slot",
-          "class-variance-authority",
-          "clsx",
-          "date-fns",
-          "dayjs",
-          "lucide-react",
-          "react",
-          "react-custom-roulette",
-          "react-day-picker",
-          "react-dom",
-          "react-icons",
-          "react-router-dom",
-          "tailwind-merge",
-          "uuid",
-          "zustand"
-        ],
-        "side_effects": [
-          "Installation of dependencies and devDependencies may affect the project environment."
-        ],
-        "risks": [
-          "Potential for outdated dependencies leading to security vulnerabilities."
-        ],
-        "complexity": "medium"
-      },
-      "tsconfig.app.json": {
-        "language": "JSON",
-        "purpose": "Configuration file for TypeScript compiler options in a React application.",
-        "key_types": [
-          "compilerOptions"
-        ],
-        "functions": [],
         "imports": [],
-        "complexity": "low"
-      },
-      "tsconfig.json": {
-        "language": "JSON",
-        "purpose": "Configuration file for TypeScript compiler options and project references",
-        "key_types": [
-          "compilerOptions",
-          "references"
-        ],
-        "functions": [],
-        "imports": [],
-        "complexity": "low"
-      },
-      "tsconfig.node.json": {
-        "language": "JSON",
-        "purpose": "Configuration file for TypeScript compiler options in a Node.js environment",
-        "key_types": [
-          "compilerOptions"
-        ],
-        "functions": [],
-        "imports": [
-          "vite.config.ts"
-        ],
-        "complexity": "low"
-      },
-      "vite.config.ts": {
-        "language": "TypeScript",
-        "purpose": "Configuration file for Vite build tool with React and Tailwind CSS support",
-        "key_types": [
-          "Config",
-          "Plugin"
-        ],
-        "functions": [
-          "defineConfig"
-        ],
-        "imports": [
-          "vite",
-          "@vitejs/plugin-react",
-          "@tailwindcss/vite",
-          "path"
-        ],
         "side_effects": [
-          "Configures Vite to use React and Tailwind CSS"
+          "Executes an external application './app' with passed arguments."
         ],
         "complexity": "low"
       }
