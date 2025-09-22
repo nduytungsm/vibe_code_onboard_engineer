@@ -1,69 +1,48 @@
 {
-  "content_hash": "a9b93a183354d1cb808205bd3a88bd77",
-  "timestamp": "2025-09-20T20:21:03.160985+07:00",
+  "content_hash": "ae70f69bb8b00853d0b877fa34b37224",
+  "timestamp": "2025-09-20T21:31:25.703226+07:00",
   "result": {
     "path": "src",
-    "purpose": "Contains the main source files for the web application, including styles and type definitions.",
+    "purpose": "Sets up a database connection and an API server with routes for users, orders, and products.",
     "languages": {
-      "CSS": 2,
-      "TypeScript": 1
+      "Go": 1
     },
     "key_modules": [
-      "App.css",
-      "index.css",
-      "vite-env.d.ts"
+      "main.go"
     ],
     "dependencies": [
-      "tw-animate-css",
-      "tailwindcss",
-      "vite/client"
+      "database/sql",
+      "github.com/gorilla/mux",
+      "github.com/lib/pq"
     ],
-    "architecture": "The folder follows a modular architecture, organizing styles and type definitions separately to maintain clarity and reusability.",
+    "architecture": "The folder follows a modular architecture pattern, focusing on separation of concerns with a clear structure for handling database connections and API routing.",
     "file_summaries": {
-      "src/App.css": {
-        "language": "CSS",
-        "purpose": "Styles for a web application, including layout, animations, and theming.",
+      "src/main.go": {
+        "language": "Go",
+        "purpose": "Sets up a database connection and an API server with routes for users, orders, and products.",
         "key_types": [
-          "@import",
-          "custom-variant",
-          "keyframes",
-          "media queries",
-          "CSS variables"
+          "sql.DB",
+          "mux.Router"
         ],
-        "functions": [],
+        "functions": [
+          "main",
+          "getUsersHandler",
+          "getOrdersHandler",
+          "getProductsHandler"
+        ],
         "imports": [
-          "tw-animate-css"
+          "database/sql",
+          "github.com/gorilla/mux",
+          "github.com/lib/pq"
         ],
         "side_effects": [
-          "Modifies scrollbar visibility",
-          "Applies animations on hover",
-          "Defines custom themes"
+          "Establishes a database connection",
+          "Sets up HTTP routes"
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not properly sanitized"
         ],
         "complexity": "medium"
-      },
-      "src/index.css": {
-        "language": "CSS",
-        "purpose": "Styling for a web application, including utility classes and responsive design.",
-        "key_types": [],
-        "functions": [],
-        "imports": [
-          "tailwindcss"
-        ],
-        "side_effects": [
-          "Modifies scrollbar visibility",
-          "Applies styles based on color scheme preference"
-        ],
-        "complexity": "medium"
-      },
-      "src/vite-env.d.ts": {
-        "language": "TypeScript",
-        "purpose": "Defines TypeScript types for Vite client environment.",
-        "key_types": [],
-        "functions": [],
-        "imports": [
-          "vite/client"
-        ],
-        "complexity": "low"
       }
     }
   }

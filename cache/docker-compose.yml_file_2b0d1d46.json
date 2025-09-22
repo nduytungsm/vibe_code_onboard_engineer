@@ -1,0 +1,14 @@
+{
+  "content_hash": "400357de42cb41f33402781a093acb81",
+  "timestamp": "2025-09-20T21:19:16.948848+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a multi-container Docker application with services for API, users, and payments.",
+    "key_types": [
+      "services"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

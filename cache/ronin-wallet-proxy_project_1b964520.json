@@ -1,27 +1,28 @@
 {
-  "content_hash": "aea350cdbeeb37bfda116e0449716601",
-  "timestamp": "2025-09-20T20:49:38.238987+07:00",
+  "content_hash": "ad9309f10cbf8392ce56f9f7bb22a20a",
+  "timestamp": "2025-09-20T21:07:03.088232+07:00",
   "result": {
-    "purpose": "This project is a blockchain wallet proxy service that facilitates interactions with various blockchain networks, allowing users to query wallet balances, NFT collections, and transaction histories. It integrates with multiple external APIs to provide real-time data and supports functionalities like gas fee suggestions and token management.",
-    "architecture": "The project follows a microservices architecture, utilizing a modular structure for different components such as API routes, services, and data models, with Docker for containerization and orchestration.",
+    "purpose": "This project is a blockchain wallet proxy service that facilitates interactions with various blockchain networks, allowing users to query wallet information, manage NFTs, and retrieve token balances. It integrates with multiple external APIs to provide comprehensive data on cryptocurrencies and NFTs, enhancing user experience in the blockchain ecosystem.",
+    "architecture": "The project follows a microservices architecture, utilizing Docker for service management and a modular structure for organizing components, routes, and services. It employs a combination of RESTful APIs and gRPC for communication between services.",
     "data_models": [
       "User",
       "Token",
       "NFT",
       "Transaction",
-      "Wallet"
+      "Wallet",
+      "GasFee"
     ],
     "external_services": [
-      "Skynet API",
+      "CoinGecko",
       "Moralis",
       "Getblock.io",
-      "CoinGecko"
+      "Skynet API",
+      "Redis",
+      "PostgreSQL"
     ],
     "languages": {
       "Bash": 1,
-      "CSS": 2,
       "Go": 120,
-      "HTML": 2,
       "JSON": 30,
       "Markdown": 5,
       "SQL": 3,
@@ -1001,8 +1002,8 @@
           "YAML": 1
         },
         "key_modules": [
-          "config.go",
-          "config.yml"
+          "config/config.go",
+          "config/config.yml"
         ],
         "dependencies": [
           "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
@@ -1019,7 +1020,7 @@
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker"
         ],
-        "architecture": "The folder follows a modular architecture pattern, separating configuration management into distinct files for Go code and YAML settings, facilitating easy management and loading of application configurations.",
+        "architecture": "The folder follows a modular architecture pattern, separating configuration management into distinct files for Go code and YAML settings, allowing for clear organization and easy maintenance.",
         "file_summaries": {
           "config/config.go": {
             "language": "Go",

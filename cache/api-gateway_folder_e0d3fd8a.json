@@ -1,9 +1,9 @@
 {
-  "content_hash": "d80624984e3857d51c176c96cd8922b9",
-  "timestamp": "2025-09-20T20:41:17.240086+07:00",
+  "content_hash": "564abfeadfe6dbbe03e4bfaedae91152",
+  "timestamp": "2025-09-20T21:03:39.239903+07:00",
   "result": {
     "path": "cmd/api-gateway",
-    "purpose": "This folder/module is responsible for implementing an API gateway that routes requests to authentication and user services, and provides health check and profile/dashboard endpoints.",
+    "purpose": "This folder/module is responsible for implementing an API gateway that proxies requests to user and payment microservices and provides a health check endpoint.",
     "languages": {
       "Go": 1
     },
@@ -14,39 +14,36 @@
       "github.com/labstack/echo/v4",
       "github.com/labstack/echo/v4/middleware"
     ],
-    "architecture": "The folder follows a microservices architecture pattern, where the API gateway acts as a single entry point for client requests, routing them to appropriate backend services.",
+    "architecture": "The folder follows a microservices architecture pattern, where the API gateway acts as a single entry point for client requests, routing them to appropriate microservices.",
     "file_summaries": {
       "cmd/api-gateway/main.go": {
         "language": "Go",
-        "purpose": "This file implements an API gateway that routes requests to authentication and user services, and provides health check and profile/dashboard endpoints.",
+        "purpose": "This file implements an API gateway that proxies requests to user and payment microservices and provides a health check endpoint.",
         "key_types": [
           "echo.Echo",
-          "http.Request",
           "http.Response",
-          "http.HandlerFunc"
+          "http.Request"
         ],
         "functions": [
           "main",
-          "authMiddleware",
-          "getProfile",
-          "getDashboard",
+          "proxyToUserService",
+          "proxyToPaymentService",
           "healthCheck"
         ],
         "imports": [
           "net/http",
-          "net/http/httputil",
-          "net/url",
           "os",
+          "fmt",
           "github.com/labstack/echo/v4",
           "github.com/labstack/echo/v4/middleware"
         ],
         "side_effects": [
-          "Starts an HTTP server",
-          "Logs requests and responses"
+          "Makes HTTP calls to external services",
+          "Logs requests and recovers from panics"
         ],
         "risks": [
-          "Potential exposure of sensitive information if token validation fails",
-          "Dependency on external services for authentication and user data"
+          "Potential exposure of service URLs through environment variables",
+          "Dependency on external services for functionality"
         ],
         "complexity": "medium"
       }

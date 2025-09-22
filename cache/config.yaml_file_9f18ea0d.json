@@ -1,0 +1,15 @@
+{
+  "content_hash": "ab87c126a81ea6ead8a431c7d95751ff",
+  "timestamp": "2025-09-20T21:03:25.181818+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for service URLs and API gateway settings",
+    "key_types": [
+      "services",
+      "api_gateway"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

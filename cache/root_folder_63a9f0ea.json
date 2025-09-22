@@ -1,104 +1,27 @@
 {
-  "content_hash": "ae218a591da5c38da9c04b157fae7992",
-  "timestamp": "2025-09-20T20:46:06.377476+07:00",
+  "content_hash": "16dc398d3d3a57bdd906afc56523d33f",
+  "timestamp": "2025-09-20T21:19:25.858567+07:00",
   "result": {
     "path": "root",
-    "purpose": "This folder/module is responsible for the Ronin Wallet proxy, providing functionality for querying wallet information and managing services.",
+    "purpose": "Defines a multi-container Docker application with services for API, users, and payments.",
     "languages": {
-      "Markdown": 2,
-      "YAML": 2,
-      "bash": 1
+      "YAML": 1
     },
     "key_modules": [
-      "README.md",
-      "SECURITY.md",
-      "docker-compose.yml",
-      "entrypoint.sh",
-      ".golangci.yaml"
+      "docker-compose.yml"
     ],
-    "dependencies": [
-      "Skynet API",
-      "Moralis",
-      "Getblock.io",
-      "Coingecko"
-    ],
-    "architecture": "The folder follows a microservices architecture pattern, utilizing Docker for service management and configuration files for linting and documentation.",
+    "dependencies": [],
+    "architecture": "The folder follows a microservices architecture pattern, orchestrating multiple services through Docker containers.",
     "file_summaries": {
-      ".golangci.yaml": {
+      "docker-compose.yml": {
         "language": "YAML",
-        "purpose": "Configuration file for GolangCI-Lint, specifying linter settings and rules.",
+        "purpose": "Defines a multi-container Docker application with services for API, users, and payments.",
         "key_types": [
-          "linters-settings",
-          "rules",
-          "files",
-          "deny",
-          "settings"
+          "services"
         ],
         "functions": [],
         "imports": [],
         "complexity": "medium"
-      },
-      "README.md": {
-        "language": "Markdown",
-        "purpose": "Documentation for the Ronin Wallet proxy, detailing its functionality and usage.",
-        "key_types": [],
-        "functions": [
-          "Query account balance and erc20 token balances",
-          "Query owned NFT collections",
-          "Query owned NFT items belonging to a collection",
-          "Query NFT item detail with metadata",
-          "Query native token transfer transactions (for Ronin network only)",
-          "Query recent transactions made by a wallet",
-          "Query token transfer transactions relating to a wallet",
-          "Query transaction detail",
-          "Query gas fee suggestion",
-          "Submit RPC call"
-        ],
-        "imports": [
-          "Skynet API",
-          "Moralis",
-          "Getblock.io",
-          "Coingecko"
-        ],
-        "complexity": "low"
-      },
-      "SECURITY.md": {
-        "language": "Markdown",
-        "purpose": "Documentation of the security policy for the project, including supported versions and vulnerability reporting.",
-        "key_types": [],
-        "functions": [],
-        "imports": [],
-        "complexity": "low"
-      },
-      "docker-compose.yml": {
-        "language": "YAML",
-        "purpose": "Defines services for a Docker application including PostgreSQL and Redis.",
-        "key_types": [
-          "services",
-          "environment"
-        ],
-        "functions": [],
-        "imports": [],
-        "side_effects": [
-          "Creates Docker containers for PostgreSQL and Redis services."
-        ],
-        "risks": [
-          "Exposing database ports to the host may lead to unauthorized access."
-        ],
-        "complexity": "low"
-      },
-      "entrypoint.sh": {
-        "language": "bash",
-        "purpose": "This script serves as an entry point to run a service application.",
-        "key_types": [],
-        "functions": [
-          "main"
-        ],
-        "imports": [],
-        "side_effects": [
-          "Executes an external application './app' with passed arguments."
-        ],
-        "complexity": "low"
       }
     }
   }

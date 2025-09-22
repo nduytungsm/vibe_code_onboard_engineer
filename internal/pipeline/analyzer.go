@@ -10,9 +10,11 @@ import (
 	"repo-explanation/cache"
 	"repo-explanation/config"
 	"repo-explanation/internal/chunker"
+	"repo-explanation/internal/database"
 	"repo-explanation/internal/detector"
 	"repo-explanation/internal/microservices"
 	"repo-explanation/internal/openai"
+	"repo-explanation/internal/relationships"
 )
 
 // Analyzer orchestrates the map-reduce analysis pipeline
@@ -131,10 +133,26 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 	}
 	
 	// Phase 6: Enhance with intelligent microservice discovery if it's a monorepo
+	var discoveredServices []microservices.DiscoveredService
 	if projectSummary.DetailedAnalysis != nil && projectSummary.DetailedAnalysis.RepoLayout == "monorepo" {
 		fmt.Println("🔍 Discovering microservices...")
-		a.enhanceWithMicroserviceDiscovery(ctx, files, projectType, projectSummary)
+		discoveredServices = a.enhanceWithMicroserviceDiscovery(ctx, files, projectType, projectSummary)
 		fmt.Println("✅ Microservice discovery complete!")
+		
+		// Phase 7: Discover service relationships using the discovered services
+		if len(discoveredServices) > 1 {
+			fmt.Println("🔗 Discovering service relationships...")
+			a.discoverServiceRelationships(files, discoveredServices, projectSummary)
+			fmt.Println("✅ Service relationship discovery complete!")
+		}
+	}
+
+	// Phase 8: Extract database schema from migrations (always run for backend projects)
+	if projectType != nil && (strings.ToLower(string(projectType.PrimaryType)) == "backend" || 
+							  strings.ToLower(string(projectType.PrimaryType)) == "fullstack") {
+		fmt.Println("🗃️  Discovering database schema...")
+		a.extractDatabaseSchema(files)
+		fmt.Println("✅ Database schema extraction complete!")
 	}
 	
 	fmt.Println("✅ Project analysis complete!")
@@ -388,9 +406,9 @@ func (a *Analyzer) extractImportantFiles(files []FileInfo) map[string]string {
 }
 
 // enhanceWithMicroserviceDiscovery enhances the analysis with intelligent microservice discovery
-func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files []FileInfo, projectType *detector.DetectionResult, projectSummary *openai.ProjectSummary) {
+func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files []FileInfo, projectType *detector.DetectionResult, projectSummary *openai.ProjectSummary) []microservices.DiscoveredService {
 	if projectSummary.DetailedAnalysis == nil {
-		return
+		return nil
 	}
 
 	// Determine project language/type for service discovery
@@ -414,7 +432,7 @@ func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files [
 	}
 
 	if projectTypeStr == "" {
-		return // Unsupported project type for microservice discovery
+		return nil // Unsupported project type for microservice discovery
 	}
 
 	// Create service discovery instance
@@ -441,7 +459,7 @@ func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files [
 	discoveredServices, err := discovery.DiscoverServices(fileMap, folderStructure)
 	if err != nil {
 		fmt.Printf("⚠️  Service discovery failed: %v\n", err)
-		return
+		return nil
 	}
 
 	// Convert discovered services to MonorepoService format
@@ -464,6 +482,8 @@ func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files [
 		projectSummary.DetailedAnalysis.MonorepoServices = enhancedServices
 		fmt.Printf("📦 Discovered %d microservices with external APIs\n", len(enhancedServices))
 	}
+
+	return discoveredServices
 }
 
 // hasGoFiles checks if the project contains Go files
@@ -558,5 +578,122 @@ func (a *Analyzer) generateServicePurpose(serviceName string, apiType microservi
 		return fmt.Sprintf("GraphQL API: %s", serviceName)
 	default:
 		return fmt.Sprintf("Service: %s", serviceName)
+	}
+}
+
+// discoverServiceRelationships discovers relationships between microservices
+func (a *Analyzer) discoverServiceRelationships(files []FileInfo, discoveredServices []microservices.DiscoveredService, projectSummary *openai.ProjectSummary) {
+	projectPath := a.crawler.basePath
+	cacheDir := "./relationships_cache"
+	
+	// Try to load from cache first
+	cachedGraph, err := relationships.LoadServiceGraphFromFile(projectPath, cacheDir)
+	if err != nil {
+		fmt.Printf("⚠️  Failed to load cache: %v\n", err)
+	}
+	
+	var serviceGraph *relationships.ServiceGraph
+	
+	if cachedGraph != nil {
+		fmt.Println("📋 Using cached service relationship data")
+		serviceGraph = cachedGraph
+	} else {
+		fmt.Println("🔍 Analyzing service relationships...")
+		
+		// Convert files to map for relationship discovery
+		fileMap := make(map[string]string)
+		for _, file := range files {
+			content, err := a.crawler.ReadFile(file)
+			if err == nil {
+				fileMap[file.RelativePath] = content
+			}
+		}
+
+		// Create relationship discovery instance
+		relationshipDiscovery := relationships.NewRelationshipDiscovery(discoveredServices, fileMap)
+
+		// Discover relationships
+		serviceGraph, err = relationshipDiscovery.DiscoverRelationships(projectPath)
+		if err != nil {
+			fmt.Printf("⚠️  Service relationship discovery failed: %v\n", err)
+			return
+		}
+		
+		// Save to cache
+		if err := serviceGraph.SaveToFile(cacheDir); err != nil {
+			fmt.Printf("⚠️  Failed to save relationship cache: %v\n", err)
+		}
+	}
+
+	// Display the service dependency graph
+	if len(serviceGraph.Relationships) > 0 {
+		fmt.Printf("\n%s\n", serviceGraph.ConsoleVisualization())
+		fmt.Printf("🔗 Found %d service dependencies\n", len(serviceGraph.Relationships))
+		
+		// Generate and display Mermaid JSON
+		mermaidJSON, err := serviceGraph.GenerateMermaidJSON()
+		if err != nil {
+			fmt.Printf("⚠️  Failed to generate Mermaid JSON: %v\n", err)
+		} else {
+			fmt.Println("\n📊 MERMAID GRAPH (JSON):")
+			fmt.Println(strings.Repeat("─", 40))
+			fmt.Println(mermaidJSON)
+		}
+	} else {
+		fmt.Println("🔗 No service dependencies detected (services appear to be independent)")
+		
+		// Still generate Mermaid for independent services
+		mermaidJSON, err := serviceGraph.GenerateMermaidJSON()
+		if err != nil {
+			fmt.Printf("⚠️  Failed to generate Mermaid JSON: %v\n", err)
+		} else {
+			fmt.Println("\n📊 MERMAID GRAPH (JSON) - Independent Services:")
+			fmt.Println(strings.Repeat("─", 40))
+			fmt.Println(mermaidJSON)
+		}
+	}
+}
+
+// extractDatabaseSchema extracts database schema from SQL migration files
+func (a *Analyzer) extractDatabaseSchema(files []FileInfo) {
+	projectPath := a.crawler.basePath
+	
+	// Convert files to map for schema extraction
+	fileMap := make(map[string]string)
+	for _, file := range files {
+		content, err := a.crawler.ReadFile(file)
+		if err == nil {
+			fileMap[file.RelativePath] = content
+		}
+	}
+
+	// Create schema extractor
+	schemaExtractor := database.NewSchemaExtractor()
+
+	// Extract schema from migrations
+	schema, err := schemaExtractor.ExtractSchemaFromMigrations(projectPath, fileMap)
+	if err != nil {
+		fmt.Printf("⚠️  Database schema extraction failed: %v\n", err)
+		return
+	}
+
+	if len(schema.Tables) == 0 {
+		fmt.Println("🗃️  No database tables found in migrations")
+		return
+	}
+
+	// Generate PlantUML ERD
+	pumlContent := schemaExtractor.GeneratePlantUML()
+
+	// Save PlantUML file
+	if err := schemaExtractor.SavePlantUMLFile(projectPath, pumlContent); err != nil {
+		fmt.Printf("⚠️  Failed to save PlantUML file: %v\n", err)
+		return
+	}
+
+	// Display summary
+	fmt.Printf("🗃️  Found %d database tables in %s\n", len(schema.Tables), schema.MigrationPath)
+	for tableName, table := range schema.Tables {
+		fmt.Printf("   📊 %s (%d columns)\n", tableName, len(table.Columns))
 	}
 }

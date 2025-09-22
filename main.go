@@ -5,15 +5,16 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 	"repo-explanation/cli"
 	"repo-explanation/controllers"
 	"repo-explanation/routes"
+
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
-	var mode = flag.String("mode", "server", "Mode to run: 'server' or 'cli'")
+	mode := flag.String("mode", "server", "Mode to run: 'server' or 'cli'")
 	flag.Parse()
 
 	switch *mode {

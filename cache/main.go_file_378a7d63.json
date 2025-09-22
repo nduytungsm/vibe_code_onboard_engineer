@@ -1,0 +1,31 @@
+{
+  "content_hash": "304b2015784570f394255010437a9046",
+  "timestamp": "2025-09-20T21:31:20.311202+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Sets up a database connection and an API server with routes for users, orders, and products.",
+    "key_types": [
+      "sql.DB",
+      "mux.Router"
+    ],
+    "functions": [
+      "main",
+      "getUsersHandler",
+      "getOrdersHandler",
+      "getProductsHandler"
+    ],
+    "imports": [
+      "database/sql",
+      "github.com/gorilla/mux",
+      "github.com/lib/pq"
+    ],
+    "side_effects": [
+      "Establishes a database connection",
+      "Sets up HTTP routes"
+    ],
+    "risks": [
+      "Potential SQL injection if user input is not properly sanitized"
+    ],
+    "complexity": "medium"
+  }
+}

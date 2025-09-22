@@ -1,0 +1,27 @@
+{
+  "content_hash": "8d51d05c70194127cd5715bef0511d76",
+  "timestamp": "2025-09-20T21:03:25.421025+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a multi-container Docker application with services for an API gateway, user service, payment service, and a PostgreSQL database.",
+    "key_types": [
+      "services",
+      "environment variables"
+    ],
+    "functions": [
+      "build",
+      "ports",
+      "depends_on"
+    ],
+    "imports": [
+      "postgres:13"
+    ],
+    "side_effects": [
+      "Container orchestration and networking between services"
+    ],
+    "risks": [
+      "Exposure of sensitive environment variables if not managed properly"
+    ],
+    "complexity": "medium"
+  }
+}

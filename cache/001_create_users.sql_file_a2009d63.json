@@ -1,0 +1,26 @@
+{
+  "content_hash": "80b0de9f88b462ce932198b592820399",
+  "timestamp": "2025-09-20T21:31:16.809828+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines the structure of the users table and creates an index for email lookups.",
+    "key_types": [
+      "BIGINT",
+      "VARCHAR",
+      "TIMESTAMP"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "CREATE INDEX"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates a new table in the database",
+      "Creates an index on the users table"
+    ],
+    "risks": [
+      "Potential for SQL injection if user input is not properly sanitized"
+    ],
+    "complexity": "low"
+  }
+}

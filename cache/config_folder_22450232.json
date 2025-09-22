@@ -1,6 +1,6 @@
 {
   "content_hash": "66f4d19d17f7fea12bd249bf03831bbe",
-  "timestamp": "2025-09-20T20:47:11.950051+07:00",
+  "timestamp": "2025-09-20T21:06:51.479139+07:00",
   "result": {
     "path": "config",
     "purpose": "Configuration management for a server application, including loading settings from a config file and environment variables.",
@@ -9,8 +9,8 @@
       "YAML": 1
     },
     "key_modules": [
-      "config.go",
-      "config.yml"
+      "config/config.go",
+      "config/config.yml"
     ],
     "dependencies": [
       "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
@@ -27,7 +27,7 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker"
     ],
-    "architecture": "The folder follows a modular architecture pattern, separating configuration management into distinct files for Go code and YAML settings, facilitating easy management and loading of application configurations.",
+    "architecture": "The folder follows a modular architecture pattern, separating configuration management into distinct files for Go code and YAML settings, allowing for clear organization and easy maintenance.",
     "file_summaries": {
       "config/config.go": {
         "language": "Go",
