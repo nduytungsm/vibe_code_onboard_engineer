@@ -33,14 +33,14 @@ function App() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="glass-header">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <Code2 className="h-8 w-8 text-primary-600" />
-              <h1 className="ml-3 text-xl font-semibold text-gray-900">
+              <Code2 className="h-8 w-8 text-white drop-shadow-lg" />
+              <h1 className="ml-3 text-xl font-semibold text-white gradient-text">
                 Repository Analyzer
               </h1>
             </div>
@@ -55,7 +55,7 @@ function App() {
       </header>
 
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
+      <nav className="glass-nav">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-8">
             {tabs.map((tab) => {
@@ -64,10 +64,10 @@ function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center px-1 py-4 text-sm font-medium border-b-2 transition-colors ${
+                  className={`glass-tab flex items-center px-1 py-4 text-sm font-medium ${
                     activeTab === tab.id
-                      ? 'border-primary-500 text-primary-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      ? 'active text-white'
+                      : 'text-gray-100 hover:text-white'
                   }`}
                 >
                   <Icon className="h-4 w-4 mr-2" />
@@ -80,33 +80,33 @@ function App() {
       </nav>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 glass-container mx-4 mt-6">
         {activeTab === 'overview' && (
           <div className="space-y-6">
             {/* Project Summary */}
             <div className="card">
               <div className="card-header">
-                <h2>Project Analysis Summary</h2>
+                <h2 className="text-white font-semibold">Project Analysis Summary</h2>
               </div>
               <div className="card-content">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-primary-600">
+                    <div className="text-3xl font-bold text-white drop-shadow-lg">
                       {mockData.project.type}
                     </div>
-                    <div className="text-sm text-gray-500">Project Type</div>
+                    <div className="text-sm text-gray-200">Project Type</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-green-600">
+                    <div className="text-3xl font-bold text-green-300 drop-shadow-lg">
                       {mockData.project.confidence}
                     </div>
-                    <div className="text-sm text-gray-500">Confidence</div>
+                    <div className="text-sm text-gray-200">Confidence</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-blue-600">
+                    <div className="text-3xl font-bold text-blue-300 drop-shadow-lg">
                       {mockData.services.length}
                     </div>
-                    <div className="text-sm text-gray-500">Services</div>
+                    <div className="text-sm text-gray-200">Services</div>
                   </div>
                 </div>
               </div>
@@ -117,10 +117,10 @@ function App() {
               <div className="card">
                 <div className="card-content">
                   <div className="flex items-center">
-                    <Server className="h-8 w-8 text-blue-500" />
+                    <Server className="h-8 w-8 text-blue-300 drop-shadow-lg" />
                     <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-500">Architecture</div>
-                      <div className="text-lg font-semibold">{mockData.project.architecture}</div>
+                      <div className="text-sm font-medium text-gray-200">Architecture</div>
+                      <div className="text-lg font-semibold text-white">{mockData.project.architecture}</div>
                     </div>
                   </div>
                 </div>
@@ -129,10 +129,10 @@ function App() {
               <div className="card">
                 <div className="card-content">
                   <div className="flex items-center">
-                    <Database className="h-8 w-8 text-green-500" />
+                    <Database className="h-8 w-8 text-green-300 drop-shadow-lg" />
                     <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-500">Database Tables</div>
-                      <div className="text-lg font-semibold">{mockData.database.tables.length}</div>
+                      <div className="text-sm font-medium text-gray-200">Database Tables</div>
+                      <div className="text-lg font-semibold text-white">{mockData.database.tables.length}</div>
                     </div>
                   </div>
                 </div>
@@ -141,10 +141,10 @@ function App() {
               <div className="card">
                 <div className="card-content">
                   <div className="flex items-center">
-                    <GitBranch className="h-8 w-8 text-purple-500" />
+                    <GitBranch className="h-8 w-8 text-purple-300 drop-shadow-lg" />
                     <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-500">Dependencies</div>
-                      <div className="text-lg font-semibold">{mockData.database.relationships}</div>
+                      <div className="text-sm font-medium text-gray-200">Dependencies</div>
+                      <div className="text-lg font-semibold text-white">{mockData.database.relationships}</div>
                     </div>
                   </div>
                 </div>
@@ -154,7 +154,7 @@ function App() {
             {/* Tech Stack */}
             <div className="card">
               <div className="card-header">
-                <h3>Technology Stack</h3>
+                <h3 className="text-white font-semibold">Technology Stack</h3>
               </div>
               <div className="card-content">
                 <div className="flex flex-wrap gap-2">
@@ -173,17 +173,17 @@ function App() {
           <div className="space-y-6">
             <div className="card">
               <div className="card-header">
-                <h2>Discovered Services</h2>
+                <h2 className="text-white font-semibold">Discovered Services</h2>
               </div>
               <div className="card-content">
                 <div className="space-y-4">
                   {mockData.services.map((service) => (
-                    <div key={service.name} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                    <div key={service.name} className="glass-service-item flex items-center justify-between p-4">
                       <div className="flex items-center">
-                        <Server className="h-6 w-6 text-blue-500 mr-3" />
+                        <Server className="h-6 w-6 text-white drop-shadow-lg mr-3" />
                         <div>
-                          <div className="font-medium">{service.name}</div>
-                          <div className="text-sm text-gray-500">Port: {service.port}</div>
+                          <div className="font-medium text-white">{service.name}</div>
+                          <div className="text-sm text-gray-200">Port: {service.port}</div>
                         </div>
                       </div>
                       <span className={`badge ${service.type === 'gRPC' ? 'badge-warning' : 'badge-primary'}`}>
@@ -201,14 +201,14 @@ function App() {
           <div className="space-y-6">
             <div className="card">
               <div className="card-header">
-                <h2>Database Schema</h2>
+                <h2 className="text-white font-semibold">Database Schema</h2>
               </div>
               <div className="card-content">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {mockData.database.tables.map((table) => (
-                    <div key={table} className="p-4 border border-gray-200 rounded-lg text-center">
-                      <Database className="h-6 w-6 text-green-500 mx-auto mb-2" />
-                      <div className="font-medium">{table}</div>
+                    <div key={table} className="glass-db-item p-4 text-center">
+                      <Database className="h-6 w-6 text-white drop-shadow-lg mx-auto mb-2" />
+                      <div className="font-medium text-white">{table}</div>
                     </div>
                   ))}
                 </div>
@@ -222,11 +222,11 @@ function App() {
           <div className="card">
             <div className="card-content">
               <div className="text-center py-12">
-                <Code2 className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
+                <Code2 className="h-12 w-12 text-gray-300 drop-shadow-lg mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-white mb-2">
                   {tabs.find(t => t.id === activeTab)?.name} Coming Soon
                 </h3>
-                <p className="text-gray-500">
+                <p className="text-gray-200">
                   This section will display detailed {activeTab} information.
                 </p>
               </div>
