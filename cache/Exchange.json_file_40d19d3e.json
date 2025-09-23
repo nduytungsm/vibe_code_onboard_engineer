@@ -1,0 +1,22 @@
+{
+  "content_hash": "51cbabaf924e0b64f9facaea6dbf8fb2",
+  "timestamp": "2025-09-23T16:29:48.71871+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines the ABI for an Exchange contract, including events, functions, and constructor.",
+    "key_types": [
+      "IERC20",
+      "AbstractAuction"
+    ],
+    "functions": [
+      "addAuctionType",
+      "changeAdmin",
+      "createOrGetListing",
+      "getListing",
+      "getListingState",
+      "removeAdmin"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

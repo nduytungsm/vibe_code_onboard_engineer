@@ -1,6 +1,6 @@
 {
-  "content_hash": "eeb02325fdb21ee99fcb7fb2cd78c6fe",
-  "timestamp": "2025-09-20T20:48:39.586738+07:00",
+  "content_hash": "851574840186028b4f196bbf6e822af9",
+  "timestamp": "2025-09-23T16:31:22.540277+07:00",
   "result": {
     "path": "cmd/app",
     "purpose": "This folder/module is responsible for setting up and running the main application, including an HTTP server and a metrics server.",
@@ -65,13 +65,13 @@
           "github.com/axieinfinity/ronin-wallet-proxy/routes"
         ],
         "side_effects": [
-          "Starts HTTP server",
-          "Starts metrics server",
+          "Initializes Sentry for error tracking if enabled",
+          "Starts HTTP and metrics servers",
           "Handles OS interrupt signals for graceful shutdown"
         ],
         "risks": [
           "Potential exposure of sensitive information in logs if not properly configured",
-          "Dependency on external services (e.g., Sentry) which may introduce points of failure"
+          "Improper handling of shutdown could lead to data loss"
         ],
         "complexity": "medium"
       }

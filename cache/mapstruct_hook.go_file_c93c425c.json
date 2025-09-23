@@ -1,0 +1,25 @@
+{
+  "content_hash": "01b3e4380d820941854df25aa6502063",
+  "timestamp": "2025-09-23T16:28:58.385351+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides decode hook functions for converting string representations to specific types.",
+    "key_types": [
+      "mapstructure.DecodeHookFunc",
+      "reflect.Type",
+      "bytesize.ByteSize",
+      "semver.Constraints"
+    ],
+    "functions": [
+      "StringToByteSizeHookFunc",
+      "StringToSemverConditionHookFunc"
+    ],
+    "imports": [
+      "reflect",
+      "github.com/Masterminds/semver",
+      "github.com/inhies/go-bytesize",
+      "github.com/mitchellh/mapstructure"
+    ],
+    "complexity": "medium"
+  }
+}

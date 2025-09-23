@@ -1,9 +1,9 @@
 {
-  "content_hash": "f6e5beffd158aae619de5b345bdcd66e",
-  "timestamp": "2025-09-20T20:48:25.04062+07:00",
+  "content_hash": "41388effde6c9faad49b58a5b0e85594",
+  "timestamp": "2025-09-23T16:30:16.091382+07:00",
   "result": {
     "path": "_api_specs/_token_balances",
-    "purpose": "This folder/module is responsible for defining the request and response structures for token balances in a blockchain context.",
+    "purpose": "Defines the request and response structures for token balances in various blockchain contexts.",
     "languages": {
       "JSON": 3
     },
@@ -19,10 +19,8 @@
         "language": "JSON",
         "purpose": "Defines a request structure for token balances including native tokens and specified token standards.",
         "key_types": [
-          "object",
           "boolean",
-          "array",
-          "string"
+          "array"
         ],
         "functions": [],
         "imports": [],
@@ -41,7 +39,7 @@
       },
       "_api_specs/_token_balances/_TokenBalancesRoninWithRONResponse.json": {
         "language": "JSON",
-        "purpose": "This file contains a response structure for token balances associated with a specific owner address in the Ronin blockchain.",
+        "purpose": "This file contains a response structure for token balances in the Ronin blockchain.",
         "key_types": [
           "object",
           "array"

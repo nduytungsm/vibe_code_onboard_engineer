@@ -1,0 +1,23 @@
+{
+  "content_hash": "7a23e138599c7ee615a3f9f0356f97fe",
+  "timestamp": "2025-09-23T16:02:21.052817+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines the API specifications for Wallet X REST APIs, including endpoints for balances, transactions, and NFT collections.",
+    "key_types": [
+      "API Specification",
+      "Path",
+      "Response",
+      "Parameter"
+    ],
+    "functions": [
+      "getBalancesSummary",
+      "getTransactionByHash",
+      "getNFTCollectibles",
+      "getNFTItemOfACollectible",
+      "getGasSuggestion"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

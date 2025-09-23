@@ -1,0 +1,21 @@
+{
+  "content_hash": "5f362b6ca4f24520a7827e6d4f00dd31",
+  "timestamp": "2025-09-23T16:29:51.305701+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the structure and events for a smart contract related to land items.",
+    "key_types": [
+      "constructor",
+      "event"
+    ],
+    "functions": [
+      "addMinters",
+      "changeAdmin",
+      "approve",
+      "balanceOf",
+      "deconstructItemId"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

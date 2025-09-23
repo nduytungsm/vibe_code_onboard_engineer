@@ -1,0 +1,25 @@
+{
+  "content_hash": "b8d6095395491d7eb23fee2c09b36e38",
+  "timestamp": "2025-09-23T16:03:16.105438+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines types and constants for Axie parts and their attributes.",
+    "key_types": [
+      "PartType",
+      "PartSkin",
+      "PartSkinWrap",
+      "Part",
+      "PartAbility"
+    ],
+    "functions": [
+      "String()",
+      "Gen256IntToPartSkin(int) PartSkin",
+      "Gen512IntToPartSkin(int) PartSkin",
+      "NewPartSkinCounter() PartSkinCounter"
+    ],
+    "imports": [
+      "fmt"
+    ],
+    "complexity": "medium"
+  }
+}

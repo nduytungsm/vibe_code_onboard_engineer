@@ -1,0 +1,15 @@
+{
+  "content_hash": "4bb9af934125e1703132f2557803f745",
+  "timestamp": "2025-09-23T16:27:53.995551+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "This file contains a response structure for token balances in a blockchain context.",
+    "key_types": [
+      "object",
+      "array"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "content_hash": "708e7675af8ec40c4b9aee75dbd8c9b5",
-  "timestamp": "2025-09-20T20:46:38.736554+07:00",
+  "content_hash": "79a9c1b1bddcc9548008fc9ee2117042",
+  "timestamp": "2025-09-23T16:07:49.645472+07:00",
   "result": {
     "path": "pkg/providers/covalent",
-    "purpose": "Responsible for providing services and data models to interact with the Covalent API for blockchain data, including token balances, transactions, and NFTs.",
+    "purpose": "Responsible for providing services to interact with the Covalent API for fetching blockchain-related data such as token balances, transactions, and NFT information.",
     "languages": {
       "Go": 3
     },
@@ -18,7 +18,7 @@
       "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
       "github.com/axieinfinity/ronin-wallet-proxy/models"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating configuration, service logic, and data models for interacting with an external API.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating configuration, service logic, and data models for interacting with external APIs.",
     "file_summaries": {
       "pkg/providers/covalent/config.go": {
         "language": "Go",
@@ -34,7 +34,7 @@
       },
       "pkg/providers/covalent/cvl_svc.go": {
         "language": "Go",
-        "purpose": "Provides a service for interacting with blockchain data, including token balances, transactions, and NFTs.",
+        "purpose": "Provides a service for interacting with Ethereum blockchain to fetch token balances, transactions, and NFT data for a given wallet address.",
         "key_types": [
           "Service",
           "service",
@@ -74,7 +74,7 @@
         ],
         "side_effects": [
           "Makes HTTP requests to external services",
-          "Generates random numbers for API key selection"
+          "Generates random API keys for requests"
         ],
         "risks": [
           "Potential exposure of API keys if not handled securely",
@@ -84,7 +84,7 @@
       },
       "pkg/providers/covalent/models.go": {
         "language": "Go",
-        "purpose": "Defines data models for handling token balances and transactions in a blockchain context.",
+        "purpose": "Defines data models and structures for handling token balances and transactions in a blockchain context.",
         "key_types": [
           "Pagination",
           "TokenBalanceItem",

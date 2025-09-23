@@ -1,0 +1,50 @@
+{
+  "content_hash": "f1354e66446312ea678f7050d6266d30",
+  "timestamp": "2025-09-23T16:02:43.043896+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Crawl token information from CoinMarketCap and store it in a database.",
+    "key_types": [
+      "context.Context",
+      "sync.WaitGroup",
+      "map[string]string",
+      "repositories.TokenInfoRepositories",
+      "cmc.Service",
+      "worker.Dispatcher"
+    ],
+    "functions": [
+      "main",
+      "addNewRetrieveMetadataJob",
+      "retrieveTokenMetadata"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "slices",
+      "sync",
+      "time",
+      "github.com/getsentry/sentry-go",
+      "github.com/rs/zerolog/log",
+      "gorm.io/gorm",
+      "gorm.io/gorm/logger",
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/axieinfinity/ronin-wallet-proxy/config",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/cmc",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker",
+      "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+    ],
+    "side_effects": [
+      "Initializes Sentry for error tracking",
+      "Connects to a PostgreSQL database",
+      "Publishes a message to a Redis channel"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information in logs",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

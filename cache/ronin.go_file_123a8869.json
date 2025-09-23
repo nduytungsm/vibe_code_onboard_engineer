@@ -1,0 +1,28 @@
+{
+  "content_hash": "a7112ff76ebdc0b3ab7ae43bb4dbd953",
+  "timestamp": "2025-09-23T16:28:59.53483+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides utility functions for normalizing Ethereum addresses, hashing messages, and validating signatures.",
+    "key_types": [
+      "string",
+      "common.Hash"
+    ],
+    "functions": [
+      "NormalizeAddress",
+      "HashMessage",
+      "IsValidSignature"
+    ],
+    "imports": [
+      "fmt",
+      "strings",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/ethereum/go-ethereum/crypto"
+    ],
+    "risks": [
+      "Potential for signature forgery if inputs are not properly validated."
+    ],
+    "complexity": "medium"
+  }
+}

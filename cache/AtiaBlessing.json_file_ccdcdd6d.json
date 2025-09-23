@@ -1,0 +1,32 @@
+{
+  "content_hash": "6eef5c14b7f2bf4262804482990704f0",
+  "timestamp": "2025-09-23T16:04:32.577225+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines a smart contract ABI for managing streaks and roles.",
+    "key_types": [
+      "constructor",
+      "error",
+      "event",
+      "function"
+    ],
+    "functions": [
+      "activateStreak",
+      "getStreak",
+      "initialize",
+      "grantRole",
+      "revokeRole",
+      "hasRole",
+      "getRoleAdmin",
+      "getRoleMember",
+      "getRoleMemberCount",
+      "hasCurrentlyActivated",
+      "activeStreakLifeTime",
+      "DEFAULT_ADMIN_ROLE",
+      "startedAtBlock",
+      "supportsInterface"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

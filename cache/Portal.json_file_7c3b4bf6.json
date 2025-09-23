@@ -1,0 +1,24 @@
+{
+  "content_hash": "4fcbc78c19ac2ac12d2a4db35261f338",
+  "timestamp": "2025-09-23T16:04:47.965798+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines the structure and events for a smart contract related to a portal system.",
+    "key_types": [
+      "constructor",
+      "event",
+      "function",
+      "struct"
+    ],
+    "functions": [
+      "DEFAULT_ADMIN_ROLE",
+      "DOMAIN_SEPARATOR",
+      "PORTAL_OPERATOR",
+      "burnSLP",
+      "burnedSLP",
+      "calculateWithdrawalFee"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "ac1142e3745ca85c26fd89f002fd98d7",
+  "timestamp": "2025-09-23T16:03:31.624649+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for an exchange rate service.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

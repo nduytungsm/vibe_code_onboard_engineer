@@ -1,0 +1,16 @@
+{
+  "content_hash": "c64d74b97393b186882637970d54cac3",
+  "timestamp": "2025-09-23T16:03:23.348351+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for the Coinbase API.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

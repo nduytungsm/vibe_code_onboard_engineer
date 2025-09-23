@@ -1,9 +1,9 @@
 {
-  "content_hash": "b3d9971a572d0c0ab4cfb39e61dd3810",
-  "timestamp": "2025-09-20T20:47:50.257169+07:00",
+  "content_hash": "66eb5fb830a46e4d3081513b82ae7fdc",
+  "timestamp": "2025-09-23T16:31:12.427767+07:00",
   "result": {
     "path": "pkg/worker",
-    "purpose": "This folder/module is responsible for managing a pool of worker goroutines to process jobs concurrently.",
+    "purpose": "Responsible for managing a pool of workers to process jobs concurrently.",
     "languages": {
       "Go": 4
     },
@@ -18,7 +18,7 @@
       "time",
       "github.com/rs/zerolog/log"
     ],
-    "architecture": "The folder follows a concurrent processing architecture using goroutines, with a dispatcher managing worker pools and job execution.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating worker management and job processing functionalities within distinct files.",
     "file_summaries": {
       "pkg/worker/config.go": {
         "language": "Go",
@@ -34,7 +34,7 @@
       },
       "pkg/worker/dispatcher.go": {
         "language": "Go",
-        "purpose": "This file implements a Dispatcher that manages a pool of worker goroutines to process jobs concurrently.",
+        "purpose": "Manages a pool of workers to process jobs concurrently.",
         "key_types": [
           "Dispatcher",
           "Config",
@@ -56,13 +56,14 @@
           "Blocks on worker availability"
         ],
         "risks": [
-          "Potential deadlock if job queue is not managed properly"
+          "Potential deadlocks if worker pool is exhausted",
+          "Race conditions if not properly synchronized"
         ],
         "complexity": "medium"
       },
       "pkg/worker/job.go": {
         "language": "Go",
-        "purpose": "Defines a Job type with an executable function.",
+        "purpose": "Defines a Job struct with an executable function.",
         "key_types": [
           "Job"
         ],

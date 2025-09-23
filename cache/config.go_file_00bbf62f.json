@@ -1,0 +1,46 @@
+{
+  "content_hash": "87f07a8ee240a9ebde1117fc7087f56b",
+  "timestamp": "2025-09-23T16:02:43.813734+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Configuration management for a server application, including loading settings from a config file and environment variables.",
+    "key_types": [
+      "Schema",
+      "Server",
+      "Sentry",
+      "TLSConfig",
+      "Logging",
+      "Profiling"
+    ],
+    "functions": [
+      "Init"
+    ],
+    "imports": [
+      "fmt",
+      "strconv",
+      "strings",
+      "sync",
+      "time",
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/mitchellh/mapstructure",
+      "github.com/rs/zerolog",
+      "github.com/spf13/viper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/cmc",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/exchangerate",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker"
+    ],
+    "side_effects": [
+      "Panic if the configuration file cannot be read or unmarshalled."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if logging is not properly configured."
+    ],
+    "complexity": "medium"
+  }
+}

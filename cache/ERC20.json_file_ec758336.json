@@ -1,0 +1,22 @@
+{
+  "content_hash": "d61ffcc47ab4ccaaa095f9183cf47c51",
+  "timestamp": "2025-09-23T16:29:47.426772+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines the ERC20 token standard events and functions.",
+    "key_types": [
+      "event",
+      "function"
+    ],
+    "functions": [
+      "allowance",
+      "approve",
+      "balanceOf",
+      "totalSupply",
+      "transfer",
+      "transferFrom"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

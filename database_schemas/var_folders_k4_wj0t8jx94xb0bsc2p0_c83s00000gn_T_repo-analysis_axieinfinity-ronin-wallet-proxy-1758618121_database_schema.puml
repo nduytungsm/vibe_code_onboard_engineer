@@ -1,0 +1,37 @@
+@startuml
+!define MASTER_COLOR #E8F4FD
+!define DETAIL_COLOR #FFF2CC
+
+entity nft_mappings {
+  chain : varchar(100) [not null]
+  contract : varchar(100) [not null]
+  created_at : timestamp [not null, default CURRENT_TIMESTAMP]
+  mapping : jsonb [not null]
+  name : varchar(100) [not null]
+  updated_at : timestamp [not null, default CURRENT_TIMESTAMP]
+  version : varchar(100) [not null]
+}
+
+entity token_infos {
+  cgk_id : varchar
+  circulating_supply : float8
+  contract_addresses : jsonb
+  crawl_done : bool
+  description : text
+  id : varchar [not null]
+  infinite_supply : bool
+  last_updated : timestamptz
+  logo : text
+  max_supply : float8
+  name : varchar(100) [not null]
+  platform : jsonb
+  quote : jsonb
+  slug : varchar(100)
+  symbol : varchar(100) [not null]
+  tags : text
+  total_supply : float8
+  tvl_ratio : float8
+}
+
+
+@enduml

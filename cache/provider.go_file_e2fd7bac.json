@@ -1,0 +1,44 @@
+{
+  "content_hash": "c60d3148dc65720ea6848efb52c8f76d",
+  "timestamp": "2025-09-23T16:29:27.709457+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a Provider interface for handling token balances, transactions, and NFT collections, along with a function to parse provider configuration.",
+    "key_types": [
+      "Provider",
+      "GetTokenBalancesReq",
+      "GetTokenBalancesRes",
+      "GetTransactionsReq",
+      "GetTransactionsRes",
+      "GetNFTCollectionsReq",
+      "GetNFTItemsReq",
+      "GetNFIItemsRes",
+      "GetNFTItemReq",
+      "NFTItem",
+      "GetTxnByHashReq",
+      "Transaction",
+      "GetGasSuggestionReq",
+      "GetGasSuggestionRes"
+    ],
+    "functions": [
+      "GetID",
+      "GetTokenBalances",
+      "GetTransactions",
+      "GetNFTCollections",
+      "GetNFTItems",
+      "GetNFTItem",
+      "GetTransactionByHash",
+      "GetGasSuggestion",
+      "SendRPC",
+      "parseProviderConfig"
+    ],
+    "imports": [
+      "context",
+      "io",
+      "github.com/mitchellh/mapstructure",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+    ],
+    "complexity": "medium"
+  }
+}

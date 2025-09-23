@@ -1,0 +1,22 @@
+{
+  "content_hash": "1fbdceeb71f7f7914f776fc918ab5033",
+  "timestamp": "2025-09-23T16:04:51.739387+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a custom big integer type with JSON marshaling and unmarshaling capabilities.",
+    "key_types": [
+      "MyBigInt"
+    ],
+    "functions": [
+      "Marshal",
+      "UnmarshalJSON"
+    ],
+    "imports": [
+      "bytes",
+      "encoding/json",
+      "fmt",
+      "math/big"
+    ],
+    "complexity": "medium"
+  }
+}

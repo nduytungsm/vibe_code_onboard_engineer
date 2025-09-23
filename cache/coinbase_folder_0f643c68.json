@@ -1,25 +1,24 @@
 {
-  "content_hash": "bb948c67b626ef11f473519d95e3e4d7",
-  "timestamp": "2025-09-20T20:48:01.615361+07:00",
+  "content_hash": "226f811ca01d42777e24a9928b2303ec",
+  "timestamp": "2025-09-23T16:32:11.95879+07:00",
   "result": {
     "path": "pkg/coinbase",
-    "purpose": "Responsible for interacting with a Coinbase-like API to retrieve buy options for cryptocurrencies.",
+    "purpose": "Responsible for providing services to interact with a Coinbase-like API for retrieving buy options.",
     "languages": {
-      "Go": 3
+      "Go": 2
     },
     "key_modules": [
       "coinbase_svc.go",
-      "config.go",
       "models.go"
     ],
     "dependencies": [
       "github.com/axieinfinity/ronin-wallet-proxy/httpclient"
     ],
-    "architecture": "The folder follows a service-oriented architecture, encapsulating API interactions, configuration, and data models in separate files for modularity and maintainability.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating API interactions and data models related to cryptocurrency buy options.",
     "file_summaries": {
       "pkg/coinbase/coinbase_svc.go": {
         "language": "Go",
-        "purpose": "Provides a service to get buy options from a Coinbase-like API.",
+        "purpose": "Provides a service to retrieve buy options from a Coinbase-like API.",
         "key_types": [
           "Service",
           "svc",
@@ -46,18 +45,6 @@
         ],
         "complexity": "medium"
       },
-      "pkg/coinbase/config.go": {
-        "language": "Go",
-        "purpose": "Defines a configuration structure for the Coinbase API.",
-        "key_types": [
-          "Config"
-        ],
-        "functions": [],
-        "imports": [
-          "time"
-        ],
-        "complexity": "low"
-      },
       "pkg/coinbase/models.go": {
         "language": "Go",
         "purpose": "Defines data structures for handling buy options in a cryptocurrency context.",
@@ -71,7 +58,7 @@
         ],
         "functions": [],
         "imports": [],
-        "complexity": "low"
+        "complexity": "medium"
       }
     }
   }

@@ -1,0 +1,19 @@
+{
+  "content_hash": "0cd936d126dfc8f4600194f9d3fab009",
+  "timestamp": "2025-09-23T16:02:53.693821+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the ABI for a smart contract function in Ethereum.",
+    "key_types": [
+      "tuple",
+      "address",
+      "bytes",
+      "uint256"
+    ],
+    "functions": [
+      "aggregate"
+    ],
+    "imports": [],
+    "complexity": "low"
+  }
+}

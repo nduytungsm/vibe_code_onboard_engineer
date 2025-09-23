@@ -1,9 +1,9 @@
 {
-  "content_hash": "e8fa789bd3705c96bcbf0fe701932a2e",
-  "timestamp": "2025-09-20T20:49:31.058022+07:00",
+  "content_hash": "4d22a4b3eef2537d60fc579f46305c1d",
+  "timestamp": "2025-09-23T16:31:04.479205+07:00",
   "result": {
     "path": "models/skymavis",
-    "purpose": "Defines data structures and methods for various game-related models in the Skymavis ecosystem.",
+    "purpose": "Defines data structures and methods for various entities in the Skymavis gaming ecosystem, including Axie characters, accessories, land items, and blockchain transactions.",
     "languages": {
       "Go": 9
     },
@@ -21,11 +21,11 @@
     "dependencies": [
       "github.com/axieinfinity/ronin-wallet-proxy/models"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing related data structures and functions into separate files for clarity and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, organizing related data structures and functions into separate Go files for clarity and maintainability.",
     "file_summaries": {
       "models/skymavis/axie.go": {
         "language": "Go",
-        "purpose": "Defines data structures for Axie models used in a game.",
+        "purpose": "Defines data structures for Axie characters in a game, including their attributes and statistics.",
         "key_types": [
           "Axie",
           "Stat",
@@ -45,7 +45,7 @@
       },
       "models/skymavis/axie_accessory.go": {
         "language": "Go",
-        "purpose": "Defines a struct for Axie accessory instances used in a gaming context.",
+        "purpose": "Defines a struct for Axie accessory instances with various attributes.",
         "key_types": [
           "AxieAccessoryInstances"
         ],
@@ -106,11 +106,11 @@
         "purpose": "Defines data structures and methods for handling items in a game, including their metadata.",
         "key_types": [
           "OriginBaseItem",
-          "MetadataExporter",
           "RuneItem",
-          "GetRunesResponse",
           "CharmItem",
-          "GetCharmsResponse"
+          "GetRunesResponse",
+          "GetCharmsResponse",
+          "MetadataExporter"
         ],
         "functions": [
           "ToMetadata() for RuneItem",
@@ -121,7 +121,7 @@
       },
       "models/skymavis/part.go": {
         "language": "Go",
-        "purpose": "Defines types and constants for parts of a game character, including their attributes and abilities.",
+        "purpose": "Defines types and constants for Axie parts and their skins, along with related functions.",
         "key_types": [
           "PartType",
           "PartSkin",
@@ -130,9 +130,9 @@
           "PartAbility"
         ],
         "functions": [
-          "String()",
-          "Gen256IntToPartSkin(int) PartSkin",
-          "Gen512IntToPartSkin(int) PartSkin",
+          "String() string",
+          "Gen256IntToPartSkin(i int) PartSkin",
+          "Gen512IntToPartSkin(i int) PartSkin",
           "NewPartSkinCounter() PartSkinCounter"
         ],
         "imports": [

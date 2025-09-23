@@ -1,0 +1,25 @@
+{
+  "content_hash": "7bc6f9df012811ccc2d2ecbc9ea6a669",
+  "timestamp": "2025-09-23T16:03:09.200704+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for managing price charts and token prices.",
+    "key_types": [
+      "ChartItem",
+      "PriceChart",
+      "TokenPrice",
+      "TokenPrices"
+    ],
+    "functions": [
+      "NewTokenPrices",
+      "Get",
+      "Add",
+      "Merge",
+      "Values"
+    ],
+    "imports": [
+      "time"
+    ],
+    "complexity": "medium"
+  }
+}

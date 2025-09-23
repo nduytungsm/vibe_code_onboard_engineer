@@ -1,9 +1,9 @@
 {
-  "content_hash": "98297d58206284840d0368567a580d30",
-  "timestamp": "2025-09-20T20:45:59.632588+07:00",
+  "content_hash": "8fe61005c40836820949d6e15ff33cb3",
+  "timestamp": "2025-09-23T16:09:50.075331+07:00",
   "result": {
     "path": "repositories",
-    "purpose": "Responsible for managing database interactions related to NFTs and tokens, including pagination and various CRUD operations.",
+    "purpose": "This folder/module is responsible for managing database interactions related to NFTs and tokens, including pagination, CRUD operations, and display mappings.",
     "languages": {
       "Go": 3
     },
@@ -15,6 +15,7 @@
     "dependencies": [
       "gorm.io/gorm",
       "context",
+      "gorm.io/gorm/clause",
       "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
       "github.com/axieinfinity/ronin-wallet-proxy/models"
     ],
@@ -35,9 +36,9 @@
           "gorm.io/gorm"
         ],
         "side_effects": [
-          "Modifies the database query parameters based on pagination logic."
+          "Modifies the input parameters for page and limit based on defined constants."
         ],
-        "complexity": "medium"
+        "complexity": "low"
       },
       "repositories/nft_display_mapping.go": {
         "language": "Go",
@@ -73,11 +74,11 @@
       },
       "repositories/token.go": {
         "language": "Go",
-        "purpose": "This file defines a repository interface and its implementation for managing token information in a database.",
+        "purpose": "This file defines a repository for managing token information in a database, including CRUD operations and upsert functionality.",
         "key_types": [
           "TokenInfoRepositories",
           "tokenInfoRepo",
-          "TokenInfo"
+          "gorm.DB"
         ],
         "functions": [
           "GetByID",
@@ -107,7 +108,7 @@
         ],
         "risks": [
           "Potential SQL injection if user input is not properly sanitized.",
-          "Error handling may expose sensitive information if not managed correctly."
+          "Error handling may expose sensitive information."
         ],
         "complexity": "medium"
       }

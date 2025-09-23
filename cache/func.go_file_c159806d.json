@@ -1,0 +1,27 @@
+{
+  "content_hash": "5fbacf24c6307b0e694392a534621976",
+  "timestamp": "2025-09-23T16:04:03.173961+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Calculates gas fee suggestions based on Ethereum fee history.",
+    "key_types": [
+      "FeeHistory",
+      "BlockGasFeeHistory",
+      "GasSuggestion",
+      "GetGasSuggestionRes",
+      "EIP1559GasSuggestion"
+    ],
+    "functions": [
+      "formatFeeHistory",
+      "calculateGasSuggestion"
+    ],
+    "imports": [
+      "math/big",
+      "github.com/ethereum/go-ethereum",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+    ],
+    "complexity": "medium"
+  }
+}

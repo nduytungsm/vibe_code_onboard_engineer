@@ -1,9 +1,9 @@
 {
-  "content_hash": "0ff772ee72f5dc5c29e3d0e4615ba307",
-  "timestamp": "2025-09-20T20:46:25.175742+07:00",
+  "content_hash": "a39a396da209b93be07252510c313fc4",
+  "timestamp": "2025-09-23T16:09:21.518992+07:00",
   "result": {
     "path": "middleware",
-    "purpose": "This folder/module is responsible for implementing various middleware functions for an Echo web server application, including error handling, authentication, and performance monitoring.",
+    "purpose": "This folder/module is responsible for implementing various middleware functions for an Echo web server application, including error handling, authentication, and request logging.",
     "languages": {
       "Go": 6
     },
@@ -28,7 +28,7 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each middleware file encapsulates specific functionality and can be independently used or combined within the Echo web server framework.",
+    "architecture": "The folder follows a modular architecture pattern, where each middleware file encapsulates specific functionality, promoting separation of concerns and reusability.",
     "file_summaries": {
       "middleware/custom_requests_total_prometheus.go": {
         "language": "Go",
@@ -121,10 +121,10 @@
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
         ],
         "side_effects": [
-          "Modifies the request context based on authentication results"
+          "Modifies the request context based on authentication results."
         ],
         "risks": [
-          "Potential exposure of sensitive information if error messages are not handled properly"
+          "Potential exposure of sensitive information if error messages are not properly handled."
         ],
         "complexity": "medium"
       },
@@ -132,6 +132,7 @@
         "language": "Go",
         "purpose": "Defines a middleware function to log requests that exceed a specified latency threshold.",
         "key_types": [
+          "time.Duration",
           "echo.MiddlewareFunc",
           "echo.HandlerFunc",
           "echo.Context"
@@ -155,7 +156,7 @@
       },
       "middleware/private_mode.go": {
         "language": "Go",
-        "purpose": "Middleware function to enforce private mode based on API key validation.",
+        "purpose": "Defines a middleware function for private mode access control based on an API key.",
         "key_types": [
           "echo.MiddlewareFunc",
           "echo.HandlerFunc",
@@ -169,7 +170,7 @@
           "github.com/labstack/echo/v4"
         ],
         "side_effects": [
-          "Returns HTTP 401 Unauthorized if API key does not match."
+          "Returns HTTP 401 Unauthorized if the API key does not match."
         ],
         "risks": [
           "Potential exposure of API key if not handled securely."
@@ -181,7 +182,7 @@
         "purpose": "This file implements middleware for verifying wallet signatures in HTTP requests.",
         "key_types": [
           "hmac.Config",
-          "echo.MiddlewareFunc",
+          "echo.Context",
           "error"
         ],
         "functions": [
@@ -205,8 +206,7 @@
           "Logs request information"
         ],
         "risks": [
-          "Potential for unauthorized access if wallet addresses are not properly whitelisted",
-          "Signature validation failures may lead to denial of service"
+          "Potential exposure of sensitive information through logs"
         ],
         "complexity": "medium"
       }

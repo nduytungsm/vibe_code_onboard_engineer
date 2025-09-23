@@ -1,9 +1,9 @@
 {
-  "content_hash": "f7ad190e32235b7079b1416b8bfae820",
-  "timestamp": "2025-09-20T20:46:16.343394+07:00",
+  "content_hash": "9c1c90223b039e0f2a9675af69cc6eb2",
+  "timestamp": "2025-09-23T16:08:20.238174+07:00",
   "result": {
     "path": "handlers",
-    "purpose": "This folder contains handlers for various operations related to blockchain, NFTs, and token information, facilitating communication between the web server and external services.",
+    "purpose": "This folder contains handlers for various operations related to blockchain, NFT mapping, token information, and Coinbase interactions in a web server context.",
     "languages": {
       "Go": 4
     },
@@ -24,11 +24,11 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/nft_mapping"
     ],
-    "architecture": "The folder follows a modular architecture pattern where each handler is responsible for a specific domain of functionality, promoting separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, where each handler file is responsible for a specific domain of functionality, promoting separation of concerns and maintainability.",
     "file_summaries": {
       "handlers/blockchain_handler.go": {
         "language": "Go",
-        "purpose": "This file defines a handler for blockchain-related operations, including fetching token balances, transaction history, NFT collections, and gas suggestions.",
+        "purpose": "This file defines a handler for blockchain-related operations in a web server context, providing various endpoints for retrieving blockchain data.",
         "key_types": [
           "BlockchainHandler",
           "blockchainHandler"
@@ -63,6 +63,14 @@
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo"
         ],
+        "side_effects": [
+          "Interacts with external services to fetch blockchain data",
+          "Modifies HTTP response based on the results of service calls"
+        ],
+        "risks": [
+          "Potential exposure of sensitive data through error messages",
+          "Improper handling of user input could lead to security vulnerabilities"
+        ],
         "complexity": "medium"
       },
       "handlers/coinbase_handler.go": {
@@ -89,14 +97,13 @@
           "Returns JSON response to the client"
         ],
         "risks": [
-          "Potential for handling sensitive financial data",
-          "Error handling may expose internal service errors"
+          "Potential exposure of sensitive data if error handling is not properly managed"
         ],
         "complexity": "medium"
       },
       "handlers/nft_mapping_handler.go": {
         "language": "Go",
-        "purpose": "Handles NFT mapping operations including saving, retrieving, and listing NFT mappings.",
+        "purpose": "Handles NFT mapping operations including saving and retrieving mappings.",
         "key_types": [
           "NFTMappingHandler",
           "nftMappingHandler",
@@ -105,8 +112,7 @@
           "SaveBatchNFTMappingRequest",
           "GetNFTMappingsListRequest",
           "GetOneNFTMappingRequest",
-          "ListResponse",
-          "NFTMapping"
+          "ListResponse"
         ],
         "functions": [
           "InternalSaveMapping",

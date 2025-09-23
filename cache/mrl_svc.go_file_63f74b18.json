@@ -1,0 +1,56 @@
+{
+  "content_hash": "97183b57343147959d9b56acf7233359",
+  "timestamp": "2025-09-23T16:29:26.483395+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service interface and its implementation for interacting with the Moralis API to retrieve blockchain-related data such as token balances, NFT collections, and transaction details.",
+    "key_types": [
+      "Service",
+      "service",
+      "Config",
+      "GetNativeTokenBalanceResponse",
+      "GetErc20TokenBalanceWithPriceResponse",
+      "GetNFTCollectionsForAddrResponse",
+      "GetNFTsOfCollectionForAddrResponse",
+      "NFTItemInfo",
+      "GetTransactionsForAddrResponse",
+      "Transaction"
+    ],
+    "functions": [
+      "GetNativeTokenBalance",
+      "GetErc20TokenBalances",
+      "GetNFTCollectionsForAddr",
+      "GetNFTsOfCollectionForAddr",
+      "GetNFTMetadataForToken",
+      "GetTransactionsForAddr",
+      "GetTransactionByHash"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "math/rand",
+      "net/http",
+      "net/url",
+      "slices",
+      "strconv",
+      "strings",
+      "time",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/labstack/echo/v4",
+      "github.com/mroth/weightedrand/v2",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+    ],
+    "side_effects": [
+      "Logs errors when API calls fail"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data through API endpoints",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "content_hash": "bcb214f1a3f77a2c50c69163fcbd90be",
+  "timestamp": "2025-09-23T16:03:22.936773+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for handling token information and responses related to cryptocurrency data.",
+    "key_types": [
+      "ResponseStatus",
+      "TokenInfo",
+      "GetTokensListResponse",
+      "ContractAddress",
+      "Metadata",
+      "GetTokensMetadataResponse"
+    ],
+    "functions": [
+      "ToTokenInfo",
+      "MetadataToTokenInfo"
+    ],
+    "imports": [
+      "slices",
+      "strconv",
+      "strings",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+    ],
+    "complexity": "medium"
+  }
+}

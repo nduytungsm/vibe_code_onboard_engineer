@@ -1,0 +1,51 @@
+{
+  "content_hash": "b9753fd9bd9e55477a36320760e2ee7b",
+  "timestamp": "2025-09-23T16:02:37.913045+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file maps CoinGecko token IDs to contract addresses and decimals, handling token metadata and caching.",
+    "key_types": [
+      "context.Context",
+      "sync.WaitGroup",
+      "time.Time",
+      "repositories.TokenInfoRepositories",
+      "coingecko.Service",
+      "md.TokenInfo"
+    ],
+    "functions": [
+      "main",
+      "crawlTokenContractInfo",
+      "retrieveTokenMetadata",
+      "migrateSomeBridgeTokenContracts",
+      "removeDuplicateContract"
+    ],
+    "imports": [
+      "context",
+      "sync",
+      "time",
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/getsentry/sentry-go",
+      "github.com/rs/zerolog/log",
+      "gorm.io/gorm",
+      "gorm.io/gorm/logger",
+      "github.com/axieinfinity/ronin-wallet-proxy/config",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker",
+      "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+    ],
+    "side_effects": [
+      "Initializes Sentry for error tracking",
+      "Logs errors and process time",
+      "Interacts with a PostgreSQL database",
+      "Publishes events to Redis"
+    ],
+    "risks": [
+      "Potential exposure of sensitive configuration data",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

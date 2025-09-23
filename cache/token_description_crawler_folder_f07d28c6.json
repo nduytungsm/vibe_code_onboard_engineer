@@ -1,6 +1,6 @@
 {
   "content_hash": "20ddeee2dcc92d3fe507be54906c3189",
-  "timestamp": "2025-09-20T20:47:42.033751+07:00",
+  "timestamp": "2025-09-23T16:31:53.726366+07:00",
   "result": {
     "path": "cmd/token_description_crawler",
     "purpose": "Crawl token descriptions from coinmarketcap.com and refresh cache if needed.",
@@ -14,14 +14,13 @@
       "github.com/getsentry/sentry-go",
       "github.com/rs/zerolog/log",
       "gorm.io/gorm",
-      "gorm.io/gorm/logger",
       "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
       "github.com/axieinfinity/ronin-wallet-proxy/config",
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/cmc",
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
       "github.com/axieinfinity/ronin-wallet-proxy/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the crawling functionality and its dependencies in a single Go module.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the crawling functionality and its dependencies in a single executable module.",
     "file_summaries": {
       "cmd/token_description_crawler/main.go": {
         "language": "Go",

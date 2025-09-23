@@ -1,0 +1,37 @@
+{
+  "content_hash": "465437dbf7f61bd8dc3a4efd08594e37",
+  "timestamp": "2025-09-23T16:03:08.313194+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements middleware for verifying wallet signatures in HTTP requests.",
+    "key_types": [
+      "hmac.Config",
+      "echo.Context",
+      "error"
+    ],
+    "functions": [
+      "VerifyWalletSignature",
+      "newClockSkewValidator"
+    ],
+    "imports": [
+      "fmt",
+      "math",
+      "net/http",
+      "sort",
+      "strings",
+      "time",
+      "github.com/labstack/echo/v4",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+    ],
+    "side_effects": [
+      "Logs request information"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information through logs"
+    ],
+    "complexity": "medium"
+  }
+}

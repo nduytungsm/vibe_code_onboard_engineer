@@ -1,0 +1,15 @@
+{
+  "content_hash": "e8d9eec6faf6efd3af5bdd8b61267c09",
+  "timestamp": "2025-09-23T16:29:53.905247+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines the error types and events for a staking contract.",
+    "key_types": [
+      "error",
+      "event"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

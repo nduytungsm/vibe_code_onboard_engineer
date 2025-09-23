@@ -1,0 +1,16 @@
+{
+  "content_hash": "458548e0b8c6e14da84b6fac9e3a32ab",
+  "timestamp": "2025-09-23T16:03:27.602292+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for HMAC with a whitelist of addresses.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ecosystem-go-common/hmac"
+    ],
+    "complexity": "low"
+  }
+}

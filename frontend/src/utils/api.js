@@ -5,7 +5,7 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080'
 
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 30000,
+  timeout: 35 * 60 * 1000, // 35 minutes (5 minutes buffer over backend timeout)
   headers: {
     'Content-Type': 'application/json',
   },
@@ -38,8 +38,18 @@ api.interceptors.response.use(
 // Repository Analysis API
 export const repositoryAPI = {
   // Analyze a new repository
-  analyzeRepository: async (repositoryPath) => {
-    const response = await api.post('/api/analyze', { path: repositoryPath })
+  analyzeRepository: async (repositoryUrl, token = null) => {
+    const payload = { 
+      url: repositoryUrl,
+      type: 'github_url' 
+    }
+    
+    // Add token if provided
+    if (token) {
+      payload.token = token
+    }
+    
+    const response = await api.post('/api/analyze', payload)
     return response.data
   },
 

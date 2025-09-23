@@ -1,0 +1,60 @@
+{
+  "content_hash": "cc34c2b410bc4f1233ad5665963cb33e",
+  "timestamp": "2025-09-23T16:05:08.469989+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Sets up routes for an Echo web server and initializes various services and repositories.",
+    "key_types": [
+      "echo.Echo",
+      "config.Schema",
+      "postgresql.Client",
+      "redis.Client",
+      "coingecko.Service",
+      "coinbase.Service",
+      "exchangerate.ServiceV2",
+      "nftmapping.Service",
+      "handlers.NFTMappingHandler",
+      "handlers.CoinbaseHandler"
+    ],
+    "functions": [
+      "SetupRoutes",
+      "NewClient",
+      "NewRedisClient",
+      "NewService",
+      "NewServiceV2",
+      "NewNFTMappingRepo",
+      "NewNFTMappingHandler",
+      "NewCoinbaseHandler",
+      "registerPublic",
+      "registerPrivate",
+      "registerInternal"
+    ],
+    "imports": [
+      "github.com/labstack/echo/v4",
+      "github.com/rs/zerolog/log",
+      "gorm.io/plugin/prometheus",
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/axieinfinity/ronin-wallet-proxy/config",
+      "github.com/axieinfinity/ronin-wallet-proxy/handlers",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/exchangerate",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/nft_mapping",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo",
+      "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+    ],
+    "side_effects": [
+      "Establishes database connections",
+      "Initializes Redis client",
+      "Sets up various services and handlers"
+    ],
+    "risks": [
+      "Potential for database connection errors",
+      "Improper handling of configuration values could lead to runtime errors",
+      "Logging sensitive information if not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

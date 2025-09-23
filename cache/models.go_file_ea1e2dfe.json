@@ -1,0 +1,40 @@
+{
+  "content_hash": "032baca7702883dfc2fecd9e3fba736b",
+  "timestamp": "2025-09-23T16:03:30.80828+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for interacting with CoinGecko API, including token details, price charts, and market information.",
+    "key_types": [
+      "ContractPlatformDetail",
+      "Token",
+      "PriceChartResponse",
+      "ErrorMessage",
+      "MarketInfo",
+      "PoolOHLCVResponse",
+      "ObjectID",
+      "ObjectRef",
+      "ObjectRefs",
+      "TransactionCount",
+      "DexTokenPool",
+      "DexTokenResponse"
+    ],
+    "functions": [
+      "ToTokenInfoMetadata",
+      "ToPriceChart",
+      "convertChartItem",
+      "Error"
+    ],
+    "imports": [
+      "slices",
+      "strconv",
+      "strings",
+      "time",
+      "github.com/shopspring/decimal",
+      "github.com/axieinfinity/ronin-wallet-proxy/models"
+    ],
+    "side_effects": [
+      "Modifies the state of the Token and PriceChartResponse structures when methods are called."
+    ],
+    "complexity": "medium"
+  }
+}

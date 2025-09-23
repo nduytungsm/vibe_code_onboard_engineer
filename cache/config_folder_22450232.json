@@ -1,9 +1,9 @@
 {
-  "content_hash": "66f4d19d17f7fea12bd249bf03831bbe",
-  "timestamp": "2025-09-20T21:06:51.479139+07:00",
+  "content_hash": "e7bf613028910b9762a147fd554f33d0",
+  "timestamp": "2025-09-23T16:30:52.514124+07:00",
   "result": {
     "path": "config",
-    "purpose": "Configuration management for a server application, including loading settings from a config file and environment variables.",
+    "purpose": "This folder/module is responsible for managing application configuration settings and structures.",
     "languages": {
       "Go": 1,
       "YAML": 1
@@ -27,11 +27,11 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker"
     ],
-    "architecture": "The folder follows a modular architecture pattern, separating configuration management into distinct files for Go code and YAML settings, allowing for clear organization and easy maintenance.",
+    "architecture": "The folder follows a modular architecture pattern, separating configuration logic into distinct files for better maintainability and clarity.",
     "file_summaries": {
       "config/config.go": {
         "language": "Go",
-        "purpose": "Configuration management for a server application, including loading settings from a config file and environment variables.",
+        "purpose": "This file defines configuration structures and initializes the application configuration using viper.",
         "key_types": [
           "Schema",
           "Server",
@@ -64,17 +64,16 @@
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker"
         ],
         "side_effects": [
-          "Panic on configuration file read errors",
-          "Sets global logging level"
+          "Panic if the configuration file cannot be read or unmarshalled."
         ],
         "risks": [
-          "Potential exposure of sensitive information in logs or errors"
+          "Potential exposure of sensitive information if the configuration file is not secured."
         ],
         "complexity": "medium"
       },
       "config/config.yml": {
         "language": "YAML",
-        "purpose": "Configuration settings for a wallet proxy service including server settings, profiling, logging, and blockchain chain configurations.",
+        "purpose": "Configuration file for a wallet proxy service, defining various settings including server details, profiling options, logging levels, and blockchain configurations.",
         "key_types": [
           "profiler",
           "server",
@@ -89,8 +88,7 @@
         "functions": [],
         "imports": [],
         "risks": [
-          "Exposure of sensitive information due to redacted fields",
-          "Potential misconfiguration leading to service downtime"
+          "Exposure of sensitive information such as API keys and secrets if not properly secured."
         ],
         "complexity": "medium"
       }

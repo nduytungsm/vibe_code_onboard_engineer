@@ -1,0 +1,18 @@
+{
+  "content_hash": "1c9aa51b1d9cd48a3984144451ff6fbb",
+  "timestamp": "2025-09-23T16:02:52.451486+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines custom scalar types for use in GraphQL queries.",
+    "key_types": [
+      "Boolean",
+      "Float",
+      "ID",
+      "Int",
+      "String"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

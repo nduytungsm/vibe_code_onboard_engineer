@@ -1,0 +1,50 @@
+{
+  "content_hash": "baba863d51c61b22d00eda5712895214",
+  "timestamp": "2025-09-23T16:28:19.421337+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a handler for blockchain-related operations in a web server context, providing various endpoints for retrieving blockchain data.",
+    "key_types": [
+      "BlockchainHandler",
+      "blockchainHandler",
+      "models.GetTransactionsReq",
+      "models.GetTxnByHashReq",
+      "models.GetNFTCollectionsReq",
+      "models.GetNFTItemsReq",
+      "models.GetNFTItemReq",
+      "models.GetPriceChartRequest",
+      "models.GetGasSuggestionReq"
+    ],
+    "functions": [
+      "GetConfig",
+      "GetTokenBalances",
+      "GetTransactionsHistory",
+      "GetTransactionsByHash",
+      "GetNFTCollections",
+      "GetNFTItems",
+      "GetNFTItem",
+      "GetTokenInfo",
+      "GetPriceChart",
+      "GetGasSuggestion",
+      "SendRPC",
+      "SearchToken",
+      "PostSearchToken",
+      "GetTransactionsHistoryV2",
+      "NewBlockchainHandler"
+    ],
+    "imports": [
+      "cmp",
+      "net/http",
+      "slices",
+      "time",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo"
+    ],
+    "complexity": "medium"
+  }
+}

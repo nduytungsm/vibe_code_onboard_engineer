@@ -1,0 +1,15 @@
+{
+  "content_hash": "756865c58aa595153eec903839bfb0fe",
+  "timestamp": "2025-09-23T16:27:54.314478+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "This file contains a response structure for token balances in the Ronin blockchain.",
+    "key_types": [
+      "object",
+      "array"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

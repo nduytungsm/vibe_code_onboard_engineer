@@ -39,9 +39,10 @@ func runServer() {
 
 	// Initialize controllers
 	healthController := controllers.NewHealthController()
+	analysisController := controllers.NewAnalysisController()
 
 	// Setup routes
-	routes.SetupRoutes(e, healthController)
+	routes.SetupRoutes(e, healthController, analysisController)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":8080"))

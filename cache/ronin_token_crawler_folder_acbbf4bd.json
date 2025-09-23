@@ -1,9 +1,9 @@
 {
-  "content_hash": "741be5c95a308139c1e91d7f2cf19774",
-  "timestamp": "2025-09-20T20:49:24.023922+07:00",
+  "content_hash": "152ab33c2122f09a678ad8e1e316cdbc",
+  "timestamp": "2025-09-23T16:06:36.078955+07:00",
   "result": {
     "path": "cmd/ronin_token_crawler",
-    "purpose": "Crawl market information from CoinGecko for a list of tokens used on Ronin.",
+    "purpose": "Crawl market information for a list of tokens from CoinGecko used on the Ronin network.",
     "languages": {
       "Go": 1
     },
@@ -20,17 +20,17 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
       "github.com/axieinfinity/ronin-wallet-proxy/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the crawling functionality in a single main file that interacts with various services and a database.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the crawling functionality within a single main file that initializes necessary services and manages dependencies.",
     "file_summaries": {
       "cmd/ronin_token_crawler/main.go": {
         "language": "Go",
-        "purpose": "Crawl market information from CoinGecko for a list of tokens used on Ronin.",
+        "purpose": "Crawl market information for a list of tokens from CoinGecko used on the Ronin network.",
         "key_types": [
           "context.Context",
           "time.Time",
           "postgresql.Client",
           "coingecko.Service",
-          "map[string]interface{}"
+          "md.QuoteInfo"
         ],
         "functions": [
           "main",
@@ -52,13 +52,14 @@
           "github.com/axieinfinity/ronin-wallet-proxy/repositories"
         ],
         "side_effects": [
-          "Logs errors and information during execution.",
-          "Initializes Sentry for error tracking.",
-          "Updates market information in the database."
+          "Initializes Sentry for error tracking",
+          "Connects to PostgreSQL database",
+          "Logs information and errors during execution"
         ],
         "risks": [
-          "Potential exposure of sensitive information in logs.",
-          "Database connection errors may lead to application failure."
+          "Potential exposure of sensitive information in logs",
+          "Database connection errors may lead to application failure",
+          "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"
       }

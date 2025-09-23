@@ -1,0 +1,16 @@
+{
+  "content_hash": "85a4808762fdf538277c6cb163bc2574",
+  "timestamp": "2025-09-23T16:03:19.700024+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for API settings and parameters.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "content_hash": "87ce04fbf50cfbf5c15658a7d1b79d64",
+  "timestamp": "2025-09-23T16:28:22.14512+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for functions that convert between different naming conventions for identifiers.",
+    "key_types": [
+      "ident.Name"
+    ],
+    "functions": [
+      "Example_lowerCamelCaseToMixedCaps",
+      "Example_screamingSnakeCaseToMixedCaps",
+      "Example_mixedCapsToLowerCamelCase",
+      "TestParseMixedCaps",
+      "TestParseLowerCamelCase",
+      "TestParseScreamingSnakeCase",
+      "TestName_ToMixedCaps",
+      "TestName_ToLowerCamelCase",
+      "TestMixedCapsToLowerCamelCase",
+      "TestLowerCamelCaseToMixedCaps"
+    ],
+    "imports": [
+      "fmt",
+      "reflect",
+      "testing",
+      "github.com/shurcooL/graphql/ident"
+    ],
+    "complexity": "medium"
+  }
+}

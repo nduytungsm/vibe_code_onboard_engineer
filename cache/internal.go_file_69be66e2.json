@@ -1,0 +1,32 @@
+{
+  "content_hash": "2ce117490adb4c9ee98c368bb3813e1e",
+  "timestamp": "2025-09-23T16:05:03.486307+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines internal API routes for handling token information and NFT mappings.",
+    "key_types": [
+      "echo.Echo",
+      "config.Schema",
+      "handlers.TokenInfoHandler",
+      "handlers.NFTMappingHandler"
+    ],
+    "functions": [
+      "registerInternal"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-proxy/config",
+      "github.com/axieinfinity/ronin-wallet-proxy/handlers",
+      "github.com/axieinfinity/ronin-wallet-proxy/middleware",
+      "github.com/axieinfinity/ronin-wallet-proxy/models"
+    ],
+    "side_effects": [
+      "Modifies the state of the Echo router by adding new routes."
+    ],
+    "risks": [
+      "Potential exposure of sensitive endpoints if not properly secured."
+    ],
+    "complexity": "medium"
+  }
+}

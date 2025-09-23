@@ -1,0 +1,62 @@
+{
+  "content_hash": "a4b3d7be02f1e172b513f470f66bb7bb",
+  "timestamp": "2025-09-23T16:29:39.55637+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for interacting with a blockchain wallet, including fetching token balances, NFT collections, and transaction details.",
+    "key_types": [
+      "Service",
+      "service",
+      "TokenBalancesRes",
+      "PagingReq",
+      "TransactionItem",
+      "GetAccountInfoResponse",
+      "GetNFTByCollectionAndTokenIDRes"
+    ],
+    "functions": [
+      "GetTokenBalances",
+      "GetNFTCollections",
+      "GetTransactionByHash",
+      "GetNFTsOfCollectionForAddr",
+      "GetNFTByCollectionAndTokenID",
+      "getTokensBalanceForHome",
+      "getAccountBalance",
+      "getFungibleTokensBalance",
+      "getTokensBalanceForListDefaultErc20Tokens"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "math/big",
+      "net/http",
+      "net/url",
+      "slices",
+      "strconv",
+      "strings",
+      "sync",
+      "time",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/ethereum/go-ethereum/ethclient",
+      "github.com/ethereum/go-ethereum/rpc",
+      "github.com/rs/zerolog/log",
+      "golang.org/x/exp/maps",
+      "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/models/skymavis",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers/gas-collector",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+    ],
+    "side_effects": [
+      "Makes HTTP requests to external services",
+      "Modifies shared state with mutex locks"
+    ],
+    "risks": [
+      "Potential for race conditions if mutex locks are not used correctly",
+      "Error handling may expose sensitive information if not managed properly"
+    ],
+    "complexity": "medium"
+  }
+}

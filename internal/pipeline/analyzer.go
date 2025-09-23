@@ -27,11 +27,14 @@ type Analyzer struct {
 
 // AnalysisResult contains the complete analysis result
 type AnalysisResult struct {
-	ProjectSummary  *openai.ProjectSummary           `json:"project_summary"`
-	FolderSummaries map[string]*openai.FolderSummary `json:"folder_summaries"`
-	FileSummaries   map[string]*openai.FileSummary   `json:"file_summaries"`
-	ProjectType     *detector.DetectionResult        `json:"project_type"`
-	Stats           map[string]interface{}           `json:"stats"`
+	ProjectSummary      *openai.ProjectSummary               `json:"project_summary"`
+	FolderSummaries     map[string]*openai.FolderSummary     `json:"folder_summaries"`
+	FileSummaries       map[string]*openai.FileSummary       `json:"file_summaries"`
+	ProjectType         *detector.DetectionResult            `json:"project_type"`
+	Stats               map[string]interface{}               `json:"stats"`
+	Services            []microservices.DiscoveredService    `json:"services,omitempty"`
+	ServiceRelationships []relationships.ServiceRelationship `json:"relationships,omitempty"`
+	DatabaseSchema      *database.DatabaseSchema             `json:"database_schema,omitempty"`
 }
 
 // NewAnalyzer creates a new analyzer
@@ -134,6 +137,7 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 	
 	// Phase 6: Enhance with intelligent microservice discovery if it's a monorepo
 	var discoveredServices []microservices.DiscoveredService
+	var serviceRelationships []relationships.ServiceRelationship
 	if projectSummary.DetailedAnalysis != nil && projectSummary.DetailedAnalysis.RepoLayout == "monorepo" {
 		fmt.Println("🔍 Discovering microservices...")
 		discoveredServices = a.enhanceWithMicroserviceDiscovery(ctx, files, projectType, projectSummary)
@@ -142,27 +146,31 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 		// Phase 7: Discover service relationships using the discovered services
 		if len(discoveredServices) > 1 {
 			fmt.Println("🔗 Discovering service relationships...")
-			a.discoverServiceRelationships(files, discoveredServices, projectSummary)
+			serviceRelationships = a.discoverServiceRelationships(files, discoveredServices, projectSummary)
 			fmt.Println("✅ Service relationship discovery complete!")
 		}
 	}
 
 	// Phase 8: Extract database schema from migrations (always run for backend projects)
+	var databaseSchema *database.DatabaseSchema
 	if projectType != nil && (strings.ToLower(string(projectType.PrimaryType)) == "backend" || 
 							  strings.ToLower(string(projectType.PrimaryType)) == "fullstack") {
 		fmt.Println("🗃️  Discovering database schema...")
-		a.extractDatabaseSchema(files)
+		databaseSchema = a.extractDatabaseSchema(files)
 		fmt.Println("✅ Database schema extraction complete!")
 	}
 	
 	fmt.Println("✅ Project analysis complete!")
 	
 	return &AnalysisResult{
-		ProjectSummary:  projectSummary,
-		FolderSummaries: folderSummaries,
-		FileSummaries:   fileSummaries,
-		ProjectType:     projectType,
-		Stats:           stats,
+		ProjectSummary:       projectSummary,
+		FolderSummaries:      folderSummaries,
+		FileSummaries:        fileSummaries,
+		ProjectType:          projectType,
+		Stats:                stats,
+		Services:             discoveredServices,
+		ServiceRelationships: serviceRelationships,
+		DatabaseSchema:       databaseSchema,
 	}, nil
 }
 
@@ -582,7 +590,7 @@ func (a *Analyzer) generateServicePurpose(serviceName string, apiType microservi
 }
 
 // discoverServiceRelationships discovers relationships between microservices
-func (a *Analyzer) discoverServiceRelationships(files []FileInfo, discoveredServices []microservices.DiscoveredService, projectSummary *openai.ProjectSummary) {
+func (a *Analyzer) discoverServiceRelationships(files []FileInfo, discoveredServices []microservices.DiscoveredService, projectSummary *openai.ProjectSummary) []relationships.ServiceRelationship {
 	projectPath := a.crawler.basePath
 	cacheDir := "./relationships_cache"
 	
@@ -616,7 +624,7 @@ func (a *Analyzer) discoverServiceRelationships(files []FileInfo, discoveredServ
 		serviceGraph, err = relationshipDiscovery.DiscoverRelationships(projectPath)
 		if err != nil {
 			fmt.Printf("⚠️  Service relationship discovery failed: %v\n", err)
-			return
+			return []relationships.ServiceRelationship{}
 		}
 		
 		// Save to cache
@@ -652,10 +660,16 @@ func (a *Analyzer) discoverServiceRelationships(files []FileInfo, discoveredServ
 			fmt.Println(mermaidJSON)
 		}
 	}
+	
+	// Return the discovered relationships
+	if serviceGraph != nil {
+		return serviceGraph.Relationships
+	}
+	return []relationships.ServiceRelationship{}
 }
 
 // extractDatabaseSchema extracts database schema from SQL migration files
-func (a *Analyzer) extractDatabaseSchema(files []FileInfo) {
+func (a *Analyzer) extractDatabaseSchema(files []FileInfo) *database.DatabaseSchema {
 	projectPath := a.crawler.basePath
 	
 	// Convert files to map for schema extraction
@@ -674,12 +688,12 @@ func (a *Analyzer) extractDatabaseSchema(files []FileInfo) {
 	schema, err := schemaExtractor.ExtractSchemaFromMigrations(projectPath, fileMap)
 	if err != nil {
 		fmt.Printf("⚠️  Database schema extraction failed: %v\n", err)
-		return
+		return nil
 	}
 
 	if len(schema.Tables) == 0 {
 		fmt.Println("🗃️  No database tables found in migrations")
-		return
+		return nil
 	}
 
 	// Generate PlantUML ERD
@@ -688,7 +702,7 @@ func (a *Analyzer) extractDatabaseSchema(files []FileInfo) {
 	// Save PlantUML file
 	if err := schemaExtractor.SavePlantUMLFile(projectPath, pumlContent); err != nil {
 		fmt.Printf("⚠️  Failed to save PlantUML file: %v\n", err)
-		return
+		return schema // Still return the schema even if PlantUML save fails
 	}
 
 	// Display summary
@@ -696,4 +710,6 @@ func (a *Analyzer) extractDatabaseSchema(files []FileInfo) {
 	for tableName, table := range schema.Tables {
 		fmt.Printf("   📊 %s (%d columns)\n", tableName, len(table.Columns))
 	}
+	
+	return schema
 }

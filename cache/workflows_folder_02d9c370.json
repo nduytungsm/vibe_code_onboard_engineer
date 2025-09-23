@@ -1,9 +1,9 @@
 {
-  "content_hash": "87605421662c58c15a93ffbf0ab490fd",
-  "timestamp": "2025-09-20T20:46:45.387029+07:00",
+  "content_hash": "8693d838cd97ea8dfdcad7c895234802",
+  "timestamp": "2025-09-23T16:31:41.615946+07:00",
   "result": {
     "path": ".github/workflows",
-    "purpose": "This folder is responsible for defining GitHub Actions workflows for various automation tasks related to CI/CD processes.",
+    "purpose": "This folder is responsible for defining GitHub Actions workflows for various CI/CD processes including security checks, Dockerization, linting, and release management.",
     "languages": {
       "YAML": 4
     },
@@ -14,27 +14,58 @@
       "sentry.yml"
     ],
     "dependencies": [
-      "axieinfinity/workflows-samples"
+      "axieinfinity/workflows-samples/.github/workflows/security-basic-scan.yml",
+      "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml",
+      "axieinfinity/workflows-samples/.github/workflows/sentry-release.yml"
     ],
-    "architecture": "The folder follows a modular architecture pattern where each YAML file defines a specific workflow for automation tasks, allowing for easy integration and management of CI/CD processes.",
+    "architecture": "The folder follows a modular architecture pattern where each workflow file encapsulates specific CI/CD tasks, allowing for easy maintenance and scalability.",
     "file_summaries": {
       ".github/workflows/check.yml": {
         "language": "YAML",
         "purpose": "Defines a GitHub Actions workflow for checking security and building on pull requests to the main branch.",
-        "key_types": [],
-        "functions": [],
+        "key_types": [
+          "job",
+          "event",
+          "permission"
+        ],
+        "functions": [
+          "security_scan"
+        ],
         "imports": [
-          "axieinfinity/workflows-samples/.github/workflows/security-basic-scan.yml@ce8adf700c0cd05672ebd7154c828d396631c153"
+          "axieinfinity/workflows-samples/.github/workflows/security-basic-scan.yml"
+        ],
+        "side_effects": [
+          "Triggers a security scan on pull requests"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information in workflows"
         ],
         "complexity": "low"
       },
       ".github/workflows/dockerize.yml": {
         "language": "YAML",
         "purpose": "Defines a GitHub Actions workflow for Dockerizing a mobile wallet manager.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml"
+        ],
+        "complexity": "low"
+      },
+      ".github/workflows/golangci-lint.yml": {
+        "language": "YAML",
+        "purpose": "Configuration file for GitHub Actions to run golangci-lint on push and pull request events.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      ".github/workflows/sentry.yml": {
+        "language": "YAML",
+        "purpose": "Defines a GitHub Actions workflow for Sentry release management.",
         "key_types": [
-          "workflow",
           "job",
-          "permissions"
+          "permission"
         ],
         "functions": [
           "on",
@@ -44,45 +75,13 @@
           "secrets"
         ],
         "imports": [
-          "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml"
+          "axieinfinity/workflows-samples/.github/workflows/sentry-release.yml"
         ],
         "side_effects": [
-          "Triggers on push and pull request events",
-          "Uses secrets for secure operations"
+          "Triggers on release events"
         ],
         "risks": [
           "Exposure of sensitive information if secrets are not managed properly"
-        ],
-        "complexity": "medium"
-      },
-      ".github/workflows/golangci-lint.yml": {
-        "language": "YAML",
-        "purpose": "Configuration file for GitHub Actions to run golangci-lint on push and pull request events.",
-        "key_types": [
-          "job",
-          "workflow"
-        ],
-        "functions": [
-          "golangci"
-        ],
-        "imports": [
-          "axieinfinity/workflows-samples/.github/workflows/testing-go.yml"
-        ],
-        "side_effects": [
-          "Triggers linting process on code changes"
-        ],
-        "risks": [
-          "Exposure of secrets if not properly managed"
-        ],
-        "complexity": "low"
-      },
-      ".github/workflows/sentry.yml": {
-        "language": "YAML",
-        "purpose": "Defines a GitHub Actions workflow for Sentry release management.",
-        "key_types": [],
-        "functions": [],
-        "imports": [
-          "axieinfinity/workflows-samples/.github/workflows/sentry-release.yml@main"
         ],
         "complexity": "low"
       }

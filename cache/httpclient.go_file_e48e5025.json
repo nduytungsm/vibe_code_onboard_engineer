@@ -1,0 +1,38 @@
+{
+  "content_hash": "0811a747ec926671d49dd3eeca63311c",
+  "timestamp": "2025-09-23T16:02:56.582677+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements an HTTP client with methods for GET and POST requests, handling responses and errors.",
+    "key_types": [
+      "Client",
+      "client"
+    ],
+    "functions": [
+      "NewClient",
+      "GetData",
+      "GetRawData",
+      "PostData",
+      "PostReturnRawData",
+      "processError"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "encoding/json",
+      "io",
+      "net/http",
+      "time",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/labstack/echo/v4",
+      "github.com/rs/zerolog/log"
+    ],
+    "side_effects": [
+      "Logs the duration of HTTP requests"
+    ],
+    "risks": [
+      "Potential for sensitive data exposure in logs if headers or request data contain sensitive information"
+    ],
+    "complexity": "medium"
+  }
+}

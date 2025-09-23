@@ -1,9 +1,9 @@
 {
-  "content_hash": "f28398f6a63a2428c4c8660a525b7a70",
-  "timestamp": "2025-09-20T20:47:27.842253+07:00",
+  "content_hash": "ba77221c0740a3d1a5da53c6d501e4ac",
+  "timestamp": "2025-09-23T16:31:38.348247+07:00",
   "result": {
     "path": "pkg/providers/skynetv2",
-    "purpose": "Responsible for providing functionalities to interact with a blockchain wallet, including retrieving token balances, NFT collections, and transaction details.",
+    "purpose": "Responsible for providing functionalities to interact with a blockchain wallet, including configuration, data models, and service methods for fetching token balances, NFT collections, and transaction details.",
     "languages": {
       "Go": 4
     },
@@ -26,7 +26,7 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/share",
       "github.com/axieinfinity/ecosystem-go-common/errors"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for configuration, models, services, and types.",
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for configuration, models, and service logic, facilitating maintainability and scalability.",
     "file_summaries": {
       "pkg/providers/skynetv2/config.go": {
         "language": "Go",
@@ -91,14 +91,14 @@
       },
       "pkg/providers/skynetv2/skn_v2_svc.go": {
         "language": "Go",
-        "purpose": "This file defines a service for interacting with a blockchain wallet, providing functionalities to retrieve token balances, NFT collections, and transaction details.",
+        "purpose": "This file defines a service for interacting with a blockchain wallet, including fetching token balances, NFT collections, and transaction details.",
         "key_types": [
           "Service",
           "service",
           "TokenBalancesRes",
           "PagingReq",
           "TransactionItem",
-          "SearchNFTsRes",
+          "GetAccountInfoResponse",
           "GetNFTByCollectionAndTokenIDRes"
         ],
         "functions": [
@@ -106,7 +106,11 @@
           "GetNFTCollections",
           "GetTransactionByHash",
           "GetNFTsOfCollectionForAddr",
-          "GetNFTByCollectionAndTokenID"
+          "GetNFTByCollectionAndTokenID",
+          "getTokensBalanceForHome",
+          "getAccountBalance",
+          "getFungibleTokensBalance",
+          "getTokensBalanceForListDefaultErc20Tokens"
         ],
         "imports": [
           "context",
@@ -133,11 +137,19 @@
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers/gas-collector",
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
         ],
+        "side_effects": [
+          "Makes HTTP requests to external services",
+          "Modifies shared state with mutex locks"
+        ],
+        "risks": [
+          "Potential for race conditions if mutex locks are not used correctly",
+          "Error handling may expose sensitive information if not managed properly"
+        ],
         "complexity": "medium"
       },
       "pkg/providers/skynetv2/types.go": {
         "language": "Go",
-        "purpose": "Defines types and constants related to token standards, transfer types, activity types, action types, and transaction statuses.",
+        "purpose": "Defines types and constants related to various token standards and transaction activities.",
         "key_types": [
           "PagingStyle",
           "TokenStandard",

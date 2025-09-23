@@ -1,0 +1,31 @@
+{
+  "content_hash": "46eb699d1af44245ff8ed4d99c34fa77",
+  "timestamp": "2025-09-23T16:03:05.539814+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains database migration scripts to initialize a database with a table for token information.",
+    "key_types": [
+      "varchar",
+      "float8",
+      "bool",
+      "text",
+      "jsonb",
+      "timestamptz"
+    ],
+    "functions": [
+      "CREATE EXTENSION",
+      "CREATE TABLE",
+      "CREATE INDEX",
+      "DROP TABLE",
+      "DROP COLLATION"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the database schema by creating extensions, tables, and indexes."
+    ],
+    "risks": [
+      "Potential for SQL injection if user input is not properly sanitized when interacting with the database."
+    ],
+    "complexity": "medium"
+  }
+}

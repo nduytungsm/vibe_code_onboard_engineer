@@ -1,0 +1,26 @@
+{
+  "content_hash": "1172d3316880e69e0e3e7756669f2dfd",
+  "timestamp": "2025-09-23T16:03:04.852552+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines a migration for creating and dropping a table for NFT mappings.",
+    "key_types": [
+      "table",
+      "index"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "CREATE INDEX",
+      "DROP TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates a new table in the database",
+      "Creates indexes on the table"
+    ],
+    "risks": [
+      "Potential data loss if the DROP TABLE command is executed without backups"
+    ],
+    "complexity": "low"
+  }
+}

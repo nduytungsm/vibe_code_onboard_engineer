@@ -1,0 +1,39 @@
+{
+  "content_hash": "57e83c45e4d87398267330674e4cef81",
+  "timestamp": "2025-09-23T16:03:09.817845+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for handling blockchain token requests and responses.",
+    "key_types": [
+      "SelectProviderReq",
+      "GetTokenBalancesReq",
+      "GetTokenBalancesRes",
+      "TokenBalance",
+      "KnownContract",
+      "Transaction",
+      "GetTransactionsReq",
+      "NFTCollection",
+      "NFTItem",
+      "GetNFTCollectionsReq",
+      "GetNFTItemsReq",
+      "GetNFTItemReq",
+      "GetTxnByHashReq",
+      "GetGasSuggestionReq",
+      "EIP1559GasSuggestion",
+      "LegacyGasSuggestion",
+      "GetGasSuggestionRes"
+    ],
+    "functions": [
+      "GetTokenStandardsIncluded",
+      "GenerateCacheKey",
+      "Clone",
+      "CreateTxn"
+    ],
+    "imports": [
+      "strconv",
+      "strings",
+      "github.com/ethereum/go-ethereum/common"
+    ],
+    "complexity": "medium"
+  }
+}

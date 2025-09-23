@@ -1,6 +1,6 @@
 {
   "content_hash": "43683aa2a0251d06e4937a18d9c91cb9",
-  "timestamp": "2025-09-20T20:47:37.242013+07:00",
+  "timestamp": "2025-09-23T16:31:57.240223+07:00",
   "result": {
     "path": "pkg/providers/ankr",
     "purpose": "Provides services and data structures for interacting with the Ankr blockchain provider, specifically for retrieving account balances.",
@@ -17,7 +17,7 @@
       "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
       "github.com/axieinfinity/ronin-wallet-proxy/models"
     ],
-    "architecture": "The folder follows a service-oriented architecture, encapsulating service logic, configuration, and data models related to the Ankr provider.",
+    "architecture": "The folder follows a service-oriented architecture, encapsulating service logic, configuration, and data models related to blockchain interactions.",
     "file_summaries": {
       "pkg/providers/ankr/ankr_svc.go": {
         "language": "Go",

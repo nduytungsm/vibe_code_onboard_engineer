@@ -1,0 +1,19 @@
+{
+  "content_hash": "6a1e96f2a57686853cb12ff89cb116ce",
+  "timestamp": "2025-09-23T16:03:25.154824+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for handling buy options in a cryptocurrency context.",
+    "key_types": [
+      "GetBuyOptionsRequest",
+      "GetBuyOptionsResponse",
+      "PaymentMethodLimit",
+      "PaymentCurrency",
+      "PurchaseNetwork",
+      "PurchaseCurrency"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

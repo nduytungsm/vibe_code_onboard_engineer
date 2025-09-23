@@ -1,0 +1,53 @@
+{
+  "content_hash": "54ee2b7324ccfcc9abb8c40770bd94f4",
+  "timestamp": "2025-09-23T16:05:00.400235+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a service for managing token information, including retrieval, creation, and updating of token data.",
+    "key_types": [
+      "Service",
+      "service",
+      "TokenInfo",
+      "SearchTokensRequest",
+      "SearchTokensResponse"
+    ],
+    "functions": [
+      "GetByID",
+      "CreateNewTokenInfo",
+      "UpdateTokenInfo",
+      "SearchToken",
+      "SearchByMultiContracts",
+      "GetTokenInfosList",
+      "GetByChainAndAddress",
+      "FixTokenMetadata",
+      "updateCache",
+      "searchTokenByChain",
+      "searchTokenByQuery",
+      "buildCacheTokenInfo",
+      "waitingToRefreshCache",
+      "fireRefreshCacheEvent",
+      "NewService"
+    ],
+    "imports": [
+      "context",
+      "strings",
+      "sync",
+      "github.com/redis/go-redis/v9",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/share",
+      "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+    ],
+    "side_effects": [
+      "Updates cache asynchronously",
+      "Publishes events to refresh cache"
+    ],
+    "risks": [
+      "Potential race conditions due to concurrent access to shared data",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

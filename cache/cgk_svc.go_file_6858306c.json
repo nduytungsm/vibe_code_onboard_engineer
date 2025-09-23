@@ -1,0 +1,49 @@
+{
+  "content_hash": "01865199c44585cad97eec238efcfadf",
+  "timestamp": "2025-09-23T16:28:51.636259+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for interacting with the CoinGecko API to retrieve cryptocurrency data such as token prices and price charts.",
+    "key_types": [
+      "Service",
+      "service",
+      "Token",
+      "models.PriceChart",
+      "models.TokenPrices",
+      "models.DexToken"
+    ],
+    "functions": [
+      "GetAllTokens",
+      "GetPriceChart",
+      "GetTokensPrice",
+      "GetTokenPrice",
+      "GetTokenPriceByID",
+      "GetDexToken",
+      "GetDexPriceChart"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "math/rand",
+      "net/http",
+      "net/url",
+      "strconv",
+      "strings",
+      "time",
+      "github.com/prometheus/client_golang/prometheus",
+      "github.com/rs/zerolog/log",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+      "github.com/axieinfinity/ronin-wallet-proxy/models"
+    ],
+    "side_effects": [
+      "Makes HTTP requests to external APIs",
+      "Modifies the state of the service based on API responses"
+    ],
+    "risks": [
+      "Potential exposure of API keys if not handled securely",
+      "Dependency on external API availability and response formats"
+    ],
+    "complexity": "medium"
+  }
+}

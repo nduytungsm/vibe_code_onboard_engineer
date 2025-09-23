@@ -1,0 +1,26 @@
+{
+  "content_hash": "a713fbe5139b4212caa16d88f0a6abd6",
+  "timestamp": "2025-09-23T16:29:03.816719+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for handling RPC requests and responses related to account balances in a blockchain context.",
+    "key_types": [
+      "RPCRequest",
+      "SyncStatus",
+      "RPCResponse",
+      "GetAccountBalanceParams",
+      "AccountBalanceItem",
+      "GetAccountBalanceResult",
+      "GetAccountBalanceResponse"
+    ],
+    "functions": [
+      "ToTokenBalance"
+    ],
+    "imports": [
+      "strings",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/axieinfinity/ronin-wallet-proxy/models"
+    ],
+    "complexity": "medium"
+  }
+}

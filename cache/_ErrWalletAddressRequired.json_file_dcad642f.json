@@ -1,0 +1,12 @@
+{
+  "content_hash": "d795922d35a14b549360b6ffb80da171",
+  "timestamp": "2025-09-23T16:27:52.213039+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines an error response for a missing wallet address in an API",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

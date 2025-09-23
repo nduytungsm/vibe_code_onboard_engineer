@@ -1,9 +1,9 @@
 {
-  "content_hash": "c38265ac3ed9aa66e93f7fa138d23dbf",
-  "timestamp": "2025-09-20T20:47:33.533443+07:00",
+  "content_hash": "38e323dd4ce0bd820586dfdbb00371be",
+  "timestamp": "2025-09-23T16:32:04.333354+07:00",
   "result": {
     "path": "pkg/helper",
-    "purpose": "Provides various utility functions and helpers for handling data types, binding, JSON conversion, authentication, and more within the application.",
+    "purpose": "Provides various utility functions and helpers for data manipulation, binding, authentication, and concurrent execution in Go applications.",
     "languages": {
       "Go": 12
     },
@@ -31,7 +31,7 @@
       "github.com/ethereum/go-ethereum/common/hexutil",
       "github.com/ethereum/go-ethereum/crypto"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing utility functions and types into separate files for better maintainability and reusability.",
+    "architecture": "The folder follows a modular architecture pattern, organizing utility functions into separate files based on their functionality, promoting reusability and maintainability.",
     "file_summaries": {
       "pkg/helper/big.go": {
         "language": "Go",
@@ -49,7 +49,7 @@
       },
       "pkg/helper/binder.go": {
         "language": "Go",
-        "purpose": "Provides binding functionality for Echo framework with support for headers.",
+        "purpose": "Provides a binding function for Echo framework to bind headers and request data.",
         "key_types": [
           "BindFunc",
           "echo.Context",
@@ -99,6 +99,9 @@
           "strings",
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac"
         ],
+        "risks": [
+          "Potential exposure of secret if not handled properly"
+        ],
         "complexity": "medium"
       },
       "pkg/helper/mapstruct_hook.go": {
@@ -124,7 +127,7 @@
       },
       "pkg/helper/par.go": {
         "language": "Go",
-        "purpose": "This file provides a helper for handling results of functions that may return an error, including parallel execution of such functions.",
+        "purpose": "Provides a helper for concurrent execution of functions with error handling.",
         "key_types": [
           "Result[T]"
         ],
@@ -140,10 +143,10 @@
           "sync"
         ],
         "side_effects": [
-          "Panic if MustGet is called on an error result"
+          "Concurrent execution of functions may lead to race conditions if not handled properly."
         ],
         "risks": [
-          "Potential race conditions if not handled properly in ParDo"
+          "Potential for panics if MustGet is called on an error result."
         ],
         "complexity": "medium"
       },
@@ -179,8 +182,7 @@
           "github.com/ethereum/go-ethereum/crypto"
         ],
         "risks": [
-          "Potential for incorrect address normalization leading to security issues.",
-          "Improper handling of signature validation could allow unauthorized access."
+          "Potential for signature forgery if inputs are not properly validated."
         ],
         "complexity": "medium"
       },
@@ -188,9 +190,9 @@
         "language": "Go",
         "purpose": "Provides utility functions for manipulating slices, including filtering, finding indices, converting slices to maps, and mapping items.",
         "key_types": [
-          "slice",
-          "map",
-          "function"
+          "T",
+          "T1",
+          "T2"
         ],
         "functions": [
           "Filter",
@@ -204,7 +206,7 @@
       },
       "pkg/helper/strings.go": {
         "language": "Go",
-        "purpose": "Truncates a string to a specified maximum length, ensuring it does not cut off words.",
+        "purpose": "Truncates a string to a specified maximum length, ensuring it does not cut off words in the middle.",
         "key_types": [
           "string"
         ],
@@ -247,8 +249,11 @@
           "strings",
           "github.com/labstack/echo/v4"
         ],
+        "side_effects": [
+          "Modifies the user agent string based on query parameters."
+        ],
         "risks": [
-          "Potential for malformed user agent strings leading to errors"
+          "Potential for malformed user agent strings leading to errors."
         ],
         "complexity": "medium"
       }

@@ -1,0 +1,46 @@
+{
+  "content_hash": "7b9c44eeda8067a565794e2dd790c88c",
+  "timestamp": "2025-09-23T16:29:09.518866+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides an interface for interacting with the Ankr service to retrieve token balances and other blockchain-related data.",
+    "key_types": [
+      "AnkrProvider",
+      "ProviderConfig",
+      "ChainConfig"
+    ],
+    "functions": [
+      "GetID",
+      "GetTokenBalances",
+      "GetTransactions",
+      "GetNFTCollections",
+      "GetNFTItems",
+      "GetNFTItem",
+      "GetTransactionByHash",
+      "GetGasSuggestion",
+      "SendRPC",
+      "NewAnkrProvider"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "io",
+      "net/http",
+      "slices",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers/ankr",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+    ],
+    "side_effects": [
+      "Logs errors when service calls fail"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information in logs",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "content_hash": "1ae375b5ff7d9f21f47f593741669f07",
+  "timestamp": "2025-09-23T16:28:37.985476+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines token information and a response structure for known contracts in the Skymavis ecosystem.",
+    "key_types": [
+      "RoninNativeToken",
+      "RoninTokenContract",
+      "GetKnownContractsResponse"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-proxy/models"
+    ],
+    "complexity": "low"
+  }
+}

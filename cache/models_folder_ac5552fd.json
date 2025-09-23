@@ -1,18 +1,18 @@
 {
-  "content_hash": "3e6a828131065885192edff8c560b074",
-  "timestamp": "2025-09-20T20:49:28.12029+07:00",
+  "content_hash": "3f9c443e1bc1213cb67761ae8708c3c9",
+  "timestamp": "2025-09-23T16:30:46.858176+07:00",
   "result": {
     "path": "models",
-    "purpose": "Defines data structures and methods for handling blockchain-related requests, responses, and data management.",
+    "purpose": "Defines data structures and methods for handling blockchain-related data, including token balances, transactions, NFTs, and price charts.",
     "languages": {
       "Go": 5
     },
     "key_modules": [
-      "models/blockchain.go",
-      "models/default.go",
-      "models/nft_mapping.go",
-      "models/price_chart.go",
-      "models/token_info.go"
+      "blockchain.go",
+      "default.go",
+      "nft_mapping.go",
+      "price_chart.go",
+      "token_info.go"
     ],
     "dependencies": [
       "github.com/ethereum/go-ethereum/common",
@@ -26,11 +26,11 @@
       "github.com/lib/pq",
       "github.com/shopspring/decimal"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing related data structures and methods into separate files for clarity and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for clarity and maintainability.",
     "file_summaries": {
       "models/blockchain.go": {
         "language": "Go",
-        "purpose": "Defines data structures and methods for handling blockchain token requests and responses.",
+        "purpose": "Defines data structures and methods for interacting with blockchain token balances and transactions.",
         "key_types": [
           "SelectProviderReq",
           "GetTokenBalancesReq",
@@ -114,7 +114,7 @@
       },
       "models/price_chart.go": {
         "language": "Go",
-        "purpose": "Defines data structures for price charts and token prices, and provides methods to manage token price data.",
+        "purpose": "Defines data structures and methods for managing price charts and token prices.",
         "key_types": [
           "ChartItem",
           "PriceChart",
@@ -144,7 +144,6 @@
           "ContractAddresses",
           "TokenInfo",
           "GetTokenInfoRequest",
-          "DateRange",
           "GetPriceChartRequest",
           "ContractFilter",
           "SearchTokensRequest",

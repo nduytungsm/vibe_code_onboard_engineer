@@ -1,0 +1,29 @@
+{
+  "content_hash": "fb26ff0f7df09fe86b5ffe27fe3f8e7f",
+  "timestamp": "2025-09-23T16:04:51.20479+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the ABI (Application Binary Interface) for the SideChainGateway contract, including events and functions.",
+    "key_types": [
+      "event",
+      "function"
+    ],
+    "functions": [
+      "acknowledWithdrawalOnMainchain",
+      "admin",
+      "changeAdmin",
+      "deposits",
+      "getPendingWithdrawals",
+      "getWithdrawalSignatures",
+      "getWithdrawalSigners",
+      "maxPendingWithdrawal",
+      "pause",
+      "paused",
+      "registry",
+      "removeAdmin",
+      "requestSignatureAgain"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

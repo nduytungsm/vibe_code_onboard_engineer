@@ -1,0 +1,14 @@
+{
+  "content_hash": "4b769a9f6535a293044cfa5ca261de79",
+  "timestamp": "2025-09-23T16:28:36.737351+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a struct for AXPInfo with fields related to experience levels in a gaming context.",
+    "key_types": [
+      "AXPInfo"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "content_hash": "ee1a43ca296b625a92e856bbfe12c359",
-  "timestamp": "2025-09-20T20:48:06.504718+07:00",
+  "content_hash": "79389957e769a63228501f2aa04fa927",
+  "timestamp": "2025-09-23T16:30:33.038315+07:00",
   "result": {
     "path": "pkg/share",
-    "purpose": "This folder/module is responsible for providing shared functionalities and types related to blockchain interactions, including custom data types, constants, and error handling.",
+    "purpose": "This folder/module is responsible for providing shared types, constants, and error handling for blockchain-related functionalities.",
     "languages": {
       "Go": 6
     },
@@ -20,14 +20,13 @@
       "github.com/axieinfinity/ecosystem-go-common/errors",
       "github.com/axieinfinity/ronin-wallet-proxy/models"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for better maintainability and testability.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating related functionalities and types for easy reuse across the application.",
     "file_summaries": {
       "pkg/share/big_int.go": {
         "language": "Go",
         "purpose": "Defines a custom big integer type with JSON marshaling and unmarshaling capabilities.",
         "key_types": [
-          "MyBigInt",
-          "big.Int"
+          "MyBigInt"
         ],
         "functions": [
           "Marshal",
@@ -43,10 +42,10 @@
       },
       "pkg/share/big_int_test.go": {
         "language": "Go",
-        "purpose": "This file contains tests for the MyBigInt type in the share package.",
+        "purpose": "Unit tests for the MyBigInt type in the share package.",
         "key_types": [
           "TokenBalanceResponse",
-          "MyBigInt"
+          "share.MyBigInt"
         ],
         "functions": [
           "TestMyBigInt"
@@ -58,8 +57,12 @@
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
         ],
         "side_effects": [
-          "Prints the token balance response to the console",
-          "Errors are reported if the balance is incorrect"
+          "Prints output to the console",
+          "Errors are reported during testing"
+        ],
+        "risks": [
+          "Potential for panic if Balance is nil",
+          "Improper handling of JSON unmarshalling errors"
         ],
         "complexity": "medium"
       },
@@ -88,7 +91,7 @@
           "error"
         ],
         "functions": [
-          "errors.NewWithCode"
+          "NewWithCode"
         ],
         "imports": [
           "net/http",

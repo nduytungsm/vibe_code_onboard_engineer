@@ -1,0 +1,14 @@
+{
+  "content_hash": "46bc4b71eef8964f35f391dc059483ca",
+  "timestamp": "2025-09-23T16:29:55.975023+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines constants for various Katana method types related to token swaps and liquidity management.",
+    "key_types": [
+      "string"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

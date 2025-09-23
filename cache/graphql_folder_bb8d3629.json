@@ -1,9 +1,9 @@
 {
-  "content_hash": "ac1b524b7346bd26653fa70ff280ac7a",
-  "timestamp": "2025-09-20T20:48:12.136742+07:00",
+  "content_hash": "c9b3a86a18b41d5e5b663a532c35255b",
+  "timestamp": "2025-09-23T16:31:46.103506+07:00",
   "result": {
     "path": "httpclient/graphql",
-    "purpose": "Responsible for providing a GraphQL client implementation that can execute queries and mutations against a GraphQL server.",
+    "purpose": "Responsible for providing a GraphQL client implementation to execute queries and mutations against a GraphQL server.",
     "languages": {
       "Go": 4
     },
@@ -18,14 +18,12 @@
       "github.com/axieinfinity/ronin-wallet-proxy/httpclient/graphql/internal/jsonutil",
       "github.com/axieinfinity/ronin-wallet-proxy/httpclient/graphql/ident"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the GraphQL client functionality into separate files for client implementation, query construction, and scalar type definitions.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the GraphQL client functionality into distinct files that handle different aspects such as client implementation, query construction, and scalar type definitions.",
     "file_summaries": {
       "httpclient/graphql/doc.go": {
         "language": "Go",
         "purpose": "Provides a GraphQL client implementation.",
-        "key_types": [
-          "graphql"
-        ],
+        "key_types": [],
         "functions": [],
         "imports": [
           "github.com/shurcooL/githubv4"
@@ -34,7 +32,7 @@
       },
       "httpclient/graphql/graphql.go": {
         "language": "Go",
-        "purpose": "This file implements a GraphQL client that can execute queries and mutations against a GraphQL server.",
+        "purpose": "This file implements a GraphQL client for executing queries and mutations against a GraphQL server.",
         "key_types": [
           "Client",
           "errors",
@@ -63,7 +61,7 @@
         ],
         "risks": [
           "Potential exposure of sensitive data in error messages",
-          "Improper handling of HTTP responses could lead to unhandled errors"
+          "Improper handling of HTTP responses may lead to unhandled errors"
         ],
         "complexity": "medium"
       },

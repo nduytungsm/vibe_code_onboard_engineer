@@ -1,131 +1,79 @@
 {
-  "content_hash": "799fd7d9adafcfa78a9a2ede8031594d",
-  "timestamp": "2025-09-20T21:31:23.397443+07:00",
+  "content_hash": "f8e6b1f028a7de0c7c19654b27e970c9",
+  "timestamp": "2025-09-23T16:32:23.411226+07:00",
   "result": {
     "path": "migrations",
-    "purpose": "Responsible for defining and managing the database schema through SQL migration files.",
+    "purpose": "This folder is responsible for managing database schema changes and migrations.",
     "languages": {
-      "SQL": 5
+      "SQL": 3
     },
     "key_modules": [
-      "001_create_users.sql",
-      "002_create_orders.sql",
-      "003_create_products.sql",
-      "004_create_order_items.sql",
-      "005_add_user_preferences.sql"
+      "20230906150000_init_db.sql",
+      "20240108180000_add_cmc_addresses.sql",
+      "20240124100000_add_nft_mapping.sql"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a migration-based architecture pattern, where each file represents a specific change to the database schema, allowing for version control and incremental updates.",
+    "architecture": "The folder follows a version-controlled migration pattern, where each SQL file represents a specific change to the database schema, allowing for incremental updates.",
     "file_summaries": {
-      "migrations/001_create_users.sql": {
+      "migrations/20230906150000_init_db.sql": {
         "language": "SQL",
-        "purpose": "Defines the structure of the users table and creates an index for email lookups.",
+        "purpose": "This file defines the initial database schema for storing token information.",
         "key_types": [
-          "BIGINT",
-          "VARCHAR",
-          "TIMESTAMP"
-        ],
-        "functions": [
-          "CREATE TABLE",
-          "CREATE INDEX"
-        ],
-        "imports": [],
-        "side_effects": [
-          "Creates a new table in the database",
-          "Creates an index on the users table"
-        ],
-        "risks": [
-          "Potential for SQL injection if user input is not properly sanitized"
-        ],
-        "complexity": "low"
-      },
-      "migrations/002_create_orders.sql": {
-        "language": "SQL",
-        "purpose": "Defines the schema for the orders table and creates necessary indexes.",
-        "key_types": [
-          "BIGINT",
-          "DECIMAL",
-          "VARCHAR",
-          "TIMESTAMP"
+          "varchar",
+          "float8",
+          "bool",
+          "text",
+          "jsonb",
+          "timestamptz"
         ],
         "functions": [],
         "imports": [],
         "side_effects": [
-          "Creates a new table in the database",
-          "Creates indexes for performance optimization"
+          "Creates database extensions and collation",
+          "Creates a table with various fields",
+          "Creates indexes on the table"
         ],
-        "complexity": "low"
+        "complexity": "medium"
       },
-      "migrations/003_create_products.sql": {
+      "migrations/20240108180000_add_cmc_addresses.sql": {
         "language": "SQL",
-        "purpose": "Defines the schema for products and categories tables and establishes a foreign key relationship.",
+        "purpose": "This file contains migration scripts to add and remove a column in the token_infos table.",
         "key_types": [
-          "TABLE",
-          "BIGINT",
-          "VARCHAR",
-          "TEXT",
-          "DECIMAL",
-          "INTEGER",
-          "TIMESTAMP"
+          "table",
+          "column"
         ],
         "functions": [
-          "CREATE TABLE",
           "ALTER TABLE"
         ],
         "imports": [],
         "side_effects": [
-          "Creates tables in the database",
-          "Establishes foreign key constraints"
+          "Modifies the database schema by adding or dropping a column."
         ],
         "risks": [
-          "Potential for SQL injection if user input is not properly sanitized"
+          "Potential data loss if the column is dropped without proper backups."
         ],
-        "complexity": "medium"
+        "complexity": "low"
       },
-      "migrations/004_create_order_items.sql": {
+      "migrations/20240124100000_add_nft_mapping.sql": {
         "language": "SQL",
-        "purpose": "Defines the schema for the order_items table and its constraints in a database.",
+        "purpose": "This file defines a migration for creating and dropping a table for NFT mappings.",
         "key_types": [
-          "BIGINT",
-          "INTEGER",
-          "DECIMAL",
-          "TIMESTAMP"
+          "table",
+          "index",
+          "jsonb"
         ],
         "functions": [
           "CREATE TABLE",
-          "ALTER TABLE",
-          "CREATE INDEX"
+          "CREATE INDEX",
+          "DROP TABLE"
         ],
         "imports": [],
         "side_effects": [
           "Creates a new table in the database",
-          "Adds constraints and indexes to improve performance"
+          "Creates indexes on the table"
         ],
         "risks": [
-          "Potential for SQL injection if user input is not properly sanitized when inserting data"
-        ],
-        "complexity": "medium"
-      },
-      "migrations/005_add_user_preferences.sql": {
-        "language": "SQL",
-        "purpose": "This file contains SQL commands to modify the users table and create a new user_preferences table.",
-        "key_types": [
-          "TABLE",
-          "COLUMN",
-          "FOREIGN KEY",
-          "CONSTRAINT"
-        ],
-        "functions": [
-          "ALTER TABLE",
-          "CREATE TABLE"
-        ],
-        "imports": [],
-        "side_effects": [
-          "Modifies the users table structure",
-          "Creates a new user_preferences table"
-        ],
-        "risks": [
-          "Potential for data integrity issues if foreign key constraints are not properly managed"
+          "Potential for SQL injection if user input is not properly sanitized"
         ],
         "complexity": "medium"
       }

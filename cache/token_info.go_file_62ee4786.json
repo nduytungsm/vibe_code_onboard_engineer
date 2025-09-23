@@ -1,0 +1,44 @@
+{
+  "content_hash": "24ffbd1bd0199cbfa637fa6e0469b8bc",
+  "timestamp": "2025-09-23T16:03:19.05303+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for handling token information and related metadata.",
+    "key_types": [
+      "QuoteInfo",
+      "Metadata",
+      "Quote",
+      "ContractAddress",
+      "ContractAddresses",
+      "TokenInfo",
+      "GetTokenInfoRequest",
+      "DateRange",
+      "GetPriceChartRequest",
+      "ContractFilter",
+      "SearchTokensRequest",
+      "PostSearchTokensRequest",
+      "SearchTokensResponse",
+      "CreateTokenInfoRequest",
+      "GetTokenInfoByIDRequest",
+      "DexVolumeUsd",
+      "DexTokenPool",
+      "DexToken"
+    ],
+    "functions": [
+      "Scan",
+      "Value",
+      "Clone",
+      "GetDateRange",
+      "ToTokenInfo"
+    ],
+    "imports": [
+      "database/sql/driver",
+      "encoding/json",
+      "errors",
+      "time",
+      "github.com/lib/pq",
+      "github.com/shopspring/decimal"
+    ],
+    "complexity": "medium"
+  }
+}

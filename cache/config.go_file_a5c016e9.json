@@ -1,0 +1,19 @@
+{
+  "content_hash": "78c9bc46457eb5b7e05ca6ec1a705efb",
+  "timestamp": "2025-09-23T16:29:30.293121+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for the Skynet V2 provider.",
+    "key_types": [
+      "Config",
+      "time.Duration",
+      "gascollector.Config"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers/gas-collector"
+    ],
+    "complexity": "low"
+  }
+}

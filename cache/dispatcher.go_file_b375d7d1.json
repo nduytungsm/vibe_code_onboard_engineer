@@ -1,0 +1,33 @@
+{
+  "content_hash": "4df811f145aa81a2d1c225d18adc727b",
+  "timestamp": "2025-09-23T16:30:01.587215+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Manages a pool of workers to process jobs concurrently.",
+    "key_types": [
+      "Dispatcher",
+      "Config",
+      "Job",
+      "Worker"
+    ],
+    "functions": [
+      "NewDispatcher",
+      "Run",
+      "dispatch",
+      "Stop",
+      "AddNewJob"
+    ],
+    "imports": [
+      "sync"
+    ],
+    "side_effects": [
+      "Starts goroutines for workers",
+      "Blocks on worker availability"
+    ],
+    "risks": [
+      "Potential deadlocks if worker pool is exhausted",
+      "Race conditions if not properly synchronized"
+    ],
+    "complexity": "medium"
+  }
+}
