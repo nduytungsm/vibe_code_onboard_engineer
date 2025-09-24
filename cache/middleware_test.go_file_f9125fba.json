@@ -1,0 +1,35 @@
+{
+  "content_hash": "383708a6f7ada71c7430218b4c109f5a",
+  "timestamp": "2025-09-24T15:43:23.279269+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for session middleware in a web application using the Fiber framework.",
+    "key_types": [
+      "fiber.Ctx",
+      "session.Session"
+    ],
+    "functions": [
+      "Test_Session_Middleware",
+      "FromContext"
+    ],
+    "imports": [
+      "fmt",
+      "sort",
+      "strings",
+      "sync",
+      "testing",
+      "time",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/extractors",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Modifies session state through various HTTP requests."
+    ],
+    "risks": [
+      "Potential for session fixation if session IDs are not properly regenerated."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "content_hash": "25f82b11e2f3006e2dd0ee3959ff76a8",
+  "timestamp": "2025-09-24T15:41:37.975192+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles multipart form data requests and sets values based on the provided form files.",
+    "key_types": [
+      "multipartRequest",
+      "multipart.FileHeader"
+    ],
+    "functions": [
+      "TrySet",
+      "setByMultipartFormFile",
+      "setArrayOfMultipartFormFiles"
+    ],
+    "imports": [
+      "errors",
+      "mime/multipart",
+      "net/http",
+      "reflect"
+    ],
+    "side_effects": [
+      "Modifies the reflect.Value passed to TrySet based on the multipart form data."
+    ],
+    "risks": [
+      "Potential for panic if the value type does not match expected types."
+    ],
+    "complexity": "medium"
+  }
+}

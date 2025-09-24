@@ -1,0 +1,16 @@
+{
+  "content_hash": "6ef1bb1dca39a5b4d2ed9c94c49cf421",
+  "timestamp": "2025-09-24T15:25:30.188157+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Exports a transformation function with a specific configuration for Babel.",
+    "key_types": [],
+    "functions": [
+      "require"
+    ],
+    "imports": [
+      "./makeTransform"
+    ],
+    "complexity": "low"
+  }
+}

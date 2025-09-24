@@ -1,0 +1,22 @@
+{
+  "content_hash": "1070747c5221a13d1b106dfc43df2082",
+  "timestamp": "2025-09-24T15:28:01.54837+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines a function that uses a label for control flow and exports a fixture entry point for testing.",
+    "key_types": [
+      "Function",
+      "Object"
+    ],
+    "functions": [
+      "useFoo"
+    ],
+    "imports": [
+      "arrayPush"
+    ],
+    "side_effects": [
+      "Modifies the items array based on conditions"
+    ],
+    "complexity": "medium"
+  }
+}

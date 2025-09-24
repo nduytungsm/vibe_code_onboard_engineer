@@ -1,0 +1,33 @@
+{
+  "content_hash": "79850d5d75aee859a44bb3f732dae4b3",
+  "timestamp": "2025-09-24T15:45:35.890743+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the Body structure in the HCL syntax package, validating the content and attributes of HCL bodies against defined schemas.",
+    "key_types": [
+      "Body",
+      "Attribute",
+      "BodyContent",
+      "BodySchema",
+      "Block",
+      "Attributes",
+      "Blocks",
+      "LiteralValueExpr"
+    ],
+    "functions": [
+      "TestBodyContent",
+      "TestBodyJustAttributes"
+    ],
+    "imports": [
+      "fmt",
+      "reflect",
+      "testing",
+      "github.com/davecgh/go-spew/spew",
+      "github.com/google/go-cmp/cmp",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty-debug/ctydebug",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

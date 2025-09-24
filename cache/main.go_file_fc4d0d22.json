@@ -1,0 +1,54 @@
+{
+  "content_hash": "679f24c24a86e403733c88d9a7ac2632",
+  "timestamp": "2025-09-24T14:52:50.81429+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is the main entry point for a program that cleans expired highlights from a database and logs the process.",
+    "key_types": [
+      "context.Context",
+      "time.Time",
+      "gorm.DB",
+      "config.Config",
+      "repositories.QuickAccessDAppRepo",
+      "repositories.HighlightRepo",
+      "redis.RedisClient",
+      "dapp.CleanService",
+      "md.Highlight"
+    ],
+    "functions": [
+      "main",
+      "sentry.Init",
+      "postgresql.NewClient",
+      "repositories.NewQuickAccessDAppRepo",
+      "repositories.NewHighlightRepo",
+      "redis.NewRedisClient",
+      "dapp.NewCleanService",
+      "dAppSvc.CleanExpireHighlights"
+    ],
+    "imports": [
+      "context",
+      "time",
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/getsentry/sentry-go",
+      "github.com/rs/zerolog/log",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-manager/config",
+      "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
+    ],
+    "side_effects": [
+      "Initializes Sentry for error tracking",
+      "Connects to PostgreSQL database",
+      "Connects to Redis database",
+      "Cleans expired highlights from the database"
+    ],
+    "risks": [
+      "Potential failure in Sentry initialization",
+      "Database connection failures",
+      "Error handling for cleaning highlights may not be robust"
+    ],
+    "complexity": "medium"
+  }
+}

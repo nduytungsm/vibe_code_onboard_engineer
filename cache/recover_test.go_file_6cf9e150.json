@@ -1,0 +1,28 @@
+{
+  "content_hash": "5bb113334cd4a50c8bd91c7c28ade32f",
+  "timestamp": "2025-09-24T15:43:09.496702+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for a middleware recovery function in a Fiber web application.",
+    "key_types": [
+      "fiber.Ctx",
+      "fiber.App",
+      "Config"
+    ],
+    "functions": [
+      "Test_Recover",
+      "Test_Recover_Next",
+      "Test_Recover_EnableStackTrace"
+    ],
+    "imports": [
+      "net/http/httptest",
+      "testing",
+      "github.com/gofiber/fiber/v3",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Panic in the application to test recovery middleware."
+    ],
+    "complexity": "medium"
+  }
+}

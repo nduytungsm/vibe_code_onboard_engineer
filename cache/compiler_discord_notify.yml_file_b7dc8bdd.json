@@ -1,0 +1,29 @@
+{
+  "content_hash": "e5263cb8da024b21e4ed998ccf7598a2",
+  "timestamp": "2025-09-24T15:24:37.972541+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Automate notifications to Discord for pull requests in a GitHub repository.",
+    "key_types": [
+      "job",
+      "step",
+      "event"
+    ],
+    "functions": [
+      "check_access",
+      "check_maintainer",
+      "notify"
+    ],
+    "imports": [
+      "facebook/react/.github/workflows/shared_check_maintainer.yml@main",
+      "tsickert/discord-webhook@86dc739f3f165f16dadc5666051c367efa1692f4"
+    ],
+    "side_effects": [
+      "Sends notifications to a Discord channel based on pull request events."
+    ],
+    "risks": [
+      "Exposure of sensitive information if the webhook URL is not properly secured."
+    ],
+    "complexity": "medium"
+  }
+}

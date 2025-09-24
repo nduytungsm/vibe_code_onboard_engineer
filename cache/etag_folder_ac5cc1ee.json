@@ -1,0 +1,103 @@
+{
+  "content_hash": "edd9b049047ae2f3cbbc3efb8b77612f",
+  "timestamp": "2025-09-24T15:44:33.471668+07:00",
+  "result": {
+    "path": "middleware/etag",
+    "purpose": "Responsible for generating ETags for HTTP responses in a web application.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "config.go",
+      "etag.go",
+      "etag_test.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/valyala/bytebufferpool",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating middleware functionality related to ETags, including configuration, implementation, and testing.",
+    "file_summaries": {
+      "middleware/etag/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration for an ETag middleware in a web application.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "configDefault"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/etag/etag.go": {
+        "language": "Go",
+        "purpose": "This file implements middleware for generating ETags for HTTP responses.",
+        "key_types": [
+          "fiber.Handler",
+          "Config"
+        ],
+        "functions": [
+          "Generate",
+          "GenerateWeak",
+          "New",
+          "appendUint"
+        ],
+        "imports": [
+          "bytes",
+          "hash/crc32",
+          "math",
+          "github.com/gofiber/fiber/v3",
+          "github.com/valyala/bytebufferpool"
+        ],
+        "side_effects": [
+          "Modifies HTTP response headers",
+          "Resets request body in certain conditions"
+        ],
+        "risks": [
+          "Potential denial of service if body size exceeds limits"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/etag/etag_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for ETag middleware in a Fiber web application.",
+        "key_types": [
+          "fiber.Ctx",
+          "Config"
+        ],
+        "functions": [
+          "Test_ETag_Next",
+          "Test_ETag_SkipError",
+          "Test_ETag_NotStatusOK",
+          "Test_ETag_NoBody",
+          "Test_ETag_NewEtag",
+          "testETagNewEtag",
+          "Test_ETag_WeakEtag",
+          "testETagWeakEtag",
+          "Test_ETag_CustomEtag",
+          "testETagCustomEtag",
+          "Test_ETag_CustomEtagPut",
+          "Benchmark_Etag"
+        ],
+        "imports": [
+          "bytes",
+          "io",
+          "net/http/httptest",
+          "testing",
+          "github.com/gofiber/fiber/v3",
+          "github.com/stretchr/testify/require",
+          "github.com/valyala/fasthttp"
+        ],
+        "side_effects": [
+          "Modifies HTTP response headers based on ETag logic."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

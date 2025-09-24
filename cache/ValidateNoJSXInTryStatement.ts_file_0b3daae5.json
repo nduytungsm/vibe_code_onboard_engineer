@@ -1,0 +1,34 @@
+{
+  "content_hash": "abd70ac63ce6fc03261c4f1579ab129a",
+  "timestamp": "2025-09-24T15:27:36.120435+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validates that JSX is not created within a try block to prevent rendering errors from being caught improperly.",
+    "key_types": [
+      "CompilerDiagnostic",
+      "CompilerError",
+      "BlockId",
+      "HIRFunction",
+      "Result"
+    ],
+    "functions": [
+      "validateNoJSXInTryStatement"
+    ],
+    "imports": [
+      "CompilerDiagnostic",
+      "CompilerError",
+      "ErrorCategory",
+      "BlockId",
+      "HIRFunction",
+      "Result",
+      "retainWhere"
+    ],
+    "side_effects": [
+      "Modifies the errors object to include diagnostics for invalid JSX usage."
+    ],
+    "risks": [
+      "Potential for misleading error messages if the validation is not clear."
+    ],
+    "complexity": "medium"
+  }
+}

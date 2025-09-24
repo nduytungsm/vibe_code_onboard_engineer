@@ -1,0 +1,22 @@
+{
+  "content_hash": "276802fc894c3e1b5664f0ca9e1e0d64",
+  "timestamp": "2025-09-24T15:25:10.035408+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "A custom hook that runs a side effect only once when the component mounts.",
+    "key_types": [
+      "EffectCallback"
+    ],
+    "functions": [
+      "useMountEffect"
+    ],
+    "imports": [
+      "EffectCallback from 'react'",
+      "useEffect from 'react'"
+    ],
+    "side_effects": [
+      "Runs the provided effect when the component mounts"
+    ],
+    "complexity": "low"
+  }
+}

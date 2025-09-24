@@ -1,0 +1,55 @@
+{
+  "content_hash": "97c4389198dda5847b8b83ff95d3afe0",
+  "timestamp": "2025-09-24T15:46:04.24865+07:00",
+  "result": {
+    "path": "docs/addon",
+    "purpose": "This folder contains documentation for addons, including their categories and specific implementations like the Retry addon.",
+    "languages": {
+      "Go": 1,
+      "JSON": 1
+    },
+    "key_modules": [
+      "_category_.json",
+      "retry.md"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3/addon/retry",
+      "github.com/gofiber/fiber/v3/client"
+    ],
+    "architecture": "The folder follows a documentation structure pattern, organizing files by addon categories and their respective implementations.",
+    "file_summaries": {
+      "docs/addon/_category_.json": {
+        "language": "JSON",
+        "purpose": "Defines a category for an addon in a documentation structure.",
+        "key_types": [
+          "object"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "docs/addon/retry.md": {
+        "language": "Go",
+        "purpose": "The Retry addon for Fiber retries failed network operations using exponential backoff with jitter.",
+        "key_types": [
+          "retry.ExponentialBackoff",
+          "retry.Config",
+          "client.Response"
+        ],
+        "functions": [
+          "NewExponentialBackoff",
+          "Retry"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/gofiber/fiber/v3/addon/retry",
+          "github.com/gofiber/fiber/v3/client"
+        ],
+        "side_effects": [
+          "Panic if all retry attempts fail"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

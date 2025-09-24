@@ -1,0 +1,26 @@
+{
+  "content_hash": "3fb486c33245c4a076cb430b317c4f58",
+  "timestamp": "2025-09-23T16:58:38.602962+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the MyBigInt type in the share package.",
+    "key_types": [
+      "TokenBalanceResponse",
+      "MyBigInt"
+    ],
+    "functions": [
+      "TestMyBigInt"
+    ],
+    "imports": [
+      "encoding/json",
+      "fmt",
+      "testing",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+    ],
+    "side_effects": [
+      "Prints the token balance response to the console",
+      "Errors are reported if the balance is incorrect"
+    ],
+    "complexity": "medium"
+  }
+}

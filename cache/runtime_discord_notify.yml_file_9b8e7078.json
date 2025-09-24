@@ -1,0 +1,29 @@
+{
+  "content_hash": "c54513d16367fb668dda91b3b8cc3a87",
+  "timestamp": "2025-09-24T15:24:44.257539+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow to notify a Discord channel when a pull request is opened or ready for review.",
+    "key_types": [
+      "job",
+      "step",
+      "event"
+    ],
+    "functions": [
+      "check_access",
+      "check_maintainer",
+      "notify"
+    ],
+    "imports": [
+      "facebook/react/.github/workflows/shared_check_maintainer.yml",
+      "tsickert/discord-webhook"
+    ],
+    "side_effects": [
+      "Sends notifications to a Discord channel based on pull request events."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if the webhook URL is not properly secured."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "content_hash": "d7d79bc1a99a33f04250192b1df9d00f",
+  "timestamp": "2025-09-24T15:26:46.578149+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the Fiber web framework, which is inspired by Express and built on top of Fasthttp for fast HTTP handling.",
+    "key_types": [
+      "App",
+      "Config",
+      "Error",
+      "Handler",
+      "Map",
+      "ErrorHandler"
+    ],
+    "functions": [
+      "New",
+      "Listen",
+      "Get",
+      "Post",
+      "Put",
+      "Delete",
+      "Use",
+      "Group"
+    ],
+    "imports": [
+      "bufio",
+      "context",
+      "encoding/json",
+      "encoding/xml",
+      "errors",
+      "fmt",
+      "io",
+      "net",
+      "net/http",
+      "net/http/httputil",
+      "os",
+      "reflect",
+      "strconv",
+      "strings",
+      "sync",
+      "time",
+      "unsafe",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp",
+      "github.com/gofiber/fiber/v3/binder",
+      "github.com/gofiber/fiber/v3/log"
+    ],
+    "complexity": "high"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "content_hash": "2111b3ed90b56b62728d950755922451",
+  "timestamp": "2025-09-24T15:25:20.092237+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for Tailwind CSS to define custom themes and content paths.",
+    "key_types": [
+      "Object",
+      "Array"
+    ],
+    "functions": [
+      "module.exports"
+    ],
+    "imports": [
+      "tailwindcss/defaultTheme",
+      "./colors"
+    ],
+    "complexity": "medium"
+  }
+}

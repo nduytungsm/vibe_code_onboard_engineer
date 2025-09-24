@@ -1,0 +1,18 @@
+{
+  "content_hash": "71bdafe26d9f2db639cdb2c883107249",
+  "timestamp": "2025-09-24T15:26:29.879186+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Exports various functions related to inference in a React compiler context.",
+    "key_types": [],
+    "functions": [
+      "analyseFunctions",
+      "dropManualMemoization",
+      "inferReactivePlaces",
+      "inlineImmediatelyInvokedFunctionExpressions",
+      "inferEffectDependencies"
+    ],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "content_hash": "e955f16a1d91ff3556ce91292e339fc8",
+  "timestamp": "2025-09-24T14:54:34.916433+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing highlights in a database using GORM.",
+    "key_types": [
+      "HighlightRepo",
+      "highlightRepo",
+      "md.Highlight",
+      "md.Paging"
+    ],
+    "functions": [
+      "GetList",
+      "Save",
+      "SaveBatch",
+      "Update",
+      "UpdateBatch",
+      "GetByID",
+      "GetAll",
+      "DeleteByID",
+      "GetHighlightDApps",
+      "CleanExpired",
+      "NewHighlightRepo"
+    ],
+    "imports": [
+      "context",
+      "time",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "side_effects": [
+      "Database transactions are performed which may modify the database state."
+    ],
+    "risks": [
+      "Potential SQL injection if input is not properly sanitized.",
+      "Data loss if updates or deletes are not handled correctly."
+    ],
+    "complexity": "medium"
+  }
+}

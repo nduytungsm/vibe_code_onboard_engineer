@@ -1,0 +1,53 @@
+{
+  "content_hash": "64fa9ad18db1ff1160bd3e5fa49d4572",
+  "timestamp": "2025-09-24T15:40:48.12043+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a Response struct that represents the result of an HTTP request, providing methods to access response data and manage the response lifecycle.",
+    "key_types": [
+      "Response",
+      "Client",
+      "Request"
+    ],
+    "functions": [
+      "setClient",
+      "setRequest",
+      "Status",
+      "StatusCode",
+      "Protocol",
+      "Header",
+      "Headers",
+      "Cookies",
+      "Body",
+      "String",
+      "JSON",
+      "CBOR",
+      "XML",
+      "Save",
+      "Reset",
+      "Close",
+      "AcquireResponse",
+      "ReleaseResponse"
+    ],
+    "imports": [
+      "bytes",
+      "errors",
+      "fmt",
+      "io",
+      "io/fs",
+      "iter",
+      "os",
+      "path/filepath",
+      "sync",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Creates directories and files on the filesystem when saving response body."
+    ],
+    "risks": [
+      "Potential for data races if released Response objects are reused."
+    ],
+    "complexity": "medium"
+  }
+}

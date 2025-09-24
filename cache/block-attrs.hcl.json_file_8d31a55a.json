@@ -1,0 +1,26 @@
+{
+  "content_hash": "0a19ea0b11256f1e972f6d1d65da5b66",
+  "timestamp": "2025-09-24T15:46:09.535815+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is used for testing a fuzzing function with a JSON input.",
+    "key_types": [
+      "byte",
+      "string"
+    ],
+    "functions": [
+      "TestFuzz"
+    ],
+    "imports": [
+      "testing",
+      "encoding/json"
+    ],
+    "side_effects": [
+      "None"
+    ],
+    "risks": [
+      "None"
+    ],
+    "complexity": "low"
+  }
+}

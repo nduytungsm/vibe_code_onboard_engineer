@@ -1,0 +1,36 @@
+{
+  "content_hash": "88b5596ab847eb8a7acfa2ff93e6720b",
+  "timestamp": "2025-09-24T15:27:37.87066+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validates against calling setState in the body of an effect (useEffect and friends), while allowing calling setState in callbacks scheduled by the effect.",
+    "key_types": [
+      "CompilerDiagnostic",
+      "CompilerError",
+      "ErrorCategory",
+      "Environment",
+      "HIRFunction",
+      "IdentifierId",
+      "Place",
+      "Result"
+    ],
+    "functions": [
+      "validateNoSetStateInEffects",
+      "getSetStateCall"
+    ],
+    "imports": [
+      "../CompilerError",
+      "../HIR",
+      "../HIR/visitors",
+      "../Utils/Result",
+      "../Utils/utils"
+    ],
+    "side_effects": [
+      "Triggers a re-render if setState is called within an effect"
+    ],
+    "risks": [
+      "Potential performance issues due to cascading renders if setState is called improperly"
+    ],
+    "complexity": "medium"
+  }
+}

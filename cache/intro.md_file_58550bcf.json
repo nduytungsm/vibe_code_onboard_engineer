@@ -1,0 +1,28 @@
+{
+  "content_hash": "065b1671e62f960fb70b68fe9b6e50d2",
+  "timestamp": "2025-09-24T15:27:59.616727+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the Fiber web framework, including installation instructions and examples.",
+    "key_types": [
+      "fiber.Ctx",
+      "fiber.App"
+    ],
+    "functions": [
+      "handler",
+      "main"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/static"
+    ],
+    "side_effects": [
+      "Modifies HTTP request handling behavior",
+      "Serves static files from a directory"
+    ],
+    "risks": [
+      "Potential for memory leaks if context values are improperly managed"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "content_hash": "23f0e88757fc7db6a54a4d69b04b25a9",
+  "timestamp": "2025-09-24T15:46:16.161624+07:00",
+  "result": {
+    "path": "middleware/cache",
+    "purpose": "This folder/module is responsible for implementing caching middleware for the Fiber web framework, managing cache entries, and providing configuration and testing for the caching functionality.",
+    "languages": {
+      "Go": 8
+    },
+    "key_modules": [
+      "cache.go",
+      "cache_test.go",
+      "config.go",
+      "heap.go",
+      "manager.go",
+      "manager_msgp.go",
+      "manager_msgp_test.go",
+      "manager_test.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp",
+      "github.com/tinylib/msgp/msgp",
+      "github.com/stretchr/testify/require",
+      "github.com/stretchr/testify/assert"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, separating concerns into distinct files for caching logic, configuration, and testing, while utilizing a combination of in-memory and external storage solutions.",
+    "file_summaries": {
+      "middleware/cache/cache.go": {
+        "language": "Go",
+        "purpose": "This file implements a caching middleware for the Fiber web framework, allowing responses to be cached and served efficiently.",
+        "key_types": [
+          "Config",
+          "fiber.Handler",
+          "sync.RWMutex",
+          "indexedHeap"
+        ],
+        "functions": [
+          "New",
+          "deleteKey",
+          "maskKey",
+          "hasRequestDirective",
+          "parseMaxAge"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "slices",
+          "strconv",
+          "strings",
+          "sync",
+          "sync/atomic",
+          "time",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/utils/v2",
+          "github.com/valyala/fasthttp"
+        ],
+        "side_effects": [
+          "Modifies response headers based on cache state",
+          "Updates cache entries and timestamps"
+        ],
+        "risks": [
+          "Potential for stale data if cache expiration is not managed correctly",
+          "Concurrency issues if not properly synchronized"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/cache/cache_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for a caching middleware in a Fiber web application.",
+        "key_types": [
+          "failingCacheStorage",
+          "fiber.Ctx",
+          "Config"
+        ],
+        "functions": [
+          "newFailingCacheStorage",
+          "GetWithContext",
+          "Get",
+          "SetWithContext",
+          "Set",
+          "DeleteWithContext",
+          "Delete",
+          "ResetWithContext",
+          "Reset",
+          "Close",
+          "TestCacheStorageGetError",
+          "TestCacheStorageSetError",
+          "TestCacheStorageDeleteError",
+          "Test_Cache_CacheControl",
+          "Test_Cache_CacheControl_Disabled",
+          "Test_Cache_Expired",
+          "Test_Cache",
+          "Test_Cache_WithNoCacheRequestDirective"
+        ],
+        "imports": [
+          "bytes",
+          "context",
+          "errors",
+          "fmt",
+          "io",
+          "math",
+          "net/http/httptest",
+          "os",
+          "strconv",
+          "testing",
+          "time",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/internal/storage/memory",
+          "github.com/gofiber/fiber/v3/middleware/etag",
+          "github.com/gofiber/utils/v2",
+          "github.com/stretchr/testify/require",
+          "github.com/valyala/fasthttp"
+        ],
+        "side_effects": [
+          "Modifies the state of the cache storage during tests.",
+          "Interacts with the Fiber application to simulate HTTP requests."
+        ],
+        "risks": [
+          "Potential for race conditions due to parallel test execution.",
+          "Error handling may expose sensitive information if not properly managed."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/cache/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration for a caching middleware in a web application.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "configDefault"
+        ],
+        "imports": [
+          "time",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/utils/v2"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/cache/heap.go": {
+        "language": "Go",
+        "purpose": "This file implements a min-heap data structure for managing cache entries with expiration timestamps.",
+        "key_types": [
+          "heapEntry",
+          "indexedHeap"
+        ],
+        "functions": [
+          "Len",
+          "Less",
+          "Swap",
+          "Push",
+          "Pop",
+          "put",
+          "remove",
+          "removeFirst"
+        ],
+        "imports": [
+          "container/heap"
+        ],
+        "side_effects": [
+          "Modifies the internal state of the heap when entries are added or removed."
+        ],
+        "risks": [
+          "Forced type assertions may lead to runtime panics if types do not match."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/cache/manager.go": {
+        "language": "Go",
+        "purpose": "This file implements a cache manager that handles storing, retrieving, and deleting cache items using either in-memory storage or an external storage solution.",
+        "key_types": [
+          "item",
+          "manager"
+        ],
+        "functions": [
+          "newManager",
+          "acquire",
+          "release",
+          "get",
+          "getRaw",
+          "set",
+          "setRaw",
+          "del",
+          "logKey"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "sync",
+          "time",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/internal/memory"
+        ],
+        "side_effects": [
+          "Allocates memory for cache items",
+          "Modifies the state of the cache when items are added or removed"
+        ],
+        "risks": [
+          "Potential memory leaks if items are not properly released",
+          "Improper handling of nil values may lead to panics"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/cache/manager_msgp.go": {
+        "language": "Go",
+        "purpose": "This file defines a cache manager that encodes and decodes messages using the msgp library.",
+        "key_types": [
+          "item"
+        ],
+        "functions": [
+          "DecodeMsg",
+          "EncodeMsg",
+          "MarshalMsg",
+          "UnmarshalMsg",
+          "Msgsize"
+        ],
+        "imports": [
+          "github.com/tinylib/msgp/msgp"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/cache/manager_msgp_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests and benchmarks for marshaling and unmarshaling an 'item' structure using the msgp library.",
+        "key_types": [
+          "item"
+        ],
+        "functions": [
+          "TestMarshalUnmarshalitem",
+          "BenchmarkMarshalMsgitem",
+          "BenchmarkAppendMsgitem",
+          "BenchmarkUnmarshalitem",
+          "TestEncodeDecodeitem",
+          "BenchmarkEncodeitem",
+          "BenchmarkDecodeitem"
+        ],
+        "imports": [
+          "bytes",
+          "testing",
+          "github.com/tinylib/msgp/msgp"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/cache/manager_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the cache manager functionality",
+        "key_types": [
+          "cacheManager",
+          "cacheItem"
+        ],
+        "functions": [
+          "Test_manager_get",
+          "Test_manager_logKey"
+        ],
+        "imports": [
+          "context",
+          "testing",
+          "time",
+          "github.com/gofiber/utils/v2",
+          "github.com/stretchr/testify/assert",
+          "github.com/stretchr/testify/require"
+        ],
+        "side_effects": [
+          "Modifies the state of the cache manager during tests"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

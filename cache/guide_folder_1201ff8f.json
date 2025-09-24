@@ -1,0 +1,283 @@
+{
+  "content_hash": "22533e7fe3b125389f32d731a4ba5329",
+  "timestamp": "2025-09-24T15:45:27.434936+07:00",
+  "result": {
+    "path": "docs/guide",
+    "purpose": "This folder contains documentation guides for using the Fiber web framework, covering various aspects such as error handling, routing, middleware, and performance optimization.",
+    "languages": {
+      "Go": 4,
+      "JSON": 1,
+      "Markdown": 8
+    },
+    "key_modules": [
+      "advance-format.md",
+      "context.md",
+      "error-handling.md",
+      "extractors.md",
+      "faster-fiber.md",
+      "grouping.md",
+      "routing.md",
+      "templates.md",
+      "utils.md",
+      "validation.md"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/shamaton/msgpack/v2",
+      "github.com/fxamacker/cbor/v2",
+      "github.com/goccy/go-json",
+      "github.com/go-playground/validator/v10"
+    ],
+    "architecture": "The folder follows a modular documentation structure, with each file focusing on a specific feature or aspect of the Fiber framework, allowing for easy navigation and understanding.",
+    "file_summaries": {
+      "docs/guide/_category_.json": {
+        "language": "JSON",
+        "purpose": "Defines a category for a guide in a documentation structure.",
+        "key_types": [
+          "object"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "docs/guide/advance-format.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for using MessagePack and CBOR for binary serialization in Fiber applications.",
+        "key_types": [
+          "User"
+        ],
+        "functions": [
+          "main"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/shamaton/msgpack/v2",
+          "github.com/fxamacker/cbor/v2"
+        ],
+        "side_effects": [
+          "Automatically sets content type based on Accept header."
+        ],
+        "complexity": "medium"
+      },
+      "docs/guide/context.md": {
+        "language": "Markdown",
+        "purpose": "Documentation on how Fiber's Ctx integrates with Go's context.Context and usage examples.",
+        "key_types": [
+          "fiber.Ctx",
+          "context.Context",
+          "fasthttp.RequestCtx"
+        ],
+        "functions": [
+          "doSomething",
+          "performAsync"
+        ],
+        "imports": [
+          "@theme/Tabs",
+          "@theme/TabItem"
+        ],
+        "side_effects": [
+          "Reusing fiber.Ctx instance across requests",
+          "Potential data race if fiber.Ctx is used in goroutines that outlive the handler"
+        ],
+        "risks": [
+          "Improper handling of context may lead to data leaks or unexpected behavior"
+        ],
+        "complexity": "medium"
+      },
+      "docs/guide/error-handling.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for error handling in the Fiber web framework.",
+        "key_types": [
+          "fiber.Ctx",
+          "fiber.Error"
+        ],
+        "functions": [
+          "app.Get",
+          "fiber.New",
+          "fiber.Use",
+          "fiber.NewError",
+          "DefaultErrorHandler"
+        ],
+        "imports": [
+          "@theme/Tabs",
+          "@theme/TabItem",
+          "log",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/recover"
+        ],
+        "side_effects": [
+          "Logging errors",
+          "Sending HTTP responses"
+        ],
+        "risks": [
+          "Potential exposure of sensitive error information if not handled properly"
+        ],
+        "complexity": "medium"
+      },
+      "docs/guide/extractors.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for using extractors in Fiber middleware",
+        "key_types": [
+          "Extractor",
+          "fiber.Ctx"
+        ],
+        "functions": [
+          "FromAuthHeader",
+          "FromCookie",
+          "FromParam",
+          "FromForm",
+          "FromHeader",
+          "FromQuery",
+          "FromCustom",
+          "Chain"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3/extractors"
+        ],
+        "risks": [
+          "Sensitive data exposure through improper source usage",
+          "Logging sensitive values",
+          "Insecure transmission if not using HTTPS"
+        ],
+        "complexity": "medium"
+      },
+      "docs/guide/faster-fiber.md": {
+        "language": "Go",
+        "purpose": "This file provides guidance on making the Fiber web framework faster by using custom JSON encoders and decoders.",
+        "key_types": [
+          "fiber.App",
+          "fiber.Config"
+        ],
+        "functions": [
+          "main"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/goccy/go-json"
+        ],
+        "complexity": "low"
+      },
+      "docs/guide/grouping.md": {
+        "language": "Go",
+        "purpose": "Demonstrates how to group routes in a web application using the Fiber framework, similar to Express.js.",
+        "key_types": [
+          "fiber.App",
+          "fiber.Ctx"
+        ],
+        "functions": [
+          "main",
+          "Group",
+          "Get",
+          "Listen"
+        ],
+        "imports": [
+          "fiber",
+          "log"
+        ],
+        "side_effects": [
+          "Creates a web server that listens on port 3000",
+          "Returns 404 for direct access to certain routes"
+        ],
+        "risks": [
+          "Potential for 404 errors if routes are not properly defined",
+          "Improper error handling may lead to unhandled requests"
+        ],
+        "complexity": "medium"
+      },
+      "docs/guide/routing.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for routing in a web application, explaining how to define routes and handle parameters.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "@theme/Tabs",
+          "@theme/TabItem",
+          "./../partials/routing/handler.md"
+        ],
+        "complexity": "medium"
+      },
+      "docs/guide/templates.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for server-side template engines supported by Fiber framework.",
+        "key_types": [
+          "fiber.Ctx",
+          "Engine",
+          "Views"
+        ],
+        "functions": [
+          "fiber.New",
+          "ctx.Render",
+          "AddFunc",
+          "AddFuncMap"
+        ],
+        "imports": [
+          "@theme/Tabs",
+          "@theme/TabItem",
+          "log",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/template/html/v2"
+        ],
+        "side_effects": [
+          "Modifies the behavior of template rendering based on configuration."
+        ],
+        "risks": [
+          "Potential for template injection if user input is not properly sanitized."
+        ],
+        "complexity": "medium"
+      },
+      "docs/guide/utils.md": {
+        "language": "Go",
+        "purpose": "Provides utility functions for handling type conversions, request headers, local values, route parameters, and query parameters in a web application.",
+        "key_types": [
+          "Ctx",
+          "GenericType",
+          "Config"
+        ],
+        "functions": [
+          "Convert",
+          "GetReqHeader",
+          "Locals",
+          "Params",
+          "Query",
+          "RoutePatternMatch"
+        ],
+        "imports": [
+          "fiber"
+        ],
+        "side_effects": [
+          "Modifies request context",
+          "Generates new object IDs"
+        ],
+        "risks": [
+          "Potential for type conversion errors",
+          "Improper handling of default values"
+        ],
+        "complexity": "medium"
+      },
+      "docs/guide/validation.md": {
+        "language": "Go",
+        "purpose": "This file provides examples of how to use the Fiber framework for validating request data against struct definitions.",
+        "key_types": [
+          "structValidator",
+          "User",
+          "UserWithCustomMessages",
+          "PasswordValidator"
+        ],
+        "functions": [
+          "Validate",
+          "app.Post"
+        ],
+        "imports": [
+          "github.com/go-playground/validator/v10"
+        ],
+        "side_effects": [
+          "Validation errors may be returned when binding request data to structs."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if validation errors are not handled properly."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

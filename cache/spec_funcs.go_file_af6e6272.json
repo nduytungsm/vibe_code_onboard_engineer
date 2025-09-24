@@ -1,0 +1,20 @@
+{
+  "content_hash": "6a5d2c6e387316681d71ad8946865aa8",
+  "timestamp": "2025-09-24T15:43:44.730432+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a map of standard functions for use in a configuration language.",
+    "key_types": [
+      "map",
+      "function.Function"
+    ],
+    "functions": [
+      "main"
+    ],
+    "imports": [
+      "github.com/zclconf/go-cty/cty/function",
+      "github.com/zclconf/go-cty/cty/function/stdlib"
+    ],
+    "complexity": "low"
+  }
+}

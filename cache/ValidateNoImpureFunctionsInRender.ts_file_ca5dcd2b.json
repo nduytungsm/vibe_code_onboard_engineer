@@ -1,0 +1,31 @@
+{
+  "content_hash": "8c18363f4547673b2cb484f91a3b1e14",
+  "timestamp": "2025-09-24T15:27:33.621453+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Checks that known-impure functions are not called during render.",
+    "key_types": [
+      "HIRFunction",
+      "CompilerError",
+      "Result"
+    ],
+    "functions": [
+      "validateNoImpureFunctionsInRender"
+    ],
+    "imports": [
+      "CompilerDiagnostic",
+      "CompilerError",
+      "ErrorCategory",
+      "HIRFunction",
+      "getFunctionCallSignature",
+      "Result"
+    ],
+    "side_effects": [
+      "None"
+    ],
+    "risks": [
+      "Potential for unstable results if impure functions are called during render."
+    ],
+    "complexity": "medium"
+  }
+}

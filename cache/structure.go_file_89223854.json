@@ -1,0 +1,29 @@
+{
+  "content_hash": "582d448799b6da16207422b852eba83a",
+  "timestamp": "2025-09-24T15:45:30.262559+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines structures and methods for handling HCL (HashiCorp Configuration Language) syntax, specifically for blocks and attributes.",
+    "key_types": [
+      "Block",
+      "Body",
+      "Attributes",
+      "Attribute"
+    ],
+    "functions": [
+      "AsHCLBlock",
+      "walkChildNodes",
+      "Range",
+      "Content",
+      "PartialContent",
+      "JustAttributes",
+      "MissingItemRange"
+    ],
+    "imports": [
+      "fmt",
+      "strings",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "content_hash": "87372e049d7748898dcaef9c5f66e9ba",
+  "timestamp": "2025-09-24T15:43:42.108432+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Determines if a given memory address is within the read-only data segment.",
+    "key_types": [
+      "unsafe.Pointer",
+      "uintptr"
+    ],
+    "functions": [
+      "isReadOnly"
+    ],
+    "imports": [
+      "unsafe"
+    ],
+    "risks": [
+      "unsafe pointer conversion may lead to undefined behavior"
+    ],
+    "complexity": "low"
+  }
+}

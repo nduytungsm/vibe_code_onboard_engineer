@@ -1,0 +1,30 @@
+{
+  "content_hash": "449ca6631650d88f518fe4eec0392657",
+  "timestamp": "2025-09-24T15:27:46.34778+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file contains end-to-end tests for a Button component using React and testing-library.",
+    "key_types": [
+      "Button",
+      "theme",
+      "style"
+    ],
+    "functions": [
+      "Button",
+      "useTheme",
+      "computeStyle"
+    ],
+    "imports": [
+      "@testing-library/react",
+      "React"
+    ],
+    "side_effects": [
+      "Modifies the currentTheme variable",
+      "Increments styleComputations"
+    ],
+    "risks": [
+      "Potential for incorrect theme application if currentTheme is not managed properly"
+    ],
+    "complexity": "medium"
+  }
+}

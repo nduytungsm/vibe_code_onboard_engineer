@@ -1,0 +1,57 @@
+{
+  "content_hash": "45d29197b6be9c07bdcc7049245429a3",
+  "timestamp": "2025-09-24T15:27:10.633741+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Renames variables in a reactive function to ensure unique names within the same block scope.",
+    "key_types": [
+      "ReactiveFunction",
+      "Scopes",
+      "Visitor",
+      "Identifier",
+      "Place",
+      "ReactiveBlock",
+      "PrunedReactiveScopeBlock",
+      "ReactiveScopeBlock",
+      "ReactiveValue",
+      "ValidIdentifierName"
+    ],
+    "functions": [
+      "renameVariables",
+      "renameVariablesImpl",
+      "visitParam",
+      "visitLValue",
+      "visitPlace",
+      "visitBlock",
+      "visitPrunedScope",
+      "visitScope",
+      "visitValue",
+      "visitReactiveFunctionValue"
+    ],
+    "imports": [
+      "ProgramContext",
+      "CompilerError",
+      "DeclarationId",
+      "Identifier",
+      "IdentifierName",
+      "InstructionId",
+      "Place",
+      "PrunedReactiveScopeBlock",
+      "ReactiveBlock",
+      "ReactiveFunction",
+      "ReactiveScopeBlock",
+      "ReactiveValue",
+      "ValidIdentifierName",
+      "isPromotedJsxTemporary",
+      "isPromotedTemporary",
+      "makeIdentifierName",
+      "collectReferencedGlobals",
+      "ReactiveFunctionVisitor",
+      "visitReactiveFunction"
+    ],
+    "side_effects": [
+      "Modifies the names of identifiers in the provided reactive function."
+    ],
+    "complexity": "medium"
+  }
+}

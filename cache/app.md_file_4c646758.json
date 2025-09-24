@@ -1,0 +1,41 @@
+{
+  "content_hash": "7757725236002cdfabdb51ec4e1cc28e",
+  "timestamp": "2025-09-24T15:27:34.415667+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the Fiber application framework, detailing the App type and its methods.",
+    "key_types": [
+      "App",
+      "Group",
+      "Route"
+    ],
+    "functions": [
+      "GetString",
+      "GetBytes",
+      "MountPath",
+      "Group",
+      "Route",
+      "HandlersCount",
+      "Stack",
+      "Name",
+      "GetRoute",
+      "GetRoutes"
+    ],
+    "imports": [
+      "@site/src/components/reference",
+      "./../partials/routing/handler.md",
+      "log",
+      "github.com/gofiber/fiber/v3",
+      "encoding/json"
+    ],
+    "side_effects": [
+      "Modifies the routing behavior of the Fiber application",
+      "Logs errors when the application fails to start"
+    ],
+    "risks": [
+      "Potential for route conflicts if not managed properly",
+      "Improper handling of user input could lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

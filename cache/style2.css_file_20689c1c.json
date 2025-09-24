@@ -1,0 +1,12 @@
+{
+  "content_hash": "b70e8925ab364016b747c3e927ce6488",
+  "timestamp": "2025-09-24T15:39:52.091704+07:00",
+  "result": {
+    "language": "CSS",
+    "purpose": "Defines styles for h1 elements",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

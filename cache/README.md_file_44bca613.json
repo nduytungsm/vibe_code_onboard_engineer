@@ -1,0 +1,12 @@
+{
+  "content_hash": "cf700a2b3652fcddee8a9a14f21cb453",
+  "timestamp": "2025-09-24T15:41:23.565814+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the Gin web framework, including features, installation instructions, and usage examples.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

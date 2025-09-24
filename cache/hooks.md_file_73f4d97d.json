@@ -1,0 +1,38 @@
+{
+  "content_hash": "cafcbdf38dd727d721797d21bc7f6f44",
+  "timestamp": "2025-09-24T15:41:04.835203+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for hooks in the Fiber client, explaining their usage and examples.",
+    "key_types": [
+      "RequestHook",
+      "ResponseHook",
+      "Client",
+      "Request",
+      "Response",
+      "Repository"
+    ],
+    "functions": [
+      "AddRequestHook",
+      "AddResponseHook",
+      "Get",
+      "JSON",
+      "SetURL"
+    ],
+    "imports": [
+      "client",
+      "fmt",
+      "errors"
+    ],
+    "side_effects": [
+      "Modifies request and response flow",
+      "Logs request and response details",
+      "May stop request processing on error"
+    ],
+    "risks": [
+      "Potential for unhandled errors causing application crashes",
+      "Security risks if hooks modify requests inappropriately"
+    ],
+    "complexity": "medium"
+  }
+}

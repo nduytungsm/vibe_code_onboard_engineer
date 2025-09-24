@@ -1,0 +1,14 @@
+{
+  "content_hash": "a87134da88bffe37c9a14619175d80b3",
+  "timestamp": "2025-09-24T14:52:40.59853+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for Sentry release management.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "axieinfinity/workflows-samples/.github/workflows/sentry-release.yml@main"
+    ],
+    "complexity": "low"
+  }
+}

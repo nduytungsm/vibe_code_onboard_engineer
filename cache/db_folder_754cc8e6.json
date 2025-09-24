@@ -1,0 +1,56 @@
+{
+  "content_hash": "21fede475a2c67b901a6795156f411b7",
+  "timestamp": "2025-09-24T11:51:07.408012+07:00",
+  "result": {
+    "path": "internal/adapters/right/db",
+    "purpose": "This folder/module is responsible for database connection management and data fetching functionalities.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "db.go"
+    ],
+    "dependencies": [
+      "database/sql",
+      "fmt",
+      "log",
+      "os",
+      "github.com/joho/godotenv",
+      "github.com/microsoft/go-mssqldb"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, focusing on database interactions and encapsulating related functionalities.",
+    "file_summaries": {
+      "internal/adapters/right/db/db.go": {
+        "language": "Go",
+        "purpose": "This file provides database connection management and data fetching functionalities.",
+        "key_types": [
+          "DB"
+        ],
+        "functions": [
+          "init",
+          "New",
+          "CloseDbConnection",
+          "fetchData",
+          "getStringValue",
+          "getInt64Value"
+        ],
+        "imports": [
+          "database/sql",
+          "fmt",
+          "log",
+          "os",
+          "github.com/joho/godotenv",
+          "github.com/microsoft/go-mssqldb"
+        ],
+        "side_effects": [
+          "Loads environment variables from a .env file",
+          "Establishes a database connection"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if environment variables are not managed securely"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "content_hash": "3c4fdd506a4e25de349f354502faa423",
+  "timestamp": "2025-09-23T16:57:48.856308+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models and methods for handling token balances and transactions in a blockchain context.",
+    "key_types": [
+      "Pagination",
+      "TokenBalanceItem",
+      "GetTokenBalancesForAddrResponse",
+      "GetRecentTransactionsForAddrResponse",
+      "PagingLinks",
+      "GetPaginatedTransactionsForAddrResponse",
+      "TransferDetail",
+      "ERC20TransferItem",
+      "GetERC20TransferForAddrResponse",
+      "NFTCollection"
+    ],
+    "functions": [
+      "ToTokenBalance",
+      "ToGetTokenBalancesResponse",
+      "ToTransaction"
+    ],
+    "imports": [
+      "fmt",
+      "slices",
+      "strconv",
+      "time",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+    ],
+    "complexity": "medium"
+  }
+}

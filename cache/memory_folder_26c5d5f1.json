@@ -1,0 +1,110 @@
+{
+  "content_hash": "173f9570b354741fce497baa9c226502",
+  "timestamp": "2025-09-24T15:45:10.110208+07:00",
+  "result": {
+    "path": "internal/storage/memory",
+    "purpose": "Responsible for providing an in-memory implementation of a storage interface for testing purposes.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "config.go",
+      "memory.go",
+      "memory_test.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/utils/v2",
+      "github.com/stretchr/testify/require"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration, implementation, and testing of in-memory storage functionality.",
+    "file_summaries": {
+      "internal/storage/memory/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration settings for storage, including a default configuration and a function to set default values.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "configDefault"
+        ],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "internal/storage/memory/memory.go": {
+        "language": "Go",
+        "purpose": "Provides an in-memory implementation of a storage interface for testing purposes.",
+        "key_types": [
+          "Storage",
+          "entry"
+        ],
+        "functions": [
+          "New",
+          "Get",
+          "GetWithContext",
+          "Set",
+          "SetWithContext",
+          "Delete",
+          "DeleteWithContext",
+          "Reset",
+          "ResetWithContext",
+          "Close",
+          "gc",
+          "Conn",
+          "Keys"
+        ],
+        "imports": [
+          "context",
+          "sync",
+          "time",
+          "github.com/gofiber/utils/v2"
+        ],
+        "side_effects": [
+          "Starts a goroutine for garbage collection",
+          "Modifies in-memory data structure"
+        ],
+        "risks": [
+          "Potential data loss if not properly managed",
+          "Concurrency issues if not handled correctly"
+        ],
+        "complexity": "medium"
+      },
+      "internal/storage/memory/memory_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for a memory storage implementation",
+        "key_types": [
+          "Storage",
+          "Config"
+        ],
+        "functions": [
+          "Test_Storage_Memory_Set",
+          "Test_Storage_Memory_SetWithContext",
+          "Test_Storage_Memory_Set_Override",
+          "Test_Storage_Memory_Get",
+          "Test_Storage_Memory_GetWithContext",
+          "Test_Storage_Memory_Set_Expiration",
+          "Test_Storage_Memory_Set_Long_Expiration_with_Keys",
+          "Test_Storage_Memory_Get_NotExist",
+          "Test_Storage_Memory_Delete",
+          "Test_Storage_Memory_DeleteWithContext",
+          "Test_Storage_Memory_Reset",
+          "Test_Storage_Memory_ResetWithContext",
+          "Test_Storage_Memory_Close",
+          "Test_Storage_Memory_Conn"
+        ],
+        "imports": [
+          "context",
+          "testing",
+          "time",
+          "github.com/stretchr/testify/require"
+        ],
+        "side_effects": [
+          "Modifies the state of the memory storage",
+          "May cause context cancellation errors"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

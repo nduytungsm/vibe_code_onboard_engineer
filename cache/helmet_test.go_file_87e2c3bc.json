@@ -1,0 +1,38 @@
+{
+  "content_hash": "448cfdae0ee46f97c59ffc8f6e8bdaa9",
+  "timestamp": "2025-09-24T15:42:41.272737+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the helmet middleware in a Fiber web application, ensuring proper HTTP headers are set.",
+    "key_types": [
+      "fiber.App",
+      "fiber.Ctx",
+      "Config"
+    ],
+    "functions": [
+      "Test_Default",
+      "Test_CustomValues_AllHeaders",
+      "Test_RealWorldValues_AllHeaders",
+      "Test_Next",
+      "Test_ContentSecurityPolicy",
+      "Test_ContentSecurityPolicyReportOnly",
+      "Test_PermissionsPolicy",
+      "Test_HSTSHeaders",
+      "Test_HSTSExcludeSubdomainsAndPreload"
+    ],
+    "imports": [
+      "net/http/httptest",
+      "testing",
+      "github.com/gofiber/fiber/v3",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Modifies HTTP response headers based on middleware configuration."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information through misconfigured headers."
+    ],
+    "complexity": "medium"
+  }
+}

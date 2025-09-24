@@ -1,0 +1,22 @@
+{
+  "content_hash": "4802927ab6bea2db7be8bc9f6d297518",
+  "timestamp": "2025-09-24T15:25:01.255824+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines a React component that conditionally renders a Button based on props.",
+    "key_types": [
+      "TestComponent",
+      "Button"
+    ],
+    "functions": [
+      "TestComponent"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Modifies internal state based on props"
+    ],
+    "complexity": "medium"
+  }
+}

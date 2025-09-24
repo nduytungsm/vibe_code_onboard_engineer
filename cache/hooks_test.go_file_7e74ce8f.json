@@ -1,0 +1,51 @@
+{
+  "content_hash": "97235345ac562f2ff624904add5bb32b",
+  "timestamp": "2025-09-24T15:28:35.143492+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for hooks in a Fiber web application framework.",
+    "key_types": [
+      "Ctx",
+      "Route",
+      "Group",
+      "App",
+      "ListenData"
+    ],
+    "functions": [
+      "testSimpleHandler",
+      "Test_Hook_OnRoute",
+      "Test_Hook_OnRoute_Mount",
+      "Test_Hook_OnName",
+      "Test_Hook_OnName_Error",
+      "Test_Hook_OnGroup",
+      "Test_Hook_OnGroup_Mount",
+      "Test_Hook_OnGroupName",
+      "Test_Hook_OnGroupName_Error",
+      "Test_Hook_OnPrehutdown",
+      "Test_Hook_OnPostShutdown",
+      "Test_Hook_OnListen",
+      "Test_Hook_OnListenPrefork",
+      "Test_Hook_OnHook",
+      "Test_Hook_OnMount"
+    ],
+    "imports": [
+      "bytes",
+      "errors",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/bytebufferpool",
+      "github.com/gofiber/fiber/v3/log"
+    ],
+    "side_effects": [
+      "Modifies application state during tests",
+      "Uses goroutines for asynchronous operations"
+    ],
+    "risks": [
+      "Potential race conditions due to concurrent tests",
+      "Panic on error handling in hooks"
+    ],
+    "complexity": "medium"
+  }
+}

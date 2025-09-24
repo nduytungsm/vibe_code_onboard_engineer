@@ -1,0 +1,44 @@
+{
+  "content_hash": "30feb441a8a06f9715af43601012d678",
+  "timestamp": "2025-09-24T15:26:15.722963+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines various types and functions for type manipulation in a type system.",
+    "key_types": [
+      "BuiltInType",
+      "Type",
+      "PrimitiveType",
+      "FunctionType",
+      "ObjectType",
+      "TypeVar",
+      "PolyType",
+      "PhiType",
+      "PropType",
+      "ObjectMethod",
+      "TypeId"
+    ],
+    "functions": [
+      "makeTypeId",
+      "makeType",
+      "duplicateType",
+      "typeEquals",
+      "typeVarEquals",
+      "typeKindCheck",
+      "objectMethodTypeEquals",
+      "propTypeEquals",
+      "primitiveTypeEquals",
+      "polyTypeEquals",
+      "objectTypeEquals",
+      "funcTypeEquals",
+      "phiTypeEquals"
+    ],
+    "imports": [
+      "CompilerError",
+      "PropertyLiteral"
+    ],
+    "side_effects": [
+      "Throws an error if the id in makeTypeId is not a non-negative integer."
+    ],
+    "complexity": "medium"
+  }
+}

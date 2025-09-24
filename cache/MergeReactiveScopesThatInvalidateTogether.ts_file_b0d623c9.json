@@ -1,0 +1,56 @@
+{
+  "content_hash": "5cb681180295314a264a5a5923b1373f",
+  "timestamp": "2025-09-24T15:26:57.38957+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file optimizes the merging of reactive scopes that invalidate together to reduce memoization overhead.",
+    "key_types": [
+      "ReactiveFunction",
+      "ReactiveScope",
+      "ReactiveScopeBlock",
+      "ReactiveScopeDependencies",
+      "DeclarationId",
+      "InstructionId"
+    ],
+    "functions": [
+      "mergeReactiveScopesThatInvalidateTogether",
+      "log",
+      "visitPlace",
+      "transformScope",
+      "visitBlock"
+    ],
+    "imports": [
+      "CompilerError",
+      "DeclarationId",
+      "InstructionId",
+      "InstructionKind",
+      "Place",
+      "ReactiveBlock",
+      "ReactiveFunction",
+      "ReactiveScope",
+      "ReactiveScopeBlock",
+      "ReactiveScopeDependencies",
+      "ReactiveScopeDependency",
+      "ReactiveStatement",
+      "Type",
+      "areEqualPaths",
+      "makeInstructionId",
+      "BuiltInArrayId",
+      "BuiltInFunctionId",
+      "BuiltInJsxId",
+      "BuiltInObjectId",
+      "eachInstructionLValue",
+      "assertExhaustive",
+      "Iterable_some",
+      "printReactiveScopeSummary",
+      "ReactiveFunctionTransform",
+      "ReactiveFunctionVisitor",
+      "Transformed",
+      "visitReactiveFunction"
+    ],
+    "side_effects": [
+      "Logs messages to the console if DEBUG is true."
+    ],
+    "complexity": "medium"
+  }
+}

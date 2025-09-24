@@ -1,0 +1,28 @@
+{
+  "content_hash": "b77048f7a73baf8faa3f5b0be4ca988b",
+  "timestamp": "2025-09-24T15:27:17.066628+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines a function to name anonymous functions within a given function's body, enhancing readability and debugging.",
+    "key_types": [
+      "HIRFunction",
+      "Node",
+      "FunctionExpression"
+    ],
+    "functions": [
+      "nameAnonymousFunctions",
+      "nameAnonymousFunctionsImpl",
+      "visit"
+    ],
+    "imports": [
+      "FunctionExpression",
+      "getHookKind",
+      "HIRFunction",
+      "IdentifierId"
+    ],
+    "side_effects": [
+      "Modifies the nameHint property of function nodes to provide generated names."
+    ],
+    "complexity": "medium"
+  }
+}

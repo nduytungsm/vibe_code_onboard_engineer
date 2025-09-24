@@ -1,0 +1,32 @@
+{
+  "content_hash": "6d1b162f11c5b8fd4ff178ff8f255e90",
+  "timestamp": "2025-09-24T15:44:26.921834+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines type constraints for cty types and provides functions for type conversion and value encapsulation.",
+    "key_types": [
+      "cty.Type",
+      "cty.Value",
+      "function.Function"
+    ],
+    "functions": [
+      "TypeConstraintVal",
+      "TypeConstraintFromVal",
+      "init",
+      "ConvertFunc"
+    ],
+    "imports": [
+      "fmt",
+      "reflect",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/ext/customdecode",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/convert",
+      "github.com/zclconf/go-cty/cty/function"
+    ],
+    "side_effects": [
+      "Panic if TypeConstraintFromVal is called with an invalid value."
+    ],
+    "complexity": "medium"
+  }
+}

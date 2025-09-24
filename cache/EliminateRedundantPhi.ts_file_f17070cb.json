@@ -1,0 +1,28 @@
+{
+  "content_hash": "5586ceb35d9115289f290fdb2649dbc1",
+  "timestamp": "2025-09-24T15:27:11.686698+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Eliminate redundant phi nodes in a control flow graph (CFG) during the compilation process.",
+    "key_types": [
+      "HIRFunction",
+      "Identifier",
+      "Place",
+      "BlockId"
+    ],
+    "functions": [
+      "eliminateRedundantPhi",
+      "rewritePlace"
+    ],
+    "imports": [
+      "../CompilerError",
+      "../HIR/HIR",
+      "../HIR/visitors"
+    ],
+    "side_effects": [
+      "Modifies the control flow graph by eliminating redundant phi nodes.",
+      "Updates identifiers in the instructions based on the rewrite table."
+    ],
+    "complexity": "medium"
+  }
+}

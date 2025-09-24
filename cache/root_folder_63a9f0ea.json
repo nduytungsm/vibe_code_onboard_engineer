@@ -1,111 +1,671 @@
 {
-  "content_hash": "80ebaab135db1e67446d1e59df82d7ee",
-  "timestamp": "2025-09-23T16:05:13.217461+07:00",
+  "content_hash": "472862c015f8a5ef52f2fa41fb3fc043",
+  "timestamp": "2025-09-24T15:47:56.84146+07:00",
   "result": {
     "path": "root",
-    "purpose": "This folder/module is responsible for the Ronin Wallet proxy, providing functionality for querying wallet information and managing services.",
+    "purpose": "This folder contains the HCL (HashiCorp Configuration Language) toolkit, responsible for creating structured configuration languages for use with command-line tools, primarily targeted towards devops tools and servers.",
     "languages": {
+      "Go": 30,
       "Markdown": 2,
-      "YAML": 2,
-      "bash": 1
+      "YAML": 1
     },
     "key_modules": [
-      ".golangci.yaml",
       "README.md",
-      "SECURITY.md",
-      "docker-compose.yml",
-      "entrypoint.sh"
+      "diagnostic.go",
+      "eval_context.go",
+      "schema.go",
+      "traversal.go"
     ],
     "dependencies": [
-      "Skynet API",
-      "Moralis",
-      "Getblock.io",
-      "Coingecko"
+      "github.com/hashicorp/hcl/v2/hclsimple",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/agext/levenshtein",
+      "golang.org/x/tools/cmd/stringer",
+      "github.com/davecgh/go-spew/spew",
+      "github.com/apparentlymart/go-textseg/v15/textseg",
+      "github.com/mitchellh/go-wordwrap"
     ],
-    "architecture": "The folder follows a microservices architecture pattern, utilizing Docker for service management and configuration files for linting and documentation.",
+    "architecture": "The folder follows a modular architecture pattern, with separate files defining specific functionalities related to HCL parsing, evaluation, and diagnostics, promoting separation of concerns and maintainability.",
     "file_summaries": {
       ".golangci.yaml": {
         "language": "YAML",
-        "purpose": "Configuration file for GolangCI-Lint, specifying linting rules and settings for Go code.",
-        "key_types": [
-          "linters-settings",
-          "rules",
-          "files",
-          "deny",
-          "settings"
-        ],
-        "functions": [
-          "enable",
-          "exclude-rules",
-          "exclude-dirs"
-        ],
+        "purpose": "Configuration file for GolangCI-Lint, specifying linter settings and exclusions.",
+        "key_types": [],
+        "functions": [],
         "imports": [],
-        "complexity": "medium"
+        "complexity": "low"
+      },
+      "CHANGELOG.md": {
+        "language": "Markdown",
+        "purpose": "Document the changelog for the HCL project, detailing enhancements and bug fixes across various versions.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
       },
       "README.md": {
-        "language": "Markdown",
-        "purpose": "Documentation for the Ronin Wallet proxy, detailing its functionality and usage.",
-        "key_types": [],
-        "functions": [
-          "Query account balance and erc20 token balances",
-          "Query owned NFT collections",
-          "Query owned NFT items belonging to a collection",
-          "Query NFT item detail with metadata",
-          "Query native token transfer transactions",
-          "Query recent transactions made by a wallet",
-          "Query token transfer transactions relating to a wallet",
-          "Query transaction detail",
-          "Query gas fee suggestion",
-          "Submit RPC call"
-        ],
-        "imports": [
-          "Skynet API",
-          "Moralis",
-          "Getblock.io",
-          "Coingecko"
-        ],
-        "complexity": "low"
-      },
-      "SECURITY.md": {
-        "language": "Markdown",
-        "purpose": "Document the security policy and supported versions of the project.",
-        "key_types": [],
-        "functions": [],
-        "imports": [],
-        "complexity": "low"
-      },
-      "docker-compose.yml": {
-        "language": "YAML",
-        "purpose": "Defines services for a Docker application including PostgreSQL and Redis.",
+        "language": "Go",
+        "purpose": "HCL is a toolkit for creating structured configuration languages for use with command-line tools, primarily targeted towards devops tools and servers.",
         "key_types": [
-          "services",
-          "environment"
+          "Config",
+          "ServiceConfig",
+          "ProcessConfig"
         ],
-        "functions": [],
-        "imports": [],
-        "side_effects": [
-          "Exposes ports for PostgreSQL and Redis services",
-          "Sets security options for services"
-        ],
-        "risks": [
-          "Potential exposure of database credentials if not properly secured"
-        ],
-        "complexity": "low"
-      },
-      "entrypoint.sh": {
-        "language": "bash",
-        "purpose": "This script serves as an entry point to run a service application.",
-        "key_types": [],
         "functions": [
           "main"
         ],
         "imports": [
-          "./app"
+          "log",
+          "github.com/hashicorp/hcl/v2/hclsimple"
         ],
         "side_effects": [
-          "Exits the script if any command fails due to 'set -e'"
+          "Logs configuration loading errors and successful configuration loading."
+        ],
+        "risks": [
+          "Potential for misconfiguration if the HCL file is not structured correctly."
+        ],
+        "complexity": "medium"
+      },
+      "diagnostic.go": {
+        "language": "Go",
+        "purpose": "Defines diagnostic types and methods for reporting errors and warnings in configuration parsing.",
+        "key_types": [
+          "DiagnosticSeverity",
+          "Diagnostic",
+          "Diagnostics",
+          "DiagnosticWriter",
+          "DiagnosticExtraUnwrapper"
+        ],
+        "functions": [
+          "Error()",
+          "Append()",
+          "Extend()",
+          "HasErrors()",
+          "Errs()"
+        ],
+        "imports": [
+          "fmt"
+        ],
+        "side_effects": [
+          "Modifies the underlying array of diagnostics in Append() and Extend() methods."
+        ],
+        "complexity": "medium"
+      },
+      "diagnostic_text.go": {
+        "language": "Go",
+        "purpose": "This file defines a diagnostic text writer for formatting and outputting diagnostic messages in a structured way.",
+        "key_types": [
+          "diagnosticTextWriter",
+          "File",
+          "Diagnostic",
+          "Diagnostics",
+          "Traversal"
+        ],
+        "functions": [
+          "NewDiagnosticTextWriter",
+          "WriteDiagnostic",
+          "WriteDiagnostics",
+          "traversalStr",
+          "valueStr"
+        ],
+        "imports": [
+          "bufio",
+          "bytes",
+          "errors",
+          "fmt",
+          "io",
+          "sort",
+          "github.com/mitchellh/go-wordwrap",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "side_effects": [
+          "Writes formatted diagnostic messages to the provided io.Writer"
+        ],
+        "complexity": "medium"
+      },
+      "diagnostic_text_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the DiagnosticTextWriter functionality in the HCL package.",
+        "key_types": [
+          "Diagnostic",
+          "Range",
+          "Pos",
+          "EvalContext",
+          "Traversal",
+          "File"
+        ],
+        "functions": [
+          "TestDiagnosticTextWriter",
+          "ContextString",
+          "Variables"
+        ],
+        "imports": [
+          "bytes",
+          "fmt",
+          "testing",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "side_effects": [
+          "Writes output to a buffer",
+          "May modify the state of the buffer based on diagnostics"
+        ],
+        "complexity": "medium"
+      },
+      "diagnostic_typeparams.go": {
+        "language": "Go",
+        "purpose": "This file contains diagnostics-related functions using Go 1.18 type parameters.",
+        "key_types": [
+          "Diagnostic",
+          "DiagnosticExtraUnwrapper"
+        ],
+        "functions": [
+          "DiagnosticExtra"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "didyoumean.go": {
+        "language": "Go",
+        "purpose": "This file provides a function to suggest a name from a list based on similarity to a given name.",
+        "key_types": [
+          "string",
+          "[]string"
+        ],
+        "functions": [
+          "nameSuggestion"
+        ],
+        "imports": [
+          "github.com/agext/levenshtein"
+        ],
+        "complexity": "medium"
+      },
+      "doc.go": {
+        "language": "Go",
+        "purpose": "Defines the HCL package for modeling types and utility functions for HCL configurations.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "main"
+        ],
+        "imports": [
+          "log",
+          "github.com/hashicorp/hcl/v2/hclsimple"
+        ],
+        "side_effects": [
+          "Logs error if configuration loading fails",
+          "Logs configuration details"
+        ],
+        "risks": [
+          "Potential for file path manipulation in DecodeFile",
+          "Error handling may expose sensitive information"
+        ],
+        "complexity": "medium"
+      },
+      "eval_context.go": {
+        "language": "Go",
+        "purpose": "Defines an EvalContext for evaluating expressions with variables and functions.",
+        "key_types": [
+          "EvalContext"
+        ],
+        "functions": [
+          "NewChild",
+          "Parent"
+        ],
+        "imports": [
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/function"
+        ],
+        "complexity": "medium"
+      },
+      "expr_call.go": {
+        "language": "Go",
+        "purpose": "This file defines a function to test if a given expression is a function call and extracts the function name and arguments if it is.",
+        "key_types": [
+          "Expression",
+          "StaticCall",
+          "Diagnostics",
+          "Diagnostic",
+          "Range"
+        ],
+        "functions": [
+          "ExprCall"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "expr_list.go": {
+        "language": "Go",
+        "purpose": "Extracts expressions from a static list construct or returns error diagnostics if not applicable.",
+        "key_types": [
+          "Expression",
+          "Diagnostics",
+          "Diagnostic"
+        ],
+        "functions": [
+          "ExprList",
+          "UnwrapExpressionUntil"
+        ],
+        "imports": [
+          "hcl"
+        ],
+        "complexity": "medium"
+      },
+      "expr_map.go": {
+        "language": "Go",
+        "purpose": "Defines a function to extract static map expressions from given expressions and returns diagnostics if not valid.",
+        "key_types": [
+          "Expression",
+          "KeyValuePair",
+          "Diagnostics",
+          "Diagnostic"
+        ],
+        "functions": [
+          "ExprMap"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Returns diagnostics if the expression is not a static map."
+        ],
+        "risks": [
+          "Potential for nil pointer dereference if expressions are not handled properly."
+        ],
+        "complexity": "medium"
+      },
+      "expr_unwrap.go": {
+        "language": "Go",
+        "purpose": "Provides functions to unwrap expressions by removing wrapper expressions to recover the original representation.",
+        "key_types": [
+          "unwrapExpression",
+          "Expression"
+        ],
+        "functions": [
+          "UnwrapExpression",
+          "UnwrapExpressionUntil"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Modifies behavior of expressions by stripping away constraints or capabilities."
+        ],
+        "risks": [
+          "Potential for nil dereference if unwrapping leads to a nil expression."
+        ],
+        "complexity": "medium"
+      },
+      "merged.go": {
+        "language": "Go",
+        "purpose": "This file provides functionality to merge multiple configuration files into a single body, handling potential duplicates and diagnostics.",
+        "key_types": [
+          "File",
+          "Body",
+          "BodySchema",
+          "BodyContent",
+          "Attributes",
+          "Diagnostic",
+          "mergedBodies"
+        ],
+        "functions": [
+          "MergeFiles",
+          "MergeBodies",
+          "EmptyBody",
+          "Content",
+          "PartialContent",
+          "JustAttributes",
+          "MissingItemRange"
+        ],
+        "imports": [
+          "fmt"
+        ],
+        "side_effects": [
+          "Produces diagnostics for duplicate attributes and missing required attributes."
+        ],
+        "risks": [
+          "Potential for incorrect diagnostics if required attributes are used with merged bodies."
+        ],
+        "complexity": "medium"
+      },
+      "merged_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for merging bodies and validating their content based on schemas.",
+        "key_types": [
+          "Body",
+          "BodySchema",
+          "BodyContent",
+          "Attribute",
+          "AttributeSchema",
+          "BlockHeaderSchema",
+          "Range",
+          "Blocks"
+        ],
+        "functions": [
+          "TestMergedBodiesContent",
+          "TestMergeBodiesPartialContent"
+        ],
+        "imports": [
+          "fmt",
+          "reflect",
+          "testing",
+          "github.com/davecgh/go-spew/spew"
+        ],
+        "complexity": "medium"
+      },
+      "ops.go": {
+        "language": "Go",
+        "purpose": "Provides helper functions for indexing and attribute access in the HCL expression language.",
+        "key_types": [
+          "cty.Value",
+          "Diagnostics",
+          "Range"
+        ],
+        "functions": [
+          "Index",
+          "GetAttr"
+        ],
+        "imports": [
+          "fmt",
+          "math/big",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/convert"
+        ],
+        "side_effects": [
+          "Generates diagnostics for invalid indexing or attribute access"
+        ],
+        "risks": [
+          "Potential for panics if unexpected types are encountered"
+        ],
+        "complexity": "medium"
+      },
+      "ops_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the ApplyPath function in the HCL package, validating behavior with various cty.Value types and paths.",
+        "key_types": [
+          "cty.Value",
+          "cty.Path"
+        ],
+        "functions": [
+          "TestApplyPath"
+        ],
+        "imports": [
+          "fmt",
+          "testing",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "pos.go": {
+        "language": "Go",
+        "purpose": "Defines data structures and methods for representing positions and ranges in source files.",
+        "key_types": [
+          "Pos",
+          "Range"
+        ],
+        "functions": [
+          "RangeBetween",
+          "RangeOver",
+          "ContainsPos",
+          "ContainsOffset",
+          "Ptr",
+          "String",
+          "Empty",
+          "CanSliceBytes",
+          "SliceBytes",
+          "Overlaps",
+          "Overlap",
+          "PartitionAround"
+        ],
+        "imports": [
+          "fmt"
+        ],
+        "complexity": "medium"
+      },
+      "pos_scanner.go": {
+        "language": "Go",
+        "purpose": "This file defines a RangeScanner that scans a buffer and provides source ranges for tokens matched, useful for diagnostic messages.",
+        "key_types": [
+          "RangeScanner",
+          "Pos",
+          "Range"
+        ],
+        "functions": [
+          "NewRangeScanner",
+          "NewRangeScannerFragment",
+          "Scan",
+          "Range",
+          "Bytes",
+          "Err"
+        ],
+        "imports": [
+          "bufio",
+          "bytes",
+          "github.com/apparentlymart/go-textseg/v15/textseg"
+        ],
+        "side_effects": [
+          "Modifies internal state of RangeScanner during scanning"
+        ],
+        "complexity": "medium"
+      },
+      "pos_scanner_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the PosScanner functionality in the HCL package.",
+        "key_types": [
+          "Range",
+          "Pos"
+        ],
+        "functions": [
+          "TestPosScanner"
+        ],
+        "imports": [
+          "bufio",
+          "reflect",
+          "testing",
+          "github.com/davecgh/go-spew/spew"
+        ],
+        "complexity": "medium"
+      },
+      "pos_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for range operations in the HCL package",
+        "key_types": [
+          "Range",
+          "Pos"
+        ],
+        "functions": [
+          "TestRangeOver",
+          "TestPosOverlap",
+          "TestRangePartitionAround"
+        ],
+        "imports": [
+          "bytes",
+          "fmt",
+          "reflect",
+          "testing"
+        ],
+        "complexity": "medium"
+      },
+      "schema.go": {
+        "language": "Go",
+        "purpose": "Defines schemas for HCL (HashiCorp Configuration Language) blocks and attributes.",
+        "key_types": [
+          "BlockHeaderSchema",
+          "AttributeSchema",
+          "BodySchema"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "spec.md": {
+        "language": "Markdown",
+        "purpose": "Specification for the HCL information model, describing its structure and semantics.",
+        "key_types": [
+          "body",
+          "configuration file",
+          "attribute",
+          "block",
+          "body schema",
+          "attribute schema",
+          "block header schema"
+        ],
+        "functions": [
+          "schema-driven processing",
+          "dynamic attributes processing",
+          "partial processing"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "static_expr.go": {
+        "language": "Go",
+        "purpose": "Defines a static expression type that evaluates to a constant value.",
+        "key_types": [
+          "staticExpr",
+          "cty.Value",
+          "Range",
+          "Expression",
+          "EvalContext",
+          "Diagnostics",
+          "Traversal"
+        ],
+        "functions": [
+          "StaticExpr",
+          "Value",
+          "Variables",
+          "Range",
+          "StartRange"
+        ],
+        "imports": [
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "structure.go": {
+        "language": "Go",
+        "purpose": "Defines data structures and methods for parsing and representing HCL (HashiCorp Configuration Language) files.",
+        "key_types": [
+          "File",
+          "Block",
+          "Blocks",
+          "Attributes",
+          "Body",
+          "BodyContent",
+          "Attribute",
+          "Expression"
+        ],
+        "functions": [
+          "OfType",
+          "ByType"
+        ],
+        "imports": [
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "structure_at_pos.go": {
+        "language": "Go",
+        "purpose": "This file provides methods to find constructs in a file based on a given source position.",
+        "key_types": [
+          "File",
+          "Pos",
+          "Block",
+          "Expression",
+          "Attribute"
+        ],
+        "functions": [
+          "BlocksAtPos",
+          "OutermostBlockAtPos",
+          "InnermostBlockAtPos",
+          "OutermostExprAtPos",
+          "AttributeAtPos"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "tools.go": {
+        "language": "Go",
+        "purpose": "This file is used to manage build dependencies for tools in the HCL package.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "golang.org/x/tools/cmd/stringer"
         ],
         "complexity": "low"
+      },
+      "traversal.go": {
+        "language": "Go",
+        "purpose": "This file defines a Traversal structure and related methods for traversing values through a series of operations such as attribute and index lookups.",
+        "key_types": [
+          "Traversal",
+          "TraversalSplit",
+          "TraverseRoot",
+          "TraverseAttr",
+          "TraverseIndex",
+          "TraverseSplat",
+          "Traverser"
+        ],
+        "functions": [
+          "TraversalJoin",
+          "TraverseRel",
+          "TraverseAbs",
+          "IsRelative",
+          "SimpleSplit",
+          "RootName",
+          "SourceRange",
+          "TraverseAbs",
+          "TraverseRel",
+          "Traverse"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "side_effects": [
+          "Panic on invalid traversal operations"
+        ],
+        "risks": [
+          "Potential for panics if traversals are used incorrectly"
+        ],
+        "complexity": "medium"
+      },
+      "traversal_for_expr.go": {
+        "language": "Go",
+        "purpose": "This file provides functions to interpret expressions as absolute or relative traversals and to recognize static keywords in HCL (HashiCorp Configuration Language).",
+        "key_types": [
+          "Expression",
+          "Traversal",
+          "Diagnostics",
+          "Diagnostic",
+          "TraverseRoot",
+          "TraverseAttr"
+        ],
+        "functions": [
+          "AbsTraversalForExpr",
+          "RelTraversalForExpr",
+          "ExprAsKeyword"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "traversal_for_expr_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for traversal expressions in the HCL package.",
+        "key_types": [
+          "asTraversalSupported",
+          "asTraversalSupportedAttr",
+          "asTraversalNotSupported",
+          "asTraversalDeclined",
+          "asTraversalWrappedDelegated"
+        ],
+        "functions": [
+          "AsTraversal",
+          "UnwrapExpression",
+          "TestAbsTraversalForExpr",
+          "TestRelTraversalForExpr",
+          "TestExprAsKeyword"
+        ],
+        "imports": [
+          "testing"
+        ],
+        "complexity": "medium"
       }
     }
   }

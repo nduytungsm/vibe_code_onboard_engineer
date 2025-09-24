@@ -1,0 +1,41 @@
+{
+  "content_hash": "7750efe27a403c7dd1f7312e988c5073",
+  "timestamp": "2025-09-24T14:22:12.717485+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a DeviceClient interface and its implementation for managing device-related operations via HTTP requests.",
+    "key_types": [
+      "DeviceClient",
+      "deviceClient",
+      "InternalClient",
+      "InternalClientConfig"
+    ],
+    "functions": [
+      "GetDeviceByID",
+      "ResetDeviceByID",
+      "MigrateNotificationSettings",
+      "Registration",
+      "UpdatePushToken",
+      "CreateDevice",
+      "SyncDeviceAddresses",
+      "NewDeviceClient"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "encoding/json",
+      "fmt",
+      "net/http",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "side_effects": [
+      "Logs warnings for not registered devices during address synchronization."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if SecretKey is not handled securely."
+    ],
+    "complexity": "medium"
+  }
+}

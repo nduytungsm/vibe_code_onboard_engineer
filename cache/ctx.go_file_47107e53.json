@@ -1,0 +1,47 @@
+{
+  "content_hash": "9e8f8ce87061f85dbd9ed282f72e4f33",
+  "timestamp": "2025-09-24T15:40:51.409644+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the DefaultCtx structure and its methods for handling HTTP requests and responses in the Fiber web framework.",
+    "key_types": [
+      "DefaultCtx",
+      "TLSHandler",
+      "contextKey"
+    ],
+    "functions": [
+      "App",
+      "BaseURL",
+      "RequestCtx",
+      "Context",
+      "SetContext",
+      "Deadline",
+      "Done",
+      "Err",
+      "Request",
+      "Response",
+      "Get",
+      "GetHeaders",
+      "GetReqHeaders",
+      "GetRespHeader",
+      "GetRespHeaders",
+      "ClientHelloInfo",
+      "Next"
+    ],
+    "imports": [
+      "context",
+      "crypto/tls",
+      "fmt",
+      "io",
+      "mime/multipart",
+      "strconv",
+      "strings",
+      "sync",
+      "time",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/bytebufferpool",
+      "github.com/valyala/fasthttp"
+    ],
+    "complexity": "medium"
+  }
+}

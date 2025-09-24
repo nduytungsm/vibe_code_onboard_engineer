@@ -1,86 +1,101 @@
 {
-  "content_hash": "38e323dd4ce0bd820586dfdbb00371be",
-  "timestamp": "2025-09-23T16:32:04.333354+07:00",
+  "content_hash": "3af7621edef0afa102f4ad092e9790f8",
+  "timestamp": "2025-09-24T15:32:36.289358+07:00",
   "result": {
     "path": "pkg/helper",
-    "purpose": "Provides various utility functions and helpers for data manipulation, binding, authentication, and concurrent execution in Go applications.",
+    "purpose": "Provides various utility functions for encryption, file handling, token generation, and data manipulation.",
     "languages": {
-      "Go": 12
+      "Go": 8
     },
     "key_modules": [
-      "big.go",
+      "aes.go",
       "binder.go",
-      "convert_json_key_to_snake_case.go",
       "hmac_token.go",
-      "mapstruct_hook.go",
-      "par.go",
       "pointer.go",
+      "random.go",
       "ronin.go",
       "slice.go",
-      "strings.go",
-      "tls.go",
-      "user_agent.go"
+      "tls.go"
     ],
     "dependencies": [
+      "crypto/aes",
+      "crypto/cipher",
+      "crypto/rand",
+      "crypto/sha256",
+      "encoding/base64",
+      "encoding/json",
+      "io",
+      "fmt",
+      "mime/multipart",
+      "reflect",
+      "strings",
       "github.com/labstack/echo/v4",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
-      "github.com/Masterminds/semver",
-      "github.com/inhies/go-bytesize",
-      "github.com/mitchellh/mapstructure",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
       "github.com/ethereum/go-ethereum/common",
       "github.com/ethereum/go-ethereum/common/hexutil",
-      "github.com/ethereum/go-ethereum/crypto"
+      "github.com/ethereum/go-ethereum/crypto",
+      "crypto/tls",
+      "crypto/x509"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing utility functions into separate files based on their functionality, promoting reusability and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for better maintainability and reusability.",
     "file_summaries": {
-      "pkg/helper/big.go": {
+      "pkg/helper/aes.go": {
         "language": "Go",
-        "purpose": "Provides a function to determine the maximum of two big integers.",
+        "purpose": "Provides functions for AES encryption of messages.",
         "key_types": [
-          "*big.Int"
+          "string",
+          "[]byte",
+          "interface{}",
+          "error"
         ],
         "functions": [
-          "Max"
+          "hashKey",
+          "EncryptEAS"
         ],
         "imports": [
-          "math/big"
+          "crypto/aes",
+          "crypto/cipher",
+          "crypto/rand",
+          "crypto/sha256",
+          "encoding/base64",
+          "encoding/json",
+          "io"
         ],
-        "complexity": "low"
-      },
-      "pkg/helper/binder.go": {
-        "language": "Go",
-        "purpose": "Provides a binding function for Echo framework to bind headers and request data.",
-        "key_types": [
-          "BindFunc",
-          "echo.Context",
-          "echo.Binder"
+        "side_effects": [
+          "Generates random initialization vector (IV) for encryption."
         ],
-        "functions": [
-          "Bind",
-          "NewBindWithHeaders"
-        ],
-        "imports": [
-          "github.com/labstack/echo/v4"
+        "risks": [
+          "Potential exposure of sensitive data if the key is weak or compromised."
         ],
         "complexity": "medium"
       },
-      "pkg/helper/convert_json_key_to_snake_case.go": {
+      "pkg/helper/binder.go": {
         "language": "Go",
-        "purpose": "Converts JSON keys from camelCase to snake_case.",
+        "purpose": "Provides functionality to bind multipart file uploads to struct fields in an Echo web framework context.",
         "key_types": [
-          "json.RawMessage",
-          "map[string]json.RawMessage",
-          "[]json.RawMessage"
+          "BindFunc",
+          "multipart.FileHeader"
         ],
         "functions": [
-          "ConvertKeysToSnakeCase",
-          "_convertKeysForObject",
-          "_convertKeysForArray",
-          "_fixKey"
+          "Bind",
+          "NewBindWithHeaders",
+          "NewBindFile",
+          "echoBindFile",
+          "getFiles"
         ],
         "imports": [
-          "encoding/json",
-          "strings"
+          "fmt",
+          "mime/multipart",
+          "reflect",
+          "strings",
+          "github.com/labstack/echo/v4"
+        ],
+        "side_effects": [
+          "Modifies the input struct by binding uploaded files to its fields."
+        ],
+        "risks": [
+          "Potential for denial of service if large files are uploaded.",
+          "Improper handling of file types may lead to security vulnerabilities."
         ],
         "complexity": "medium"
       },
@@ -97,56 +112,10 @@
         "imports": [
           "fmt",
           "strings",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac"
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
         ],
         "risks": [
           "Potential exposure of secret if not handled properly"
-        ],
-        "complexity": "medium"
-      },
-      "pkg/helper/mapstruct_hook.go": {
-        "language": "Go",
-        "purpose": "Provides decode hook functions for converting string representations to specific types.",
-        "key_types": [
-          "mapstructure.DecodeHookFunc",
-          "reflect.Type",
-          "bytesize.ByteSize",
-          "semver.Constraints"
-        ],
-        "functions": [
-          "StringToByteSizeHookFunc",
-          "StringToSemverConditionHookFunc"
-        ],
-        "imports": [
-          "reflect",
-          "github.com/Masterminds/semver",
-          "github.com/inhies/go-bytesize",
-          "github.com/mitchellh/mapstructure"
-        ],
-        "complexity": "medium"
-      },
-      "pkg/helper/par.go": {
-        "language": "Go",
-        "purpose": "Provides a helper for concurrent execution of functions with error handling.",
-        "key_types": [
-          "Result[T]"
-        ],
-        "functions": [
-          "IsOk",
-          "IsError",
-          "Error",
-          "MustGet",
-          "TupleToResult",
-          "ParDo"
-        ],
-        "imports": [
-          "sync"
-        ],
-        "side_effects": [
-          "Concurrent execution of functions may lead to race conditions if not handled properly."
-        ],
-        "risks": [
-          "Potential for panics if MustGet is called on an error result."
         ],
         "complexity": "medium"
       },
@@ -161,6 +130,23 @@
         ],
         "imports": [],
         "complexity": "low"
+      },
+      "pkg/helper/random.go": {
+        "language": "Go",
+        "purpose": "Generates a random string of specified length using alphanumeric characters.",
+        "key_types": [
+          "rune",
+          "int",
+          "big.Int"
+        ],
+        "functions": [
+          "RandStr"
+        ],
+        "imports": [
+          "crypto/rand",
+          "math/big"
+        ],
+        "complexity": "medium"
       },
       "pkg/helper/ronin.go": {
         "language": "Go",
@@ -182,13 +168,13 @@
           "github.com/ethereum/go-ethereum/crypto"
         ],
         "risks": [
-          "Potential for signature forgery if inputs are not properly validated."
+          "Potential for signature forgery if not properly validated."
         ],
         "complexity": "medium"
       },
       "pkg/helper/slice.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for manipulating slices, including filtering, finding indices, converting slices to maps, and mapping items.",
+        "purpose": "Provides utility functions for manipulating slices, including filtering, finding index, converting slices to maps, and mapping elements.",
         "key_types": [
           "T",
           "T1",
@@ -198,29 +184,14 @@
           "Filter",
           "IndexOf",
           "SliceToMap",
-          "Map",
-          "ItemInSlice"
+          "Map"
         ],
         "imports": [],
         "complexity": "medium"
       },
-      "pkg/helper/strings.go": {
-        "language": "Go",
-        "purpose": "Truncates a string to a specified maximum length, ensuring it does not cut off words in the middle.",
-        "key_types": [
-          "string"
-        ],
-        "functions": [
-          "EllipticalTruncate"
-        ],
-        "imports": [
-          "unicode"
-        ],
-        "complexity": "low"
-      },
       "pkg/helper/tls.go": {
         "language": "Go",
-        "purpose": "This file provides a function to convert provided certificate and key data into a TLS configuration.",
+        "purpose": "This file provides a function to convert certificate and key data into a TLS configuration.",
         "key_types": [
           "tls.Config",
           "tls.Certificate",
@@ -232,28 +203,6 @@
         "imports": [
           "crypto/tls",
           "crypto/x509"
-        ],
-        "complexity": "medium"
-      },
-      "pkg/helper/user_agent.go": {
-        "language": "Go",
-        "purpose": "This file provides functionality to parse and handle user agent strings in the context of a web application.",
-        "key_types": [
-          "UserAgent"
-        ],
-        "functions": [
-          "UserAgentFromContext"
-        ],
-        "imports": [
-          "fmt",
-          "strings",
-          "github.com/labstack/echo/v4"
-        ],
-        "side_effects": [
-          "Modifies the user agent string based on query parameters."
-        ],
-        "risks": [
-          "Potential for malformed user agent strings leading to errors."
         ],
         "complexity": "medium"
       }

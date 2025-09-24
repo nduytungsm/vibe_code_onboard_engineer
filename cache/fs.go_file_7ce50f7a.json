@@ -1,0 +1,25 @@
+{
+  "content_hash": "b0bde1c650dd0b6649557ffa300bbfa1",
+  "timestamp": "2025-09-24T15:41:58.716552+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements a custom http.FileSystem that disables directory listing.",
+    "key_types": [
+      "OnlyFilesFS",
+      "neutralizedReaddirFile"
+    ],
+    "functions": [
+      "Open",
+      "Readdir",
+      "Dir"
+    ],
+    "imports": [
+      "net/http",
+      "os"
+    ],
+    "side_effects": [
+      "Disables directory listing for the http.FileSystem."
+    ],
+    "complexity": "medium"
+  }
+}

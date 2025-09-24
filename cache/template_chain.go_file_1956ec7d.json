@@ -1,0 +1,24 @@
+{
+  "content_hash": "523fcca46976b9f78740e6195e772f91",
+  "timestamp": "2025-09-24T15:43:00.031232+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a function to analyze a logging template and create slices for fixed parts and dynamic functions for execution.",
+    "key_types": [
+      "Config",
+      "LogFunc"
+    ],
+    "functions": [
+      "buildLogFuncChain"
+    ],
+    "imports": [
+      "bytes",
+      "errors",
+      "github.com/gofiber/utils/v2"
+    ],
+    "risks": [
+      "Potential for errors if the template format is incorrect or if parameters are missing."
+    ],
+    "complexity": "medium"
+  }
+}

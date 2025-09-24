@@ -1,0 +1,26 @@
+{
+  "content_hash": "356c264d7e2effa3980864bc89bd6ac2",
+  "timestamp": "2025-09-24T15:42:23.639104+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements middleware for handling early data in HTTP requests.",
+    "key_types": [
+      "contextKey",
+      "Config"
+    ],
+    "functions": [
+      "IsEarly",
+      "New"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3"
+    ],
+    "side_effects": [
+      "Modifies request context with early data status"
+    ],
+    "risks": [
+      "Potential misuse of early data leading to security vulnerabilities if not properly validated"
+    ],
+    "complexity": "medium"
+  }
+}

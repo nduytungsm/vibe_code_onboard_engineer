@@ -1,0 +1,22 @@
+{
+  "content_hash": "96819f01e77d28280e59e46d69d15636",
+  "timestamp": "2025-09-24T15:42:37.058936+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a health-check handler for a web application.",
+    "key_types": [
+      "Config",
+      "fiber.Handler"
+    ],
+    "functions": [
+      "New"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3"
+    ],
+    "side_effects": [
+      "Responds with HTTP status codes based on health check results."
+    ],
+    "complexity": "medium"
+  }
+}

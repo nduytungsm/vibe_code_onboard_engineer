@@ -1,0 +1,21 @@
+{
+  "content_hash": "5e8539e425eb8f7b6e9f6ecb6c5ad252",
+  "timestamp": "2025-09-24T14:02:42.978991+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a handler function to retrieve agent information from the context.",
+    "key_types": [
+      "echo.Context",
+      "models.AgentInfo"
+    ],
+    "functions": [
+      "getAgentInfo"
+    ],
+    "imports": [
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-manager/middleware",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "complexity": "low"
+  }
+}

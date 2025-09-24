@@ -1,0 +1,32 @@
+{
+  "content_hash": "d8d620771c35d32e37c9d9ac245fadee",
+  "timestamp": "2025-09-24T15:45:52.007906+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality for generating and modifying HCL (HashiCorp Configuration Language) configurations.",
+    "key_types": [
+      "Node",
+      "HCL",
+      "Configuration"
+    ],
+    "functions": [
+      "CreateNode",
+      "InsertNode",
+      "ModifyNode"
+    ],
+    "imports": [
+      "hcl",
+      "os",
+      "fmt"
+    ],
+    "side_effects": [
+      "Modifies HCL configurations",
+      "Generates new HCL content"
+    ],
+    "risks": [
+      "Potential for malformed HCL output",
+      "Dependency on external libraries"
+    ],
+    "complexity": "medium"
+  }
+}

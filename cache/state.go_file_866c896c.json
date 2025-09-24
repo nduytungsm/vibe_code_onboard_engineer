@@ -1,0 +1,53 @@
+{
+  "content_hash": "0598eab1cc1b75e51ad2586eee6f3747",
+  "timestamp": "2025-09-24T15:44:00.597031+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a thread-safe key-value store for managing application dependencies in a Fiber web application.",
+    "key_types": [
+      "State"
+    ],
+    "functions": [
+      "init",
+      "newState",
+      "Set",
+      "Get",
+      "MustGet",
+      "Has",
+      "Delete",
+      "Reset",
+      "Keys",
+      "Len",
+      "GetState",
+      "MustGetState",
+      "GetStateWithDefault",
+      "GetString",
+      "GetInt",
+      "GetBool",
+      "GetFloat64",
+      "GetUint",
+      "GetInt8",
+      "GetInt16",
+      "GetInt32",
+      "GetInt64",
+      "GetUint8",
+      "GetUint16",
+      "GetUint32",
+      "GetUint64",
+      "GetUintptr",
+      "GetFloat32",
+      "GetComplex64",
+      "GetComplex128"
+    ],
+    "imports": [
+      "encoding/hex",
+      "strings",
+      "sync",
+      "github.com/google/uuid"
+    ],
+    "side_effects": [
+      "Generates a unique hash for the service state prefix during initialization."
+    ],
+    "complexity": "medium"
+  }
+}

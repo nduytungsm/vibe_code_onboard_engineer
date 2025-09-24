@@ -1,0 +1,43 @@
+{
+  "content_hash": "e45c4c1a8e5a286090c1c64ade9f8e2c",
+  "timestamp": "2025-09-24T15:41:03.562202+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for state management in a Fiber application, detailing the State type and its methods.",
+    "key_types": [
+      "State"
+    ],
+    "functions": [
+      "Set",
+      "Get",
+      "MustGet",
+      "Has",
+      "Delete",
+      "Reset",
+      "Keys",
+      "Len",
+      "GetString",
+      "GetInt",
+      "GetBool",
+      "GetFloat64",
+      "GetUint",
+      "GetInt8",
+      "GetInt16",
+      "GetInt32",
+      "GetInt64",
+      "GetUint8",
+      "GetUint16",
+      "GetUint32",
+      "GetUint64",
+      "GetUintptr",
+      "GetFloat32",
+      "GetComplex64",
+      "GetComplex128",
+      "GetState",
+      "MustGetState",
+      "GetStateWithDefault"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

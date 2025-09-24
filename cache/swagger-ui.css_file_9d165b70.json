@@ -1,0 +1,12 @@
+{
+  "content_hash": "f46fd0675309741dba033a5d2135d5bd",
+  "timestamp": "2025-09-23T16:56:28.911808+07:00",
+  "result": {
+    "language": "CSS",
+    "purpose": "Styles for Swagger UI",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

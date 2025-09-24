@@ -1,0 +1,16 @@
+{
+  "content_hash": "3fe83bcbdf6b7e7c0c492568ad05f8ab",
+  "timestamp": "2025-09-24T15:25:31.019155+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Exports a transformation function for use in a testing environment.",
+    "key_types": [],
+    "functions": [
+      "require"
+    ],
+    "imports": [
+      "./makeTransform"
+    ],
+    "complexity": "low"
+  }
+}

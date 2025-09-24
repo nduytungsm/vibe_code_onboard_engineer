@@ -1,0 +1,27 @@
+{
+  "content_hash": "3cba11e65f3b3dc5255dfa47416c6dcf",
+  "timestamp": "2025-09-24T15:28:14.758497+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that uses global state and effects to manage and display a value.",
+    "key_types": [
+      "Object",
+      "Function",
+      "React Component"
+    ],
+    "functions": [
+      "Component",
+      "setGlobal"
+    ],
+    "imports": [
+      "react"
+    ],
+    "side_effects": [
+      "Modifies global variable 'someGlobal' on component mount"
+    ],
+    "risks": [
+      "Potential for unintended side effects due to global state mutation"
+    ],
+    "complexity": "medium"
+  }
+}

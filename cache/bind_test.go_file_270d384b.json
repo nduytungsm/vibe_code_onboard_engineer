@@ -1,0 +1,45 @@
+{
+  "content_hash": "bf52ab8af17f80a59d5896696a60bad4",
+  "timestamp": "2025-09-24T15:26:47.181749+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains unit tests for the binding functionality of the Fiber web framework.",
+    "key_types": [
+      "Query",
+      "Query2",
+      "RequiredQuery",
+      "ArrayQuery",
+      "NonRFCTimeInput",
+      "Node",
+      "Person",
+      "CollectionQuery"
+    ],
+    "functions": [
+      "Test_returnErr",
+      "Test_AcquireReleaseBind",
+      "Test_Bind_Query",
+      "Test_Bind_Query_Map",
+      "Test_Bind_Query_WithSetParserDecoder",
+      "Test_Bind_Query_Schema"
+    ],
+    "imports": [
+      "bytes",
+      "compress/gzip",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "mime/multipart",
+      "net/http/httptest",
+      "reflect",
+      "strings",
+      "testing",
+      "time",
+      "github.com/fxamacker/cbor/v2",
+      "github.com/gofiber/fiber/v3/binder",
+      "github.com/shamaton/msgpack/v2",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "complexity": "medium"
+  }
+}

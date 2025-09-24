@@ -1,0 +1,16 @@
+{
+  "content_hash": "e15ae99d04ad885fd29f00fa555a188a",
+  "timestamp": "2025-09-24T14:03:59.690701+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for Google Cloud Storage.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

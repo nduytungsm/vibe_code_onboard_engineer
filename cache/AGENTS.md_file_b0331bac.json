@@ -1,0 +1,12 @@
+{
+  "content_hash": "babcfa00075a56704114f6615874e6b0",
+  "timestamp": "2025-09-24T15:26:37.188143+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for agent instructions and startup script for a Go project.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

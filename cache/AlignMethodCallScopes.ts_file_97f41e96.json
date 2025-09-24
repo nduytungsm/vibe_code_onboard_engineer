@@ -1,0 +1,25 @@
+{
+  "content_hash": "24b9d1d186ea1200fec36c1b99d775ed",
+  "timestamp": "2025-09-24T15:26:40.497095+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Aligns method call scopes in a function's body to ensure consistency between method calls and their properties.",
+    "key_types": [
+      "HIRFunction",
+      "IdentifierId",
+      "ReactiveScope",
+      "DisjointSet"
+    ],
+    "functions": [
+      "alignMethodCallScopes"
+    ],
+    "imports": [
+      "../HIR",
+      "../Utils/DisjointSet"
+    ],
+    "side_effects": [
+      "Modifies the scope of identifiers in the function's body."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "content_hash": "0b09cb057c56487e738f8afd42bbbeed",
+  "timestamp": "2025-09-24T15:33:14.711644+07:00",
+  "result": {
+    "path": "pkg/releasecandidate",
+    "purpose": "Responsible for managing feature configurations and whitelist checks for mobile wallet candidates.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "init.go",
+      "service.go"
+    ],
+    "dependencies": [
+      "github.com/redis/go-redis/v9",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+      "github.com/go-redsync/redsync/v4",
+      "github.com/go-redsync/redsync/v4/redis/goredis/v9",
+      "github.com/rs/zerolog/log"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating feature management logic and state handling using Redis.",
+    "file_summaries": {
+      "pkg/releasecandidate/init.go": {
+        "language": "Go",
+        "purpose": "Defines a service interface for managing feature configurations and whitelist checks.",
+        "key_types": [
+          "Service",
+          "CheckAllowFeatureRequest",
+          "PostFeatureConfigRequest",
+          "PostWhitelistFeaturesRequest",
+          "PostSetConfigForDeviceRequest",
+          "GetCountWhitelistDevices"
+        ],
+        "functions": [
+          "NewService"
+        ],
+        "imports": [
+          "github.com/redis/go-redis/v9",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/device"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/releasecandidate/service.go": {
+        "language": "Go",
+        "purpose": "Manages feature access for mobile wallet candidates using Redis for state management.",
+        "key_types": [
+          "service",
+          "models.CheckAllowFeatureRequest",
+          "models.PostFeatureConfigRequest",
+          "models.PostWhitelistFeaturesRequest",
+          "models.PostSetConfigForDeviceRequest",
+          "models.GetCountWhitelistDevices"
+        ],
+        "functions": [
+          "newService",
+          "refreshWhitelist",
+          "CheckAllowFeature",
+          "SetFeatureConfig",
+          "SetWhitelistFeatures",
+          "SetConfigForDevice",
+          "CountWhitelistDevices",
+          "VerifyWhitelistFeature",
+          "convertKey"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "strings",
+          "time",
+          "github.com/go-redsync/redsync/v4",
+          "github.com/go-redsync/redsync/v4/redis/goredis/v9",
+          "github.com/redis/go-redis/v9",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/device"
+        ],
+        "side_effects": [
+          "Modifies Redis state for feature access and whitelist management.",
+          "Logs information and errors during execution."
+        ],
+        "risks": [
+          "Potential race conditions when accessing shared resources in Redis.",
+          "Improper handling of Redis errors may lead to incorrect feature access decisions."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

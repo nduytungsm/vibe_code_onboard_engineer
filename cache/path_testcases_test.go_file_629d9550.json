@@ -1,0 +1,22 @@
+{
+  "content_hash": "b10b8b1bfb0b72943aa0d70dbb4ab405",
+  "timestamp": "2025-09-24T15:43:39.66898+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines test cases for routing patterns in a web framework.",
+    "key_types": [
+      "routeTestCase",
+      "routeCaseCollection"
+    ],
+    "functions": [
+      "init"
+    ],
+    "imports": [
+      "strings"
+    ],
+    "side_effects": [
+      "Initializes global variables with test cases."
+    ],
+    "complexity": "medium"
+  }
+}

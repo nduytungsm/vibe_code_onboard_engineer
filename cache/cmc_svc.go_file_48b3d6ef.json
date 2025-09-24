@@ -1,0 +1,44 @@
+{
+  "content_hash": "670e56600220eb43c7ab3f4e1a778d41",
+  "timestamp": "2025-09-23T16:57:23.459685+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for interacting with a cryptocurrency API, including fetching token lists and metadata, and crawling token descriptions.",
+    "key_types": [
+      "Service",
+      "service",
+      "Config",
+      "GetTokensListResponse",
+      "GetTokensMetadataResponse"
+    ],
+    "functions": [
+      "GetTokenList",
+      "GetTokensMetadata",
+      "CrawlTokenDescription",
+      "newCollector",
+      "buildHeaders",
+      "NewService"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "math/rand",
+      "net/http",
+      "strings",
+      "time",
+      "github.com/EDDYCJY/fake-useragent",
+      "github.com/gocolly/colly",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-proxy/httpclient"
+    ],
+    "side_effects": [
+      "Makes HTTP requests to external APIs",
+      "Crawls web pages for data"
+    ],
+    "risks": [
+      "Potential exposure of sensitive API keys if not handled properly",
+      "Web scraping may violate terms of service of the target website"
+    ],
+    "complexity": "medium"
+  }
+}

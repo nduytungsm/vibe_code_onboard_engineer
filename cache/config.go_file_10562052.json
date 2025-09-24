@@ -1,0 +1,19 @@
+{
+  "content_hash": "6bc32206bc32c30e5993113f6707119e",
+  "timestamp": "2025-09-24T15:43:32.01342+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure and default values for a timeout middleware in a web framework.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "configDefault"
+    ],
+    "imports": [
+      "time",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "complexity": "medium"
+  }
+}

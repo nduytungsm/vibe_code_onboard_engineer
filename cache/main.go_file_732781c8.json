@@ -1,0 +1,43 @@
+{
+  "content_hash": "0685db1969842421098c56f2bbfc1616",
+  "timestamp": "2025-09-24T15:43:51.238389+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "A command-line tool for formatting HCL (HashiCorp Configuration Language) files with options for checking syntax and overwriting files.",
+    "key_types": [
+      "flag.Flag",
+      "hclparse.Parser",
+      "hcl.DiagnosticWriter"
+    ],
+    "functions": [
+      "init",
+      "main",
+      "realmain",
+      "processFiles",
+      "processFile",
+      "usage"
+    ],
+    "imports": [
+      "bytes",
+      "errors",
+      "flag",
+      "fmt",
+      "io",
+      "os",
+      "strings",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclparse",
+      "github.com/hashicorp/hcl/v2/hclwrite",
+      "golang.org/x/term"
+    ],
+    "side_effects": [
+      "Writes formatted HCL to stdout or overwrites source files based on flags.",
+      "Outputs diagnostics to stderr if syntax errors are found."
+    ],
+    "risks": [
+      "Potential data loss if overwriting files without proper checks.",
+      "Error handling may expose sensitive file paths in error messages."
+    ],
+    "complexity": "medium"
+  }
+}

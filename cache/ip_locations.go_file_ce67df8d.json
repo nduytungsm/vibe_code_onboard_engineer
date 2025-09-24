@@ -1,0 +1,17 @@
+{
+  "content_hash": "f310bb5b9077bd11076fa5bc8612263e",
+  "timestamp": "2025-09-24T15:30:41.526916+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for IP location information and request handling.",
+    "key_types": [
+      "IPLocation",
+      "GetLocationRequest"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "content_hash": "1740a330e8a3358e4958b9bf7cd3a6ae",
+  "timestamp": "2025-09-24T15:43:05.045669+07:00",
+  "result": {
+    "path": "codec/json",
+    "purpose": "Responsible for JSON encoding and decoding functionalities using various libraries.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "api.go",
+      "go_json.go",
+      "json.go",
+      "jsoniter.go",
+      "sonic.go"
+    ],
+    "dependencies": [
+      "github.com/goccy/go-json",
+      "github.com/json-iterator/go",
+      "github.com/bytedance/sonic"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating different JSON encoding and decoding implementations using various libraries, each in separate files.",
+    "file_summaries": {
+      "codec/json/api.go": {
+        "language": "Go",
+        "purpose": "Defines interfaces and types for JSON encoding and decoding.",
+        "key_types": [
+          "Core",
+          "Encoder",
+          "Decoder"
+        ],
+        "functions": [
+          "Marshal",
+          "Unmarshal",
+          "MarshalIndent",
+          "NewEncoder",
+          "NewDecoder",
+          "SetEscapeHTML",
+          "Encode",
+          "UseNumber",
+          "DisallowUnknownFields",
+          "Decode"
+        ],
+        "imports": [
+          "io"
+        ],
+        "side_effects": [
+          "Escaping HTML characters in JSON output when SetEscapeHTML is true"
+        ],
+        "risks": [
+          "Potential security issues when embedding JSON in HTML if escaping is not handled properly"
+        ],
+        "complexity": "medium"
+      },
+      "codec/json/go_json.go": {
+        "language": "Go",
+        "purpose": "Provides a wrapper around the go-json library for JSON encoding and decoding.",
+        "key_types": [
+          "gojsonApi",
+          "Encoder",
+          "Decoder"
+        ],
+        "functions": [
+          "init",
+          "Marshal",
+          "Unmarshal",
+          "MarshalIndent",
+          "NewEncoder",
+          "NewDecoder"
+        ],
+        "imports": [
+          "io",
+          "github.com/goccy/go-json"
+        ],
+        "complexity": "medium"
+      },
+      "codec/json/json.go": {
+        "language": "Go",
+        "purpose": "Provides a wrapper around the standard encoding/json package for JSON encoding and decoding.",
+        "key_types": [
+          "jsonApi",
+          "Encoder",
+          "Decoder"
+        ],
+        "functions": [
+          "init",
+          "Marshal",
+          "Unmarshal",
+          "MarshalIndent",
+          "NewEncoder",
+          "NewDecoder"
+        ],
+        "imports": [
+          "encoding/json",
+          "io"
+        ],
+        "complexity": "medium"
+      },
+      "codec/json/jsoniter.go": {
+        "language": "Go",
+        "purpose": "This file provides an implementation for JSON encoding and decoding using the json-iterator library.",
+        "key_types": [
+          "jsoniterApi",
+          "Encoder",
+          "Decoder"
+        ],
+        "functions": [
+          "init",
+          "Marshal",
+          "Unmarshal",
+          "MarshalIndent",
+          "NewEncoder",
+          "NewDecoder"
+        ],
+        "imports": [
+          "io",
+          "github.com/json-iterator/go"
+        ],
+        "complexity": "medium"
+      },
+      "codec/json/sonic.go": {
+        "language": "Go",
+        "purpose": "Provides a wrapper around the Sonic library for JSON encoding and decoding.",
+        "key_types": [
+          "sonicApi",
+          "Encoder",
+          "Decoder"
+        ],
+        "functions": [
+          "init",
+          "Marshal",
+          "Unmarshal",
+          "MarshalIndent",
+          "NewEncoder",
+          "NewDecoder"
+        ],
+        "imports": [
+          "io",
+          "github.com/bytedance/sonic"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

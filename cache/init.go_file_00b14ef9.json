@@ -1,0 +1,24 @@
+{
+  "content_hash": "b8a0778ca4fc376adcb4628d77e0105f",
+  "timestamp": "2025-09-24T15:12:30.466261+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file initializes a singleton instance of HMAC with a configuration.",
+    "key_types": [
+      "HMAC",
+      "Config"
+    ],
+    "functions": [
+      "init",
+      "InitInstance"
+    ],
+    "imports": [
+      "sync"
+    ],
+    "side_effects": [
+      "Initializes a global instance of HMAC",
+      "Sets global configuration"
+    ],
+    "complexity": "medium"
+  }
+}

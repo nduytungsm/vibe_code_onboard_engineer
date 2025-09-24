@@ -52,7 +52,210 @@ func NewAnalyzer(cfg *config.Config, basePath string) (*Analyzer, error) {
 	}, nil
 }
 
-// AnalyzeProject performs the complete analysis pipeline
+// ProgressCallback defines the signature for progress callbacks
+type ProgressCallback func(eventType, stage, message string, progress int, data interface{})
+
+// AnalyzeProjectWithProgress performs the complete analysis pipeline with progress callbacks
+func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback ProgressCallback) (*AnalysisResult, error) {
+	// Phase 1: Discover files
+	callback("progress", "🔍 Scanning project structure...", "Discovering files and directories", 20, nil)
+	
+	files, err := a.crawler.CrawlFiles()
+	if err != nil {
+		return nil, fmt.Errorf("file discovery failed: %v", err)
+	}
+	
+	stats := a.crawler.GetFileStats(files)
+	callback("progress", "📁 Files discovered", fmt.Sprintf("Found %d files (%.2f MB)", stats["total_files"].(int), stats["total_size_mb"]), 25, map[string]interface{}{
+		"file_count": stats["total_files"],
+		"total_size": stats["total_size_mb"],
+	})
+	
+	// Phase 1.5: Detect project type
+	callback("progress", "🎯 Detecting project type and framework...", "Analyzing project structure and dependencies", 30, nil)
+	
+	projectDetector := detector.NewProjectDetector()
+	
+	// Convert pipeline.FileInfo to detector.FileInfo to avoid import cycle
+	detectorFiles := make([]detector.FileInfo, len(files))
+	for i, file := range files {
+		detectorFiles[i] = detector.FileInfo{
+			Path:         file.Path,
+			RelativePath: file.RelativePath,
+			Size:         file.Size,
+			Extension:    file.Extension,
+			IsDir:        file.IsDir,
+		}
+	}
+	
+	// Create file contents map for command-based detection
+	fileContents := make(map[string]string)
+	for _, file := range files {
+		content, err := a.crawler.ReadFile(file)
+		if err == nil {
+			fileContents[file.RelativePath] = content
+		}
+	}
+	
+	projectType := projectDetector.DetectProjectType(detectorFiles, fileContents)
+	
+	callback("data", "Project type detected", "Project classification complete", 32, map[string]interface{}{
+		"project_type": projectType,
+	})
+	
+	// Phase 2: Map - Analyze individual files
+	callback("progress", "🧠 Analyzing individual files...", "Processing file contents with AI analysis", 35, nil)
+	
+	fileSummaries, err := a.mapPhaseWithProgress(ctx, files, callback)
+	if err != nil {
+		return nil, fmt.Errorf("map phase failed: %v", err)
+	}
+	
+	callback("data", "File analysis complete", fmt.Sprintf("Analyzed %d files", len(fileSummaries)), 50, map[string]interface{}{
+		"file_summaries": fileSummaries,
+	})
+	
+	// Phase 3: Reduce - Analyze folders
+	callback("progress", "📂 Analyzing folder structure...", "Organizing file analysis into folder summaries", 55, nil)
+	
+	folderSummaries, err := a.reducePhaseFolder(ctx, fileSummaries)
+	if err != nil {
+		return nil, fmt.Errorf("folder reduce phase failed: %v", err)
+	}
+	
+	callback("data", "Folder analysis complete", fmt.Sprintf("Analyzed %d folders", len(folderSummaries)), 60, map[string]interface{}{
+		"folder_summaries": folderSummaries,
+	})
+	
+	// Phase 4: Final Reduce - Analyze entire project
+	callback("progress", "🏗️ Generating project overview...", "Creating comprehensive project summary", 65, nil)
+	
+	projectSummary, err := a.reducePhaseProject(ctx, folderSummaries)
+	if err != nil {
+		return nil, fmt.Errorf("project reduce phase failed: %v", err)
+	}
+	
+	callback("data", "Project overview complete", "Project summary generated", 70, map[string]interface{}{
+		"project_summary": projectSummary,
+	})
+	
+	// Phase 5: Detailed architectural analysis
+	callback("progress", "🔍 Performing detailed architectural analysis...", "Deep-diving into project architecture and patterns", 72, nil)
+	
+	importantFiles := a.extractImportantFiles(files)
+	
+	// Convert pointer maps to value maps for the detailed analysis (with nil checks)
+	fileSummariesForAnalysis := make(map[string]openai.FileSummary)
+	for k, v := range fileSummaries {
+		if v != nil {
+			fileSummariesForAnalysis[k] = *v
+		}
+	}
+	
+	folderSummariesForAnalysis := make(map[string]openai.FolderSummary)
+	for k, v := range folderSummaries {
+		if v != nil {
+			folderSummariesForAnalysis[k] = *v
+		}
+	}
+	
+	// Perform detailed analysis with error recovery
+	var detailedAnalysis *openai.RepositoryAnalysis
+	var detailedErr error
+	
+	func() {
+		defer func() {
+			if r := recover(); r != nil {
+				fmt.Printf("⚠️  Detailed analysis panicked: %v\n", r)
+				detailedAnalysis = nil
+				detailedErr = fmt.Errorf("detailed analysis panicked: %v", r)
+			}
+		}()
+		detailedAnalysis, detailedErr = a.openaiClient.AnalyzeRepositoryDetails(ctx, a.crawler.basePath, folderSummariesForAnalysis, fileSummariesForAnalysis, importantFiles)
+	}()
+	
+	if detailedErr != nil {
+		fmt.Printf("⚠️  Detailed analysis failed: %v\n", detailedErr)
+		callback("data", "Detailed analysis skipped", "Analysis failed but continuing with basic analysis", 75, map[string]interface{}{
+			"detailed_analysis": nil,
+		})
+	} else {
+		projectSummary.DetailedAnalysis = detailedAnalysis
+		callback("data", "Detailed analysis complete", "Architectural patterns identified", 75, map[string]interface{}{
+			"detailed_analysis": detailedAnalysis,
+		})
+	}
+	
+	// Phase 6: Microservice discovery
+	var discoveredServices []microservices.DiscoveredService
+	var serviceRelationships []relationships.ServiceRelationship
+	if projectSummary.DetailedAnalysis != nil && projectSummary.DetailedAnalysis.RepoLayout == "monorepo" {
+		callback("progress", "⚙️ Analyzing microservices architecture...", "Discovering services and components", 78, nil)
+		
+		discoveredServices = a.enhanceWithMicroserviceDiscovery(ctx, files, projectType, projectSummary)
+		
+		callback("data", "Microservice discovery complete", fmt.Sprintf("Found %d services", len(discoveredServices)), 80, map[string]interface{}{
+			"services": discoveredServices,
+		})
+		
+		// Phase 7: Service relationships
+		if len(discoveredServices) > 1 {
+			callback("progress", "🔗 Mapping service dependencies...", "Analyzing inter-service relationships", 82, nil)
+			
+			serviceRelationships = a.discoverServiceRelationships(files, discoveredServices, projectSummary)
+			
+			callback("data", "Service relationships mapped", fmt.Sprintf("Found %d relationships", len(serviceRelationships)), 85, map[string]interface{}{
+				"relationships": serviceRelationships,
+			})
+		}
+	}
+
+	// Phase 8: Database schema extraction (with graceful error handling)
+	var databaseSchema *database.DatabaseSchema
+	if projectType != nil && (strings.ToLower(string(projectType.PrimaryType)) == "backend" || 
+							  strings.ToLower(string(projectType.PrimaryType)) == "fullstack") {
+		callback("progress", "🗄️ Extracting database schema...", "Analyzing database migrations and schema files", 88, nil)
+		
+		// Graceful database schema extraction with error recovery
+		func() {
+			defer func() {
+				if r := recover(); r != nil {
+					fmt.Printf("⚠️  Database schema extraction failed with panic: %v\n", r)
+					databaseSchema = nil
+				}
+			}()
+			databaseSchema = a.extractDatabaseSchema(files)
+		}()
+		
+		if databaseSchema != nil {
+			callback("data", "Database schema extracted", "Database structure analyzed", 92, map[string]interface{}{
+				"database_schema": databaseSchema,
+			})
+		} else {
+			callback("data", "Database schema extraction skipped", "No database schema found or extraction failed", 92, map[string]interface{}{
+				"database_schema": nil,
+			})
+		}
+	}
+	
+	// Final result compilation
+	callback("progress", "📊 Generating comprehensive analysis...", "Compiling final analysis results", 95, nil)
+	
+	result := &AnalysisResult{
+		ProjectSummary:       projectSummary,
+		FolderSummaries:      folderSummaries,
+		FileSummaries:        fileSummaries,
+		ProjectType:          projectType,
+		Stats:                stats,
+		Services:             discoveredServices,
+		ServiceRelationships: serviceRelationships,
+		DatabaseSchema:       databaseSchema,
+	}
+	
+	return result, nil
+}
+
+// AnalyzeProject performs the complete analysis pipeline (legacy method for backward compatibility)
 func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) {
 	fmt.Println("🔍 Discovering files...")
 	
@@ -81,7 +284,16 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 		}
 	}
 	
-	projectType := projectDetector.DetectProjectType(detectorFiles)
+	// Create file contents map for command-based detection
+	fileContents := make(map[string]string)
+	for _, file := range files {
+		content, err := a.crawler.ReadFile(file)
+		if err == nil {
+			fileContents[file.RelativePath] = content
+		}
+	}
+	
+	projectType := projectDetector.DetectProjectType(detectorFiles, fileContents)
 	
 	// Display project type detection results
 	projectType.DisplayResult()
@@ -115,20 +327,38 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 	fmt.Println("🔍 Performing detailed architectural analysis...")
 	importantFiles := a.extractImportantFiles(files)
 	
-	// Convert pointer maps to value maps for the detailed analysis
+	// Convert pointer maps to value maps for the detailed analysis (with nil checks)
 	fileSummariesForAnalysis := make(map[string]openai.FileSummary)
 	for k, v := range fileSummaries {
-		fileSummariesForAnalysis[k] = *v
+		if v != nil {
+			fileSummariesForAnalysis[k] = *v
+		}
 	}
 	
 	folderSummariesForAnalysis := make(map[string]openai.FolderSummary)
 	for k, v := range folderSummaries {
-		folderSummariesForAnalysis[k] = *v
+		if v != nil {
+			folderSummariesForAnalysis[k] = *v
+		}
 	}
 	
-	detailedAnalysis, err := a.openaiClient.AnalyzeRepositoryDetails(ctx, a.crawler.basePath, folderSummariesForAnalysis, fileSummariesForAnalysis, importantFiles)
-	if err != nil {
-		fmt.Printf("⚠️  Detailed analysis failed: %v\n", err)
+	// Perform detailed analysis with error recovery
+	var detailedAnalysis *openai.RepositoryAnalysis
+	var detailedErr error
+	
+	func() {
+		defer func() {
+			if r := recover(); r != nil {
+				fmt.Printf("⚠️  Detailed analysis panicked: %v\n", r)
+				detailedAnalysis = nil
+				detailedErr = fmt.Errorf("detailed analysis panicked: %v", r)
+			}
+		}()
+		detailedAnalysis, detailedErr = a.openaiClient.AnalyzeRepositoryDetails(ctx, a.crawler.basePath, folderSummariesForAnalysis, fileSummariesForAnalysis, importantFiles)
+	}()
+	
+	if detailedErr != nil {
+		fmt.Printf("⚠️  Detailed analysis failed: %v\n", detailedErr)
 		// Continue without detailed analysis
 	} else {
 		projectSummary.DetailedAnalysis = detailedAnalysis
@@ -174,7 +404,58 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 	}, nil
 }
 
-// mapPhase analyzes individual files
+// mapPhaseWithProgress analyzes individual files with progress callbacks
+func (a *Analyzer) mapPhaseWithProgress(ctx context.Context, files []FileInfo, callback ProgressCallback) (map[string]*openai.FileSummary, error) {
+	fileSummaries := make(map[string]*openai.FileSummary)
+	totalFiles := len(files)
+	processedCount := 0
+	
+	// Create buffered channels for work distribution
+	jobs := make(chan FileInfo, totalFiles)
+	results := make(chan fileResult, totalFiles)
+	
+	// Start worker goroutines
+	numWorkers := a.config.RateLimiting.ConcurrentWorkers
+	for i := 0; i < numWorkers; i++ {
+		go a.fileWorker(ctx, jobs, results)
+	}
+	
+	// Send all files to be processed
+	for _, file := range files {
+		jobs <- file
+	}
+	close(jobs)
+	
+	// Collect results and send progress updates
+	for i := 0; i < totalFiles; i++ {
+		select {
+		case result := <-results:
+			processedCount++
+			
+			if result.err != nil {
+				fmt.Printf("⚠️ Failed to analyze file %s: %v\n", result.file.RelativePath, result.err)
+				continue
+			}
+			
+			fileSummaries[result.file.RelativePath] = result.summary
+			
+			// Send progress update every 5 files or at milestones
+			progressPercentage := 35 + int(float64(processedCount)/float64(totalFiles)*15) // 35-50% range
+			if processedCount%5 == 0 || processedCount == totalFiles {
+				callback("progress", "🧠 Analyzing individual files...", 
+					fmt.Sprintf("Analyzed %d/%d files", processedCount, totalFiles), 
+					progressPercentage, nil)
+			}
+			
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		}
+	}
+	
+	return fileSummaries, nil
+}
+
+// mapPhase analyzes individual files (legacy method for backward compatibility)
 func (a *Analyzer) mapPhase(ctx context.Context, files []FileInfo) (map[string]*openai.FileSummary, error) {
 	fileSummaries := make(map[string]*openai.FileSummary)
 	
@@ -684,26 +965,48 @@ func (a *Analyzer) extractDatabaseSchema(files []FileInfo) *database.DatabaseSch
 	// Create schema extractor
 	schemaExtractor := database.NewSchemaExtractor()
 
-	// Extract schema from migrations
-	schema, err := schemaExtractor.ExtractSchemaFromMigrations(projectPath, fileMap)
+	// Extract schema from migrations with graceful error handling
+	schema, err := func() (*database.DatabaseSchema, error) {
+		defer func() {
+			if r := recover(); r != nil {
+				fmt.Printf("⚠️  Database schema extraction recovered from panic: %v\n", r)
+			}
+		}()
+		return schemaExtractor.ExtractSchemaFromMigrations(projectPath, fileMap)
+	}()
+	
 	if err != nil {
 		fmt.Printf("⚠️  Database schema extraction failed: %v\n", err)
+		fmt.Println("   Returning partial schema if any tables were extracted...")
+		
+		// Return partial schema if we have any tables
+		if schema != nil && len(schema.Tables) > 0 {
+			fmt.Printf("🗃️  Found %d database tables despite errors\n", len(schema.Tables))
+			return schema
+		}
 		return nil
 	}
 
-	if len(schema.Tables) == 0 {
+	if schema == nil || len(schema.Tables) == 0 {
 		fmt.Println("🗃️  No database tables found in migrations")
 		return nil
 	}
 
-	// Generate PlantUML ERD
-	pumlContent := schemaExtractor.GeneratePlantUML()
-
-	// Save PlantUML file
-	if err := schemaExtractor.SavePlantUMLFile(projectPath, pumlContent); err != nil {
-		fmt.Printf("⚠️  Failed to save PlantUML file: %v\n", err)
-		return schema // Still return the schema even if PlantUML save fails
-	}
+	// Generate PlantUML ERD (with error recovery)
+	func() {
+		defer func() {
+			if r := recover(); r != nil {
+				fmt.Printf("⚠️  PlantUML generation failed with panic: %v\n", r)
+			}
+		}()
+		
+		pumlContent := schemaExtractor.GeneratePlantUML()
+		
+		// Save PlantUML file
+		if err := schemaExtractor.SavePlantUMLFile(projectPath, pumlContent); err != nil {
+			fmt.Printf("⚠️  Failed to save PlantUML file: %v\n", err)
+		}
+	}()
 
 	// Display summary
 	fmt.Printf("🗃️  Found %d database tables in %s\n", len(schema.Tables), schema.MigrationPath)

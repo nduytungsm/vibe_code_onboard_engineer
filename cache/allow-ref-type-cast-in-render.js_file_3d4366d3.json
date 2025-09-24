@@ -1,0 +1,23 @@
+{
+  "content_hash": "adca1eefd2d4e175ab2d24afc3bdcb8b",
+  "timestamp": "2025-09-24T15:28:35.358174+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a custom hook that manages a ref and provides a callback to update it, along with a fixture entry point for testing.",
+    "key_types": [
+      "function",
+      "object"
+    ],
+    "functions": [
+      "useArrayOfRef",
+      "FIXTURE_ENTRYPOINT.fn"
+    ],
+    "imports": [
+      "react"
+    ],
+    "side_effects": [
+      "Updates the ref value when the callback is called."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "content_hash": "3965cbdb8d210ec283750cf70c1490a7",
+  "timestamp": "2025-09-24T15:26:36.300774+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "This file defines a GitHub Actions workflow to run the govulncheck tool for vulnerability scanning in Go projects.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "actions/checkout@v5",
+      "actions/setup-go@v6"
+    ],
+    "complexity": "low"
+  }
+}

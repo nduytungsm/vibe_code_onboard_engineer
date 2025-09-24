@@ -1,0 +1,44 @@
+{
+  "content_hash": "ac91d17da199d8eb025493e27e01faee",
+  "timestamp": "2025-09-24T15:43:09.347477+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a proxy middleware for load balancing and forwarding HTTP requests.",
+    "key_types": [
+      "Config",
+      "fiber.Handler",
+      "fasthttp.Client",
+      "roundrobin"
+    ],
+    "functions": [
+      "Balancer",
+      "WithClient",
+      "Forward",
+      "Do",
+      "DoRedirects",
+      "DoDeadline",
+      "DoTimeout",
+      "DomainForward",
+      "BalancerForward"
+    ],
+    "imports": [
+      "bytes",
+      "net/url",
+      "strings",
+      "sync",
+      "time",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Modifies HTTP request and response headers",
+      "May panic on URL parsing errors"
+    ],
+    "risks": [
+      "Potential denial of service if misconfigured",
+      "Improper handling of client connections may lead to resource exhaustion"
+    ],
+    "complexity": "medium"
+  }
+}

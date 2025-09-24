@@ -1,0 +1,54 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+docs/
+
+# Development files
+.env
+.env.local
+.env.development
+
+# Build artifacts
+bin/
+dist/
+
+# Node.js (will be handled in frontend build)
+frontend/node_modules/
+frontend/dist/
+frontend/.env*
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test files
+*_test.go
+test/
+tests/
+
+# Docker files (avoid recursive copying)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Deployment files
+deploy.sh
+railway.json
+render.yaml
+
+# Cache
+.cache/
+tmp/

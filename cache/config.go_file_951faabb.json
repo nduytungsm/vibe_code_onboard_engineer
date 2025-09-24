@@ -1,0 +1,18 @@
+{
+  "content_hash": "5214cda969dcaacdf9351091b70f1d52",
+  "timestamp": "2025-09-24T15:42:30.452238+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration for an ETag middleware in a web application.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "configDefault"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3"
+    ],
+    "complexity": "medium"
+  }
+}

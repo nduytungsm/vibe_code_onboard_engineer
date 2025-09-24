@@ -1,0 +1,42 @@
+{
+  "content_hash": "246652287b920e003b75286650057f04",
+  "timestamp": "2025-09-24T15:27:11.880721+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the CookieJar implementation, validating cookie storage and retrieval based on various conditions.",
+    "key_types": [
+      "CookieJar",
+      "fasthttp.Cookie",
+      "fasthttp.URI"
+    ],
+    "functions": [
+      "checkKeyValue",
+      "Test_CookieJarGet",
+      "Test_CookieJarGetExpired",
+      "Test_CookieJarSet",
+      "Test_CookieJarSetRepeatedCookieKeys",
+      "Test_CookieJarSetKeyValue",
+      "Test_CookieJarGetFromResponse",
+      "Test_CookieJar_HostPort",
+      "Test_CookieJar_Domain",
+      "Test_CookieJar_Secure",
+      "Test_CookieJar_PathMatch"
+    ],
+    "imports": [
+      "bytes",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Acquires and releases URIs and responses from fasthttp",
+      "Modifies the state of CookieJar during tests"
+    ],
+    "risks": [
+      "Potential for race conditions due to parallel tests",
+      "Improper handling of cookie expiration may lead to incorrect test results"
+    ],
+    "complexity": "medium"
+  }
+}

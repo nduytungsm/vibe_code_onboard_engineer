@@ -1,0 +1,32 @@
+{
+  "content_hash": "4a3daa68785eedb901fa2aee06dce75f",
+  "timestamp": "2025-09-24T15:24:46.461325+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for manually publishing prereleases.",
+    "key_types": [
+      "workflow",
+      "job",
+      "input"
+    ],
+    "functions": [
+      "workflow_dispatch",
+      "notify",
+      "publish_prerelease_canary",
+      "publish_prerelease_experimental"
+    ],
+    "imports": [
+      "tsickert/discord-webhook@86dc739f3f165f16dadc5666051c367efa1692f4",
+      "facebook/react/.github/workflows/runtime_prereleases.yml@main"
+    ],
+    "side_effects": [
+      "Sends notifications to Discord",
+      "Triggers publishing of packages"
+    ],
+    "risks": [
+      "Exposing sensitive information in webhook URLs",
+      "Potential for unintended package publishing"
+    ],
+    "complexity": "medium"
+  }
+}

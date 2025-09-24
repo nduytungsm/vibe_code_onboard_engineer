@@ -1,0 +1,23 @@
+{
+  "content_hash": "c224034dce675eba6ded8b4566efc38f",
+  "timestamp": "2025-09-24T15:46:14.863803+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements navigation functionality for JSON structures, allowing for context string generation based on a given offset.",
+    "key_types": [
+      "navigation",
+      "node",
+      "objectVal",
+      "arrayVal"
+    ],
+    "functions": [
+      "ContextString",
+      "navigationStepsRev"
+    ],
+    "imports": [
+      "fmt",
+      "strings"
+    ],
+    "complexity": "medium"
+  }
+}

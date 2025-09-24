@@ -1,0 +1,26 @@
+{
+  "content_hash": "d9f9345c685950cce28f774bfdf56064",
+  "timestamp": "2025-09-24T15:28:16.784008+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that uses global state and effects.",
+    "key_types": [
+      "Component",
+      "useState",
+      "useEffect"
+    ],
+    "functions": [
+      "Component"
+    ],
+    "imports": [
+      "react"
+    ],
+    "side_effects": [
+      "Modifies global variable 'someGlobal'"
+    ],
+    "risks": [
+      "Global state manipulation can lead to unpredictable behavior"
+    ],
+    "complexity": "medium"
+  }
+}

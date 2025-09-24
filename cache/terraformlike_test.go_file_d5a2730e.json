@@ -1,0 +1,36 @@
+{
+  "content_hash": "de4da9a5985320fa145cdc4804a0e472",
+  "timestamp": "2025-09-24T15:46:07.145166+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains integration tests for parsing Terraform-like configurations using HCL.",
+    "key_types": [
+      "Variable",
+      "Resource",
+      "Module",
+      "Locals",
+      "Root"
+    ],
+    "functions": [
+      "TestTerraformLike"
+    ],
+    "imports": [
+      "reflect",
+      "sort",
+      "testing",
+      "github.com/davecgh/go-spew/spew",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/ext/dynblock",
+      "github.com/hashicorp/hcl/v2/gohcl",
+      "github.com/hashicorp/hcl/v2/hcldec",
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/hashicorp/hcl/v2/json",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/function"
+    ],
+    "side_effects": [
+      "Logs diagnostics during parsing and evaluation errors."
+    ],
+    "complexity": "medium"
+  }
+}

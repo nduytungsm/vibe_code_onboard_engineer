@@ -1,0 +1,19 @@
+{
+  "content_hash": "aba5ce13d0f035e9582127119b81baa2",
+  "timestamp": "2025-09-24T15:25:29.403628+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a function to create a snapshot resolver for Jest tests based on a forget mode.",
+    "key_types": [
+      "function",
+      "object"
+    ],
+    "functions": [
+      "makeSnapshotResolver",
+      "resolveSnapshotPath",
+      "resolveTestPath"
+    ],
+    "imports": [],
+    "complexity": "low"
+  }
+}

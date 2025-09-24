@@ -1,0 +1,28 @@
+{
+  "content_hash": "6372ba478cb93fa9ca81593f2fdd266d",
+  "timestamp": "2025-09-24T15:40:14.840385+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a CBOR binder for parsing CBOR request bodies in a web framework.",
+    "key_types": [
+      "CBORBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "Reset",
+      "UnimplementedCborMarshal",
+      "UnimplementedCborUnmarshal"
+    ],
+    "imports": [
+      "github.com/gofiber/utils/v2"
+    ],
+    "side_effects": [
+      "Panic if CBOR marshaler or unmarshaler is not configured."
+    ],
+    "risks": [
+      "Potential panic if CBOR support is not properly set up."
+    ],
+    "complexity": "medium"
+  }
+}

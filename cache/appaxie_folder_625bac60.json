@@ -1,9 +1,9 @@
 {
-  "content_hash": "956ad22a9f108b7f4b5e830053166c8b",
-  "timestamp": "2025-09-23T16:05:56.904167+07:00",
+  "content_hash": "7fc4c9709da6aba99f7be9dfcd02b37c",
+  "timestamp": "2025-09-23T16:59:20.966842+07:00",
   "result": {
     "path": "pkg/appaxie",
-    "purpose": "This folder/module is responsible for providing services to interact with NFT collections, specifically for Axies and land items in the Axie Infinity ecosystem.",
+    "purpose": "This folder/module is responsible for providing services and data structures to interact with NFT collections, specifically for Axies and land items in the Axie Infinity ecosystem.",
     "languages": {
       "Go": 3
     },
@@ -58,11 +58,7 @@
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
         ],
         "side_effects": [
-          "Logs errors when queries fail"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data through logs",
-          "Error handling may not cover all edge cases"
+          "Logs errors when operations fail"
         ],
         "complexity": "medium"
       },
@@ -80,7 +76,7 @@
       },
       "pkg/appaxie/models.go": {
         "language": "Go",
-        "purpose": "Defines data structures for querying Axie and Land items in a GraphQL API.",
+        "purpose": "Defines data structures for handling responses and queries related to Axies and Land items in a blockchain context.",
         "key_types": [
           "AxiesListResponse",
           "AxiesQuery",

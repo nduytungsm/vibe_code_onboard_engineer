@@ -1,0 +1,12 @@
+{
+  "content_hash": "0ed5ff92f349c38dcb4624d1af4ddd4b",
+  "timestamp": "2025-09-24T15:24:58.058612+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for setting up and using the React Compiler Playground",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

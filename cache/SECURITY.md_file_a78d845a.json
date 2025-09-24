@@ -1,0 +1,12 @@
+{
+  "content_hash": "c1879021e8d9eb20ba4abb32dd28ce22",
+  "timestamp": "2025-09-24T15:52:49.335213+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Document the security policy and supported versions of the project.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "content_hash": "946189a45ef62dc20b7056d202283229",
+  "timestamp": "2025-09-24T15:41:29.370697+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Logger middleware for Fiber that logs HTTP requests and responses.",
+    "key_types": [
+      "fiber.Handler",
+      "Config",
+      "logger.LogFunc"
+    ],
+    "functions": [
+      "New",
+      "Done",
+      "Skip",
+      "Next"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/logger",
+      "os",
+      "log",
+      "time"
+    ],
+    "side_effects": [
+      "Logs HTTP requests and responses",
+      "Writes logs to specified output stream"
+    ],
+    "risks": [
+      "Potential information leakage through logs if sensitive data is logged",
+      "Improper configuration may lead to performance issues"
+    ],
+    "complexity": "medium"
+  }
+}

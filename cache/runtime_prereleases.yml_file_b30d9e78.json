@@ -1,0 +1,36 @@
+{
+  "content_hash": "5398d71743fe666ada4acb3b72f365e0",
+  "timestamp": "2025-09-24T15:24:47.342479+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for publishing prereleases.",
+    "key_types": [
+      "workflow",
+      "job",
+      "step",
+      "input",
+      "secret"
+    ],
+    "functions": [
+      "checkout",
+      "setup-node",
+      "cache",
+      "run",
+      "notify Discord"
+    ],
+    "imports": [
+      "actions/checkout@v4",
+      "actions/setup-node@v4",
+      "actions/cache@v4",
+      "tsickert/discord-webhook@86dc739f3f165f16dadc5666051c367efa1692f4"
+    ],
+    "side_effects": [
+      "Modifies the build directory",
+      "Notifies Discord on failure"
+    ],
+    "risks": [
+      "Exposure of sensitive tokens if not properly managed"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "content_hash": "3ba8a47e3090104c3cdc7650bc6c8c7a",
+  "timestamp": "2025-09-24T15:27:03.951093+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests and benchmarks for the QueryBinding struct's Bind method.",
+    "key_types": [
+      "QueryBinding",
+      "Post",
+      "User"
+    ],
+    "functions": [
+      "Test_QueryBinder_Bind",
+      "Benchmark_QueryBinder_Bind"
+    ],
+    "imports": [
+      "testing",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Acquires and releases fasthttp.Request objects."
+    ],
+    "complexity": "medium"
+  }
+}

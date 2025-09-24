@@ -1,0 +1,16 @@
+{
+  "content_hash": "f824076d0e6de4a40ab2ef69fea67759",
+  "timestamp": "2025-09-24T15:45:28.20226+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Specification of the syntax and semantics of the native syntax for HCL.",
+    "key_types": [
+      "structural language",
+      "expression language",
+      "template language"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

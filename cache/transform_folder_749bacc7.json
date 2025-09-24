@@ -1,0 +1,133 @@
+{
+  "content_hash": "bae4eeefd5404e655f5ad70b0c852925",
+  "timestamp": "2025-09-24T15:47:04.768676+07:00",
+  "result": {
+    "path": "ext/transform",
+    "purpose": "This folder/module is responsible for writing extensions that apply transformations to HCL (HashiCorp Configuration Language) bodies.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "doc.go",
+      "error.go",
+      "transform.go",
+      "transform_test.go",
+      "transformer.go"
+    ],
+    "dependencies": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty",
+      "testing",
+      "reflect",
+      "github.com/hashicorp/hcl/v2/hcltest"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating transformation logic and error handling for HCL bodies, with clear separation of concerns through distinct files for different functionalities.",
+    "file_summaries": {
+      "ext/transform/doc.go": {
+        "language": "Go",
+        "purpose": "This file defines a package for writing extensions that apply transforms to bodies.",
+        "key_types": [
+          "transformer"
+        ],
+        "functions": [
+          "ApplyTransform",
+          "RecursiveTransform"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "ext/transform/error.go": {
+        "language": "Go",
+        "purpose": "Provides functions to create HCL bodies that handle diagnostics for errors and warnings during transformations.",
+        "key_types": [
+          "diagBody",
+          "hcl.Body",
+          "hcl.Diagnostics"
+        ],
+        "functions": [
+          "NewErrorBody",
+          "BodyWithDiagnostics",
+          "Content",
+          "PartialContent",
+          "JustAttributes",
+          "MissingItemRange",
+          "emptyContent"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Panic if NewErrorBody is called without error diagnostics."
+        ],
+        "complexity": "medium"
+      },
+      "ext/transform/transform.go": {
+        "language": "Go",
+        "purpose": "This file provides transformation functions for HCL (HashiCorp Configuration Language) bodies, allowing for the application of transformations to nested blocks.",
+        "key_types": [
+          "hcl.Body",
+          "Transformer",
+          "deepWrapper"
+        ],
+        "functions": [
+          "Shallow",
+          "Deep",
+          "transformContent",
+          "JustAttributes",
+          "MissingItemRange"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Modifies the structure of HCL bodies by applying transformations recursively."
+        ],
+        "complexity": "medium"
+      },
+      "ext/transform/transform_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the transform package, specifically testing the Deep function and its behavior with HCL bodies.",
+        "key_types": [
+          "hcl.Body",
+          "hcl.BodySchema",
+          "hcl.Block",
+          "hcl.Expression",
+          "TransformerFunc"
+        ],
+        "functions": [
+          "TestDeep",
+          "Deep",
+          "BodyWithDiagnostics"
+        ],
+        "imports": [
+          "testing",
+          "reflect",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/hashicorp/hcl/v2/hcltest",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "side_effects": [
+          "Logs diagnostic messages if there are unexpected diagnostics."
+        ],
+        "complexity": "medium"
+      },
+      "ext/transform/transformer.go": {
+        "language": "Go",
+        "purpose": "Defines a Transformer interface and its implementations for transforming HCL bodies.",
+        "key_types": [
+          "Transformer",
+          "TransformerFunc",
+          "chain"
+        ],
+        "functions": [
+          "TransformBody",
+          "Chain"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "content_hash": "ad610591a2213ed565e6b430be6d72bd",
+  "timestamp": "2025-09-24T15:39:47.57491+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines labeling rules for pull requests based on their titles.",
+    "key_types": [
+      "label",
+      "matcher"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

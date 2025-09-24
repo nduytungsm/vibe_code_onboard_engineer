@@ -1,0 +1,27 @@
+{
+  "content_hash": "9a1a3022436e5f9ff74ec58967c19679",
+  "timestamp": "2025-09-24T15:40:04.408724+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the retry configuration functionality.",
+    "key_types": [
+      "Config",
+      "time.Duration"
+    ],
+    "functions": [
+      "TestConfigDefault_NoConfig",
+      "TestConfigDefault_Custom",
+      "TestConfigDefault_PartialAndNegative",
+      "TestConfigDefault_CustomInitialInterval",
+      "TestConfigDefault_CustomCurrentInterval",
+      "TestConfigDefault_CurrentIntervalAndInitialDiffer",
+      "TestNewExponentialBackoff_Config"
+    ],
+    "imports": [
+      "testing",
+      "time",
+      "github.com/stretchr/testify/require"
+    ],
+    "complexity": "medium"
+  }
+}

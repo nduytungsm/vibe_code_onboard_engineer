@@ -1,0 +1,30 @@
+{
+  "content_hash": "49cbffabad4068136c22879aa6b0d5d4",
+  "timestamp": "2025-09-24T15:27:43.035619+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Exports validation functions for React hooks and context variable usage.",
+    "key_types": [],
+    "functions": [
+      "validateContextVariableLValues",
+      "validateHooksUsage",
+      "validateMemoizedEffectDependencies",
+      "validateNoCapitalizedCalls",
+      "validateNoRefAccessInRender",
+      "validateNoSetStateInRender",
+      "validatePreservedManualMemoization",
+      "validateUseMemo"
+    ],
+    "imports": [
+      "./ValidateContextVariableLValues",
+      "./ValidateHooksUsage",
+      "./ValidateMemoizedEffectDependencies",
+      "./ValidateNoCapitalizedCalls",
+      "./ValidateNoRefAccessInRender",
+      "./ValidateNoSetStateInRender",
+      "./ValidatePreservedManualMemoization",
+      "./ValidateUseMemo"
+    ],
+    "complexity": "low"
+  }
+}

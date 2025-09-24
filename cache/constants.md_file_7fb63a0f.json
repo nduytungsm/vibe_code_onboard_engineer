@@ -1,0 +1,14 @@
+{
+  "content_hash": "7709fe7f4c9443a9a4392aacd801629b",
+  "timestamp": "2025-09-24T15:27:34.319097+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines core HTTP constants used throughout the Fiber framework.",
+    "key_types": [
+      "const"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

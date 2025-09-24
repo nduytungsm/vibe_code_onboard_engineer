@@ -1,0 +1,19 @@
+{
+  "content_hash": "f434547873865f4915cf36358ea12a0c",
+  "timestamp": "2025-09-24T15:27:19.852755+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines a type for component declarations and provides utility functions to check and parse them.",
+    "key_types": [
+      "ComponentDeclaration"
+    ],
+    "functions": [
+      "isComponentDeclaration",
+      "parseComponentDeclaration"
+    ],
+    "imports": [
+      "@babel/types"
+    ],
+    "complexity": "low"
+  }
+}

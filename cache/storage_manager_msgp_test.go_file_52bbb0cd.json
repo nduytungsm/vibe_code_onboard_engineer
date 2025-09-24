@@ -1,0 +1,26 @@
+{
+  "content_hash": "732f03fdaa2131a634ccf1cf23e1fbcc",
+  "timestamp": "2025-09-24T15:42:23.32744+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Testing serialization and deserialization of the 'item' type using the msgp library.",
+    "key_types": [
+      "item"
+    ],
+    "functions": [
+      "TestMarshalUnmarshalitem",
+      "BenchmarkMarshalMsgitem",
+      "BenchmarkAppendMsgitem",
+      "BenchmarkUnmarshalitem",
+      "TestEncodeDecodeitem",
+      "BenchmarkEncodeitem",
+      "BenchmarkDecodeitem"
+    ],
+    "imports": [
+      "bytes",
+      "testing",
+      "github.com/tinylib/msgp/msgp"
+    ],
+    "complexity": "medium"
+  }
+}

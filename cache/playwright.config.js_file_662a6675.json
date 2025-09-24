@@ -1,0 +1,28 @@
+{
+  "content_hash": "8db3693b463428fa65fe74ffe4e6ec9e",
+  "timestamp": "2025-09-24T15:25:17.268249+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for Playwright testing framework.",
+    "key_types": [
+      "Configuration",
+      "WebServer",
+      "Project"
+    ],
+    "functions": [
+      "defineConfig"
+    ],
+    "imports": [
+      "@playwright/test",
+      "path"
+    ],
+    "side_effects": [
+      "Starts a web server for testing",
+      "Generates test results artifacts"
+    ],
+    "risks": [
+      "Potential exposure of local server if not properly secured"
+    ],
+    "complexity": "medium"
+  }
+}

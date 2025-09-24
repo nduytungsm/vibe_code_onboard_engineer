@@ -1,0 +1,26 @@
+{
+  "content_hash": "e7a8ec66ea948c901b13737cb748c631",
+  "timestamp": "2025-09-24T15:28:17.716854+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "The Rewrite middleware remaps the request path using custom rules for backward compatibility and cleaner URLs.",
+    "key_types": [
+      "Config",
+      "fiber.Handler"
+    ],
+    "functions": [
+      "New"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/rewrite"
+    ],
+    "side_effects": [
+      "Modifies request paths based on defined rules."
+    ],
+    "risks": [
+      "Potential for incorrect path mapping if rules overlap."
+    ],
+    "complexity": "medium"
+  }
+}

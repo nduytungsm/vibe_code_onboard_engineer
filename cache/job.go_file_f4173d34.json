@@ -1,0 +1,14 @@
+{
+  "content_hash": "bb87a5accaefa659f409b6599ea5257f",
+  "timestamp": "2025-09-24T14:22:54.927584+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a Job struct with an executable function.",
+    "key_types": [
+      "Job"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

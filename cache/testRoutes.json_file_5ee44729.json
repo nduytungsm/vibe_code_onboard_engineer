@@ -1,0 +1,14 @@
+{
+  "content_hash": "32f4b80a8dcc9fe1feb93ae2d7a042e0",
+  "timestamp": "2025-09-24T15:39:54.138215+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines a set of test routes for an API, specifying HTTP methods and paths.",
+    "key_types": [
+      "test_routes"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

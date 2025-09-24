@@ -1,0 +1,15 @@
+{
+  "content_hash": "be0ec81c20d8829da7bbbc551519148b",
+  "timestamp": "2025-09-24T15:44:47.515548+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a higher-level API for unpacking the content of HCL bodies.",
+    "key_types": [
+      "HCL bodies",
+      "cty type system"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

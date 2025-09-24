@@ -1,0 +1,26 @@
+{
+  "content_hash": "56ce3201e0af403ccb5abd0a9697e92b",
+  "timestamp": "2025-09-24T15:40:22.955973+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Testing JSON binding functionality for a custom JSONBinding type.",
+    "key_types": [
+      "JSONBinding",
+      "Post",
+      "User"
+    ],
+    "functions": [
+      "Test_JSON_Binding_Bind",
+      "Benchmark_JSON_Binding_Bind"
+    ],
+    "imports": [
+      "encoding/json",
+      "testing",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies the state of the JSONBinding instance during tests."
+    ],
+    "complexity": "medium"
+  }
+}

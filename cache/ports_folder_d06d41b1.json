@@ -1,0 +1,30 @@
+{
+  "content_hash": "62fe212f8ab589dc2013446cf76caee2",
+  "timestamp": "2025-09-24T11:51:16.061643+07:00",
+  "result": {
+    "path": "internal/ports",
+    "purpose": "Defines interfaces for communication with external systems, specifically for database operations.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "right.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a ports and adapters architecture pattern, focusing on defining interfaces that abstract the underlying implementations.",
+    "file_summaries": {
+      "internal/ports/right.go": {
+        "language": "Go",
+        "purpose": "Defines a database port interface for closing database connections.",
+        "key_types": [
+          "DbPort"
+        ],
+        "functions": [
+          "CloseDbConnection"
+        ],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

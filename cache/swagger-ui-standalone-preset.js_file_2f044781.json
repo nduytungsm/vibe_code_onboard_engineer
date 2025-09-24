@@ -1,0 +1,23 @@
+{
+  "content_hash": "4e9e28e9a14ac23c0bec15c1c62eb28b",
+  "timestamp": "2025-09-23T16:56:33.708788+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file is part of the Swagger UI library, providing a standalone preset for displaying API documentation.",
+    "key_types": [
+      "Object",
+      "Function"
+    ],
+    "functions": [
+      "module.exports"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Defines a module that can be imported in other JavaScript files."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if the module is improperly configured."
+    ],
+    "complexity": "medium"
+  }
+}

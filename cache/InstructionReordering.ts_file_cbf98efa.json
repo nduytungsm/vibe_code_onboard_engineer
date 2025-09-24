@@ -1,0 +1,44 @@
+{
+  "content_hash": "5f8c0c8a0ddd231d296fe5b19fea34ca",
+  "timestamp": "2025-09-24T15:26:35.02782+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Implements conservative instruction reordering to optimize instruction placement for future optimizations.",
+    "key_types": [
+      "HIRFunction",
+      "BasicBlock",
+      "Instruction",
+      "Node",
+      "References"
+    ],
+    "functions": [
+      "instructionReordering",
+      "findReferencedRangeOfTemporaries",
+      "reorderBlock"
+    ],
+    "imports": [
+      "CompilerError",
+      "BasicBlock",
+      "Environment",
+      "GeneratedSource",
+      "HIRFunction",
+      "IdentifierId",
+      "Instruction",
+      "InstructionId",
+      "Place",
+      "isExpressionBlockKind",
+      "makeInstructionId",
+      "markInstructionIds",
+      "printInstruction",
+      "eachInstructionLValue",
+      "eachInstructionValueLValue",
+      "eachInstructionValueOperand",
+      "eachTerminalOperand",
+      "getOrInsertWith"
+    ],
+    "side_effects": [
+      "Modifies the order of instructions in basic blocks."
+    ],
+    "complexity": "high"
+  }
+}

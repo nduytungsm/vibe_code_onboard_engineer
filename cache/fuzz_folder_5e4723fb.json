@@ -1,0 +1,59 @@
+{
+  "content_hash": "df25f453ee92828af553d1f40c2bed76",
+  "timestamp": "2025-09-24T15:46:52.951606+07:00",
+  "result": {
+    "path": "hclwrite/fuzz",
+    "purpose": "This folder contains utilities and tests for fuzzing related to the hclwrite package in Go.",
+    "languages": {
+      "Go": 1,
+      "Markdown": 1
+    },
+    "key_modules": [
+      "README.md",
+      "fuzz_test.go"
+    ],
+    "dependencies": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclwrite"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, with a focus on testing and documentation for fuzzing functionalities.",
+    "file_summaries": {
+      "hclwrite/fuzz/README.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for fuzzing utilities related to the hclwrite package in Go.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "hclwrite/fuzz/fuzz_test.go": {
+        "language": "Go",
+        "purpose": "This file contains a fuzz test for parsing HCL configuration using the hclwrite package.",
+        "key_types": [
+          "testing.F",
+          "testing.T",
+          "hclwrite.File",
+          "hclwrite.Diagnostics"
+        ],
+        "functions": [
+          "FuzzParseConfig"
+        ],
+        "imports": [
+          "io",
+          "testing",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/hashicorp/hcl/v2/hclwrite"
+        ],
+        "side_effects": [
+          "Logs errors if parsing fails",
+          "Writes to io.Discard"
+        ],
+        "risks": [
+          "Potential for denial of service through large input data",
+          "Improper handling of malformed input"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

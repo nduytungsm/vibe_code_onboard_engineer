@@ -1,89 +1,56 @@
 {
-  "content_hash": "8693d838cd97ea8dfdcad7c895234802",
-  "timestamp": "2025-09-23T16:31:41.615946+07:00",
+  "content_hash": "8bf866b8cd2c1293c41005dbb69ddc7a",
+  "timestamp": "2025-09-24T15:47:16.823604+07:00",
   "result": {
     "path": ".github/workflows",
-    "purpose": "This folder is responsible for defining GitHub Actions workflows for various CI/CD processes including security checks, Dockerization, linting, and release management.",
+    "purpose": "Defines GitHub Actions workflows for CI/CD processes, including running tests and checks for a Go project.",
     "languages": {
-      "YAML": 4
+      "YAML": 1
     },
     "key_modules": [
-      "check.yml",
-      "dockerize.yml",
-      "golangci-lint.yml",
-      "sentry.yml"
+      "checks.yml"
     ],
     "dependencies": [
-      "axieinfinity/workflows-samples/.github/workflows/security-basic-scan.yml",
-      "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml",
-      "axieinfinity/workflows-samples/.github/workflows/sentry-release.yml"
+      "actions/checkout",
+      "actions/setup-go",
+      "actions/upload-artifact",
+      "golangci/golangci-lint-action"
     ],
-    "architecture": "The folder follows a modular architecture pattern where each workflow file encapsulates specific CI/CD tasks, allowing for easy maintenance and scalability.",
+    "architecture": "The folder follows a CI/CD architecture pattern, utilizing GitHub Actions to automate testing and code quality checks.",
     "file_summaries": {
-      ".github/workflows/check.yml": {
+      ".github/workflows/checks.yml": {
         "language": "YAML",
-        "purpose": "Defines a GitHub Actions workflow for checking security and building on pull requests to the main branch.",
+        "purpose": "Defines a GitHub Actions workflow for running unit tests, copyright checks, and linting for a Go project.",
         "key_types": [
           "job",
-          "event",
-          "permission"
+          "step"
         ],
         "functions": [
-          "security_scan"
+          "checkout",
+          "setup-go",
+          "go test",
+          "upload-artifact",
+          "make copyrightcheck",
+          "make vetcheck",
+          "make fmtcheck",
+          "golangci-lint"
         ],
         "imports": [
-          "axieinfinity/workflows-samples/.github/workflows/security-basic-scan.yml"
+          "actions/checkout",
+          "actions/setup-go",
+          "actions/upload-artifact",
+          "golangci/golangci-lint-action"
         ],
         "side_effects": [
-          "Triggers a security scan on pull requests"
+          "Modifies git configuration for line endings",
+          "Installs Go dependencies",
+          "Generates coverage reports"
         ],
         "risks": [
-          "Potential exposure of sensitive information in workflows"
+          "Potential exposure of sensitive information in logs",
+          "Dependency on external actions may introduce vulnerabilities"
         ],
-        "complexity": "low"
-      },
-      ".github/workflows/dockerize.yml": {
-        "language": "YAML",
-        "purpose": "Defines a GitHub Actions workflow for Dockerizing a mobile wallet manager.",
-        "key_types": [],
-        "functions": [],
-        "imports": [
-          "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml"
-        ],
-        "complexity": "low"
-      },
-      ".github/workflows/golangci-lint.yml": {
-        "language": "YAML",
-        "purpose": "Configuration file for GitHub Actions to run golangci-lint on push and pull request events.",
-        "key_types": [],
-        "functions": [],
-        "imports": [],
-        "complexity": "low"
-      },
-      ".github/workflows/sentry.yml": {
-        "language": "YAML",
-        "purpose": "Defines a GitHub Actions workflow for Sentry release management.",
-        "key_types": [
-          "job",
-          "permission"
-        ],
-        "functions": [
-          "on",
-          "jobs",
-          "uses",
-          "with",
-          "secrets"
-        ],
-        "imports": [
-          "axieinfinity/workflows-samples/.github/workflows/sentry-release.yml"
-        ],
-        "side_effects": [
-          "Triggers on release events"
-        ],
-        "risks": [
-          "Exposure of sensitive information if secrets are not managed properly"
-        ],
-        "complexity": "low"
+        "complexity": "medium"
       }
     }
   }

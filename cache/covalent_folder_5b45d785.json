@@ -1,9 +1,9 @@
 {
-  "content_hash": "79a9c1b1bddcc9548008fc9ee2117042",
-  "timestamp": "2025-09-23T16:07:49.645472+07:00",
+  "content_hash": "59702735179332e585543714ede46361",
+  "timestamp": "2025-09-23T16:59:49.920885+07:00",
   "result": {
     "path": "pkg/providers/covalent",
-    "purpose": "Responsible for providing services to interact with the Covalent API for fetching blockchain-related data such as token balances, transactions, and NFT information.",
+    "purpose": "Responsible for interacting with the Covalent API to fetch blockchain-related data such as token balances, transactions, and NFT information.",
     "languages": {
       "Go": 3
     },
@@ -18,7 +18,7 @@
       "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
       "github.com/axieinfinity/ronin-wallet-proxy/models"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating configuration, service logic, and data models for interacting with external APIs.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating configuration, service logic, and data models for blockchain interactions.",
     "file_summaries": {
       "pkg/providers/covalent/config.go": {
         "language": "Go",
@@ -74,7 +74,7 @@
         ],
         "side_effects": [
           "Makes HTTP requests to external services",
-          "Generates random API keys for requests"
+          "Generates random API keys for authorization"
         ],
         "risks": [
           "Potential exposure of API keys if not handled securely",
@@ -84,7 +84,7 @@
       },
       "pkg/providers/covalent/models.go": {
         "language": "Go",
-        "purpose": "Defines data models and structures for handling token balances and transactions in a blockchain context.",
+        "purpose": "Defines data models and methods for handling token balances and transactions in a blockchain context.",
         "key_types": [
           "Pagination",
           "TokenBalanceItem",

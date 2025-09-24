@@ -1,0 +1,18 @@
+{
+  "content_hash": "91da3fb96b026a36d9c2d560b2971f9f",
+  "timestamp": "2025-09-24T15:40:02.899464+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for a retry mechanism with default values and a function to set those values.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "configDefault"
+    ],
+    "imports": [
+      "time"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "content_hash": "ebe38ba26e4a92724ea3b60a0fb0cc12",
+  "timestamp": "2025-09-24T15:46:27.420224+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for range operations in the HCL package",
+    "key_types": [
+      "Range",
+      "Pos"
+    ],
+    "functions": [
+      "TestRangeOver",
+      "TestPosOverlap",
+      "TestRangePartitionAround"
+    ],
+    "imports": [
+      "bytes",
+      "fmt",
+      "reflect",
+      "testing"
+    ],
+    "complexity": "medium"
+  }
+}

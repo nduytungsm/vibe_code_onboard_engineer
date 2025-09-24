@@ -1,0 +1,77 @@
+@startuml
+!define MASTER_COLOR #E8F4FD
+!define DETAIL_COLOR #FFF2CC
+
+entity announcements( {
+  * id : uuid [PK]
+  --
+  application : varchar(100) [not null]
+  buttons : jsonb
+  created_at : timestamp [not null, default CURRENT_TIMESTAMP]
+  full_content : text
+  image_url : text
+  landing_page : text
+  message : text [not null]
+  published_at : timestamp [default NULL]
+  target_file_name : text [default NULL]
+  title : text [not null]
+  topic : varchar(100) [default NULL]
+  trigger_time : timestamp [not null]
+}
+
+entity contracts( {
+  address : varchar(255) [not null]
+  created_at : timestamp [not null, default CURRENT_TIMESTAMP]
+  enabled : boolean [default TRUE]
+  icon_src : text
+  id : varchar(100) [not null]
+  metadata : jsonb
+  name : varchar(100) [not null]
+  network_id : varchar(100) [FK]
+  type : contract_type
+  updated_at : timestamp [not null, default CURRENT_TIMESTAMP]
+}
+
+entity networks( {
+  * id : varchar(100) [PK]
+  --
+  block_explorer_url : varchar(255) [not null]
+  chain_id : integer [not null]
+  created_at : timestamp [not null, default CURRENT_TIMESTAMP]
+  enabled : boolean [default TRUE]
+  gas_price : varchar(100) [not null]
+  gas_unit : varchar(100) [not null]
+  infura_id : varchar(255) [not null]
+  metadata : jsonb
+  name : varchar(255) [not null]
+  read_rpc_url : varchar(255) [not null]
+  unit : varchar(255) [not null]
+  updated_at : timestamp [not null, default CURRENT_TIMESTAMP]
+  write_rpc_url : varchar(255) [not null]
+}
+
+entity quick_access_d_apps( {
+  * id : varchar(100) [PK]
+  --
+  created_at : timestamp [not null, default CURRENT_TIMESTAMP]
+  description : text [not null]
+  icon : text
+  metadata : jsonb [default NULL]
+  position : integer [default NULL]
+  title : text [not null]
+  updated_at : timestamp [not null, default CURRENT_TIMESTAMP]
+  url : text [not null]
+}
+
+entity trusted_domains( {
+  * domain : varchar(100) [PK]
+  --
+  created_at : timestamp [not null, default CURRENT_TIMESTAMP]
+  domain_level : integer [not null]
+  updated_at : timestamp [not null, default CURRENT_TIMESTAMP]
+  use_in_app_browser : boolean [not null, default FALSE]
+}
+
+networks::id --> contracts(::network_id
+
+@enduml

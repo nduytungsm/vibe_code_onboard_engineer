@@ -1,0 +1,56 @@
+{
+  "content_hash": "f03fe3a08a50c40114a962f1c4a4c473",
+  "timestamp": "2025-09-24T15:25:19.292749+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the configuration for the playground application including scripts, dependencies, and development settings.",
+    "key_types": [
+      "dependencies",
+      "devDependencies",
+      "scripts"
+    ],
+    "functions": [
+      "dev",
+      "build",
+      "start",
+      "lint",
+      "test"
+    ],
+    "imports": [
+      "@babel/core",
+      "@babel/generator",
+      "@babel/parser",
+      "@babel/plugin-syntax-typescript",
+      "@babel/plugin-transform-block-scoping",
+      "@babel/plugin-transform-modules-commonjs",
+      "@babel/preset-react",
+      "@babel/preset-typescript",
+      "@babel/traverse",
+      "@babel/types",
+      "@heroicons/react",
+      "@monaco-editor/react",
+      "@playwright/test",
+      "@use-gesture/react",
+      "hermes-eslint",
+      "hermes-parser",
+      "invariant",
+      "lz-string",
+      "monaco-editor",
+      "next",
+      "notistack",
+      "prettier",
+      "pretty-format",
+      "re-resizable",
+      "react",
+      "react-dom"
+    ],
+    "side_effects": [
+      "Running scripts may modify the file system or network state."
+    ],
+    "risks": [
+      "Potential for dependency vulnerabilities.",
+      "Execution of scripts may lead to unintended consequences."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "content_hash": "4ab305430ca18800b709b6d7de88fb19",
+  "timestamp": "2025-09-24T15:42:04.046517+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a min-heap data structure for managing cache entries with expiration timestamps.",
+    "key_types": [
+      "heapEntry",
+      "indexedHeap"
+    ],
+    "functions": [
+      "Len",
+      "Less",
+      "Swap",
+      "Push",
+      "Pop",
+      "put",
+      "remove",
+      "removeFirst"
+    ],
+    "imports": [
+      "container/heap"
+    ],
+    "side_effects": [
+      "Modifies the internal state of the heap when entries are added or removed."
+    ],
+    "risks": [
+      "Forced type assertions may lead to runtime panics if types do not match."
+    ],
+    "complexity": "medium"
+  }
+}

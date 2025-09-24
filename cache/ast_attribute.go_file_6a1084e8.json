@@ -1,0 +1,27 @@
+{
+  "content_hash": "be76d3b2ea12cbc79f7e47f4277db733",
+  "timestamp": "2025-09-24T15:45:41.972839+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an Attribute type for HCL (HashiCorp Configuration Language) with methods to initialize and manipulate it.",
+    "key_types": [
+      "Attribute",
+      "Expression",
+      "node"
+    ],
+    "functions": [
+      "newAttribute",
+      "init",
+      "Expr",
+      "setName"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2/hclsyntax"
+    ],
+    "side_effects": [
+      "Modifies the internal state of the Attribute instance",
+      "Appends comments and tokens to the children of the Attribute"
+    ],
+    "complexity": "medium"
+  }
+}

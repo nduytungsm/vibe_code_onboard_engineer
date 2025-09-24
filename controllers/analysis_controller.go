@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"os"
@@ -40,14 +41,39 @@ type RepositoryInfo struct {
 	LocalPath string `json:"local_path,omitempty"`
 }
 
+type StreamEvent struct {
+	Type      string      `json:"type"`      // "progress", "stage", "data", "complete", "error"
+	Stage     string      `json:"stage"`     // Current stage description
+	Progress  int         `json:"progress"`  // Progress percentage (0-100)
+	Data      interface{} `json:"data"`      // Partial or complete analysis data
+	Message   string      `json:"message"`   // Status message
+	Error     string      `json:"error,omitempty"`
+	Timestamp time.Time   `json:"timestamp"`
+}
+
+// Use the pipeline's ProgressCallback type to avoid type conflicts
+
 func NewAnalysisController() *AnalysisController {
-	cfg, err := config.LoadConfig("config.yaml")
-	if err != nil {
-		// Try to load from parent directory if not found
-		cfg, err = config.LoadConfig("../config.yaml")
-		if err != nil {
-			panic(fmt.Sprintf("Failed to load config: %v", err))
+	// Try multiple config paths for different environments
+	configPaths := []string{
+		"config.yaml",        // Same directory (Docker container)
+		"../config.yaml",     // Parent directory (local development)
+		"./config.yaml",      // Current working directory
+		"/app/config.yaml",   // Absolute path in container
+	}
+	
+	var cfg *config.Config
+	var err error
+	
+	for _, path := range configPaths {
+		cfg, err = config.LoadConfig(path)
+		if err == nil {
+			break
 		}
+	}
+	
+	if cfg == nil {
+		panic(fmt.Sprintf("Failed to load config from any path %v: %v", configPaths, err))
 	}
 	
 	return &AnalysisController{
@@ -321,4 +347,139 @@ func isPrivateRepoError(err error) bool {
 		   strings.Contains(errStr, "repository not found") ||
 		   strings.Contains(errStr, "password authentication is not supported") ||
 		   strings.Contains(errStr, "permission denied")
+}
+
+// StreamAnalyzeRepository provides real-time analysis progress via Server-Sent Events
+func (ac *AnalysisController) StreamAnalyzeRepository(c echo.Context) error {
+	// Parse request
+	var req AnalysisRequest
+	if err := c.Bind(&req); err != nil {
+		return c.JSON(http.StatusBadRequest, AnalysisResponse{
+			Status: "error",
+			Error:  "Invalid request format",
+		})
+	}
+
+	// Validate GitHub URL
+	if req.Type != "github_url" {
+		return c.JSON(http.StatusBadRequest, AnalysisResponse{
+			Status: "error",
+			Error:  "Only GitHub URLs are supported",
+		})
+	}
+
+	if !isValidGitHubURL(req.URL) {
+		return c.JSON(http.StatusBadRequest, AnalysisResponse{
+			Status: "error",
+			Error:  "Invalid GitHub URL format",
+		})
+	}
+
+	// Set up SSE headers
+	c.Response().Header().Set("Content-Type", "text/event-stream")
+	c.Response().Header().Set("Cache-Control", "no-cache")
+	c.Response().Header().Set("Connection", "keep-alive")
+	c.Response().Header().Set("Access-Control-Allow-Origin", "*")
+	c.Response().Header().Set("Access-Control-Allow-Headers", "Cache-Control")
+
+	// Create progress callback for streaming updates
+	progressCallback := pipeline.ProgressCallback(func(eventType, stage, message string, progress int, data interface{}) {
+		event := StreamEvent{
+			Type:      eventType,
+			Stage:     stage,
+			Progress:  progress,
+			Data:      data,
+			Message:   message,
+			Timestamp: time.Now(),
+		}
+		
+		eventJSON, _ := json.Marshal(event)
+		fmt.Fprintf(c.Response(), "data: %s\n\n", string(eventJSON))
+		c.Response().Flush()
+	})
+
+	// Send initial progress event
+	progressCallback("progress", "🚀 Initializing analysis...", "Starting repository analysis", 0, nil)
+
+	// Extract repository info
+	repoInfo := extractRepoInfo(req.URL)
+	
+	// Create temporary directory for cloning
+	tempDir := filepath.Join(os.TempDir(), "repo-analysis", fmt.Sprintf("%s-%s-%d", 
+		repoInfo.Owner, repoInfo.Name, time.Now().Unix()))
+	
+	// Ensure temp directory exists
+	if err := os.MkdirAll(tempDir, 0755); err != nil {
+		progressCallback("error", "", "Failed to create temporary directory", 0, nil)
+		return nil
+	}
+
+	// Clean up temp directory after analysis
+	defer func() {
+		if err := os.RemoveAll(tempDir); err != nil {
+			fmt.Printf("Warning: Failed to clean up temp directory %s: %v\n", tempDir, err)
+		}
+	}()
+
+	repoInfo.LocalPath = tempDir
+	
+	// Clone the repository with progress updates
+	progressCallback("progress", "📂 Cloning repository from GitHub...", "Downloading repository files", 5, nil)
+	
+	// First try public access
+	err := cloneRepository(req.URL, tempDir, "")
+	if err != nil {
+		// Check if this looks like a private repo error and we have a token
+		if isPrivateRepoError(err) {
+			if req.Token == "" {
+				progressCallback("error", "", "Repository appears to be private. Please provide a GitHub personal access token.", 0, map[string]interface{}{
+					"auth_required": true,
+					"repository":    repoInfo,
+				})
+				return nil
+			}
+			
+			// Try again with token
+			progressCallback("progress", "🔐 Authenticating with GitHub...", "Using provided access token", 8, nil)
+			err = cloneRepository(req.URL, tempDir, req.Token)
+			if err != nil {
+				progressCallback("error", "", fmt.Sprintf("Failed to clone repository with provided token: %v", err), 0, nil)
+				return nil
+			}
+		} else {
+			progressCallback("error", "", fmt.Sprintf("Failed to clone repository: %v", err), 0, nil)
+			return nil
+		}
+	}
+	
+	progressCallback("progress", "✅ Repository cloned successfully", "Repository files downloaded", 15, nil)
+
+	// Perform analysis with progress updates
+	analyzer, err := pipeline.NewAnalyzer(ac.config, tempDir)
+	if err != nil {
+		progressCallback("error", "", fmt.Sprintf("Failed to create analyzer: %v", err), 0, nil)
+		return nil
+	}
+
+	// Run analysis with extended timeout and progress callbacks
+	ctx, cancel := context.WithTimeout(c.Request().Context(), 30*time.Minute)
+	defer cancel()
+
+	// Run streaming analysis
+	results, err := ac.runStreamingAnalysis(ctx, analyzer, progressCallback)
+	if err != nil {
+		progressCallback("error", "", fmt.Sprintf("Analysis failed: %v", err), 0, nil)
+		return nil
+	}
+
+	// Send completion event with full results
+	progressCallback("complete", "🎉 Analysis complete!", "Repository analysis finished successfully", 100, results)
+	
+	return nil
+}
+
+// runStreamingAnalysis runs the analysis pipeline with progress callbacks
+func (ac *AnalysisController) runStreamingAnalysis(ctx context.Context, analyzer *pipeline.Analyzer, callback pipeline.ProgressCallback) (*pipeline.AnalysisResult, error) {
+	// Create custom analyzer that emits progress
+	return analyzer.AnalyzeProjectWithProgress(ctx, callback)
 }

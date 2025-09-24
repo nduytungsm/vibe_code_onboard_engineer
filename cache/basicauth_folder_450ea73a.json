@@ -1,0 +1,140 @@
+{
+  "content_hash": "517d0ccef88d17de6acd9e447ff2275d",
+  "timestamp": "2025-09-24T15:45:00.962017+07:00",
+  "result": {
+    "path": "middleware/basicauth",
+    "purpose": "Implements basic authentication middleware for a web framework.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "basicauth.go",
+      "basicauth_test.go",
+      "config.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2",
+      "golang.org/x/text/unicode/norm",
+      "golang.org/x/crypto/bcrypt",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the basic authentication logic and its configuration, along with unit tests to ensure functionality.",
+    "file_summaries": {
+      "middleware/basicauth/basicauth.go": {
+        "language": "Go",
+        "purpose": "Implements basic authentication middleware for a web framework.",
+        "key_types": [
+          "contextKey",
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New",
+          "containsCTL",
+          "containsInvalidHeaderChars",
+          "UsernameFromContext"
+        ],
+        "imports": [
+          "encoding/base64",
+          "errors",
+          "strings",
+          "unicode",
+          "unicode/utf8",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/utils/v2",
+          "golang.org/x/text/unicode/norm"
+        ],
+        "side_effects": [
+          "Modifies the context with the username if authentication is successful."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if credentials are not handled securely."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/basicauth/basicauth_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for basic authentication middleware using the Fiber web framework.",
+        "key_types": [
+          "fiber.App",
+          "fiber.Ctx",
+          "Config"
+        ],
+        "functions": [
+          "sha256Hash",
+          "sha512Hash",
+          "Test_BasicAuth_Next",
+          "Test_Middleware_BasicAuth",
+          "Test_BasicAuth_AuthorizerCtx",
+          "Test_BasicAuth_WWWAuthenticateHeader",
+          "Test_BasicAuth_WWWAuthenticateHeader_UTF8",
+          "Test_BasicAuth_InvalidHeader",
+          "Test_BasicAuth_MissingScheme",
+          "Test_BasicAuth_MissingColon",
+          "Test_BasicAuth_EmptyAuthorization",
+          "Test_BasicAuth_HeaderWhitespace",
+          "Test_BasicAuth_ControlChars",
+          "Test_BasicAuth_UnpaddedBase64",
+          "Test_BasicAuth_NonASCIIHeader"
+        ],
+        "imports": [
+          "crypto/sha256",
+          "crypto/sha512",
+          "encoding/base64",
+          "encoding/hex",
+          "fmt",
+          "io",
+          "net/http/httptest",
+          "strings",
+          "testing",
+          "github.com/gofiber/fiber/v3",
+          "github.com/stretchr/testify/require",
+          "github.com/valyala/fasthttp",
+          "golang.org/x/crypto/bcrypt"
+        ],
+        "side_effects": [
+          "Modifies HTTP response status codes based on authentication results."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information through error messages or logs."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/basicauth/config.go": {
+        "language": "Go",
+        "purpose": "Defines a basic authentication middleware configuration for a web framework.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "configDefault",
+          "parseHashedPassword"
+        ],
+        "imports": [
+          "crypto/sha256",
+          "crypto/sha512",
+          "crypto/subtle",
+          "encoding/base64",
+          "encoding/hex",
+          "errors",
+          "fmt",
+          "strconv",
+          "strings",
+          "github.com/gofiber/fiber/v3",
+          "golang.org/x/crypto/bcrypt"
+        ],
+        "side_effects": [
+          "Panic if charset is not UTF-8",
+          "Panic if HeaderLimit is less than or equal to 0"
+        ],
+        "risks": [
+          "Potential for denial of service if HeaderLimit is set too low",
+          "Panic on invalid charset or password decoding errors"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "content_hash": "6a079449e5d95731f902a583d6447f2b",
+  "timestamp": "2025-09-24T15:47:00.065513+07:00",
+  "result": {
+    "path": "middleware/logger",
+    "purpose": "Responsible for implementing a logging middleware for the Fiber web framework, providing configuration, default logging mechanisms, and utility functions.",
+    "languages": {
+      "Go": 10
+    },
+    "key_modules": [
+      "config.go",
+      "data.go",
+      "default_logger.go",
+      "format.go",
+      "logger.go",
+      "logger_test.go",
+      "tags.go",
+      "template_chain.go",
+      "utils.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2",
+      "github.com/mattn/go-colorable",
+      "github.com/mattn/go-isatty",
+      "github.com/valyala/bytebufferpool",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to logging, promoting separation of concerns and ease of testing.",
+    "file_summaries": {
+      "middleware/logger/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for a logging middleware in a web application using the Fiber framework.",
+        "key_types": [
+          "Config",
+          "Buffer",
+          "LogFunc"
+        ],
+        "functions": [
+          "configDefault"
+        ],
+        "imports": [
+          "io",
+          "os",
+          "time",
+          "github.com/gofiber/fiber/v3"
+        ],
+        "side_effects": [
+          "Modifies the logging configuration based on provided parameters."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/logger/data.go": {
+        "language": "Go",
+        "purpose": "Defines a struct for use in a custom logger function.",
+        "key_types": [
+          "Data"
+        ],
+        "functions": [],
+        "imports": [
+          "sync/atomic",
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "middleware/logger/default_logger.go": {
+        "language": "Go",
+        "purpose": "Provides a default logging mechanism for the Fiber web framework.",
+        "key_types": [
+          "fiber.Ctx",
+          "Data",
+          "Config",
+          "Buffer"
+        ],
+        "functions": [
+          "defaultLoggerInstance",
+          "beforeHandlerFunc",
+          "appendInt",
+          "writeLog"
+        ],
+        "imports": [
+          "fmt",
+          "io",
+          "os",
+          "strconv",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/utils/v2",
+          "github.com/mattn/go-colorable",
+          "github.com/mattn/go-isatty",
+          "github.com/valyala/bytebufferpool"
+        ],
+        "side_effects": [
+          "Writes logs to the specified output stream.",
+          "Modifies the output stream based on terminal compatibility."
+        ],
+        "risks": [
+          "Potential for log injection if user input is not sanitized."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/logger/format.go": {
+        "language": "Go",
+        "purpose": "Defines various log formats for a logging middleware.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "middleware/logger/logger.go": {
+        "language": "Go",
+        "purpose": "This file implements a logging middleware for the Fiber web framework.",
+        "key_types": [
+          "Config",
+          "Data",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New",
+          "buildLogFuncChain",
+          "createTagMap"
+        ],
+        "imports": [
+          "os",
+          "strconv",
+          "strings",
+          "sync",
+          "sync/atomic",
+          "time",
+          "github.com/gofiber/fiber/v3"
+        ],
+        "side_effects": [
+          "Creates a goroutine to update the timestamp every 500 milliseconds.",
+          "Uses a sync.Pool for managing logger data."
+        ],
+        "risks": [
+          "Potential race conditions if not properly synchronized.",
+          "Error handling may lead to unhandled errors if not configured correctly."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/logger/logger_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for a logging middleware in a Fiber web application.",
+        "key_types": [
+          "fiber.App",
+          "fiber.Ctx",
+          "Config"
+        ],
+        "functions": [
+          "benchmarkSetup",
+          "benchmarkSetupParallel",
+          "Test_Logger",
+          "Test_Logger_locals",
+          "Test_Logger_Next",
+          "Test_Logger_Done",
+          "Test_Logger_Filter",
+          "Test_Logger_ErrorTimeZone",
+          "Test_Logger_LoggerToWriter"
+        ],
+        "imports": [
+          "bufio",
+          "bytes",
+          "errors",
+          "fmt",
+          "io",
+          "log",
+          "net/http",
+          "net/http/httptest",
+          "os",
+          "regexp",
+          "runtime",
+          "strconv",
+          "sync",
+          "testing",
+          "time",
+          "github.com/stretchr/testify/require",
+          "github.com/valyala/bytebufferpool",
+          "github.com/valyala/fasthttp",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/log",
+          "github.com/gofiber/fiber/v3/middleware/requestid"
+        ],
+        "side_effects": [
+          "Logs errors and request information based on middleware configuration."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/logger/tags.go": {
+        "language": "Go",
+        "purpose": "Defines logging tags and a function to create a mapping of default and custom logging tags for a logger in a web application.",
+        "key_types": [
+          "Config",
+          "LogFunc",
+          "Buffer",
+          "Data"
+        ],
+        "functions": [
+          "createTagMap"
+        ],
+        "imports": [
+          "fmt",
+          "maps",
+          "strings",
+          "github.com/gofiber/fiber/v3"
+        ],
+        "side_effects": [
+          "Modifies the logging behavior based on custom tags provided in the configuration."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/logger/template_chain.go": {
+        "language": "Go",
+        "purpose": "This file defines a function to analyze a logging template and create slices for fixed parts and dynamic functions for execution.",
+        "key_types": [
+          "Config",
+          "LogFunc"
+        ],
+        "functions": [
+          "buildLogFuncChain"
+        ],
+        "imports": [
+          "bytes",
+          "errors",
+          "github.com/gofiber/utils/v2"
+        ],
+        "risks": [
+          "Potential for errors if the template format is incorrect or if parameters are missing."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/logger/utils.go": {
+        "language": "Go",
+        "purpose": "Provides utility functions and types for logging in a Fiber web application.",
+        "key_types": [
+          "customLoggerWriter"
+        ],
+        "functions": [
+          "methodColor",
+          "statusColor",
+          "Write",
+          "LoggerToWriter"
+        ],
+        "imports": [
+          "io",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/log",
+          "github.com/gofiber/utils/v2"
+        ],
+        "side_effects": [
+          "Panic if logger is nil or level is invalid in LoggerToWriter"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

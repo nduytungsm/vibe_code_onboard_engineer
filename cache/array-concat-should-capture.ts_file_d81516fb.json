@@ -1,0 +1,26 @@
+{
+  "content_hash": "48d1faccd90f0d916d68cfe89c70fae1",
+  "timestamp": "2025-09-24T15:28:41.028171+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file contains a test fixture demonstrating the behavior of array concatenation and mutation.",
+    "key_types": [
+      "Array",
+      "number",
+      "object"
+    ],
+    "functions": [
+      "Foo"
+    ],
+    "imports": [
+      "shared-runtime"
+    ],
+    "side_effects": [
+      "Mutates the first element of arr2 which may affect arr1 due to reference sharing."
+    ],
+    "risks": [
+      "Potential unintended mutations of original arrays due to reference sharing."
+    ],
+    "complexity": "medium"
+  }
+}

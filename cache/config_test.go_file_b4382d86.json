@@ -1,0 +1,38 @@
+{
+  "content_hash": "19477122269229ec6d450cbf312f285a",
+  "timestamp": "2025-09-24T15:42:18.307133+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for CSRF extractor security and metadata validation.",
+    "key_types": [
+      "Config",
+      "extractors.Extractor"
+    ],
+    "functions": [
+      "Test_CSRF_ExtractorSecurity_Validation",
+      "Test_CSRF_Extractor_Metadata",
+      "Test_CSRF_Chain_Extractor_Metadata",
+      "Test_CSRF_Custom_Extractor_Struct",
+      "Test_CSRF_Extractor_Error_Types",
+      "Test_CSRF_Security_Warnings",
+      "Test_isInsecureCookieExtractor"
+    ],
+    "imports": [
+      "fmt",
+      "strings",
+      "testing",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/extractors",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Panic on insecure configurations",
+      "Logging of security warnings"
+    ],
+    "risks": [
+      "Potential for CSRF attacks if insecure configurations are used"
+    ],
+    "complexity": "medium"
+  }
+}

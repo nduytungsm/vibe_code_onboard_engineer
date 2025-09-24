@@ -1,0 +1,47 @@
+{
+  "content_hash": "cc35f40d84480b59ba21ac25bb42af34",
+  "timestamp": "2025-09-24T15:43:43.326269+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Manages child processes to utilize OS REUSEPORT or REUSEADDR features for a web server.",
+    "key_types": [
+      "App",
+      "ListenConfig",
+      "tls.Config",
+      "net.Listener",
+      "exec.Cmd"
+    ],
+    "functions": [
+      "IsChild",
+      "prefork",
+      "watchMaster",
+      "dummyCmd"
+    ],
+    "imports": [
+      "crypto/tls",
+      "errors",
+      "fmt",
+      "net",
+      "os",
+      "os/exec",
+      "runtime",
+      "strconv",
+      "strings",
+      "sync/atomic",
+      "time",
+      "github.com/valyala/fasthttp/reuseport",
+      "github.com/gofiber/fiber/v3/log"
+    ],
+    "side_effects": [
+      "Creates child processes",
+      "Modifies environment variables",
+      "Prints startup messages",
+      "Prints routes"
+    ],
+    "risks": [
+      "Potential for process management issues",
+      "Resource leaks if child processes are not properly terminated"
+    ],
+    "complexity": "medium"
+  }
+}

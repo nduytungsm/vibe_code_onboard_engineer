@@ -1,0 +1,52 @@
+{
+  "content_hash": "eafc212aa36b8ee8d4408d0722ecccaf",
+  "timestamp": "2025-09-24T15:25:42.547224+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines a Babel plugin for compiling React components with memoization directives.",
+    "key_types": [
+      "CompilerPass",
+      "BabelFn",
+      "CompileResult",
+      "ParsedPluginOptions",
+      "PluginOptions"
+    ],
+    "functions": [
+      "tryFindDirectiveEnablingMemoization",
+      "findDirectiveDisablingMemoization",
+      "findDirectivesDynamicGating",
+      "isError",
+      "isConfigError",
+      "logError",
+      "handleError",
+      "createNewFunctionNode",
+      "insertNewOutlinedFunctionNode"
+    ],
+    "imports": [
+      "@babel/core",
+      "@babel/types",
+      "../CompilerError",
+      "../HIR/Environment",
+      "../ReactiveScopes",
+      "../Utils/ComponentDeclaration",
+      "../Utils/HookDeclaration",
+      "../Utils/utils",
+      "./Gating",
+      "./Imports",
+      "./Options",
+      "./Pipeline",
+      "./Suppression",
+      "../HIR",
+      "../Utils/Result"
+    ],
+    "side_effects": [
+      "Logs errors to the provided logger if available.",
+      "Throws errors based on panic thresholds."
+    ],
+    "risks": [
+      "Potential for unhandled errors leading to application crashes.",
+      "Improper handling of dynamic gating directives may lead to unexpected behavior."
+    ],
+    "complexity": "medium"
+  }
+}

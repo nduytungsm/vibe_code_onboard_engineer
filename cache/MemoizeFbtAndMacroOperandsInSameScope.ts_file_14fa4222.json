@@ -1,0 +1,36 @@
+{
+  "content_hash": "7ee7557594a5f473235a5112a0ef6a1d",
+  "timestamp": "2025-09-24T15:26:54.211165+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file implements a Babel plugin that memoizes operands of fbt and macro-like function calls to ensure they remain in the same scope.",
+    "key_types": [
+      "HIRFunction",
+      "IdentifierId",
+      "Macro",
+      "MacroMethod",
+      "ReactiveValue",
+      "MutableRange",
+      "Place"
+    ],
+    "functions": [
+      "memoizeFbtAndMacroOperandsInSameScope",
+      "visit",
+      "matchesExactTag",
+      "matchTagRoot",
+      "isFbtCallExpression",
+      "isFbtJsxExpression",
+      "isFbtJsxChild",
+      "expandFbtScopeRange"
+    ],
+    "imports": [
+      "../HIR",
+      "../HIR/Environment",
+      "./visitors"
+    ],
+    "side_effects": [
+      "Modifies the scope of operands in fbt calls and JSX elements to ensure they are correctly scoped."
+    ],
+    "complexity": "medium"
+  }
+}

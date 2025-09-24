@@ -1,0 +1,31 @@
+{
+  "content_hash": "5c1d90798929b0e6a6f99c568668e748",
+  "timestamp": "2025-09-24T15:43:31.536015+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the skip middleware in a Fiber web application.",
+    "key_types": [
+      "fiber.Ctx",
+      "fiber.App",
+      "error"
+    ],
+    "functions": [
+      "Test_Skip",
+      "Test_SkipFalse",
+      "Test_SkipNilFunc",
+      "helloWorldHandler",
+      "errTeapotHandler"
+    ],
+    "imports": [
+      "net/http/httptest",
+      "testing",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/skip",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Tests the behavior of the skip middleware under different conditions."
+    ],
+    "complexity": "medium"
+  }
+}

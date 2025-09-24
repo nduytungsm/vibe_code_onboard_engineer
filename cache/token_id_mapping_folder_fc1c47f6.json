@@ -1,6 +1,6 @@
 {
-  "content_hash": "07f629037d7ad69ab0e7e2503750dca3",
-  "timestamp": "2025-09-23T16:05:32.621875+07:00",
+  "content_hash": "31014465d6e4a58218155ac300733b93",
+  "timestamp": "2025-09-23T17:00:52.583222+07:00",
   "result": {
     "path": "cmd/token_id_mapping",
     "purpose": "This folder/module is responsible for mapping CoinGecko token IDs to contract addresses and decimals, handling token metadata and caching.",
@@ -24,7 +24,7 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker",
       "github.com/axieinfinity/ronin-wallet-proxy/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to token ID mapping and utilizing various external services for data handling and error tracking.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to token ID mapping and utilizing external services for data retrieval and storage.",
     "file_summaries": {
       "cmd/token_id_mapping/main.go": {
         "language": "Go",
@@ -68,7 +68,7 @@
           "Publishes events to Redis"
         ],
         "risks": [
-          "Potential exposure of sensitive configuration data",
+          "Potential exposure of sensitive information in logs",
           "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"

@@ -1,0 +1,19 @@
+{
+  "content_hash": "d74b6e5a914f3fde4b4f82a666459904",
+  "timestamp": "2025-09-24T15:40:56.63186+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the Fiber package, detailing how to create a new instance and its configuration options.",
+    "key_types": [
+      "App",
+      "Config"
+    ],
+    "functions": [
+      "New"
+    ],
+    "imports": [
+      "@site/src/components/reference"
+    ],
+    "complexity": "low"
+  }
+}

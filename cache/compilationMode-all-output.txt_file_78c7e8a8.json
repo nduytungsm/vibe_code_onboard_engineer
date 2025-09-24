@@ -1,0 +1,22 @@
+{
+  "content_hash": "e342164c634af00e5a9e875b49428743",
+  "timestamp": "2025-09-24T15:25:00.534251+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines a function that interacts with a React compiler runtime to manage memoization cache.",
+    "key_types": [
+      "Symbol",
+      "Object"
+    ],
+    "functions": [
+      "nonReactFn"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Modifies the first element of the array returned by _c"
+    ],
+    "complexity": "medium"
+  }
+}

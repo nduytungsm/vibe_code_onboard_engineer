@@ -1,0 +1,248 @@
+{
+  "content_hash": "55ae1e5626bf4ff41ddf11d851ebe562",
+  "timestamp": "2025-09-24T15:48:02.906666+07:00",
+  "result": {
+    "path": "ext/typeexpr",
+    "purpose": "Responsible for extending HCL with conventions for describing types and handling type expressions.",
+    "languages": {
+      "Go": 8,
+      "Markdown": 1
+    },
+    "key_modules": [
+      "README.md",
+      "defaults.go",
+      "get_type.go",
+      "public.go",
+      "type_type.go"
+    ],
+    "dependencies": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty"
+    ],
+    "architecture": "The folder follows a modular architecture with separate files for type definitions, function implementations, and unit tests, promoting maintainability and testability.",
+    "file_summaries": {
+      "ext/typeexpr/README.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for HCL Type Expressions Extension, describing conventions for HCL types.",
+        "key_types": [
+          "hcl.Expression",
+          "cty.DynamicPseudoType",
+          "TypeConstraint",
+          "TypeConstraintType",
+          "Defaults"
+        ],
+        "functions": [
+          "TypeConstraintVal",
+          "TypeConstraintFromVal",
+          "ConvertFunc"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2/ext/typeexpr",
+          "github.com/zclconf/go-cty"
+        ],
+        "complexity": "medium"
+      },
+      "ext/typeexpr/defaults.go": {
+        "language": "Go",
+        "purpose": "Defines a Defaults type for applying default values to optional attributes in a type tree.",
+        "key_types": [
+          "Defaults",
+          "cty.Type",
+          "cty.Value"
+        ],
+        "functions": [
+          "Apply",
+          "apply",
+          "applyAsSlice",
+          "applyAsMap",
+          "getChild",
+          "unifyAsSlice",
+          "unifyAsMap"
+        ],
+        "imports": [
+          "sort",
+          "strconv",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/convert"
+        ],
+        "complexity": "medium"
+      },
+      "ext/typeexpr/defaults_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the Defaults struct in the typeexpr package, validating default value application.",
+        "key_types": [
+          "Defaults",
+          "cty.Value",
+          "cty.Type"
+        ],
+        "functions": [
+          "TestDefaults_Apply"
+        ],
+        "imports": [
+          "testing",
+          "github.com/google/go-cmp/cmp",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "ext/typeexpr/doc.go": {
+        "language": "Go",
+        "purpose": "Extends HCL with a convention for describing HCL types within configuration files.",
+        "key_types": [
+          "HCL",
+          "Expression"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "ext/typeexpr/get_type.go": {
+        "language": "Go",
+        "purpose": "This file defines a function to determine the type of an HCL expression, handling various type specifications and constraints.",
+        "key_types": [
+          "cty.Type",
+          "hcl.Expression",
+          "hcl.Diagnostics",
+          "Defaults"
+        ],
+        "functions": [
+          "getType"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/convert",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Generates diagnostics for invalid type specifications."
+        ],
+        "risks": [
+          "Potential for incorrect type handling if the input expression is malformed."
+        ],
+        "complexity": "medium"
+      },
+      "ext/typeexpr/get_type_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the type expression parsing and validation in HCL.",
+        "key_types": [
+          "struct",
+          "cty.Type"
+        ],
+        "functions": [
+          "TestGetType",
+          "TestGetTypeJSON"
+        ],
+        "imports": [
+          "fmt",
+          "testing",
+          "github.com/hashicorp/hcl/v2/gohcl",
+          "github.com/google/go-cmp/cmp",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/hashicorp/hcl/v2/hclsyntax",
+          "github.com/hashicorp/hcl/v2/json"
+        ],
+        "side_effects": [
+          "parsing expressions",
+          "running tests"
+        ],
+        "complexity": "medium"
+      },
+      "ext/typeexpr/public.go": {
+        "language": "Go",
+        "purpose": "This file defines functions for processing type expressions and constraints in HCL (HashiCorp Configuration Language).",
+        "key_types": [
+          "cty.Type",
+          "hcl.Expression",
+          "hcl.Diagnostics",
+          "Defaults"
+        ],
+        "functions": [
+          "Type",
+          "TypeConstraint",
+          "TypeConstraintWithDefaults",
+          "TypeString"
+        ],
+        "imports": [
+          "bytes",
+          "fmt",
+          "sort",
+          "github.com/hashicorp/hcl/v2/hclsyntax",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "side_effects": [
+          "Panic if unsupported types are encountered in TypeString function."
+        ],
+        "complexity": "medium"
+      },
+      "ext/typeexpr/type_string_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the TypeString function in the typeexpr package, validating the string representation of various cty.Type values.",
+        "key_types": [
+          "cty.Type",
+          "struct"
+        ],
+        "functions": [
+          "TestTypeString",
+          "TypeString"
+        ],
+        "imports": [
+          "testing",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "side_effects": [
+          "Outputs test results to the testing framework"
+        ],
+        "complexity": "medium"
+      },
+      "ext/typeexpr/type_type.go": {
+        "language": "Go",
+        "purpose": "Defines type constraints for cty types and provides functions for type conversion and value encapsulation.",
+        "key_types": [
+          "cty.Type",
+          "cty.Value",
+          "function.Function"
+        ],
+        "functions": [
+          "TypeConstraintVal",
+          "TypeConstraintFromVal",
+          "init",
+          "ConvertFunc"
+        ],
+        "imports": [
+          "fmt",
+          "reflect",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/hashicorp/hcl/v2/ext/customdecode",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/convert",
+          "github.com/zclconf/go-cty/cty/function"
+        ],
+        "side_effects": [
+          "Panic if TypeConstraintFromVal is called with an invalid value."
+        ],
+        "complexity": "medium"
+      },
+      "ext/typeexpr/type_type_test.go": {
+        "language": "Go",
+        "purpose": "This file contains unit tests for type constraints and conversion functions in the typeexpr package.",
+        "key_types": [
+          "TypeConstraintVal",
+          "cty.Value"
+        ],
+        "functions": [
+          "TestTypeConstraintType",
+          "TestConvertFunc"
+        ],
+        "imports": [
+          "fmt",
+          "testing",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

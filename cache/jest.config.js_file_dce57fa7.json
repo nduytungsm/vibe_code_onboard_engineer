@@ -1,0 +1,16 @@
+{
+  "content_hash": "affbf20543ca5c6ee3a60e9eae4464f9",
+  "timestamp": "2025-09-24T15:25:21.727596+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for Jest testing framework.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "jest"
+    ],
+    "complexity": "low"
+  }
+}

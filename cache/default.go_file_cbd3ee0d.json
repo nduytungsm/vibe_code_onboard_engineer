@@ -1,0 +1,21 @@
+{
+  "content_hash": "e000f13bbba476da4626052306138dec",
+  "timestamp": "2025-09-24T14:53:39.699758+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for handling responses and pagination.",
+    "key_types": [
+      "OkResponse",
+      "Paging",
+      "Preload",
+      "ListResponse"
+    ],
+    "functions": [
+      "GetPage",
+      "GetOffset",
+      "GetLimit"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

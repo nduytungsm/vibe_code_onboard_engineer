@@ -1,0 +1,22 @@
+{
+  "content_hash": "53f6fd12b068f98977a9b593d53fa7a9",
+  "timestamp": "2025-09-24T15:24:56.584619+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for Babel to set up plugins and presets for local Jest runs.",
+    "key_types": [
+      "Object"
+    ],
+    "functions": [],
+    "imports": [
+      "@babel/plugin-syntax-jsx",
+      "@babel/plugin-transform-flow-strip-types",
+      "@babel/plugin-transform-class-properties",
+      "@babel/plugin-transform-private-methods",
+      "@babel/plugin-transform-classes",
+      "@babel/preset-env",
+      "@babel/preset-typescript"
+    ],
+    "complexity": "low"
+  }
+}

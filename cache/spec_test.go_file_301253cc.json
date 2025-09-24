@@ -1,0 +1,39 @@
+{
+  "content_hash": "579a78f172abb758454cddab844bf2b1",
+  "timestamp": "2025-09-24T15:46:30.516571+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the HCL specification suite, building necessary binaries before running the tests.",
+    "key_types": [
+      "error",
+      "*testing.M",
+      "*testing.T"
+    ],
+    "functions": [
+      "TestMain",
+      "build",
+      "TestSpec",
+      "goBuild"
+    ],
+    "imports": [
+      "bufio",
+      "bytes",
+      "fmt",
+      "os",
+      "os/exec",
+      "path/filepath",
+      "runtime",
+      "strings",
+      "testing"
+    ],
+    "side_effects": [
+      "Builds external programs",
+      "Executes external commands"
+    ],
+    "risks": [
+      "Execution of arbitrary code through external commands",
+      "Potential for command injection if inputs are not sanitized"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "content_hash": "e7d3e1a5d28efb68706e2a8b06517b39",
+  "timestamp": "2025-09-24T15:25:34.392411+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines a Babel plugin for transforming React code using Babel.",
+    "key_types": [
+      "BabelCore.BabelFileResult",
+      "PluginOptions"
+    ],
+    "functions": [
+      "runBabelPluginReactCompiler"
+    ],
+    "imports": [
+      "@babel/core",
+      "@babel/parser",
+      "invariant",
+      "../Entrypoint",
+      "./BabelPlugin"
+    ],
+    "side_effects": [
+      "Transforms code using Babel plugins",
+      "Parses code into an AST"
+    ],
+    "risks": [
+      "Potential for code injection if input is not sanitized"
+    ],
+    "complexity": "medium"
+  }
+}

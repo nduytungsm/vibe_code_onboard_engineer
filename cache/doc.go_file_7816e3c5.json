@@ -1,0 +1,20 @@
+{
+  "content_hash": "30cab2eb4495bf6d36f3a672e0c3506c",
+  "timestamp": "2025-09-24T15:44:29.055657+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements a HCL extension that allows user-defined functions in HCL configuration.",
+    "key_types": [
+      "package",
+      "function"
+    ],
+    "functions": [
+      "function"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Requires integration effort to pass declared functions into HCL evaluation context."
+    ],
+    "complexity": "medium"
+  }
+}

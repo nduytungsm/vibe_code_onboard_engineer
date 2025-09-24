@@ -1,0 +1,14 @@
+{
+  "content_hash": "7fce89b1ae8c2f2ed6e9443558bde847",
+  "timestamp": "2025-09-24T15:27:56.355159+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines middleware category metadata for documentation purposes.",
+    "key_types": [
+      "object"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

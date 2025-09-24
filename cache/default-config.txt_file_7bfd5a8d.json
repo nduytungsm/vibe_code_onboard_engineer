@@ -1,0 +1,16 @@
+{
+  "content_hash": "70393f0ebd7a96da1b0a7c7d0562869b",
+  "timestamp": "2025-09-24T15:25:00.908492+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines a type that satisfies the PluginOptions interface from a Babel plugin.",
+    "key_types": [
+      "PluginOptions"
+    ],
+    "functions": [],
+    "imports": [
+      "babel-plugin-react-compiler/dist"
+    ],
+    "complexity": "low"
+  }
+}

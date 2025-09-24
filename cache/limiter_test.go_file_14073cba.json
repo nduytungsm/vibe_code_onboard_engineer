@@ -1,0 +1,55 @@
+{
+  "content_hash": "3efafc203d538337c7b9bbcd4b3d5c55",
+  "timestamp": "2025-09-24T15:42:57.197487+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for a rate limiter middleware using a failing storage implementation.",
+    "key_types": [
+      "failingLimiterStorage",
+      "fiber.Ctx",
+      "Config"
+    ],
+    "functions": [
+      "newFailingLimiterStorage",
+      "GetWithContext",
+      "Get",
+      "SetWithContext",
+      "Set",
+      "DeleteWithContext",
+      "Delete",
+      "ResetWithContext",
+      "Reset",
+      "Close",
+      "TestLimiterFixedStorageGetError",
+      "TestLimiterFixedStorageSetError",
+      "TestLimiterFixedStorageGetErrorDisableRedaction",
+      "TestLimiterFixedStorageSetErrorDisableRedaction",
+      "Test_Limiter_With_Max_Func_With_Zero_And_Limiter_Sliding",
+      "Test_Limiter_With_Max_Func_With_Zero",
+      "Test_Limiter_With_Max_Func"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "io",
+      "net/http/httptest",
+      "sync",
+      "testing",
+      "time",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/internal/storage/memory",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Modifies internal state of the failingLimiterStorage during tests.",
+      "Tests may affect the state of the fiber application."
+    ],
+    "risks": [
+      "Potential for race conditions due to concurrent tests.",
+      "Error handling may expose sensitive information if not properly managed."
+    ],
+    "complexity": "medium"
+  }
+}

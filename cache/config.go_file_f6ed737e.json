@@ -1,0 +1,24 @@
+{
+  "content_hash": "dfccde8e2673828bbce25c05d3d30915",
+  "timestamp": "2025-09-24T15:42:25.905126+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration for a middleware that encrypts and decrypts cookies.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "configDefault"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3"
+    ],
+    "side_effects": [
+      "Panic if the key is empty or invalid"
+    ],
+    "risks": [
+      "Potential for insecure cookie handling if the key is not properly managed"
+    ],
+    "complexity": "medium"
+  }
+}

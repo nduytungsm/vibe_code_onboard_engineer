@@ -1,0 +1,48 @@
+{
+  "content_hash": "698d503fabccab0f91d1b2700e5709a0",
+  "timestamp": "2025-09-24T15:28:50.122087+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides middleware functions to adapt between net/http and fiber HTTP frameworks.",
+    "key_types": [
+      "disableLogger",
+      "sync.Pool",
+      "fasthttp.RequestCtx",
+      "fiber.Ctx",
+      "http.Request"
+    ],
+    "functions": [
+      "Printf",
+      "HTTPHandlerFunc",
+      "HTTPHandler",
+      "ConvertRequest",
+      "CopyContextToFiberContext",
+      "HTTPMiddleware",
+      "FiberHandler",
+      "FiberHandlerFunc",
+      "FiberApp",
+      "handlerFunc"
+    ],
+    "imports": [
+      "io",
+      "net",
+      "net/http",
+      "reflect",
+      "sync",
+      "unsafe",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp",
+      "github.com/valyala/fasthttp/fasthttpadaptor"
+    ],
+    "side_effects": [
+      "Modifies HTTP request and response headers",
+      "Allocates and releases resources from sync.Pool"
+    ],
+    "risks": [
+      "Potential for unsafe memory access using reflect and unsafe packages",
+      "Improper handling of HTTP headers could lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

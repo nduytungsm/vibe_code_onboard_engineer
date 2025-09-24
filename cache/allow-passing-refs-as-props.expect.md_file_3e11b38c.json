@@ -1,0 +1,22 @@
+{
+  "content_hash": "53aed128ae754532710cb68408fb1c4e",
+  "timestamp": "2025-09-24T15:28:26.170301+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that conditionally renders a Foo component with a ref.",
+    "key_types": [
+      "Component",
+      "ref"
+    ],
+    "functions": [
+      "Component"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Uses React's useRef hook to create a reference"
+    ],
+    "complexity": "medium"
+  }
+}

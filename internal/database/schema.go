@@ -251,8 +251,8 @@ func (se *SchemaExtractor) processStatement(stmt string) error {
 
 // processCreateTable processes CREATE TABLE statements
 func (se *SchemaExtractor) processCreateTable(stmt string) error {
-	// Extract table name
-	tableNameRegex := regexp.MustCompile(`CREATE TABLE\s+(?:IF NOT EXISTS\s+)?(?:"?([^"\s]+)"?|\[([^\]]+)\]|([^\s(]+))`)
+	// Extract table name - improved regex to handle parentheses properly
+	tableNameRegex := regexp.MustCompile(`CREATE TABLE\s+(?:IF NOT EXISTS\s+)?(?:"?([^"\s(]+)"?|\[([^\]]+)\]|([^\s(]+))`)
 	matches := tableNameRegex.FindStringSubmatch(stmt)
 	if len(matches) < 2 {
 		return fmt.Errorf("could not extract table name from: %s", stmt)
@@ -261,7 +261,9 @@ func (se *SchemaExtractor) processCreateTable(stmt string) error {
 	tableName := ""
 	for i := 1; i < len(matches); i++ {
 		if matches[i] != "" {
-			tableName = strings.ToLower(matches[i])
+			// Clean up table name by removing any trailing parentheses or punctuation
+			tableName = strings.ToLower(strings.TrimSpace(matches[i]))
+			tableName = strings.TrimRight(tableName, "(),;")
 			break
 		}
 	}
@@ -617,31 +619,62 @@ func (se *SchemaExtractor) processDropTable(stmt string) error {
 	return nil
 }
 
-// processCreateIndex processes CREATE INDEX statements
+// processCreateIndex processes CREATE INDEX statements (with graceful error handling)
 func (se *SchemaExtractor) processCreateIndex(stmt string) error {
-	indexRegex := regexp.MustCompile(`CREATE\s+(UNIQUE\s+)?INDEX\s+([^\s]+)\s+ON\s+([^\s(]+)\s*\(([^)]+)\)`)
-	matches := indexRegex.FindStringSubmatch(stmt)
-	if len(matches) < 5 {
-		return fmt.Errorf("could not parse CREATE INDEX statement")
+	// Try multiple regex patterns for different CREATE INDEX formats
+	patterns := []string{
+		`CREATE\s+(UNIQUE\s+)?INDEX\s+([^\s]+)\s+ON\s+([^\s(]+)\s*\(([^)]+)\)`,           // Standard format
+		`CREATE\s+(UNIQUE\s+)?INDEX\s+(?:IF\s+NOT\s+EXISTS\s+)?([^\s]+)\s+ON\s+([^\s(]+)\s*\(([^)]+)\)`, // With IF NOT EXISTS
+		`CREATE\s+(UNIQUE\s+)?INDEX\s+"?([^"\s]+)"?\s+ON\s+"?([^"\s(]+)"?\s*\(([^)]+)\)`, // With quotes
+		`CREATE\s+(UNIQUE\s+)?INDEX\s+\[([^\]]+)\]\s+ON\s+\[([^\]]+)\]\s*\(([^)]+)\)`,     // With brackets
 	}
 	
-	isUnique := matches[1] != ""
-	indexName := strings.ToLower(strings.Trim(matches[2], `"[]`))
-	tableName := strings.ToLower(strings.Trim(matches[3], `"[]`))
+	for _, pattern := range patterns {
+		indexRegex := regexp.MustCompile(pattern)
+		matches := indexRegex.FindStringSubmatch(stmt)
+		if len(matches) >= 5 {
+			return se.createIndexFromMatches(matches)
+		}
+	}
+	
+	// If all patterns fail, log warning but don't crash
+	fmt.Printf("⚠️  Could not parse CREATE INDEX statement (skipping): %s\n", strings.TrimSpace(stmt))
+	return nil // Return nil instead of error to continue processing
+}
+
+// createIndexFromMatches creates an index from regex matches
+func (se *SchemaExtractor) createIndexFromMatches(matches []string) error {
+	isUnique := strings.TrimSpace(matches[1]) != ""
+	indexName := strings.ToLower(strings.Trim(matches[2], `"[] `))
+	tableName := strings.ToLower(strings.Trim(matches[3], `"[] `))
 	columnList := matches[4]
+	
+	// Handle empty or invalid names
+	if indexName == "" || tableName == "" {
+		return nil // Skip invalid indexes
+	}
 	
 	var columns []string
 	for _, col := range strings.Split(columnList, ",") {
-		columns = append(columns, strings.ToLower(strings.TrimSpace(strings.Trim(col, `"[]`))))
+		cleanCol := strings.ToLower(strings.TrimSpace(strings.Trim(col, `"[] `)))
+		if cleanCol != "" {
+			columns = append(columns, cleanCol)
+		}
 	}
 	
-	if table, exists := se.schema.Tables[tableName]; exists {
-		table.Indexes[indexName] = Index{
-			Name:    indexName,
-			Columns: columns,
-			Unique:  isUnique,
+	// Only add index if we have valid columns and table exists
+	if len(columns) > 0 {
+		if table, exists := se.schema.Tables[tableName]; exists {
+			if table.Indexes == nil {
+				table.Indexes = make(map[string]Index)
+			}
+			table.Indexes[indexName] = Index{
+				Name:    indexName,
+				Columns: columns,
+				Unique:  isUnique,
+			}
+			se.schema.Tables[tableName] = table
 		}
-		se.schema.Tables[tableName] = table
 	}
 	
 	return nil

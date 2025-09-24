@@ -1,0 +1,22 @@
+{
+  "content_hash": "efdd95681e03ffbe111aa03d450143b4",
+  "timestamp": "2025-09-24T15:25:02.910016+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines a React component that uses memoization to optimize rendering based on prop changes.",
+    "key_types": [
+      "Function",
+      "Object"
+    ],
+    "functions": [
+      "TestComponent"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Renders a Button component conditionally based on prop changes."
+    ],
+    "complexity": "medium"
+  }
+}

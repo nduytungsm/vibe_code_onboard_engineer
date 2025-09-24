@@ -1,0 +1,31 @@
+{
+  "content_hash": "87d534acb004a7eabfc605076aef3fda",
+  "timestamp": "2025-09-24T15:43:21.564796+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for session data management functionality",
+    "key_types": [
+      "Data",
+      "testing.T"
+    ],
+    "functions": [
+      "TestKeys",
+      "TestData_Len",
+      "TestData_Get",
+      "TestData_Reset",
+      "TestData_Delete"
+    ],
+    "imports": [
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Concurrent access to data may lead to race conditions if not handled properly"
+    ],
+    "risks": [
+      "Potential race conditions during concurrent access"
+    ],
+    "complexity": "medium"
+  }
+}

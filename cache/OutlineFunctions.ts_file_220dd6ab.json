@@ -1,0 +1,25 @@
+{
+  "content_hash": "381d0c941ae2047dde26425378e30048",
+  "timestamp": "2025-09-24T15:26:37.562009+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file outlines functions in a given HIRFunction by replacing certain function expressions with global loads.",
+    "key_types": [
+      "HIRFunction",
+      "IdentifierId"
+    ],
+    "functions": [
+      "outlineFunctions"
+    ],
+    "imports": [
+      "../HIR"
+    ],
+    "side_effects": [
+      "Modifies the HIRFunction by outlining certain functions and changing their identifiers."
+    ],
+    "risks": [
+      "Potential for introducing bugs if inner functions are not handled correctly."
+    ],
+    "complexity": "medium"
+  }
+}

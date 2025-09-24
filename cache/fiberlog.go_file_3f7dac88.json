@@ -1,0 +1,51 @@
+{
+  "content_hash": "5e5ec1597c8cc368fb174b929acb0334",
+  "timestamp": "2025-09-24T15:41:56.499064+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides logging functions that wrap around a default logger, allowing for different levels of logging (Fatal, Error, Warn, Info, Debug, Trace) and contextual logging.",
+    "key_types": [
+      "CommonLogger",
+      "AllLogger",
+      "Level"
+    ],
+    "functions": [
+      "Fatal",
+      "Error",
+      "Warn",
+      "Info",
+      "Debug",
+      "Trace",
+      "Panic",
+      "Fatalf",
+      "Errorf",
+      "Warnf",
+      "Infof",
+      "Debugf",
+      "Tracef",
+      "Panicf",
+      "Tracew",
+      "Debugw",
+      "Infow",
+      "Warnw",
+      "Errorw",
+      "Fatalw",
+      "Panicw",
+      "WithContext",
+      "SetLogger",
+      "SetOutput",
+      "SetLevel"
+    ],
+    "imports": [
+      "context",
+      "io"
+    ],
+    "side_effects": [
+      "Calls os.Exit(1) in Fatal and Fatalf functions"
+    ],
+    "risks": [
+      "Not concurrent-safe methods (SetLogger and SetLevel)"
+    ],
+    "complexity": "medium"
+  }
+}

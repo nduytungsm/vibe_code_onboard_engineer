@@ -1,0 +1,22 @@
+{
+  "content_hash": "e18916b5fd79e0dd57c38431be37e24f",
+  "timestamp": "2025-09-24T15:28:37.874776+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a function that utilizes the Array.at method to manipulate and return values based on input properties.",
+    "key_types": [
+      "Array",
+      "Function"
+    ],
+    "functions": [
+      "ArrayAtTest"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Mutates internal state based on input properties"
+    ],
+    "complexity": "medium"
+  }
+}

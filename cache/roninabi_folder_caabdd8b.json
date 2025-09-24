@@ -1,6 +1,6 @@
 {
-  "content_hash": "08a8acd2c5d0857029a01189f94af524",
-  "timestamp": "2025-09-23T16:32:21.257562+07:00",
+  "content_hash": "c8f8c5ce3cbf0260e610f0a0adc0a334",
+  "timestamp": "2025-09-23T16:58:57.484124+07:00",
   "result": {
     "path": "pkg/roninabi",
     "purpose": "Responsible for defining and managing Ethereum contract ABIs and related constants for token swaps and liquidity management.",
@@ -14,11 +14,11 @@
     "dependencies": [
       "github.com/ethereum/go-ethereum/accounts/abi"
     ],
-    "architecture": "The folder follows a modular architecture, encapsulating functionality related to Ethereum contract ABIs and method definitions in separate Go files.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to Ethereum contract ABIs and token management in separate Go files.",
     "file_summaries": {
       "pkg/roninabi/abi.go": {
         "language": "Go",
-        "purpose": "Defines constants and embeds ABI JSON files for various Ethereum contracts, and initializes a map of contract names to their ABIs.",
+        "purpose": "Defines constants and embeds ABI JSON files for various Ethereum contracts, and initializes a map of contract names to their respective ABIs.",
         "key_types": [
           "string",
           "map[string]string",
@@ -34,11 +34,10 @@
           "github.com/ethereum/go-ethereum/accounts/abi"
         ],
         "side_effects": [
-          "Panic if there is an error parsing ABI JSON",
-          "Initializes ABIMap with parsed ABIs"
+          "Panic if there is an error parsing the ABI JSON."
         ],
         "risks": [
-          "Potential panic due to unhandled errors in ABI parsing"
+          "Potential panic due to malformed ABI JSON."
         ],
         "complexity": "medium"
       },

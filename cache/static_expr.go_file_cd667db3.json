@@ -1,0 +1,28 @@
+{
+  "content_hash": "6eff90190eb55f64f301fbac78268cd3",
+  "timestamp": "2025-09-24T15:46:30.406853+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a static expression type that evaluates to a constant value.",
+    "key_types": [
+      "staticExpr",
+      "cty.Value",
+      "Range",
+      "Expression",
+      "EvalContext",
+      "Diagnostics",
+      "Traversal"
+    ],
+    "functions": [
+      "StaticExpr",
+      "Value",
+      "Variables",
+      "Range",
+      "StartRange"
+    ],
+    "imports": [
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

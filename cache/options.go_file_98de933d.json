@@ -1,0 +1,24 @@
+{
+  "content_hash": "050d0fa6974d06ec3cdda65d542f18aa",
+  "timestamp": "2025-09-24T15:44:11.521029+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines options for expanding HCL expressions with validation checks.",
+    "key_types": [
+      "ExpandOption",
+      "optCheckForEach"
+    ],
+    "functions": [
+      "OptCheckForEach",
+      "applyExpandOption"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Modifies the checkForEach slice in expandBody"
+    ],
+    "complexity": "medium"
+  }
+}

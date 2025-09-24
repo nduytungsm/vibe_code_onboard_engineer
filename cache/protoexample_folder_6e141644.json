@@ -1,0 +1,55 @@
+{
+  "content_hash": "62286c2b9395a66740179d64638d2b41",
+  "timestamp": "2025-09-24T15:42:37.424146+07:00",
+  "result": {
+    "path": "testdata/protoexample",
+    "purpose": "This folder/module is responsible for defining protocol buffer message types and enums for use with the protobuf library.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "test.pb.go"
+    ],
+    "dependencies": [
+      "google.golang.org/protobuf/reflect/protoreflect",
+      "google.golang.org/protobuf/runtime/protoimpl",
+      "reflect",
+      "sync"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating protocol buffer definitions and related functionalities in a single Go file.",
+    "file_summaries": {
+      "testdata/protoexample/test.pb.go": {
+        "language": "Go",
+        "purpose": "This file defines protocol buffer message types and enums for use with the protobuf library.",
+        "key_types": [
+          "FOO",
+          "Test",
+          "Test_OptionalGroup"
+        ],
+        "functions": [
+          "Enum",
+          "String",
+          "Descriptor",
+          "Type",
+          "Number",
+          "Reset",
+          "String",
+          "ProtoMessage",
+          "ProtoReflect",
+          "GetLabel",
+          "GetType",
+          "GetReps",
+          "GetOptionalgroup",
+          "GetRequiredField"
+        ],
+        "imports": [
+          "google.golang.org/protobuf/reflect/protoreflect",
+          "google.golang.org/protobuf/runtime/protoimpl",
+          "reflect",
+          "sync"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

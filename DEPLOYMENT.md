@@ -6,8 +6,27 @@ This guide provides multiple deployment options for your repository analyzer app
 
 - Docker and Docker Compose installed
 - Git installed (for repository cloning functionality)
+- **OpenAI API Key** (required for analysis functionality)
 - At least 2GB RAM and 2 CPU cores recommended
 - Port 80 and 8080 available (or configure different ports)
+
+## 🔑 Setup OpenAI API Key
+
+The application requires an OpenAI API key for repository analysis. Get your API key from [OpenAI's platform](https://platform.openai.com/api-keys).
+
+### Option 1: Environment Variable (Recommended)
+```bash
+export OPENAI_API_KEY="your-api-key-here"
+```
+
+### Option 2: .env File
+```bash
+# Copy the example file
+cp .env.example .env
+
+# Edit .env file and add your API key
+# OPENAI_API_KEY=your-api-key-here
+```
 
 ## 🎯 Deployment Options
 

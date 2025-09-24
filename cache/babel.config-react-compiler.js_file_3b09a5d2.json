@@ -1,0 +1,24 @@
+{
+  "content_hash": "36b5dd437068c4134b4b31ebf8f83231",
+  "timestamp": "2025-09-24T15:24:54.630527+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for Babel with specific plugins for React compilation.",
+    "key_types": [
+      "Object"
+    ],
+    "functions": [
+      "module.exports"
+    ],
+    "imports": [
+      "./babel.config-ts"
+    ],
+    "side_effects": [
+      "Modifies Babel configuration for React compilation."
+    ],
+    "risks": [
+      "Potential compatibility issues with Babel plugins."
+    ],
+    "complexity": "low"
+  }
+}

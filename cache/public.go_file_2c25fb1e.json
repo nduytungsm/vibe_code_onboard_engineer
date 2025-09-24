@@ -1,0 +1,23 @@
+{
+  "content_hash": "f4516e300cc2c1384263578176e9052d",
+  "timestamp": "2025-09-24T15:44:31.48768+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a function for decoding user-defined functions in a configuration language context.",
+    "key_types": [
+      "ContextFunc",
+      "hcl.EvalContext",
+      "hcl.Body",
+      "function.Function",
+      "hcl.Diagnostics"
+    ],
+    "functions": [
+      "DecodeUserFunctions"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty/function"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "content_hash": "0d0ab20ff11ce5d2d4688d64c833476c",
+  "timestamp": "2025-09-24T15:42:19.089572+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for CSRF middleware functions related to origin normalization and subdomain matching.",
+    "key_types": [
+      "struct",
+      "subdomain"
+    ],
+    "functions": [
+      "Test_normalizeOrigin",
+      "TestSubdomainMatch",
+      "Benchmark_CSRF_SubdomainMatch"
+    ],
+    "imports": [
+      "testing",
+      "github.com/stretchr/testify/assert"
+    ],
+    "complexity": "medium"
+  }
+}

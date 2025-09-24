@@ -1,0 +1,77 @@
+{
+  "content_hash": "a5301c1cf39573ca15884e73ef329658",
+  "timestamp": "2025-09-24T15:46:10.958227+07:00",
+  "result": {
+    "path": "docs/extra",
+    "purpose": "Contains additional documentation and resources related to the Fiber web framework.",
+    "languages": {
+      "JSON": 1,
+      "Markdown": 4
+    },
+    "key_modules": [
+      "_category_.json",
+      "benchmarks.md",
+      "faq.md",
+      "internal.md",
+      "learning-resources.md"
+    ],
+    "dependencies": [],
+    "architecture": "The folder contains documentation files in Markdown format and a JSON file for metadata, structured to provide comprehensive information about the Fiber framework and its performance.",
+    "file_summaries": {
+      "docs/extra/_category_.json": {
+        "language": "JSON",
+        "purpose": "Defines metadata for extra contents in Fiber documentation.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "docs/extra/benchmarks.md": {
+        "language": "Markdown",
+        "purpose": "Documentation of performance benchmarks comparing Fiber and other web frameworks.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "docs/extra/faq.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for frequently asked questions regarding the Fiber web framework.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "docs/extra/internal.md": {
+        "language": "Markdown",
+        "purpose": "Documentation of the internal architecture of the Fiber web framework, detailing its structure, request handling flow, routing, and path parsing.",
+        "key_types": [
+          "App",
+          "Context",
+          "DefaultCtx",
+          "CustomCtx",
+          "Router Stack",
+          "MountFields",
+          "Hooks"
+        ],
+        "functions": [
+          "AcquireCtx",
+          "DefaultCtx.Reset",
+          "next",
+          "nextCustom",
+          "parseRoute"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "docs/extra/learning-resources.md": {
+        "language": "Markdown",
+        "purpose": "Documentation of interactive learning resources for mastering Fiber concepts.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

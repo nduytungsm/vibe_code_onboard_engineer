@@ -1,0 +1,20 @@
+{
+  "content_hash": "a2088ef3bba91952cafefa9c3b2686d5",
+  "timestamp": "2025-09-24T15:28:05.699891+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines a React component that uses a fragment and returns a string representation of data.",
+    "key_types": [
+      "BuiltInMixedReadonly",
+      "Function",
+      "Object"
+    ],
+    "functions": [
+      "Foo"
+    ],
+    "imports": [
+      "shared-runtime"
+    ],
+    "complexity": "low"
+  }
+}

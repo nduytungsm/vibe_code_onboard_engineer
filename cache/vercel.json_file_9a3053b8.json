@@ -1,0 +1,15 @@
+{
+  "content_hash": "b8ed10cb42d01665efc23b11d5e6e86f",
+  "timestamp": "2025-09-24T15:25:20.004035+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Configuration for caching fonts in a web application",
+    "key_types": [
+      "object",
+      "array"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

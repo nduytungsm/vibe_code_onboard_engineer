@@ -1,0 +1,26 @@
+{
+  "content_hash": "41a53540d5a1e33f32900f9c2169e981",
+  "timestamp": "2025-09-24T15:26:30.078437+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Document describing the mutability and aliasing model for the React Compiler.",
+    "key_types": [
+      "Place",
+      "ValueKind",
+      "ValueReason",
+      "FunctionExpression",
+      "ObjectMethod",
+      "FunctionSignature"
+    ],
+    "functions": [
+      "Component",
+      "InferMutationAliasingEffects",
+      "InferMutationAliasingRanges",
+      "InferReactiveScopeVariables",
+      "AnalyzeFunctions",
+      "InferFunctionExpressionAliasingEffectsSignature"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

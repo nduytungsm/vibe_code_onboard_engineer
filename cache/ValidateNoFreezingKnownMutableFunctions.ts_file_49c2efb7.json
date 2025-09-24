@@ -1,0 +1,42 @@
+{
+  "content_hash": "eff5087945515b7121f5c621b10682ff",
+  "timestamp": "2025-09-24T15:27:35.818659+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validates that functions with known mutations cannot be passed where a frozen value is expected.",
+    "key_types": [
+      "HIRFunction",
+      "CompilerError",
+      "Result",
+      "Effect",
+      "IdentifierId",
+      "AliasingEffect",
+      "Place"
+    ],
+    "functions": [
+      "validateNoFreezingKnownMutableFunctions",
+      "visitOperand"
+    ],
+    "imports": [
+      "CompilerDiagnostic",
+      "CompilerError",
+      "Effect",
+      "ErrorCategory",
+      "HIRFunction",
+      "IdentifierId",
+      "isRefOrRefLikeMutableType",
+      "Place",
+      "eachInstructionValueOperand",
+      "eachTerminalOperand",
+      "AliasingEffect",
+      "Result"
+    ],
+    "side_effects": [
+      "Pushes diagnostics to errors if mutable functions are detected."
+    ],
+    "risks": [
+      "Potential for incorrect behavior if mutable functions are not properly validated."
+    ],
+    "complexity": "medium"
+  }
+}

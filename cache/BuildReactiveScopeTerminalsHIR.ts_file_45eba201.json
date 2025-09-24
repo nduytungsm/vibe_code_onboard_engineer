@@ -1,0 +1,35 @@
+{
+  "content_hash": "3fac78ce894161bde8045be7c84ff337",
+  "timestamp": "2025-09-24T15:25:56.636637+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file rewrites blocks in a function to introduce ReactiveScopeTerminals and their fallthrough blocks, ensuring proper nesting of program blocks.",
+    "key_types": [
+      "HIRFunction",
+      "BasicBlock",
+      "ReactiveScope",
+      "ReactiveScopeTerminal",
+      "GotoTerminal",
+      "TerminalRewriteInfo",
+      "ScopeTraversalContext",
+      "RewriteContext"
+    ],
+    "functions": [
+      "buildReactiveScopeTerminalsHIR",
+      "pushStartScopeTerminal",
+      "pushEndScopeTerminal",
+      "handleRewrite"
+    ],
+    "imports": [
+      "../CompilerError",
+      "./AssertValidBlockNesting",
+      "./Environment",
+      "./HIR",
+      "./HIRBuilder"
+    ],
+    "side_effects": [
+      "Modifies the function's body blocks by rewriting them to include scope terminals and fallthroughs."
+    ],
+    "complexity": "medium"
+  }
+}

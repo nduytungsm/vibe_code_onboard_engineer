@@ -1,0 +1,41 @@
+{
+  "content_hash": "f365e4e90fd6c74d1904df1b86a76f3c",
+  "timestamp": "2025-09-24T15:26:43.099762+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Aligns reactive scopes to block scopes in a high-level intermediate representation (HIR) of a function.",
+    "key_types": [
+      "InstructionRange",
+      "HIRFunction",
+      "ReactiveScope",
+      "Place",
+      "BlockId",
+      "InstructionId"
+    ],
+    "functions": [
+      "alignReactiveScopesToBlockScopesHIR",
+      "recordPlace"
+    ],
+    "imports": [
+      "CompilerError",
+      "BlockId",
+      "HIRFunction",
+      "InstructionId",
+      "MutableRange",
+      "Place",
+      "ReactiveScope",
+      "getPlaceScope",
+      "makeInstructionId",
+      "eachInstructionLValue",
+      "eachInstructionValueOperand",
+      "eachTerminalOperand",
+      "mapTerminalSuccessors",
+      "terminalFallthrough",
+      "retainWhere_Set"
+    ],
+    "side_effects": [
+      "Modifies the ranges of reactive scopes based on control flow boundaries."
+    ],
+    "complexity": "high"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "content_hash": "bbbc5df47f5307fd41ae8926ed71455f",
+  "timestamp": "2025-09-24T15:43:53.035545+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the redirect functionality of the Fiber web framework.",
+    "key_types": [
+      "Ctx",
+      "redirectionMsgs",
+      "redirectionMsg",
+      "RedirectConfig",
+      "Map"
+    ],
+    "functions": [
+      "Test_Redirect_To",
+      "Test_Redirect_To_WithFlashMessages",
+      "Test_Redirect_Route_WithParams",
+      "Test_Redirect_Route_WithParams_WithQueries",
+      "Test_Redirect_Route_WithOptionalParams",
+      "Test_Redirect_Route_WithOptionalParamsWithoutValue",
+      "Test_Redirect_Route_WithGreedyParameters",
+      "Test_Redirect_Back",
+      "Test_Redirect_Back_WithFlashMessages",
+      "Test_Redirect_Back_WithReferer",
+      "Test_Redirect_Route_WithFlashMessages",
+      "Test_Redirect_Route_WithOldInput"
+    ],
+    "imports": [
+      "bytes",
+      "encoding/hex",
+      "encoding/json",
+      "io",
+      "mime/multipart",
+      "net/http",
+      "net/http/httptest",
+      "net/url",
+      "testing",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Modifies HTTP response status and headers",
+      "Interacts with context and request/response lifecycle"
+    ],
+    "risks": [
+      "Potential for incorrect redirection if parameters are not handled properly",
+      "Security risks related to open redirects if user input is not validated"
+    ],
+    "complexity": "medium"
+  }
+}

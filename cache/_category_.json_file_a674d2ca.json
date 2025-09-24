@@ -1,0 +1,14 @@
+{
+  "content_hash": "87c65ddcb53d4b3968f042939bd38d5d",
+  "timestamp": "2025-09-24T15:27:49.178982+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines a category for documentation guides.",
+    "key_types": [
+      "object"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

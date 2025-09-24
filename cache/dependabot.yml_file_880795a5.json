@@ -1,0 +1,19 @@
+{
+  "content_hash": "84eecf190dd813078905e9503d7849ec",
+  "timestamp": "2025-09-24T15:41:18.08197+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for Dependabot to manage dependencies in a Go module and GitHub Actions.",
+    "key_types": [
+      "updates",
+      "package-ecosystem",
+      "directory",
+      "schedule",
+      "groups",
+      "patterns"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

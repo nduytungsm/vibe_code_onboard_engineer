@@ -1,0 +1,46 @@
+{
+  "content_hash": "d5e26643dde41ff9d8addcb89f022f5d",
+  "timestamp": "2025-09-24T15:43:37.300171+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for static file serving in a Fiber web application.",
+    "key_types": [
+      "fiber.App",
+      "fiber.TestConfig",
+      "Config"
+    ],
+    "functions": [
+      "Test_Static_Index_Default",
+      "Test_Static_Direct",
+      "Test_Static_MaxAge",
+      "Test_Static_Custom_CacheControl",
+      "Test_Static_Disable_Cache",
+      "Test_Static_NotFoundHandler",
+      "Test_Static_Download",
+      "Test_Static_Download_NonASCII",
+      "Test_Static_Group"
+    ],
+    "imports": [
+      "embed",
+      "io",
+      "io/fs",
+      "net/http/httptest",
+      "net/url",
+      "os",
+      "path/filepath",
+      "runtime",
+      "strings",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/require",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "side_effects": [
+      "Creates and deletes temporary files for testing purposes."
+    ],
+    "risks": [
+      "Potential file system access issues, especially on Windows."
+    ],
+    "complexity": "medium"
+  }
+}

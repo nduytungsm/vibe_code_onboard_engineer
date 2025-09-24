@@ -1,0 +1,30 @@
+{
+  "content_hash": "6b8a5194c3d86c0810e366e8a42457f9",
+  "timestamp": "2025-09-24T15:41:28.778798+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a default validator for struct validation using the go-playground validator package.",
+    "key_types": [
+      "defaultValidator",
+      "SliceValidationError"
+    ],
+    "functions": [
+      "Error",
+      "ValidateStruct",
+      "validateStruct",
+      "Engine",
+      "lazyinit"
+    ],
+    "imports": [
+      "reflect",
+      "strconv",
+      "strings",
+      "sync",
+      "github.com/go-playground/validator/v10"
+    ],
+    "side_effects": [
+      "Initializes the validator instance on first use."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "content_hash": "a65d4ad299b8a3c0045b7b08de6f0e33",
+  "timestamp": "2025-09-23T16:57:17.643731+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for ERC721 tokens and provides a function to convert between them.",
+    "key_types": [
+      "MKPErc721Token1",
+      "MKPErc721Token"
+    ],
+    "functions": [
+      "ConvertMKPErc721Token"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

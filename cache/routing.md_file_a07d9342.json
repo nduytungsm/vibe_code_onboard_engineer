@@ -1,0 +1,16 @@
+{
+  "content_hash": "f9bd44064075d8a4215d53fd77aa98f2",
+  "timestamp": "2025-09-24T15:41:13.94332+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for routing in a web application, explaining how to define routes and handle parameters.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "@theme/Tabs",
+      "@theme/TabItem",
+      "./../partials/routing/handler.md"
+    ],
+    "complexity": "medium"
+  }
+}

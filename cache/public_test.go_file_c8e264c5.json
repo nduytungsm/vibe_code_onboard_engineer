@@ -1,0 +1,36 @@
+{
+  "content_hash": "0e657c587fabe2daa65162d0a6099e06",
+  "timestamp": "2025-09-24T15:46:19.800134+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for JSON parsing functionality using HCL.",
+    "key_types": [
+      "File",
+      "Body",
+      "Expression",
+      "EvalContext"
+    ],
+    "functions": [
+      "TestParse_nonObject",
+      "TestParseTemplate",
+      "TestParseTemplateUnwrap",
+      "TestParse_malformed",
+      "TestParseWithStartPos",
+      "TestParseExpression",
+      "TestParseExpression_malformed",
+      "TestParseExpressionWithStartPos"
+    ],
+    "imports": [
+      "fmt",
+      "strings",
+      "testing",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Logging diagnostics to the test output",
+      "Failing tests on unexpected conditions"
+    ],
+    "complexity": "medium"
+  }
+}

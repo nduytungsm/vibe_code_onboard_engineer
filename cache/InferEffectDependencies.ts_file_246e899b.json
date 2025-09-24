@@ -1,0 +1,45 @@
+{
+  "content_hash": "364dac37babbf5e4a7c074dbfdb018a3",
+  "timestamp": "2025-09-24T15:26:26.033786+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Infers reactive dependencies captured by useEffect lambdas and adds them as a second argument to the useEffect call if no dependency array is provided.",
+    "key_types": [
+      "HIRFunction",
+      "IdentifierId",
+      "TInstruction",
+      "ReactiveScopeDependencies",
+      "BasicBlock",
+      "ArrayExpression",
+      "Place"
+    ],
+    "functions": [
+      "inferEffectDependencies",
+      "getOrInsertWith",
+      "inferReactiveIdentifiers",
+      "inferMinimalDependencies",
+      "buildDependencyInstructions",
+      "collectDepUsages"
+    ],
+    "imports": [
+      "@babel/types",
+      "..",
+      "../HIR",
+      "../HIR/CollectHoistablePropertyLoads",
+      "../HIR/CollectOptionalChainDependencies",
+      "../HIR/DeriveMinimalDependenciesHIR",
+      "../HIR/Environment",
+      "../HIR/HIRBuilder",
+      "../HIR/PropagateScopeDependenciesHIR",
+      "../HIR/ScopeDependencyUtils",
+      "../HIR/visitors",
+      "../Utils/Stack",
+      "../Utils/utils",
+      "../Optimization"
+    ],
+    "side_effects": [
+      "Modifies the function's effect dependencies based on inferred values."
+    ],
+    "complexity": "high"
+  }
+}

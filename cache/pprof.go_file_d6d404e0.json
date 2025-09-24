@@ -1,0 +1,30 @@
+{
+  "content_hash": "6fd62754e15af611f3e07009c9f484b2",
+  "timestamp": "2025-09-24T15:43:04.735639+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a middleware for the Fiber web framework that integrates pprof for profiling Go applications.",
+    "key_types": [
+      "Config",
+      "fiber.Handler",
+      "fiber.Ctx"
+    ],
+    "functions": [
+      "New"
+    ],
+    "imports": [
+      "net/http/pprof",
+      "strings",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp/fasthttpadaptor"
+    ],
+    "side_effects": [
+      "Modifies HTTP request handling to include profiling routes"
+    ],
+    "risks": [
+      "Exposing profiling endpoints may lead to information disclosure if not properly secured"
+    ],
+    "complexity": "medium"
+  }
+}

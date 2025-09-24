@@ -1,9 +1,9 @@
 {
-  "content_hash": "88758f6f538788bd6c6241caa81c968f",
-  "timestamp": "2025-09-23T16:06:58.650404+07:00",
+  "content_hash": "0c14030f325a340cc631a422e7f7408a",
+  "timestamp": "2025-09-23T17:01:51.852637+07:00",
   "result": {
     "path": "pkg/providers/skynet",
-    "purpose": "This folder/module is responsible for providing functionalities to interact with the Skynet provider, including configuration, data models, and services for blockchain interactions related to token balances and NFTs.",
+    "purpose": "This folder/module is responsible for providing functionalities to interact with the Skynet provider, including configuration, data models, and services for blockchain interactions.",
     "languages": {
       "Go": 5
     },
@@ -20,11 +20,11 @@
       "github.com/rs/zerolog/log",
       "github.com/orcaman/concurrent-map/v2"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing files by their responsibilities such as configuration, data models, service definitions, and utility functions, all focused on blockchain interactions.",
+    "architecture": "The folder follows a modular architecture pattern, organizing files by their responsibilities such as configuration, service definitions, and data models, facilitating maintainability and scalability.",
     "file_summaries": {
       "pkg/providers/skynet/config.go": {
         "language": "Go",
-        "purpose": "Defines a configuration structure for the Skynet provider with various API endpoints and settings.",
+        "purpose": "Defines the configuration structure for the Skynet provider.",
         "key_types": [
           "Config",
           "time.Duration",
@@ -39,7 +39,7 @@
       },
       "pkg/providers/skynet/func.go": {
         "language": "Go",
-        "purpose": "This file provides functions to convert JSON keys from camelCase to snake_case and to handle JSON objects and arrays.",
+        "purpose": "This file provides functions to convert JSON keys from camelCase to snake_case and to append additional data to JSON objects.",
         "key_types": [
           "json.RawMessage",
           "map[string]json.RawMessage",
@@ -59,7 +59,7 @@
       },
       "pkg/providers/skynet/models.go": {
         "language": "Go",
-        "purpose": "Defines data models and request/response structures for interacting with a blockchain API related to token balances and NFTs.",
+        "purpose": "Defines data models and request/response structures for interacting with a blockchain API.",
         "key_types": [
           "PagingRequest",
           "PagingResponse",
@@ -68,6 +68,7 @@
           "ErrorMessage",
           "SearchTokenBalancesSummaryForAddrRequest",
           "TokenBalance",
+          "SearchTokenBalancesRequest",
           "TokenBalancesResponse",
           "NFTItemResponse",
           "SearchNFTsRequest",
@@ -107,13 +108,12 @@
       },
       "pkg/providers/skynet/skn_svc.go": {
         "language": "Go",
-        "purpose": "This file defines a service for interacting with token balances and transactions on the Ethereum blockchain.",
+        "purpose": "This file defines a service for interacting with token balances and NFT collections on the Ethereum blockchain.",
         "key_types": [
           "Service",
           "service",
           "TokenBalancesResponse",
           "PagingRequest",
-          "TransactionItem",
           "GetAccountInfoResponse"
         ],
         "functions": [
@@ -131,7 +131,10 @@
           "GetTokenStandard",
           "SearchActivities",
           "SearchActivitiesV2",
-          "SearchTokenBalanceOfERC1155CollectionForAddr"
+          "SearchTokenBalanceOfERC1155CollectionForAddr",
+          "getKnownContracts",
+          "searchTokenBalancesSummaryForAddrV2",
+          "getTokenBalanceForHome"
         ],
         "imports": [
           "context",

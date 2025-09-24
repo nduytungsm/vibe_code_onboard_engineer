@@ -1,0 +1,27 @@
+{
+  "content_hash": "b9fd75970d8055a8172cdcc9e562a3e5",
+  "timestamp": "2025-09-24T15:24:49.824923+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow to automatically close pull requests targeting specific branches.",
+    "key_types": [
+      "job",
+      "step",
+      "environment variable"
+    ],
+    "functions": [
+      "createReview",
+      "update"
+    ],
+    "imports": [
+      "actions/github-script@v7"
+    ],
+    "side_effects": [
+      "Closes pull requests and creates reviews on GitHub"
+    ],
+    "risks": [
+      "Potential for incorrect closure of pull requests if misconfigured"
+    ],
+    "complexity": "medium"
+  }
+}

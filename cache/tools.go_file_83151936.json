@@ -1,0 +1,14 @@
+{
+  "content_hash": "fb8f2d049dce91a1ff9e30b269afeab1",
+  "timestamp": "2025-09-24T15:46:31.837621+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is used to manage build dependencies for tools in the HCL package.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "golang.org/x/tools/cmd/stringer"
+    ],
+    "complexity": "low"
+  }
+}

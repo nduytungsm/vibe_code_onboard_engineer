@@ -1,0 +1,26 @@
+{
+  "content_hash": "aaedf82ffaa61ce369e69b6407bfca84",
+  "timestamp": "2025-09-24T15:28:04.84953+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for CORS middleware in Fiber framework",
+    "key_types": [],
+    "functions": [
+      "New",
+      "dbCheckOrigin"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/cors"
+    ],
+    "side_effects": [
+      "Panic on invalid origins",
+      "Logging of misconfigured origins"
+    ],
+    "risks": [
+      "Misconfiguration can lead to security vulnerabilities",
+      "Using wildcard origins with credentials can expose the application to threats"
+    ],
+    "complexity": "medium"
+  }
+}

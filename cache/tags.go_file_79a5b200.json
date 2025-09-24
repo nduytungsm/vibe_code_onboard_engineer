@@ -1,0 +1,27 @@
+{
+  "content_hash": "9b7053832962bbf48fce91f0009dd500",
+  "timestamp": "2025-09-24T15:43:00.949899+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines logging tags and a function to create a mapping of default and custom logging tags for a logger in a web application.",
+    "key_types": [
+      "Config",
+      "LogFunc",
+      "Buffer",
+      "Data"
+    ],
+    "functions": [
+      "createTagMap"
+    ],
+    "imports": [
+      "fmt",
+      "maps",
+      "strings",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "side_effects": [
+      "Modifies the logging behavior based on custom tags provided in the configuration."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "content_hash": "d6e768cdda130b9691abcaa292ef1f6f",
+  "timestamp": "2025-09-24T15:26:57.422502+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Removes all reactive scopes for performance evaluation without memoization.",
+    "key_types": [
+      "ReactiveFunction",
+      "ReactiveScopeBlock",
+      "ReactiveStatement",
+      "ReactiveFunctionTransform",
+      "Transformed"
+    ],
+    "functions": [
+      "pruneAllReactiveScopes",
+      "transformScope"
+    ],
+    "imports": [
+      "../HIR/HIR",
+      "./visitors"
+    ],
+    "side_effects": [
+      "Modifies the structure of reactive scopes"
+    ],
+    "complexity": "medium"
+  }
+}

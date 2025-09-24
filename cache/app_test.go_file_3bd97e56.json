@@ -1,0 +1,61 @@
+{
+  "content_hash": "5a7a1f10d030c15553d856475ef5bba3",
+  "timestamp": "2025-09-24T15:40:12.628963+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the Fiber web framework, testing various aspects of the application including handler responses and error handling.",
+    "key_types": [
+      "Ctx",
+      "App",
+      "Handler",
+      "http.Response"
+    ],
+    "functions": [
+      "testEmptyHandler",
+      "testStatus200",
+      "testErrorResponse",
+      "Test_App_Test_Goroutine_Leak_Compare",
+      "Test_App_MethodNotAllowed",
+      "Test_App_Custom_Middleware_404_Should_Not_SetMethodNotAllowed",
+      "Test_App_ServerErrorHandler_SmallReadBuffer",
+      "Test_App_Errors",
+      "Test_App_BodyLimit_Negative",
+      "Test_App_BodyLimit_Zero"
+    ],
+    "imports": [
+      "bufio",
+      "bytes",
+      "context",
+      "crypto/tls",
+      "errors",
+      "fmt",
+      "io",
+      "mime/multipart",
+      "net",
+      "net/http",
+      "net/http/httptest",
+      "os",
+      "reflect",
+      "regexp",
+      "runtime",
+      "strconv",
+      "strings",
+      "sync",
+      "testing",
+      "time",
+      "unsafe",
+      "github.com/gofiber/utils/v2",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp",
+      "github.com/valyala/fasthttp/fasthttputil"
+    ],
+    "side_effects": [
+      "Potential memory leaks if goroutines are not properly managed during tests."
+    ],
+    "risks": [
+      "Possible denial of service if body limits are not enforced correctly."
+    ],
+    "complexity": "medium"
+  }
+}

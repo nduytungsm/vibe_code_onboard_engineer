@@ -1,0 +1,352 @@
+{
+  "content_hash": "48746d32800a41b9483ca15b67780546",
+  "timestamp": "2025-09-24T15:45:32.828713+07:00",
+  "result": {
+    "path": "docs/api",
+    "purpose": "This folder contains documentation for the Fiber web framework's API, detailing various components, methods, and usage examples.",
+    "languages": {
+      "Go": 2,
+      "JSON": 1,
+      "Markdown": 8
+    },
+    "key_modules": [
+      "app.md",
+      "bind.md",
+      "ctx.md",
+      "fiber.md",
+      "hooks.md",
+      "log.md",
+      "redirect.md",
+      "services.md",
+      "state.md",
+      "_category_.json"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/redis/go-redis/v9",
+      "github.com/testcontainers/testcontainers-go/modules/redis"
+    ],
+    "architecture": "The folder follows a modular documentation structure, with each file focusing on a specific aspect of the Fiber framework, utilizing Markdown for detailed explanations and Go for defining constants and interfaces.",
+    "file_summaries": {
+      "docs/api/_category_.json": {
+        "language": "JSON",
+        "purpose": "Defines a category for API documentation in Fiber.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "docs/api/app.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for the Fiber application framework, detailing the App type and its methods.",
+        "key_types": [
+          "App",
+          "Handler",
+          "Router",
+          "Route"
+        ],
+        "functions": [
+          "GetString",
+          "GetBytes",
+          "MountPath",
+          "Group",
+          "Route",
+          "HandlersCount",
+          "Stack",
+          "Name",
+          "GetRoute",
+          "GetRoutes"
+        ],
+        "imports": [
+          "@site/src/components/reference",
+          "./../partials/routing/handler.md",
+          "log",
+          "github.com/gofiber/fiber/v3",
+          "encoding/json"
+        ],
+        "side_effects": [
+          "Mounting order affects route handling",
+          "Logging application errors"
+        ],
+        "risks": [
+          "Potential for route conflicts if not managed properly"
+        ],
+        "complexity": "medium"
+      },
+      "docs/api/bind.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for binding request and response items to a struct in a web application.",
+        "key_types": [
+          "Bind",
+          "User",
+          "Person"
+        ],
+        "functions": [
+          "All",
+          "Body",
+          "CBOR",
+          "Form",
+          "JSON",
+          "MsgPack",
+          "XML"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Modifies the struct passed to binding functions with request data."
+        ],
+        "complexity": "medium"
+      },
+      "docs/api/constants.md": {
+        "language": "Go",
+        "purpose": "Defines core HTTP constants used throughout the Fiber framework.",
+        "key_types": [
+          "const"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "docs/api/ctx.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for the Ctx interface in a web framework, detailing its methods and usage.",
+        "key_types": [
+          "Ctx",
+          "context.Context",
+          "App",
+          "Bind"
+        ],
+        "functions": [
+          "Deadline",
+          "Done",
+          "Err",
+          "Value",
+          "App",
+          "Bind",
+          "Context",
+          "SetContext",
+          "Drop",
+          "GetReqHeaders",
+          "GetRespHeader",
+          "GetRespHeaders",
+          "GetRouteURL",
+          "Locals",
+          "Next",
+          "Redirect"
+        ],
+        "imports": [
+          "context",
+          "time",
+          "fiber"
+        ],
+        "side_effects": [
+          "Modifies request context",
+          "May terminate client connection silently"
+        ],
+        "risks": [
+          "Potential misuse of context leading to race conditions",
+          "Improper handling of sensitive data in Locals"
+        ],
+        "complexity": "medium"
+      },
+      "docs/api/fiber.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for the Fiber package, detailing how to create a new instance and its configuration options.",
+        "key_types": [
+          "App",
+          "Config"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "@site/src/components/reference"
+        ],
+        "complexity": "low"
+      },
+      "docs/api/hooks.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for hooks in the Fiber web framework, detailing their usage and examples.",
+        "key_types": [
+          "OnRouteHandler",
+          "OnNameHandler",
+          "OnGroupHandler",
+          "OnGroupNameHandler",
+          "OnListenHandler",
+          "OnForkHandler",
+          "OnPreShutdownHandler",
+          "OnPostShutdownHandler",
+          "OnMountHandler"
+        ],
+        "functions": [
+          "OnRoute",
+          "OnName",
+          "OnGroup",
+          "OnGroupName",
+          "OnListen",
+          "OnFork",
+          "OnPreShutdown",
+          "OnPostShutdown",
+          "OnMount"
+        ],
+        "imports": [
+          "@theme/Tabs",
+          "@theme/TabItem",
+          "github.com/gofiber/fiber/v3",
+          "fmt",
+          "log",
+          "os"
+        ],
+        "side_effects": [
+          "Logs output when hooks are triggered",
+          "Modifies application behavior based on hook callbacks"
+        ],
+        "complexity": "medium"
+      },
+      "docs/api/log.md": {
+        "language": "markdown",
+        "purpose": "Documentation for Fiber's built-in log package",
+        "key_types": [
+          "Level",
+          "CommonLogger",
+          "ConfigurableLogger",
+          "AllLogger"
+        ],
+        "functions": [
+          "log.Info",
+          "log.Debug",
+          "log.Warn",
+          "log.Error",
+          "log.Fatal",
+          "log.Panic",
+          "log.Debugf",
+          "log.Infof",
+          "log.Warnf",
+          "log.Errorf",
+          "log.Fatalf",
+          "log.Debugw",
+          "log.Infow",
+          "log.Warnw",
+          "log.Errorw",
+          "log.Fatalw",
+          "log.SetLevel",
+          "log.SetOutput",
+          "log.WithContext",
+          "fiberlog.SetLogger",
+          "fiberlog.DefaultLogger"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3/log",
+          "log",
+          "os",
+          "io"
+        ],
+        "side_effects": [
+          "Program termination on Fatal log level",
+          "Changing log output destination"
+        ],
+        "risks": [
+          "Potential data loss if logs are not properly handled",
+          "Concurrency issues with SetLevel method"
+        ],
+        "complexity": "medium"
+      },
+      "docs/api/redirect.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for Fiber's built-in redirect package, detailing redirect methods and usage examples.",
+        "key_types": [
+          "Redirect",
+          "RedirectConfig"
+        ],
+        "functions": [
+          "To(location string) error",
+          "Route(name string, config ...RedirectConfig) error",
+          "Back(fallback string) error",
+          "Status(status int) *Redirect",
+          "Messages() map[string]string",
+          "Message(key string) *Redirect",
+          "OldInputs() map[string]string",
+          "OldInput(key string) string",
+          "With(key, value string) *Redirect",
+          "WithInput() *Redirect"
+        ],
+        "imports": [
+          "fiber"
+        ],
+        "side_effects": [
+          "Redirects the client to another URL or route."
+        ],
+        "complexity": "medium"
+      },
+      "docs/api/services.md": {
+        "language": "Go",
+        "purpose": "Defines a Service interface and provides examples of implementing a Redis service for use with the Fiber web framework.",
+        "key_types": [
+          "Service",
+          "redisService",
+          "User"
+        ],
+        "functions": [
+          "Start",
+          "String",
+          "State",
+          "Terminate"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "log",
+          "time",
+          "github.com/gofiber/fiber/v3",
+          "github.com/redis/go-redis/v9",
+          "github.com/testcontainers/testcontainers-go/modules/redis"
+        ],
+        "side_effects": [
+          "Starts and stops external Redis service during application lifecycle."
+        ],
+        "risks": [
+          "Potential for resource leaks if services are not terminated properly."
+        ],
+        "complexity": "medium"
+      },
+      "docs/api/state.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for state management in a Fiber application, detailing the State type and its methods.",
+        "key_types": [
+          "State"
+        ],
+        "functions": [
+          "Set",
+          "Get",
+          "MustGet",
+          "Has",
+          "Delete",
+          "Reset",
+          "Keys",
+          "Len",
+          "GetString",
+          "GetInt",
+          "GetBool",
+          "GetFloat64",
+          "GetUint",
+          "GetInt8",
+          "GetInt16",
+          "GetInt32",
+          "GetInt64",
+          "GetUint8",
+          "GetUint16",
+          "GetUint32",
+          "GetUint64",
+          "GetUintptr",
+          "GetFloat32",
+          "GetComplex64",
+          "GetComplex128",
+          "GetState",
+          "MustGetState",
+          "GetStateWithDefault"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      }
+    }
+  }
+}

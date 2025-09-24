@@ -1,0 +1,26 @@
+{
+  "content_hash": "29d16a33dda60193b41f83a9be681efa",
+  "timestamp": "2025-09-24T15:41:09.020233+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation of the internal architecture of the Fiber web framework, detailing its structure, request handling flow, routing, and path parsing.",
+    "key_types": [
+      "App",
+      "Context",
+      "DefaultCtx",
+      "CustomCtx",
+      "Router Stack",
+      "MountFields",
+      "Hooks"
+    ],
+    "functions": [
+      "AcquireCtx",
+      "DefaultCtx.Reset",
+      "next",
+      "nextCustom",
+      "parseRoute"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

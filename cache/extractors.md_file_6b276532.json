@@ -1,0 +1,31 @@
+{
+  "content_hash": "4ac7d3ae780a038a99957a7cd9c038b9",
+  "timestamp": "2025-09-24T15:41:12.589652+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for using extractors in Fiber middleware",
+    "key_types": [
+      "Extractor",
+      "fiber.Ctx"
+    ],
+    "functions": [
+      "FromAuthHeader",
+      "FromCookie",
+      "FromParam",
+      "FromForm",
+      "FromHeader",
+      "FromQuery",
+      "FromCustom",
+      "Chain"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3/extractors"
+    ],
+    "risks": [
+      "Sensitive data exposure through improper source usage",
+      "Logging sensitive values",
+      "Insecure transmission if not using HTTPS"
+    ],
+    "complexity": "medium"
+  }
+}

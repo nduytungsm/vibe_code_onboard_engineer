@@ -1,0 +1,45 @@
+{
+  "content_hash": "41f8e3ebf6bbae6f5f31d048526d8f19",
+  "timestamp": "2025-09-24T15:43:24.325496+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides session management middleware for the Fiber web framework, handling user sessions and storing session data.",
+    "key_types": [
+      "Middleware",
+      "Config",
+      "Session",
+      "Store"
+    ],
+    "functions": [
+      "New",
+      "NewWithStore",
+      "FromContext",
+      "Set",
+      "Get",
+      "Delete",
+      "Keys",
+      "Destroy",
+      "Fresh",
+      "ID",
+      "Reset",
+      "Regenerate",
+      "saveSession",
+      "initialize",
+      "acquireMiddleware",
+      "releaseMiddleware"
+    ],
+    "imports": [
+      "errors",
+      "sync",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "side_effects": [
+      "Panic on type assertion failure in acquireMiddleware",
+      "Potential panic on session retrieval failure in initialize"
+    ],
+    "risks": [
+      "Session fixation attacks if session regeneration is not used after authentication"
+    ],
+    "complexity": "medium"
+  }
+}

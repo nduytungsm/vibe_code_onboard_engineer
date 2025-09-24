@@ -1,0 +1,30 @@
+{
+  "content_hash": "db5310ed344dd88f8ace6391716333e2",
+  "timestamp": "2025-09-24T14:22:19.818928+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains database migration scripts to create and drop tables related to announcements, special offers, and user preferences.",
+    "key_types": [
+      "UUID",
+      "VARCHAR",
+      "TEXT",
+      "JSONB",
+      "TIMESTAMP"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "CREATE INDEX",
+      "DROP TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates tables and indexes in the database",
+      "Modifies the database schema"
+    ],
+    "risks": [
+      "Potential for SQL injection if user input is not properly sanitized",
+      "Data loss if DROP TABLE commands are executed without backups"
+    ],
+    "complexity": "medium"
+  }
+}

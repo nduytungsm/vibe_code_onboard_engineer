@@ -1,0 +1,48 @@
+{
+  "content_hash": "013afdbaa3af250264e21908cbdadee5",
+  "timestamp": "2025-09-24T15:27:12.955624+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a client for sending HTTP requests with support for hooks, retries, and timeouts.",
+    "key_types": [
+      "Client",
+      "Request",
+      "Response",
+      "core",
+      "RetryConfig"
+    ],
+    "functions": [
+      "addMissingPort",
+      "getRetryConfig",
+      "execFunc",
+      "preHooks",
+      "afterHooks",
+      "timeout",
+      "execute",
+      "acquireErrChan",
+      "releaseErrChan",
+      "newCore"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "net",
+      "strconv",
+      "strings",
+      "sync",
+      "sync/atomic",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/addon/retry",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Modifies the request and response objects through hooks.",
+      "Allocates and releases resources such as error channels and HTTP requests/responses."
+    ],
+    "risks": [
+      "Potential for data races if error channels are not properly managed.",
+      "Improper handling of context cancellation may lead to resource leaks."
+    ],
+    "complexity": "medium"
+  }
+}

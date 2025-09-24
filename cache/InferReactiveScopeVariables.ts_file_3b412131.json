@@ -1,0 +1,52 @@
+{
+  "content_hash": "0cdcdeae7ebe995d52569c444d0f084f",
+  "timestamp": "2025-09-24T15:26:54.267505+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file infers reactive scope variables for a given function, determining which variables mutate together and assigning them to unique reactive scopes.",
+    "key_types": [
+      "HIRFunction",
+      "Identifier",
+      "ReactiveScope",
+      "MutableRange",
+      "DisjointSet"
+    ],
+    "functions": [
+      "inferReactiveScopeVariables",
+      "mergeLocation",
+      "isMutable",
+      "inRange",
+      "mayAllocate",
+      "findDisjointMutableValues"
+    ],
+    "imports": [
+      "CompilerError",
+      "SourceLocation",
+      "Environment",
+      "DeclarationId",
+      "GeneratedSource",
+      "HIRFunction",
+      "Identifier",
+      "Instruction",
+      "InstructionId",
+      "MutableRange",
+      "Place",
+      "ReactiveScope",
+      "makeInstructionId",
+      "doesPatternContainSpreadElement",
+      "eachInstructionOperand",
+      "eachPatternOperand",
+      "DisjointSet",
+      "assertExhaustive"
+    ],
+    "side_effects": [
+      "Modifies the scope property of identifiers",
+      "Logs errors if mutable ranges are invalid"
+    ],
+    "risks": [
+      "Potential for incorrect scope assignment leading to runtime errors",
+      "Improper handling of mutable ranges could cause unexpected behavior"
+    ],
+    "complexity": "medium"
+  }
+}

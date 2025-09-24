@@ -1,0 +1,43 @@
+{
+  "content_hash": "42abc32e31c170c9f3d3e4284d7886b2",
+  "timestamp": "2025-09-24T15:42:29.070983+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for a custom response writer in a web framework",
+    "key_types": [
+      "responseWriter",
+      "ResponseWriter",
+      "mockHijacker",
+      "mockPusherResponseWriter",
+      "nonPusherResponseWriter"
+    ],
+    "functions": [
+      "init",
+      "TestResponseWriterUnwrap",
+      "TestResponseWriterReset",
+      "TestResponseWriterWriteHeader",
+      "TestResponseWriterWriteHeadersNow",
+      "TestResponseWriterWrite",
+      "TestResponseWriterHijack",
+      "TestResponseWriterHijackAfterWrite",
+      "TestResponseWriterFlush",
+      "TestResponseWriterStatusCode",
+      "TestPusherWithPusher",
+      "TestPusherWithoutPusher"
+    ],
+    "imports": [
+      "bufio",
+      "net",
+      "net/http",
+      "net/http/httptest",
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies the state of the response writer during tests",
+      "Panics on certain conditions in hijack tests"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "content_hash": "a461e6a7e135cc13d3a212f68b098df1",
+  "timestamp": "2025-09-24T15:45:59.760286+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality to create and manipulate HCL (HashiCorp Configuration Language) files.",
+    "key_types": [
+      "File",
+      "Body"
+    ],
+    "functions": [
+      "NewFile",
+      "ParseConfig",
+      "Format"
+    ],
+    "imports": [
+      "bytes",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Modifies the internal representation of HCL files",
+      "Writes formatted output to a buffer"
+    ],
+    "risks": [
+      "Potential for malformed HCL leading to runtime errors",
+      "Ignoring syntax errors may lead to undesirable output"
+    ],
+    "complexity": "medium"
+  }
+}

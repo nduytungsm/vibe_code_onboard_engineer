@@ -1,0 +1,46 @@
+{
+  "content_hash": "a8f18063f6e2ee4a9f62a59527f665a0",
+  "timestamp": "2025-09-24T15:26:49.832467+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file contains a function to extract scope declarations from destructuring assignments in reactive functions.",
+    "key_types": [
+      "ReactiveFunction",
+      "State",
+      "Visitor",
+      "ReactiveInstruction",
+      "Destructure",
+      "Environment",
+      "DeclarationId"
+    ],
+    "functions": [
+      "extractScopeDeclarationsFromDestructuring",
+      "transformDestructuring",
+      "visitScope",
+      "transformInstruction"
+    ],
+    "imports": [
+      "DeclarationId",
+      "Destructure",
+      "Environment",
+      "IdentifierId",
+      "InstructionKind",
+      "Place",
+      "ReactiveFunction",
+      "ReactiveInstruction",
+      "ReactiveScopeBlock",
+      "ReactiveStatement",
+      "promoteTemporary",
+      "clonePlaceToTemporary",
+      "eachPatternOperand",
+      "mapPatternOperands",
+      "ReactiveFunctionTransform",
+      "Transformed",
+      "visitReactiveFunction"
+    ],
+    "side_effects": [
+      "Modifies the state of the reactive function by transforming destructuring assignments."
+    ],
+    "complexity": "medium"
+  }
+}

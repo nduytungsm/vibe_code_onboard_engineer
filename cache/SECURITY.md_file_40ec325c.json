@@ -1,0 +1,12 @@
+{
+  "content_hash": "c9b72646f05e03737337518a9423b0fd",
+  "timestamp": "2025-09-24T15:26:21.135926+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Document outlining the security policy for the Fiber project, including reporting procedures and incident response.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

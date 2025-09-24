@@ -1,0 +1,22 @@
+{
+  "content_hash": "a6f4efce2a37266e5aa94dac83b5849a",
+  "timestamp": "2025-09-24T15:42:07.497319+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a cache manager that encodes and decodes messages using the msgp library.",
+    "key_types": [
+      "item"
+    ],
+    "functions": [
+      "DecodeMsg",
+      "EncodeMsg",
+      "MarshalMsg",
+      "UnmarshalMsg",
+      "Msgsize"
+    ],
+    "imports": [
+      "github.com/tinylib/msgp/msgp"
+    ],
+    "complexity": "medium"
+  }
+}

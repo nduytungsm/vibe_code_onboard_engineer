@@ -1,0 +1,29 @@
+{
+  "content_hash": "be4442f8f3b2cc4527048074bfd9553f",
+  "timestamp": "2025-09-24T15:26:41.038058+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements an exponential backoff retry mechanism for function calls.",
+    "key_types": [
+      "ExponentialBackoff",
+      "time.Duration"
+    ],
+    "functions": [
+      "NewExponentialBackoff",
+      "Retry",
+      "next"
+    ],
+    "imports": [
+      "crypto/rand",
+      "math/big",
+      "time"
+    ],
+    "side_effects": [
+      "Sleeps for a duration based on the backoff algorithm."
+    ],
+    "risks": [
+      "Potential for blocking if the retry count is high and the function takes a long time to execute."
+    ],
+    "complexity": "medium"
+  }
+}

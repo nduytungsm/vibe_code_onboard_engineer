@@ -1,0 +1,20 @@
+{
+  "content_hash": "1f432ba3883d5bbd9772af742561b182",
+  "timestamp": "2025-09-24T15:44:01.136963+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a function to test if a given expression is a function call and extracts the function name and arguments if it is.",
+    "key_types": [
+      "Expression",
+      "StaticCall",
+      "Diagnostics",
+      "Diagnostic",
+      "Range"
+    ],
+    "functions": [
+      "ExprCall"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

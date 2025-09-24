@@ -1,0 +1,29 @@
+{
+  "content_hash": "cfa538c2ae6158f1bf195a2694a7098a",
+  "timestamp": "2025-09-24T15:24:57.612896+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for ESLint with custom linting rules for TypeScript.",
+    "key_types": [
+      "object",
+      "array"
+    ],
+    "functions": [
+      "module.exports"
+    ],
+    "imports": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "@typescript-eslint/parser",
+      "@typescript-eslint"
+    ],
+    "side_effects": [
+      "Modifies linting behavior for TypeScript code",
+      "Ignores specific patterns in the project"
+    ],
+    "risks": [
+      "Potential for missing important linting errors due to disabled rules"
+    ],
+    "complexity": "medium"
+  }
+}

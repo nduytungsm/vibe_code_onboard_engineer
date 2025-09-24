@@ -1,0 +1,20 @@
+{
+  "content_hash": "ead2a2aaecff6093ec42f0210308fd0c",
+  "timestamp": "2025-09-24T15:40:20.364443+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a JSON binder for parsing JSON request bodies.",
+    "key_types": [
+      "JSONBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "Reset"
+    ],
+    "imports": [
+      "github.com/gofiber/utils/v2"
+    ],
+    "complexity": "low"
+  }
+}

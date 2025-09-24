@@ -1,0 +1,27 @@
+{
+  "content_hash": "8fdbaf5fbd94b30f3b5ded3e0271866e",
+  "timestamp": "2025-09-24T15:41:33.69969+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a middleware that skips a handler based on a predicate function for HTTP requests.",
+    "key_types": [
+      "fiber.Handler",
+      "fiber.Ctx"
+    ],
+    "functions": [
+      "New",
+      "BasicHandler"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/skip"
+    ],
+    "side_effects": [
+      "Modifies request handling based on the predicate function."
+    ],
+    "risks": [
+      "Potential for bypassing critical handlers if predicate logic is flawed."
+    ],
+    "complexity": "medium"
+  }
+}

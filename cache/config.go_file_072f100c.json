@@ -1,0 +1,26 @@
+{
+  "content_hash": "59a42370bb96e5ec8bee818d513836ed",
+  "timestamp": "2025-09-24T15:42:55.666885+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for a logging middleware in a web application using the Fiber framework.",
+    "key_types": [
+      "Config",
+      "Buffer",
+      "LogFunc"
+    ],
+    "functions": [
+      "configDefault"
+    ],
+    "imports": [
+      "io",
+      "os",
+      "time",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "side_effects": [
+      "Modifies the logging configuration based on provided parameters."
+    ],
+    "complexity": "medium"
+  }
+}

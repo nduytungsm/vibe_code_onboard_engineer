@@ -1,0 +1,50 @@
+{
+  "content_hash": "0616e1df2c85e744c11038b541afb4fc",
+  "timestamp": "2025-09-23T16:58:15.30036+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines models and types for handling requests and responses related to transactions, tokens, and NFTs in the Skynet V2 API.",
+    "key_types": [
+      "PagingReq",
+      "PagingResponse",
+      "PagingResListItems",
+      "SortItem",
+      "ErrorMessage",
+      "AddressRequest",
+      "BlockRequest",
+      "TimeRequest",
+      "TokenBalance",
+      "TokenBalancesRes",
+      "TransactionItem",
+      "LogResponse",
+      "NFTItemResponse",
+      "SearchNFTsReq",
+      "SearchNFTsRes",
+      "SearchTokenTransfersReq",
+      "TokenTransferItem"
+    ],
+    "functions": [
+      "BuildQueryParams",
+      "GetTotal",
+      "Error",
+      "ToTokenBalance",
+      "ToTransaction",
+      "ToNFTItem"
+    ],
+    "imports": [
+      "encoding/json",
+      "math/big",
+      "net/url",
+      "strconv",
+      "strings",
+      "time",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/models/skymavis",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+    ],
+    "complexity": "medium"
+  }
+}

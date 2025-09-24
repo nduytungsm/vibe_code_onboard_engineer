@@ -1,0 +1,25 @@
+{
+  "content_hash": "f7e7e53b97d81614f47b9abe2b518958",
+  "timestamp": "2025-09-24T15:41:31.923176+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides bindings for handling form data in HTTP requests.",
+    "key_types": [
+      "formBinding",
+      "formPostBinding",
+      "formMultipartBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind"
+    ],
+    "imports": [
+      "errors",
+      "net/http"
+    ],
+    "side_effects": [
+      "Parses form data from HTTP requests"
+    ],
+    "complexity": "medium"
+  }
+}

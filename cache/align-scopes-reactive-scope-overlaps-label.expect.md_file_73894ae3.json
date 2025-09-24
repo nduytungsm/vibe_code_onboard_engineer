@@ -1,0 +1,23 @@
+{
+  "content_hash": "a0c7c486f5e639fc480164dc494a512f",
+  "timestamp": "2025-09-24T15:28:02.387881+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a function that manages a reactive scope for an array based on conditions and exports a fixture for testing.",
+    "key_types": [
+      "function",
+      "object"
+    ],
+    "functions": [
+      "useFoo"
+    ],
+    "imports": [
+      "arrayPush",
+      "_c"
+    ],
+    "side_effects": [
+      "modifies the items array based on conditions"
+    ],
+    "complexity": "medium"
+  }
+}

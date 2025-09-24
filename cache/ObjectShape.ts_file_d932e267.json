@@ -1,0 +1,36 @@
+{
+  "content_hash": "e4a1edca5d32e9d0ba77dc4a0ffadd2e",
+  "timestamp": "2025-09-24T15:26:11.181925+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines types and functions for managing JavaScript object shapes in a shape registry.",
+    "key_types": [
+      "PrimitiveType",
+      "FunctionType",
+      "ObjectType",
+      "AliasingSignature",
+      "FunctionSignature",
+      "ObjectShape"
+    ],
+    "functions": [
+      "createAnonId",
+      "addFunction",
+      "addHook",
+      "parseAliasingSignatureConfig",
+      "addObject",
+      "addShape"
+    ],
+    "imports": [
+      "../CompilerError",
+      "../Inference/AliasingEffects",
+      "../Utils/utils",
+      "./HIR",
+      "./Types",
+      "./TypeSchema"
+    ],
+    "side_effects": [
+      "Modifies the ShapeRegistry by adding functions and objects."
+    ],
+    "complexity": "medium"
+  }
+}

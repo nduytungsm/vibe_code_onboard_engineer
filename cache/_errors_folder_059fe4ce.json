@@ -1,9 +1,9 @@
 {
-  "content_hash": "f132ffc2641e052e28261c65c82794bc",
-  "timestamp": "2025-09-23T16:09:40.735871+07:00",
+  "content_hash": "305c7e8ad948b17894574aea23822dba",
+  "timestamp": "2025-09-23T17:01:36.823366+07:00",
   "result": {
     "path": "_api_specs/_errors",
-    "purpose": "Defines error response structures for the API, ensuring consistent error handling.",
+    "purpose": "This folder/module is responsible for defining the error response structures for the API.",
     "languages": {
       "JSON": 2
     },
@@ -26,7 +26,7 @@
       },
       "_api_specs/_errors/_ErrWalletAddressRequired.json": {
         "language": "JSON",
-        "purpose": "Defines error specifications for a required wallet address in an API response.",
+        "purpose": "Defines error specifications for a required wallet address",
         "key_types": [
           "object"
         ],

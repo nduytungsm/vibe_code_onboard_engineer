@@ -1,0 +1,12 @@
+{
+  "content_hash": "799c5b85dbefdee726cd08050b84f20c",
+  "timestamp": "2025-09-24T15:42:56.742521+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines various log formats for a logging middleware.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

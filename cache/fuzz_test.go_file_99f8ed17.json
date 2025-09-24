@@ -1,0 +1,32 @@
+{
+  "content_hash": "f1671a6855d2aea40d16eda1a6b14f5e",
+  "timestamp": "2025-09-24T15:45:17.24498+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains fuzz tests for parsing HCL templates, traversals, expressions, and configurations.",
+    "key_types": [
+      "testing.F",
+      "testing.T",
+      "hcl.Pos",
+      "hclsyntax.Diagnostics"
+    ],
+    "functions": [
+      "FuzzParseTemplate",
+      "FuzzParseTraversalAbs",
+      "FuzzParseExpression",
+      "FuzzParseConfig"
+    ],
+    "imports": [
+      "testing",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclsyntax"
+    ],
+    "side_effects": [
+      "Logs errors encountered during parsing to the test output"
+    ],
+    "risks": [
+      "Potential for denial of service if large or malicious input is provided"
+    ],
+    "complexity": "medium"
+  }
+}

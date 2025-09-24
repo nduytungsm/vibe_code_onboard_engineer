@@ -1,0 +1,38 @@
+{
+  "content_hash": "3802885082db8e0898c1fe4b07832180",
+  "timestamp": "2025-09-24T15:24:42.551799+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for running regression tests on DevTools.",
+    "key_types": [
+      "job",
+      "step",
+      "environment variable"
+    ],
+    "functions": [
+      "checkout",
+      "setup-node",
+      "cache",
+      "install",
+      "upload-artifact",
+      "download-artifact"
+    ],
+    "imports": [
+      "actions/checkout@v4",
+      "actions/setup-node@v4",
+      "actions/cache@v4",
+      "actions/upload-artifact@v4",
+      "actions/download-artifact@v4"
+    ],
+    "side_effects": [
+      "Modifies the build directory",
+      "Caches node_modules",
+      "Downloads and uploads artifacts"
+    ],
+    "risks": [
+      "Exposing sensitive information through logs",
+      "Dependency on external actions which may change"
+    ],
+    "complexity": "medium"
+  }
+}

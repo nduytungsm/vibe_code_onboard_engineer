@@ -1,0 +1,29 @@
+{
+  "content_hash": "caeccf6b8c25d447983f5dd25a42bfff",
+  "timestamp": "2025-09-24T15:27:21.849779+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Implements a disjoint set data structure to manage and unify sets of items.",
+    "key_types": [
+      "DisjointSet\u003cT\u003e",
+      "Map\u003cT, T\u003e",
+      "Set\u003cT\u003e"
+    ],
+    "functions": [
+      "union(items: Array\u003cT\u003e): void",
+      "find(item: T): T | null",
+      "has(item: T): boolean",
+      "canonicalize(): Map\u003cT, T\u003e",
+      "forEach(fn: (item: T, group: T) =\u003e void): void",
+      "buildSets(): Array\u003cSet\u003cT\u003e\u003e",
+      "get size(): number"
+    ],
+    "imports": [
+      "CompilerError"
+    ],
+    "side_effects": [
+      "Modifies internal state of the disjoint set during union and find operations."
+    ],
+    "complexity": "medium"
+  }
+}

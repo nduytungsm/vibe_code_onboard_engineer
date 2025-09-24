@@ -1,0 +1,59 @@
+{
+  "content_hash": "aa7b8660a7127035fb51c14e00f844ed",
+  "timestamp": "2025-09-24T15:28:42.117467+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the Fiber web framework's listening and shutdown functionalities.",
+    "key_types": [
+      "app",
+      "Ctx",
+      "ListenConfig",
+      "fasthttp.HostClient"
+    ],
+    "functions": [
+      "Test_Listen",
+      "Test_Listen_Graceful_Shutdown",
+      "testGracefulShutdown",
+      "Test_Listen_Prefork",
+      "Test_Listen_TLSMinVersion",
+      "Test_Listen_TLS",
+      "Test_Listen_TLS_Prefork",
+      "Test_Listen_MutualTLS",
+      "Test_Listen_MutualTLS_Prefork",
+      "Test_Listener",
+      "Test_App_Listener_TLS_Listener",
+      "Test_Listen_TLSConfigFunc"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "crypto/tls",
+      "errors",
+      "fmt",
+      "io",
+      "log",
+      "net",
+      "os",
+      "path/filepath",
+      "strings",
+      "sync",
+      "testing",
+      "time",
+      "github.com/gofiber/utils/v2",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp",
+      "github.com/valyala/fasthttp/fasthttputil"
+    ],
+    "side_effects": [
+      "Starts a server to listen on specified ports",
+      "Performs shutdown of the server",
+      "Creates in-memory listeners for testing"
+    ],
+    "risks": [
+      "Potential for denial of service if invalid ports are used",
+      "Improper handling of TLS configurations may lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "content_hash": "e84e5757bb2deaa8e2692fe442b70743",
+  "timestamp": "2025-09-24T15:27:40.28211+07:00",
+  "result": {
+    "language": "markdown",
+    "purpose": "Documentation for Fiber's built-in log package",
+    "key_types": [
+      "Level",
+      "CommonLogger",
+      "ConfigurableLogger[T]",
+      "AllLogger[T]",
+      "customLogger"
+    ],
+    "functions": [
+      "log.Info",
+      "log.Debug",
+      "log.Warn",
+      "log.Error",
+      "log.Fatal",
+      "log.Panic",
+      "log.Debugf",
+      "log.Infof",
+      "log.Warnf",
+      "log.Errorf",
+      "log.Fatalf",
+      "log.Debugw",
+      "log.Infow",
+      "log.Warnw",
+      "log.Errorw",
+      "log.Fatalw",
+      "log.SetLevel",
+      "log.SetOutput",
+      "log.WithContext",
+      "fiberlog.SetLogger"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3/log",
+      "log",
+      "os",
+      "io"
+    ],
+    "side_effects": [
+      "Logging output to standard output or specified file",
+      "Program termination on fatal log level"
+    ],
+    "risks": [
+      "Potential for log file overwriting if not handled properly",
+      "Non-concurrent safe methods may lead to race conditions"
+    ],
+    "complexity": "medium"
+  }
+}

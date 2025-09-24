@@ -1,0 +1,17 @@
+{
+  "content_hash": "9967fc7edcc38edd4e3d21c84c05ddf7",
+  "timestamp": "2025-09-24T15:25:17.107014+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for PostCSS with plugins for Tailwind CSS and Autoprefixer.",
+    "key_types": [
+      "Object"
+    ],
+    "functions": [],
+    "imports": [
+      "tailwindcss",
+      "autoprefixer"
+    ],
+    "complexity": "low"
+  }
+}

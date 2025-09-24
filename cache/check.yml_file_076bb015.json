@@ -1,0 +1,14 @@
+{
+  "content_hash": "7dfc41c08e0b27907abbb0d64b78bf74",
+  "timestamp": "2025-09-24T14:52:40.886082+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for security checks on pull requests to the develop branch.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "axieinfinity/workflows-samples/.github/workflows/security-basic-scan.yml@ce8adf700c0cd05672ebd7154c828d396631c153"
+    ],
+    "complexity": "low"
+  }
+}

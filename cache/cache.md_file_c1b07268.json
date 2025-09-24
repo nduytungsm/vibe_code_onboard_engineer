@@ -1,0 +1,28 @@
+{
+  "content_hash": "19cc003081a1e82caee4ed081d211eaa",
+  "timestamp": "2025-09-24T15:41:19.674361+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for cache middleware in Fiber framework",
+    "key_types": [
+      "Config",
+      "fiber.Handler"
+    ],
+    "functions": [
+      "New",
+      "CacheInvalidator",
+      "KeyGenerator",
+      "ExpirationGenerator"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/cache",
+      "github.com/gofiber/utils/v2"
+    ],
+    "side_effects": [
+      "Caches responses based on request path and method",
+      "Invalidates cache entries based on custom rules"
+    ],
+    "complexity": "medium"
+  }
+}

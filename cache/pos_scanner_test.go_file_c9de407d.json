@@ -1,0 +1,22 @@
+{
+  "content_hash": "afabd597d2cf6bd7901eed7af8cf63f3",
+  "timestamp": "2025-09-24T15:46:26.54366+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the PosScanner functionality in the HCL package.",
+    "key_types": [
+      "Range",
+      "Pos"
+    ],
+    "functions": [
+      "TestPosScanner"
+    ],
+    "imports": [
+      "bufio",
+      "reflect",
+      "testing",
+      "github.com/davecgh/go-spew/spew"
+    ],
+    "complexity": "medium"
+  }
+}

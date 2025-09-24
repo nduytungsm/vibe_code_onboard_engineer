@@ -1,0 +1,18 @@
+{
+  "content_hash": "c1cac95becd5dffbe658e32b35b9bc92",
+  "timestamp": "2025-09-24T15:45:29.362583+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines token scanning actions and key offsets for HCL syntax parsing.",
+    "key_types": [
+      "byte",
+      "int16"
+    ],
+    "functions": [],
+    "imports": [
+      "bytes",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

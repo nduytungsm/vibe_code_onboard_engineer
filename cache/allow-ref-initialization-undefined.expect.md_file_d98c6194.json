@@ -1,0 +1,22 @@
+{
+  "content_hash": "95f4350ac5b0ca21ad7e6a8325121b48",
+  "timestamp": "2025-09-24T15:28:31.313859+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file contains a test fixture for a React component that uses the useRef hook.",
+    "key_types": [
+      "function",
+      "object"
+    ],
+    "functions": [
+      "C"
+    ],
+    "imports": [
+      "react"
+    ],
+    "side_effects": [
+      "modifies the current value of the ref"
+    ],
+    "complexity": "low"
+  }
+}

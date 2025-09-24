@@ -1,0 +1,282 @@
+{
+  "content_hash": "4f24f44a4ecf484060e1173a02a2ac6b",
+  "timestamp": "2025-09-24T15:48:44.787906+07:00",
+  "result": {
+    "path": "json/fuzz/testdata/fuzz/FuzzParse",
+    "purpose": "This folder is responsible for containing test cases for fuzz testing JSON and HCL (HashiCorp Configuration Language) parsers in Go.",
+    "languages": {
+      "Go": 12
+    },
+    "key_modules": [
+      "attr-expr.hcl.json",
+      "attr-literal.hcl.json",
+      "block-attrs.hcl.json",
+      "block-empty.json",
+      "block-nested.hcl.json",
+      "empty.hcl.json",
+      "list-empty.json",
+      "list-nested.json",
+      "list-values.json",
+      "number-big.hcl.json",
+      "number-int.hcl.json",
+      "utf8.hcl.json"
+    ],
+    "dependencies": [
+      "testing",
+      "encoding/json",
+      "fuzz"
+    ],
+    "architecture": "The folder follows a modular architecture where each file serves as an independent test case for different aspects of JSON and HCL parsing, utilizing Go's testing framework.",
+    "file_summaries": {
+      "json/fuzz/testdata/fuzz/FuzzParse/attr-expr.hcl.json": {
+        "language": "Go",
+        "purpose": "This file appears to be a test case for fuzz testing in Go, specifically for parsing HCL (HashiCorp Configuration Language) expressions.",
+        "key_types": [
+          "[]byte"
+        ],
+        "functions": [
+          "testFuzzParse"
+        ],
+        "imports": [
+          "testing",
+          "fuzz"
+        ],
+        "side_effects": [
+          "None"
+        ],
+        "risks": [
+          "Potential for panic if input is malformed"
+        ],
+        "complexity": "medium"
+      },
+      "json/fuzz/testdata/fuzz/FuzzParse/attr-literal.hcl.json": {
+        "language": "Go",
+        "purpose": "This file appears to be a test case for fuzz testing in Go, specifically for parsing JSON.",
+        "key_types": [
+          "[]byte"
+        ],
+        "functions": [
+          "TestFuzzParse"
+        ],
+        "imports": [
+          "testing",
+          "encoding/json"
+        ],
+        "side_effects": [
+          "None"
+        ],
+        "risks": [
+          "Potential for panic if JSON is malformed"
+        ],
+        "complexity": "medium"
+      },
+      "json/fuzz/testdata/fuzz/FuzzParse/block-attrs.hcl.json": {
+        "language": "Go",
+        "purpose": "This file is used for testing a fuzzing function with a JSON input.",
+        "key_types": [
+          "byte",
+          "string"
+        ],
+        "functions": [
+          "TestFuzz"
+        ],
+        "imports": [
+          "testing",
+          "encoding/json"
+        ],
+        "side_effects": [
+          "None"
+        ],
+        "risks": [
+          "None"
+        ],
+        "complexity": "low"
+      },
+      "json/fuzz/testdata/fuzz/FuzzParse/block-empty.json": {
+        "language": "Go",
+        "purpose": "This file contains a test case for fuzzing a JSON parser with an empty block.",
+        "key_types": [
+          "[]byte"
+        ],
+        "functions": [
+          "testFuzzParse"
+        ],
+        "imports": [
+          "testing",
+          "encoding/json"
+        ],
+        "complexity": "low"
+      },
+      "json/fuzz/testdata/fuzz/FuzzParse/block-nested.hcl.json": {
+        "language": "Go",
+        "purpose": "This file appears to be a test case for fuzz testing a JSON parsing function.",
+        "key_types": [
+          "byte",
+          "string"
+        ],
+        "functions": [
+          "testFuzzParse"
+        ],
+        "imports": [
+          "testing",
+          "encoding/json"
+        ],
+        "side_effects": [
+          "None"
+        ],
+        "risks": [
+          "None"
+        ],
+        "complexity": "low"
+      },
+      "json/fuzz/testdata/fuzz/FuzzParse/empty.hcl.json": {
+        "language": "Go",
+        "purpose": "This file appears to be a test case for fuzz testing in Go, specifically for parsing JSON.",
+        "key_types": [
+          "[]byte"
+        ],
+        "functions": [
+          "TestFuzzParse"
+        ],
+        "imports": [
+          "testing",
+          "encoding/json"
+        ],
+        "side_effects": [
+          "None"
+        ],
+        "risks": [
+          "None"
+        ],
+        "complexity": "low"
+      },
+      "json/fuzz/testdata/fuzz/FuzzParse/list-empty.json": {
+        "language": "Go",
+        "purpose": "This file is used for testing a fuzzing function with an empty list in JSON format.",
+        "key_types": [
+          "[]byte"
+        ],
+        "functions": [
+          "testFuzz"
+        ],
+        "imports": [
+          "testing",
+          "encoding/json"
+        ],
+        "complexity": "low"
+      },
+      "json/fuzz/testdata/fuzz/FuzzParse/list-nested.json": {
+        "language": "Go",
+        "purpose": "This file appears to be a test case for fuzz testing a JSON parser.",
+        "key_types": [
+          "byte",
+          "string"
+        ],
+        "functions": [
+          "FuzzParse"
+        ],
+        "imports": [
+          "testing",
+          "encoding/json"
+        ],
+        "side_effects": [
+          "None"
+        ],
+        "risks": [
+          "None"
+        ],
+        "complexity": "low"
+      },
+      "json/fuzz/testdata/fuzz/FuzzParse/list-values.json": {
+        "language": "Go",
+        "purpose": "This file contains test data for fuzz testing a JSON parser.",
+        "key_types": [
+          "byte slice",
+          "string",
+          "boolean",
+          "float"
+        ],
+        "functions": [
+          "FuzzParse"
+        ],
+        "imports": [
+          "testing",
+          "encoding/json"
+        ],
+        "side_effects": [
+          "None"
+        ],
+        "risks": [
+          "None"
+        ],
+        "complexity": "low"
+      },
+      "json/fuzz/testdata/fuzz/FuzzParse/number-big.hcl.json": {
+        "language": "Go",
+        "purpose": "This file appears to be a test data file for fuzz testing in Go, specifically for parsing JSON.",
+        "key_types": [
+          "byte",
+          "float64"
+        ],
+        "functions": [
+          "TestFuzzParse"
+        ],
+        "imports": [
+          "testing",
+          "encoding/json"
+        ],
+        "side_effects": [
+          "None"
+        ],
+        "risks": [
+          "Potential for panic if JSON is malformed"
+        ],
+        "complexity": "low"
+      },
+      "json/fuzz/testdata/fuzz/FuzzParse/number-int.hcl.json": {
+        "language": "Go",
+        "purpose": "This file appears to be a test case for fuzzing a JSON parser, specifically testing the parsing of an integer value.",
+        "key_types": [
+          "byte",
+          "string"
+        ],
+        "functions": [
+          "TestFuzzParse"
+        ],
+        "imports": [
+          "testing",
+          "encoding/json"
+        ],
+        "side_effects": [
+          "None"
+        ],
+        "risks": [
+          "Potential for denial of service if input is not properly validated."
+        ],
+        "complexity": "medium"
+      },
+      "json/fuzz/testdata/fuzz/FuzzParse/utf8.hcl.json": {
+        "language": "Go",
+        "purpose": "This file appears to be a test case for fuzzing a JSON parser with UTF-8 encoded strings.",
+        "key_types": [
+          "byte",
+          "string"
+        ],
+        "functions": [
+          "TestFuzz"
+        ],
+        "imports": [
+          "testing",
+          "encoding/json"
+        ],
+        "side_effects": [
+          "Potentially modifies the state of the JSON parser during fuzz testing."
+        ],
+        "risks": [
+          "Fuzzing may lead to unexpected crashes or behavior in the JSON parser."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

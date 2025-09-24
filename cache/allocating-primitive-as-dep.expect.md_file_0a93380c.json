@@ -1,0 +1,24 @@
+{
+  "content_hash": "73fbaf3038756ebdea2dcbbd9f31d388",
+  "timestamp": "2025-09-24T15:28:06.948524+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a function that memoizes the result of an expression based on props.",
+    "key_types": [
+      "function",
+      "primitive"
+    ],
+    "functions": [
+      "AllocatingPrimitiveAsDep",
+      "foo",
+      "bar"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "memoization of computed values"
+    ],
+    "complexity": "medium"
+  }
+}

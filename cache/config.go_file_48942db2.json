@@ -1,0 +1,16 @@
+{
+  "content_hash": "68691c00aafd1286eb1069589c5f1d15",
+  "timestamp": "2025-09-24T14:54:06.923999+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for the application, integrating with gcs.Config.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs"
+    ],
+    "complexity": "low"
+  }
+}

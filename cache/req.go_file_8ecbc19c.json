@@ -1,0 +1,50 @@
+{
+  "content_hash": "11a464ad0b675529427c5c6e9b6698c0",
+  "timestamp": "2025-09-24T15:43:49.794731+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines the DefaultReq struct and its methods for handling HTTP requests in the Fiber web framework.",
+    "key_types": [
+      "Range",
+      "RangeSet",
+      "DefaultReq"
+    ],
+    "functions": [
+      "Accepts",
+      "AcceptsCharsets",
+      "AcceptsEncodings",
+      "AcceptsLanguages",
+      "AcceptsLanguagesExtended",
+      "App",
+      "BaseURL",
+      "BodyRaw",
+      "Body",
+      "RequestCtx",
+      "Cookies",
+      "Request",
+      "FormFile",
+      "FormValue",
+      "Fresh"
+    ],
+    "imports": [
+      "bytes",
+      "errors",
+      "mime/multipart",
+      "net",
+      "strconv",
+      "strings",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp",
+      "golang.org/x/net/idna"
+    ],
+    "side_effects": [
+      "Modifies request body based on content encoding",
+      "Sends HTTP status responses for unsupported media types"
+    ],
+    "risks": [
+      "Potential denial of service through large request bodies",
+      "Improper handling of content encoding may lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

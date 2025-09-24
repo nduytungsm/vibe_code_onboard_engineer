@@ -1,0 +1,32 @@
+{
+  "content_hash": "aff5825a6696520568de7decedc6255a",
+  "timestamp": "2025-09-24T15:44:26.870254+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines functions for processing type expressions and constraints in HCL (HashiCorp Configuration Language).",
+    "key_types": [
+      "cty.Type",
+      "hcl.Expression",
+      "hcl.Diagnostics",
+      "Defaults"
+    ],
+    "functions": [
+      "Type",
+      "TypeConstraint",
+      "TypeConstraintWithDefaults",
+      "TypeString"
+    ],
+    "imports": [
+      "bytes",
+      "fmt",
+      "sort",
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Panic if unsupported types are encountered in TypeString function."
+    ],
+    "complexity": "medium"
+  }
+}

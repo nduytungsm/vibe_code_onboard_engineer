@@ -1,0 +1,12 @@
+{
+  "content_hash": "d6791202fe050bcd67c3ec7f5d14ee3d",
+  "timestamp": "2025-09-24T15:26:21.783435+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for Codecov coverage settings",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

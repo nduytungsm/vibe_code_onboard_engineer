@@ -1,0 +1,35 @@
+{
+  "content_hash": "f97c61ccaf6832d68544bb8af81fc08d",
+  "timestamp": "2025-09-24T15:46:18.056194+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains functions to parse JSON content and handle errors related to JSON structure.",
+    "key_types": [
+      "node",
+      "hcl.Diagnostics",
+      "peeker",
+      "objectAttr",
+      "objectVal"
+    ],
+    "functions": [
+      "parseFileContent",
+      "parseExpression",
+      "parseValue",
+      "parseObject",
+      "parseArray"
+    ],
+    "imports": [
+      "encoding/json",
+      "fmt",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Error diagnostics are generated for invalid JSON structures."
+    ],
+    "risks": [
+      "Potential for denial of service through malformed JSON leading to excessive error handling."
+    ],
+    "complexity": "medium"
+  }
+}

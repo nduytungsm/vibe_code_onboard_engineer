@@ -1,9 +1,9 @@
 {
-  "content_hash": "e7c51d287746cdc370a78f24a79a6897",
-  "timestamp": "2025-09-23T16:06:40.061476+07:00",
+  "content_hash": "699e66984d6b689a42706bc3516014b3",
+  "timestamp": "2025-09-23T17:01:48.855973+07:00",
   "result": {
     "path": "pkg/exchangerate",
-    "purpose": "Responsible for providing services related to fetching and managing cryptocurrency exchange rates and token prices.",
+    "purpose": "Responsible for managing exchange rate configurations and fetching cryptocurrency token prices.",
     "languages": {
       "Go": 2
     },
@@ -19,11 +19,11 @@
       "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic related to exchange rates in separate files.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic for exchange rates and cryptocurrency data fetching.",
     "file_summaries": {
       "pkg/exchangerate/config.go": {
         "language": "Go",
-        "purpose": "Defines a configuration structure for an exchange rate service.",
+        "purpose": "Defines a configuration structure for exchange rate settings.",
         "key_types": [
           "Config"
         ],
@@ -35,7 +35,7 @@
       },
       "pkg/exchangerate/skynet.go": {
         "language": "Go",
-        "purpose": "This file provides a service for fetching cryptocurrency token prices and related data.",
+        "purpose": "This file implements a service for fetching cryptocurrency token prices and related data.",
         "key_types": [
           "TokenAddress",
           "Currency",
@@ -78,7 +78,7 @@
           "Logs errors when fetching prices fails"
         ],
         "risks": [
-          "Potential for exposing sensitive information if error messages are not handled properly"
+          "Potential exposure of sensitive data if error messages are not handled properly"
         ],
         "complexity": "medium"
       }

@@ -1,0 +1,22 @@
+{
+  "content_hash": "c6d28e7afca0990fdab71973e68d6daa",
+  "timestamp": "2025-09-24T15:43:44.530458+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation of the hcldec specification format for validating HCL configuration files and translating them into JSON.",
+    "key_types": [
+      "spec",
+      "object",
+      "array",
+      "attr",
+      "block",
+      "block_list",
+      "block_set",
+      "block_map",
+      "block_attrs"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

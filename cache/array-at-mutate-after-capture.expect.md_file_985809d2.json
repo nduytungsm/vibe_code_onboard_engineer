@@ -1,0 +1,27 @@
+{
+  "content_hash": "b1eaff36d4592827c725e2d271e2c454",
+  "timestamp": "2025-09-24T15:28:39.419455+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that mutates an array based on props.",
+    "key_types": [
+      "Array",
+      "Function"
+    ],
+    "functions": [
+      "Component",
+      "foo",
+      "mutate"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Mutates the array 'x' based on the input 'props'."
+    ],
+    "risks": [
+      "Potential for unexpected mutations leading to bugs."
+    ],
+    "complexity": "medium"
+  }
+}

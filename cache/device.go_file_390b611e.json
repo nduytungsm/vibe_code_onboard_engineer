@@ -1,0 +1,22 @@
+{
+  "content_hash": "dc8b095f0f082123c464d2128687bc1c",
+  "timestamp": "2025-09-24T14:53:40.96715+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for device management and related requests.",
+    "key_types": [
+      "Device",
+      "GetDeviceByIDRequest",
+      "PostDeviceRegistrationRequest",
+      "PutWalletDeviceUpdatePushToken",
+      "PostImportWalletReq",
+      "PutDeviceAddressesReq"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/ethereum/go-ethereum/common"
+    ],
+    "complexity": "medium"
+  }
+}

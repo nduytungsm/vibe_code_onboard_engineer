@@ -1,0 +1,31 @@
+{
+  "content_hash": "fd77b904b961975654727266d41005f1",
+  "timestamp": "2025-09-24T15:41:26.499088+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for Idempotency middleware in Fiber framework to build fault-tolerant APIs.",
+    "key_types": [
+      "Config",
+      "fiber.Handler",
+      "fiber.Ctx",
+      "Locker",
+      "fiber.Storage"
+    ],
+    "functions": [
+      "New",
+      "IsFromCache",
+      "WasPutToCache"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/idempotency"
+    ],
+    "side_effects": [
+      "Modifies behavior of API requests based on idempotency configuration."
+    ],
+    "risks": [
+      "Exposing idempotency keys in logs if DisableValueRedaction is set to true."
+    ],
+    "complexity": "medium"
+  }
+}

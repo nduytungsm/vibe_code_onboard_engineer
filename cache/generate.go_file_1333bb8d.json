@@ -1,0 +1,12 @@
+{
+  "content_hash": "b66d2acf880764b07a2c32119c757971",
+  "timestamp": "2025-09-24T15:45:14.307307+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains directives for code generation and formatting related to HCL syntax.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

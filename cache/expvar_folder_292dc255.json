@@ -1,0 +1,95 @@
+{
+  "content_hash": "ca77529c0935b724c9b19876f2d0d3e9",
+  "timestamp": "2025-09-24T15:44:12.089749+07:00",
+  "result": {
+    "path": "middleware/expvar",
+    "purpose": "This folder/module is responsible for implementing middleware that serves expvar metrics in a web application using the Fiber framework.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "config.go",
+      "expvar.go",
+      "expvar_test.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/valyala/fasthttp/expvarhandler",
+      "strings",
+      "bytes",
+      "io",
+      "net/http/httptest",
+      "testing",
+      "github.com/stretchr/testify/require"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating middleware functionality with clear separation of configuration, implementation, and testing.",
+    "file_summaries": {
+      "middleware/expvar/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration for middleware in a web application using the Fiber framework.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "configDefault"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3"
+        ],
+        "complexity": "low"
+      },
+      "middleware/expvar/expvar.go": {
+        "language": "Go",
+        "purpose": "This file implements a middleware handler for serving expvar metrics in a Fiber web application.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "strings",
+          "github.com/gofiber/fiber/v3",
+          "github.com/valyala/fasthttp/expvarhandler"
+        ],
+        "side_effects": [
+          "Modifies request handling based on the path",
+          "Redirects to /debug/vars if the path is not valid"
+        ],
+        "risks": [
+          "Potential exposure of sensitive application metrics if /debug/vars is publicly accessible"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/expvar/expvar_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the expvar middleware in a Fiber web application.",
+        "key_types": [
+          "fiber.Ctx",
+          "Config"
+        ],
+        "functions": [
+          "Test_Non_Expvar_Path",
+          "Test_Expvar_Index",
+          "Test_Expvar_Filter",
+          "Test_Expvar_Other_Path",
+          "Test_Expvar_Next"
+        ],
+        "imports": [
+          "bytes",
+          "io",
+          "net/http/httptest",
+          "testing",
+          "github.com/gofiber/fiber/v3",
+          "github.com/stretchr/testify/require"
+        ],
+        "side_effects": [
+          "HTTP requests are made to the application.",
+          "Responses are read and validated."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "content_hash": "0402dc60739acdd868504455f687ea24",
+  "timestamp": "2025-09-24T15:42:36.683468+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the expvar middleware in a Fiber web application.",
+    "key_types": [
+      "fiber.Ctx",
+      "Config"
+    ],
+    "functions": [
+      "Test_Non_Expvar_Path",
+      "Test_Expvar_Index",
+      "Test_Expvar_Filter",
+      "Test_Expvar_Other_Path",
+      "Test_Expvar_Next"
+    ],
+    "imports": [
+      "bytes",
+      "io",
+      "net/http/httptest",
+      "testing",
+      "github.com/gofiber/fiber/v3",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "HTTP requests are made to the application.",
+      "Responses are read and validated."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "content_hash": "4cee3eaeb0247e136ab51606c7154bfc",
+  "timestamp": "2025-09-24T15:28:07.316595+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file contains a test fixture for a function that allocates a primitive as a dependency in a nested scope.",
+    "key_types": [
+      "Object",
+      "Function"
+    ],
+    "functions": [
+      "AllocatingPrimitiveAsDepNested"
+    ],
+    "imports": [
+      "identity",
+      "mutate",
+      "setProperty"
+    ],
+    "side_effects": [
+      "Mutates the object x"
+    ],
+    "complexity": "medium"
+  }
+}

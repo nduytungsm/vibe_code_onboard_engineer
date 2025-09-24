@@ -1,0 +1,47 @@
+{
+  "content_hash": "5ac960f376f95102261fe5bfae52ff1f",
+  "timestamp": "2025-09-24T15:46:00.334252+07:00",
+  "result": {
+    "path": ".github/testdata",
+    "purpose": "This folder contains test data files for validating HTML documents and defining API test routes.",
+    "languages": {
+      "HTML": 2,
+      "JSON": 1
+    },
+    "key_modules": [
+      "index.html",
+      "template-invalid.html",
+      "testRoutes.json"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a simple structure containing static HTML files and a JSON file for API route definitions, suitable for testing purposes.",
+    "file_summaries": {
+      ".github/testdata/index.html": {
+        "language": "HTML",
+        "purpose": "This file contains a simple HTML document displaying a greeting message.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      ".github/testdata/template-invalid.html": {
+        "language": "HTML",
+        "purpose": "This file is a template that displays a title.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      ".github/testdata/testRoutes.json": {
+        "language": "JSON",
+        "purpose": "Defines a set of test routes for an API, specifying HTTP methods and paths.",
+        "key_types": [
+          "test_routes"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

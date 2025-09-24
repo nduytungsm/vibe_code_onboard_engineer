@@ -1,0 +1,34 @@
+{
+  "content_hash": "06f520c25894f570d9d0fd05429d7168",
+  "timestamp": "2025-09-24T15:42:21.214561+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Manages session tokens for CSRF protection in a web application.",
+    "key_types": [
+      "sessionManager",
+      "sessionKeyType",
+      "Token"
+    ],
+    "functions": [
+      "newSessionManager",
+      "getRaw",
+      "setRaw",
+      "delRaw"
+    ],
+    "imports": [
+      "time",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/log",
+      "github.com/gofiber/fiber/v3/middleware/session"
+    ],
+    "side_effects": [
+      "Modifies session data",
+      "Logs warnings on session save failures"
+    ],
+    "risks": [
+      "Potential exposure of session tokens if not handled securely",
+      "Session fixation if session management is not properly implemented"
+    ],
+    "complexity": "medium"
+  }
+}

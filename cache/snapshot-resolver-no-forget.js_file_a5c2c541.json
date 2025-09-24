@@ -1,0 +1,18 @@
+{
+  "content_hash": "726ef18c744a33cf095e4fcbe1d75e0b",
+  "timestamp": "2025-09-24T15:25:29.169237+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Exports a snapshot resolver function with a specific configuration.",
+    "key_types": [
+      "function"
+    ],
+    "functions": [
+      "makeSnapshotResolver"
+    ],
+    "imports": [
+      "./makeSnapshotResolver"
+    ],
+    "complexity": "low"
+  }
+}

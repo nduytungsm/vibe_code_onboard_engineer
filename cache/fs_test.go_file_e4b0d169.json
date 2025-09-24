@@ -1,0 +1,30 @@
+{
+  "content_hash": "0afef7ecda30e9bea8d409f8d25b7bd9",
+  "timestamp": "2025-09-24T15:42:00.018774+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for a file system implementation that only allows opening files.",
+    "key_types": [
+      "mockFileSystem",
+      "OnlyFilesFS",
+      "neutralizedReaddirFile"
+    ],
+    "functions": [
+      "Open",
+      "TestOnlyFilesFS_Open",
+      "TestOnlyFilesFS_Open_err",
+      "Test_neuteredReaddirFile_Readdir",
+      "TestDir_listDirectory",
+      "TestDir"
+    ],
+    "imports": [
+      "errors",
+      "net/http",
+      "os",
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "complexity": "medium"
+  }
+}

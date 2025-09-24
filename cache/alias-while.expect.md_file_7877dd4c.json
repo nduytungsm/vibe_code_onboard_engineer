@@ -1,0 +1,22 @@
+{
+  "content_hash": "993ff33e37c863ff22f4e42d6363bc27",
+  "timestamp": "2025-09-24T15:27:53.141005+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a function that performs operations based on a condition, utilizing a mutation function.",
+    "key_types": [
+      "Object"
+    ],
+    "functions": [
+      "foo",
+      "mutate"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Mutates the state of objects a and b during execution."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "content_hash": "ca6ae3269cbf2bb1a765894766620abd",
+  "timestamp": "2025-09-24T14:53:47.991544+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for managing quick access decentralized applications (DApps).",
+    "key_types": [
+      "QuickAccessDApp",
+      "SaveQuickAccessDAppRequest",
+      "InternalQuickAccessDAppResponse",
+      "GetQuickAccessDAppByIDRequest",
+      "SaveQuickAccessDAppBatchRequest",
+      "GetQuickAccessListRequest",
+      "SearchDAppRequest",
+      "GetQuickAccessListResponse",
+      "UpdateQuickAccessOrderRequest",
+      "UpdateQuickAccessDAppRequest",
+      "UpdateQuickAccessDAppBatchRequest"
+    ],
+    "functions": [
+      "ToInternalResponse",
+      "ToDApp",
+      "ToUpdateMap",
+      "ToUpdateMap (UpdateQuickAccessDAppRequest)",
+      "ToUpdateMap (UpdateQuickAccessDAppBatchRequest)"
+    ],
+    "imports": [
+      "time",
+      "github.com/mitchellh/mapstructure"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "content_hash": "18554c4d4ee3daeeaa091251e2eec8c9",
+  "timestamp": "2025-09-24T15:41:19.283729+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides Basic Authentication middleware for the Fiber web framework.",
+    "key_types": [
+      "Config",
+      "fiber.Handler"
+    ],
+    "functions": [
+      "New",
+      "UsernameFromContext"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/basicauth"
+    ],
+    "side_effects": [
+      "Panic if unsupported charset is provided."
+    ],
+    "risks": [
+      "Potential exposure of hashed passwords if not handled securely."
+    ],
+    "complexity": "medium"
+  }
+}

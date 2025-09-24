@@ -17,6 +17,21 @@ if ! command -v docker-compose &> /dev/null; then
     exit 1
 fi
 
+# Check if OpenAI API key is set
+if [ -z "$OPENAI_API_KEY" ]; then
+    echo "⚠️  OpenAI API key is not set."
+    echo "   Please set it using: export OPENAI_API_KEY='your-api-key-here'"
+    echo "   Or create a .env file with: OPENAI_API_KEY=your-api-key-here"
+    echo ""
+    read -p "Do you want to continue without API key? (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "❌ Deployment cancelled. Please set OPENAI_API_KEY and try again."
+        exit 1
+    fi
+    echo "⚠️  Continuing without API key. Some features may not work."
+fi
+
 # Build and start services
 echo "🔨 Building Docker images..."
 docker-compose build --no-cache

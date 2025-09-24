@@ -1,0 +1,26 @@
+{
+  "content_hash": "23c0e5ee05b212c9b91e7c931a4dc04f",
+  "timestamp": "2025-09-24T15:43:06.664453+07:00",
+  "result": {
+    "path": "examples",
+    "purpose": "Documentation for Gin examples",
+    "languages": {
+      "Markdown": 1
+    },
+    "key_modules": [
+      "examples/README.md"
+    ],
+    "dependencies": [],
+    "architecture": "The folder contains documentation files that provide examples for using the Gin framework.",
+    "file_summaries": {
+      "examples/README.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for Gin examples",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

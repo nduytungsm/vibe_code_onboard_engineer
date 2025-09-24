@@ -1,0 +1,84 @@
+{
+  "content_hash": "4d41e0fe52ecc7c86849a22f1935e268",
+  "timestamp": "2025-09-24T15:33:00.242061+07:00",
+  "result": {
+    "path": "pkg/dapp",
+    "purpose": "Responsible for managing decentralized applications (dApps) including configuration and service operations.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "config.go",
+      "d_app_svc.go"
+    ],
+    "dependencies": [
+      "github.com/getsentry/sentry-go",
+      "github.com/hashicorp/go-version",
+      "github.com/jellydator/ttlcache/v3",
+      "github.com/redis/go-redis/v9",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating configuration and service logic for dApps.",
+    "file_summaries": {
+      "pkg/dapp/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for a decentralized application.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "pkg/dapp/d_app_svc.go": {
+        "language": "Go",
+        "purpose": "This file defines a service for managing quick access decentralized applications (dApps) and highlights, including CRUD operations and caching mechanisms.",
+        "key_types": [
+          "Service",
+          "svc",
+          "Config"
+        ],
+        "functions": [
+          "Save",
+          "SaveBatch",
+          "Update",
+          "UpdateBatch",
+          "GetList",
+          "GetAll",
+          "GetByID",
+          "DeleteByID",
+          "UpdateOrder",
+          "SaveHighlight",
+          "SaveBatchHighlight",
+          "UpdateHighlight",
+          "UpdateBatchHighlight",
+          "GetAllHighlight",
+          "GetHighlightByID",
+          "DeleteHighlightByID"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "slices",
+          "sync",
+          "time",
+          "github.com/getsentry/sentry-go",
+          "github.com/hashicorp/go-version",
+          "github.com/jellydator/ttlcache/v3",
+          "github.com/redis/go-redis/v9",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "side_effects": [
+          "Publishing messages to refresh cache asynchronously"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "content_hash": "1c3a2ba38e34d167abe9c467a8eba95d",
+  "timestamp": "2025-09-24T15:43:43.94843+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines the encoding and decoding methods for the redirectionMsg and redirectionMsgs types using the msgp serialization format.",
+    "key_types": [
+      "redirectionMsg",
+      "redirectionMsgs"
+    ],
+    "functions": [
+      "DecodeMsg",
+      "EncodeMsg",
+      "MarshalMsg",
+      "UnmarshalMsg",
+      "Msgsize"
+    ],
+    "imports": [
+      "github.com/tinylib/msgp/msgp"
+    ],
+    "complexity": "medium"
+  }
+}

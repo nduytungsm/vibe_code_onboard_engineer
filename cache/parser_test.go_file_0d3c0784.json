@@ -1,0 +1,23 @@
+{
+  "content_hash": "8c2e644f38aaaa78e8045cff56dd5519",
+  "timestamp": "2025-09-24T15:45:59.647421+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for parsing HCL (HashiCorp Configuration Language) syntax.",
+    "key_types": [
+      "TestTreeNode"
+    ],
+    "functions": [
+      "TestParse"
+    ],
+    "imports": [
+      "fmt",
+      "testing",
+      "github.com/davecgh/go-spew/spew",
+      "github.com/google/go-cmp/cmp",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclsyntax"
+    ],
+    "complexity": "medium"
+  }
+}

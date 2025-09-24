@@ -1,0 +1,48 @@
+{
+  "content_hash": "fc384a0a1b4dd7ea5501c200de4c52df",
+  "timestamp": "2025-09-24T15:25:49.70149+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines various types and utility functions for type handling in a React compiler context.",
+    "key_types": [
+      "Type",
+      "ResolvedType",
+      "ComponentType",
+      "ConcreteType",
+      "StructuralValue",
+      "Structural",
+      "TypeParameter",
+      "LinearId",
+      "TypeParameterId",
+      "NominalId",
+      "VariableId"
+    ],
+    "functions": [
+      "makeLinearId",
+      "makeTypeParameterId",
+      "makeNominalId",
+      "makeVariableId",
+      "printConcrete",
+      "printType",
+      "printResolved",
+      "convertFlowType"
+    ],
+    "imports": [
+      "CompilerError",
+      "SourceLocation",
+      "Environment",
+      "GeneratedSource",
+      "HIRFunction",
+      "Identifier",
+      "IdentifierId",
+      "@babel/types",
+      "TypeErrors",
+      "assertExhaustive",
+      "FlowType"
+    ],
+    "side_effects": [
+      "Throws CompilerError if id is not a non-negative integer in makeLinearId, makeTypeParameterId, and makeVariableId functions."
+    ],
+    "complexity": "medium"
+  }
+}

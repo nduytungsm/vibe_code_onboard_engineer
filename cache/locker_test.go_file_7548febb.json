@@ -1,0 +1,32 @@
+{
+  "content_hash": "4ea7162d858d9a5e8e02db8ae283ec71",
+  "timestamp": "2025-09-24T15:42:45.384571+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests and benchmarks for the idempotency memory lock functionality.",
+    "key_types": [
+      "MemoryLock"
+    ],
+    "functions": [
+      "Test_MemoryLock",
+      "Benchmark_MemoryLock",
+      "Benchmark_MemoryLock_Parallel"
+    ],
+    "imports": [
+      "strconv",
+      "sync/atomic",
+      "testing",
+      "time",
+      "github.com/gofiber/fiber/v3/middleware/idempotency",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Concurrent access to locks may lead to race conditions if not handled properly."
+    ],
+    "risks": [
+      "Potential deadlocks if locks are not released properly."
+    ],
+    "complexity": "medium"
+  }
+}

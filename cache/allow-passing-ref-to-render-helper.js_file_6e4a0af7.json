@@ -1,0 +1,19 @@
+{
+  "content_hash": "0e3b987c7b3bcd437aaa1bed8461a2fd",
+  "timestamp": "2025-09-24T15:28:25.440621+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file defines a React component that uses a ref to pass to a render prop.",
+    "key_types": [
+      "Component",
+      "ref"
+    ],
+    "functions": [
+      "Component"
+    ],
+    "imports": [
+      "useRef from 'react'"
+    ],
+    "complexity": "low"
+  }
+}

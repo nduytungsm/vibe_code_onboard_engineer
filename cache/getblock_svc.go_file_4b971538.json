@@ -1,0 +1,44 @@
+{
+  "content_hash": "17bcb69c59a5bbefc335bedaf538ccca",
+  "timestamp": "2025-09-23T16:57:59.956201+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service for sending RPC requests and suggesting gas fees for various blockchain networks.",
+    "key_types": [
+      "Service",
+      "service",
+      "Config",
+      "md.GetGasSuggestionRes",
+      "md.LegacyGasSuggestion"
+    ],
+    "functions": [
+      "SendRPC",
+      "GasFeeSuggestion",
+      "NewService"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "errors",
+      "fmt",
+      "io",
+      "math/big",
+      "net/http",
+      "github.com/ethereum/go-ethereum/ethclient",
+      "github.com/ethereum/go-ethereum/rpc",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
+    ],
+    "side_effects": [
+      "Logs errors when RPC requests fail",
+      "Creates HTTP clients with specified timeout"
+    ],
+    "risks": [
+      "Potential for context cancellation leading to unhandled errors",
+      "Improper handling of blockchain support leading to unexpected behavior"
+    ],
+    "complexity": "medium"
+  }
+}

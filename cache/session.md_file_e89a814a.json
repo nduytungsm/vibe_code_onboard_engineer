@@ -1,0 +1,18 @@
+{
+  "content_hash": "5bf820722c945f614e05057bf9aaa7b8",
+  "timestamp": "2025-09-24T15:41:33.845508+07:00",
+  "result": {
+    "language": "markdown",
+    "purpose": "Documentation for the Session middleware in Fiber apps, detailing usage, configuration, and security practices.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/session",
+      "time",
+      "github.com/gofiber/fiber/v3/extractors",
+      "github.com/gofiber/storage/redis"
+    ],
+    "complexity": "medium"
+  }
+}

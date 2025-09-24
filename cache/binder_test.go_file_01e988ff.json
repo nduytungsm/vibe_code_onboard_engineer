@@ -1,0 +1,47 @@
+{
+  "content_hash": "9140b33ab271cdc65a89ca87c41cd929",
+  "timestamp": "2025-09-24T15:26:52.284259+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for binding data from HTTP requests to Go structures and handling various error cases.",
+    "key_types": [
+      "HeaderBinding",
+      "RespHeaderBinding",
+      "QueryBinding",
+      "FormBinding",
+      "URIBinding",
+      "XMLBinding",
+      "JSONBinding",
+      "CBORBinding",
+      "MsgPackBinding",
+      "ParserConfig"
+    ],
+    "functions": [
+      "Test_GetAndPutToThePool",
+      "Test_Binders_ErrorPaths",
+      "Test_GetFieldCache_Panic",
+      "Test_parseToMap_defaultCase",
+      "Test_parse_function_maps",
+      "Test_SetParserDecoder_UnknownKeys",
+      "Test_SetParserDecoder_CustomConverter",
+      "Test_formatBindData_typeMismatch"
+    ],
+    "imports": [
+      "mime/multipart",
+      "reflect",
+      "strconv",
+      "testing",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Panics if invalid operations are performed on the pool",
+      "Acquires and releases HTTP requests"
+    ],
+    "risks": [
+      "Potential panic if the pool is accessed incorrectly",
+      "Improper handling of malformed HTTP requests may lead to unexpected behavior"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "content_hash": "9fba27e2d05c231eaef79fdaba0bf994",
+  "timestamp": "2025-09-24T15:28:31.976142+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides an in-memory storage solution for arbitrary values with expiration support.",
+    "key_types": [
+      "Storage",
+      "item"
+    ],
+    "functions": [
+      "New",
+      "Get",
+      "Set",
+      "Delete",
+      "Reset",
+      "gc"
+    ],
+    "imports": [
+      "sync",
+      "time",
+      "github.com/gofiber/utils/v2"
+    ],
+    "side_effects": [
+      "Starts a background garbage collection loop."
+    ],
+    "risks": [
+      "Potential race conditions if not used properly due to concurrent access."
+    ],
+    "complexity": "medium"
+  }
+}

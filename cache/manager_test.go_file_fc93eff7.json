@@ -1,0 +1,28 @@
+{
+  "content_hash": "945ce13d327e81fdb5bcf6b94cc04c08",
+  "timestamp": "2025-09-24T15:42:07.36359+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the cache manager functionality",
+    "key_types": [
+      "cacheManager",
+      "cacheItem"
+    ],
+    "functions": [
+      "Test_manager_get",
+      "Test_manager_logKey"
+    ],
+    "imports": [
+      "context",
+      "testing",
+      "time",
+      "github.com/gofiber/utils/v2",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies the state of the cache manager during tests"
+    ],
+    "complexity": "medium"
+  }
+}

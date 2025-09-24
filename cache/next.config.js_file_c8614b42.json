@@ -1,0 +1,28 @@
+{
+  "content_hash": "56f78e1bddcd06af5078557378a3af56",
+  "timestamp": "2025-09-24T15:25:15.256774+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for a Next.js application that sets up Webpack with Monaco Editor support.",
+    "key_types": [
+      "nextConfig",
+      "MonacoWebpackPlugin"
+    ],
+    "functions": [
+      "webpack"
+    ],
+    "imports": [
+      "monaco-editor-webpack-plugin",
+      "path"
+    ],
+    "side_effects": [
+      "Modifies Webpack configuration",
+      "Adds plugins and rules to Webpack"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if misconfigured",
+      "Dependency on external libraries may introduce vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

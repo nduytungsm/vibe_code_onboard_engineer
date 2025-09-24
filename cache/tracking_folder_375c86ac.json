@@ -1,0 +1,71 @@
+{
+  "content_hash": "abfb64ee3131a012518c1498f407c10a",
+  "timestamp": "2025-09-24T15:32:06.080866+07:00",
+  "result": {
+    "path": "pkg/tracking",
+    "purpose": "Responsible for tracking events and requests with a configurable client.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "config.go",
+      "models.go",
+      "tracking_svc.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-manager/httpclient"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration, data models, and service logic for tracking functionality.",
+    "file_summaries": {
+      "pkg/tracking/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for tracking with associated methods.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "SetUserAgent"
+        ],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "pkg/tracking/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures for tracking events and requests.",
+        "key_types": [
+          "Event",
+          "TrackingRequest"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "pkg/tracking/tracking_svc.go": {
+        "language": "Go",
+        "purpose": "Provides tracking services for events using a configurable client.",
+        "key_types": [
+          "Service",
+          "service",
+          "Config",
+          "TrackingRequest"
+        ],
+        "functions": [
+          "Track",
+          "TrackAsync",
+          "NewService"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-manager/httpclient"
+        ],
+        "side_effects": [
+          "Modifies event data if certain conditions are met.",
+          "Makes HTTP requests to track events."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

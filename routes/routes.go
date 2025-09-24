@@ -2,7 +2,6 @@ package routes
 
 import (
 	"os"
-	"path/filepath"
 	
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -16,8 +15,9 @@ func SetupRoutes(e *echo.Echo, healthController *controllers.HealthController, a
 	// API routes
 	api := e.Group("/api")
 	
-	// Repository analysis endpoint
+	// Repository analysis endpoints
 	api.POST("/analyze", analysisController.AnalyzeRepository)
+	api.POST("/analyze/stream", analysisController.StreamAnalyzeRepository)
 	
 	// Serve static files if they exist (for combined deployment)
 	staticDir := "./static"

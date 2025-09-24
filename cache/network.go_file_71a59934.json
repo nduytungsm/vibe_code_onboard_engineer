@@ -1,0 +1,45 @@
+{
+  "content_hash": "03b1980f65a7154bed41db34f7e3489f",
+  "timestamp": "2025-09-24T15:31:33.236497+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing network entities, including CRUD operations and querying capabilities.",
+    "key_types": [
+      "NetworkRepo",
+      "networkRepo",
+      "Network",
+      "NetworkFilter",
+      "NetworkOrderBy",
+      "Paging",
+      "Preload"
+    ],
+    "functions": [
+      "GetNetwork",
+      "GetNetworkList",
+      "CreateNetwork",
+      "DeleteNetwork",
+      "UpdateNetwork",
+      "SaveNetwork",
+      "UpdateNetworks",
+      "SaveNetworks",
+      "NewNetworkRepo"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "side_effects": [
+      "Database transactions are initiated and modified."
+    ],
+    "risks": [
+      "Potential SQL injection if filter conditions are not properly sanitized.",
+      "Panic in SaveNetwork, UpdateNetworks, and SaveNetworks if not implemented."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,736 @@
+{
+  "content_hash": "4a8945a7cd62da2fa845d9a044108ff9",
+  "timestamp": "2025-09-24T15:47:42.49658+07:00",
+  "result": {
+    "path": "docs/middleware",
+    "purpose": "This folder contains documentation and implementation details for various middleware components used in the Fiber web framework.",
+    "languages": {
+      "Go": 15,
+      "JSON": 1,
+      "Markdown": 15
+    },
+    "key_modules": [
+      "docs/middleware/adaptor.md",
+      "docs/middleware/basicauth.md",
+      "docs/middleware/cache.md",
+      "docs/middleware/compress.md",
+      "docs/middleware/cors.md",
+      "docs/middleware/csrf.md",
+      "docs/middleware/earlydata.md",
+      "docs/middleware/encryptcookie.md",
+      "docs/middleware/envvar.md",
+      "docs/middleware/etag.md",
+      "docs/middleware/expvar.md",
+      "docs/middleware/favicon.md",
+      "docs/middleware/healthcheck.md",
+      "docs/middleware/helmet.md",
+      "docs/middleware/idempotency.md",
+      "docs/middleware/keyauth.md",
+      "docs/middleware/limiter.md",
+      "docs/middleware/logger.md",
+      "docs/middleware/pprof.md",
+      "docs/middleware/proxy.md",
+      "docs/middleware/recover.md",
+      "docs/middleware/redirect.md",
+      "docs/middleware/requestid.md",
+      "docs/middleware/rewrite.md",
+      "docs/middleware/session.md",
+      "docs/middleware/skip.md",
+      "docs/middleware/static.md",
+      "docs/middleware/timeout.md"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/adaptor",
+      "github.com/gofiber/fiber/v3/middleware/basicauth",
+      "github.com/gofiber/fiber/v3/middleware/cache",
+      "github.com/gofiber/fiber/v3/middleware/compress",
+      "github.com/gofiber/fiber/v3/middleware/cors",
+      "github.com/gofiber/fiber/v3/middleware/csrf",
+      "github.com/gofiber/fiber/v3/middleware/earlydata",
+      "github.com/gofiber/fiber/v3/middleware/encryptcookie",
+      "github.com/gofiber/fiber/v3/middleware/envvar",
+      "github.com/gofiber/fiber/v3/middleware/etag",
+      "github.com/gofiber/fiber/v3/middleware/expvar",
+      "github.com/gofiber/fiber/v3/middleware/favicon",
+      "github.com/gofiber/fiber/v3/middleware/healthcheck",
+      "github.com/gofiber/fiber/v3/middleware/helmet",
+      "github.com/gofiber/fiber/v3/middleware/idempotency",
+      "github.com/gofiber/fiber/v3/middleware/keyauth",
+      "github.com/gofiber/fiber/v3/middleware/limiter",
+      "github.com/gofiber/fiber/v3/middleware/logger",
+      "github.com/gofiber/fiber/v3/middleware/pprof",
+      "github.com/gofiber/fiber/v3/middleware/proxy",
+      "github.com/gofiber/fiber/v3/middleware/recover",
+      "github.com/gofiber/fiber/v3/middleware/redirect",
+      "github.com/gofiber/fiber/v3/middleware/requestid",
+      "github.com/gofiber/fiber/v3/middleware/rewrite",
+      "github.com/gofiber/fiber/v3/middleware/session",
+      "github.com/gofiber/fiber/v3/middleware/skip",
+      "github.com/gofiber/fiber/v3/middleware/static",
+      "github.com/gofiber/fiber/v3/middleware/timeout"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each middleware is documented and implemented as a separate module, allowing for easy integration and usage within the Fiber framework.",
+    "file_summaries": {
+      "docs/middleware/_category_.json": {
+        "language": "JSON",
+        "purpose": "Defines middleware category metadata for documentation purposes.",
+        "key_types": [
+          "object"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "docs/middleware/adaptor.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for the adaptor package that converts between Fiber and net/http frameworks.",
+        "key_types": [
+          "fiber.Ctx",
+          "http.Request",
+          "fiber.App"
+        ],
+        "functions": [
+          "HTTPHandler",
+          "HTTPHandlerFunc",
+          "HTTPMiddleware",
+          "FiberHandler",
+          "FiberHandlerFunc",
+          "FiberApp",
+          "ConvertRequest",
+          "CopyContextToFiberContext"
+        ],
+        "imports": [
+          "fmt",
+          "net/http",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/adaptor",
+          "log"
+        ],
+        "side_effects": [
+          "Interoperability between Fiber and net/http frameworks"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/basicauth.md": {
+        "language": "Go",
+        "purpose": "Provides Basic Authentication middleware for the Fiber web framework.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New",
+          "UsernameFromContext"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/basicauth"
+        ],
+        "side_effects": [
+          "Panic if unsupported charset is provided."
+        ],
+        "risks": [
+          "Potential exposure of hashed passwords if not handled securely."
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/cache.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for cache middleware in Fiber framework",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New",
+          "CacheInvalidator",
+          "KeyGenerator",
+          "ExpirationGenerator"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/cache",
+          "github.com/gofiber/utils/v2"
+        ],
+        "side_effects": [
+          "Caches responses based on request path and method",
+          "Invalidates cache entries based on custom rules"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/compress.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for compression middleware in Fiber framework",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/compress"
+        ],
+        "side_effects": [
+          "Modifies response headers based on compression",
+          "May skip compression for certain responses"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/cors.md": {
+        "language": "markdown",
+        "purpose": "Documentation for CORS middleware in Fiber framework",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New",
+          "dbCheckOrigin"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/cors"
+        ],
+        "side_effects": [
+          "Panic on invalid origins",
+          "Logs misconfigured origins"
+        ],
+        "risks": [
+          "Misconfiguration can lead to security vulnerabilities",
+          "Allowing wildcard origins with credentials"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/csrf.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for CSRF middleware that protects against Cross-Site Request Forgery.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/extractors",
+          "github.com/gofiber/fiber/v3/middleware/csrf"
+        ],
+        "risks": [
+          "Potential exposure of CSRF tokens if not properly configured.",
+          "Vulnerability to BREACH attacks if HTTPS is not enforced."
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/earlydata.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for Early Data middleware that adds TLS 1.3 '0-RTT' support to Fiber.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New",
+          "IsEarly"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/earlydata"
+        ],
+        "side_effects": [
+          "Enabling early data in a reverse proxy makes requests replayable."
+        ],
+        "risks": [
+          "Potential for replay attacks if early data is not handled properly."
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/encryptcookie.md": {
+        "language": "Go",
+        "purpose": "Middleware for encrypting cookie values in a Fiber web application.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New",
+          "GenerateKey"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/encryptcookie"
+        ],
+        "side_effects": [
+          "Modifies cookies by encrypting their values."
+        ],
+        "risks": [
+          "Improper key management may lead to loss of access to encrypted cookies."
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/envvar.md": {
+        "language": "Go",
+        "purpose": "EnvVar middleware for Fiber exposes environment variables with configurable options.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/envvar"
+        ],
+        "side_effects": [
+          "Exposes environment variables based on configuration."
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/etag.md": {
+        "language": "Go",
+        "purpose": "ETag middleware for Fiber that helps caches validate responses and saves bandwidth by avoiding full retransmits when content is unchanged.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/etag"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/expvar.md": {
+        "language": "Go",
+        "purpose": "The ExpVar middleware exposes runtime variables over HTTP in JSON format.",
+        "key_types": [
+          "fiber.Handler",
+          "expvar.Int",
+          "Config"
+        ],
+        "functions": [
+          "New",
+          "Add",
+          "Value"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/expvar"
+        ],
+        "side_effects": [
+          "Registers handlers on /debug/vars",
+          "Modifies the count variable"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/favicon.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for favicon middleware in Fiber framework",
+        "key_types": [
+          "fiber.Handler",
+          "Config"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/favicon"
+        ],
+        "side_effects": [
+          "Suppresses repeated favicon requests",
+          "Caches favicon in memory"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/healthcheck.md": {
+        "language": "Go",
+        "purpose": "Middleware for adding liveness, readiness, and startup probes to Fiber applications.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New",
+          "defaultProbe"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/healthcheck"
+        ],
+        "side_effects": [
+          "Responds with 200 OK or 503 Service Unavailable based on health checks."
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/helmet.md": {
+        "language": "Go",
+        "purpose": "This file documents the Helmet middleware for securing Fiber applications by adding common security headers.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/helmet"
+        ],
+        "side_effects": [
+          "Modifies HTTP response headers to enhance security."
+        ],
+        "risks": [
+          "Improper configuration may lead to security vulnerabilities."
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/idempotency.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for Idempotency middleware in Fiber framework to build fault-tolerant APIs.",
+        "key_types": [
+          "Config",
+          "fiber.Handler",
+          "fiber.Ctx",
+          "Locker",
+          "fiber.Storage"
+        ],
+        "functions": [
+          "New",
+          "IsFromCache",
+          "WasPutToCache"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/idempotency"
+        ],
+        "side_effects": [
+          "Modifies behavior of API requests based on idempotency configuration."
+        ],
+        "risks": [
+          "Exposing idempotency keys in logs if DisableValueRedaction is set to true."
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/keyauth.md": {
+        "language": "Go",
+        "purpose": "Implements API key authentication middleware for the Fiber web framework.",
+        "key_types": [
+          "Config",
+          "fiber.Handler",
+          "fiber.Ctx"
+        ],
+        "functions": [
+          "New",
+          "TokenFromContext",
+          "validateAPIKey",
+          "main"
+        ],
+        "imports": [
+          "crypto/sha256",
+          "crypto/subtle",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/keyauth"
+        ],
+        "side_effects": [
+          "Registers middleware with the Fiber application",
+          "Handles API key validation"
+        ],
+        "risks": [
+          "Potential exposure of API key if not handled securely",
+          "Improper validation could lead to unauthorized access"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/limiter.md": {
+        "language": "Go",
+        "purpose": "This file documents the Limiter middleware for the Fiber web framework, detailing its configuration and usage for rate limiting requests.",
+        "key_types": [
+          "Config",
+          "fiber.Handler",
+          "fiber.Ctx",
+          "fiber.Storage",
+          "LimiterHandler"
+        ],
+        "functions": [
+          "New",
+          "Next",
+          "MaxFunc",
+          "KeyGenerator",
+          "LimitReached"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/limiter"
+        ],
+        "side_effects": [
+          "Redacts request keys in error paths to prevent sensitive information from being logged.",
+          "Can modify request handling based on rate limiting rules."
+        ],
+        "risks": [
+          "Potential for denial of service if limits are set too low.",
+          "Improper configuration may lead to unintentional exposure of sensitive data."
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/logger.md": {
+        "language": "Go",
+        "purpose": "Logger middleware for Fiber that logs HTTP requests and responses.",
+        "key_types": [
+          "fiber.Handler",
+          "Config",
+          "logger.LogFunc"
+        ],
+        "functions": [
+          "New",
+          "Done",
+          "Skip",
+          "Next"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/logger",
+          "os",
+          "log",
+          "time"
+        ],
+        "side_effects": [
+          "Logs HTTP requests and responses",
+          "Writes logs to specified output stream"
+        ],
+        "risks": [
+          "Potential information leakage through logs if sensitive data is logged",
+          "Improper configuration may lead to performance issues"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/pprof.md": {
+        "language": "Go",
+        "purpose": "Exposes runtime profiling data for analysis with the Go pprof tool.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/pprof"
+        ],
+        "side_effects": [
+          "Registers handlers under /debug/pprof/"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/proxy.md": {
+        "language": "Go",
+        "purpose": "The Proxy middleware forwards requests to one or more upstream servers.",
+        "key_types": [
+          "fiber.Handler",
+          "Config",
+          "fasthttp.Client"
+        ],
+        "functions": [
+          "Balancer",
+          "Forward",
+          "Do",
+          "DoRedirects",
+          "DoDeadline",
+          "DoTimeout",
+          "DomainForward",
+          "BalancerForward"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/proxy"
+        ],
+        "side_effects": [
+          "Modifies HTTP requests and responses",
+          "Removes Server header from responses"
+        ],
+        "risks": [
+          "Potential exposure of sensitive headers",
+          "Insecure handling of TLS configurations"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/recover.md": {
+        "language": "Go",
+        "purpose": "Middleware for Fiber that intercepts panics and forwards them to a central error handler.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/recover"
+        ],
+        "side_effects": [
+          "Intercepts panics in handlers"
+        ],
+        "risks": [
+          "Potential exposure of stack traces if EnableStackTrace is true"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/redirect.md": {
+        "language": "Go",
+        "purpose": "Redirect middleware maps old URLs to new ones using simple rules.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/redirect"
+        ],
+        "side_effects": [
+          "Redirects HTTP requests from old URLs to new URLs."
+        ],
+        "risks": [
+          "Potential for redirect loops if rules are not configured correctly."
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/requestid.md": {
+        "language": "Go",
+        "purpose": "The RequestID middleware generates or propagates a request identifier, adding it to the response headers and request context.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New",
+          "FromContext"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/requestid"
+        ],
+        "side_effects": [
+          "Adds request ID to response headers",
+          "Modifies request context"
+        ],
+        "risks": [
+          "Potential exposure of request count if default UUID generator is used"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/rewrite.md": {
+        "language": "Go",
+        "purpose": "The Rewrite middleware remaps the request path using custom rules for backward compatibility and cleaner URLs.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/rewrite"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/session.md": {
+        "language": "markdown",
+        "purpose": "Documentation for the Session middleware in Fiber apps, detailing usage, configuration, and security practices.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/session",
+          "time",
+          "github.com/gofiber/fiber/v3/extractors",
+          "github.com/gofiber/storage/redis"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/skip.md": {
+        "language": "Go",
+        "purpose": "Defines a middleware that skips a handler based on a predicate function for HTTP requests.",
+        "key_types": [
+          "fiber.Handler",
+          "fiber.Ctx"
+        ],
+        "functions": [
+          "New",
+          "BasicHandler"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/skip"
+        ],
+        "side_effects": [
+          "Modifies request handling based on the predicate function."
+        ],
+        "risks": [
+          "Potential for bypassing critical handlers if predicate logic is flawed."
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/static.md": {
+        "language": "Go",
+        "purpose": "The Static middleware serves assets such as images, CSS, and JavaScript.",
+        "key_types": [
+          "fiber.Handler",
+          "Config"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/static"
+        ],
+        "side_effects": [
+          "Serves static files from a specified directory",
+          "Handles requests for non-existent files based on configuration"
+        ],
+        "risks": [
+          "Potential exposure of sensitive files if directory browsing is enabled",
+          "Improper configuration may lead to serving unintended files"
+        ],
+        "complexity": "medium"
+      },
+      "docs/middleware/timeout.md": {
+        "language": "Go",
+        "purpose": "This file describes a timeout middleware for the Fiber web framework that aborts handlers that run too long.",
+        "key_types": [
+          "fiber.Handler",
+          "timeout.Config",
+          "context.Context"
+        ],
+        "functions": [
+          "New",
+          "sleepWithContext",
+          "sleepWithContextWithCustomError"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "log",
+          "time",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/timeout"
+        ],
+        "side_effects": [
+          "Aborts long-running handlers",
+          "Returns 408 Request Timeout when the deadline is exceeded"
+        ],
+        "risks": [
+          "Panic if c.Next() is called inside the wrapped handler"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "content_hash": "0f09775ed965eddae6b339134f8e4fa8",
+  "timestamp": "2025-09-24T15:45:13.981612+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines keywords and provides a method to check if a token matches a keyword.",
+    "key_types": [
+      "Keyword"
+    ],
+    "functions": [
+      "TokenMatches"
+    ],
+    "imports": [
+      "bytes"
+    ],
+    "complexity": "low"
+  }
+}

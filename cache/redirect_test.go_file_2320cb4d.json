@@ -1,0 +1,34 @@
+{
+  "content_hash": "9e1999769d1b3278cd51423f164864a6",
+  "timestamp": "2025-09-24T15:43:13.2442+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the redirect middleware in a web application using the Fiber framework.",
+    "key_types": [
+      "fiber.Ctx",
+      "Config"
+    ],
+    "functions": [
+      "Test_Redirect",
+      "Test_Next",
+      "Test_NoRules",
+      "Test_DefaultConfig",
+      "Test_RegexRules"
+    ],
+    "imports": [
+      "context",
+      "net/http",
+      "testing",
+      "github.com/gofiber/fiber/v3",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies HTTP response status codes based on redirect rules."
+    ],
+    "risks": [
+      "Potential for incorrect redirects if rules are misconfigured.",
+      "Panic on invalid regex patterns."
+    ],
+    "complexity": "medium"
+  }
+}

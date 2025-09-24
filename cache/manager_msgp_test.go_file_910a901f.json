@@ -1,0 +1,26 @@
+{
+  "content_hash": "b7d42093e1b23df5dbe9f2e3109b9b76",
+  "timestamp": "2025-09-24T15:42:07.489472+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests and benchmarks for marshaling and unmarshaling an 'item' structure using the msgp library.",
+    "key_types": [
+      "item"
+    ],
+    "functions": [
+      "TestMarshalUnmarshalitem",
+      "BenchmarkMarshalMsgitem",
+      "BenchmarkAppendMsgitem",
+      "BenchmarkUnmarshalitem",
+      "TestEncodeDecodeitem",
+      "BenchmarkEncodeitem",
+      "BenchmarkDecodeitem"
+    ],
+    "imports": [
+      "bytes",
+      "testing",
+      "github.com/tinylib/msgp/msgp"
+    ],
+    "complexity": "medium"
+  }
+}

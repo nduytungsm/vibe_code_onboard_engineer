@@ -1,0 +1,96 @@
+{
+  "content_hash": "cac69d910c0fe4c285060aee9257c061",
+  "timestamp": "2025-09-24T15:44:30.335486+07:00",
+  "result": {
+    "path": "middleware/healthcheck",
+    "purpose": "Responsible for providing health check functionality in a web application.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "config.go",
+      "healthcheck.go",
+      "healthcheck_test.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "net/http/httptest",
+      "strconv",
+      "testing",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating health check functionality with configuration, implementation, and testing separated into distinct files.",
+    "file_summaries": {
+      "middleware/healthcheck/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration options for healthcheck middleware in a web application.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "defaultProbe",
+          "configDefault"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/healthcheck/healthcheck.go": {
+        "language": "Go",
+        "purpose": "Provides a health-check handler for a web application.",
+        "key_types": [
+          "Config",
+          "fiber.Handler"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3"
+        ],
+        "side_effects": [
+          "Responds with HTTP status codes based on health check results."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/healthcheck/healthcheck_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for health check endpoints in a web application using the Fiber framework.",
+        "key_types": [
+          "fiber.App",
+          "fiber.Ctx",
+          "Config"
+        ],
+        "functions": [
+          "shouldGiveStatus",
+          "shouldGiveOK",
+          "shouldGiveNotFound",
+          "Test_HealthCheck_Strict_Routing_Default",
+          "Test_HealthCheck_Default",
+          "Test_HealthCheck_Custom",
+          "Test_HealthCheck_Custom_Nested",
+          "Test_HealthCheck_Next",
+          "Benchmark_HealthCheck",
+          "Benchmark_HealthCheck_Parallel"
+        ],
+        "imports": [
+          "net/http/httptest",
+          "strconv",
+          "testing",
+          "github.com/gofiber/fiber/v3",
+          "github.com/stretchr/testify/require",
+          "github.com/valyala/fasthttp"
+        ],
+        "side_effects": [
+          "Tests may modify application state through health check probes."
+        ],
+        "risks": [
+          "Potential for race conditions in tests due to concurrent access to shared resources."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

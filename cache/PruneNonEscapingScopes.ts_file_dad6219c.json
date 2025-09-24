@@ -1,0 +1,29 @@
+{
+  "content_hash": "3923e96cb09b65b67c0b0b8ba22af400",
+  "timestamp": "2025-09-24T15:27:01.671085+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file implements a pass that prunes unnecessary reactive scopes in a reactive programming context, optimizing memoization for React components.",
+    "key_types": [
+      "ReactiveFunction",
+      "State",
+      "IdentifierNode",
+      "ScopeNode",
+      "MemoizationOptions"
+    ],
+    "functions": [
+      "pruneNonEscapingScopes",
+      "joinAliases",
+      "declare"
+    ],
+    "imports": [
+      "../CompilerError",
+      "../HIR",
+      "../Utils/utils",
+      "./visitors",
+      "../HIR/PrintHIR",
+      "../Inference/InferMutationAliasingEffects"
+    ],
+    "complexity": "high"
+  }
+}

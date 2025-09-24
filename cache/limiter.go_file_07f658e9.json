@@ -1,0 +1,27 @@
+{
+  "content_hash": "2e92a81b59845d551231e856bcc94c4b",
+  "timestamp": "2025-09-24T15:42:51.830228+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a rate-limiting middleware for the Fiber web framework.",
+    "key_types": [
+      "Handler",
+      "Config"
+    ],
+    "functions": [
+      "New",
+      "getEffectiveStatusCode"
+    ],
+    "imports": [
+      "errors",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "side_effects": [
+      "Modifies response headers related to rate limiting."
+    ],
+    "risks": [
+      "Potential denial of service if rate limits are not properly configured."
+    ],
+    "complexity": "medium"
+  }
+}

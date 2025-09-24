@@ -1,0 +1,46 @@
+{
+  "content_hash": "505823d5e238fbca167d3e189a87310f",
+  "timestamp": "2025-09-24T15:27:30.918896+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validates the usage of React hooks according to the Rules of Hooks.",
+    "key_types": [
+      "Kind",
+      "HIRFunction",
+      "CompilerError",
+      "CompilerErrorDetail",
+      "ErrorCategory",
+      "SourceLocation",
+      "Place",
+      "IdentifierId"
+    ],
+    "functions": [
+      "joinKinds",
+      "validateHooksUsage",
+      "recordError",
+      "recordConditionalHookError",
+      "recordInvalidHookUsageError",
+      "recordDynamicHookUsageError",
+      "getKindForPlace",
+      "visitPlace",
+      "setKind"
+    ],
+    "imports": [
+      "@babel/types",
+      "../CompilerError",
+      "../HIR/ComputeUnconditionalBlocks",
+      "../HIR/Environment",
+      "../HIR/HIR",
+      "../HIR/visitors",
+      "../Utils/utils",
+      "../Utils/Result"
+    ],
+    "side_effects": [
+      "Modifies the errors map to record validation errors."
+    ],
+    "risks": [
+      "Potential for incorrect validation if hooks are used in non-standard ways."
+    ],
+    "complexity": "medium"
+  }
+}

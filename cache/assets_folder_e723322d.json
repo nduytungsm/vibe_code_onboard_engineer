@@ -1,9 +1,9 @@
 {
-  "content_hash": "b2931dd4b0b1b826a23266eedb91de61",
-  "timestamp": "2025-09-23T16:05:19.979254+07:00",
+  "content_hash": "ba4590538a5ea588863caf11c42cd6c6",
+  "timestamp": "2025-09-23T16:59:45.725016+07:00",
   "result": {
     "path": "_api_specs/assets",
-    "purpose": "This folder is responsible for storing CSS files that define styles for the API specifications interface and related components.",
+    "purpose": "Contains stylesheets for the API specifications and Swagger UI.",
     "languages": {
       "CSS": 2
     },
@@ -12,11 +12,11 @@
       "swagger-ui.css"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a simple structure focused on styling, containing CSS files that are likely used in conjunction with HTML elements for the API documentation interface.",
+    "architecture": "The folder follows a simple structure focused on styling, with separate CSS files for different components.",
     "file_summaries": {
       "_api_specs/assets/index.css": {
         "language": "CSS",
-        "purpose": "Defines styles for HTML elements including box-sizing and body background.",
+        "purpose": "Styles the HTML document with box-sizing and basic layout properties.",
         "key_types": [],
         "functions": [],
         "imports": [],
@@ -24,7 +24,7 @@
       },
       "_api_specs/assets/swagger-ui.css": {
         "language": "CSS",
-        "purpose": "Defines styles for the Swagger UI interface.",
+        "purpose": "Styles for Swagger UI",
         "key_types": [],
         "functions": [],
         "imports": [],

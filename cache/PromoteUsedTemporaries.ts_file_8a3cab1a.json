@@ -1,0 +1,50 @@
+{
+  "content_hash": "7b24b1a0d814556dac675603befffae7",
+  "timestamp": "2025-09-24T15:26:58.213243+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines classes for promoting temporary variables in reactive programming scopes.",
+    "key_types": [
+      "PromoteTemporaries",
+      "PromoteAllInstancedOfPromotedTemporaries",
+      "CollectPromotableTemporaries",
+      "PromoteInterposedTemporaries",
+      "State",
+      "JsxExpressionTags"
+    ],
+    "functions": [
+      "visitScope",
+      "visitPrunedScope",
+      "visitParam",
+      "visitValue",
+      "visitReactiveFunctionValue",
+      "traverseScopeIdentifiers"
+    ],
+    "imports": [
+      "CompilerError",
+      "GeneratedSource",
+      "DeclarationId",
+      "Identifier",
+      "InstructionId",
+      "Place",
+      "PrunedReactiveScopeBlock",
+      "ReactiveFunction",
+      "ReactiveScope",
+      "ReactiveInstruction",
+      "ReactiveValue",
+      "ScopeId",
+      "SpreadPattern",
+      "promoteTemporary",
+      "promoteTemporaryJsxTag",
+      "IdentifierId",
+      "ReactiveFunctionVisitor",
+      "visitReactiveFunction",
+      "eachInstructionValueLValue",
+      "eachPatternOperand"
+    ],
+    "side_effects": [
+      "Modifies the state of identifiers by promoting them based on usage."
+    ],
+    "complexity": "medium"
+  }
+}

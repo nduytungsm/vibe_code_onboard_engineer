@@ -1,0 +1,270 @@
+{
+  "content_hash": "4d3593f0387d76c2fbb22ace65f7a2f9",
+  "timestamp": "2025-09-24T15:44:51.712392+07:00",
+  "result": {
+    "path": "middleware/idempotency",
+    "purpose": "Responsible for implementing idempotency middleware to cache HTTP responses based on an idempotency key in a web application.",
+    "languages": {
+      "Go": 10
+    },
+    "key_modules": [
+      "config.go",
+      "idempotency.go",
+      "idempotency_test.go",
+      "locker.go",
+      "locker_test.go",
+      "response.go",
+      "response_msgp.go",
+      "response_msgp_test.go",
+      "stub_test.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/internal/storage/memory",
+      "github.com/gofiber/fiber/v3/log",
+      "github.com/gofiber/utils/v2",
+      "github.com/tinylib/msgp/msgp",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to idempotency in separate files, each handling specific aspects such as configuration, locking, response handling, and testing.",
+    "file_summaries": {
+      "middleware/idempotency/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration for idempotency middleware in a web application.",
+        "key_types": [
+          "Config",
+          "Locker"
+        ],
+        "functions": [
+          "configDefault"
+        ],
+        "imports": [
+          "errors",
+          "fmt",
+          "time",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/internal/storage/memory"
+        ],
+        "side_effects": [
+          "Allocates memory for storage and locking mechanisms if not provided."
+        ],
+        "risks": [
+          "Potential for denial of service if the lifetime of idempotency keys is not managed properly."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/idempotency/idempotency.go": {
+        "language": "Go",
+        "purpose": "Implements idempotency middleware for caching HTTP responses based on an idempotency key.",
+        "key_types": [
+          "contextKey",
+          "Config",
+          "response"
+        ],
+        "functions": [
+          "IsFromCache",
+          "WasPutToCache",
+          "New"
+        ],
+        "imports": [
+          "fmt",
+          "strings",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/log",
+          "github.com/gofiber/utils/v2"
+        ],
+        "side_effects": [
+          "Caches HTTP responses based on idempotency key",
+          "Modifies response headers"
+        ],
+        "risks": [
+          "Potential for race conditions if locking is not handled properly",
+          "Sensitive data may be exposed if redaction is not configured correctly"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/idempotency/idempotency_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for the idempotency middleware in a web application, ensuring that requests with the same idempotency key are handled correctly.",
+        "key_types": [
+          "fiber.App",
+          "fiber.Ctx",
+          "Config"
+        ],
+        "functions": [
+          "Test_Idempotency",
+          "Benchmark_Idempotency",
+          "Test_configDefault_defaults",
+          "Test_configDefault_override",
+          "do",
+          "Test_New_NextSkip",
+          "Test_New_InvalidKey",
+          "Test_New_StorageGetError",
+          "Test_New_UnmarshalError",
+          "Test_New_StoreRetrieve_FilterHeaders"
+        ],
+        "imports": [
+          "errors",
+          "fmt",
+          "io",
+          "net/http",
+          "net/http/httptest",
+          "strconv",
+          "sync",
+          "sync/atomic",
+          "testing",
+          "time",
+          "github.com/gofiber/fiber/v3",
+          "github.com/valyala/fasthttp",
+          "github.com/stretchr/testify/assert",
+          "github.com/stretchr/testify/require"
+        ],
+        "side_effects": [
+          "Modifies application state based on requests",
+          "May introduce race conditions in concurrent tests"
+        ],
+        "risks": [
+          "Potential for race conditions due to concurrent requests",
+          "Improper handling of idempotency keys could lead to unexpected behavior"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/idempotency/locker.go": {
+        "language": "Go",
+        "purpose": "Implements an in-memory locking mechanism for idempotency keys using a spinlock.",
+        "key_types": [
+          "Locker",
+          "countedLock",
+          "MemoryLock"
+        ],
+        "functions": [
+          "Lock",
+          "Unlock",
+          "NewMemoryLock"
+        ],
+        "imports": [
+          "sync"
+        ],
+        "side_effects": [
+          "Memory allocation for new locks",
+          "Modification of the internal state of the MemoryLock"
+        ],
+        "risks": [
+          "Potential deadlock if not used correctly",
+          "Memory leak if locks are not properly released"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/idempotency/locker_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests and benchmarks for the idempotency memory lock functionality.",
+        "key_types": [
+          "MemoryLock"
+        ],
+        "functions": [
+          "Test_MemoryLock",
+          "Benchmark_MemoryLock",
+          "Benchmark_MemoryLock_Parallel"
+        ],
+        "imports": [
+          "strconv",
+          "sync/atomic",
+          "testing",
+          "time",
+          "github.com/gofiber/fiber/v3/middleware/idempotency",
+          "github.com/stretchr/testify/assert",
+          "github.com/stretchr/testify/require"
+        ],
+        "side_effects": [
+          "Concurrent access to locks may lead to race conditions if not handled properly."
+        ],
+        "risks": [
+          "Potential deadlocks if locks are not released properly."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/idempotency/response.go": {
+        "language": "Go",
+        "purpose": "Defines a struct for representing the response of a request in an idempotency middleware.",
+        "key_types": [
+          "response"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "middleware/idempotency/response_msgp.go": {
+        "language": "Go",
+        "purpose": "This file defines a response structure for handling idempotency in message processing, including methods for encoding and decoding messages.",
+        "key_types": [
+          "response"
+        ],
+        "functions": [
+          "DecodeMsg",
+          "EncodeMsg",
+          "MarshalMsg",
+          "UnmarshalMsg",
+          "Msgsize"
+        ],
+        "imports": [
+          "github.com/tinylib/msgp/msgp"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/idempotency/response_msgp_test.go": {
+        "language": "Go",
+        "purpose": "Testing the marshaling and unmarshaling of the response struct using the msgp library.",
+        "key_types": [
+          "response"
+        ],
+        "functions": [
+          "TestMarshalUnmarshalresponse",
+          "BenchmarkMarshalMsgresponse",
+          "BenchmarkAppendMsgresponse",
+          "BenchmarkUnmarshalresponse",
+          "TestEncodeDecoderesponse",
+          "BenchmarkEncoderesponse",
+          "BenchmarkDecoderesponse"
+        ],
+        "imports": [
+          "bytes",
+          "testing",
+          "github.com/tinylib/msgp/msgp"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/idempotency/stub_test.go": {
+        "language": "Go",
+        "purpose": "Provides stub implementations for testing idempotency-related locking and storage functionalities.",
+        "key_types": [
+          "stubLock",
+          "stubStorage"
+        ],
+        "functions": [
+          "Lock",
+          "Unlock",
+          "Get",
+          "GetWithContext",
+          "Set",
+          "SetWithContext",
+          "Delete",
+          "DeleteWithContext",
+          "Reset",
+          "ResetWithContext",
+          "Close"
+        ],
+        "imports": [
+          "context",
+          "time"
+        ],
+        "side_effects": [
+          "Modifies internal state of stubStorage",
+          "Invokes afterLock callback in stubLock"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

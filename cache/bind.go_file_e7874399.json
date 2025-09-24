@@ -1,0 +1,49 @@
+{
+  "content_hash": "db6190a320272c2a175f23805ca3e4a4",
+  "timestamp": "2025-09-24T15:40:12.079535+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides helper methods for binding request data to Go values.",
+    "key_types": [
+      "CustomBinder",
+      "StructValidator",
+      "Bind"
+    ],
+    "functions": [
+      "AcquireBind",
+      "ReleaseBind",
+      "WithoutAutoHandling",
+      "WithAutoHandling",
+      "returnErr",
+      "validateStruct",
+      "Custom",
+      "Header",
+      "RespHeader",
+      "Cookie",
+      "Query",
+      "JSON",
+      "CBOR",
+      "XML",
+      "Form",
+      "URI",
+      "MsgPack",
+      "Body"
+    ],
+    "imports": [
+      "errors",
+      "reflect",
+      "slices",
+      "sync",
+      "github.com/gofiber/fiber/v3/binder",
+      "github.com/gofiber/utils/v2"
+    ],
+    "side_effects": [
+      "Modifies the state of the bind pool",
+      "Changes HTTP response status on error"
+    ],
+    "risks": [
+      "Potential panic if type assertion fails in AcquireBind"
+    ],
+    "complexity": "medium"
+  }
+}

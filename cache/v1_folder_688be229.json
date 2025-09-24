@@ -1,9 +1,9 @@
 {
-  "content_hash": "a96d37e518114ed716ed906ca8d1d004",
-  "timestamp": "2025-09-23T16:09:43.03896+07:00",
+  "content_hash": "de72fa250b2340790608a6fd51aa16ad",
+  "timestamp": "2025-09-23T17:02:35.677136+07:00",
   "result": {
     "path": "_nft_metadata_mapping/ronin/v1",
-    "purpose": "Defines metadata mappings for various NFT items in a game.",
+    "purpose": "Defines metadata mappings for various NFT types in a structured format.",
     "languages": {
       "JSON": 1
     },
@@ -15,7 +15,7 @@
     "file_summaries": {
       "_nft_metadata_mapping/ronin/v1/mapping.json": {
         "language": "JSON",
-        "purpose": "Defines metadata mappings for various NFT items in a game.",
+        "purpose": "Defines metadata mappings for various NFT types in a structured format.",
         "key_types": [
           "object",
           "string",

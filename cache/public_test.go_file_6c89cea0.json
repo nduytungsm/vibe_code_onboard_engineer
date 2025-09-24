@@ -1,0 +1,21 @@
+{
+  "content_hash": "99c6bb936d6750353a0049502ae919ae",
+  "timestamp": "2025-09-24T15:45:23.709894+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for validating identifiers and benchmarks for lexing HCL configuration.",
+    "key_types": [
+      "struct",
+      "Tokens"
+    ],
+    "functions": [
+      "TestValidIdentifier",
+      "BenchmarkLexConfig"
+    ],
+    "imports": [
+      "testing",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "content_hash": "5716d872e3401d33da3e97eaf9f5586e",
+  "timestamp": "2025-09-24T15:40:48.073006+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the response handling of a client in a web application using the Fiber framework.",
+    "key_types": [
+      "testServer",
+      "fiber.App",
+      "fiber.Ctx"
+    ],
+    "functions": [
+      "Test_Response_Status",
+      "Test_Response_Status_Code",
+      "Test_Response_Protocol",
+      "Test_Response_Header",
+      "Test_Response_Headers",
+      "Benchmark_Headers",
+      "Test_Response_Cookie",
+      "Test_Response_Body"
+    ],
+    "imports": [
+      "bytes",
+      "crypto/tls",
+      "encoding/xml",
+      "io",
+      "net",
+      "os",
+      "testing",
+      "github.com/gofiber/fiber/v3/internal/tlstest",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "side_effects": [
+      "Starts a test server",
+      "Makes HTTP requests to the server"
+    ],
+    "complexity": "medium"
+  }
+}

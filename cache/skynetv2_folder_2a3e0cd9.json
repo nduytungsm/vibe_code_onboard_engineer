@@ -1,9 +1,9 @@
 {
-  "content_hash": "ba77221c0740a3d1a5da53c6d501e4ac",
-  "timestamp": "2025-09-23T16:31:38.348247+07:00",
+  "content_hash": "9ddb008d6779dc29fbf2de57e6f0d177",
+  "timestamp": "2025-09-23T16:59:11.30994+07:00",
   "result": {
     "path": "pkg/providers/skynetv2",
-    "purpose": "Responsible for providing functionalities to interact with a blockchain wallet, including configuration, data models, and service methods for fetching token balances, NFT collections, and transaction details.",
+    "purpose": "Responsible for providing an interface to interact with the Skynet V2 blockchain, including configuration, models for requests and responses, and services for fetching data related to tokens and NFTs.",
     "languages": {
       "Go": 4
     },
@@ -21,12 +21,12 @@
       "github.com/rs/zerolog/log",
       "github.com/axieinfinity/ronin-wallet-proxy/models",
       "github.com/axieinfinity/ronin-wallet-proxy/models/skymavis",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
       "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/share",
       "github.com/axieinfinity/ecosystem-go-common/errors"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for configuration, models, and service logic, facilitating maintainability and scalability.",
+    "architecture": "The folder follows a modular architecture pattern, separating configuration, models, and service logic into distinct files to promote maintainability and clarity.",
     "file_summaries": {
       "pkg/providers/skynetv2/config.go": {
         "language": "Go",
@@ -45,7 +45,7 @@
       },
       "pkg/providers/skynetv2/models.go": {
         "language": "Go",
-        "purpose": "Defines data models and request/response structures for interacting with a blockchain API.",
+        "purpose": "Defines models and types for handling requests and responses related to transactions, tokens, and NFTs in the Skynet V2 API.",
         "key_types": [
           "PagingReq",
           "PagingResponse",
@@ -98,7 +98,7 @@
           "TokenBalancesRes",
           "PagingReq",
           "TransactionItem",
-          "GetAccountInfoResponse",
+          "SearchNFTsRes",
           "GetNFTByCollectionAndTokenIDRes"
         ],
         "functions": [
@@ -106,11 +106,7 @@
           "GetNFTCollections",
           "GetTransactionByHash",
           "GetNFTsOfCollectionForAddr",
-          "GetNFTByCollectionAndTokenID",
-          "getTokensBalanceForHome",
-          "getAccountBalance",
-          "getFungibleTokensBalance",
-          "getTokensBalanceForListDefaultErc20Tokens"
+          "GetNFTByCollectionAndTokenID"
         ],
         "imports": [
           "context",
@@ -139,17 +135,17 @@
         ],
         "side_effects": [
           "Makes HTTP requests to external services",
-          "Modifies shared state with mutex locks"
+          "Modifies internal state of the service"
         ],
         "risks": [
-          "Potential for race conditions if mutex locks are not used correctly",
-          "Error handling may expose sensitive information if not managed properly"
+          "Potential exposure of sensitive data through HTTP requests",
+          "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"
       },
       "pkg/providers/skynetv2/types.go": {
         "language": "Go",
-        "purpose": "Defines types and constants related to various token standards and transaction activities.",
+        "purpose": "Defines types and constants related to token standards, transfer types, activity types, action types, and transaction statuses for a blockchain application.",
         "key_types": [
           "PagingStyle",
           "TokenStandard",

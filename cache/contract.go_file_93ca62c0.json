@@ -1,0 +1,48 @@
+{
+  "content_hash": "664a59791fb07eedd6650940b61c5b17",
+  "timestamp": "2025-09-24T14:53:43.790849+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for handling smart contract information and metadata.",
+    "key_types": [
+      "ContractType",
+      "ERC721Type",
+      "ERC1155Type",
+      "Metadata",
+      "Contract",
+      "ContractResponse",
+      "ContractFilter",
+      "CreateContractRequest",
+      "UpdateContractRequest",
+      "GetContractByIDRequest",
+      "ERC20Metadata",
+      "ERC721Metadata",
+      "ERC1155Metadata",
+      "DAppURL",
+      "DAppURLSlice",
+      "StringSlice",
+      "InjectScript"
+    ],
+    "functions": [
+      "Scan",
+      "Value",
+      "MarshalJSON",
+      "UnmarshalJSON",
+      "Copy",
+      "ToMap",
+      "ToContract"
+    ],
+    "imports": [
+      "database/sql",
+      "database/sql/driver",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "strings",
+      "time",
+      "github.com/mitchellh/mapstructure",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+    ],
+    "complexity": "medium"
+  }
+}

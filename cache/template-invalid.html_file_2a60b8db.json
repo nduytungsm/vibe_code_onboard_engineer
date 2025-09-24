@@ -1,0 +1,12 @@
+{
+  "content_hash": "6562135b39c3651aaaff788f46202326",
+  "timestamp": "2025-09-24T15:39:54.106072+07:00",
+  "result": {
+    "language": "HTML",
+    "purpose": "This file is a template that displays a title.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

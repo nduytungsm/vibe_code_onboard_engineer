@@ -1,0 +1,26 @@
+{
+  "content_hash": "a02e9e34122d895d8f4e6e3ae08e28df",
+  "timestamp": "2025-09-24T15:41:52.687101+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains a deprecated method for binding a struct using a specified binding engine in the Gin web framework.",
+    "key_types": [
+      "Context",
+      "binding.Binding"
+    ],
+    "functions": [
+      "BindWith"
+    ],
+    "imports": [
+      "log",
+      "github.com/gin-gonic/gin/binding"
+    ],
+    "side_effects": [
+      "Logs a deprecation warning when BindWith is called"
+    ],
+    "risks": [
+      "Using deprecated methods may lead to unexpected behavior or errors in future updates"
+    ],
+    "complexity": "low"
+  }
+}

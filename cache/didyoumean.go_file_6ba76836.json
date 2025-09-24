@@ -1,0 +1,19 @@
+{
+  "content_hash": "5bd1ecb302767b032125b089f85d394e",
+  "timestamp": "2025-09-24T15:46:05.591995+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides functions to suggest valid JSON keywords based on a given string.",
+    "key_types": [
+      "string"
+    ],
+    "functions": [
+      "keywordSuggestion",
+      "nameSuggestion"
+    ],
+    "imports": [
+      "github.com/agext/levenshtein"
+    ],
+    "complexity": "medium"
+  }
+}

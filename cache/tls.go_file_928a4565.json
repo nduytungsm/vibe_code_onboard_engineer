@@ -1,0 +1,21 @@
+{
+  "content_hash": "b5a454e8944124a5f29ddc2d5eb67bda",
+  "timestamp": "2025-09-24T14:54:06.427999+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a function to convert certificate and key data into a TLS configuration.",
+    "key_types": [
+      "tls.Config",
+      "tls.Certificate",
+      "x509.CertPool"
+    ],
+    "functions": [
+      "ConvertToTLSConfig"
+    ],
+    "imports": [
+      "crypto/tls",
+      "crypto/x509"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "content_hash": "d471c904d02c685157d37c8ab95157f2",
+  "timestamp": "2025-09-24T15:27:18.26115+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the client package, specifically testing the functionality of the client and its methods.",
+    "key_types": [
+      "fiber.App",
+      "fasthttp.Client",
+      "Client",
+      "Request",
+      "Response"
+    ],
+    "functions": [
+      "startTestServerWithPort",
+      "Test_New_With_Client",
+      "Test_Client_Add_Hook",
+      "Test_Client_Marshal",
+      "Test_Client_SetBaseURL",
+      "Test_Client_Invalid_URL",
+      "Test_Client_Unsupported_Protocol",
+      "Test_Client_ConcurrencyRequests",
+      "Test_Get",
+      "Test_Head"
+    ],
+    "imports": [
+      "context",
+      "crypto/tls",
+      "encoding/hex",
+      "errors",
+      "io",
+      "net",
+      "os",
+      "reflect",
+      "sync",
+      "testing",
+      "time",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/addon/retry",
+      "github.com/gofiber/fiber/v3/internal/tlstest",
+      "github.com/gofiber/utils/v2",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/bytebufferpool",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Starts a test server",
+      "Modifies global state through tests"
+    ],
+    "risks": [
+      "Potential race conditions due to concurrent tests",
+      "Panics if nil client is passed"
+    ],
+    "complexity": "medium"
+  }
+}

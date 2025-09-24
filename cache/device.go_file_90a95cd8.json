@@ -1,0 +1,45 @@
+{
+  "content_hash": "032cdf60d1d6623a70e343c4aec3607d",
+  "timestamp": "2025-09-24T14:53:12.458239+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a handler for device-related operations in a web application, including device reset, registration, push token updates, address synchronization, and wallet import.",
+    "key_types": [
+      "DeviceHandler",
+      "deviceHandler",
+      "md.GetDeviceByIDRequest",
+      "md.PostDeviceRegistrationRequest",
+      "md.PutDeviceAddressesReq",
+      "md.PostImportWalletReq"
+    ],
+    "functions": [
+      "ResetDeviceByID",
+      "Registration",
+      "UpdatePushToken",
+      "SyncAddresses",
+      "ImportWallet",
+      "NewDeviceHandler"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "net/http",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/labstack/echo/v4",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/preference"
+    ],
+    "side_effects": [
+      "Logging information about device resets and errors",
+      "Asynchronous initialization for device registration"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data in error messages",
+      "Improper handling of context leading to resource leaks"
+    ],
+    "complexity": "medium"
+  }
+}

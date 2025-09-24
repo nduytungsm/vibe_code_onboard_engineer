@@ -1,0 +1,19 @@
+{
+  "content_hash": "006296482faa5dc2c94a0551b311d8f1",
+  "timestamp": "2025-09-24T15:45:16.406438+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an interface for AST nodes in HCL syntax.",
+    "key_types": [
+      "Node"
+    ],
+    "functions": [
+      "walkChildNodes",
+      "Range"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

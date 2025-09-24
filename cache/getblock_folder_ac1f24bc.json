@@ -1,9 +1,9 @@
 {
-  "content_hash": "0ae7cc897194d6ad429255ce3f93ba21",
-  "timestamp": "2025-09-23T16:32:17.903249+07:00",
+  "content_hash": "66d1b028668b44aa10d7bbdbe76ece4d",
+  "timestamp": "2025-09-23T17:01:44.874703+07:00",
   "result": {
     "path": "pkg/providers/getblock",
-    "purpose": "Responsible for providing gas fee suggestions and handling RPC requests for blockchain networks, specifically Ethereum.",
+    "purpose": "This module is responsible for providing functionalities related to fetching blockchain gas fee suggestions and handling fee history based on Ethereum block data.",
     "languages": {
       "Go": 4
     },
@@ -24,7 +24,7 @@
       "github.com/rs/zerolog/log",
       "github.com/axieinfinity/ronin-wallet-proxy/httpclient"
     ],
-    "architecture": "The folder follows a service-oriented architecture, encapsulating functionality related to gas fee calculations and RPC interactions within dedicated Go files.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating configuration, data models, and service functions to interact with blockchain networks.",
     "file_summaries": {
       "pkg/providers/getblock/config.go": {
         "language": "Go",
@@ -34,8 +34,7 @@
           "map[string]string",
           "time.Duration",
           "uint64",
-          "[]float64",
-          "map[string]gascollector.Config"
+          "[]float64"
         ],
         "functions": [],
         "imports": [
@@ -46,12 +45,10 @@
       },
       "pkg/providers/getblock/func.go": {
         "language": "Go",
-        "purpose": "Calculates gas fee suggestions based on Ethereum fee history.",
+        "purpose": "This file provides functions to format fee history and calculate gas suggestions based on Ethereum block data.",
         "key_types": [
           "BlockGasFeeHistory",
-          "GasSuggestion",
-          "GetGasSuggestionRes",
-          "EIP1559GasSuggestion"
+          "GasSuggestion"
         ],
         "functions": [
           "formatFeeHistory",
@@ -74,8 +71,7 @@
           "service",
           "Config",
           "md.GetGasSuggestionRes",
-          "md.LegacyGasSuggestion",
-          "Block"
+          "md.LegacyGasSuggestion"
         ],
         "functions": [
           "SendRPC",
@@ -98,18 +94,18 @@
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
         ],
         "side_effects": [
-          "Logs errors if RPC requests fail",
-          "Creates HTTP clients with specified timeouts"
+          "Logs errors when RPC requests fail",
+          "Creates HTTP clients with specified timeout"
         ],
         "risks": [
-          "Potential exposure of sensitive RPC endpoint information",
-          "Error handling may not cover all edge cases"
+          "Potential for context cancellation leading to unhandled errors",
+          "Improper handling of blockchain support leading to unexpected behavior"
         ],
         "complexity": "medium"
       },
       "pkg/providers/getblock/models.go": {
         "language": "Go",
-        "purpose": "Defines data structures for handling Ethereum gas fee history responses.",
+        "purpose": "Defines data structures for handling fee history related to blockchain transactions.",
         "key_types": [
           "GetFeesHistoryResponse",
           "BlockGasFeeHistory",

@@ -1,0 +1,16 @@
+{
+  "content_hash": "a382595b128a44c47d303f6f1d00161e",
+  "timestamp": "2025-09-23T16:57:20.97887+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for the appaxie package.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "content_hash": "ab324afaae8165a6c0c3847653f95767",
+  "timestamp": "2025-09-24T15:31:03.047754+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service for uploading, deleting, and downloading files from Google Cloud Storage.",
+    "key_types": [
+      "Service",
+      "service",
+      "Config"
+    ],
+    "functions": [
+      "UploadFile",
+      "DeleteFile",
+      "DownloadFile",
+      "NewService"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "io",
+      "time",
+      "cloud.google.com/go/storage",
+      "github.com/rs/zerolog/log"
+    ],
+    "side_effects": [
+      "Interacts with Google Cloud Storage",
+      "Logs errors using zerolog"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data if file names are not validated",
+      "Error handling may lead to unhandled exceptions"
+    ],
+    "complexity": "medium"
+  }
+}

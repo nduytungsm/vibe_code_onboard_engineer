@@ -1,0 +1,23 @@
+@startuml
+!define MASTER_COLOR #E8F4FD
+!define DETAIL_COLOR #FFF2CC
+
+entity announcements {
+  * id : uuid [PK]
+  --
+  application : varchar(100) [not null]
+  buttons : jsonb
+  created_at : timestamp [not null, default CURRENT_TIMESTAMP]
+  full_content : text
+  image_url : text
+  landing_page : text
+  message : text [not null]
+  published_at : timestamp [default NULL]
+  target_file_name : text [default NULL]
+  title : text [not null]
+  topic : varchar(100) [default NULL]
+  trigger_time : timestamp [not null]
+}
+
+
+@enduml

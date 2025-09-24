@@ -1,0 +1,73 @@
+{
+  "content_hash": "80c8319a0fb71325c7743f6b5490eccd",
+  "timestamp": "2025-09-24T15:27:23.921055+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a Request struct for handling HTTP requests, including methods for setting headers, parameters, and cookies.",
+    "key_types": [
+      "WithStruct",
+      "bodyType",
+      "Request",
+      "pair"
+    ],
+    "functions": [
+      "Method",
+      "SetMethod",
+      "URL",
+      "SetURL",
+      "Client",
+      "SetClient",
+      "Context",
+      "SetContext",
+      "Header",
+      "Headers",
+      "AddHeader",
+      "SetHeader",
+      "AddHeaders",
+      "SetHeaders",
+      "Param",
+      "Params",
+      "AddParam",
+      "SetParam",
+      "AddParams",
+      "SetParams",
+      "SetParamsWithStruct",
+      "DelParams",
+      "UserAgent",
+      "SetUserAgent",
+      "Boundary",
+      "SetBoundary",
+      "Referer",
+      "SetReferer",
+      "Cookie",
+      "Cookies",
+      "SetCookie",
+      "SetCookies",
+      "SetCookiesWithStruct",
+      "DelCookies",
+      "PathParam"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "errors",
+      "io",
+      "iter",
+      "maps",
+      "path/filepath",
+      "reflect",
+      "slices",
+      "sort",
+      "strconv",
+      "sync",
+      "time",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Panic if SetClient is called with a nil client"
+    ],
+    "complexity": "medium"
+  }
+}

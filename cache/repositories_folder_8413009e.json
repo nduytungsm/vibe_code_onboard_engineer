@@ -1,33 +1,253 @@
 {
-  "content_hash": "8fe61005c40836820949d6e15ff33cb3",
-  "timestamp": "2025-09-23T16:09:50.075331+07:00",
+  "content_hash": "1e5302a1aa536e7eb4d98fd013902c83",
+  "timestamp": "2025-09-24T15:32:55.264215+07:00",
   "result": {
     "path": "repositories",
-    "purpose": "This folder/module is responsible for managing database interactions related to NFTs and tokens, including pagination, CRUD operations, and display mappings.",
+    "purpose": "This folder contains repository definitions for managing various entities in a database, including announcements, code versions, contracts, decentralized applications, highlights, networks, user preferences, quick access DApps, and trusted domains.",
     "languages": {
-      "Go": 3
+      "Go": 12
     },
     "key_modules": [
-      "default.go",
-      "nft_display_mapping.go",
-      "token.go"
+      "announcement.go",
+      "code_version.go",
+      "common.go",
+      "contract.go",
+      "dapp.go",
+      "highlight.go",
+      "init.go",
+      "network.go",
+      "preference.go",
+      "quickaccess.go",
+      "trusted_domain.go"
     ],
     "dependencies": [
       "gorm.io/gorm",
-      "context",
-      "gorm.io/gorm/clause",
       "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-      "github.com/axieinfinity/ronin-wallet-proxy/models"
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+      "github.com/axieinfinity/ecosystem-go-common/errors"
     ],
-    "architecture": "The folder follows a repository pattern, encapsulating database access logic and providing a clean API for data operations.",
+    "architecture": "The folder follows a repository pattern, encapsulating data access logic for different entities and providing a clean interface for CRUD operations.",
     "file_summaries": {
-      "repositories/default.go": {
+      "repositories/announcement.go": {
         "language": "Go",
-        "purpose": "Provides a pagination function for database queries using GORM.",
+        "purpose": "This file defines a repository for managing announcements, including CRUD operations and special offer logs.",
+        "key_types": [
+          "AnnouncementRepo",
+          "announcementRepo",
+          "AnnouncementInfo"
+        ],
+        "functions": [
+          "AddNew",
+          "MarkPublished",
+          "GetAnnouncementByID",
+          "GetAnnouncementsListAsAdmin",
+          "GetAnnouncementsListAsUser",
+          "GetOldPublished",
+          "CountAnnouncements",
+          "DeleteAnnouncement",
+          "GetSpecialOfferLog",
+          "SaveSendSpecialOfferLog",
+          "GetSpecialOfferLogsList",
+          "CountSpecialOffers"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "slices",
+          "time",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+        ],
+        "side_effects": [
+          "Database transactions for creating, updating, and deleting announcements and special offers."
+        ],
+        "complexity": "medium"
+      },
+      "repositories/code_version.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository interface and its implementation for managing code versions in a database.",
+        "key_types": [
+          "CodeVersionRepo",
+          "codeVersionRepo",
+          "gorm.DB"
+        ],
+        "functions": [
+          "GetAllCodeVersions",
+          "SaveVersion",
+          "NewCodeVersionRepo"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Database transactions are initiated and may modify the database state."
+        ],
+        "risks": [
+          "Potential SQL injection if inputs are not properly sanitized.",
+          "Error handling may expose sensitive information."
+        ],
+        "complexity": "medium"
+      },
+      "repositories/common.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository interface and its implementation for managing common entities in a database using GORM.",
+        "key_types": [
+          "CommonRepo",
+          "commonRepo",
+          "gorm.DB",
+          "md.Common"
+        ],
+        "functions": [
+          "GetAllCommons",
+          "SaveCommons",
+          "NewCommonRepo"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Database transactions are initiated and may modify the database state."
+        ],
+        "risks": [
+          "Potential SQL injection if inputs are not properly sanitized.",
+          "Data loss if overwriteOnConflict is not handled correctly."
+        ],
+        "complexity": "medium"
+      },
+      "repositories/contract.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository interface and its implementation for managing contract data in a database.",
+        "key_types": [
+          "ContractRepo",
+          "contractRepo",
+          "md.Contract",
+          "md.ContractFilter",
+          "md.ContractOrderBy",
+          "md.Paging"
+        ],
+        "functions": [
+          "GetContract",
+          "GetContractList",
+          "CreateContract",
+          "DeleteContract",
+          "UpdateContract",
+          "SaveContract",
+          "UpdateContracts",
+          "SaveContracts",
+          "NewContractRepo"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Database operations such as create, delete, and update contracts."
+        ],
+        "risks": [
+          "Potential SQL injection if filter conditions are not properly sanitized.",
+          "Error handling may expose sensitive information if not managed correctly."
+        ],
+        "complexity": "medium"
+      },
+      "repositories/dapp.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository interface and its implementation for managing decentralized applications (DApps) in a database.",
+        "key_types": [
+          "DAppRepo",
+          "dAppRepo",
+          "DApp",
+          "DAppFilter",
+          "DAppOrderBy",
+          "Paging"
+        ],
+        "functions": [
+          "GetDApp",
+          "GetDAppList",
+          "CreateDApp",
+          "DeleteDApp",
+          "UpdateDApp",
+          "SaveDApp",
+          "UpdateDApps",
+          "SaveDApps",
+          "NewDAppRepo"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Database operations such as create, update, delete, and query."
+        ],
+        "risks": [
+          "Potential SQL injection if filter conditions are not properly sanitized.",
+          "Panic calls in unimplemented methods could lead to application crashes."
+        ],
+        "complexity": "medium"
+      },
+      "repositories/highlight.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing highlights in a database using GORM.",
+        "key_types": [
+          "HighlightRepo",
+          "highlightRepo",
+          "md.Highlight",
+          "md.Paging"
+        ],
+        "functions": [
+          "GetList",
+          "Save",
+          "SaveBatch",
+          "Update",
+          "UpdateBatch",
+          "GetByID",
+          "GetAll",
+          "DeleteByID",
+          "GetHighlightDApps",
+          "CleanExpired",
+          "NewHighlightRepo"
+        ],
+        "imports": [
+          "context",
+          "time",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Database transactions are performed which may modify the state of the database."
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not properly sanitized.",
+          "Data integrity issues if concurrent updates are not handled correctly."
+        ],
+        "complexity": "medium"
+      },
+      "repositories/init.go": {
+        "language": "Go",
+        "purpose": "Provides pagination functionality for database queries using GORM.",
         "key_types": [
           "int",
-          "func",
-          "*gorm.DB"
+          "gorm.DB"
         ],
         "functions": [
           "paginate"
@@ -36,79 +256,160 @@
           "gorm.io/gorm"
         ],
         "side_effects": [
-          "Modifies the input parameters for page and limit based on defined constants."
+          "Modifies database query parameters based on pagination logic."
         ],
         "complexity": "low"
       },
-      "repositories/nft_display_mapping.go": {
+      "repositories/network.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing NFT display mappings, including saving, searching, and batch operations.",
+        "purpose": "This file defines a repository for managing network entities, including CRUD operations and querying capabilities.",
         "key_types": [
-          "NFTDisplayMappingRepo",
-          "nftDisplayMappingRepo",
-          "NFTMapping",
-          "NFTMappingFilter",
-          "Paging"
+          "NetworkRepo",
+          "networkRepo",
+          "Network",
+          "NetworkFilter",
+          "NetworkOrderBy",
+          "Paging",
+          "Preload"
         ],
         "functions": [
-          "Save",
-          "SaveBatch",
-          "SearchOne",
-          "SearchList",
-          "NewNFTMappingRepo"
+          "GetNetwork",
+          "GetNetworkList",
+          "CreateNetwork",
+          "DeleteNetwork",
+          "UpdateNetwork",
+          "SaveNetwork",
+          "UpdateNetworks",
+          "SaveNetworks",
+          "NewNetworkRepo"
         ],
         "imports": [
           "context",
+          "fmt",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
           "gorm.io/gorm",
           "gorm.io/gorm/clause",
-          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-          "github.com/axieinfinity/ronin-wallet-proxy/models"
+          "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Database transactions for saving and searching NFT mappings."
+          "Database transactions are initiated and modified."
         ],
         "risks": [
-          "Potential SQL injection if filter.ToMap() is not properly sanitized."
+          "Potential SQL injection if filter conditions are not properly sanitized.",
+          "Panic in SaveNetwork, UpdateNetworks, and SaveNetworks if not implemented."
         ],
         "complexity": "medium"
       },
-      "repositories/token.go": {
+      "repositories/preference.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing token information in a database, including CRUD operations and upsert functionality.",
+        "purpose": "This file defines a repository for managing user preferences in a database using GORM.",
         "key_types": [
-          "TokenInfoRepositories",
-          "tokenInfoRepo",
-          "gorm.DB"
+          "PreferenceRepo",
+          "prefRepo",
+          "Preference",
+          "PreferenceFilter"
         ],
         "functions": [
-          "GetByID",
-          "CreateNewTokenInfo",
-          "UpsertTokenInfo",
-          "UpsertListOfTokenInfo",
-          "UpdateTokenDescription",
-          "UpdateTokenMetadata",
-          "GetByCoingeckoIDs",
-          "GetTokenByID",
-          "GetAllTokens",
-          "GetTokenNoDescription",
-          "SearchByNameAndSymbol",
-          "DeleteTokenInfoByIDs",
-          "NewTokenInfoRepo"
+          "GetByAddress",
+          "GetList",
+          "UpdateForAddress",
+          "UpsertBatch",
+          "UpdateForDevice",
+          "DeleteByDevice",
+          "DeleteBatch",
+          "GetOneByDevice",
+          "CountAddressRegisReceiveNews",
+          "NewPreferencesRepo"
         ],
         "imports": [
           "context",
-          "slices",
+          "errors",
           "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
           "gorm.io/gorm",
           "gorm.io/gorm/clause",
-          "github.com/axieinfinity/ronin-wallet-proxy/models"
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+        ],
+        "side_effects": [
+          "Database operations such as create, update, delete, and query."
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not properly sanitized.",
+          "Error handling may expose sensitive information."
+        ],
+        "complexity": "medium"
+      },
+      "repositories/quickaccess.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing Quick Access DApps, including CRUD operations and search functionality.",
+        "key_types": [
+          "QuickAccessDAppRepo",
+          "quickAccessDAppRepo",
+          "md.QuickAccessDApp",
+          "md.Paging"
+        ],
+        "functions": [
+          "GetList",
+          "Save",
+          "SaveBatch",
+          "Update",
+          "UpdateBatch",
+          "GetByID",
+          "GetAll",
+          "DeleteByID",
+          "SearchByTitle",
+          "NewQuickAccessDAppRepo"
+        ],
+        "imports": [
+          "context",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Database transactions are performed which may modify the state of the database."
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not properly sanitized in search queries."
+        ],
+        "complexity": "medium"
+      },
+      "repositories/trusted_domain.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing trusted domains in a database using GORM.",
+        "key_types": [
+          "TrustedDomainRepo",
+          "trustedDomainsRepo",
+          "TrustedDomain",
+          "Paging",
+          "TrustedDomainFilter",
+          "TrustedDomainOrderBy"
+        ],
+        "functions": [
+          "GetByDomain",
+          "GetList",
+          "Save",
+          "SaveBatch",
+          "GetAll",
+          "DeleteByDomain",
+          "NewTrustedDomainRepo"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "strings",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
           "Database transactions are initiated and may modify the database state."
         ],
         "risks": [
-          "Potential SQL injection if user input is not properly sanitized.",
-          "Error handling may expose sensitive information."
+          "Potential SQL injection if user input is not properly sanitized in queries."
         ],
         "complexity": "medium"
       }

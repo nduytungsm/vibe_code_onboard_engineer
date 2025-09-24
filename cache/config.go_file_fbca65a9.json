@@ -1,0 +1,22 @@
+{
+  "content_hash": "9df791ae75ec8755bbffdafe9194f8af",
+  "timestamp": "2025-09-24T15:42:09.851807+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration settings for CORS middleware in a web application.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "AllowOriginsFunc",
+      "Next"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3"
+    ],
+    "risks": [
+      "AllowCredentials can introduce security vulnerabilities if misconfigured."
+    ],
+    "complexity": "medium"
+  }
+}

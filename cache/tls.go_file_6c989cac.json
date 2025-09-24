@@ -1,0 +1,35 @@
+{
+  "content_hash": "7eb3113c1cb0a3b59e3db342d7ef3e6a",
+  "timestamp": "2025-09-24T15:41:51.598236+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates TLS configurations for a test server and client that trust each other using an in-memory certificate authority.",
+    "key_types": [
+      "tls.Config",
+      "x509.Certificate",
+      "rsa.PrivateKey"
+    ],
+    "functions": [
+      "GetTLSConfigs"
+    ],
+    "imports": [
+      "bytes",
+      "crypto/rand",
+      "crypto/rsa",
+      "crypto/tls",
+      "crypto/x509",
+      "crypto/x509/pkix",
+      "encoding/pem",
+      "math/big",
+      "net",
+      "time"
+    ],
+    "side_effects": [
+      "Generates and encodes certificates and private keys in PEM format."
+    ],
+    "risks": [
+      "Potential exposure of private keys if not handled securely."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "content_hash": "b4f13d96c746d9ec19ccd014228a557a",
+  "timestamp": "2025-09-24T15:40:00.961919+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for running tests on a Go project.",
+    "key_types": [
+      "job",
+      "step",
+      "matrix"
+    ],
+    "functions": [
+      "checkout",
+      "setup-go",
+      "run"
+    ],
+    "imports": [
+      "actions/checkout@v5",
+      "actions/setup-go@v6",
+      "codecov/codecov-action@v5.5.1"
+    ],
+    "side_effects": [
+      "Fetches repository code",
+      "Installs Go",
+      "Runs tests",
+      "Uploads coverage reports"
+    ],
+    "risks": [
+      "Exposure of sensitive information (e.g., tokens) if not properly managed"
+    ],
+    "complexity": "medium"
+  }
+}

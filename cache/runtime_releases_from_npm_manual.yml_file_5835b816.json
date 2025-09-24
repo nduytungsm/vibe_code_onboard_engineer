@@ -1,0 +1,40 @@
+{
+  "content_hash": "684137ff5d747fe693cf86c76c2795e7",
+  "timestamp": "2025-09-24T15:24:48.805642+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "This file defines a GitHub Actions workflow for publishing releases from NPM manually.",
+    "key_types": [
+      "workflow",
+      "job",
+      "step",
+      "input"
+    ],
+    "functions": [
+      "workflow_dispatch",
+      "notify",
+      "publish",
+      "checkout",
+      "setup-node",
+      "cache",
+      "run"
+    ],
+    "imports": [
+      "tsickert/discord-webhook",
+      "actions/checkout",
+      "actions/setup-node",
+      "actions/cache",
+      "actions/upload-artifact"
+    ],
+    "side_effects": [
+      "Sending notifications to Discord",
+      "Publishing packages to NPM",
+      "Modifying the file system (e.g., removing build directory, copying files)"
+    ],
+    "risks": [
+      "Exposing sensitive information (e.g., NPM_TOKEN, webhook-url)",
+      "Potential for unintended package publishing if inputs are misconfigured"
+    ],
+    "complexity": "medium"
+  }
+}

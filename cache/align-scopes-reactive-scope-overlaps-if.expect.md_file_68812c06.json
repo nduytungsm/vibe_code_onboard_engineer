@@ -1,0 +1,22 @@
+{
+  "content_hash": "6b0ebd623560493e539b47a9f52b92ba",
+  "timestamp": "2025-09-24T15:27:59.416516+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a function that uses a conditional to manage a mutable state and exports a fixture for testing.",
+    "key_types": [
+      "function",
+      "object"
+    ],
+    "functions": [
+      "useFoo"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "modifies the state of items based on the condition"
+    ],
+    "complexity": "medium"
+  }
+}

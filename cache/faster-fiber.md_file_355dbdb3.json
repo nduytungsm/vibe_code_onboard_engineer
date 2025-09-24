@@ -1,0 +1,22 @@
+{
+  "content_hash": "b5d957df940af6aefff3b920f905321d",
+  "timestamp": "2025-09-24T15:27:51.582833+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides guidance on making the Fiber web framework faster by using custom JSON encoders and decoders.",
+    "key_types": [
+      "fiber.App",
+      "fiber.Config"
+    ],
+    "functions": [
+      "fiber.New",
+      "json.Marshal",
+      "json.Unmarshal"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/goccy/go-json"
+    ],
+    "complexity": "medium"
+  }
+}

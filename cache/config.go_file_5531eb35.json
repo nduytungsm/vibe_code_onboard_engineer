@@ -1,0 +1,22 @@
+{
+  "content_hash": "d0920c17f699528a989b05c93ee46bc9",
+  "timestamp": "2025-09-24T15:42:49.915025+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration for a rate limiting middleware.",
+    "key_types": [
+      "Config",
+      "fiber.Storage",
+      "fiber.Handler",
+      "time.Duration"
+    ],
+    "functions": [
+      "configDefault"
+    ],
+    "imports": [
+      "time",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "complexity": "medium"
+  }
+}

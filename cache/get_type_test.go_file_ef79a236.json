@@ -1,0 +1,31 @@
+{
+  "content_hash": "293682419db29fdc59658de85fbd03a0",
+  "timestamp": "2025-09-24T15:44:26.695255+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the type expression parsing and validation in HCL.",
+    "key_types": [
+      "struct",
+      "cty.Type"
+    ],
+    "functions": [
+      "TestGetType",
+      "TestGetTypeJSON"
+    ],
+    "imports": [
+      "fmt",
+      "testing",
+      "github.com/hashicorp/hcl/v2/gohcl",
+      "github.com/google/go-cmp/cmp",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/hashicorp/hcl/v2/json"
+    ],
+    "side_effects": [
+      "parsing expressions",
+      "running tests"
+    ],
+    "complexity": "medium"
+  }
+}

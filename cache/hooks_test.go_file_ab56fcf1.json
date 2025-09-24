@@ -1,0 +1,41 @@
+{
+  "content_hash": "61fb51c2f4e8dd8c5087864137bbf22e",
+  "timestamp": "2025-09-24T15:40:45.335373+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains unit tests for the client package, specifically testing the functionality of request URL and header parsing.",
+    "key_types": [
+      "struct",
+      "error",
+      "string"
+    ],
+    "functions": [
+      "Test_Rand_String",
+      "Test_Parser_Request_URL",
+      "Test_Parser_Request_Header"
+    ],
+    "imports": [
+      "bytes",
+      "encoding/xml",
+      "fmt",
+      "io",
+      "net",
+      "net/url",
+      "strings",
+      "testing",
+      "github.com/fxamacker/cbor/v2",
+      "github.com/gofiber/fiber/v3",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "modifies request headers and URLs",
+      "parses query parameters"
+    ],
+    "risks": [
+      "potential for incorrect URL formatting",
+      "possible exposure of sensitive data in headers"
+    ],
+    "complexity": "medium"
+  }
+}

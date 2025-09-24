@@ -1,0 +1,30 @@
+{
+  "content_hash": "d351ebe765d3dfa298edfac213303fd1",
+  "timestamp": "2025-09-24T15:27:43.917582+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Unit tests for logging successful and failed compilations using a Babel plugin for React.",
+    "key_types": [
+      "Logger",
+      "LoggerEvent",
+      "SourceLocation"
+    ],
+    "functions": [
+      "logEvent",
+      "runBabelPluginReactCompiler"
+    ],
+    "imports": [
+      "@babel/types",
+      "invariant",
+      "../Babel/RunReactCompilerBabelPlugin",
+      "../Entrypoint"
+    ],
+    "side_effects": [
+      "Logs events to an array based on compilation success or failure."
+    ],
+    "risks": [
+      "Potential for unhandled exceptions if the logger is not properly implemented."
+    ],
+    "complexity": "medium"
+  }
+}

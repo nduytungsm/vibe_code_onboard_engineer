@@ -1,0 +1,26 @@
+{
+  "content_hash": "e85b74b4e8f4dad943f15e2ec6986827",
+  "timestamp": "2025-09-24T15:27:59.179299+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file contains a test fixture for a function that demonstrates scope alignment in a block-fallthrough structure.",
+    "key_types": [
+      "function",
+      "object"
+    ],
+    "functions": [
+      "useFoo"
+    ],
+    "imports": [
+      "mutate from 'shared-runtime'",
+      "c as _c from 'react/compiler-runtime'"
+    ],
+    "side_effects": [
+      "mutates the variable 's' based on conditions"
+    ],
+    "risks": [
+      "potential for unexpected behavior if 'mutate' has side effects"
+    ],
+    "complexity": "medium"
+  }
+}

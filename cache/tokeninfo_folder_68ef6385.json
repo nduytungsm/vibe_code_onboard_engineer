@@ -1,9 +1,9 @@
 {
-  "content_hash": "86524defa9fca189e928cc2bf1cdb7b1",
-  "timestamp": "2025-09-23T16:07:19.101613+07:00",
+  "content_hash": "bbcec0fd7ad04a5fc47c115ca18863c3",
+  "timestamp": "2025-09-23T17:02:33.297555+07:00",
   "result": {
     "path": "pkg/tokeninfo",
-    "purpose": "This folder/module is responsible for managing token information, including retrieval, creation, and updating of token data.",
+    "purpose": "Provides a service for managing token information, including retrieval, creation, and updates of token data.",
     "languages": {
       "Go": 1
     },
@@ -19,17 +19,14 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/share",
       "github.com/axieinfinity/ronin-wallet-proxy/repositories"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the logic for token management within a dedicated service file.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating token management functionalities within a dedicated service module.",
     "file_summaries": {
       "pkg/tokeninfo/tokeninfo_svc.go": {
         "language": "Go",
-        "purpose": "This file implements a service for managing token information, including retrieval, creation, and updating of token data.",
+        "purpose": "Provides a service for managing token information, including retrieval, creation, and updates of token data.",
         "key_types": [
           "Service",
-          "service",
-          "TokenInfo",
-          "SearchTokensRequest",
-          "SearchTokensResponse"
+          "service"
         ],
         "functions": [
           "GetByID",
@@ -66,7 +63,7 @@
         ],
         "risks": [
           "Potential race conditions due to concurrent access to shared data",
-          "Error handling may not cover all edge cases"
+          "Error handling may be insufficient in some asynchronous operations"
         ],
         "complexity": "medium"
       }

@@ -1,0 +1,21 @@
+{
+  "content_hash": "e8ae988e17c2159e6f1f7f09af9b5cbb",
+  "timestamp": "2025-09-24T15:27:46.641742+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Unit tests for validating environment configuration in a React compiler plugin.",
+    "key_types": [
+      "Effect",
+      "ValueKind"
+    ],
+    "functions": [
+      "validateEnvironmentConfig"
+    ],
+    "imports": [
+      "Effect",
+      "validateEnvironmentConfig",
+      "ValueKind"
+    ],
+    "complexity": "medium"
+  }
+}

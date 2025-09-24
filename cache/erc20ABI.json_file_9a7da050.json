@@ -1,0 +1,18 @@
+{
+  "content_hash": "e6f8209b7b77c63ced5086f534e5e7c7",
+  "timestamp": "2025-09-23T16:57:00.951094+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the ABI (Application Binary Interface) for an ERC20 token contract, specifying the functions and their parameters.",
+    "key_types": [
+      "function",
+      "input",
+      "output"
+    ],
+    "functions": [
+      "balanceOf"
+    ],
+    "imports": [],
+    "complexity": "low"
+  }
+}

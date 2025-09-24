@@ -1,0 +1,19 @@
+{
+  "content_hash": "a9188639e99f3b8f05e399cef7d6086a",
+  "timestamp": "2025-09-24T15:43:14.873273+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines middleware configuration for URL path rewriting.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "configDefault"
+    ],
+    "imports": [
+      "regexp",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "content_hash": "b9a38a030189100b6fe38a3b6d15e42e",
+  "timestamp": "2025-09-24T15:28:37.049251+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that manipulates arrays based on input parameters and exports a fixture for testing.",
+    "key_types": [
+      "Component",
+      "Array"
+    ],
+    "functions": [
+      "Component"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Modifies internal state based on input parameters"
+    ],
+    "complexity": "medium"
+  }
+}

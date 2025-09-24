@@ -1,0 +1,20 @@
+{
+  "content_hash": "d09f04eacf6b500bc416960f63001b97",
+  "timestamp": "2025-09-24T15:25:31.827609+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "This script links the react-compiler-runtime and babel-plugin-react-compiler using yarn workspaces.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "yarn"
+    ],
+    "side_effects": [
+      "Modifies the workspace by linking packages."
+    ],
+    "risks": [
+      "Potential for breaking changes if linked packages are incompatible."
+    ],
+    "complexity": "low"
+  }
+}

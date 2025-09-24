@@ -1,0 +1,94 @@
+{
+  "content_hash": "3b030f52e8c9cdc1ed9bea4cec5511c6",
+  "timestamp": "2025-09-24T15:48:21.983633+07:00",
+  "result": {
+    "path": "ext/tryfunc",
+    "purpose": "This folder/module is responsible for evaluating HCL expressions using 'try' and 'can' functions.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "README.md",
+      "tryfunc.go",
+      "tryfunc_test.go"
+    ],
+    "dependencies": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/ext/customdecode",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/function",
+      "errors",
+      "fmt",
+      "strings",
+      "testing"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to HCL expression evaluation and testing within separate files.",
+    "file_summaries": {
+      "ext/tryfunc/README.md": {
+        "language": "Go",
+        "purpose": "This file describes the 'try' and 'can' functions for evaluating HCL expressions.",
+        "key_types": [
+          "hcl.EvalContext",
+          "function.Function"
+        ],
+        "functions": [
+          "try",
+          "can"
+        ],
+        "imports": [
+          "cty",
+          "hcl"
+        ],
+        "complexity": "medium"
+      },
+      "ext/tryfunc/tryfunc.go": {
+        "language": "Go",
+        "purpose": "Provides functions to evaluate expressions in HCL-based languages and determine if they can succeed.",
+        "key_types": [
+          "function.Function",
+          "cty.Value",
+          "hcl.Diagnostics"
+        ],
+        "functions": [
+          "init",
+          "try",
+          "can"
+        ],
+        "imports": [
+          "errors",
+          "fmt",
+          "strings",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/hashicorp/hcl/v2/ext/customdecode",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/function"
+        ],
+        "side_effects": [
+          "Modifies the state of the TryFunc and CanFunc variables during initialization."
+        ],
+        "complexity": "medium"
+      },
+      "ext/tryfunc/tryfunc_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the Try and Can functions in the HCL (HashiCorp Configuration Language) context.",
+        "key_types": [
+          "cty.Value",
+          "hcl.EvalContext",
+          "hclsyntax.Expression"
+        ],
+        "functions": [
+          "TestTryFunc",
+          "TestCanFunc"
+        ],
+        "imports": [
+          "testing",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/hashicorp/hcl/v2/hclsyntax",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/function"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

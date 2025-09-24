@@ -1,0 +1,50 @@
+{
+  "content_hash": "bafdce047a04d16ab9f56451ae905c7e",
+  "timestamp": "2025-09-24T15:45:48.952287+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a Body structure for managing HCL (HashiCorp Configuration Language) body content, including attributes and blocks.",
+    "key_types": [
+      "Body",
+      "nodeSet",
+      "Attribute",
+      "Block",
+      "node",
+      "Tokens"
+    ],
+    "functions": [
+      "newBody",
+      "appendItem",
+      "appendItemNode",
+      "Clear",
+      "AppendUnstructuredTokens",
+      "Attributes",
+      "Blocks",
+      "GetAttribute",
+      "getAttributeNode",
+      "RenameAttribute",
+      "FirstMatchingBlock",
+      "RemoveBlock",
+      "SetAttributeRaw",
+      "SetAttributeValue",
+      "SetAttributeTraversal",
+      "RemoveAttribute",
+      "AppendBlock",
+      "AppendNewBlock",
+      "AppendNewline"
+    ],
+    "imports": [
+      "reflect",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Modifies the state of the Body by adding, removing, or updating attributes and blocks."
+    ],
+    "risks": [
+      "Potential for nil pointer dereference if attributes or blocks are not properly checked before access."
+    ],
+    "complexity": "medium"
+  }
+}

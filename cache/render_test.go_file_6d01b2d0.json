@@ -1,0 +1,65 @@
+{
+  "content_hash": "b646b970b63555564230fb0ba210431a",
+  "timestamp": "2025-09-24T15:42:25.752496+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for rendering various JSON formats and error handling in a web context.",
+    "key_types": [
+      "JSON",
+      "IndentedJSON",
+      "SecureJSON",
+      "JsonpJSON",
+      "AsciiJSON",
+      "PureJSON",
+      "YAML",
+      "TOML",
+      "ProtoBuf"
+    ],
+    "functions": [
+      "TestRenderJSON",
+      "TestRenderJSONError",
+      "TestRenderIndentedJSON",
+      "TestRenderIndentedJSONPanics",
+      "TestRenderSecureJSON",
+      "TestRenderSecureJSONFail",
+      "TestRenderJsonpJSON",
+      "TestRenderJsonpJSONError",
+      "TestRenderJsonpJSONError2",
+      "TestRenderJsonpJSONFail",
+      "TestRenderAsciiJSON",
+      "TestRenderAsciiJSONFail",
+      "TestRenderPureJSON",
+      "TestRenderYAML",
+      "TestRenderYAMLFail",
+      "TestRenderTOML",
+      "TestRenderTOMLFail",
+      "TestRenderProtoBuf"
+    ],
+    "imports": [
+      "encoding/xml",
+      "errors",
+      "html/template",
+      "net",
+      "net/http",
+      "net/http/httptest",
+      "strconv",
+      "strings",
+      "testing",
+      "github.com/gin-gonic/gin/codec/json",
+      "github.com/gin-gonic/gin/testdata/protoexample",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "google.golang.org/protobuf/proto"
+    ],
+    "side_effects": [
+      "Writes to HTTP response recorder",
+      "Modifies HTTP headers",
+      "May panic on unsupported types"
+    ],
+    "risks": [
+      "Potential for denial of service through unsupported types",
+      "Improper handling of error messages may expose sensitive information"
+    ],
+    "complexity": "medium"
+  }
+}

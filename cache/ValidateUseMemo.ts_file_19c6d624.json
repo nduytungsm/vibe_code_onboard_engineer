@@ -1,0 +1,29 @@
+{
+  "content_hash": "84e496b67ffedb9b49baa8069be73750",
+  "timestamp": "2025-09-24T15:27:41.44625+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validates the use of the useMemo hook in React function components to ensure compliance with specific rules.",
+    "key_types": [
+      "CompilerDiagnostic",
+      "CompilerError",
+      "ErrorCategory",
+      "FunctionExpression",
+      "HIRFunction",
+      "IdentifierId",
+      "Result"
+    ],
+    "functions": [
+      "validateUseMemo"
+    ],
+    "imports": [
+      "../CompilerError",
+      "../HIR",
+      "../Utils/Result"
+    ],
+    "side_effects": [
+      "Modifies the errors object to accumulate validation errors."
+    ],
+    "complexity": "medium"
+  }
+}

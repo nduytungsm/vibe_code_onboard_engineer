@@ -1,0 +1,24 @@
+{
+  "content_hash": "4d53c86b68fed9b98e9eaf34b7bfa251",
+  "timestamp": "2025-09-24T15:40:30.419892+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Testing and benchmarking the URIBinding functionality for binding URI parameters to a User struct.",
+    "key_types": [
+      "URIBinding",
+      "User"
+    ],
+    "functions": [
+      "Test_URIBinding_Bind",
+      "Benchmark_URIBinding_Bind"
+    ],
+    "imports": [
+      "testing",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies the state of the User struct based on URI parameters."
+    ],
+    "complexity": "medium"
+  }
+}

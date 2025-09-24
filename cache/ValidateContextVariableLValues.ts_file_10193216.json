@@ -1,0 +1,35 @@
+{
+  "content_hash": "a7da1c91a740d7c9100ea82c02fd1c21",
+  "timestamp": "2025-09-24T15:27:29.493467+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validates that all store/load references to a given named identifier align with the kind of that variable (normal variable or context variable).",
+    "key_types": [
+      "HIRFunction",
+      "IdentifierId",
+      "Place",
+      "IdentifierKinds"
+    ],
+    "functions": [
+      "validateContextVariableLValues",
+      "validateContextVariableLValuesImpl",
+      "visit"
+    ],
+    "imports": [
+      "CompilerError",
+      "HIRFunction",
+      "IdentifierId",
+      "Place",
+      "printPlace",
+      "eachInstructionValueLValue",
+      "eachPatternOperand"
+    ],
+    "side_effects": [
+      "Throws errors if validation fails or if there are unhandled instruction variants."
+    ],
+    "risks": [
+      "Potential for runtime errors if the validation logic encounters unexpected instruction variants."
+    ],
+    "complexity": "medium"
+  }
+}

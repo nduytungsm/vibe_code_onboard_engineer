@@ -1,0 +1,20 @@
+{
+  "content_hash": "a5390c001c5e8de1b815fd516984db65",
+  "timestamp": "2025-09-24T15:44:52.60983+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Processes a given body with a specification to return variable traversals for decoding.",
+    "key_types": [
+      "hcl.Body",
+      "Spec",
+      "hcl.Traversal"
+    ],
+    "functions": [
+      "Variables"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

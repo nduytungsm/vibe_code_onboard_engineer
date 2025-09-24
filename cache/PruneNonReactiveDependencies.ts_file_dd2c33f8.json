@@ -1,0 +1,30 @@
+{
+  "content_hash": "8d7dc1d7be61d7b8bf6b67c1b7cf1a81",
+  "timestamp": "2025-09-24T15:27:03.383256+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines a function to prune non-reactive dependencies in reactive programming contexts.",
+    "key_types": [
+      "ReactiveFunction",
+      "ReactiveInstruction",
+      "ReactiveScopeBlock",
+      "IdentifierId",
+      "ReactiveIdentifiers"
+    ],
+    "functions": [
+      "pruneNonReactiveDependencies",
+      "visitInstruction",
+      "visitScope"
+    ],
+    "imports": [
+      "../HIR",
+      "../HIR/visitors",
+      "./CollectReactiveIdentifiers",
+      "./visitors"
+    ],
+    "side_effects": [
+      "Modifies the dependencies of scope blocks by removing non-reactive dependencies."
+    ],
+    "complexity": "medium"
+  }
+}

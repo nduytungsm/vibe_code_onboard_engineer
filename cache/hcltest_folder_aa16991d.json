@@ -1,0 +1,83 @@
+{
+  "content_hash": "155c6fc4a2742b0fba2490cb5bc038f3",
+  "timestamp": "2025-09-24T15:47:13.636637+07:00",
+  "result": {
+    "path": "hcltest",
+    "purpose": "This folder/module is responsible for providing utilities and mock implementations for testing code that interacts with the HCL (HashiCorp Configuration Language) API.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "doc.go",
+      "mock.go",
+      "mock_test.go"
+    ],
+    "dependencies": [
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing code into separate files for utilities, mock implementations, and unit tests, all focused on HCL API interactions.",
+    "file_summaries": {
+      "hcltest/doc.go": {
+        "language": "Go",
+        "purpose": "Contains utilities for writing tests for code that interacts with the HCL API.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "hcltest/mock.go": {
+        "language": "Go",
+        "purpose": "Provides mock implementations for HCL (HashiCorp Configuration Language) bodies and expressions for testing purposes.",
+        "key_types": [
+          "mockBody",
+          "mockExprLiteral",
+          "mockExprVariable",
+          "mockExprTraversal",
+          "mockExprList"
+        ],
+        "functions": [
+          "MockBody",
+          "MockExprLiteral",
+          "MockExprVariable",
+          "MockExprTraversal",
+          "MockAttrs"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/hashicorp/hcl/v2/hclsyntax",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "hcltest/mock_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for HCL (HashiCorp Configuration Language) mock implementations.",
+        "key_types": [
+          "mockBody",
+          "mockExprLiteral",
+          "mockExprVariable",
+          "hcl.BodyContent",
+          "hcl.BodySchema",
+          "hcl.Expression",
+          "hcl.KeyValuePair"
+        ],
+        "functions": [
+          "TestMockBodyPartialContent",
+          "TestExprList",
+          "TestExprMap"
+        ],
+        "imports": [
+          "strings",
+          "testing",
+          "reflect",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

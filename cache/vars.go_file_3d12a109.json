@@ -1,0 +1,25 @@
+{
+  "content_hash": "09e71434f669374db75c75cd8da3ddcf",
+  "timestamp": "2025-09-24T15:43:46.717239+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality to parse variables from JSON or HCL files for configuration management.",
+    "key_types": [
+      "map[string]cty.Value",
+      "hcl.Diagnostics",
+      "varSpecs"
+    ],
+    "functions": [
+      "parseVarsArg",
+      "parseVarsFile",
+      "parseVarsBody"
+    ],
+    "imports": [
+      "fmt",
+      "strings",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

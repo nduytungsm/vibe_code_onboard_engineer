@@ -1,0 +1,39 @@
+{
+  "content_hash": "80e0dfdacdf9080d063a88f509d3e106",
+  "timestamp": "2025-09-24T15:43:02.447504+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a default logging mechanism for the Fiber web framework.",
+    "key_types": [
+      "fiber.Ctx",
+      "Data",
+      "Config",
+      "Buffer"
+    ],
+    "functions": [
+      "defaultLoggerInstance",
+      "beforeHandlerFunc",
+      "appendInt",
+      "writeLog"
+    ],
+    "imports": [
+      "fmt",
+      "io",
+      "os",
+      "strconv",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2",
+      "github.com/mattn/go-colorable",
+      "github.com/mattn/go-isatty",
+      "github.com/valyala/bytebufferpool"
+    ],
+    "side_effects": [
+      "Writes logs to the specified output stream.",
+      "Modifies the output stream based on terminal compatibility."
+    ],
+    "risks": [
+      "Potential for log injection if user input is not sanitized."
+    ],
+    "complexity": "medium"
+  }
+}

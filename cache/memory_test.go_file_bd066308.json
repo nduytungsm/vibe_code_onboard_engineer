@@ -1,0 +1,30 @@
+{
+  "content_hash": "059c1a76f1604da2d312c1b41cc1661e",
+  "timestamp": "2025-09-24T15:41:45.82183+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests and benchmarks for a memory store implementation.",
+    "key_types": [
+      "store",
+      "time",
+      "any"
+    ],
+    "functions": [
+      "Test_Memory",
+      "Benchmark_Memory"
+    ],
+    "imports": [
+      "testing",
+      "time",
+      "github.com/gofiber/utils/v2",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies the state of the memory store during tests."
+    ],
+    "risks": [
+      "Potential race conditions if not properly synchronized."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "content_hash": "bb95c5f05d7a6409b03b0c182edfe876",
+  "timestamp": "2025-09-24T15:45:47.002314+07:00",
+  "result": {
+    "path": "middleware/static",
+    "purpose": "Responsible for serving static files in a web application using middleware.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "config.go",
+      "static.go",
+      "static_test.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp",
+      "github.com/stretchr/testify/require"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating middleware functionality for static file serving, with a clear separation of configuration, implementation, and testing.",
+    "file_summaries": {
+      "middleware/static/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for middleware that serves static files.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "configDefault"
+        ],
+        "imports": [
+          "io/fs",
+          "time",
+          "github.com/gofiber/fiber/v3"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/static/static.go": {
+        "language": "Go",
+        "purpose": "This file implements a middleware for serving static files in a web application.",
+        "key_types": [
+          "fiber.Handler",
+          "fs.FS",
+          "fasthttp.RequestHandler",
+          "Config"
+        ],
+        "functions": [
+          "sanitizePath",
+          "New",
+          "isFile"
+        ],
+        "imports": [
+          "bytes",
+          "errors",
+          "fmt",
+          "io/fs",
+          "net/url",
+          "os",
+          "path",
+          "path/filepath",
+          "strconv",
+          "strings",
+          "sync",
+          "github.com/gofiber/utils/v2",
+          "github.com/valyala/fasthttp",
+          "github.com/gofiber/fiber/v3"
+        ],
+        "side_effects": [
+          "Modifies HTTP response headers",
+          "Serves files from the filesystem"
+        ],
+        "risks": [
+          "Path traversal vulnerabilities if input is not properly sanitized"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/static/static_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for static file serving in a Fiber web application.",
+        "key_types": [
+          "fiber.App",
+          "fiber.TestConfig",
+          "Config"
+        ],
+        "functions": [
+          "Test_Static_Index_Default",
+          "Test_Static_Direct",
+          "Test_Static_MaxAge",
+          "Test_Static_Custom_CacheControl",
+          "Test_Static_Disable_Cache",
+          "Test_Static_NotFoundHandler",
+          "Test_Static_Download",
+          "Test_Static_Download_NonASCII",
+          "Test_Static_Group"
+        ],
+        "imports": [
+          "embed",
+          "io",
+          "io/fs",
+          "net/http/httptest",
+          "net/url",
+          "os",
+          "path/filepath",
+          "runtime",
+          "strings",
+          "testing",
+          "time",
+          "github.com/stretchr/testify/require",
+          "github.com/gofiber/fiber/v3"
+        ],
+        "side_effects": [
+          "Creates and deletes temporary files for testing purposes."
+        ],
+        "risks": [
+          "Potential file system access issues, especially on Windows."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

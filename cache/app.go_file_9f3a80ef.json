@@ -1,0 +1,60 @@
+{
+  "content_hash": "d7d79bc1a99a33f04250192b1df9d00f",
+  "timestamp": "2025-09-24T15:40:10.916982+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the Fiber web framework, including application configuration and request handling.",
+    "key_types": [
+      "App",
+      "Config",
+      "Error",
+      "Handler",
+      "ErrorHandler",
+      "Map"
+    ],
+    "functions": [
+      "New",
+      "Listen",
+      "Get",
+      "Post",
+      "Put",
+      "Delete",
+      "Use",
+      "Group",
+      "Static",
+      "SendFile"
+    ],
+    "imports": [
+      "bufio",
+      "context",
+      "encoding/json",
+      "encoding/xml",
+      "errors",
+      "fmt",
+      "io",
+      "net",
+      "net/http",
+      "net/http/httputil",
+      "os",
+      "reflect",
+      "strconv",
+      "strings",
+      "sync",
+      "time",
+      "unsafe",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp",
+      "github.com/gofiber/fiber/v3/binder",
+      "github.com/gofiber/fiber/v3/log"
+    ],
+    "side_effects": [
+      "Modifies HTTP request and response headers",
+      "Handles errors during request processing"
+    ],
+    "risks": [
+      "Potential for denial of service if improperly configured",
+      "Improper handling of user input may lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

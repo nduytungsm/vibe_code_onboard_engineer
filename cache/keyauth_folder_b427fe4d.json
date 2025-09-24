@@ -1,0 +1,148 @@
+{
+  "content_hash": "72646d6eac1ff3e473ea744fd1a27adb",
+  "timestamp": "2025-09-24T15:44:58.6657+07:00",
+  "result": {
+    "path": "middleware/keyauth",
+    "purpose": "Responsible for API key authentication middleware in a web application using the Fiber framework.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "config.go",
+      "config_test.go",
+      "keyauth.go",
+      "keyauth_test.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/extractors",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/gofiber/utils/v2"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating middleware functionality and its tests, promoting separation of concerns and maintainability.",
+    "file_summaries": {
+      "middleware/keyauth/config.go": {
+        "language": "Go",
+        "purpose": "Defines middleware configuration for API key authentication in a web application.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "configDefault",
+          "isScopeToken"
+        ],
+        "imports": [
+          "fmt",
+          "net/url",
+          "strings",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/extractors"
+        ],
+        "side_effects": [
+          "Panic if required fields are not set in the configuration."
+        ],
+        "risks": [
+          "Potential for denial of service if panic occurs due to misconfiguration."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/keyauth/config_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the keyauth middleware configuration in a Fiber web application.",
+        "key_types": [
+          "Config",
+          "fiber.Ctx"
+        ],
+        "functions": [
+          "Test_KeyAuth_ConfigDefault_NoConfig",
+          "Test_KeyAuth_ConfigDefault_PanicWithoutValidator",
+          "Test_KeyAuth_ConfigDefault_WithValidator",
+          "Test_KeyAuth_ConfigDefault_CustomConfig"
+        ],
+        "imports": [
+          "reflect",
+          "testing",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/extractors",
+          "github.com/stretchr/testify/assert",
+          "github.com/stretchr/testify/require"
+        ],
+        "side_effects": [
+          "Panic if no validator is provided",
+          "Panic if validator is nil in configDefault"
+        ],
+        "risks": [
+          "Potential for panics if not handled properly"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/keyauth/keyauth.go": {
+        "language": "Go",
+        "purpose": "This file implements a middleware for API key authentication in a web application using the Fiber framework.",
+        "key_types": [
+          "contextKey",
+          "Config"
+        ],
+        "functions": [
+          "New",
+          "TokenFromContext",
+          "getAuthSchemes"
+        ],
+        "imports": [
+          "errors",
+          "fmt",
+          "strings",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/extractors",
+          "github.com/gofiber/utils/v2"
+        ],
+        "side_effects": [
+          "Modifies the request context to store the token if valid.",
+          "Sets response headers for authentication challenges."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if error messages are not handled properly."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/keyauth/keyauth_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for key authentication middleware in a Fiber web application",
+        "key_types": [
+          "fiber.TestConfig",
+          "struct",
+          "error"
+        ],
+        "functions": [
+          "Test_AuthSources",
+          "TestMultipleKeyLookup",
+          "Test_MultipleKeyAuth"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "io",
+          "net/http",
+          "net/http/httptest",
+          "net/url",
+          "strings",
+          "testing",
+          "github.com/stretchr/testify/assert",
+          "github.com/stretchr/testify/require",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/extractors"
+        ],
+        "side_effects": [
+          "HTTP requests to the Fiber application",
+          "Modifications to the request headers and body"
+        ],
+        "risks": [
+          "Potential exposure of sensitive API keys",
+          "Improper error handling may lead to information leakage"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

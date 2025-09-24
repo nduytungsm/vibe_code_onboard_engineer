@@ -1,0 +1,36 @@
+{
+  "content_hash": "8d0b4c428e6a372bb53948f7823e62dd",
+  "timestamp": "2025-09-24T15:43:48.404099+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines functions and types for loading and decoding HCL (HashiCorp Configuration Language) specification files.",
+    "key_types": [
+      "specFileContent",
+      "hcl.EvalContext",
+      "hcldec.Spec"
+    ],
+    "functions": [
+      "loadSpecFile",
+      "decodeSpecDecls",
+      "decodeSpecRoot",
+      "decodeSpecBlock",
+      "decodeObjectSpec",
+      "decodeArraySpec",
+      "decodeAttrSpec",
+      "decodeBlockSpec",
+      "decodeBlockListSpec",
+      "decodeBlockSetSpec",
+      "decodeBlockMapSpec"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/ext/userfunc",
+      "github.com/hashicorp/hcl/v2/gohcl",
+      "github.com/hashicorp/hcl/v2/hcldec",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/function"
+    ],
+    "complexity": "medium"
+  }
+}

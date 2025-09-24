@@ -1,0 +1,343 @@
+{
+  "content_hash": "e183b59cebc4e63ea1f40c242eb62b81",
+  "timestamp": "2025-09-24T15:48:17.614644+07:00",
+  "result": {
+    "path": "ext/dynblock",
+    "purpose": "Responsible for handling dynamic blocks in HCL (HashiCorp Configuration Language), allowing for flexible configuration management.",
+    "languages": {
+      "Go": 10,
+      "Markdown": 1
+    },
+    "key_modules": [
+      "README.md",
+      "expand_body.go",
+      "expand_body_test.go",
+      "expand_spec.go",
+      "expr_wrap.go",
+      "iteration.go",
+      "options.go",
+      "public.go",
+      "schema.go",
+      "unknown_body.go",
+      "variables.go",
+      "variables_hcldec.go",
+      "variables_test.go"
+    ],
+    "dependencies": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/hashicorp/hcl/v2/hcldec"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, with separate files for defining types, functions, and tests related to dynamic block handling in HCL.",
+    "file_summaries": {
+      "ext/dynblock/README.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for the HCL Dynamic Blocks Extension, explaining its functionality and usage.",
+        "key_types": [
+          "dynamic block",
+          "EvalContext",
+          "WalkVariablesNode",
+          "hcl.BodySchema",
+          "hcldec.Spec"
+        ],
+        "functions": [
+          "Expand",
+          "WalkForEachVariables",
+          "ForEachVariablesHCLDec",
+          "decodeBody",
+          "buildEvalContext"
+        ],
+        "imports": [
+          "hcl",
+          "hcldec",
+          "cty"
+        ],
+        "side_effects": [
+          "Generates dynamic blocks based on collection values",
+          "May require additional memory due to temporary data structures"
+        ],
+        "risks": [
+          "Potential performance issues due to high memory usage",
+          "Complexity in managing unknown values in dynamic blocks"
+        ],
+        "complexity": "medium"
+      },
+      "ext/dynblock/expand_body.go": {
+        "language": "Go",
+        "purpose": "Defines an 'expandBody' type that wraps an HCL body to expand dynamic blocks during content retrieval.",
+        "key_types": [
+          "expandBody",
+          "hcl.Body",
+          "hcl.BodyContent",
+          "hcl.BodySchema",
+          "hcl.BlockHeaderSchema",
+          "hcl.Attributes"
+        ],
+        "functions": [
+          "Content",
+          "PartialContent",
+          "extendSchema",
+          "prepareAttributes",
+          "expandBlocks",
+          "expandChild",
+          "JustAttributes",
+          "MissingItemRange"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "side_effects": [
+          "Modifies the original HCL body to handle dynamic blocks during content retrieval."
+        ],
+        "risks": [
+          "Potential for runtime errors if dynamic blocks are not handled correctly."
+        ],
+        "complexity": "medium"
+      },
+      "ext/dynblock/expand_body_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the Expand function in the dynblock package, validating HCL body expansion and decoding.",
+        "key_types": [
+          "hcl.Body",
+          "hcldec.BlockMapSpec",
+          "hcldec.BlockListSpec",
+          "cty.Value",
+          "hcl.Diagnostics"
+        ],
+        "functions": [
+          "TestExpand",
+          "Expand",
+          "PartialDecode",
+          "Decode"
+        ],
+        "imports": [
+          "strings",
+          "testing",
+          "github.com/davecgh/go-spew/spew",
+          "github.com/google/go-cmp/cmp",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/hashicorp/hcl/v2/hcldec",
+          "github.com/hashicorp/hcl/v2/hcltest",
+          "github.com/zclconf/go-cty-debug/ctydebug",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "ext/dynblock/expand_spec.go": {
+        "language": "Go",
+        "purpose": "Defines and expands dynamic blocks in HCL (HashiCorp Configuration Language) for use in configuration management.",
+        "key_types": [
+          "expandSpec",
+          "hcl.BlockHeaderSchema",
+          "hcl.Block",
+          "hcl.Diagnostics",
+          "hcl.Expression",
+          "hcl.Body",
+          "cty.Value"
+        ],
+        "functions": [
+          "decodeSpec",
+          "newBlock"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/convert"
+        ],
+        "side_effects": [
+          "Generates diagnostics for invalid configurations",
+          "Modifies the state of diagnostics based on validation checks"
+        ],
+        "risks": [
+          "Potential for runtime errors if dynamic block labels are not valid",
+          "Improper handling of null or unknown values in for_each attributes"
+        ],
+        "complexity": "medium"
+      },
+      "ext/dynblock/expr_wrap.go": {
+        "language": "Go",
+        "purpose": "This file defines a wrapper for HCL expressions that manages variable traversal and value preparation in the context of dynamic blocks.",
+        "key_types": [
+          "exprWrap",
+          "hcl.Expression",
+          "iteration",
+          "cty.ValueMarks"
+        ],
+        "functions": [
+          "Variables",
+          "Value",
+          "UnwrapExpression",
+          "prepareValue"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "ext/dynblock/iteration.go": {
+        "language": "Go",
+        "purpose": "Defines an iteration structure and methods for managing iterations in a context.",
+        "key_types": [
+          "iteration",
+          "cty.Value",
+          "map[string]*iteration"
+        ],
+        "functions": [
+          "MakeIteration",
+          "Object",
+          "EvalContext",
+          "MakeChild"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "ext/dynblock/options.go": {
+        "language": "Go",
+        "purpose": "Defines options for expanding HCL expressions with validation checks.",
+        "key_types": [
+          "ExpandOption",
+          "optCheckForEach"
+        ],
+        "functions": [
+          "OptCheckForEach",
+          "applyExpandOption"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "side_effects": [
+          "Modifies the checkForEach slice in expandBody"
+        ],
+        "complexity": "medium"
+      },
+      "ext/dynblock/public.go": {
+        "language": "Go",
+        "purpose": "Provides an extension to HCL for dynamic declaration of nested blocks.",
+        "key_types": [
+          "hcl.Body",
+          "hcl.EvalContext",
+          "ExpandOption"
+        ],
+        "functions": [
+          "Expand"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      },
+      "ext/dynblock/schema.go": {
+        "language": "Go",
+        "purpose": "Defines schemas for dynamic blocks in HCL (HashiCorp Configuration Language)",
+        "key_types": [
+          "hcl.BlockHeaderSchema",
+          "hcl.BodySchema",
+          "hcl.AttributeSchema"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "low"
+      },
+      "ext/dynblock/unknown_body.go": {
+        "language": "Go",
+        "purpose": "Defines a structure for handling unknown body content in HCL (HashiCorp Configuration Language) with dynamic blocks.",
+        "key_types": [
+          "unknownBody"
+        ],
+        "functions": [
+          "Unknown",
+          "BodyValueMarks",
+          "Content",
+          "PartialContent",
+          "JustAttributes",
+          "MissingItemRange",
+          "fixupContent",
+          "fixupAttrs"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2",
+          "github.com/hashicorp/hcl/v2/hcldec",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "ext/dynblock/variables.go": {
+        "language": "Go",
+        "purpose": "This file defines functions and types for walking through HCL (HashiCorp Configuration Language) variable structures, particularly for dynamic blocks.",
+        "key_types": [
+          "WalkVariablesNode",
+          "WalkVariablesChild"
+        ],
+        "functions": [
+          "WalkVariables",
+          "WalkExpandVariables",
+          "Visit",
+          "extendSchema"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "ext/dynblock/variables_hcldec.go": {
+        "language": "Go",
+        "purpose": "This file defines functions for processing HCL (HashiCorp Configuration Language) variables with support for dynamic blocks.",
+        "key_types": [
+          "hcl.Body",
+          "hcldec.Spec",
+          "hcl.Traversal",
+          "WalkVariablesNode"
+        ],
+        "functions": [
+          "VariablesHCLDec",
+          "ExpandVariablesHCLDec",
+          "walkVariablesWithHCLDec"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2",
+          "github.com/hashicorp/hcl/v2/hcldec"
+        ],
+        "complexity": "medium"
+      },
+      "ext/dynblock/variables_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for variable handling in dynamic blocks using HCL (HashiCorp Configuration Language).",
+        "key_types": [
+          "hcldec.BlockListSpec",
+          "hcldec.BlockMapSpec",
+          "hcldec.AttrSpec"
+        ],
+        "functions": [
+          "TestVariables",
+          "hclsyntax.ParseConfig",
+          "VariablesHCLDec",
+          "ExpandVariablesHCLDec"
+        ],
+        "imports": [
+          "reflect",
+          "testing",
+          "github.com/hashicorp/hcl/v2/hcldec",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/davecgh/go-spew/spew",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/hashicorp/hcl/v2/hclsyntax"
+        ],
+        "side_effects": [
+          "Logs errors if diagnostics are found during parsing."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

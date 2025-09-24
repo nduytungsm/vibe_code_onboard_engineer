@@ -1,0 +1,60 @@
+{
+  "content_hash": "81536be319d23d450e65fde1b583ddc7",
+  "timestamp": "2025-09-24T15:33:57.019765+07:00",
+  "result": {
+    "path": "cmd/ip_location",
+    "purpose": "This folder/module is responsible for initializing a Sentry client for error tracking and downloading a new IP location database using Redis.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [
+      "github.com/getsentry/sentry-go",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-manager/config",
+      "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/location"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, focusing on separation of concerns by encapsulating functionalities related to IP location management and error tracking.",
+    "file_summaries": {
+      "cmd/ip_location/main.go": {
+        "language": "Go",
+        "purpose": "This file initializes a Sentry client for error tracking and downloads a new IP location database using Redis.",
+        "key_types": [
+          "context.Context",
+          "time.Time",
+          "sentry.ClientOptions",
+          "redis.Client",
+          "location.Service"
+        ],
+        "functions": [
+          "main",
+          "sentry.Init",
+          "redis.NewRedisClient",
+          "location.NewService",
+          "locationService.DownloadNewDB"
+        ],
+        "imports": [
+          "context",
+          "time",
+          "github.com/getsentry/sentry-go",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/location"
+        ],
+        "side_effects": [
+          "Initializes Sentry for error tracking",
+          "Logs errors and process time"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information in logs",
+          "Error handling may not cover all cases"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

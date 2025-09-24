@@ -1,0 +1,22 @@
+{
+  "content_hash": "ddd51191913d6fbba2afb61f12a33a1a",
+  "timestamp": "2025-09-24T15:25:59.92564+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Provides a default module type provider for specific React libraries to ensure compatibility with memoization.",
+    "key_types": [
+      "TypeConfig",
+      "Effect",
+      "ValueKind"
+    ],
+    "functions": [
+      "defaultModuleTypeProvider"
+    ],
+    "imports": [
+      "Effect",
+      "ValueKind",
+      "TypeConfig"
+    ],
+    "complexity": "medium"
+  }
+}

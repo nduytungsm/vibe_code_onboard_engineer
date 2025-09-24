@@ -1,0 +1,24 @@
+{
+  "content_hash": "5a8400960bb2b3155532df441b3e9317",
+  "timestamp": "2025-09-24T15:42:29.358894+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides helper functions to create test contexts for the Gin web framework.",
+    "key_types": [
+      "Context",
+      "Engine"
+    ],
+    "functions": [
+      "CreateTestContext",
+      "CreateTestContextOnly"
+    ],
+    "imports": [
+      "net/http"
+    ],
+    "side_effects": [
+      "Allocates memory for new contexts",
+      "Resets writer memory"
+    ],
+    "complexity": "medium"
+  }
+}

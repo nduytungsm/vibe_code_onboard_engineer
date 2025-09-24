@@ -1,0 +1,31 @@
+{
+  "content_hash": "79d44a18c59d4cc0c7fc8063da286b66",
+  "timestamp": "2025-09-24T15:25:43.335877+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines types and functions to handle ESLint and Flow suppression comments in React components, filtering and converting them into compiler errors.",
+    "key_types": [
+      "SuppressionRange",
+      "SuppressionSource"
+    ],
+    "functions": [
+      "filterSuppressionsThatAffectFunction",
+      "findProgramSuppressions",
+      "suppressionsToCompilerError"
+    ],
+    "imports": [
+      "@babel/core",
+      "@babel/types",
+      "../CompilerError",
+      "../Utils/utils",
+      "../HIR"
+    ],
+    "side_effects": [
+      "Generates compiler errors based on suppression comments"
+    ],
+    "risks": [
+      "Potential for incorrect behavior if suppressions are not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

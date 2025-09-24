@@ -1,0 +1,22 @@
+{
+  "content_hash": "6d08ff636be1c84d8745531cdd184a32",
+  "timestamp": "2025-09-24T15:28:39.899005+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Test fixture for demonstrating mutable behavior in an array after capturing a reference.",
+    "key_types": [
+      "Array",
+      "Function"
+    ],
+    "functions": [
+      "Component",
+      "foo",
+      "mutate"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Mutates the array 'x' through the reference 'y'."
+    ],
+    "complexity": "low"
+  }
+}

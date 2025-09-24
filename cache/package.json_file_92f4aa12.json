@@ -1,0 +1,45 @@
+{
+  "content_hash": "b6aaecb1adb175c0b3cf99394e3ba78c",
+  "timestamp": "2025-09-24T15:25:25.570614+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Configuration file for the Babel plugin for React Compiler.",
+    "key_types": [
+      "string",
+      "object"
+    ],
+    "functions": [
+      "build",
+      "test",
+      "jest",
+      "snap",
+      "lint",
+      "watch"
+    ],
+    "imports": [
+      "@babel/types",
+      "@babel/core",
+      "@babel/generator",
+      "@babel/parser",
+      "@babel/plugin-syntax-typescript",
+      "@babel/plugin-transform-block-scoping",
+      "@babel/plugin-transform-modules-commonjs",
+      "@babel/preset-react",
+      "@babel/preset-typescript",
+      "@babel/traverse",
+      "@testing-library/react",
+      "babel-jest",
+      "eslint",
+      "jest",
+      "react",
+      "react-dom"
+    ],
+    "side_effects": [
+      "File system modifications during build and test scripts."
+    ],
+    "risks": [
+      "Potential for dependency vulnerabilities due to outdated packages."
+    ],
+    "complexity": "medium"
+  }
+}

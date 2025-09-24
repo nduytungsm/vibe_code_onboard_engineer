@@ -1,0 +1,56 @@
+{
+  "content_hash": "26addd870b8868be73de2acaf92968f2",
+  "timestamp": "2025-09-24T15:31:17.61056+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service for retrieving IP location data and managing a database of such data.",
+    "key_types": [
+      "Service",
+      "service",
+      "Config",
+      "md.IPLocation"
+    ],
+    "functions": [
+      "GetLocationByIP",
+      "DownloadNewDB",
+      "decompressGzip",
+      "setupFromStorage",
+      "setupFromLocalDB",
+      "setupLocationDB",
+      "subscribeToAutoRefresh",
+      "loadMapCountryCode",
+      "loadMapCurrencyCode",
+      "loadAndParseDefaultData",
+      "NewService"
+    ],
+    "imports": [
+      "compress/gzip",
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "io",
+      "net",
+      "net/http",
+      "os",
+      "sync",
+      "time",
+      "github.com/oschwald/maxminddb-golang",
+      "github.com/redis/go-redis/v9",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs"
+    ],
+    "side_effects": [
+      "Creates and deletes files on the filesystem.",
+      "Makes HTTP requests to download data.",
+      "Publishes messages to a Redis channel."
+    ],
+    "risks": [
+      "Potential exposure of sensitive data if the database is not secured.",
+      "Improper handling of IP addresses may lead to denial of service.",
+      "Error handling may not cover all edge cases."
+    ],
+    "complexity": "medium"
+  }
+}

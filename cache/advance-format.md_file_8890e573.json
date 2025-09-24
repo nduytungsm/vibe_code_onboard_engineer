@@ -1,0 +1,23 @@
+{
+  "content_hash": "938331123bcd38f7b5939f0da2e3ed22",
+  "timestamp": "2025-09-24T15:27:52.411611+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation on using MessagePack and CBOR for binary serialization in Fiber applications.",
+    "key_types": [
+      "User"
+    ],
+    "functions": [
+      "main"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/shamaton/msgpack/v2",
+      "github.com/fxamacker/cbor/v2"
+    ],
+    "side_effects": [
+      "Sets content type to application/vnd.msgpack or application/cbor based on the request."
+    ],
+    "complexity": "medium"
+  }
+}

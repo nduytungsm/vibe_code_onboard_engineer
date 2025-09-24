@@ -1,0 +1,27 @@
+{
+  "content_hash": "e7ac13d9d6b84d4aaf2338df859eb952",
+  "timestamp": "2025-09-24T15:40:30.551222+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines an XML binder for parsing XML request bodies.",
+    "key_types": [
+      "XMLBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "Reset"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/gofiber/utils/v2"
+    ],
+    "side_effects": [
+      "Modifies the state of XMLBinding by resetting the XMLDecoder."
+    ],
+    "risks": [
+      "Potential for XML injection if input is not properly validated."
+    ],
+    "complexity": "medium"
+  }
+}

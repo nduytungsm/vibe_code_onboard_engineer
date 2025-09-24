@@ -1,0 +1,32 @@
+{
+  "content_hash": "93b71ab6972a88fa8722f3482e260167",
+  "timestamp": "2025-09-24T15:26:41.524765+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Align scopes of object method values to that of their enclosing object expressions.",
+    "key_types": [
+      "HIRFunction",
+      "Identifier",
+      "ReactiveScope",
+      "DisjointSet"
+    ],
+    "functions": [
+      "findScopesToMerge",
+      "alignObjectMethodScopes"
+    ],
+    "imports": [
+      "CompilerError",
+      "GeneratedSource",
+      "HIRFunction",
+      "Identifier",
+      "ReactiveScope",
+      "makeInstructionId",
+      "eachInstructionValueOperand",
+      "DisjointSet"
+    ],
+    "side_effects": [
+      "Modifies the scope of identifiers based on merged scopes."
+    ],
+    "complexity": "medium"
+  }
+}

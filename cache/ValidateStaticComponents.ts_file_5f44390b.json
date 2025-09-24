@@ -1,0 +1,33 @@
+{
+  "content_hash": "e32e291523b05f28c27ce078450f26c7",
+  "timestamp": "2025-09-24T15:27:40.422944+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validates components created dynamically to ensure their identity is stable across re-renders.",
+    "key_types": [
+      "CompilerDiagnostic",
+      "CompilerError",
+      "ErrorCategory",
+      "HIRFunction",
+      "IdentifierId",
+      "SourceLocation",
+      "Result"
+    ],
+    "functions": [
+      "validateStaticComponents"
+    ],
+    "imports": [
+      "../CompilerError",
+      "../HIR",
+      "../Utils/Result"
+    ],
+    "side_effects": [
+      "Modifies knownDynamicComponents map",
+      "Pushes diagnostics to error object"
+    ],
+    "risks": [
+      "Potential for incorrect component validation leading to state issues"
+    ],
+    "complexity": "medium"
+  }
+}

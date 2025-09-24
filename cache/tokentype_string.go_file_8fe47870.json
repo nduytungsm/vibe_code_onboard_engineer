@@ -1,0 +1,18 @@
+{
+  "content_hash": "05911a55b3268e85faf3e800c6ec198b",
+  "timestamp": "2025-09-24T15:46:21.656161+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a string representation for the tokenType enumeration used in a JSON parser.",
+    "key_types": [
+      "tokenType"
+    ],
+    "functions": [
+      "String"
+    ],
+    "imports": [
+      "strconv"
+    ],
+    "complexity": "medium"
+  }
+}

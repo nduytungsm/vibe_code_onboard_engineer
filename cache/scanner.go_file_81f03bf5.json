@@ -1,0 +1,37 @@
+{
+  "content_hash": "1b82abef2e97e8895aa6d3d0cf68f49b",
+  "timestamp": "2025-09-24T15:46:20.739154+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a JSON scanner that tokenizes JSON input for parsing.",
+    "key_types": [
+      "tokenType",
+      "token",
+      "pos"
+    ],
+    "functions": [
+      "scan",
+      "byteCanStartNumber",
+      "scanNumber",
+      "byteCanStartKeyword",
+      "scanKeyword",
+      "scanString",
+      "skipWhitespace",
+      "posRange",
+      "GoString",
+      "isAlphabetical"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/apparentlymart/go-textseg/v15/textseg",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Modifies the input buffer by consuming bytes during scanning."
+    ],
+    "risks": [
+      "Potential for buffer overflows if not handled correctly."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "content_hash": "192d7bac82617bbea35087095762288b",
+  "timestamp": "2025-09-24T15:28:17.340067+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that uses global state and effects to manage and display a boolean value.",
+    "key_types": [
+      "boolean",
+      "function",
+      "object"
+    ],
+    "functions": [
+      "Component",
+      "setGlobal"
+    ],
+    "imports": [
+      "react"
+    ],
+    "side_effects": [
+      "Modifies a global variable",
+      "Updates component state based on a global variable"
+    ],
+    "risks": [
+      "Global variable manipulation can lead to unpredictable behavior",
+      "Potential for race conditions with state updates"
+    ],
+    "complexity": "medium"
+  }
+}

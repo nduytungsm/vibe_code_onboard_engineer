@@ -1,0 +1,33 @@
+{
+  "content_hash": "4f14d3b7e6a7a6d7d015a5508fcf422d",
+  "timestamp": "2025-09-24T15:44:37.529274+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functions to encode Go structs into HCL (HashiCorp Configuration Language) format.",
+    "key_types": [
+      "struct",
+      "reflect.Value",
+      "hclwrite.Body",
+      "hclwrite.Block"
+    ],
+    "functions": [
+      "EncodeIntoBody",
+      "EncodeAsBlock",
+      "populateBody"
+    ],
+    "imports": [
+      "fmt",
+      "reflect",
+      "sort",
+      "github.com/hashicorp/hcl/v2/hclwrite",
+      "github.com/zclconf/go-cty/cty/gocty"
+    ],
+    "side_effects": [
+      "Panic on inappropriate type or nil body in EncodeIntoBody and EncodeAsBlock functions."
+    ],
+    "risks": [
+      "Potential panic if the input value is not a struct or pointer to a struct."
+    ],
+    "complexity": "medium"
+  }
+}

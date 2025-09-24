@@ -1,0 +1,27 @@
+{
+  "content_hash": "5992948dc24c485bbe07a7486ffb1e4b",
+  "timestamp": "2025-09-24T14:04:47.859938+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines routes for private wallet management functionalities in an Echo web server.",
+    "key_types": [
+      "echo.Echo",
+      "handlers.AnnouncementHandler",
+      "handlers.DeviceHandler",
+      "echo.MiddlewareFunc"
+    ],
+    "functions": [
+      "registerPrivate"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-manager/handlers",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "side_effects": [
+      "Creates HTTP routes for handling wallet preferences and device management."
+    ],
+    "complexity": "medium"
+  }
+}

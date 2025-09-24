@@ -1,0 +1,38 @@
+{
+  "content_hash": "9ff2f584bca53bc5c94988bf5c93e074",
+  "timestamp": "2025-09-24T15:41:27.545607+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for basic authentication functionality in a web application using the Gin framework.",
+    "key_types": [
+      "Accounts",
+      "authPair",
+      "Context"
+    ],
+    "functions": [
+      "TestBasicAuth",
+      "TestBasicAuthFails",
+      "TestBasicAuthSearchCredential",
+      "TestBasicAuthAuthorizationHeader",
+      "TestBasicAuthSucceed",
+      "TestBasicAuth401",
+      "TestBasicAuth401WithCustomRealm",
+      "TestBasicAuthForProxySucceed",
+      "TestBasicAuthForProxy407"
+    ],
+    "imports": [
+      "encoding/base64",
+      "net/http",
+      "net/http/httptest",
+      "testing",
+      "github.com/stretchr/testify/assert"
+    ],
+    "side_effects": [
+      "HTTP requests and responses are made to test authentication behavior."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if credentials are not handled securely."
+    ],
+    "complexity": "medium"
+  }
+}

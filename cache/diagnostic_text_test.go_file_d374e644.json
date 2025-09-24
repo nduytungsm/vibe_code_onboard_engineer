@@ -1,0 +1,32 @@
+{
+  "content_hash": "35a09d3dcb4466c59bfb3249cdd4195f",
+  "timestamp": "2025-09-24T15:44:00.445665+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the DiagnosticTextWriter functionality in the HCL package.",
+    "key_types": [
+      "Diagnostic",
+      "Range",
+      "Pos",
+      "EvalContext",
+      "Traversal",
+      "File"
+    ],
+    "functions": [
+      "TestDiagnosticTextWriter",
+      "ContextString",
+      "Variables"
+    ],
+    "imports": [
+      "bytes",
+      "fmt",
+      "testing",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Writes output to a buffer",
+      "May modify the state of the buffer based on diagnostics"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "content_hash": "f8fa06912bb363cfe79bb7427b1a4051",
+  "timestamp": "2025-09-24T15:41:43.688552+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality to bind YAML data from HTTP requests to Go objects.",
+    "key_types": [
+      "yamlBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "BindBody",
+      "decodeYAML"
+    ],
+    "imports": [
+      "bytes",
+      "io",
+      "net/http",
+      "github.com/goccy/go-yaml"
+    ],
+    "side_effects": [
+      "Decodes YAML data from HTTP request body or byte slice."
+    ],
+    "risks": [
+      "Potential for denial of service if large YAML files are processed."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "content_hash": "fdb9c51cd144e0d4ec314ea9d6c16bea",
+  "timestamp": "2025-09-24T15:43:03.482864+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides utility functions and types for logging in a Fiber web application.",
+    "key_types": [
+      "customLoggerWriter"
+    ],
+    "functions": [
+      "methodColor",
+      "statusColor",
+      "Write",
+      "LoggerToWriter"
+    ],
+    "imports": [
+      "io",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/log",
+      "github.com/gofiber/utils/v2"
+    ],
+    "side_effects": [
+      "Panic if logger is nil or level is invalid in LoggerToWriter"
+    ],
+    "complexity": "medium"
+  }
+}

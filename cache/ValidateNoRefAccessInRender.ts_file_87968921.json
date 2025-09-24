@@ -1,0 +1,37 @@
+{
+  "content_hash": "bc12989e15aded604607fabf27fb2147",
+  "timestamp": "2025-09-24T15:27:38.925486+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validates that a function does not access a ref value during render.",
+    "key_types": [
+      "RefId",
+      "RefAccessType",
+      "RefAccessRefType",
+      "RefFnType",
+      "Env"
+    ],
+    "functions": [
+      "makeRefId",
+      "nextRefId",
+      "validateNoRefAccessInRender",
+      "collectTemporariesSidemap",
+      "refTypeOfType",
+      "tyEqual",
+      "joinRefAccessTypes",
+      "validateNoRefAccessInRenderImpl"
+    ],
+    "imports": [
+      "../CompilerError",
+      "../HIR",
+      "../HIR/visitors",
+      "../Utils/Result",
+      "../Utils/utils"
+    ],
+    "side_effects": [
+      "Modifies the internal state of the Env class.",
+      "Throws errors if invariants are violated."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,37 +1,44 @@
 {
-  "content_hash": "e7bf613028910b9762a147fd554f33d0",
-  "timestamp": "2025-09-23T16:30:52.514124+07:00",
+  "content_hash": "7c3960b14f6a719b2c361e333b1e8894",
+  "timestamp": "2025-09-24T15:31:52.896083+07:00",
   "result": {
     "path": "config",
-    "purpose": "This folder/module is responsible for managing application configuration settings and structures.",
+    "purpose": "This folder/module is responsible for defining and managing application configuration settings.",
     "languages": {
-      "Go": 1,
+      "Go": 3,
       "YAML": 1
     },
     "key_modules": [
-      "config/config.go",
-      "config/config.yml"
+      "config.go",
+      "config.yml",
+      "func_print.go",
+      "func_print_test.go"
     ],
     "dependencies": [
       "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/axieinfinity/ecosystem-go-common/sso",
+      "github.com/inhies/go-bytesize",
       "github.com/mitchellh/mapstructure",
       "github.com/rs/zerolog",
       "github.com/spf13/viper",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/cmc",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/exchangerate",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker"
+      "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+      "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
     ],
-    "architecture": "The folder follows a modular architecture pattern, separating configuration logic into distinct files for better maintainability and clarity.",
+    "architecture": "The folder follows a modular architecture pattern, separating configuration definitions, initialization logic, and utility functions for managing sensitive data.",
     "file_summaries": {
       "config/config.go": {
         "language": "Go",
-        "purpose": "This file defines configuration structures and initializes the application configuration using viper.",
+        "purpose": "This file defines configuration structures and initializes application settings from a configuration file.",
         "key_types": [
           "Schema",
           "Server",
@@ -41,54 +48,136 @@
           "Profiling"
         ],
         "functions": [
+          "StringToByteSizeHookFunc",
           "Init"
         ],
         "imports": [
           "fmt",
+          "reflect",
+          "runtime",
           "strconv",
           "strings",
           "sync",
           "time",
           "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+          "github.com/axieinfinity/ecosystem-go-common/sso",
+          "github.com/inhies/go-bytesize",
           "github.com/mitchellh/mapstructure",
           "github.com/rs/zerolog",
           "github.com/spf13/viper",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/cmc",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/exchangerate",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker"
+          "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+          "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
         ],
         "side_effects": [
-          "Panic if the configuration file cannot be read or unmarshalled."
+          "Panic if the configuration file cannot be read",
+          "Sets global logging level based on configuration"
         ],
         "risks": [
-          "Potential exposure of sensitive information if the configuration file is not secured."
+          "Potential exposure of sensitive configuration data if not handled properly"
         ],
         "complexity": "medium"
       },
       "config/config.yml": {
         "language": "YAML",
-        "purpose": "Configuration file for a wallet proxy service, defining various settings including server details, profiling options, logging levels, and blockchain configurations.",
+        "purpose": "Configuration file for a mobile wallet manager application, defining various settings for services, servers, authentication, logging, and other features.",
         "key_types": [
           "profiler",
           "server",
           "profiling",
+          "auth_server",
+          "sso_server",
           "sentry",
-          "logging",
           "hmac_internal",
-          "chains",
-          "exchange_rate_service",
-          "providers"
+          "logging",
+          "redis",
+          "device_service",
+          "postgres",
+          "api_version",
+          "ref_code",
+          "moonpay",
+          "announcement_config",
+          "ip_location_config",
+          "binance_config",
+          "tracking_config",
+          "external_auth_config",
+          "hide_all_spotlights_config",
+          "enable_quest_coming_soon_config",
+          "disable_nft_portfolio_config",
+          "enable_moonpay_config",
+          "enable_transak_config",
+          "hidden_tab_config",
+          "blacklist_site_config"
         ],
         "functions": [],
         "imports": [],
         "risks": [
-          "Exposure of sensitive information such as API keys and secrets if not properly secured."
+          "Exposure of sensitive information due to redacted keys and URLs.",
+          "Potential for misconfiguration leading to security vulnerabilities."
+        ],
+        "complexity": "medium"
+      },
+      "config/func_print.go": {
+        "language": "Go",
+        "purpose": "This file contains functions to hide sensitive data in configuration structures.",
+        "key_types": [
+          "Schema",
+          "viper.Viper"
+        ],
+        "functions": [
+          "isSecretField",
+          "hideSecret",
+          "hideSensitiveDataInSlice",
+          "hideSensitiveDataInMap",
+          "hideSensitiveDataInStruct",
+          "printConfigSafety"
+        ],
+        "imports": [
+          "reflect",
+          "strings",
+          "github.com/mitchellh/mapstructure",
+          "github.com/rs/zerolog/log",
+          "github.com/spf13/viper"
+        ],
+        "side_effects": [
+          "Modifies the input data structures to hide sensitive information."
+        ],
+        "risks": [
+          "Potential exposure of sensitive data if the hiding functions are not correctly implemented."
+        ],
+        "complexity": "medium"
+      },
+      "config/func_print_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for functions that hide sensitive data in maps and slices.",
+        "key_types": [
+          "struct",
+          "map",
+          "slice",
+          "interface"
+        ],
+        "functions": [
+          "TestHideSecretInMap",
+          "TestHideSecretInSlice"
+        ],
+        "imports": [
+          "fmt",
+          "testing"
+        ],
+        "side_effects": [
+          "Prints test data to the console"
+        ],
+        "risks": [
+          "Potential exposure of sensitive data if not handled properly"
         ],
         "complexity": "medium"
       }

@@ -1,0 +1,15 @@
+{
+  "content_hash": "e81419047c38f9ac705bb9f745656d75",
+  "timestamp": "2025-09-24T15:46:07.606181+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a JSON parser for HCL, mapping JSON data to HCL structural interfaces.",
+    "key_types": [
+      "json",
+      "HCL"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

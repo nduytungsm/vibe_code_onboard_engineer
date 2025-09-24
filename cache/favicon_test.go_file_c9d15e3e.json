@@ -1,0 +1,37 @@
+{
+  "content_hash": "2ab7fe6271a09efc3f0027994c103373",
+  "timestamp": "2025-09-24T15:42:37.407511+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the favicon middleware in a Fiber web application.",
+    "key_types": [
+      "fiber.Ctx",
+      "Config"
+    ],
+    "functions": [
+      "Test_Middleware_Favicon",
+      "Test_Middleware_Favicon_Not_Found",
+      "Test_Middleware_Favicon_Found",
+      "Test_Custom_Favicon_URL",
+      "Test_Custom_Favicon_Data",
+      "Test_Middleware_Favicon_FileSystem",
+      "Test_Middleware_Favicon_CacheControl",
+      "Benchmark_Middleware_Favicon",
+      "Test_Favicon_Next"
+    ],
+    "imports": [
+      "net/http",
+      "net/http/httptest",
+      "os",
+      "testing",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "side_effects": [
+      "File system access for favicon.ico",
+      "Potential panic if non-existent favicon is accessed"
+    ],
+    "complexity": "medium"
+  }
+}

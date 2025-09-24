@@ -1,0 +1,16 @@
+{
+  "content_hash": "6f71b8bfba6cf33596ecc54821c38a4a",
+  "timestamp": "2025-09-24T15:26:25.307323+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for release drafter to automate the generation of release notes.",
+    "key_types": [
+      "string",
+      "list",
+      "map"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

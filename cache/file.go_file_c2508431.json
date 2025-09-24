@@ -1,0 +1,19 @@
+{
+  "content_hash": "484dce98060137706404f4cd210e9489",
+  "timestamp": "2025-09-24T15:45:11.714069+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a structure for representing a parsed configuration file in HCL format.",
+    "key_types": [
+      "File",
+      "Body"
+    ],
+    "functions": [
+      "AsHCLFile"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "content_hash": "0257dbbe5ce7e00d3391216a441702e2",
+  "timestamp": "2025-09-24T15:30:52.399312+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for HMAC with normalization of whitelist addresses.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "NormalizeWhitelistAddresses"
+    ],
+    "imports": [
+      "strings"
+    ],
+    "complexity": "medium"
+  }
+}

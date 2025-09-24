@@ -1,0 +1,33 @@
+{
+  "content_hash": "d9fd8d8661d3261d5ee30203ff4b08e4",
+  "timestamp": "2025-09-24T15:43:55.714145+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the Router interface and Route struct for handling HTTP routes in a web application framework.",
+    "key_types": [
+      "Router",
+      "Route"
+    ],
+    "functions": [
+      "match",
+      "next",
+      "nextCustom",
+      "requestHandler"
+    ],
+    "imports": [
+      "bytes",
+      "fmt",
+      "slices",
+      "sync/atomic",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Modifies the context state during route matching and handler execution."
+    ],
+    "risks": [
+      "Potential for denial of service if route matching is inefficient."
+    ],
+    "complexity": "medium"
+  }
+}

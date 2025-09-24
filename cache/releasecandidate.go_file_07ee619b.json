@@ -1,0 +1,18 @@
+{
+  "content_hash": "bdeff4b40ce74d857222c4cefe368475",
+  "timestamp": "2025-09-24T14:53:47.990715+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines request structures for feature management in a device context.",
+    "key_types": [
+      "CheckAllowFeatureRequest",
+      "PostFeatureConfigRequest",
+      "PostWhitelistFeaturesRequest",
+      "PostSetConfigForDeviceRequest",
+      "GetCountWhitelistDevices"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

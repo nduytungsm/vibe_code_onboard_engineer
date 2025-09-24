@@ -1,0 +1,46 @@
+{
+  "content_hash": "56dc5100d6cf404a5dd0c1673fe20ed3",
+  "timestamp": "2025-09-24T15:27:04.415966+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file implements a pass for optimizing the handling of initialization dependencies in reactive functions by analyzing their usage in relation to useState and useRef hooks.",
+    "key_types": [
+      "CreateUpdate",
+      "KindMap",
+      "Visitor",
+      "AliasVisitor"
+    ],
+    "functions": [
+      "pruneInitializationDependencies",
+      "update",
+      "getAliases"
+    ],
+    "imports": [
+      "CompilerError",
+      "Environment",
+      "Identifier",
+      "IdentifierId",
+      "InstructionId",
+      "Place",
+      "PropertyLiteral",
+      "ReactiveBlock",
+      "ReactiveFunction",
+      "ReactiveInstruction",
+      "ReactiveScopeBlock",
+      "ReactiveTerminalStatement",
+      "getHookKind",
+      "isUseRefType",
+      "isUseStateType",
+      "eachCallArgument",
+      "eachInstructionLValue",
+      "DisjointSet",
+      "assertExhaustive",
+      "ReactiveFunctionVisitor",
+      "visitReactiveFunction"
+    ],
+    "side_effects": [
+      "Modifies the state of the map tracking the usage of identifiers."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "content_hash": "12459b270df3a8734ad99d513b413343",
+  "timestamp": "2025-09-24T15:43:18.704796+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration for session middleware in a web application.",
+    "key_types": [
+      "Config",
+      "Store"
+    ],
+    "functions": [
+      "DefaultErrorHandler",
+      "configDefault"
+    ],
+    "imports": [
+      "time",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/extractors",
+      "github.com/gofiber/fiber/v3/log",
+      "github.com/gofiber/utils/v2"
+    ],
+    "side_effects": [
+      "Logs errors to the console",
+      "Sends HTTP response with status code 500 on error"
+    ],
+    "risks": [
+      "Potential for panic if AbsoluteTimeout is less than IdleTimeout"
+    ],
+    "complexity": "medium"
+  }
+}

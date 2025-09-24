@@ -1,0 +1,18 @@
+{
+  "content_hash": "a8f953852546b3376634c204483c9cca",
+  "timestamp": "2025-09-24T15:28:36.992559+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that processes props and returns a value from an array.",
+    "key_types": [
+      "Component",
+      "Function"
+    ],
+    "functions": [
+      "Component",
+      "fn"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

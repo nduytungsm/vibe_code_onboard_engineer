@@ -1,0 +1,27 @@
+{
+  "content_hash": "c7e01ebab4fb456ce651756a3adedab8",
+  "timestamp": "2025-09-24T15:40:18.172069+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Testing the functionality of the CookieBinding struct for binding cookie values to a User struct.",
+    "key_types": [
+      "CookieBinding",
+      "User",
+      "Post"
+    ],
+    "functions": [
+      "Test_CookieBinder_Bind",
+      "Benchmark_CookieBinder_Bind",
+      "Test_CookieBinder_Bind_ParseError"
+    ],
+    "imports": [
+      "testing",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Allocates and releases fasthttp.Request objects"
+    ],
+    "complexity": "medium"
+  }
+}

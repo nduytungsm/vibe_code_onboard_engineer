@@ -1,0 +1,21 @@
+{
+  "content_hash": "c4691b6cd6d58036fdb9045621ff6a51",
+  "timestamp": "2025-09-24T15:40:25.559537+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a query binder for parsing query request bodies.",
+    "key_types": [
+      "QueryBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "Reset"
+    ],
+    "imports": [
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp"
+    ],
+    "complexity": "medium"
+  }
+}

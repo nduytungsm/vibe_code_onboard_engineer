@@ -1,0 +1,19 @@
+{
+  "content_hash": "ed8d35b2cfb9499376ce97d0ac7c0641",
+  "timestamp": "2025-09-24T15:42:09.905089+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration for a compression middleware in a web framework.",
+    "key_types": [
+      "Config",
+      "Level"
+    ],
+    "functions": [
+      "configDefault"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "content_hash": "24c2f1eb0c01028679eb00400a686dae",
+  "timestamp": "2025-09-24T15:44:22.523581+07:00",
+  "result": {
+    "path": "middleware/pprof",
+    "purpose": "This folder/module is responsible for implementing a middleware that integrates pprof for profiling Go applications within the Fiber web framework.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "config.go",
+      "pprof.go",
+      "pprof_test.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "net/http/pprof",
+      "strings",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp/fasthttpadaptor",
+      "bytes",
+      "io",
+      "net/http/httptest",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/require"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating middleware functionality with configuration, implementation, and testing separated into distinct files.",
+    "file_summaries": {
+      "middleware/pprof/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration for a middleware in a web framework.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "configDefault"
+        ],
+        "imports": [
+          "github.com/gofiber/fiber/v3"
+        ],
+        "complexity": "low"
+      },
+      "middleware/pprof/pprof.go": {
+        "language": "Go",
+        "purpose": "This file implements a middleware for the Fiber web framework that integrates pprof for profiling Go applications.",
+        "key_types": [
+          "Config",
+          "fiber.Handler",
+          "fiber.Ctx"
+        ],
+        "functions": [
+          "New"
+        ],
+        "imports": [
+          "net/http/pprof",
+          "strings",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/utils/v2",
+          "github.com/valyala/fasthttp/fasthttpadaptor"
+        ],
+        "side_effects": [
+          "Modifies HTTP request handling to include profiling routes"
+        ],
+        "risks": [
+          "Exposing profiling endpoints may lead to information disclosure if not properly secured"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/pprof/pprof_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the pprof middleware in a Fiber web application.",
+        "key_types": [
+          "fiber.TestConfig",
+          "fiber.Ctx"
+        ],
+        "functions": [
+          "Test_Non_Pprof_Path",
+          "Test_Non_Pprof_Path_WithPrefix",
+          "Test_Pprof_Index",
+          "Test_Pprof_Index_WithPrefix",
+          "Test_Pprof_Subs",
+          "Test_Pprof_Subs_WithPrefix",
+          "Test_Pprof_Other",
+          "Test_Pprof_Other_WithPrefix",
+          "Test_Pprof_Next",
+          "Test_Pprof_Next_WithPrefix"
+        ],
+        "imports": [
+          "bytes",
+          "io",
+          "net/http/httptest",
+          "testing",
+          "time",
+          "github.com/gofiber/fiber/v3",
+          "github.com/stretchr/testify/require"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

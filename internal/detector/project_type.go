@@ -75,7 +75,7 @@ type FileInfo struct {
 }
 
 // DetectProjectType analyzes files and determines project type
-func (pd *ProjectDetector) DetectProjectType(files []FileInfo) *DetectionResult {
+func (pd *ProjectDetector) DetectProjectType(files []FileInfo, fileContents map[string]string) *DetectionResult {
 	scores := make(map[ProjectType]float64)
 	evidence := make(map[string][]string)
 	
@@ -116,13 +116,22 @@ func (pd *ProjectDetector) DetectProjectType(files []FileInfo) *DetectionResult 
 	// Determine primary and secondary types
 	primary, secondary, confidence := pd.determineTypes(scores)
 	
-	// Check for fullstack (has both frontend and backend with reasonable scores)
-	if scores[Frontend] >= 3.0 && scores[Backend] >= 3.0 {
+	// Check for fullstack using command-based detection
+	hasFrontendCommands := pd.hasFrontendStartupCommands(files, fileContents)
+	hasBackendCommands := pd.hasBackendStartupCommands(files, fileContents)
+	
+	if hasFrontendCommands && hasBackendCommands {
 		primary = Fullstack
 		confidence = (scores[Frontend] + scores[Backend]) / 2.0
 		if confidence > 10.0 {
 			confidence = 10.0
 		}
+		// Add evidence for command-based detection
+		if evidence[string(Fullstack)] == nil {
+			evidence[string(Fullstack)] = []string{}
+		}
+		evidence[string(Fullstack)] = append(evidence[string(Fullstack)], 
+			"Command-based detection: Found both frontend and backend startup commands")
 	}
 	
 	return &DetectionResult{
@@ -537,4 +546,332 @@ func getDataScienceRules() []DetectionRule {
 			Keywords: []string{"requirements.txt", "environment.yml"},
 		},
 	}
+}
+
+// hasFrontendStartupCommands checks if the repository has commands to start a frontend UI
+func (pd *ProjectDetector) hasFrontendStartupCommands(files []FileInfo, fileContents map[string]string) bool {
+	// Check package.json for frontend startup commands
+	for _, file := range files {
+		if strings.HasSuffix(strings.ToLower(file.RelativePath), "package.json") {
+			content, exists := fileContents[file.RelativePath]
+			if exists && pd.hasPackageJsonFrontendCommands(content) {
+				return true
+			}
+		}
+	}
+	
+	// Check README files for frontend startup instructions
+	for _, file := range files {
+		filename := strings.ToLower(filepath.Base(file.RelativePath))
+		if strings.Contains(filename, "readme") {
+			content, exists := fileContents[file.RelativePath]
+			if exists && pd.hasReadmeFrontendCommands(content) {
+				return true
+			}
+		}
+	}
+	
+	// Check Makefile for frontend commands
+	for _, file := range files {
+		filename := strings.ToLower(filepath.Base(file.RelativePath))
+		if filename == "makefile" || filename == "makefile.mk" {
+			content, exists := fileContents[file.RelativePath]
+			if exists && pd.hasMakefileFrontendCommands(content) {
+				return true
+			}
+		}
+	}
+	
+	return false
+}
+
+// hasBackendStartupCommands checks if the repository has commands to start a backend service
+func (pd *ProjectDetector) hasBackendStartupCommands(files []FileInfo, fileContents map[string]string) bool {
+	// Check package.json for backend startup commands
+	for _, file := range files {
+		if strings.HasSuffix(strings.ToLower(file.RelativePath), "package.json") {
+			content, exists := fileContents[file.RelativePath]
+			if exists && pd.hasPackageJsonBackendCommands(content) {
+				return true
+			}
+		}
+	}
+	
+	// Check README files for backend startup instructions
+	for _, file := range files {
+		filename := strings.ToLower(filepath.Base(file.RelativePath))
+		if strings.Contains(filename, "readme") {
+			content, exists := fileContents[file.RelativePath]
+			if exists && pd.hasReadmeBackendCommands(content) {
+				return true
+			}
+		}
+	}
+	
+	// Check Makefile for backend commands
+	for _, file := range files {
+		filename := strings.ToLower(filepath.Base(file.RelativePath))
+		if filename == "makefile" || filename == "makefile.mk" {
+			content, exists := fileContents[file.RelativePath]
+			if exists && pd.hasMakefileBackendCommands(content) {
+				return true
+			}
+		}
+	}
+	
+	// Check for Go main.go or server files
+	for _, file := range files {
+		if strings.HasSuffix(strings.ToLower(file.RelativePath), "main.go") || 
+		   strings.Contains(strings.ToLower(file.RelativePath), "server.go") ||
+		   strings.Contains(strings.ToLower(file.RelativePath), "app.go") {
+			content, exists := fileContents[file.RelativePath]
+			if exists && pd.hasGoBackendCode(content) {
+				return true
+			}
+		}
+	}
+	
+	// Check for Python server files
+	for _, file := range files {
+		filename := strings.ToLower(filepath.Base(file.RelativePath))
+		if filename == "app.py" || filename == "main.py" || filename == "server.py" ||
+		   filename == "manage.py" || filename == "wsgi.py" || filename == "asgi.py" {
+			content, exists := fileContents[file.RelativePath]
+			if exists && pd.hasPythonBackendCode(content) {
+				return true
+			}
+		}
+	}
+	
+	return false
+}
+
+// hasPackageJsonFrontendCommands checks package.json for frontend development commands
+func (pd *ProjectDetector) hasPackageJsonFrontendCommands(content string) bool {
+	frontendCommands := []string{
+		"\"dev\":", "\"start\":", "\"serve\":", "\"preview\":",
+		"vite", "webpack-dev-server", "next dev", "gatsby develop",
+		"react-scripts start", "vue-cli-service serve", "ng serve",
+		"parcel", "rollup", "nuxt dev", "svelte-kit dev",
+		"\"build\":", "\"build:client\":", "\"build:web\":",
+	}
+	
+	contentLower := strings.ToLower(content)
+	
+	// Must contain scripts section
+	if !strings.Contains(contentLower, "\"scripts\"") {
+		return false
+	}
+	
+	// Check for frontend-specific commands in scripts
+	for _, cmd := range frontendCommands {
+		if strings.Contains(contentLower, strings.ToLower(cmd)) {
+			return true
+		}
+	}
+	
+	// Check for frontend dependencies
+	frontendDeps := []string{
+		"\"react\":", "\"vue\":", "\"angular\":", "\"svelte\":",
+		"\"next\":", "\"nuxt\":", "\"gatsby\":", "\"vite\":",
+		"\"webpack\":", "@vue/cli-service", "@angular/cli",
+	}
+	
+	for _, dep := range frontendDeps {
+		if strings.Contains(contentLower, strings.ToLower(dep)) {
+			// Also check for dev command which is common for frontend
+			if strings.Contains(contentLower, "\"dev\":") || 
+			   strings.Contains(contentLower, "\"start\":") ||
+			   strings.Contains(contentLower, "\"serve\":") {
+				return true
+			}
+		}
+	}
+	
+	return false
+}
+
+// hasPackageJsonBackendCommands checks package.json for backend startup commands
+func (pd *ProjectDetector) hasPackageJsonBackendCommands(content string) bool {
+	backendCommands := []string{
+		"express", "fastify", "koa", "hapi", "nestjs",
+		"node server", "node app", "node index", "nodemon",
+		"ts-node", "pm2", "forever",
+		"\"server\":", "\"api\":", "\"backend\":",
+		"\"start:server\":", "\"start:api\":", "\"start:backend\":",
+		"\"dev:server\":", "\"dev:api\":", "\"dev:backend\":",
+	}
+	
+	contentLower := strings.ToLower(content)
+	
+	// Must contain scripts section
+	if !strings.Contains(contentLower, "\"scripts\"") {
+		return false
+	}
+	
+	// Check for backend-specific commands
+	for _, cmd := range backendCommands {
+		if strings.Contains(contentLower, strings.ToLower(cmd)) {
+			return true
+		}
+	}
+	
+	// Check for backend dependencies
+	backendDeps := []string{
+		"\"express\":", "\"fastify\":", "\"koa\":", "\"hapi\":",
+		"\"@nestjs/core\":", "\"apollo-server\":", "\"graphql\":",
+		"\"mongoose\":", "\"sequelize\":", "\"prisma\":", "\"typeorm\":",
+	}
+	
+	for _, dep := range backendDeps {
+		if strings.Contains(contentLower, strings.ToLower(dep)) {
+			// Also check for start/server command
+			if strings.Contains(contentLower, "\"start\":") || 
+			   strings.Contains(contentLower, "\"server\":") ||
+			   strings.Contains(contentLower, "\"dev\":") {
+				return true
+			}
+		}
+	}
+	
+	return false
+}
+
+// hasReadmeFrontendCommands checks README for frontend startup instructions
+func (pd *ProjectDetector) hasReadmeFrontendCommands(content string) bool {
+	frontendReadmePatterns := []string{
+		"npm run dev", "npm start", "yarn dev", "yarn start",
+		"pnpm dev", "pnpm start", "npm run serve", "yarn serve",
+		"ng serve", "next dev", "gatsby develop", "nuxt dev",
+		"vue-cli-service serve", "vite dev", "parcel",
+		"open.*localhost:3000", "open.*localhost:8080", "open.*localhost:5173",
+		"development server", "dev server", "local server",
+		"browser.*localhost", "visit.*localhost",
+	}
+	
+	contentLower := strings.ToLower(content)
+	
+	for _, pattern := range frontendReadmePatterns {
+		if strings.Contains(contentLower, pattern) {
+			return true
+		}
+	}
+	
+	return false
+}
+
+// hasReadmeBackendCommands checks README for backend startup instructions
+func (pd *ProjectDetector) hasReadmeBackendCommands(content string) bool {
+	backendReadmePatterns := []string{
+		"npm run server", "npm run api", "npm run backend",
+		"yarn server", "yarn api", "yarn backend",
+		"node server", "node app", "node index",
+		"go run main.go", "go run .", "go run server.go",
+		"python app.py", "python main.py", "python server.py",
+		"python manage.py runserver", "flask run", "fastapi run",
+		"uvicorn", "gunicorn", "django-admin runserver",
+		"./gradlew run", "mvn spring-boot:run", "java -jar",
+		"rails server", "rails s", "ruby app.rb",
+		"php artisan serve", "php -S localhost",
+		"cargo run", "dotnet run",
+		"localhost:8000", "localhost:8080", "localhost:3000/api",
+		"api server", "backend server", "database server",
+		"start.*server", "run.*server", "serve.*api",
+	}
+	
+	contentLower := strings.ToLower(content)
+	
+	for _, pattern := range backendReadmePatterns {
+		if strings.Contains(contentLower, pattern) {
+			return true
+		}
+	}
+	
+	return false
+}
+
+// hasMakefileFrontendCommands checks Makefile for frontend commands
+func (pd *ProjectDetector) hasMakefileFrontendCommands(content string) bool {
+	frontendMakePatterns := []string{
+		"dev:", "serve:", "start:", "build:", "preview:",
+		"npm run dev", "npm start", "yarn dev", "yarn start",
+		"ng serve", "next dev", "gatsby develop", "vite dev",
+		"webpack-dev-server", "parcel", "rollup",
+	}
+	
+	contentLower := strings.ToLower(content)
+	
+	for _, pattern := range frontendMakePatterns {
+		if strings.Contains(contentLower, pattern) {
+			return true
+		}
+	}
+	
+	return false
+}
+
+// hasMakefileBackendCommands checks Makefile for backend commands  
+func (pd *ProjectDetector) hasMakefileBackendCommands(content string) bool {
+	backendMakePatterns := []string{
+		"server:", "api:", "backend:", "run:", "start-server:",
+		"go run", "python", "java -jar", "mvn", "gradle",
+		"node server", "node app", "rails server",
+		"php artisan", "cargo run", "dotnet run",
+		"./gradlew", "uvicorn", "gunicorn", "flask",
+	}
+	
+	contentLower := strings.ToLower(content)
+	
+	for _, pattern := range backendMakePatterns {
+		if strings.Contains(contentLower, pattern) {
+			return true
+		}
+	}
+	
+	return false
+}
+
+// hasGoBackendCode checks Go files for backend server code
+func (pd *ProjectDetector) hasGoBackendCode(content string) bool {
+	goBackendPatterns := []string{
+		"http.ListenAndServe", "gin.Default()", "echo.New()",
+		"fiber.New()", "mux.NewRouter()", "chi.NewRouter()",
+		"http.HandleFunc", "http.Handle", "net/http",
+		"github.com/gin-gonic/gin", "github.com/labstack/echo",
+		"github.com/gofiber/fiber", "github.com/gorilla/mux",
+		"ListenAndServe", "HandleFunc", "GET(", "POST(",
+	}
+	
+	contentLower := strings.ToLower(content)
+	
+	for _, pattern := range goBackendPatterns {
+		if strings.Contains(contentLower, strings.ToLower(pattern)) {
+			return true
+		}
+	}
+	
+	return false
+}
+
+// hasPythonBackendCode checks Python files for backend server code
+func (pd *ProjectDetector) hasPythonBackendCode(content string) bool {
+	pythonBackendPatterns := []string{
+		"from flask import", "from django", "from fastapi import",
+		"flask.Flask", "Django", "FastAPI", "Tornado",
+		"app = Flask", "app = FastAPI", "uvicorn.run",
+		"app.run(", "wsgi", "asgi", "runserver",
+		"@app.route", "@app.get", "@app.post",
+		"HttpResponse", "render", "jsonify",
+		"bottle.run", "pyramid", "falcon",
+	}
+	
+	contentLower := strings.ToLower(content)
+	
+	for _, pattern := range pythonBackendPatterns {
+		if strings.Contains(contentLower, strings.ToLower(pattern)) {
+			return true
+		}
+	}
+	
+	return false
 }

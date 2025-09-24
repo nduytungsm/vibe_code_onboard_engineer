@@ -1,0 +1,29 @@
+{
+  "content_hash": "08d4d49c63b8751e59d41a25ef4d086c",
+  "timestamp": "2025-09-24T15:28:07.372184+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a function that memoizes an allocating expression and provides a fixture for testing it.",
+    "key_types": [
+      "function",
+      "object"
+    ],
+    "functions": [
+      "AllocatingPrimitiveAsDepNested"
+    ],
+    "imports": [
+      "identity",
+      "mutate",
+      "setProperty",
+      "_c"
+    ],
+    "side_effects": [
+      "mutates the object x",
+      "memoizes values in the closure"
+    ],
+    "risks": [
+      "potential for memory leaks due to improper memoization"
+    ],
+    "complexity": "medium"
+  }
+}

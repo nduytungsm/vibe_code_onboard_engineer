@@ -1,0 +1,20 @@
+{
+  "content_hash": "86ed936da697f690b036670cf564fd96",
+  "timestamp": "2025-09-24T15:43:29.727221+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for middleware that serves static files.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "configDefault"
+    ],
+    "imports": [
+      "io/fs",
+      "time",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "complexity": "medium"
+  }
+}

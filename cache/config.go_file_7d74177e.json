@@ -1,0 +1,24 @@
+{
+  "content_hash": "2c2b16b6e43effe1d0ce5066a11b897e",
+  "timestamp": "2025-09-24T15:12:25.245819+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration structures for an announcement service, including communication, storage, and Kubernetes settings.",
+    "key_types": [
+      "CommunicationServiceCfg",
+      "StorageConfig",
+      "BankerConfig",
+      "EnvConfig",
+      "K8sConfig",
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/worker"
+    ],
+    "complexity": "medium"
+  }
+}

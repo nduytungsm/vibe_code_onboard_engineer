@@ -1,0 +1,1053 @@
+{
+  "content_hash": "b2561a7b061381406b2c0ca671854a6b",
+  "timestamp": "2025-09-24T15:48:32.890821+07:00",
+  "result": {
+    "path": "hclsyntax",
+    "purpose": "This folder/module is responsible for parsing and evaluating HCL (HashiCorp Configuration Language) syntax, including expressions, templates, and configuration files.",
+    "languages": {
+      "Go": 66,
+      "Markdown": 1,
+      "Ruby": 1
+    },
+    "key_modules": [
+      "diagnostics.go",
+      "expression.go",
+      "parser.go",
+      "public.go",
+      "variables.go"
+    ],
+    "dependencies": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/agext/levenshtein",
+      "github.com/go-test/deep",
+      "github.com/google/go-cmp/cmp",
+      "github.com/apparentlymart/go-textseg/v15/textseg"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing files by functionality related to parsing, evaluating, and testing HCL syntax, with a focus on separation of concerns and unit testing.",
+    "file_summaries": {
+      "hclsyntax/diagnostics.go": {
+        "language": "Go",
+        "purpose": "This file defines a function to set evaluation context for diagnostics in HCL syntax.",
+        "key_types": [
+          "hcl.Diagnostics",
+          "hcl.Expression",
+          "hcl.EvalContext"
+        ],
+        "functions": [
+          "setDiagEvalContext"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Modifies the EvalContext of diagnostics if not already set."
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/didyoumean.go": {
+        "language": "Go",
+        "purpose": "Provides a function to suggest a name from a list based on similarity to a given name.",
+        "key_types": [
+          "string",
+          "[]string"
+        ],
+        "functions": [
+          "nameSuggestion"
+        ],
+        "imports": [
+          "github.com/agext/levenshtein"
+        ],
+        "complexity": "low"
+      },
+      "hclsyntax/didyoumean_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the nameSuggestion function to suggest correct keywords based on user input.",
+        "key_types": [
+          "struct",
+          "string"
+        ],
+        "functions": [
+          "TestNameSuggestion"
+        ],
+        "imports": [
+          "testing"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/doc.go": {
+        "language": "Go",
+        "purpose": "Contains the parser and AST for HCL's native language.",
+        "key_types": [
+          "parser",
+          "AST"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "hclsyntax/expression.go": {
+        "language": "Go",
+        "purpose": "Defines types and methods for HCL expressions used in HashiCorp's configuration language.",
+        "key_types": [
+          "Expression",
+          "ParenthesesExpr",
+          "LiteralValueExpr",
+          "ScopeTraversalExpr",
+          "RelativeTraversalExpr",
+          "FunctionCallExpr"
+        ],
+        "functions": [
+          "Value",
+          "Variables",
+          "Range",
+          "StartRange",
+          "walkChildNodes",
+          "AsTraversal"
+        ],
+        "imports": [
+          "fmt",
+          "sort",
+          "strings",
+          "sync",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/hashicorp/hcl/v2/ext/customdecode",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/convert",
+          "github.com/zclconf/go-cty/cty/function"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/expression_ops.go": {
+        "language": "Go",
+        "purpose": "Defines operations for binary and unary expressions in HCL syntax, including logical and arithmetic operations.",
+        "key_types": [
+          "Operation",
+          "BinaryOpExpr",
+          "UnaryOpExpr"
+        ],
+        "functions": [
+          "Value",
+          "walkChildNodes"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/convert",
+          "github.com/zclconf/go-cty/cty/function",
+          "github.com/zclconf/go-cty/cty/function/stdlib"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/expression_static_test.go": {
+        "language": "Go",
+        "purpose": "This file contains unit tests for HCL expression parsing and evaluation.",
+        "key_types": [
+          "hcl.Pos",
+          "hcl.Traversal",
+          "cty.Value",
+          "hcl.Diagnostics"
+        ],
+        "functions": [
+          "TestTraversalStatic",
+          "TestTupleStatic",
+          "TestMapStatic"
+        ],
+        "imports": [
+          "testing",
+          "github.com/go-test/deep",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "side_effects": [
+          "Logs diagnostic messages if there are parsing errors."
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/expression_template.go": {
+        "language": "Go",
+        "purpose": "Defines various types of expressions for handling templates in HCL syntax, including template evaluation and error handling.",
+        "key_types": [
+          "TemplateExpr",
+          "TemplateJoinExpr",
+          "TemplateWrapExpr"
+        ],
+        "functions": [
+          "walkChildNodes",
+          "Value",
+          "Range",
+          "StartRange",
+          "IsStringLiteral"
+        ],
+        "imports": [
+          "bytes",
+          "fmt",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/convert"
+        ],
+        "side_effects": [
+          "Panic on null values in TemplateJoinExpr",
+          "Error diagnostics for invalid template values"
+        ],
+        "risks": [
+          "Potential for panic if the AST is constructed incorrectly",
+          "Error handling may expose sensitive information in diagnostics"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/expression_template_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for parsing and evaluating template expressions in HCL syntax.",
+        "key_types": [
+          "struct",
+          "hcl.EvalContext",
+          "cty.Value"
+        ],
+        "functions": [
+          "TestTemplateExprParseAndValue"
+        ],
+        "imports": [
+          "strings",
+          "testing",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/expression_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for parsing and evaluating expressions in HCL syntax.",
+        "key_types": [
+          "struct",
+          "hcl.EvalContext",
+          "cty.Value"
+        ],
+        "functions": [
+          "TestExpressionParseAndValue"
+        ],
+        "imports": [
+          "fmt",
+          "testing",
+          "github.com/google/go-cmp/cmp",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/function",
+          "github.com/zclconf/go-cty/cty/function/stdlib"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/expression_typeparams_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for HCL expression diagnostics, specifically for handling unknown function calls and inconsistent result types.",
+        "key_types": [
+          "hcl.EvalContext",
+          "hcl.Diagnostics",
+          "function.Function",
+          "diagnosticExtraWrapper"
+        ],
+        "functions": [
+          "TestExpressionDiagnosticExtra",
+          "UnwrapDiagnosticExtra"
+        ],
+        "imports": [
+          "fmt",
+          "testing",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/zclconf/go-cty/cty/function"
+        ],
+        "side_effects": [
+          "Modifies the state of the testing framework by asserting conditions and potentially failing tests."
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/expression_vars.go": {
+        "language": "Go",
+        "purpose": "Defines methods for various expression types to retrieve their associated variables.",
+        "key_types": [
+          "AnonSymbolExpr",
+          "BinaryOpExpr",
+          "ConditionalExpr",
+          "ExprSyntaxError",
+          "ForExpr",
+          "FunctionCallExpr",
+          "IndexExpr",
+          "LiteralValueExpr",
+          "ObjectConsExpr",
+          "ObjectConsKeyExpr",
+          "RelativeTraversalExpr",
+          "ScopeTraversalExpr",
+          "SplatExpr",
+          "TemplateExpr",
+          "TemplateJoinExpr",
+          "TemplateWrapExpr",
+          "TupleConsExpr",
+          "UnaryOpExpr"
+        ],
+        "functions": [
+          "Variables"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/expression_vars_gen.go": {
+        "language": "Go",
+        "purpose": "Generates the 'Variables' method for Expression implementations in the package.",
+        "key_types": [
+          "ast.FuncDecl",
+          "ast.SelectorExpr",
+          "ast.Ident"
+        ],
+        "functions": [
+          "main"
+        ],
+        "imports": [
+          "fmt",
+          "go/ast",
+          "go/parser",
+          "go/token",
+          "os",
+          "sort",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Writes to the file 'expression_vars.go'.",
+          "Exits the program on error."
+        ],
+        "risks": [
+          "Potential for file overwrite if not handled properly."
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/file.go": {
+        "language": "Go",
+        "purpose": "Defines a structure for representing a parsed configuration file in HCL format.",
+        "key_types": [
+          "File",
+          "Body"
+        ],
+        "functions": [
+          "AsHCLFile"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "low"
+      },
+      "hclsyntax/generate.go": {
+        "language": "Go",
+        "purpose": "This file contains directives for code generation and formatting related to HCL syntax.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "hclsyntax/keywords.go": {
+        "language": "Go",
+        "purpose": "Defines keywords and provides a method to check if a token matches a keyword.",
+        "key_types": [
+          "Keyword"
+        ],
+        "functions": [
+          "TokenMatches"
+        ],
+        "imports": [
+          "bytes"
+        ],
+        "complexity": "low"
+      },
+      "hclsyntax/navigation.go": {
+        "language": "Go",
+        "purpose": "Provides navigation functionality for HCL (HashiCorp Configuration Language) blocks, allowing context string generation and definition range retrieval based on offsets.",
+        "key_types": [
+          "navigation",
+          "Body",
+          "Block"
+        ],
+        "functions": [
+          "ContextString",
+          "ContextDefRange"
+        ],
+        "imports": [
+          "bytes",
+          "fmt",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/navigation_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for navigation context in HCL syntax parsing",
+        "key_types": [
+          "navigation",
+          "hcl.Range",
+          "hcl.Pos"
+        ],
+        "functions": [
+          "TestNavigationContextString",
+          "TestNavigationContextDefRange"
+        ],
+        "imports": [
+          "fmt",
+          "strconv",
+          "testing",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Prints diagnostic information to standard output if diagnostics are present",
+          "Errors out if file is nil"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/node.go": {
+        "language": "Go",
+        "purpose": "Defines an interface for AST nodes in HCL syntax.",
+        "key_types": [
+          "Node"
+        ],
+        "functions": [
+          "walkChildNodes",
+          "Range"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/parse_traversal_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for parsing HCL traversal expressions.",
+        "key_types": [
+          "hcl.Traversal",
+          "hcl.TraverseRoot",
+          "hcl.TraverseAttr",
+          "hcl.TraverseIndex",
+          "hcl.TraverseSplat",
+          "hcl.Range",
+          "hcl.Pos"
+        ],
+        "functions": [
+          "TestParseTraversalAbs",
+          "ParseTraversalAbs",
+          "ParseTraversalPartial"
+        ],
+        "imports": [
+          "fmt",
+          "testing",
+          "github.com/go-test/deep",
+          "github.com/zclconf/go-cty/cty",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Logs diagnostic errors if the number of diagnostics does not match expected count."
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/parser.go": {
+        "language": "Go",
+        "purpose": "This file defines a parser for HCL (HashiCorp Configuration Language) syntax, handling the parsing of configuration bodies and items.",
+        "key_types": [
+          "parser",
+          "Body",
+          "Attribute",
+          "Block",
+          "Node",
+          "hcl.Diagnostics"
+        ],
+        "functions": [
+          "ParseBody",
+          "ParseBodyItem",
+          "parseSingleAttrBody",
+          "finishParsingBodyAttribute",
+          "finishParsingBodyBlock"
+        ],
+        "imports": [
+          "bytes",
+          "fmt",
+          "strconv",
+          "unicode/utf8",
+          "github.com/apparentlymart/go-textseg/v15/textseg",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "side_effects": [
+          "Modifies the state of the parser during parsing, potentially altering error handling behavior."
+        ],
+        "risks": [
+          "Potential for panics if the parser is called with unexpected token types."
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/parser_template.go": {
+        "language": "Go",
+        "purpose": "This file defines a parser for HCL (HashiCorp Configuration Language) templates, handling parsing of template expressions and control structures.",
+        "key_types": [
+          "parser",
+          "templateParser",
+          "Expression",
+          "hcl.Diagnostics",
+          "TemplateWrapExpr",
+          "TemplateExpr",
+          "LiteralValueExpr",
+          "ConditionalExpr",
+          "ForExpr"
+        ],
+        "functions": [
+          "ParseTemplate",
+          "parseTemplate",
+          "parseTemplateInner",
+          "parseRoot",
+          "parseExpr",
+          "parseIf",
+          "parseFor",
+          "Peek",
+          "Read"
+        ],
+        "imports": [
+          "fmt",
+          "strings",
+          "unicode",
+          "github.com/apparentlymart/go-textseg/v15/textseg",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "side_effects": [
+          "Panic on unexpected conditions during parsing"
+        ],
+        "risks": [
+          "Potential for panics if the template structure is not as expected"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/parser_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for parsing HCL (HashiCorp Configuration Language) configurations.",
+        "key_types": [
+          "Body",
+          "Block",
+          "Attributes",
+          "Blocks",
+          "hcl.Range",
+          "hcl.Pos"
+        ],
+        "functions": [
+          "TestParseConfig"
+        ],
+        "imports": [
+          "fmt",
+          "sync",
+          "testing",
+          "github.com/google/go-cmp/cmp",
+          "github.com/google/go-cmp/cmp/cmpopts",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty-debug/ctydebug",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/parser_traversal.go": {
+        "language": "Go",
+        "purpose": "This file contains functions for parsing absolute and partial traversals in HCL syntax.",
+        "key_types": [
+          "parser",
+          "hcl.Traversal",
+          "hcl.Diagnostics",
+          "hcl.Diagnostic"
+        ],
+        "functions": [
+          "ParseTraversalAbs",
+          "ParseTraversalPartial",
+          "parseTraversal"
+        ],
+        "imports": [
+          "github.com/zclconf/go-cty/cty",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Modifies diagnostics based on parsing errors"
+        ],
+        "risks": [
+          "Potential for unhandled parsing errors leading to incorrect diagnostics"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/peeker.go": {
+        "language": "Go",
+        "purpose": "This file defines a 'peeker' struct for managing and parsing tokens, including handling comments and newlines in a token stream.",
+        "key_types": [
+          "peeker",
+          "peekerNewlineStackChange"
+        ],
+        "functions": [
+          "newPeeker",
+          "Peek",
+          "Read",
+          "NextRange",
+          "PrevRange",
+          "nextToken",
+          "includingNewlines",
+          "PushIncludeNewlines",
+          "PopIncludeNewlines",
+          "AssertEmptyIncludeNewlinesStack",
+          "formatPeekerNewlineStackChanges"
+        ],
+        "imports": [
+          "bytes",
+          "fmt",
+          "path/filepath",
+          "runtime",
+          "strings",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Modifies the IncludeNewlinesStack during parsing",
+          "Panic if the IncludeNewlinesStack is mismanaged"
+        ],
+        "risks": [
+          "Potential for panic due to stack mismanagement"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/peeker_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the Peeker functionality in the HCL syntax package.",
+        "key_types": [
+          "TokenType",
+          "Peeker"
+        ],
+        "functions": [
+          "init",
+          "TestPeeker"
+        ],
+        "imports": [
+          "reflect",
+          "testing"
+        ],
+        "side_effects": [
+          "Modifies the tracePeekerNewlinesStack variable",
+          "Potentially modifies the state of the peeker during tests"
+        ],
+        "risks": [
+          "Potential for mismatched token types leading to test failures"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/public.go": {
+        "language": "Go",
+        "purpose": "This file provides functions to parse HCL (HashiCorp Configuration Language) configurations, expressions, templates, and perform lexical analysis.",
+        "key_types": [
+          "hcl.File",
+          "hcl.Diagnostics",
+          "Expression",
+          "hcl.Traversal",
+          "Tokens"
+        ],
+        "functions": [
+          "ParseConfig",
+          "ParseExpression",
+          "ParseTemplate",
+          "ParseTraversalAbs",
+          "ParseTraversalPartial",
+          "LexConfig",
+          "LexExpression",
+          "LexTemplate",
+          "ValidIdentifier"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Panic if the parser uses incorrect stack discipline with the peeker's newlines stack."
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/public_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for validating identifiers and benchmarks for lexing HCL configuration.",
+        "key_types": [
+          "struct",
+          "Tokens"
+        ],
+        "functions": [
+          "TestValidIdentifier",
+          "BenchmarkLexConfig"
+        ],
+        "imports": [
+          "testing",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/scan_string_lit.go": {
+        "language": "Go",
+        "purpose": "This file defines a function to scan and tokenize string literals from byte data, handling both quoted and unquoted strings.",
+        "key_types": [
+          "[][]byte"
+        ],
+        "functions": [
+          "scanStringLit"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "hclsyntax/scan_string_lit_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the scanStringLit function, which processes string literals.",
+        "key_types": [
+          "struct",
+          "string",
+          "[]string"
+        ],
+        "functions": [
+          "TestScanStringLit",
+          "scanStringLit"
+        ],
+        "imports": [
+          "reflect",
+          "testing",
+          "github.com/davecgh/go-spew/spew"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/scan_tokens.go": {
+        "language": "Go",
+        "purpose": "This file defines token scanning actions and key offsets for HCL syntax parsing.",
+        "key_types": [
+          "byte",
+          "int16"
+        ],
+        "functions": [],
+        "imports": [
+          "bytes",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/scan_tokens_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the token scanning functionality in HCL syntax.",
+        "key_types": [
+          "Token",
+          "hcl.Range",
+          "hcl.Pos"
+        ],
+        "functions": [
+          "TestScanTokens_normal"
+        ],
+        "imports": [
+          "testing",
+          "github.com/google/go-cmp/cmp",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/spec.md": {
+        "language": "Markdown",
+        "purpose": "Specification of the syntax and semantics of the native syntax for HCL.",
+        "key_types": [
+          "structural language",
+          "expression language",
+          "template language"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "hclsyntax/structure.go": {
+        "language": "Go",
+        "purpose": "Defines structures and methods for handling HCL (HashiCorp Configuration Language) syntax, specifically for blocks and attributes.",
+        "key_types": [
+          "Block",
+          "Body",
+          "Attributes",
+          "Attribute"
+        ],
+        "functions": [
+          "AsHCLBlock",
+          "walkChildNodes",
+          "Range",
+          "Content",
+          "PartialContent",
+          "JustAttributes",
+          "MissingItemRange"
+        ],
+        "imports": [
+          "fmt",
+          "strings",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/structure_at_pos.go": {
+        "language": "Go",
+        "purpose": "Provides optional extension methods for handling HCL file structures at specific positions.",
+        "key_types": [
+          "Body",
+          "Block",
+          "Attribute",
+          "hcl.Pos",
+          "hcl.Expression"
+        ],
+        "functions": [
+          "BlocksAtPos",
+          "InnermostBlockAtPos",
+          "OutermostBlockAtPos",
+          "blocksAtPos",
+          "outermostBlockAtPos",
+          "AttributeAtPos",
+          "attributeAtPos",
+          "OutermostExprAtPos"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/structure_at_pos_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for HCL syntax parsing, specifically for blocks and attributes at specific positions in the source code.",
+        "key_types": [
+          "hcl.Pos",
+          "struct"
+        ],
+        "functions": [
+          "TestBlocksAtPos",
+          "TestAttributeAtPos",
+          "TestOutermostExprAtPos"
+        ],
+        "imports": [
+          "reflect",
+          "testing",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Logs diagnostic errors during tests"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/structure_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the Body structure in the HCL syntax package, validating the content and attributes of HCL bodies against defined schemas.",
+        "key_types": [
+          "Body",
+          "Attribute",
+          "BodyContent",
+          "BodySchema",
+          "Block",
+          "Attributes",
+          "Blocks",
+          "LiteralValueExpr"
+        ],
+        "functions": [
+          "TestBodyContent",
+          "TestBodyJustAttributes"
+        ],
+        "imports": [
+          "fmt",
+          "reflect",
+          "testing",
+          "github.com/davecgh/go-spew/spew",
+          "github.com/google/go-cmp/cmp",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty-debug/ctydebug",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/token.go": {
+        "language": "Go",
+        "purpose": "Defines token types and structures for parsing HCL (HashiCorp Configuration Language) code.",
+        "key_types": [
+          "Token",
+          "Tokens",
+          "TokenType",
+          "scanMode",
+          "tokenAccum",
+          "heredocInProgress"
+        ],
+        "functions": [
+          "GoString",
+          "emitToken",
+          "checkInvalidTokens"
+        ],
+        "imports": [
+          "bytes",
+          "fmt",
+          "github.com/apparentlymart/go-textseg/v15/textseg",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Generates diagnostics for invalid tokens in HCL source."
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/token_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for validating token parsing in HCL syntax.",
+        "key_types": [
+          "struct",
+          "string",
+          "hcl.Pos"
+        ],
+        "functions": [
+          "TestCheckInvalidTokensTest",
+          "LexConfig"
+        ],
+        "imports": [
+          "testing",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Outputs error messages if token parsing fails."
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/token_type_string.go": {
+        "language": "Go",
+        "purpose": "This file defines string representations for the TokenType constants used in the HCL syntax package.",
+        "key_types": [
+          "TokenType"
+        ],
+        "functions": [
+          "String"
+        ],
+        "imports": [
+          "strconv"
+        ],
+        "complexity": "low"
+      },
+      "hclsyntax/unicode2ragel.rb": {
+        "language": "ruby",
+        "purpose": "This script generates a Ragel state machine that recognizes unicode alphanumeric characters based on the unicode specification.",
+        "key_types": [
+          "Symbol",
+          "String",
+          "Array",
+          "Range"
+        ],
+        "functions": [
+          "each_alpha",
+          "to_hex",
+          "to_ucs4",
+          "to_utf8_enc",
+          "from_utf8_enc",
+          "utf8_ranges",
+          "build_range",
+          "to_utf8",
+          "count_codepoints",
+          "is_valid?",
+          "generate_machine"
+        ],
+        "imports": [
+          "optparse",
+          "open-uri"
+        ],
+        "side_effects": [
+          "Writes output to a file or stdout",
+          "Downloads data from a URL"
+        ],
+        "risks": [
+          "Potential for remote code execution if the URL is controlled by an attacker",
+          "File handling risks if output file is not properly managed"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/variables.go": {
+        "language": "Go",
+        "purpose": "This file implements functionality to extract variables from HCL expressions.",
+        "key_types": [
+          "Expression",
+          "hcl.Traversal",
+          "variablesWalker",
+          "ChildScope"
+        ],
+        "functions": [
+          "Variables",
+          "Enter",
+          "Exit",
+          "walkChildNodes",
+          "Range"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Modifies localScopes during traversal"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/variables_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for variable expressions in HCL syntax",
+        "key_types": [
+          "Expression",
+          "LiteralValueExpr",
+          "ScopeTraversalExpr",
+          "BinaryOpExpr",
+          "UnaryOpExpr",
+          "ConditionalExpr",
+          "ForExpr",
+          "RelativeTraversalExpr",
+          "FunctionCallExpr"
+        ],
+        "functions": [
+          "TestVariables",
+          "Variables"
+        ],
+        "imports": [
+          "fmt",
+          "reflect",
+          "testing",
+          "github.com/davecgh/go-spew/spew",
+          "github.com/hashicorp/hcl/v2",
+          "github.com/zclconf/go-cty/cty"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/walk.go": {
+        "language": "Go",
+        "purpose": "Provides functions to traverse an Abstract Syntax Tree (AST) for HCL (HashiCorp Configuration Language) nodes.",
+        "key_types": [
+          "Node",
+          "VisitFunc",
+          "Walker"
+        ],
+        "functions": [
+          "VisitAll",
+          "Walk"
+        ],
+        "imports": [
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      },
+      "hclsyntax/walk_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the HCL syntax walker functionality.",
+        "key_types": [
+          "testWalkMethod",
+          "testWalkCall",
+          "testWalker"
+        ],
+        "functions": [
+          "TestWalk",
+          "Enter",
+          "Exit"
+        ],
+        "imports": [
+          "fmt",
+          "reflect",
+          "testing",
+          "github.com/davecgh/go-spew/spew",
+          "github.com/go-test/deep",
+          "github.com/hashicorp/hcl/v2"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

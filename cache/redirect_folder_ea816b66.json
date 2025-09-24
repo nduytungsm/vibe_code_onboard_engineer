@@ -1,0 +1,100 @@
+{
+  "content_hash": "3cf90d3049b389b13f77f3406e7e5e23",
+  "timestamp": "2025-09-24T15:46:38.317281+07:00",
+  "result": {
+    "path": "middleware/redirect",
+    "purpose": "Responsible for handling request redirection based on specified rules in a web application.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "config.go",
+      "redirect.go",
+      "redirect_test.go"
+    ],
+    "dependencies": [
+      "github.com/gofiber/fiber/v3",
+      "regexp",
+      "strconv",
+      "strings",
+      "context",
+      "net/http",
+      "testing",
+      "github.com/stretchr/testify/require"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating middleware functionality for request redirection, with separate files for configuration, implementation, and testing.",
+    "file_summaries": {
+      "middleware/redirect/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration for a redirect middleware in a web application.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [
+          "configDefault"
+        ],
+        "imports": [
+          "regexp",
+          "github.com/gofiber/fiber/v3"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/redirect/redirect.go": {
+        "language": "Go",
+        "purpose": "This file defines a middleware for redirecting requests based on specified rules.",
+        "key_types": [
+          "Config",
+          "fiber.Handler",
+          "regexp.Regexp"
+        ],
+        "functions": [
+          "New",
+          "captureTokens"
+        ],
+        "imports": [
+          "regexp",
+          "strconv",
+          "strings",
+          "github.com/gofiber/fiber/v3"
+        ],
+        "side_effects": [
+          "Modifies request handling by redirecting based on rules"
+        ],
+        "risks": [
+          "Potential for regex injection if rules are not properly validated"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/redirect/redirect_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for the redirect middleware in a web application using the Fiber framework.",
+        "key_types": [
+          "fiber.Ctx",
+          "Config"
+        ],
+        "functions": [
+          "Test_Redirect",
+          "Test_Next",
+          "Test_NoRules",
+          "Test_DefaultConfig",
+          "Test_RegexRules"
+        ],
+        "imports": [
+          "context",
+          "net/http",
+          "testing",
+          "github.com/gofiber/fiber/v3",
+          "github.com/stretchr/testify/require"
+        ],
+        "side_effects": [
+          "Modifies HTTP response status codes based on redirect rules."
+        ],
+        "risks": [
+          "Potential for incorrect redirects if rules are misconfigured.",
+          "Panic on invalid regex patterns."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

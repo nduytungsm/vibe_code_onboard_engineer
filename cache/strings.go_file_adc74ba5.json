@@ -1,0 +1,19 @@
+{
+  "content_hash": "bfbed0bfd8d1920a735d4922a61e79ea",
+  "timestamp": "2025-09-23T16:57:36.75869+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Truncates a string to a specified maximum length, ensuring it does not cut off words.",
+    "key_types": [
+      "string",
+      "int"
+    ],
+    "functions": [
+      "EllipticalTruncate"
+    ],
+    "imports": [
+      "unicode"
+    ],
+    "complexity": "low"
+  }
+}

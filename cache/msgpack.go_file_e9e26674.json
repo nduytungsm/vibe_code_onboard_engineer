@@ -1,0 +1,28 @@
+{
+  "content_hash": "9504402295a4d8e65d428817af955a8c",
+  "timestamp": "2025-09-24T15:40:24.71697+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides MsgPack binding for request body parsing in a web framework.",
+    "key_types": [
+      "MsgPackBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "Reset",
+      "UnimplementedMsgpackMarshal",
+      "UnimplementedMsgpackUnmarshal"
+    ],
+    "imports": [
+      "github.com/gofiber/utils/v2"
+    ],
+    "side_effects": [
+      "Panic if MsgPack marshaler/unmarshaler is not configured."
+    ],
+    "risks": [
+      "Potential panic if MsgPack support is not properly set up."
+    ],
+    "complexity": "medium"
+  }
+}

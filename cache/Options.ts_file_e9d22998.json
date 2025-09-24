@@ -1,0 +1,37 @@
+{
+  "content_hash": "816a7b7d00eefddf0c7836155abf8298",
+  "timestamp": "2025-09-24T15:25:38.968358+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines types and schemas for plugin options in a React compiler.",
+    "key_types": [
+      "PanicThresholdOptions",
+      "DynamicGatingOptions",
+      "CustomOptOutDirective",
+      "PluginOptions",
+      "ParsedPluginOptions",
+      "CompilerReactTarget",
+      "CompilationMode",
+      "LoggerEvent",
+      "CompileErrorEvent",
+      "CompileDiagnosticEvent",
+      "CompileSuccessEvent",
+      "CompileSkipEvent",
+      "PipelineErrorEvent",
+      "TimingEvent",
+      "AutoDepsDecorationsEvent",
+      "AutoDepsEligibleEvent"
+    ],
+    "functions": [],
+    "imports": [
+      "@babel/types",
+      "zod",
+      "../CompilerError",
+      "../HIR/Environment",
+      "../Utils/utils",
+      "zod-validation-error",
+      "./Pipeline"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "content_hash": "1d50ec69711c9d5703956aa6a361eede",
+  "timestamp": "2025-09-24T15:27:29.000617+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Utility functions for handling collections and type assertions in TypeScript.",
+    "key_types": [
+      "NodePath",
+      "Set",
+      "Map",
+      "Array"
+    ],
+    "functions": [
+      "assertExhaustive",
+      "retainWhere",
+      "retainWhere_Set",
+      "getOrInsertWith",
+      "getOrInsertDefault",
+      "Set_equal",
+      "Set_union",
+      "Set_intersect",
+      "Set_isSuperset",
+      "Iterable_some",
+      "nonNull",
+      "Set_filter",
+      "hasNode",
+      "hasOwnProperty"
+    ],
+    "imports": [
+      "@babel/traverse"
+    ],
+    "side_effects": [
+      "Modifies input arrays and sets in place."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "content_hash": "560d69b1c53a5beee31a275eeea05a58",
+  "timestamp": "2025-09-24T15:24:54.227437+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the React JavaScript library, explaining its features, installation, and contribution guidelines.",
+    "key_types": [
+      "Component",
+      "Function"
+    ],
+    "functions": [
+      "createRoot",
+      "render"
+    ],
+    "imports": [
+      "react-dom/client"
+    ],
+    "side_effects": [
+      "Rendering UI components to the DOM"
+    ],
+    "complexity": "medium"
+  }
+}

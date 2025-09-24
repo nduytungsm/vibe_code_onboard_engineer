@@ -1,0 +1,18 @@
+{
+  "content_hash": "f3e79e0f6d9f79a07f9dcc2d47f06bf0",
+  "timestamp": "2025-09-24T15:42:24.324076+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for middleware that handles early data requests.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "configDefault"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "content_hash": "57824f8bfe61d5eff1a45fa0fe0ab188",
+  "timestamp": "2025-09-24T15:27:57.08875+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines a React component that modifies and returns an array of items based on props.",
+    "key_types": [
+      "Component",
+      "Array"
+    ],
+    "functions": [
+      "Component"
+    ],
+    "imports": [
+      "getNull"
+    ],
+    "side_effects": [
+      "Modifies the items array by pushing props.a into it."
+    ],
+    "complexity": "medium"
+  }
+}

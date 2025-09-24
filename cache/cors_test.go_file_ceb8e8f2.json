@@ -1,0 +1,44 @@
+{
+  "content_hash": "86a7a55cba954d3368c9c2c411a6ca38",
+  "timestamp": "2025-09-24T15:42:15.140845+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for CORS middleware in a Fiber web application",
+    "key_types": [
+      "fiber.App",
+      "fasthttp.RequestCtx",
+      "Config"
+    ],
+    "functions": [
+      "Test_CORS_Defaults",
+      "Test_CORS_Empty_Config",
+      "Test_CORS_WildcardHeaders",
+      "Test_CORS_Negative_MaxAge",
+      "Test_CORS_MaxAge_NotSetOnSimpleRequest",
+      "Test_CORS_Preserve_Origin_Case",
+      "testDefaultOrEmptyConfig",
+      "Test_CORS_AllowOrigins_Vary",
+      "Test_CORS_Wildcard",
+      "Test_CORS_Origin_AllowCredentials",
+      "Test_CORS_Wildcard_AllowCredentials_Panic"
+    ],
+    "imports": [
+      "bytes",
+      "net/http/httptest",
+      "os",
+      "strings",
+      "testing",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/log",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Logs warnings for invalid CORS configurations"
+    ],
+    "risks": [
+      "Potential panic if AllowOrigins is '*' and AllowCredentials is true"
+    ],
+    "complexity": "medium"
+  }
+}

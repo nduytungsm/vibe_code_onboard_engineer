@@ -1,0 +1,39 @@
+{
+  "content_hash": "1fc3ea7c4c629b3023a480745c4e870c",
+  "timestamp": "2025-09-24T15:40:21.547432+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests and benchmarks for a form binding functionality that parses form data into Go structs.",
+    "key_types": [
+      "FormBinding",
+      "User",
+      "Post"
+    ],
+    "functions": [
+      "Test_FormBinder_Bind",
+      "Test_FormBinder_Bind_ParseError",
+      "Benchmark_FormBinder_Bind",
+      "Test_FormBinder_BindMultipart",
+      "Test_FormBinder_BindMultipart_ValueError",
+      "Test_FormBinder_BindMultipart_FileError",
+      "Benchmark_FormBinder_BindMultipart"
+    ],
+    "imports": [
+      "bytes",
+      "io",
+      "mime/multipart",
+      "testing",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Acquires and releases HTTP requests",
+      "Modifies the state of the FormBinding instance"
+    ],
+    "risks": [
+      "Potential for denial of service if malformed requests are sent",
+      "Improper handling of file uploads could lead to resource exhaustion"
+    ],
+    "complexity": "medium"
+  }
+}

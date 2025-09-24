@@ -1,0 +1,20 @@
+{
+  "content_hash": "f7c6cf363f1ed1ea50ef58dc18cd06ba",
+  "timestamp": "2025-09-24T15:41:22.008779+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for CSRF middleware that protects against Cross-Site Request Forgery.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/extractors",
+      "github.com/gofiber/fiber/v3/middleware/csrf"
+    ],
+    "risks": [
+      "Potential exposure of CSRF tokens if not properly configured.",
+      "Vulnerability to BREACH attacks if HTTPS is not enforced."
+    ],
+    "complexity": "medium"
+  }
+}

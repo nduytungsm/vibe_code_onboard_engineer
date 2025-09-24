@@ -1,0 +1,29 @@
+{
+  "content_hash": "8e1002249d993af7657a56edc6b0c0b9",
+  "timestamp": "2025-09-24T15:28:17.684606+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that uses refs and merges them for rendering.",
+    "key_types": [
+      "Component",
+      "ref",
+      "mergedRef"
+    ],
+    "functions": [
+      "Component",
+      "useRef",
+      "mergeRefs"
+    ],
+    "imports": [
+      "react",
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Modifies the memo cache sentinel in React's internal state"
+    ],
+    "risks": [
+      "Potential for memory leaks if refs are not managed properly"
+    ],
+    "complexity": "medium"
+  }
+}

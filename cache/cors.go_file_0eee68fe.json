@@ -1,0 +1,35 @@
+{
+  "content_hash": "10a6e9e8c3a96418fc268dcf5ca5cd66",
+  "timestamp": "2025-09-24T15:42:13.752655+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a CORS middleware for the Fiber web framework, allowing configuration of allowed origins, methods, and headers for cross-origin requests.",
+    "key_types": [
+      "Config",
+      "fiber.Handler",
+      "subdomain"
+    ],
+    "functions": [
+      "New",
+      "setSimpleHeaders",
+      "setPreflightHeaders"
+    ],
+    "imports": [
+      "slices",
+      "strconv",
+      "strings",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/log",
+      "github.com/gofiber/utils/v2"
+    ],
+    "side_effects": [
+      "Logs warnings if both AllowOrigins and AllowOriginsFunc are set.",
+      "Panic if invalid origin format is provided in configuration.",
+      "Panic if AllowCredentials is true while AllowOrigins contains a wildcard."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if value redaction is not properly configured."
+    ],
+    "complexity": "medium"
+  }
+}

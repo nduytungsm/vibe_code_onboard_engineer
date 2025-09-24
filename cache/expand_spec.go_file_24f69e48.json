@@ -1,0 +1,36 @@
+{
+  "content_hash": "b27cbca754ae5cff43db66d5aa56250c",
+  "timestamp": "2025-09-24T15:44:11.472786+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines and expands dynamic blocks in HCL (HashiCorp Configuration Language) for use in configuration management.",
+    "key_types": [
+      "expandSpec",
+      "hcl.BlockHeaderSchema",
+      "hcl.Block",
+      "hcl.Diagnostics",
+      "hcl.Expression",
+      "hcl.Body",
+      "cty.Value"
+    ],
+    "functions": [
+      "decodeSpec",
+      "newBlock"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/convert"
+    ],
+    "side_effects": [
+      "Generates diagnostics for invalid configurations",
+      "Modifies the state of diagnostics based on validation checks"
+    ],
+    "risks": [
+      "Potential for runtime errors if dynamic block labels are not valid",
+      "Improper handling of null or unknown values in for_each attributes"
+    ],
+    "complexity": "medium"
+  }
+}

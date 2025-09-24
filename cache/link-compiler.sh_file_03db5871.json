@@ -1,0 +1,22 @@
+{
+  "content_hash": "165da031a7439e0d49cf2507444ca180",
+  "timestamp": "2025-09-24T15:25:18.108343+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "This script links local packages for the React compiler and Babel plugin.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "yarn"
+    ],
+    "side_effects": [
+      "Changes the current working directory",
+      "Links local packages"
+    ],
+    "risks": [
+      "Potential for breaking changes if linked packages are modified",
+      "Dependency conflicts if multiple versions are linked"
+    ],
+    "complexity": "low"
+  }
+}

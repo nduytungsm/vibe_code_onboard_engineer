@@ -1,0 +1,55 @@
+{
+  "content_hash": "e49d16320e08b8503a96fb3a627e7cfc",
+  "timestamp": "2025-09-24T15:42:20.924946+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for CSRF middleware functionality in a web application using the Fiber framework.",
+    "key_types": [
+      "failingCSRFStorage",
+      "fiber.Ctx",
+      "Config"
+    ],
+    "functions": [
+      "newFailingCSRFStorage",
+      "GetWithContext",
+      "Get",
+      "SetWithContext",
+      "Set",
+      "DeleteWithContext",
+      "Delete",
+      "ResetWithContext",
+      "Reset",
+      "Close",
+      "TestCSRFStorageGetError",
+      "TestCSRFStorageSetError",
+      "TestCSRFStorageDeleteError",
+      "Test_CSRF",
+      "Test_CSRF_WithSession",
+      "Test_CSRF_WithSession_Middleware"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "net/http",
+      "net/http/httptest",
+      "strings",
+      "testing",
+      "time",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/extractors",
+      "github.com/gofiber/fiber/v3/middleware/session",
+      "github.com/gofiber/utils/v2",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Modifies in-memory storage for CSRF tokens",
+      "Interacts with HTTP request and response lifecycle"
+    ],
+    "risks": [
+      "Potential for denial of service if storage errors are not handled properly",
+      "Improper handling of CSRF tokens could lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

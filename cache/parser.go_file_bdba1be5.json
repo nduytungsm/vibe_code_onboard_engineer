@@ -1,0 +1,43 @@
+{
+  "content_hash": "7e902b74fe2afe6ff701e998dcd024bc",
+  "timestamp": "2025-09-24T15:46:00.928271+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a parser that utilizes the HCL syntax parser to manage and transform HCL configurations.",
+    "key_types": [
+      "File",
+      "inputTokens",
+      "node",
+      "Body",
+      "Attribute",
+      "Block"
+    ],
+    "functions": [
+      "parse",
+      "Partition",
+      "PartitionType",
+      "PartitionTypeOk",
+      "PartitionTypeSingle",
+      "PartitionIncludingComments",
+      "PartitionBlockItem",
+      "PartitionLeadComments",
+      "PartitionLineEndTokens",
+      "Slice",
+      "Len",
+      "Tokens",
+      "Types",
+      "parseBody",
+      "parseBodyItem",
+      "parseAttribute",
+      "parseBlock"
+    ],
+    "imports": [
+      "fmt",
+      "sort",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "high"
+  }
+}

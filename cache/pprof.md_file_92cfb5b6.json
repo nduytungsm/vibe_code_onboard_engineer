@@ -1,0 +1,23 @@
+{
+  "content_hash": "9e4ead93592c79abb8c6f839dbfeff73",
+  "timestamp": "2025-09-24T15:28:12.835573+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Exposes runtime profiling data for analysis with the Go pprof tool.",
+    "key_types": [
+      "Config",
+      "fiber.Handler"
+    ],
+    "functions": [
+      "New"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/pprof"
+    ],
+    "side_effects": [
+      "Registers handlers under /debug/pprof/"
+    ],
+    "complexity": "medium"
+  }
+}

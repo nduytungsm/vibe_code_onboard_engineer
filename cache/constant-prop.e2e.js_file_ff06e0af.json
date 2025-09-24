@@ -1,0 +1,23 @@
+{
+  "content_hash": "f5678139cfaab3cb6a405cb484de79bf",
+  "timestamp": "2025-09-24T15:27:43.359694+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file contains end-to-end tests for constant propagation in React components using the testing-library.",
+    "key_types": [
+      "Component"
+    ],
+    "functions": [
+      "test",
+      "render"
+    ],
+    "imports": [
+      "React",
+      "@testing-library/react"
+    ],
+    "side_effects": [
+      "Modifies global variable 'constantValue'"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "content_hash": "978855363a86a5b64f2468881710bc16",
+  "timestamp": "2025-09-24T15:27:02.900612+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Prunes hoisted contexts and transforms references back to their original instruction kind in a reactive function.",
+    "key_types": [
+      "VisitorState",
+      "Visitor",
+      "ReactiveFunction",
+      "ReactiveScopeBlock",
+      "ReactiveInstruction",
+      "Transformed"
+    ],
+    "functions": [
+      "pruneHoistedContexts",
+      "visitScope",
+      "visitPlace",
+      "transformInstruction"
+    ],
+    "imports": [
+      "CompilerError",
+      "convertHoistedLValueKind",
+      "IdentifierId",
+      "InstructionId",
+      "InstructionKind",
+      "Place",
+      "ReactiveFunction",
+      "ReactiveInstruction",
+      "ReactiveScopeBlock",
+      "ReactiveStatement",
+      "empty",
+      "Stack",
+      "ReactiveFunctionTransform",
+      "Transformed",
+      "visitReactiveFunction"
+    ],
+    "side_effects": [
+      "Modifies the state of uninitialized variables and active scopes during the transformation process."
+    ],
+    "risks": [
+      "Potential for runtime errors if hoisted function references are not handled correctly."
+    ],
+    "complexity": "medium"
+  }
+}

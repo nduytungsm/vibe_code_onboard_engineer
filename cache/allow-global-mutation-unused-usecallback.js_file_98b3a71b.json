@@ -1,0 +1,28 @@
+{
+  "content_hash": "643abbab0dce81bb7c665bb5f3abe671",
+  "timestamp": "2025-09-24T15:28:13.320144+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that uses useCallback to mutate a global variable.",
+    "key_types": [
+      "Component",
+      "Function"
+    ],
+    "functions": [
+      "Component"
+    ],
+    "imports": [
+      "useCallback",
+      "useEffect",
+      "useState"
+    ],
+    "side_effects": [
+      "Mutates global variable 'window.foo'"
+    ],
+    "risks": [
+      "Potential for global state pollution",
+      "Unintended side effects from global variable mutation"
+    ],
+    "complexity": "medium"
+  }
+}

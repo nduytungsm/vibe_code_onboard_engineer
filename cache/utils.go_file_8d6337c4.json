@@ -1,0 +1,22 @@
+{
+  "content_hash": "715f0f63d1d45fbd11b7d814b9e0b7b4",
+  "timestamp": "2025-09-24T15:42:12.039784+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Utility functions for handling CORS domain matching and normalization.",
+    "key_types": [
+      "subdomain"
+    ],
+    "functions": [
+      "matchScheme",
+      "normalizeDomain",
+      "normalizeOrigin",
+      "match"
+    ],
+    "imports": [
+      "net/url",
+      "strings"
+    ],
+    "complexity": "medium"
+  }
+}

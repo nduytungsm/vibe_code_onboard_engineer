@@ -1,0 +1,32 @@
+{
+  "content_hash": "3195640b7533c450d1a8dc59018d22bc",
+  "timestamp": "2025-09-24T15:42:53.215757+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements a sliding-window rate limiting middleware for a web server.",
+    "key_types": [
+      "SlidingWindow",
+      "Config",
+      "fiber.Handler"
+    ],
+    "functions": [
+      "New"
+    ],
+    "imports": [
+      "fmt",
+      "strconv",
+      "sync",
+      "time",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2"
+    ],
+    "side_effects": [
+      "Modifies request handling based on rate limiting",
+      "Updates request headers with rate limit information"
+    ],
+    "risks": [
+      "Potential denial of service if rate limits are not properly configured"
+    ],
+    "complexity": "medium"
+  }
+}

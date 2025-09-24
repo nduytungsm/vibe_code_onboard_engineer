@@ -1,0 +1,68 @@
+{
+  "content_hash": "b75349b743e017a6501175a46f0e0dd3",
+  "timestamp": "2025-09-24T15:34:20.79865+07:00",
+  "result": {
+    "path": "pkg/xauth",
+    "purpose": "Responsible for client authentication and external authentication service integration.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "config.go",
+      "external_auth_svc.go"
+    ],
+    "dependencies": [
+      "github.com/rs/zerolog/log",
+      "golang.org/x/oauth2",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating authentication logic and configuration management in separate files.",
+    "file_summaries": {
+      "pkg/xauth/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration structures for client authentication.",
+        "key_types": [
+          "ClientConfig",
+          "Config"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "pkg/xauth/external_auth_svc.go": {
+        "language": "Go",
+        "purpose": "This file implements an external authentication service that exchanges authorization codes for access tokens.",
+        "key_types": [
+          "Service",
+          "service",
+          "Config",
+          "XExchangeAuthCodeReq",
+          "XAccessTokenRes"
+        ],
+        "functions": [
+          "ExchangeAuthCode",
+          "NewService"
+        ],
+        "imports": [
+          "context",
+          "net/http",
+          "strings",
+          "github.com/rs/zerolog/log",
+          "golang.org/x/oauth2",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Logs an error if unable to exchange auth code"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if error handling is not properly managed"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

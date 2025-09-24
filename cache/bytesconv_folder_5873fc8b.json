@@ -1,0 +1,83 @@
+{
+  "content_hash": "29cd405c3abd7f25ecdda62651296029",
+  "timestamp": "2025-09-24T15:43:21.208571+07:00",
+  "result": {
+    "path": "internal/bytesconv",
+    "purpose": "Provides functions to convert between strings and byte slices without memory allocation.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "bytesconv.go",
+      "bytesconv_test.go"
+    ],
+    "dependencies": [
+      "unsafe",
+      "bytes",
+      "crypto/rand",
+      "math/rand",
+      "strings",
+      "testing",
+      "time"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to byte and string conversions, along with corresponding tests to ensure reliability.",
+    "file_summaries": {
+      "internal/bytesconv/bytesconv.go": {
+        "language": "Go",
+        "purpose": "Provides functions to convert between strings and byte slices without memory allocation.",
+        "key_types": [
+          "string",
+          "[]byte"
+        ],
+        "functions": [
+          "StringToBytes",
+          "BytesToString"
+        ],
+        "imports": [
+          "unsafe"
+        ],
+        "risks": [
+          "unsafe memory operations may lead to vulnerabilities if not handled properly"
+        ],
+        "complexity": "medium"
+      },
+      "internal/bytesconv/bytesconv_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests and benchmarks for converting between bytes and strings.",
+        "key_types": [
+          "string",
+          "[]byte",
+          "testing.T",
+          "strings.Builder"
+        ],
+        "functions": [
+          "rawBytesToStr",
+          "rawStrToBytes",
+          "RandStringBytesMaskImprSrcSB",
+          "TestBytesToString",
+          "TestStringToBytes",
+          "BenchmarkBytesConvBytesToStrRaw",
+          "BenchmarkBytesConvBytesToStr",
+          "BenchmarkBytesConvStrToBytesRaw",
+          "BenchmarkBytesConvStrToBytes"
+        ],
+        "imports": [
+          "bytes",
+          "crypto/rand",
+          "math/rand",
+          "strings",
+          "testing",
+          "time"
+        ],
+        "side_effects": [
+          "Generates random bytes for testing",
+          "May cause test failures if conversions do not match"
+        ],
+        "risks": [
+          "Potential for non-deterministic behavior due to randomness in tests"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

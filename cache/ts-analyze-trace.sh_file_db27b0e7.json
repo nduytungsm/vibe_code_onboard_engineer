@@ -1,0 +1,24 @@
+{
+  "content_hash": "df6c9b95a3e2a32121a66feec8d87712",
+  "timestamp": "2025-09-24T15:25:32.81836+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "Generates a TypeScript performance trace and analyzes it for compilation hotspots.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "typescript",
+      "@typescript/analyze-trace"
+    ],
+    "side_effects": [
+      "Creates a temporary directory",
+      "Executes TypeScript compiler",
+      "Runs analyze-trace module"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data in temporary files",
+      "Execution of external commands may lead to command injection if inputs are not sanitized"
+    ],
+    "complexity": "medium"
+  }
+}

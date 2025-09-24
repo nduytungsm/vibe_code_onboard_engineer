@@ -1,0 +1,18 @@
+{
+  "content_hash": "9075060afcca3428e21f3cdd01a7615b",
+  "timestamp": "2025-09-24T15:43:02.014593+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration for a middleware in a web framework.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "configDefault"
+    ],
+    "imports": [
+      "github.com/gofiber/fiber/v3"
+    ],
+    "complexity": "low"
+  }
+}

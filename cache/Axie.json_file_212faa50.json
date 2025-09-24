@@ -1,0 +1,17 @@
+{
+  "content_hash": "5f7fd9fadd25769ba43d7910b457c355",
+  "timestamp": "2025-09-23T16:58:21.57885+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines the structure of an Axie contract with events and a constructor.",
+    "key_types": [
+      "constructor",
+      "event",
+      "tuple",
+      "struct"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

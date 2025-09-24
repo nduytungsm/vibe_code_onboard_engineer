@@ -1,0 +1,26 @@
+{
+  "content_hash": "51fe4df03f2bb7db36b957f23e575f81",
+  "timestamp": "2025-09-24T15:27:38.056404+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for Fiber's built-in redirect package, detailing its methods and usage.",
+    "key_types": [
+      "Redirect",
+      "RedirectConfig"
+    ],
+    "functions": [
+      "To",
+      "Route",
+      "Back",
+      "Status",
+      "Messages",
+      "Message",
+      "OldInputs",
+      "OldInput",
+      "With",
+      "WithInput"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

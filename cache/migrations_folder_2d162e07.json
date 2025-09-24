@@ -1,66 +1,63 @@
 {
-  "content_hash": "f8e6b1f028a7de0c7c19654b27e970c9",
-  "timestamp": "2025-09-23T16:32:23.411226+07:00",
+  "content_hash": "f17ab19171a645d8eb4ed196e1593066",
+  "timestamp": "2025-09-24T15:32:22.919731+07:00",
   "result": {
     "path": "migrations",
-    "purpose": "This folder is responsible for managing database schema changes and migrations.",
+    "purpose": "Responsible for managing database schema changes and data migrations for a blockchain application.",
     "languages": {
-      "SQL": 3
+      "SQL": 6
     },
     "key_modules": [
-      "20230906150000_init_db.sql",
-      "20240108180000_add_cmc_addresses.sql",
-      "20240124100000_add_nft_mapping.sql"
+      "20230407150000_init.sql",
+      "20231005150000_add_announcement.sql",
+      "20240111120000_alter_preferences.sql",
+      "20240206110000_add_trusted_domain.sql",
+      "20240410140000_add_dapp_highlight.sql",
+      "20240808130000_alter_preferences.sql"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a version-controlled migration pattern, where each SQL file represents a specific change to the database schema, allowing for incremental updates.",
+    "architecture": "The folder follows a versioned migration pattern, where each file represents a specific change to the database schema, allowing for incremental updates and rollbacks.",
     "file_summaries": {
-      "migrations/20230906150000_init_db.sql": {
+      "migrations/20230407150000_init.sql": {
         "language": "SQL",
-        "purpose": "This file defines the initial database schema for storing token information.",
+        "purpose": "Database migration script to create and initialize tables for a blockchain application.",
         "key_types": [
-          "varchar",
-          "float8",
-          "bool",
-          "text",
-          "jsonb",
-          "timestamptz"
+          "networks",
+          "contracts",
+          "d_apps",
+          "commons",
+          "code_versions",
+          "contract_type",
+          "dapp_url"
         ],
-        "functions": [],
+        "functions": [
+          "CREATE EXTENSION",
+          "CREATE TABLE",
+          "CREATE TYPE",
+          "INSERT INTO",
+          "CREATE INDEX",
+          "COMMENT ON"
+        ],
         "imports": [],
         "side_effects": [
-          "Creates database extensions and collation",
-          "Creates a table with various fields",
-          "Creates indexes on the table"
+          "Creates database tables and types",
+          "Inserts initial data into tables"
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not sanitized",
+          "Data integrity risks if foreign key constraints are not properly managed"
         ],
         "complexity": "medium"
       },
-      "migrations/20240108180000_add_cmc_addresses.sql": {
+      "migrations/20231005150000_add_announcement.sql": {
         "language": "SQL",
-        "purpose": "This file contains migration scripts to add and remove a column in the token_infos table.",
+        "purpose": "This file defines database migrations for creating and dropping tables related to announcements, special offers, and user preferences.",
         "key_types": [
-          "table",
-          "column"
-        ],
-        "functions": [
-          "ALTER TABLE"
-        ],
-        "imports": [],
-        "side_effects": [
-          "Modifies the database schema by adding or dropping a column."
-        ],
-        "risks": [
-          "Potential data loss if the column is dropped without proper backups."
-        ],
-        "complexity": "low"
-      },
-      "migrations/20240124100000_add_nft_mapping.sql": {
-        "language": "SQL",
-        "purpose": "This file defines a migration for creating and dropping a table for NFT mappings.",
-        "key_types": [
-          "table",
-          "index",
-          "jsonb"
+          "UUID",
+          "VARCHAR",
+          "TEXT",
+          "JSONB",
+          "TIMESTAMP"
         ],
         "functions": [
           "CREATE TABLE",
@@ -69,13 +66,101 @@
         ],
         "imports": [],
         "side_effects": [
-          "Creates a new table in the database",
-          "Creates indexes on the table"
-        ],
-        "risks": [
-          "Potential for SQL injection if user input is not properly sanitized"
+          "Creates tables and indexes in the database",
+          "Drops tables if they exist"
         ],
         "complexity": "medium"
+      },
+      "migrations/20240111120000_alter_preferences.sql": {
+        "language": "SQL",
+        "purpose": "This file contains migration scripts to alter the preferences table in a database.",
+        "key_types": [
+          "TABLE",
+          "COLUMN",
+          "INDEX"
+        ],
+        "functions": [
+          "ALTER TABLE",
+          "CREATE INDEX",
+          "DELETE"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Modifies the database schema",
+          "Changes default values",
+          "Creates and drops constraints"
+        ],
+        "risks": [
+          "Potential data loss during deletion",
+          "Integrity issues if constraints are not properly managed"
+        ],
+        "complexity": "medium"
+      },
+      "migrations/20240206110000_add_trusted_domain.sql": {
+        "language": "SQL",
+        "purpose": "This file contains database migration scripts to create and drop tables for trusted domains and quick access D apps.",
+        "key_types": [
+          "trusted_domains",
+          "quick_access_d_apps"
+        ],
+        "functions": [
+          "CREATE TABLE",
+          "DROP TABLE",
+          "CREATE INDEX"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Creates tables in the database",
+          "Creates an index on a table"
+        ],
+        "complexity": "low"
+      },
+      "migrations/20240410140000_add_dapp_highlight.sql": {
+        "language": "SQL",
+        "purpose": "This file contains migration scripts to modify database schema, including creating extensions, altering tables, and creating indexes.",
+        "key_types": [
+          "TABLE",
+          "INDEX",
+          "COLLATION",
+          "EXTENSION"
+        ],
+        "functions": [
+          "CREATE EXTENSION",
+          "CREATE COLLATION",
+          "ALTER TABLE",
+          "CREATE INDEX",
+          "CREATE TABLE"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Modifies database schema",
+          "Creates indexes which may affect performance"
+        ],
+        "risks": [
+          "Potential data loss if rollback is not handled properly",
+          "Schema changes may affect application functionality"
+        ],
+        "complexity": "medium"
+      },
+      "migrations/20240808130000_alter_preferences.sql": {
+        "language": "SQL",
+        "purpose": "This file contains migration scripts to create and drop an index on the preferences table.",
+        "key_types": [
+          "INDEX",
+          "TABLE"
+        ],
+        "functions": [
+          "CREATE INDEX",
+          "DROP INDEX"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Modifies the database schema by adding or removing an index."
+        ],
+        "risks": [
+          "Potential performance impact if the index is not used effectively."
+        ],
+        "complexity": "low"
       }
     }
   }

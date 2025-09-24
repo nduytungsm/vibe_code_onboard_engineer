@@ -1,0 +1,35 @@
+{
+  "content_hash": "9a52aad1529f94005a736a2d1aae8aff",
+  "timestamp": "2025-09-24T15:27:53.04015+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation on how Fiber's Ctx integrates with Go's context.Context and usage examples.",
+    "key_types": [
+      "fiber.Ctx",
+      "context.Context",
+      "fasthttp.RequestCtx"
+    ],
+    "functions": [
+      "doSomething",
+      "performAsync",
+      "c.SetContext",
+      "c.Context",
+      "requestid.FromContext",
+      "session.FromContext",
+      "basicauth.UsernameFromContext",
+      "keyauth.TokenFromContext"
+    ],
+    "imports": [
+      "@theme/Tabs",
+      "@theme/TabItem"
+    ],
+    "side_effects": [
+      "Reusing fiber.Ctx instance across requests",
+      "Potential data race if fiber.Ctx is stored beyond handler lifetime"
+    ],
+    "risks": [
+      "Improper handling of context may lead to data leaks or race conditions"
+    ],
+    "complexity": "medium"
+  }
+}

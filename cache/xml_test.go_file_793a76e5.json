@@ -1,0 +1,27 @@
+{
+  "content_hash": "7c4237aaf807ff0af444e0727e650337",
+  "timestamp": "2025-09-24T15:27:06.175405+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Testing XML binding functionality for a User struct and handling errors during XML unmarshalling.",
+    "key_types": [
+      "XMLBinding",
+      "User",
+      "Posts"
+    ],
+    "functions": [
+      "Test_XMLBinding_Bind",
+      "Test_XMLBinding_Bind_error",
+      "Benchmark_XMLBinding_Bind"
+    ],
+    "imports": [
+      "encoding/xml",
+      "testing",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies the state of the XMLBinding instance during tests."
+    ],
+    "complexity": "medium"
+  }
+}

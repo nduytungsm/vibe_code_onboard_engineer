@@ -1,0 +1,63 @@
+{
+  "content_hash": "a2edbe4516c42239fbe75f75dfe0248e",
+  "timestamp": "2025-09-24T15:32:42.902612+07:00",
+  "result": {
+    "path": "cmd/clean_old_special_offers",
+    "purpose": "Cleans old special offers from a database based on a specified configuration.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/getsentry/sentry-go",
+      "github.com/rs/zerolog/log",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-manager/config",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality to clean old special offers into a single executable module with dependencies on external libraries for database interaction and error tracking.",
+    "file_summaries": {
+      "cmd/clean_old_special_offers/main.go": {
+        "language": "Go",
+        "purpose": "Cleans old special offers from a database based on a specified configuration.",
+        "key_types": [
+          "context.Context",
+          "time.Time",
+          "gorm.DB",
+          "config.Config",
+          "repositories.AnnouncementRepo"
+        ],
+        "functions": [
+          "main",
+          "sentry.Init",
+          "postgresql.NewClient",
+          "repositories.NewAnnouncementRepo",
+          "announcementRepo.ClearSpecialOffers"
+        ],
+        "imports": [
+          "context",
+          "time",
+          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+          "github.com/getsentry/sentry-go",
+          "github.com/rs/zerolog/log",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "side_effects": [
+          "Initializes Sentry for error tracking",
+          "Connects to a PostgreSQL database",
+          "Clears records from the database"
+        ],
+        "risks": [
+          "Potential database connection failures",
+          "Error handling may not cover all edge cases"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

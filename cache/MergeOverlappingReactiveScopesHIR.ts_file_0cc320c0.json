@@ -1,0 +1,41 @@
+{
+  "content_hash": "dfb6e06ccc939831d2d48efdd83571fc",
+  "timestamp": "2025-09-24T15:26:09.583991+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file contains a function to merge overlapping reactive scopes in a high-level intermediate representation (HIR) for a compiler.",
+    "key_types": [
+      "HIRFunction",
+      "InstructionId",
+      "Place",
+      "ReactiveScope",
+      "ScopeInfo",
+      "TraversalState"
+    ],
+    "functions": [
+      "mergeOverlappingReactiveScopesHIR",
+      "collectScopeInfo",
+      "visitInstructionId",
+      "visitPlace"
+    ],
+    "imports": [
+      "HIRFunction",
+      "InstructionId",
+      "Place",
+      "ReactiveScope",
+      "makeInstructionId",
+      "getPlaceScope",
+      "isMutable",
+      "DisjointSet",
+      "getOrInsertDefault",
+      "eachInstructionLValue",
+      "eachInstructionOperand",
+      "eachTerminalOperand"
+    ],
+    "side_effects": [
+      "Modifies the structure of reactive scopes",
+      "Alters references to scopes in the provided function"
+    ],
+    "complexity": "medium"
+  }
+}

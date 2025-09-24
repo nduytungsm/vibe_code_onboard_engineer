@@ -1,0 +1,17 @@
+{
+  "content_hash": "bea38da62c4346b6a51d5faea1580e39",
+  "timestamp": "2025-09-24T14:52:57.970145+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "This script serves as an entry point to run a service application.",
+    "key_types": [],
+    "functions": [
+      "main"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Executes an external application './app' with passed arguments."
+    ],
+    "complexity": "low"
+  }
+}

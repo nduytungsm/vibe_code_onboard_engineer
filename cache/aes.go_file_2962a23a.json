@@ -1,0 +1,35 @@
+{
+  "content_hash": "03bc9726b92ea467e2df06f0b5233429",
+  "timestamp": "2025-09-24T14:22:42.609696+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides helper functions for AES encryption",
+    "key_types": [
+      "string",
+      "[]byte",
+      "interface{}",
+      "error"
+    ],
+    "functions": [
+      "hashKey",
+      "EncryptEAS"
+    ],
+    "imports": [
+      "crypto/aes",
+      "crypto/cipher",
+      "crypto/rand",
+      "crypto/sha256",
+      "encoding/base64",
+      "encoding/json",
+      "io"
+    ],
+    "side_effects": [
+      "Generates random initialization vector",
+      "Encodes output to base64"
+    ],
+    "risks": [
+      "Potential for cryptographic vulnerabilities if key management is poor"
+    ],
+    "complexity": "medium"
+  }
+}

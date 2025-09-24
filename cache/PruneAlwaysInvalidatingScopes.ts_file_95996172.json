@@ -1,0 +1,34 @@
+{
+  "content_hash": "a807fac08ed5f223fed58cc404fe746a",
+  "timestamp": "2025-09-24T15:27:01.44001+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file implements a transformation pass that prunes downstream memoization for reactive scopes that always produce new values.",
+    "key_types": [
+      "ReactiveFunction",
+      "ReactiveInstruction",
+      "ReactiveScopeBlock",
+      "ReactiveStatement",
+      "Identifier"
+    ],
+    "functions": [
+      "pruneAlwaysInvalidatingScopes",
+      "transformInstruction",
+      "transformScope"
+    ],
+    "imports": [
+      "ReactiveFunctionTransform",
+      "Transformed",
+      "visitReactiveFunction",
+      "Identifier",
+      "ReactiveFunction",
+      "ReactiveInstruction",
+      "ReactiveScopeBlock",
+      "ReactiveStatement"
+    ],
+    "side_effects": [
+      "Modifies the state of alwaysInvalidatingValues and unmemoizedValues sets."
+    ],
+    "complexity": "medium"
+  }
+}

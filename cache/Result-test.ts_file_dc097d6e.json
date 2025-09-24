@@ -1,0 +1,29 @@
+{
+  "content_hash": "3ba8700a008263d53510a5a0d9008518",
+  "timestamp": "2025-09-24T15:27:43.666533+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Unit tests for the Result utility functions and error handling.",
+    "key_types": [
+      "Result",
+      "Err",
+      "Ok",
+      "CustomDummyError"
+    ],
+    "functions": [
+      "addMax10",
+      "onlyFoo"
+    ],
+    "imports": [
+      "../CompilerError",
+      "../Utils/Result"
+    ],
+    "side_effects": [
+      "Throws errors for invalid operations"
+    ],
+    "risks": [
+      "Potential for unhandled exceptions if not properly managed"
+    ],
+    "complexity": "medium"
+  }
+}

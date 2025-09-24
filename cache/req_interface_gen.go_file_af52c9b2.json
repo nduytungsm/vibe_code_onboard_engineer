@@ -1,0 +1,63 @@
+{
+  "content_hash": "ad2dfef53827bf76608aa122f9978ce1",
+  "timestamp": "2025-09-24T15:43:53.972871+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an interface for request-related methods in a web application framework.",
+    "key_types": [
+      "Req",
+      "App",
+      "fasthttp.RequestCtx",
+      "multipart.FileHeader",
+      "multipart.Form"
+    ],
+    "functions": [
+      "Accepts",
+      "AcceptsCharsets",
+      "AcceptsEncodings",
+      "AcceptsLanguages",
+      "AcceptsLanguagesExtended",
+      "App",
+      "BaseURL",
+      "BodyRaw",
+      "Body",
+      "RequestCtx",
+      "Cookies",
+      "Request",
+      "FormFile",
+      "FormValue",
+      "Fresh",
+      "Get",
+      "GetHeaders",
+      "Host",
+      "Hostname",
+      "Port",
+      "IP",
+      "extractIPsFromHeader",
+      "extractIPFromHeader",
+      "IPs",
+      "Is",
+      "Locals",
+      "Method",
+      "MultipartForm",
+      "OriginalURL",
+      "Params",
+      "Scheme",
+      "Protocol",
+      "Query"
+    ],
+    "imports": [
+      "mime/multipart",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Modifies request context state",
+      "May involve network operations"
+    ],
+    "risks": [
+      "Potential for header spoofing if not properly validated",
+      "Improper handling of user input could lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "a562a2f12c0766636e951ceb31d4e343",
+  "timestamp": "2025-09-24T14:53:48.092036+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a structure for user agent information and provides a method to check if the information is incomplete.",
+    "key_types": [
+      "AgentInfo"
+    ],
+    "functions": [
+      "IsEmpty"
+    ],
+    "imports": [],
+    "complexity": "low"
+  }
+}

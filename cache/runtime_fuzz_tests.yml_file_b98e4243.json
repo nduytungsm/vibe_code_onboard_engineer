@@ -1,0 +1,19 @@
+{
+  "content_hash": "031f3a31b65ddb6c848379d56db9c029",
+  "timestamp": "2025-09-24T15:24:44.563596+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for running fuzz tests on a schedule and on push events.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "actions/checkout@v4.1.0",
+      "actions/setup-node@v4"
+    ],
+    "side_effects": [
+      "Installs dependencies using yarn",
+      "Runs fuzz tests with random seeds"
+    ],
+    "complexity": "medium"
+  }
+}

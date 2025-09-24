@@ -1,0 +1,33 @@
+{
+  "content_hash": "4df811f145aa81a2d1c225d18adc727b",
+  "timestamp": "2025-09-24T15:12:53.619354+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a dispatcher that manages a pool of workers to process jobs concurrently.",
+    "key_types": [
+      "Dispatcher",
+      "Config",
+      "Job",
+      "Worker"
+    ],
+    "functions": [
+      "NewDispatcher",
+      "Run",
+      "dispatch",
+      "Stop",
+      "AddNewJob"
+    ],
+    "imports": [
+      "sync"
+    ],
+    "side_effects": [
+      "Starts goroutines for workers",
+      "Blocks on worker availability"
+    ],
+    "risks": [
+      "Potential deadlock if workers are not available",
+      "Resource exhaustion if job queue is too large"
+    ],
+    "complexity": "medium"
+  }
+}

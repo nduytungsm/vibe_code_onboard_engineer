@@ -1,0 +1,32 @@
+{
+  "content_hash": "36b72e39b641ab9fb489c68db9c8a799",
+  "timestamp": "2025-09-24T15:24:52.57822+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for linting and checking code quality.",
+    "key_types": [
+      "job",
+      "step"
+    ],
+    "functions": [
+      "prettier",
+      "eslint",
+      "check_license",
+      "test_print_warnings"
+    ],
+    "imports": [
+      "actions/checkout@v4",
+      "actions/setup-node@v4",
+      "actions/cache@v4"
+    ],
+    "side_effects": [
+      "Modifies the build directory by removing it before builds.",
+      "Installs dependencies and runs linting checks."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information through logs.",
+      "Dependency vulnerabilities if not properly managed."
+    ],
+    "complexity": "medium"
+  }
+}

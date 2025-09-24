@@ -1,0 +1,19 @@
+{
+  "content_hash": "5acb745f5fec31bbfbbda8a0369d6bc8",
+  "timestamp": "2025-09-24T15:13:01.003822+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides pagination functionality for database queries using GORM.",
+    "key_types": [
+      "int",
+      "gorm.DB"
+    ],
+    "functions": [
+      "paginate"
+    ],
+    "imports": [
+      "gorm.io/gorm"
+    ],
+    "complexity": "low"
+  }
+}

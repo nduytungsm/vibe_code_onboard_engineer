@@ -1,0 +1,131 @@
+{
+  "content_hash": "b2de16b907777b4afddf849433128d48",
+  "timestamp": "2025-09-24T15:34:31.840187+07:00",
+  "result": {
+    "path": "pkg/announcement",
+    "purpose": "This folder/module is responsible for managing announcements, including scheduling, retrieving, and deleting announcements.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "announcement_svc.go",
+      "config.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/getsentry/sentry-go",
+      "github.com/h2non/filetype",
+      "github.com/labstack/echo/v4",
+      "github.com/redis/go-redis/v9",
+      "github.com/rs/zerolog/log",
+      "gorm.io/gorm",
+      "k8s.io/api/batch/v1",
+      "k8s.io/api/core/v1",
+      "k8s.io/apimachinery/pkg/api/resource",
+      "k8s.io/apimachinery/pkg/apis/meta/v1",
+      "k8s.io/client-go/kubernetes",
+      "k8s.io/client-go/rest",
+      "k8s.io/client-go/tools/clientcmd",
+      "k8s.io/client-go/util/homedir",
+      "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/worker",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the announcement management logic within dedicated service and configuration files.",
+    "file_summaries": {
+      "pkg/announcement/announcement_svc.go": {
+        "language": "Go",
+        "purpose": "This file implements a service for managing announcements, including scheduling, retrieving, and deleting announcements.",
+        "key_types": [
+          "Service",
+          "service",
+          "Config",
+          "Announcement",
+          "GetAnnouncementByID",
+          "GetAnnouncementsListRequest",
+          "ScheduleNewAnnouncementRequest",
+          "ScheduleNewSpecialOfferRequest"
+        ],
+        "functions": [
+          "GetByID",
+          "GetListAsAdmin",
+          "GetListAsUser",
+          "ScheduleNewAnnouncement",
+          "ScheduleNewSpecialOffer",
+          "processImage",
+          "processTargetAddresses"
+        ],
+        "imports": [
+          "bytes",
+          "context",
+          "encoding/csv",
+          "errors",
+          "flag",
+          "fmt",
+          "image",
+          "mime/multipart",
+          "path/filepath",
+          "slices",
+          "strings",
+          "sync",
+          "time",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/getsentry/sentry-go",
+          "github.com/h2non/filetype",
+          "github.com/labstack/echo/v4",
+          "github.com/redis/go-redis/v9",
+          "github.com/rs/zerolog/log",
+          "gorm.io/gorm",
+          "k8s.io/api/batch/v1",
+          "k8s.io/api/core/v1",
+          "k8s.io/apimachinery/pkg/api/resource",
+          "k8s.io/apimachinery/pkg/apis/meta/v1",
+          "k8s.io/client-go/kubernetes",
+          "k8s.io/client-go/rest",
+          "k8s.io/client-go/tools/clientcmd",
+          "k8s.io/client-go/util/homedir",
+          "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/worker",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "side_effects": [
+          "Uploads images to GCS",
+          "Deletes images from GCS on error"
+        ],
+        "risks": [
+          "Potential for denial of service if large files are uploaded",
+          "Improper handling of unsupported media types"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/announcement/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration structures for an announcement service, including communication, storage, and Kubernetes settings.",
+        "key_types": [
+          "CommunicationServiceCfg",
+          "StorageConfig",
+          "BankerConfig",
+          "EnvConfig",
+          "K8sConfig",
+          "Config"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/worker"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

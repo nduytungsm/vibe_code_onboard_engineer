@@ -1,0 +1,35 @@
+{
+  "content_hash": "c3ae8b21da6b429840ed4ce274fda195",
+  "timestamp": "2025-09-24T15:45:05.068697+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines specifications for decoding HCL (HashiCorp Configuration Language) bodies into cty.Values.",
+    "key_types": [
+      "Spec",
+      "ObjectSpec",
+      "TupleSpec",
+      "AttrSpec",
+      "LiteralSpec",
+      "ExprSpec"
+    ],
+    "functions": [
+      "decode",
+      "impliedType",
+      "visitSameBodyChildren",
+      "sourceRange",
+      "variablesNeeded",
+      "attrSchemata"
+    ],
+    "imports": [
+      "bytes",
+      "fmt",
+      "sort",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/ext/customdecode",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/convert",
+      "github.com/zclconf/go-cty/cty/function"
+    ],
+    "complexity": "medium"
+  }
+}

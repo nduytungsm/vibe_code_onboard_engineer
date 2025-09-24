@@ -1,0 +1,31 @@
+{
+  "content_hash": "b5f69c04a62f50f17b9a08dee714c1dd",
+  "timestamp": "2025-09-24T15:43:36.484128+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Enforces a timeout for incoming requests in a Fiber web application.",
+    "key_types": [
+      "Config",
+      "fiber.Handler",
+      "fiber.Ctx"
+    ],
+    "functions": [
+      "New",
+      "runHandler",
+      "isCustomError"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "github.com/gofiber/fiber/v3"
+    ],
+    "side_effects": [
+      "Modifies the request context to include a timeout.",
+      "Cancels the context after the handler execution."
+    ],
+    "risks": [
+      "Potential for context cancellation leading to unexpected behavior if not handled properly."
+    ],
+    "complexity": "medium"
+  }
+}

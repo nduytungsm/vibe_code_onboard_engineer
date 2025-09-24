@@ -1,0 +1,12 @@
+{
+  "content_hash": "62fbc9fe009e2652de964872d70e3438",
+  "timestamp": "2025-09-24T15:39:46.263036+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Instructions for using Copilot in code modification",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

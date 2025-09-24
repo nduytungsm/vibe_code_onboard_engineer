@@ -1,0 +1,31 @@
+{
+  "content_hash": "97d6cc411036e02b76701cce986aebf3",
+  "timestamp": "2025-09-24T15:41:20.200933+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for CodeQL analysis of a repository.",
+    "key_types": [
+      "workflow",
+      "job",
+      "step"
+    ],
+    "functions": [
+      "on",
+      "jobs",
+      "steps"
+    ],
+    "imports": [
+      "actions/checkout@v5",
+      "github/codeql-action/init@v3",
+      "github/codeql-action/analyze@v3"
+    ],
+    "side_effects": [
+      "Triggers analysis on push and pull request events",
+      "Schedules analysis on a weekly basis"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data in the repository during analysis"
+    ],
+    "complexity": "medium"
+  }
+}

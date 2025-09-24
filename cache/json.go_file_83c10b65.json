@@ -1,0 +1,26 @@
+{
+  "content_hash": "129644eb41b2a5a4c1aff3f7983ef392",
+  "timestamp": "2025-09-24T15:41:46.814738+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a wrapper around the standard encoding/json package for JSON encoding and decoding.",
+    "key_types": [
+      "jsonApi",
+      "Encoder",
+      "Decoder"
+    ],
+    "functions": [
+      "init",
+      "Marshal",
+      "Unmarshal",
+      "MarshalIndent",
+      "NewEncoder",
+      "NewDecoder"
+    ],
+    "imports": [
+      "encoding/json",
+      "io"
+    ],
+    "complexity": "medium"
+  }
+}

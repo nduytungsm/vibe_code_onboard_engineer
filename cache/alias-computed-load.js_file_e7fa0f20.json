@@ -1,0 +1,20 @@
+{
+  "content_hash": "8279ddd6d1ab06539e4ddc1defce7c45",
+  "timestamp": "2025-09-24T15:27:50.822742+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a function that creates an object and mutates another object based on its properties.",
+    "key_types": [
+      "Object"
+    ],
+    "functions": [
+      "component",
+      "mutate"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Mutates the object 'y' using the 'mutate' function."
+    ],
+    "complexity": "low"
+  }
+}

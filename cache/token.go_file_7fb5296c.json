@@ -1,0 +1,16 @@
+{
+  "content_hash": "56b07b3c94cab6f43ab3149a3d12f44a",
+  "timestamp": "2025-09-24T15:42:23.032505+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a CSRF token structure with expiration metadata for storage and validation.",
+    "key_types": [
+      "Token"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

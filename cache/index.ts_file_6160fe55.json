@@ -1,0 +1,15 @@
+{
+  "content_hash": "b736e8279756cd6000bf616fb7922e7f",
+  "timestamp": "2025-09-24T15:25:10.949444+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Exports modules from messages and store files.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "./messages",
+      "./store"
+    ],
+    "complexity": "low"
+  }
+}

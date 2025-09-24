@@ -1,0 +1,20 @@
+{
+  "content_hash": "ef6b2f73b855e71052071935abbeaf7b",
+  "timestamp": "2025-09-24T15:28:47.486886+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component and exports a fixture entry point for testing.",
+    "key_types": [
+      "Component",
+      "Array"
+    ],
+    "functions": [
+      "Component"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Renders a React component"
+    ],
+    "complexity": "low"
+  }
+}

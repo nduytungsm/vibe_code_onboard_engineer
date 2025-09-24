@@ -1,0 +1,16 @@
+{
+  "content_hash": "dcbe12cd8a491ddb8bac568267461d5d",
+  "timestamp": "2025-09-24T15:25:07.489112+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines configuration options for the Monaco editor.",
+    "key_types": [
+      "Partial\u003cEditorProps['options']\u003e"
+    ],
+    "functions": [],
+    "imports": [
+      "@monaco-editor/react"
+    ],
+    "complexity": "low"
+  }
+}

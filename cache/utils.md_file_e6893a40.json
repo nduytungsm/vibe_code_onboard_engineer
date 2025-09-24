@@ -1,0 +1,25 @@
+{
+  "content_hash": "0ad236e6dc04bd704ab8a0ae6d247071",
+  "timestamp": "2025-09-24T15:27:55.024072+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides utility functions for handling type conversions, request headers, local values, route parameters, and query parameters in a web application.",
+    "key_types": [
+      "Ctx",
+      "GenericType",
+      "Config"
+    ],
+    "functions": [
+      "Convert",
+      "GetReqHeader",
+      "Locals",
+      "Params",
+      "Query",
+      "RoutePatternMatch"
+    ],
+    "imports": [
+      "fiber"
+    ],
+    "complexity": "medium"
+  }
+}

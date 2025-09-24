@@ -1,0 +1,50 @@
+{
+  "content_hash": "dce2dbd3359f18bb02766d8ed396f4cd",
+  "timestamp": "2025-09-24T11:51:14.105866+07:00",
+  "result": {
+    "path": "internal/adapters/left/rest",
+    "purpose": "This folder/module is responsible for defining a REST adapter that sets up a web server using the Fiber framework.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "server.go"
+    ],
+    "dependencies": [
+      "github.com/matigumma/go-fiber-sql-hexagonal/internal/app/api",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/fiber/v3/middleware/cors",
+      "github.com/gofiber/fiber/v3/middleware/static"
+    ],
+    "architecture": "The folder follows a hexagonal architecture pattern, where the REST adapter serves as an entry point for external interactions with the application.",
+    "file_summaries": {
+      "internal/adapters/left/rest/server.go": {
+        "language": "Go",
+        "purpose": "This file defines a REST adapter that sets up a web server using the Fiber framework.",
+        "key_types": [
+          "Adapter"
+        ],
+        "functions": [
+          "NewAdapter",
+          "Start"
+        ],
+        "imports": [
+          "log",
+          "github.com/matigumma/go-fiber-sql-hexagonal/internal/app/api",
+          "github.com/gofiber/fiber/v3",
+          "github.com/gofiber/fiber/v3/middleware/cors",
+          "github.com/gofiber/fiber/v3/middleware/static"
+        ],
+        "side_effects": [
+          "Starts a web server",
+          "Logs fatal errors"
+        ],
+        "risks": [
+          "Potential exposure of sensitive data if not properly secured",
+          "Denial of Service if server is overwhelmed"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

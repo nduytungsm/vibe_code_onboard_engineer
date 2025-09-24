@@ -1,6 +1,6 @@
 {
-  "content_hash": "d7de5cb11544a0e1a8921c1f9674a4a2",
-  "timestamp": "2025-09-23T16:08:53.050969+07:00",
+  "content_hash": "3ce46d5be5645162c85118335b9ee948",
+  "timestamp": "2025-09-23T17:00:58.417932+07:00",
   "result": {
     "path": "cmd/token_info_crawler",
     "purpose": "Crawl token information from CoinMarketCap and store it in a database.",
@@ -24,17 +24,16 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker",
       "github.com/axieinfinity/ronin-wallet-proxy/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality for crawling and storing token information, utilizing Go's concurrency features with context and wait groups.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality for crawling and storing token information, with clear separation of concerns through the use of packages for database interactions, configuration, and logging.",
     "file_summaries": {
       "cmd/token_info_crawler/main.go": {
         "language": "Go",
         "purpose": "Crawl token information from CoinMarketCap and store it in a database.",
         "key_types": [
           "context.Context",
-          "sync.WaitGroup",
+          "error",
           "map[string]string",
-          "repositories.TokenInfoRepositories",
-          "cmc.Service",
+          "sync.WaitGroup",
           "worker.Dispatcher"
         ],
         "functions": [

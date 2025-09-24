@@ -1,0 +1,27 @@
+{
+  "content_hash": "0b5dacc845d69ba28f05f3a4327df854",
+  "timestamp": "2025-09-24T15:27:46.43458+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file contains end-to-end tests for a React component that uses the useState hook.",
+    "key_types": [
+      "Counter",
+      "Title"
+    ],
+    "functions": [
+      "Counter",
+      "Title",
+      "test"
+    ],
+    "imports": [
+      "@testing-library/react",
+      "react",
+      "./expectLogs"
+    ],
+    "side_effects": [
+      "Logging render events",
+      "State updates on button click"
+    ],
+    "complexity": "medium"
+  }
+}

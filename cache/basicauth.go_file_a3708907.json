@@ -1,0 +1,35 @@
+{
+  "content_hash": "bc05e6f1fbb4aef41ad6dd85d204a3b0",
+  "timestamp": "2025-09-24T15:28:48.776036+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a basic authentication middleware for the Fiber web framework.",
+    "key_types": [
+      "contextKey",
+      "Config"
+    ],
+    "functions": [
+      "New",
+      "containsCTL",
+      "containsInvalidHeaderChars",
+      "UsernameFromContext"
+    ],
+    "imports": [
+      "encoding/base64",
+      "errors",
+      "strings",
+      "unicode",
+      "unicode/utf8",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2",
+      "golang.org/x/text/unicode/norm"
+    ],
+    "side_effects": [
+      "Modifies the context to store the username if authentication is successful."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if credentials are not handled securely."
+    ],
+    "complexity": "medium"
+  }
+}

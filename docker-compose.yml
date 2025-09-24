@@ -10,6 +10,8 @@ services:
       - "8080:8080"
     environment:
       - GO_ENV=production
+      # OpenAI API key - set this environment variable on your system
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
     volumes:
       # Mount for temporary repository cloning
       - repo_temp:/tmp/repo-analysis

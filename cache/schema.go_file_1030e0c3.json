@@ -1,0 +1,23 @@
+{
+  "content_hash": "3cfc3a17dc4c9348c3632068b6a84fcd",
+  "timestamp": "2025-09-24T15:44:50.317354+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a function to create an HCL BodySchema based on a given specification.",
+    "key_types": [
+      "Spec",
+      "attrSpec",
+      "blockSpec",
+      "hcl.BodySchema",
+      "hcl.AttributeSchema",
+      "hcl.BlockHeaderSchema"
+    ],
+    "functions": [
+      "ImpliedSchema"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

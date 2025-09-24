@@ -1,0 +1,55 @@
+{
+  "content_hash": "f88c596189ac4bebff43ef2e3894af57",
+  "timestamp": "2025-09-24T15:27:24.457283+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the Request struct in the client package, validating methods for setting and retrieving HTTP request properties.",
+    "key_types": [
+      "Request",
+      "context.Context"
+    ],
+    "functions": [
+      "Test_Request_Method",
+      "Test_Request_URL",
+      "Test_Request_Client",
+      "Test_Request_Context",
+      "Test_Request_Header",
+      "Test_Request_Headers",
+      "Benchmark_Request_Headers",
+      "Test_Request_QueryParam",
+      "Test_Request_Params",
+      "Benchmark_Request_Params",
+      "Test_Request_UA",
+      "Test_Request_Referer",
+      "Test_Request_Cookie"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "errors",
+      "io",
+      "maps",
+      "mime/multipart",
+      "net",
+      "os",
+      "path/filepath",
+      "regexp",
+      "strings",
+      "testing",
+      "time",
+      "github.com/gofiber/fiber/v3",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp",
+      "github.com/valyala/fasthttp/fasthttputil"
+    ],
+    "side_effects": [
+      "Memory allocation for request objects",
+      "Potential memory leaks in tests"
+    ],
+    "risks": [
+      "None identified"
+    ],
+    "complexity": "medium"
+  }
+}

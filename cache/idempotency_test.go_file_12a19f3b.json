@@ -1,0 +1,50 @@
+{
+  "content_hash": "07da76989414abbe70a8c93ad62e0b3a",
+  "timestamp": "2025-09-24T15:42:45.415278+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the idempotency middleware in a web application, ensuring that requests with the same idempotency key are handled correctly.",
+    "key_types": [
+      "fiber.App",
+      "fiber.Ctx",
+      "Config"
+    ],
+    "functions": [
+      "Test_Idempotency",
+      "Benchmark_Idempotency",
+      "Test_configDefault_defaults",
+      "Test_configDefault_override",
+      "do",
+      "Test_New_NextSkip",
+      "Test_New_InvalidKey",
+      "Test_New_StorageGetError",
+      "Test_New_UnmarshalError",
+      "Test_New_StoreRetrieve_FilterHeaders"
+    ],
+    "imports": [
+      "errors",
+      "fmt",
+      "io",
+      "net/http",
+      "net/http/httptest",
+      "strconv",
+      "sync",
+      "sync/atomic",
+      "testing",
+      "time",
+      "github.com/gofiber/fiber/v3",
+      "github.com/valyala/fasthttp",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies application state based on requests",
+      "May introduce race conditions in concurrent tests"
+    ],
+    "risks": [
+      "Potential for race conditions due to concurrent requests",
+      "Improper handling of idempotency keys could lead to unexpected behavior"
+    ],
+    "complexity": "medium"
+  }
+}

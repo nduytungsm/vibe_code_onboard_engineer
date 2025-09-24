@@ -1,0 +1,14 @@
+{
+  "content_hash": "580e259b27e3a90ee5f730cdb874545c",
+  "timestamp": "2025-09-24T14:54:07.721756+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for the Moonpay package.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

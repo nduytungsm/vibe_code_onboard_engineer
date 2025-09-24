@@ -1,0 +1,33 @@
+{
+  "content_hash": "c09f08eb1ac38205f45c8a1aaefa2b2b",
+  "timestamp": "2025-09-24T15:44:09.099813+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the Expand function in the dynblock package, validating HCL body expansion and decoding.",
+    "key_types": [
+      "hcl.Body",
+      "hcldec.BlockMapSpec",
+      "hcldec.BlockListSpec",
+      "cty.Value",
+      "hcl.Diagnostics"
+    ],
+    "functions": [
+      "TestExpand",
+      "Expand",
+      "PartialDecode",
+      "Decode"
+    ],
+    "imports": [
+      "strings",
+      "testing",
+      "github.com/davecgh/go-spew/spew",
+      "github.com/google/go-cmp/cmp",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hcldec",
+      "github.com/hashicorp/hcl/v2/hcltest",
+      "github.com/zclconf/go-cty-debug/ctydebug",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "content_hash": "b5011e52410e98d176ed073fa99b2a9b",
+  "timestamp": "2025-09-24T15:39:40.946402+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for funding models for a project",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

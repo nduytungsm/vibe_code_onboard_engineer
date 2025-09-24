@@ -1,20 +1,21 @@
 {
-  "content_hash": "226f811ca01d42777e24a9928b2303ec",
-  "timestamp": "2025-09-23T16:32:11.95879+07:00",
+  "content_hash": "f417f6bf75866c769806276980ab47a1",
+  "timestamp": "2025-09-23T17:00:02.584043+07:00",
   "result": {
     "path": "pkg/coinbase",
-    "purpose": "Responsible for providing services to interact with a Coinbase-like API for retrieving buy options.",
+    "purpose": "Responsible for providing services to interact with a Coinbase-like API, including retrieving buy options and managing configurations.",
     "languages": {
-      "Go": 2
+      "Go": 3
     },
     "key_modules": [
       "coinbase_svc.go",
+      "config.go",
       "models.go"
     ],
     "dependencies": [
       "github.com/axieinfinity/ronin-wallet-proxy/httpclient"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating API interactions and data models related to cryptocurrency buy options.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating API interactions and data models in separate files for modularity and maintainability.",
     "file_summaries": {
       "pkg/coinbase/coinbase_svc.go": {
         "language": "Go",
@@ -45,9 +46,21 @@
         ],
         "complexity": "medium"
       },
+      "pkg/coinbase/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for the Coinbase API.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
       "pkg/coinbase/models.go": {
         "language": "Go",
-        "purpose": "Defines data structures for handling buy options in a cryptocurrency context.",
+        "purpose": "Defines data structures for handling buy options in a cryptocurrency application.",
         "key_types": [
           "GetBuyOptionsRequest",
           "GetBuyOptionsResponse",

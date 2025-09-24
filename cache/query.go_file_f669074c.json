@@ -1,0 +1,31 @@
+{
+  "content_hash": "191828a770470272cff2eed6040acf83",
+  "timestamp": "2025-09-23T16:56:58.230521+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Constructs GraphQL queries and mutations from Go structs.",
+    "key_types": [
+      "any",
+      "map[string]any",
+      "reflect.Type",
+      "bytes.Buffer"
+    ],
+    "functions": [
+      "constructQuery",
+      "constructMutation",
+      "queryArguments",
+      "writeArgumentType",
+      "query",
+      "writeQuery"
+    ],
+    "imports": [
+      "bytes",
+      "encoding/json",
+      "io",
+      "reflect",
+      "sort",
+      "github.com/axieinfinity/ronin-wallet-proxy/httpclient/graphql/ident"
+    ],
+    "complexity": "medium"
+  }
+}

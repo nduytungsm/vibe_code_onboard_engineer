@@ -1,0 +1,36 @@
+{
+  "content_hash": "116553ce9dd508d6412f1625981a4000",
+  "timestamp": "2025-09-24T15:43:46.525435+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an interface and struct for registering HTTP routes in a web application framework.",
+    "key_types": [
+      "Register",
+      "Registering",
+      "Handler",
+      "App"
+    ],
+    "functions": [
+      "All",
+      "Get",
+      "Head",
+      "Post",
+      "Put",
+      "Delete",
+      "Connect",
+      "Options",
+      "Trace",
+      "Patch",
+      "Add",
+      "Route"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies application state by registering routes and handlers."
+    ],
+    "risks": [
+      "Potential for improper handling of HTTP methods leading to security vulnerabilities."
+    ],
+    "complexity": "medium"
+  }
+}

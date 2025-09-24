@@ -1,9 +1,9 @@
 {
-  "content_hash": "41388effde6c9faad49b58a5b0e85594",
-  "timestamp": "2025-09-23T16:30:16.091382+07:00",
+  "content_hash": "1479953af947352e27d286564269458c",
+  "timestamp": "2025-09-23T16:59:04.956439+07:00",
   "result": {
     "path": "_api_specs/_token_balances",
-    "purpose": "Defines the request and response structures for token balances in various blockchain contexts.",
+    "purpose": "Defines the request and response structures for querying token balances, specifically for the Ronin network.",
     "languages": {
       "JSON": 3
     },
@@ -13,14 +13,13 @@
       "_TokenBalancesRoninWithRONResponse.json"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing API specifications for token balances into separate JSON files for requests and responses.",
+    "architecture": "The folder follows a modular architecture pattern, organizing API specifications into separate JSON files for requests and responses.",
     "file_summaries": {
       "_api_specs/_token_balances/_TokenBalancesRequest.json": {
         "language": "JSON",
         "purpose": "Defines a request structure for token balances including native tokens and specified token standards.",
         "key_types": [
-          "boolean",
-          "array"
+          "object"
         ],
         "functions": [],
         "imports": [],
@@ -28,10 +27,17 @@
       },
       "_api_specs/_token_balances/_TokenBalancesRoninResponse.json": {
         "language": "JSON",
-        "purpose": "This file contains a response structure for token balances in a blockchain context.",
+        "purpose": "This file contains the response structure for token balances in the Ronin network.",
         "key_types": [
-          "object",
-          "array"
+          "result",
+          "items",
+          "owner_address",
+          "contract_address",
+          "decimals",
+          "balance",
+          "name",
+          "symbol",
+          "token_standard"
         ],
         "functions": [],
         "imports": [],
@@ -39,7 +45,7 @@
       },
       "_api_specs/_token_balances/_TokenBalancesRoninWithRONResponse.json": {
         "language": "JSON",
-        "purpose": "This file contains a response structure for token balances in the Ronin blockchain.",
+        "purpose": "This file contains the response structure for token balances in the Ronin network.",
         "key_types": [
           "object",
           "array"

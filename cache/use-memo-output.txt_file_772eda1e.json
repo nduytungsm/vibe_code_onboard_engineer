@@ -1,0 +1,20 @@
+{
+  "content_hash": "bcb641a518e1064425b56b6e94ee3cd9",
+  "timestamp": "2025-09-24T15:25:05.302662+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines two components that utilize memoization to optimize rendering based on prop changes.",
+    "key_types": [
+      "Function",
+      "Component"
+    ],
+    "functions": [
+      "TestComponent",
+      "TestComponent2"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "content_hash": "a85e972aa226064f60f76616c6ad6c3c",
+  "timestamp": "2025-09-24T15:40:03.790423+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a retry mechanism for unsuccessful network operations using an exponential backoff algorithm with jitter.",
+    "key_types": [
+      "retry.Config",
+      "retry.ExponentialBackoff"
+    ],
+    "functions": [
+      "NewExponentialBackoff",
+      "Retry"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/gofiber/fiber/v3/addon/retry",
+      "github.com/gofiber/fiber/v3/client"
+    ],
+    "side_effects": [
+      "Panic if all retries fail"
+    ],
+    "complexity": "medium"
+  }
+}
