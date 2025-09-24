@@ -1,0 +1,21 @@
+{
+  "content_hash": "e79fc67f3c3a920eb68c03d784d4c061",
+  "timestamp": "2025-09-24T16:39:03.266791+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a Transformer interface and its implementations for transforming HCL bodies.",
+    "key_types": [
+      "Transformer",
+      "TransformerFunc",
+      "chain"
+    ],
+    "functions": [
+      "TransformBody",
+      "Chain"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

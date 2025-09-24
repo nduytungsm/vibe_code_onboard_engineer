@@ -1,0 +1,12 @@
+{
+  "content_hash": "2c6b9c3093b7ebbd122719ade3bc4d70",
+  "timestamp": "2025-09-24T16:59:26.463574+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the hclspecsuite test harness",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

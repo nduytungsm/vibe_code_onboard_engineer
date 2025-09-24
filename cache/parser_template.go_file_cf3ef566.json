@@ -1,0 +1,42 @@
+{
+  "content_hash": "8f1ae0015020ac913c96cd4ccaf2a809",
+  "timestamp": "2025-09-24T16:40:07.194387+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a parser for HCL (HashiCorp Configuration Language) templates, handling template expressions and control flow.",
+    "key_types": [
+      "parser",
+      "templateParser",
+      "Expression",
+      "hcl.Diagnostics",
+      "TemplateWrapExpr",
+      "TemplateExpr",
+      "LiteralValueExpr",
+      "ConditionalExpr",
+      "ForExpr"
+    ],
+    "functions": [
+      "ParseTemplate",
+      "parseTemplate",
+      "parseTemplateInner",
+      "parseRoot",
+      "parseExpr",
+      "parseIf",
+      "parseFor",
+      "Peek",
+      "Read"
+    ],
+    "imports": [
+      "fmt",
+      "strings",
+      "unicode",
+      "github.com/apparentlymart/go-textseg/v15/textseg",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Panic on unexpected conditions in parsing"
+    ],
+    "complexity": "high"
+  }
+}

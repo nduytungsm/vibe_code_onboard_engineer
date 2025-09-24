@@ -1,0 +1,16 @@
+{
+  "content_hash": "384bb304f6d71e86c32fafb6c04bb13a",
+  "timestamp": "2025-09-24T17:03:53.77917+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines variables, outputs, and resources for a Terraform configuration.",
+    "key_types": [
+      "variable",
+      "output",
+      "resource"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

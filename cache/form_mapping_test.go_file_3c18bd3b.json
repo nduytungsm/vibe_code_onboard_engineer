@@ -1,0 +1,56 @@
+{
+  "content_hash": "34a23d1f0082ef58b5e6c0ddd02593a2",
+  "timestamp": "2025-09-24T17:18:39.779517+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for mapping form data to struct fields in Go.",
+    "key_types": [
+      "struct",
+      "int",
+      "string",
+      "time.Time",
+      "time.Duration",
+      "multipart.FileHeader"
+    ],
+    "functions": [
+      "TestMappingBaseTypes",
+      "TestMappingDefault",
+      "TestMappingSkipField",
+      "TestMappingIgnoreField",
+      "TestMappingUnexportedField",
+      "TestMappingPrivateField",
+      "TestMappingUnknownFieldType",
+      "TestMappingURI",
+      "TestMappingForm",
+      "TestMappingFormFieldNotSent",
+      "TestMappingFormWithEmptyToDefault",
+      "TestMapFormWithTag",
+      "TestMappingTime",
+      "TestMappingTimeDuration",
+      "TestMappingSlice",
+      "TestMappingArray",
+      "TestMappingCollectionFormat"
+    ],
+    "imports": [
+      "encoding/hex",
+      "errors",
+      "mime/multipart",
+      "reflect",
+      "strconv",
+      "strings",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies struct fields based on form data",
+      "May change time.Local during tests"
+    ],
+    "risks": [
+      "Potential for panic if reflect is misused",
+      "Incorrect handling of time zones may lead to unexpected behavior"
+    ],
+    "complexity": "medium"
+  }
+}

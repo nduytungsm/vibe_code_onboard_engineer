@@ -1,0 +1,12 @@
+{
+  "content_hash": "9aa25b0417b2cc431851f9569365212b",
+  "timestamp": "2025-09-24T17:03:57.271171+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for a module related to input variables in a Terraform configuration.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

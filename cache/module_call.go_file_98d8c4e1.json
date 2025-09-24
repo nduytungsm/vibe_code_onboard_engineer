@@ -1,0 +1,15 @@
+{
+  "content_hash": "4f1e410a12dd5ae12e02412045dbf2c3",
+  "timestamp": "2025-09-24T17:03:47.500385+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a structure representing a module block within a Terraform configuration.",
+    "key_types": [
+      "ModuleCall",
+      "SourcePos"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

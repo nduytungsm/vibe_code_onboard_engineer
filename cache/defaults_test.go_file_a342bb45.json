@@ -1,0 +1,22 @@
+{
+  "content_hash": "295f5d265801716c299bf4d38d51ee80",
+  "timestamp": "2025-09-24T16:59:56.564389+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the Defaults.Apply method in the typeexpr package.",
+    "key_types": [
+      "Defaults",
+      "cty.Value",
+      "cty.Type"
+    ],
+    "functions": [
+      "TestDefaults_Apply"
+    ],
+    "imports": [
+      "testing",
+      "github.com/google/go-cmp/cmp",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

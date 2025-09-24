@@ -1,0 +1,12 @@
+{
+  "content_hash": "17eb493025ab9ad3287e99bc357c44ea",
+  "timestamp": "2025-09-24T17:10:11.781436+07:00",
+  "result": {
+    "language": "HTML",
+    "purpose": "This file serves as a basic HTML document displaying a 'Hello world' message.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

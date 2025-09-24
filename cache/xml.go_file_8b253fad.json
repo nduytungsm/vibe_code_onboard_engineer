@@ -1,0 +1,23 @@
+{
+  "content_hash": "6989aca3b62afee4aa1d692cd9658951",
+  "timestamp": "2025-09-24T17:06:38.114784+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a structure and methods for rendering XML responses in an HTTP context.",
+    "key_types": [
+      "XML"
+    ],
+    "functions": [
+      "Render",
+      "WriteContentType"
+    ],
+    "imports": [
+      "encoding/xml",
+      "net/http"
+    ],
+    "side_effects": [
+      "Writes XML data to the HTTP response writer"
+    ],
+    "complexity": "medium"
+  }
+}

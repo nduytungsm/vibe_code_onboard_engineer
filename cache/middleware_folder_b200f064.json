@@ -1,9 +1,9 @@
 {
-  "content_hash": "0d2fcf8e456aecfc5b9318ee485e31d7",
-  "timestamp": "2025-09-24T15:33:40.392227+07:00",
+  "content_hash": "66a0c1f54de431e2c46cbc27d65c22ba",
+  "timestamp": "2025-09-24T16:29:27.022685+07:00",
   "result": {
     "path": "middleware",
-    "purpose": "This folder/module is responsible for implementing various middleware functions for an Echo web server application, including request tracking, error handling, authentication, and API version checking.",
+    "purpose": "This folder/module is responsible for implementing various middleware functions for an Echo web server application, including error handling, authentication, request tracking, and API version checking.",
     "languages": {
       "Go": 7
     },
@@ -31,7 +31,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each middleware file encapsulates specific functionality related to request processing, enhancing separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, where each middleware file encapsulates specific functionality and can be independently used within the Echo web framework.",
     "file_summaries": {
       "middleware/custom_requests_total_prometheus.go": {
         "language": "Go",
@@ -91,7 +91,7 @@
         ],
         "side_effects": [
           "Logs error details to the context's logger",
-          "Sends JSON response with error details to the client"
+          "Responds to HTTP requests with error details"
         ],
         "risks": [
           "Potential exposure of sensitive error details in logs",
@@ -103,10 +103,9 @@
         "language": "Go",
         "purpose": "This file implements HMAC authentication middleware for validating HMAC signatures in HTTP requests.",
         "key_types": [
-          "echo.MiddlewareFunc",
           "hmac.Config",
-          "http.Request",
-          "http.Response"
+          "echo.Context",
+          "echo.HandlerFunc"
         ],
         "functions": [
           "HmacAuthentication"
@@ -121,7 +120,7 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
         ],
         "side_effects": [
-          "Modifies HTTP request handling by adding HMAC validation."
+          "Modifies HTTP request handling by adding authentication checks."
         ],
         "risks": [
           "Potential for unauthorized access if HMAC validation fails."
@@ -199,10 +198,10 @@
       },
       "middleware/wallet_auth.go": {
         "language": "Go",
-        "purpose": "Middleware for verifying wallet signatures in HTTP requests.",
+        "purpose": "This file implements middleware for verifying wallet signatures in HTTP requests.",
         "key_types": [
           "hmac.Config",
-          "echo.Context",
+          "echo.MiddlewareFunc",
           "error"
         ],
         "functions": [

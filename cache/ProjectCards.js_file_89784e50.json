@@ -1,0 +1,26 @@
+{
+  "content_hash": "8693656180a60d046672e96274364164",
+  "timestamp": "2025-09-24T17:11:18.165225+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file defines a React component that displays project cards with information and links.",
+    "key_types": [
+      "ProjectCards"
+    ],
+    "functions": [
+      "ProjectCards"
+    ],
+    "imports": [
+      "React",
+      "react-bootstrap/Card",
+      "react-bootstrap/Button",
+      "react-icons/cg",
+      "react-icons/bs"
+    ],
+    "side_effects": [
+      "Renders UI components",
+      "Opens links in a new tab"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "content_hash": "d206c9623f3463e05e24f7e55ec28f18",
+  "timestamp": "2025-09-24T17:27:28.642004+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for TOML binding functionality.",
+    "key_types": [
+      "struct"
+    ],
+    "functions": [
+      "TestTOMLBindingBindBody"
+    ],
+    "imports": [
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "complexity": "low"
+  }
+}

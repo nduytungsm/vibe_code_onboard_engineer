@@ -1,0 +1,138 @@
+{
+  "content_hash": "9c76d657394c57fddeca718c4b00057d",
+  "timestamp": "2025-09-24T17:37:55.290451+07:00",
+  "result": {
+    "path": "src/components/About",
+    "purpose": "This folder contains React components that display information about the author, including skills, tools, and personal introduction.",
+    "languages": {
+      "JavaScript": 5
+    },
+    "key_modules": [
+      "About.js",
+      "AboutCard.js",
+      "Github.js",
+      "Techstack.js",
+      "Toolstack.js"
+    ],
+    "dependencies": [
+      "react",
+      "react-bootstrap",
+      "react-icons",
+      "react-github-calendar"
+    ],
+    "architecture": "The folder follows a component-based architecture typical in React applications, where each file represents a distinct UI component.",
+    "file_summaries": {
+      "src/components/About/About.js": {
+        "language": "JavaScript",
+        "purpose": "This file defines a React component that displays information about the author, including skills and tools used.",
+        "key_types": [
+          "React.Component"
+        ],
+        "functions": [
+          "About"
+        ],
+        "imports": [
+          "React",
+          "Container",
+          "Row",
+          "Col",
+          "Particle",
+          "Github",
+          "Techstack",
+          "Aboutcard",
+          "laptopImg",
+          "Toolstack"
+        ],
+        "side_effects": [
+          "Renders UI components",
+          "Imports images and other components"
+        ],
+        "complexity": "medium"
+      },
+      "src/components/About/AboutCard.js": {
+        "language": "JavaScript",
+        "purpose": "This file defines a React component that displays a personal introduction and activities of an individual.",
+        "key_types": [
+          "React.Component"
+        ],
+        "functions": [
+          "AboutCard"
+        ],
+        "imports": [
+          "React",
+          "react-bootstrap/Card",
+          "react-icons/im"
+        ],
+        "complexity": "low"
+      },
+      "src/components/About/Github.js": {
+        "language": "JavaScript",
+        "purpose": "Displays a GitHub contribution calendar for a specific user.",
+        "key_types": [
+          "React Component",
+          "Row"
+        ],
+        "functions": [
+          "Github"
+        ],
+        "imports": [
+          "React",
+          "react-github-calendar",
+          "react-bootstrap"
+        ],
+        "complexity": "low"
+      },
+      "src/components/About/Techstack.js": {
+        "language": "JavaScript",
+        "purpose": "This file defines a React component that displays a tech stack using icons.",
+        "key_types": [
+          "Techstack"
+        ],
+        "functions": [
+          "Techstack"
+        ],
+        "imports": [
+          "React",
+          "Col from react-bootstrap",
+          "Row from react-bootstrap",
+          "CgCPlusPlus from react-icons/cg",
+          "DiJavascript1 from react-icons/di",
+          "DiReact from react-icons/di",
+          "DiNodejs from react-icons/di",
+          "DiMongodb from react-icons/di",
+          "DiPython from react-icons/di",
+          "DiGit from react-icons/di",
+          "DiJava from react-icons/di",
+          "SiRedis from react-icons/si",
+          "SiFirebase from react-icons/si",
+          "SiNextdotjs from react-icons/si",
+          "SiSolidity from react-icons/si",
+          "SiPostgresql from react-icons/si",
+          "TbBrandGolang from react-icons/tb"
+        ],
+        "complexity": "low"
+      },
+      "src/components/About/Toolstack.js": {
+        "language": "JavaScript",
+        "purpose": "This file defines a React component that displays a toolstack using icons.",
+        "key_types": [
+          "Toolstack"
+        ],
+        "functions": [
+          "Toolstack"
+        ],
+        "imports": [
+          "React",
+          "Col",
+          "Row",
+          "SiVisualstudiocode",
+          "SiPostman",
+          "SiSlack",
+          "SiVercel",
+          "SiMacos"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

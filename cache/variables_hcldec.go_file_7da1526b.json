@@ -1,0 +1,24 @@
+{
+  "content_hash": "7efcac41ad4c4e240445d281add71245",
+  "timestamp": "2025-09-24T16:57:52.742851+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functions to process HCL (HashiCorp Configuration Language) variables with support for dynamic blocks.",
+    "key_types": [
+      "hcl.Body",
+      "hcldec.Spec",
+      "hcl.Traversal",
+      "WalkVariablesNode"
+    ],
+    "functions": [
+      "VariablesHCLDec",
+      "ExpandVariablesHCLDec",
+      "walkVariablesWithHCLDec"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hcldec"
+    ],
+    "complexity": "medium"
+  }
+}

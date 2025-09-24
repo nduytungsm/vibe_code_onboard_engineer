@@ -1,0 +1,46 @@
+{
+  "content_hash": "0230f8644f91d988dd0d851cacf00580",
+  "timestamp": "2025-09-24T16:58:26.849885+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a command-line tool for decoding HCL (HashiCorp Configuration Language) files based on a specified schema.",
+    "key_types": [
+      "varSpecs",
+      "hcl.EvalContext",
+      "hcl.Diagnostics",
+      "hcl.Body"
+    ],
+    "functions": [
+      "main",
+      "realmain",
+      "usage",
+      "showVarRefsJSON"
+    ],
+    "imports": [
+      "bytes",
+      "encoding/json",
+      "fmt",
+      "io",
+      "os",
+      "strings",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hcldec",
+      "github.com/hashicorp/hcl/v2/hclparse",
+      "github.com/spf13/pflag",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/function",
+      "github.com/zclconf/go-cty/cty/json",
+      "golang.org/x/term"
+    ],
+    "side_effects": [
+      "Reads from standard input if no arguments are provided.",
+      "Writes output to standard output or a specified file.",
+      "Exits the program with an error code on failure."
+    ],
+    "risks": [
+      "Potential for command injection if user input is not properly sanitized.",
+      "File handling errors if the specified files do not exist or are inaccessible."
+    ],
+    "complexity": "medium"
+  }
+}

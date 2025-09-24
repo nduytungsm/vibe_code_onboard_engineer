@@ -1,0 +1,29 @@
+{
+  "content_hash": "6536c30aba7739edb7f3ad242a59d650",
+  "timestamp": "2025-09-24T17:05:46.91945+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Testing Msgpack binding functionality",
+    "key_types": [
+      "teststruct"
+    ],
+    "functions": [
+      "TestMsgpackBindingBindBody",
+      "msgpackBody"
+    ],
+    "imports": [
+      "bytes",
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/ugorji/go/codec"
+    ],
+    "side_effects": [
+      "None"
+    ],
+    "risks": [
+      "None"
+    ],
+    "complexity": "low"
+  }
+}

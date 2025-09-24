@@ -1,0 +1,55 @@
+{
+  "content_hash": "676e903a82fdd85fa1f6558499f0a654",
+  "timestamp": "2025-09-24T17:37:48.400277+07:00",
+  "result": {
+    "path": "src/components/Resume",
+    "purpose": "This folder/module is responsible for displaying a resume and providing functionality to download it as a PDF.",
+    "languages": {
+      "JavaScript": 1
+    },
+    "key_modules": [
+      "ResumeNew.js"
+    ],
+    "dependencies": [
+      "react",
+      "react-bootstrap",
+      "Particle",
+      "react-icons/ai",
+      "react-pdf"
+    ],
+    "architecture": "The folder follows a component-based architecture typical in React applications, encapsulating the resume display logic within a single component.",
+    "file_summaries": {
+      "src/components/Resume/ResumeNew.js": {
+        "language": "JavaScript",
+        "purpose": "A React component that displays a resume and allows users to download it as a PDF.",
+        "key_types": [
+          "ResumeNew",
+          "Container",
+          "Row",
+          "Button",
+          "Document",
+          "Page"
+        ],
+        "functions": [
+          "ResumeNew",
+          "useState",
+          "useEffect"
+        ],
+        "imports": [
+          "React",
+          "react-bootstrap",
+          "Particle",
+          "react-icons/ai",
+          "react-pdf"
+        ],
+        "side_effects": [
+          "Modifies the component's width based on the window size."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if the PDF contains personal data."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

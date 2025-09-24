@@ -1,0 +1,36 @@
+{
+  "content_hash": "b058b5866cb876e39fe712fb5851da37",
+  "timestamp": "2025-09-24T16:57:34.621843+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a test file structure and functions to load and validate test specifications for HCL (HashiCorp Configuration Language) files.",
+    "key_types": [
+      "TestFile",
+      "TestFileExpectTraversal",
+      "TestFileExpectDiag"
+    ],
+    "functions": [
+      "LoadTestFile",
+      "decodeTraversalsBlock",
+      "decodeTraversalExpectBlock",
+      "decodeDiagnosticsBlock",
+      "decodePosFromBody",
+      "decodeRangeFromBody"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/convert",
+      "github.com/zclconf/go-cty/cty/gocty",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/ext/typeexpr"
+    ],
+    "side_effects": [
+      "Parsing HCL files and potentially returning diagnostics if errors are found."
+    ],
+    "risks": [
+      "Potential for panics if unsupported block types are encountered."
+    ],
+    "complexity": "medium"
+  }
+}

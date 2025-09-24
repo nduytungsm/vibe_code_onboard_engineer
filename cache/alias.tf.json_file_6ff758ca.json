@@ -1,0 +1,15 @@
+{
+  "content_hash": "38c7fdb24d5079e59d660a81d758c698",
+  "timestamp": "2025-09-24T17:04:06.533385+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines AWS instance resources with provider aliases.",
+    "key_types": [
+      "resource",
+      "aws_instance"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

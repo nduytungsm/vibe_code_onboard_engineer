@@ -1,0 +1,20 @@
+{
+  "content_hash": "3e27a33f1d1c35ca0363edfb50aeae8c",
+  "timestamp": "2025-09-24T16:40:53.45681+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file appears to be a test case for fuzz testing a JSON parsing function.",
+    "key_types": [
+      "byte",
+      "string"
+    ],
+    "functions": [
+      "FuzzParse"
+    ],
+    "imports": [
+      "testing",
+      "encoding/json"
+    ],
+    "complexity": "medium"
+  }
+}

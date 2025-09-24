@@ -1,0 +1,12 @@
+{
+  "content_hash": "96805ca4e3a3ee5e235d17957ff02220",
+  "timestamp": "2025-09-24T16:58:26.232549+07:00",
+  "result": {
+    "language": "reStructuredText",
+    "purpose": "Documentation of design patterns for complex systems using HCL.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "content_hash": "d2f9be415c83d7e0a8fbfbd11aeac982",
+  "timestamp": "2025-09-24T16:39:27.400789+07:00",
+  "result": {
+    "language": "Python",
+    "purpose": "Configuration file for Sphinx documentation generation.",
+    "key_types": [
+      "str",
+      "list",
+      "dict",
+      "unicode"
+    ],
+    "functions": [],
+    "imports": [
+      "subprocess",
+      "os",
+      "os.path"
+    ],
+    "side_effects": [
+      "Executes a subprocess to get the git version.",
+      "Reads environment variables."
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "content_hash": "656cab7b32885d944f28911f473f1f47",
+  "timestamp": "2025-09-24T16:58:21.27511+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a JSON writer for HCL diagnostics.",
+    "key_types": [
+      "jsonDiagWriter",
+      "PosJSON",
+      "RangeJSON",
+      "DiagnosticJSON",
+      "DiagnosticsJSON"
+    ],
+    "functions": [
+      "WriteDiagnostic",
+      "WriteDiagnostics",
+      "Flush",
+      "flush"
+    ],
+    "imports": [
+      "encoding/json",
+      "io",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Writes JSON formatted diagnostics to an io.Writer"
+    ],
+    "complexity": "medium"
+  }
+}

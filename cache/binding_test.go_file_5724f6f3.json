@@ -1,0 +1,43 @@
+{
+  "content_hash": "008f5bae238975edd2a252d7c618fa0f",
+  "timestamp": "2025-09-24T17:27:18.098445+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for binding data from HTTP requests to Go structs using various formats.",
+    "key_types": [
+      "appkey",
+      "QueryTest",
+      "FooStruct",
+      "FooBarStruct",
+      "FooBarFileStruct",
+      "FooStructForTimeType",
+      "FooStructForSliceType"
+    ],
+    "functions": [
+      "TestBindingDefault",
+      "TestBindingJSONNilBody",
+      "TestBindingJSON",
+      "TestBindingForm",
+      "TestBindingFormInvalidName"
+    ],
+    "imports": [
+      "bytes",
+      "encoding/json",
+      "errors",
+      "io",
+      "mime/multipart",
+      "net/http",
+      "os",
+      "reflect",
+      "strconv",
+      "strings",
+      "testing",
+      "time",
+      "github.com/gin-gonic/gin/testdata/protoexample",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "google.golang.org/protobuf/proto"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "78700fbcd604fc665af82d2159c0641f",
+  "timestamp": "2025-09-24T16:40:10.670296+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a function to scan and tokenize string literals from byte data, handling both quoted and unquoted strings.",
+    "key_types": [
+      "[][]byte"
+    ],
+    "functions": [
+      "scanStringLit"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

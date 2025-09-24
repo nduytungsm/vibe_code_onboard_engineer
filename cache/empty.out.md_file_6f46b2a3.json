@@ -1,0 +1,12 @@
+{
+  "content_hash": "2c47f836b3f3f532eba616888016d014",
+  "timestamp": "2025-09-24T17:03:54.798796+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the module testdata/empty",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

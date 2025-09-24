@@ -1,9 +1,9 @@
 {
-  "content_hash": "8c283a6c8209a42ce7346f0a6fe86b6d",
-  "timestamp": "2025-09-24T11:51:17.903764+07:00",
+  "content_hash": "b0cbe9849b9d104731cfd039f5b05a13",
+  "timestamp": "2025-09-24T16:55:13.396492+07:00",
   "result": {
     "path": "internal/app/api",
-    "purpose": "Defines the API layer of the application, including the Application struct and its constructor.",
+    "purpose": "Defines the Application struct and initializes it with a database port.",
     "languages": {
       "Go": 1
     },
@@ -13,13 +13,14 @@
     "dependencies": [
       "github.com/matigumma/go-fiber-sql-hexagonal/internal/ports"
     ],
-    "architecture": "Follows a hexagonal architecture pattern, allowing for separation of concerns and easier testing.",
+    "architecture": "The folder follows a hexagonal architecture pattern, focusing on the separation of concerns between the application core and external dependencies.",
     "file_summaries": {
       "internal/app/api/api.go": {
         "language": "Go",
-        "purpose": "Defines an Application struct and a constructor function for it.",
+        "purpose": "Defines an Application struct and a constructor function for initializing it with a database port.",
         "key_types": [
-          "Application"
+          "Application",
+          "ports.DbPort"
         ],
         "functions": [
           "NewApplication"

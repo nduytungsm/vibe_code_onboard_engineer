@@ -1,0 +1,43 @@
+{
+  "content_hash": "0685db1969842421098c56f2bbfc1616",
+  "timestamp": "2025-09-24T17:01:25.891631+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "A command-line tool for formatting HCL (HashiCorp Configuration Language) files.",
+    "key_types": [
+      "flag.Flag",
+      "hclparse.Parser",
+      "hcl.DiagnosticWriter"
+    ],
+    "functions": [
+      "init",
+      "main",
+      "realmain",
+      "processFiles",
+      "processFile",
+      "usage"
+    ],
+    "imports": [
+      "bytes",
+      "errors",
+      "flag",
+      "fmt",
+      "io",
+      "os",
+      "strings",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclparse",
+      "github.com/hashicorp/hcl/v2/hclwrite",
+      "golang.org/x/term"
+    ],
+    "side_effects": [
+      "Writes formatted output to stdout or overwrites source files based on flags.",
+      "Prints diagnostics to stderr if syntax errors are found."
+    ],
+    "risks": [
+      "Overwriting files without confirmation if the -w flag is used.",
+      "Potential for data loss if files are incorrectly formatted."
+    ],
+    "complexity": "medium"
+  }
+}

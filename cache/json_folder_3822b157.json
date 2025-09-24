@@ -1,9 +1,9 @@
 {
-  "content_hash": "1740a330e8a3358e4958b9bf7cd3a6ae",
-  "timestamp": "2025-09-24T15:43:05.045669+07:00",
+  "content_hash": "047e54aadfaa20164b0e8ca96841ae44",
+  "timestamp": "2025-09-24T17:19:56.78758+07:00",
   "result": {
     "path": "codec/json",
-    "purpose": "Responsible for JSON encoding and decoding functionalities using various libraries.",
+    "purpose": "Responsible for providing various interfaces and implementations for JSON encoding and decoding using different libraries.",
     "languages": {
       "Go": 5
     },
@@ -19,7 +19,7 @@
       "github.com/json-iterator/go",
       "github.com/bytedance/sonic"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating different JSON encoding and decoding implementations using various libraries, each in separate files.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating different JSON encoding/decoding strategies through separate files, each implementing interfaces for specific libraries.",
     "file_summaries": {
       "codec/json/api.go": {
         "language": "Go",
@@ -45,16 +45,16 @@
           "io"
         ],
         "side_effects": [
-          "Escaping HTML characters in JSON output when SetEscapeHTML is true"
+          "None"
         ],
         "risks": [
-          "Potential security issues when embedding JSON in HTML if escaping is not handled properly"
+          "Potential security issues with JSON encoding in HTML contexts if not properly escaped."
         ],
         "complexity": "medium"
       },
       "codec/json/go_json.go": {
         "language": "Go",
-        "purpose": "Provides a wrapper around the go-json library for JSON encoding and decoding.",
+        "purpose": "Provides an interface for JSON encoding and decoding using the go-json library.",
         "key_types": [
           "gojsonApi",
           "Encoder",
@@ -98,7 +98,7 @@
       },
       "codec/json/jsoniter.go": {
         "language": "Go",
-        "purpose": "This file provides an implementation for JSON encoding and decoding using the json-iterator library.",
+        "purpose": "This file provides an interface for JSON encoding and decoding using the json-iterator library.",
         "key_types": [
           "jsoniterApi",
           "Encoder",
@@ -120,7 +120,7 @@
       },
       "codec/json/sonic.go": {
         "language": "Go",
-        "purpose": "Provides a wrapper around the Sonic library for JSON encoding and decoding.",
+        "purpose": "Provides a JSON encoding and decoding interface using the Sonic library.",
         "key_types": [
           "sonicApi",
           "Encoder",

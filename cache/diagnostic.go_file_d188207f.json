@@ -1,0 +1,29 @@
+{
+  "content_hash": "ca15fb2ee9299ec51a7785136ccfa70e",
+  "timestamp": "2025-09-24T17:01:30.150975+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines diagnostic types and structures for error reporting in configuration parsing.",
+    "key_types": [
+      "DiagnosticSeverity",
+      "Diagnostic",
+      "Diagnostics",
+      "DiagnosticWriter",
+      "DiagnosticExtraUnwrapper"
+    ],
+    "functions": [
+      "Error()",
+      "Append()",
+      "Extend()",
+      "HasErrors()",
+      "Errs()"
+    ],
+    "imports": [
+      "fmt"
+    ],
+    "side_effects": [
+      "Modifies the underlying array of diagnostics in Append() and Extend() methods."
+    ],
+    "complexity": "medium"
+  }
+}

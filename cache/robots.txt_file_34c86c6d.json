@@ -1,0 +1,12 @@
+{
+  "content_hash": "fa1ded1ed7c11438a9b0385b1e112850",
+  "timestamp": "2025-09-24T17:11:08.169245+07:00",
+  "result": {
+    "language": "plaintext",
+    "purpose": "This file provides instructions for web crawlers about which parts of the website should not be accessed.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

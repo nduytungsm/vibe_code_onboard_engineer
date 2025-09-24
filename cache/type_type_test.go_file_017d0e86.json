@@ -1,0 +1,22 @@
+{
+  "content_hash": "a0560f8c25dd6c7ee864829657fa3c5f",
+  "timestamp": "2025-09-24T17:00:01.692847+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains unit tests for type constraints and conversion functions in the typeexpr package.",
+    "key_types": [
+      "TypeConstraintVal",
+      "cty.Value"
+    ],
+    "functions": [
+      "TestTypeConstraintType",
+      "TestConvertFunc"
+    ],
+    "imports": [
+      "fmt",
+      "testing",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

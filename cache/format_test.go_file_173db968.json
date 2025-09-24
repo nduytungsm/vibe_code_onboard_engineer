@@ -1,0 +1,26 @@
+{
+  "content_hash": "f6085a602a78fd982bee72b023280d09",
+  "timestamp": "2025-09-24T16:40:35.085973+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for formatting HCL (HashiCorp Configuration Language) code.",
+    "key_types": [
+      "struct",
+      "Tokens",
+      "formatLine",
+      "Token"
+    ],
+    "functions": [
+      "TestFormat",
+      "TestLinesForFormat"
+    ],
+    "imports": [
+      "fmt",
+      "testing",
+      "reflect",
+      "github.com/davecgh/go-spew/spew",
+      "github.com/hashicorp/hcl/v2/hclsyntax"
+    ],
+    "complexity": "medium"
+  }
+}

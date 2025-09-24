@@ -1,0 +1,25 @@
+{
+  "content_hash": "94fceb959a15cc1eeba4cbec59b47f09",
+  "timestamp": "2025-09-24T17:00:09.560225+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains a test for encoding a data structure into HCL format using the gohcl library.",
+    "key_types": [
+      "Service",
+      "Constraints",
+      "App"
+    ],
+    "functions": [
+      "ExampleEncodeIntoBody"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/hashicorp/hcl/v2/gohcl",
+      "github.com/hashicorp/hcl/v2/hclwrite"
+    ],
+    "side_effects": [
+      "Prints the encoded HCL representation of the App structure to standard output."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "content_hash": "f426b6b5011bc001e6465275cc719f42",
+  "timestamp": "2025-09-24T16:37:30.068206+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a Redirect struct and methods to handle HTTP redirection.",
+    "key_types": [
+      "Redirect"
+    ],
+    "functions": [
+      "Render",
+      "WriteContentType"
+    ],
+    "imports": [
+      "fmt",
+      "net/http"
+    ],
+    "side_effects": [
+      "Panic if the status code is invalid for redirection",
+      "Sends an HTTP redirect response"
+    ],
+    "risks": [
+      "Potential for panic if invalid status code is provided"
+    ],
+    "complexity": "low"
+  }
+}

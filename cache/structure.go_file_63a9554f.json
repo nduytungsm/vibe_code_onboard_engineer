@@ -1,0 +1,36 @@
+{
+  "content_hash": "fa08e7c12a2d3681be3c123a07b010e9",
+  "timestamp": "2025-09-24T16:41:06.77477+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements JSON body parsing and validation for HCL (HashiCorp Configuration Language) files.",
+    "key_types": [
+      "body",
+      "expression",
+      "hcl.BodyContent",
+      "hcl.Diagnostics",
+      "hcl.Attribute"
+    ],
+    "functions": [
+      "Content",
+      "PartialContent",
+      "JustAttributes",
+      "MissingItemRange",
+      "unpackBlock"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/convert"
+    ],
+    "side_effects": [
+      "Generates diagnostics for JSON parsing errors and attribute validation."
+    ],
+    "risks": [
+      "Potential for incorrect JSON value types leading to runtime errors."
+    ],
+    "complexity": "medium"
+  }
+}

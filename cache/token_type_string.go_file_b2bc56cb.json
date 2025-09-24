@@ -1,0 +1,18 @@
+{
+  "content_hash": "414a461b7071e4e1e6891977af28094e",
+  "timestamp": "2025-09-24T16:40:21.349545+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines string representations for the TokenType constants used in the HCL syntax package.",
+    "key_types": [
+      "TokenType"
+    ],
+    "functions": [
+      "String"
+    ],
+    "imports": [
+      "strconv"
+    ],
+    "complexity": "low"
+  }
+}

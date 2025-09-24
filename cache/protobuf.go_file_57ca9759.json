@@ -1,0 +1,31 @@
+{
+  "content_hash": "f2b9e246956aae2d0e33474c82545cf0",
+  "timestamp": "2025-09-24T16:36:50.171021+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality to bind protobuf messages from HTTP requests.",
+    "key_types": [
+      "protobufBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "BindBody"
+    ],
+    "imports": [
+      "errors",
+      "io",
+      "net/http",
+      "google.golang.org/protobuf/proto"
+    ],
+    "side_effects": [
+      "Reads from the HTTP request body",
+      "Unmarshals protobuf messages"
+    ],
+    "risks": [
+      "Potential for denial of service if large request bodies are sent",
+      "Improper handling of non-protobuf objects"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "content_hash": "654d710b09d55ee1876bb05de4ca4332",
+  "timestamp": "2025-09-24T17:18:59.068438+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the Gin web framework, providing quick start guides and API examples.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

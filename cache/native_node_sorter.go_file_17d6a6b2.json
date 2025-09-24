@@ -1,0 +1,21 @@
+{
+  "content_hash": "927f7a2a9197d750f2ab01bb8894d735",
+  "timestamp": "2025-09-24T16:40:37.285238+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a sorter for HCL syntax nodes based on their byte range.",
+    "key_types": [
+      "nativeNodeSorter",
+      "hclsyntax.Node"
+    ],
+    "functions": [
+      "Len",
+      "Less",
+      "Swap"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2/hclsyntax"
+    ],
+    "complexity": "medium"
+  }
+}

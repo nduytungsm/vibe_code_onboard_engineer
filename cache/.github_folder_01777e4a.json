@@ -1,39 +1,39 @@
 {
-  "content_hash": "b321484cba69bb7ae07da9ee5ccdd68c",
-  "timestamp": "2025-09-24T15:46:43.003904+07:00",
+  "content_hash": "a0dbec9581bef133e5bde94f1192e623",
+  "timestamp": "2025-09-24T17:07:10.299409+07:00",
   "result": {
     "path": ".github",
-    "purpose": "This folder is responsible for GitHub-specific configurations and templates to enhance collaboration and dependency management.",
+    "purpose": "Contains configuration and templates for GitHub workflows and dependency management.",
     "languages": {
       "Markdown": 1,
       "YAML": 1
     },
     "key_modules": [
-      "dependabot.yml",
-      "pull_request_template.md"
+      "PULL_REQUEST_TEMPLATE.md",
+      "dependabot.yml"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a configuration and template architecture pattern, providing structured files for dependency management and pull request processes.",
+    "architecture": "The folder follows a configuration-based architecture, providing templates and settings for GitHub features like pull requests and dependency updates.",
     "file_summaries": {
-      ".github/dependabot.yml": {
-        "language": "YAML",
-        "purpose": "Configuration file for Dependabot to manage GitHub Actions dependencies.",
-        "key_types": [
-          "updates",
-          "package-ecosystem",
-          "schedule",
-          "labels",
-          "reviewers",
-          "groups"
-        ],
+      ".github/PULL_REQUEST_TEMPLATE.md": {
+        "language": "Markdown",
+        "purpose": "Template for pull request checklist",
+        "key_types": [],
         "functions": [],
         "imports": [],
         "complexity": "low"
       },
-      ".github/pull_request_template.md": {
-        "language": "Markdown",
-        "purpose": "Template for pull requests to provide structure and information for reviewers.",
-        "key_types": [],
+      ".github/dependabot.yml": {
+        "language": "YAML",
+        "purpose": "Configuration file for Dependabot to manage dependencies in a Go module and GitHub Actions.",
+        "key_types": [
+          "updates",
+          "package-ecosystem",
+          "directory",
+          "schedule",
+          "groups",
+          "patterns"
+        ],
         "functions": [],
         "imports": [],
         "complexity": "low"

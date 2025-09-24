@@ -1,0 +1,24 @@
+{
+  "content_hash": "c12c98108a7b74a0281c6450d3512b73",
+  "timestamp": "2025-09-24T17:05:42.561211+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a mechanism for binding HTTP headers to a Go struct.",
+    "key_types": [
+      "headerBinding",
+      "headerSource"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "mapHeader",
+      "TrySet"
+    ],
+    "imports": [
+      "net/http",
+      "net/textproto",
+      "reflect"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "content_hash": "6a383afd87ec5031dc18d84998a0c40b",
+  "timestamp": "2025-09-24T17:33:00.922498+07:00",
+  "result": {
+    "language": "HTML",
+    "purpose": "Defines the structure and metadata for a personal portfolio website built with React.js.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "side_effects": [
+      "Requires JavaScript to be enabled for the app to function."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if URLs are not properly secured."
+    ],
+    "complexity": "low"
+  }
+}

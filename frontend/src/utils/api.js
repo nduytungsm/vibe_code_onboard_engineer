@@ -49,6 +49,24 @@ export const repositoryAPI = {
       payload.token = token
     }
     
+    let isCompleted = false
+    let lastProgressData = null
+    
+    // Set up a timeout to handle cases where stream doesn't complete properly
+    const timeoutId = setTimeout(() => {
+      if (!isCompleted) {
+        console.warn('⚠️ Stream timeout reached, checking if we have usable data')
+        // If we received substantial progress data, treat it as a completion
+        if (lastProgressData && lastProgressData.progress >= 75) {
+          console.log('✅ Using last received data as completion')
+          isCompleted = true
+          onComplete?.(lastProgressData.data || lastProgressData)
+        } else {
+          onError?.('Analysis timeout - please try again')
+        }
+      }
+    }, 35 * 60 * 1000) // 35 minute timeout
+    
     // Use fetch with streaming response for SSE
     fetch(`${API_BASE_URL}/api/analyze/stream`, {
       method: 'POST',
@@ -78,7 +96,18 @@ export const repositoryAPI = {
       const readStream = () => {
         reader.read().then(({ done, value }) => {
           if (done) {
-            console.log('Stream completed')
+            console.log('📡 Stream completed by server')
+            clearTimeout(timeoutId)
+            
+            // If we haven't received a completion event but have good data, use it
+            if (!isCompleted && lastProgressData && lastProgressData.progress >= 90) {
+              console.log('✅ Stream ended with substantial data, treating as completion')
+              isCompleted = true
+              onComplete?.(lastProgressData.data || lastProgressData)
+            } else if (!isCompleted) {
+              console.warn('⚠️ Stream ended without completion event')
+              onError?.('Analysis incomplete - stream ended unexpectedly')
+            }
             return
           }
           
@@ -106,24 +135,37 @@ export const repositoryAPI = {
               try {
                 const data = JSON.parse(eventData)
                 
+                // Store the latest progress data
+                lastProgressData = data
+                
                 switch (data.type) {
                   case 'progress':
+                    console.log(`📊 Progress: ${data.progress}% - ${data.stage}`)
                     onProgress?.(data.stage, data.message, data.progress, data.data)
                     break
                   case 'data':
+                    console.log(`📊 Data event: ${data.progress}% - ${data.stage}`)
                     onProgress?.(data.stage, data.message, data.progress, data.data)
                     break
                   case 'complete':
+                    console.log('🎉 Analysis completed successfully')
+                    clearTimeout(timeoutId)
+                    isCompleted = true
                     onComplete?.(data.data)
                     return // Stop reading
                   case 'error':
+                    console.error('❌ Analysis error:', data.error || data.message)
+                    clearTimeout(timeoutId)
+                    isCompleted = true
                     onError?.(data.error || data.message)
                     return // Stop reading
                   default:
-                    console.log('Unknown event type:', data.type)
+                    console.log('Unknown event type:', data.type, data)
                 }
               } catch (error) {
                 console.error('Error parsing SSE data:', error, eventData)
+                clearTimeout(timeoutId)
+                isCompleted = true
                 onError?.('Failed to parse server response')
                 return
               }
@@ -134,7 +176,11 @@ export const repositoryAPI = {
           readStream()
         }).catch(error => {
           console.error('Error reading stream:', error)
-          onError?.('Stream reading error: ' + error.message)
+          clearTimeout(timeoutId)
+          if (!isCompleted) {
+            isCompleted = true
+            onError?.('Stream reading error: ' + error.message)
+          }
         })
       }
       
@@ -148,7 +194,11 @@ export const repositoryAPI = {
       
     }).catch(error => {
       console.error('Failed to initiate streaming analysis:', error)
-      onError?.(error.message)
+      clearTimeout(timeoutId)
+      if (!isCompleted) {
+        isCompleted = true
+        onError?.(error.message)
+      }
     })
   },
 

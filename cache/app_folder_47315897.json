@@ -1,9 +1,9 @@
 {
-  "content_hash": "df8576a313248fc57a2e38cafd6855ea",
-  "timestamp": "2025-09-24T15:15:36.336399+07:00",
+  "content_hash": "40c706d2f077a395640488ca683b9665",
+  "timestamp": "2025-09-24T16:30:30.177044+07:00",
   "result": {
     "path": "cmd/app",
-    "purpose": "This folder/module is responsible for setting up and running the main application, including an HTTP server and a metrics server.",
+    "purpose": "This folder/module is responsible for setting up the main application, including an HTTP server and a metrics server, along with middleware for logging, error handling, and monitoring.",
     "languages": {
       "Go": 1
     },
@@ -29,7 +29,7 @@
     "file_summaries": {
       "cmd/app/main.go": {
         "language": "Go",
-        "purpose": "This file sets up an HTTP server and a metrics server, handling graceful shutdown and middleware integration.",
+        "purpose": "This file sets up an HTTP server and a metrics server, handles graceful shutdown, and integrates middleware for logging, error handling, and monitoring.",
         "key_types": [
           "context.Context",
           "sync.WaitGroup",
@@ -66,11 +66,12 @@
         ],
         "side_effects": [
           "Initializes Sentry for error tracking if enabled",
-          "Starts HTTP and metrics servers"
+          "Starts HTTP and metrics servers",
+          "Handles OS interrupt signals for graceful shutdown"
         ],
         "risks": [
           "Potential exposure of sensitive information in logs if not properly configured",
-          "Improper handling of shutdown could lead to data loss"
+          "Improper error handling could lead to application crashes"
         ],
         "complexity": "medium"
       }

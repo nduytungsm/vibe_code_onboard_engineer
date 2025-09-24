@@ -1,30 +1,54 @@
 {
-  "content_hash": "c3c910b461afc6161b120fc83b44efff",
-  "timestamp": "2025-09-24T15:34:06.86095+07:00",
+  "content_hash": "9a9d9574c65922fc72ddfc6185ce16d7",
+  "timestamp": "2025-09-24T16:30:17.067172+07:00",
   "result": {
     "path": "models",
-    "purpose": "Defines data structures and methods for various functionalities related to user accounts, notifications, blockchain interactions, and more.",
+    "purpose": "Defines data structures and models used throughout the application for various functionalities including user management, notifications, blockchain interactions, and device management.",
     "languages": {
       "Go": 30
     },
     "key_modules": [
       "account.go",
       "announcement.go",
+      "app.go",
+      "binance.go",
+      "blacklist.go",
+      "chain.go",
+      "common.go",
       "contract.go",
+      "default.go",
       "device.go",
+      "external_auth.go",
+      "highlight.go",
+      "ip_locations.go",
+      "moonpay.go",
+      "network.go",
       "notification.go",
-      "ref_code.go"
+      "preference.go",
+      "quickaccess.go",
+      "ref_code.go",
+      "releasecandidate.go",
+      "trusted_domain.go",
+      "useragent.go"
     ],
     "dependencies": [
+      "database/sql",
+      "encoding/json",
+      "errors",
+      "mime/multipart",
+      "strconv",
+      "strings",
+      "time",
       "github.com/ethereum/go-ethereum/common",
       "github.com/mitchellh/mapstructure",
+      "github.com/rs/zerolog/log",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates related data structures and methods, promoting separation of concerns and reusability.",
+    "architecture": "The folder follows a modular architecture pattern where each file defines specific models and structures related to different functionalities, promoting separation of concerns and reusability.",
     "file_summaries": {
       "models/account.go": {
         "language": "Go",
-        "purpose": "Defines request and response structures for user authentication and account linking.",
+        "purpose": "Defines request and response structures for user information and token management in an authentication system.",
         "key_types": [
           "GetSMUserInfoRequest",
           "GetSMUserInfoResponse",
@@ -40,7 +64,7 @@
       },
       "models/announcement.go": {
         "language": "Go",
-        "purpose": "Defines models and methods for handling announcements and notifications.",
+        "purpose": "Defines models and structures for handling announcements and related notifications.",
         "key_types": [
           "Buttons",
           "Announcement",
@@ -58,7 +82,6 @@
           "ToTargetPushNotificationRequest",
           "ToPublicListItem",
           "ToPublicFullContent",
-          "ToAnnouncement",
           "ToAnnouncement"
         ],
         "imports": [
@@ -74,13 +97,13 @@
           "github.com/rs/zerolog/log"
         ],
         "side_effects": [
-          "Logs errors when JSON unmarshalling fails."
+          "Logs errors when JSON unmarshalling fails in ToAnnouncement and ToAnnouncement for special offers."
         ],
         "complexity": "medium"
       },
       "models/app.go": {
         "language": "Go",
-        "purpose": "Defines data structures for managing code versioning and updates.",
+        "purpose": "Defines data structures for code versioning and updates, including conversion methods.",
         "key_types": [
           "CodeVersion",
           "UpdateCodeVersionRequest",
@@ -204,11 +227,11 @@
           "GetLimit"
         ],
         "imports": [],
-        "complexity": "low"
+        "complexity": "medium"
       },
       "models/device.go": {
         "language": "Go",
-        "purpose": "Defines data structures for device management and related requests.",
+        "purpose": "Defines data structures for device management and requests related to devices.",
         "key_types": [
           "Device",
           "GetDeviceByIDRequest",
@@ -226,7 +249,7 @@
       },
       "models/external_auth.go": {
         "language": "Go",
-        "purpose": "Defines data structures for handling OAuth authentication requests and responses.",
+        "purpose": "Defines data structures for handling external authentication requests and responses.",
         "key_types": [
           "XExchangeAuthCodeReq",
           "XRefreshAccessTokenReq",
@@ -236,11 +259,11 @@
         ],
         "functions": [],
         "imports": [],
-        "complexity": "low"
+        "complexity": "medium"
       },
       "models/highlight.go": {
         "language": "Go",
-        "purpose": "Defines data models and request/response structures for highlights in an application.",
+        "purpose": "Defines data structures and methods for managing highlights in an application.",
         "key_types": [
           "Highlight",
           "InternalHighlightResponse",
@@ -265,7 +288,7 @@
       },
       "models/ip_locations.go": {
         "language": "Go",
-        "purpose": "Defines data structures for IP location information and request handling.",
+        "purpose": "Defines data models for IP location information and request structure.",
         "key_types": [
           "IPLocation",
           "GetLocationRequest"
@@ -356,7 +379,7 @@
       },
       "models/quickaccess.go": {
         "language": "Go",
-        "purpose": "Defines data structures and methods for managing quick access decentralized applications (DApps).",
+        "purpose": "Defines data models and methods for managing quick access decentralized applications (DApps).",
         "key_types": [
           "QuickAccessDApp",
           "SaveQuickAccessDAppRequest",
@@ -373,7 +396,9 @@
         "functions": [
           "ToInternalResponse",
           "ToDApp",
-          "ToUpdateMap"
+          "ToUpdateMap",
+          "ToUpdateMap (UpdateQuickAccessDAppRequest)",
+          "ToUpdateMap (UpdateQuickAccessDAppBatchRequest)"
         ],
         "imports": [
           "time",
@@ -383,7 +408,7 @@
       },
       "models/ref_code.go": {
         "language": "Go",
-        "purpose": "Defines data structures and methods for managing referral codes and wallets.",
+        "purpose": "Defines models and structures for managing referral codes and wallets in a referral system.",
         "key_types": [
           "ReferralCode",
           "ReferralCodeFilter",
@@ -415,7 +440,7 @@
       },
       "models/releasecandidate.go": {
         "language": "Go",
-        "purpose": "Defines request structures for feature management in a system.",
+        "purpose": "Defines request structures for feature management in a device context.",
         "key_types": [
           "CheckAllowFeatureRequest",
           "PostFeatureConfigRequest",
@@ -429,7 +454,7 @@
       },
       "models/trusted_domain.go": {
         "language": "Go",
-        "purpose": "Defines data models and request structures for managing trusted domains.",
+        "purpose": "Defines models and request structures for managing trusted domains.",
         "key_types": [
           "TrustedDomain",
           "GetTDMByDomainRequest",

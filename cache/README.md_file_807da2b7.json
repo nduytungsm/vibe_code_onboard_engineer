@@ -1,0 +1,12 @@
+{
+  "content_hash": "fdfe78987de053c24669a9cb7a0cc45e",
+  "timestamp": "2025-09-24T16:41:13.450054+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the HCL Language Test Suite",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "content_hash": "a0fe101b5e8353315fc3264cf3f5c311",
+  "timestamp": "2025-09-24T15:53:11.647033+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles Binance signing requests and responses",
+    "key_types": [
+      "BinanceHandler",
+      "binanceHandler",
+      "binance.Service",
+      "md.BinanceSignRequest",
+      "md.BinanceSignResponse"
+    ],
+    "functions": [
+      "Sign",
+      "NewBinanceHandler"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/binance"
+    ],
+    "complexity": "medium"
+  }
+}

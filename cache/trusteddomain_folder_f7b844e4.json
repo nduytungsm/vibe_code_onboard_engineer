@@ -1,9 +1,9 @@
 {
-  "content_hash": "05d94a03f9775d7ee29f4290a932c96e",
-  "timestamp": "2025-09-24T15:33:04.180048+07:00",
+  "content_hash": "1a20b0e05765baa0692a9245297b8a3a",
+  "timestamp": "2025-09-24T16:31:09.948758+07:00",
   "result": {
     "path": "pkg/trusteddomain",
-    "purpose": "Responsible for managing trusted domains, including caching and database interactions.",
+    "purpose": "Responsible for managing trusted domains, including caching and database operations.",
     "languages": {
       "Go": 2
     },
@@ -23,12 +23,11 @@
     "file_summaries": {
       "pkg/trusteddomain/trusted_domain_svc.go": {
         "language": "Go",
-        "purpose": "Provides a service for managing trusted domains, including caching and database interactions.",
+        "purpose": "Provides a service for managing trusted domains, including caching and database operations.",
         "key_types": [
           "Service",
           "svc",
           "TrustedDomain",
-          "TrustedDomainRepo",
           "GetListTDMRequest"
         ],
         "functions": [
@@ -52,12 +51,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/repositories"
         ],
         "side_effects": [
-          "Caches data in memory",
+          "Caches results to reduce database load",
           "Subscribes to a Redis channel for cache invalidation"
         ],
         "risks": [
-          "Potential cache inconsistency if not properly managed",
-          "Error handling may expose sensitive information in logs"
+          "Potential race conditions in cache management",
+          "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"
       },

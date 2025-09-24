@@ -1,0 +1,12 @@
+{
+  "content_hash": "c4c118a0e86b159ae33e052ceb429b51",
+  "timestamp": "2025-09-24T17:04:04.868339+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for provider requirements in a Terraform module",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

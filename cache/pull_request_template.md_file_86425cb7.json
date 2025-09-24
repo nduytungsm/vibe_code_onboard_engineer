@@ -1,0 +1,12 @@
+{
+  "content_hash": "05c96527e09dfb0267d772d455dc9530",
+  "timestamp": "2025-09-24T17:01:10.749119+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Template for pull requests in GitHub, guiding contributors on how to provide necessary information.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

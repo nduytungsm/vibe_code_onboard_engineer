@@ -1,9 +1,9 @@
 {
-  "content_hash": "c5bbc2bfa7c83b62312b730e86e854ad",
-  "timestamp": "2025-09-24T15:33:52.666007+07:00",
+  "content_hash": "a46ff0251bb7fa0aa9d835e6f206528b",
+  "timestamp": "2025-09-24T16:30:23.283821+07:00",
   "result": {
     "path": "cmd/clean_cronjob",
-    "purpose": "This folder/module is responsible for implementing a cron job that cleans old announcements from a database.",
+    "purpose": "This folder/module is responsible for implementing a command-line application that cleans old cron jobs related to announcements.",
     "languages": {
       "Go": 1
     },
@@ -21,11 +21,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the cron job functionality and its dependencies, promoting separation of concerns and maintainability.",
+    "architecture": "The folder follows a command-line application architecture pattern, utilizing a main entry point to initialize services and manage dependencies for cleaning cron jobs.",
     "file_summaries": {
       "cmd/clean_cronjob/main.go": {
         "language": "Go",
-        "purpose": "This file implements a cron job that cleans old announcements from a database.",
+        "purpose": "This file implements a command-line application that cleans old cron jobs related to announcements.",
         "key_types": [
           "context.Context",
           "time.Time",
@@ -34,8 +34,8 @@
           "mRd.RedisClient",
           "repositories.AnnouncementRepo",
           "repositories.PreferencesRepo",
-          "announcement.Service",
-          "tracking.Service"
+          "tracking.Service",
+          "announcement.Service"
         ],
         "functions": [
           "main",
@@ -63,14 +63,12 @@
         ],
         "side_effects": [
           "Initializes Sentry for error tracking",
-          "Connects to PostgreSQL database",
-          "Connects to Redis database",
-          "Cleans old cron jobs from the database"
+          "Connects to PostgreSQL and Redis databases",
+          "Logs process time and errors"
         ],
         "risks": [
-          "Potential failure in Sentry initialization",
-          "Database connection failures",
-          "Error handling may not cover all cases"
+          "Potential exposure of sensitive information through logs",
+          "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"
       }

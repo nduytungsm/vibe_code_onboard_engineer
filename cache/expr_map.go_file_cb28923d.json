@@ -1,0 +1,25 @@
+{
+  "content_hash": "46f70b56f262ffb46cd2f198dcbbb9b8",
+  "timestamp": "2025-09-24T16:59:38.547237+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Extracts expressions representing map elements from a static map construct.",
+    "key_types": [
+      "Expression",
+      "KeyValuePair",
+      "Diagnostics",
+      "Diagnostic"
+    ],
+    "functions": [
+      "ExprMap"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Returns diagnostics if the expression is not a static map."
+    ],
+    "risks": [
+      "Potential for nil pointer dereference if expressions are not handled properly."
+    ],
+    "complexity": "medium"
+  }
+}

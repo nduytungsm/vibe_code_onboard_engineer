@@ -1,0 +1,14 @@
+{
+  "content_hash": "3c1709e2f662d937b52fb92255c64f49",
+  "timestamp": "2025-09-24T17:19:35.698235+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the current version of the gin framework.",
+    "key_types": [
+      "const"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

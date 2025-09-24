@@ -1,0 +1,21 @@
+{
+  "content_hash": "4f2cac2496473fcb88f5fabbed3ca3e5",
+  "timestamp": "2025-09-24T17:04:16.041838+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Configuration file for provider labels in a Terraform stack.",
+    "key_types": [
+      "variables",
+      "outputs",
+      "required_providers",
+      "components"
+    ],
+    "functions": [],
+    "imports": [
+      "hashicorp/aws",
+      "hashicorp/null",
+      "hashicorp/random"
+    ],
+    "complexity": "low"
+  }
+}

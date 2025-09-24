@@ -1,0 +1,22 @@
+{
+  "content_hash": "34136d5710ca8747b85fa44e2a801411",
+  "timestamp": "2025-09-24T16:40:57.923914+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides functions to determine if a given expression or body originated from a JSON document.",
+    "key_types": [
+      "hcl.Expression",
+      "hcl.Body",
+      "expression",
+      "body"
+    ],
+    "functions": [
+      "IsJSONExpression",
+      "IsJSONBody"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "content_hash": "e0479bdee3e4db0a80f899f11291d641",
+  "timestamp": "2025-09-24T17:05:57.683679+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a JSON codec interface for marshaling and unmarshaling JSON data.",
+    "key_types": [
+      "Core",
+      "Encoder",
+      "Decoder"
+    ],
+    "functions": [
+      "Marshal",
+      "Unmarshal",
+      "MarshalIndent",
+      "NewEncoder",
+      "NewDecoder",
+      "SetEscapeHTML",
+      "Encode",
+      "UseNumber",
+      "DisallowUnknownFields",
+      "Decode"
+    ],
+    "imports": [
+      "io"
+    ],
+    "side_effects": [
+      "Escaping HTML characters in JSON output when SetEscapeHTML is true."
+    ],
+    "risks": [
+      "Potential security issues when embedding JSON in HTML if escaping is not handled properly."
+    ],
+    "complexity": "medium"
+  }
+}

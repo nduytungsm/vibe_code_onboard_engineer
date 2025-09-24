@@ -1,0 +1,843 @@
+{
+  "content_hash": "f2e92795d4d1d30f2cefcf0186473da2",
+  "timestamp": "2025-09-24T17:33:42.455515+07:00",
+  "result": {
+    "purpose": "A personal portfolio website designed to showcase an individual's skills, projects, and professional background. It includes interactive components for navigation, project displays, and a resume download feature.",
+    "architecture": "The project follows a component-based architecture typical of React applications, emphasizing modularity and reusability of UI components.",
+    "data_models": [
+      "User",
+      "Project",
+      "Resume"
+    ],
+    "external_services": [
+      "GitHub API",
+      "React Router",
+      "React PDF"
+    ],
+    "languages": {
+      "CSS": 4,
+      "HTML": 1,
+      "JSON": 3,
+      "JavaScript": 6,
+      "Markdown": 1,
+      "plaintext": 1
+    },
+    "folder_summaries": {
+      "public": {
+        "path": "public",
+        "purpose": "Contains static assets and configuration files for a personal portfolio website built with React.js.",
+        "languages": {
+          "HTML": 1,
+          "JSON": 1,
+          "plaintext": 1
+        },
+        "key_modules": [
+          "index.html",
+          "manifest.json",
+          "robots.txt"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a static asset architecture pattern, providing essential files for the web application without dynamic server-side processing.",
+        "file_summaries": {
+          "public/index.html": {
+            "language": "HTML",
+            "purpose": "Defines the structure and metadata for a personal portfolio website built with React.js.",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "side_effects": [
+              "Requires JavaScript to be enabled for the app to function."
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if URLs are not properly secured."
+            ],
+            "complexity": "low"
+          },
+          "public/manifest.json": {
+            "language": "JSON",
+            "purpose": "Defines the web app manifest for a React application.",
+            "key_types": [
+              "object"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "public/robots.txt": {
+            "language": "plaintext",
+            "purpose": "Defines rules for web crawlers regarding which parts of the site should not be accessed.",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          }
+        }
+      },
+      "root": {
+        "path": "root",
+        "purpose": "This folder/module is responsible for a personal portfolio website project.",
+        "languages": {
+          "JSON": 2,
+          "Markdown": 1
+        },
+        "key_modules": [
+          "README.md",
+          "package-lock.json",
+          "package.json"
+        ],
+        "dependencies": [
+          "@react-pdf/renderer",
+          "@testing-library/jest-dom",
+          "@testing-library/react",
+          "@testing-library/user-event",
+          "axios",
+          "bootstrap",
+          "react",
+          "react-bootstrap",
+          "react-dom",
+          "react-github-calendar",
+          "react-icons",
+          "react-parallax-tilt",
+          "react-pdf",
+          "react-router-dom",
+          "react-scripts",
+          "react-tsparticles",
+          "typewriter-effect",
+          "web-vitals"
+        ],
+        "architecture": "The folder follows a modular architecture pattern typical for React applications, organizing files by their purpose and functionality.",
+        "file_summaries": {
+          "README.md": {
+            "language": "Markdown",
+            "purpose": "Documentation for a personal portfolio website project",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "package-lock.json": {
+            "language": "JSON",
+            "purpose": "This file is a package lock file that records the exact version of each dependency installed for a project.",
+            "key_types": [
+              "object",
+              "string"
+            ],
+            "functions": [],
+            "imports": [
+              "@react-pdf/renderer",
+              "@testing-library/jest-dom",
+              "@testing-library/react",
+              "@testing-library/user-event",
+              "axios",
+              "bootstrap",
+              "react",
+              "react-bootstrap",
+              "react-dom",
+              "react-github-calendar",
+              "react-icons",
+              "react-parallax-tilt",
+              "react-pdf",
+              "react-router-dom",
+              "react-scripts",
+              "react-tsparticles",
+              "typewriter-effect",
+              "web-vitals"
+            ],
+            "complexity": "low"
+          },
+          "package.json": {
+            "language": "JSON",
+            "purpose": "Defines the configuration and dependencies for a React application named 'portfolio'.",
+            "key_types": [
+              "dependencies",
+              "scripts",
+              "eslintConfig",
+              "browserslist"
+            ],
+            "functions": [
+              "start",
+              "build",
+              "test",
+              "eject"
+            ],
+            "imports": [
+              "@react-pdf/renderer",
+              "@testing-library/jest-dom",
+              "@testing-library/react",
+              "@testing-library/user-event",
+              "axios",
+              "bootstrap",
+              "react",
+              "react-bootstrap",
+              "react-dom",
+              "react-github-calendar",
+              "react-icons",
+              "react-parallax-tilt",
+              "react-pdf",
+              "react-router-dom",
+              "react-scripts",
+              "react-tsparticles",
+              "typewriter-effect",
+              "web-vitals"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "src": {
+        "path": "src",
+        "purpose": "Contains the main application code for a React web application, including components, styles, and tests.",
+        "languages": {
+          "CSS": 4,
+          "JavaScript": 6
+        },
+        "key_modules": [
+          "App.js",
+          "index.js",
+          "reportWebVitals.js",
+          "App.test.js"
+        ],
+        "dependencies": [
+          "React",
+          "ReactDOM",
+          "@testing-library/react",
+          "@testing-library/jest-dom",
+          "web-vitals",
+          "bootstrap"
+        ],
+        "architecture": "The folder follows a component-based architecture typical of React applications, with a focus on modularity and separation of concerns.",
+        "file_summaries": {
+          "src/App.css": {
+            "language": "CSS",
+            "purpose": "Styles for the App component, including layout and animations.",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "src/App.js": {
+            "language": "JavaScript",
+            "purpose": "This file defines the main application component for a React web application, handling routing and loading state.",
+            "key_types": [
+              "App",
+              "Router",
+              "Route",
+              "useState",
+              "useEffect"
+            ],
+            "functions": [
+              "App",
+              "useEffect"
+            ],
+            "imports": [
+              "React",
+              "useState",
+              "useEffect",
+              "Preloader",
+              "Navbar",
+              "Home",
+              "About",
+              "Projects",
+              "Footer",
+              "Resume",
+              "BrowserRouter",
+              "Route",
+              "Routes",
+              "Navigate",
+              "ScrollToTop",
+              "style.css",
+              "App.css",
+              "bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "side_effects": [
+              "Sets a timeout to update loading state after 1200ms"
+            ],
+            "complexity": "medium"
+          },
+          "src/App.test.js": {
+            "language": "JavaScript",
+            "purpose": "This file contains tests for the App component using React Testing Library.",
+            "key_types": [
+              "App"
+            ],
+            "functions": [
+              "test",
+              "render",
+              "screen.getByText",
+              "expect"
+            ],
+            "imports": [
+              "@testing-library/react",
+              "./App"
+            ],
+            "side_effects": [
+              "renders the App component",
+              "interacts with the DOM"
+            ],
+            "complexity": "low"
+          },
+          "src/index.css": {
+            "language": "CSS",
+            "purpose": "Styles the body of a webpage with a specific font and background gradient.",
+            "key_types": [],
+            "functions": [],
+            "imports": [
+              "https://fonts.googleapis.com/css2?family=Raleway:wght@500\u0026display=swap"
+            ],
+            "side_effects": [
+              "Changes the appearance of the webpage's body."
+            ],
+            "complexity": "low"
+          },
+          "src/index.js": {
+            "language": "JavaScript",
+            "purpose": "This file serves as the entry point for a React application, rendering the main App component into the DOM.",
+            "key_types": [
+              "React",
+              "ReactDOM"
+            ],
+            "functions": [
+              "ReactDOM.render",
+              "reportWebVitals"
+            ],
+            "imports": [
+              "React",
+              "ReactDOM",
+              "./index.css",
+              "./App",
+              "./reportWebVitals"
+            ],
+            "side_effects": [
+              "Renders the App component to the DOM",
+              "Measures performance metrics"
+            ],
+            "complexity": "low"
+          },
+          "src/reportWebVitals.js": {
+            "language": "JavaScript",
+            "purpose": "This file exports a function that reports web vitals metrics.",
+            "key_types": [
+              "Function"
+            ],
+            "functions": [
+              "reportWebVitals"
+            ],
+            "imports": [
+              "web-vitals"
+            ],
+            "side_effects": [
+              "Dynamically imports the web-vitals library and calls its functions."
+            ],
+            "complexity": "medium"
+          },
+          "src/setupTests.js": {
+            "language": "JavaScript",
+            "purpose": "Sets up custom Jest matchers for testing DOM nodes.",
+            "key_types": [],
+            "functions": [],
+            "imports": [
+              "@testing-library/jest-dom"
+            ],
+            "complexity": "low"
+          },
+          "src/style.css": {
+            "language": "CSS",
+            "purpose": "Defines styles for a web page, including layout, colors, and animations.",
+            "key_types": [
+              "CSS Variables",
+              "Classes",
+              "Media Queries"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "medium"
+          }
+        }
+      },
+      "src/components": {
+        "path": "src/components",
+        "purpose": "Contains reusable React components for the application, including navigation, footer, and visual effects.",
+        "languages": {
+          "JavaScript": 5
+        },
+        "key_modules": [
+          "Footer.js",
+          "Navbar.js",
+          "Particle.js",
+          "Pre.js",
+          "ScrollToTop.js"
+        ],
+        "dependencies": [
+          "react",
+          "react-bootstrap",
+          "react-router-dom",
+          "react-icons",
+          "react-tsparticles"
+        ],
+        "architecture": "Component-based architecture, utilizing functional components and hooks for state management and side effects.",
+        "file_summaries": {
+          "src/components/Footer.js": {
+            "language": "JavaScript",
+            "purpose": "Defines a Footer component for a React application that displays copyright information and social media links.",
+            "key_types": [
+              "Footer"
+            ],
+            "functions": [
+              "Footer"
+            ],
+            "imports": [
+              "React",
+              "Container",
+              "Row",
+              "Col",
+              "AiFillGithub",
+              "AiOutlineTwitter",
+              "AiFillInstagram",
+              "FaLinkedinIn"
+            ],
+            "side_effects": [
+              "None"
+            ],
+            "risks": [
+              "Potential for broken links if social media URLs change"
+            ],
+            "complexity": "low"
+          },
+          "src/components/Navbar.js": {
+            "language": "JavaScript",
+            "purpose": "This file defines a responsive navigation bar component for a React application.",
+            "key_types": [
+              "NavBar",
+              "Container",
+              "Nav",
+              "Button"
+            ],
+            "functions": [
+              "NavBar",
+              "scrollHandler"
+            ],
+            "imports": [
+              "React",
+              "useState",
+              "react-bootstrap/Navbar",
+              "react-bootstrap/Nav",
+              "react-bootstrap/Container",
+              "react-router-dom",
+              "react-icons/cg",
+              "react-icons/im",
+              "react-icons/ai"
+            ],
+            "side_effects": [
+              "Adds a scroll event listener to the window"
+            ],
+            "complexity": "medium"
+          },
+          "src/components/Particle.js": {
+            "language": "JavaScript",
+            "purpose": "This file defines a React component that renders particle effects using the react-tsparticles library.",
+            "key_types": [
+              "Particle"
+            ],
+            "functions": [
+              "Particle"
+            ],
+            "imports": [
+              "React",
+              "react-tsparticles"
+            ],
+            "side_effects": [
+              "Renders a visual particle effect on the screen."
+            ],
+            "complexity": "medium"
+          },
+          "src/components/Pre.js": {
+            "language": "JavaScript",
+            "purpose": "Defines a React component that conditionally renders a preloader div based on props.",
+            "key_types": [
+              "React.Component"
+            ],
+            "functions": [
+              "Pre"
+            ],
+            "imports": [
+              "React"
+            ],
+            "complexity": "low"
+          },
+          "src/components/ScrollToTop.js": {
+            "language": "JavaScript",
+            "purpose": "A React component that scrolls the window to the top when the route changes.",
+            "key_types": [
+              "ScrollToTop"
+            ],
+            "functions": [
+              "ScrollToTop"
+            ],
+            "imports": [
+              "useEffect",
+              "useLocation"
+            ],
+            "side_effects": [
+              "Scrolls the window to the top on route change"
+            ],
+            "complexity": "low"
+          }
+        }
+      },
+      "src/components/About": {
+        "path": "src/components/About",
+        "purpose": "Contains components that display information about an individual, including their skills, tech stack, and GitHub contributions.",
+        "languages": {
+          "JavaScript": 5
+        },
+        "key_modules": [
+          "About.js",
+          "AboutCard.js",
+          "Github.js",
+          "Techstack.js",
+          "Toolstack.js"
+        ],
+        "dependencies": [
+          "react",
+          "react-bootstrap",
+          "react-icons/im",
+          "react-github-calendar"
+        ],
+        "architecture": "Component-based architecture using React, with a focus on reusable UI components.",
+        "file_summaries": {
+          "src/components/About/About.js": {
+            "language": "JavaScript",
+            "purpose": "Defines the About component for a personal portfolio page, displaying information about the individual and their skills.",
+            "key_types": [
+              "Component",
+              "Container",
+              "Row",
+              "Col"
+            ],
+            "functions": [
+              "About"
+            ],
+            "imports": [
+              "React",
+              "Container",
+              "Row",
+              "Col from react-bootstrap",
+              "Particle",
+              "Github",
+              "Techstack",
+              "Aboutcard",
+              "laptopImg",
+              "Toolstack"
+            ],
+            "side_effects": [
+              "Renders UI components",
+              "Displays images and information"
+            ],
+            "complexity": "medium"
+          },
+          "src/components/About/AboutCard.js": {
+            "language": "JavaScript",
+            "purpose": "A React component that displays a personal introduction and activities of an individual.",
+            "key_types": [
+              "React.Component",
+              "Card"
+            ],
+            "functions": [
+              "AboutCard"
+            ],
+            "imports": [
+              "React",
+              "react-bootstrap/Card",
+              "react-icons/im"
+            ],
+            "complexity": "low"
+          },
+          "src/components/About/Github.js": {
+            "language": "JavaScript",
+            "purpose": "This file defines a React component that displays a GitHub contribution calendar.",
+            "key_types": [
+              "React.Component",
+              "Row"
+            ],
+            "functions": [
+              "Github"
+            ],
+            "imports": [
+              "React",
+              "react-github-calendar",
+              "react-bootstrap"
+            ],
+            "side_effects": [
+              "Renders a visual representation of GitHub contributions"
+            ],
+            "complexity": "low"
+          },
+          "src/components/About/Techstack.js": {
+            "language": "JavaScript",
+            "purpose": "This file defines a React component that displays a tech stack using icons.",
+            "key_types": [
+              "Techstack"
+            ],
+            "functions": [
+              "Techstack"
+            ],
+            "imports": [
+              "React",
+              "Col",
+              "Row",
+              "CgCPlusPlus",
+              "DiJavascript1",
+              "DiReact",
+              "DiNodejs",
+              "DiMongodb",
+              "DiPython",
+              "DiGit",
+              "DiJava",
+              "SiRedis",
+              "SiFirebase",
+              "SiNextdotjs",
+              "SiSolidity",
+              "SiPostgresql",
+              "TbBrandGolang"
+            ],
+            "complexity": "low"
+          },
+          "src/components/About/Toolstack.js": {
+            "language": "JavaScript",
+            "purpose": "This file defines a React component that displays a toolstack with various technology icons.",
+            "key_types": [
+              "React.Component"
+            ],
+            "functions": [
+              "Toolstack"
+            ],
+            "imports": [
+              "React",
+              "react-bootstrap",
+              "react-icons/si"
+            ],
+            "complexity": "low"
+          }
+        }
+      },
+      "src/components/Home": {
+        "path": "src/components/Home",
+        "purpose": "This folder/module is responsible for defining the home section of a web application, including components for personal introduction, social media links, and a typewriter effect.",
+        "languages": {
+          "JavaScript": 3
+        },
+        "key_modules": [
+          "Home.js",
+          "Home2.js",
+          "Type.js"
+        ],
+        "dependencies": [
+          "React",
+          "react-bootstrap",
+          "typewriter-effect"
+        ],
+        "architecture": "The folder follows a component-based architecture typical of React applications, where each file represents a distinct UI component.",
+        "file_summaries": {
+          "src/components/Home/Home.js": {
+            "language": "JavaScript",
+            "purpose": "This file defines a React component that serves as the home section of a web application.",
+            "key_types": [
+              "Home",
+              "Container",
+              "Row",
+              "Col"
+            ],
+            "functions": [
+              "Home"
+            ],
+            "imports": [
+              "React",
+              "react-bootstrap",
+              "../../Assets/home-main.svg",
+              "../Particle",
+              "./Home2",
+              "./Type"
+            ],
+            "side_effects": [
+              "Renders a visual component on the web page"
+            ],
+            "complexity": "medium"
+          },
+          "src/components/Home/Home2.js": {
+            "language": "JavaScript",
+            "purpose": "This file defines a React component that displays a personal introduction and social media links.",
+            "key_types": [
+              "Container",
+              "Row",
+              "Col",
+              "Tilt"
+            ],
+            "functions": [
+              "Home2"
+            ],
+            "imports": [
+              "React",
+              "Container",
+              "Row",
+              "Col",
+              "myImg",
+              "Tilt",
+              "AiFillGithub",
+              "AiOutlineTwitter",
+              "AiFillInstagram",
+              "FaLinkedinIn"
+            ],
+            "side_effects": [
+              "Renders a user interface with social media links and an avatar image."
+            ],
+            "risks": [
+              "Potential for XSS if user input is not sanitized in social media links."
+            ],
+            "complexity": "medium"
+          },
+          "src/components/Home/Type.js": {
+            "language": "JavaScript",
+            "purpose": "This file defines a React component that displays a typewriter effect with various strings.",
+            "key_types": [
+              "React.Component"
+            ],
+            "functions": [
+              "Type"
+            ],
+            "imports": [
+              "React",
+              "typewriter-effect"
+            ],
+            "side_effects": [
+              "Renders a typewriter effect on the screen"
+            ],
+            "complexity": "low"
+          }
+        }
+      },
+      "src/components/Projects": {
+        "path": "src/components/Projects",
+        "purpose": "This folder/module is responsible for displaying project-related information through React components.",
+        "languages": {
+          "JavaScript": 2
+        },
+        "key_modules": [
+          "ProjectCards.js",
+          "Projects.js"
+        ],
+        "dependencies": [
+          "react",
+          "react-bootstrap",
+          "react-icons"
+        ],
+        "architecture": "The folder follows a component-based architecture typical of React applications, where each file represents a distinct UI component.",
+        "file_summaries": {
+          "src/components/Projects/ProjectCards.js": {
+            "language": "JavaScript",
+            "purpose": "This file defines a React component that displays project cards with information and links.",
+            "key_types": [
+              "ProjectCards"
+            ],
+            "functions": [
+              "ProjectCards"
+            ],
+            "imports": [
+              "React",
+              "react-bootstrap/Card",
+              "react-bootstrap/Button",
+              "react-icons/cg",
+              "react-icons/bs"
+            ],
+            "side_effects": [
+              "Renders UI components",
+              "Opens links in new tabs"
+            ],
+            "risks": [
+              "Potential for XSS if props contain untrusted data"
+            ],
+            "complexity": "medium"
+          },
+          "src/components/Projects/Projects.js": {
+            "language": "JavaScript",
+            "purpose": "This file defines a React component that displays a collection of project cards showcasing recent works.",
+            "key_types": [
+              "Container",
+              "Row",
+              "Col",
+              "ProjectCard"
+            ],
+            "functions": [
+              "Projects"
+            ],
+            "imports": [
+              "React",
+              "Container",
+              "Row",
+              "Col",
+              "ProjectCard",
+              "Particle",
+              "leaf",
+              "emotion",
+              "editor",
+              "chatify",
+              "suicide",
+              "bitsOfCode"
+            ],
+            "side_effects": [
+              "Renders a UI component displaying project information"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "src/components/Resume": {
+        "path": "src/components/Resume",
+        "purpose": "This folder/module is responsible for displaying a resume and providing functionality to download it as a PDF.",
+        "languages": {
+          "JavaScript": 1
+        },
+        "key_modules": [
+          "ResumeNew.js"
+        ],
+        "dependencies": [
+          "react",
+          "react-bootstrap",
+          "Particle",
+          "react-icons/ai",
+          "react-pdf"
+        ],
+        "architecture": "The folder follows a component-based architecture typical in React applications, encapsulating the resume display logic within a single component.",
+        "file_summaries": {
+          "src/components/Resume/ResumeNew.js": {
+            "language": "JavaScript",
+            "purpose": "A React component that displays a resume and allows users to download it as a PDF.",
+            "key_types": [
+              "ResumeNew",
+              "Container",
+              "Row",
+              "Button",
+              "Document",
+              "Page"
+            ],
+            "functions": [
+              "ResumeNew",
+              "useState",
+              "useEffect"
+            ],
+            "imports": [
+              "React",
+              "react-bootstrap",
+              "Particle",
+              "react-icons/ai",
+              "react-pdf"
+            ],
+            "side_effects": [
+              "Sets the width of the window on component mount"
+            ],
+            "complexity": "medium"
+          }
+        }
+      }
+    }
+  }
+}

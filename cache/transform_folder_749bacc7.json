@@ -1,9 +1,9 @@
 {
-  "content_hash": "bae4eeefd5404e655f5ad70b0c852925",
-  "timestamp": "2025-09-24T15:47:04.768676+07:00",
+  "content_hash": "7a729c55d8d0145a800f659675e28029",
+  "timestamp": "2025-09-24T16:46:12.698955+07:00",
   "result": {
     "path": "ext/transform",
-    "purpose": "This folder/module is responsible for writing extensions that apply transformations to HCL (HashiCorp Configuration Language) bodies.",
+    "purpose": "This folder/module is responsible for writing extensions that apply transforms to bodies, specifically for HCL (HashiCorp Configuration Language).",
     "languages": {
       "Go": 5
     },
@@ -16,12 +16,12 @@
     ],
     "dependencies": [
       "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hcltest",
       "github.com/zclconf/go-cty/cty",
       "testing",
-      "reflect",
-      "github.com/hashicorp/hcl/v2/hcltest"
+      "reflect"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating transformation logic and error handling for HCL bodies, with clear separation of concerns through distinct files for different functionalities.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to transformations of HCL bodies, with clear separation of concerns through distinct files for core logic, error handling, and testing.",
     "file_summaries": {
       "ext/transform/doc.go": {
         "language": "Go",
@@ -29,12 +29,9 @@
         "key_types": [
           "transformer"
         ],
-        "functions": [
-          "ApplyTransform",
-          "RecursiveTransform"
-        ],
+        "functions": [],
         "imports": [],
-        "complexity": "medium"
+        "complexity": "low"
       },
       "ext/transform/error.go": {
         "language": "Go",
@@ -63,16 +60,19 @@
       },
       "ext/transform/transform.go": {
         "language": "Go",
-        "purpose": "This file provides transformation functions for HCL (HashiCorp Configuration Language) bodies, allowing for the application of transformations to nested blocks.",
+        "purpose": "This file provides transformation functions for HCL (HashiCorp Configuration Language) bodies, allowing for nested transformations of blocks.",
         "key_types": [
-          "hcl.Body",
           "Transformer",
-          "deepWrapper"
+          "deepWrapper",
+          "hcl.Body",
+          "hcl.BodyContent"
         ],
         "functions": [
           "Shallow",
           "Deep",
           "transformContent",
+          "Content",
+          "PartialContent",
           "JustAttributes",
           "MissingItemRange"
         ],
@@ -81,6 +81,9 @@
         ],
         "side_effects": [
           "Modifies the structure of HCL bodies by applying transformations recursively."
+        ],
+        "risks": [
+          "Potential for infinite recursion if transformers are not designed carefully."
         ],
         "complexity": "medium"
       },
@@ -97,7 +100,10 @@
         "functions": [
           "TestDeep",
           "Deep",
-          "BodyWithDiagnostics"
+          "BodyWithDiagnostics",
+          "MockBody",
+          "MockAttrs",
+          "MockExprLiteral"
         ],
         "imports": [
           "testing",
@@ -107,7 +113,7 @@
           "github.com/zclconf/go-cty/cty"
         ],
         "side_effects": [
-          "Logs diagnostic messages if there are unexpected diagnostics."
+          "Logs diagnostics if unexpected conditions are met during tests."
         ],
         "complexity": "medium"
       },

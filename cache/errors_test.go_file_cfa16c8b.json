@@ -1,0 +1,29 @@
+{
+  "content_hash": "abda06a136eb136909737cb9fa6569b0",
+  "timestamp": "2025-09-24T17:06:10.348086+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for error handling in the gin framework",
+    "key_types": [
+      "Error",
+      "errorMsgs",
+      "H",
+      "customError",
+      "TestErr"
+    ],
+    "functions": [
+      "TestError",
+      "TestErrorSlice",
+      "TestErrorUnwrap"
+    ],
+    "imports": [
+      "errors",
+      "fmt",
+      "testing",
+      "github.com/gin-gonic/gin/codec/json",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "complexity": "medium"
+  }
+}

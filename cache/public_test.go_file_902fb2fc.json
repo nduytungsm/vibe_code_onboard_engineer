@@ -1,0 +1,32 @@
+{
+  "content_hash": "aa131c97fd0df10aabd23ef81a7e33ef",
+  "timestamp": "2025-09-24T17:00:23.439448+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for decoding HCL configurations using various specifications.",
+    "key_types": [
+      "Spec",
+      "ObjectSpec",
+      "AttrSpec",
+      "DefaultSpec",
+      "LiteralSpec",
+      "BlockSpec",
+      "BlockAttrsSpec",
+      "BlockListSpec",
+      "BlockSetSpec",
+      "BlockMapSpec"
+    ],
+    "functions": [
+      "TestDecode"
+    ],
+    "imports": [
+      "fmt",
+      "reflect",
+      "testing",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

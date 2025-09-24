@@ -1,0 +1,28 @@
+{
+  "content_hash": "fe658474e66800e90ab98c78693b4d5c",
+  "timestamp": "2025-09-24T17:06:34.569277+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for rendering MsgPack content type in HTTP responses",
+    "key_types": [
+      "MsgPack",
+      "http.ResponseWriter",
+      "httptest.ResponseRecorder"
+    ],
+    "functions": [
+      "TestRenderMsgPack"
+    ],
+    "imports": [
+      "bytes",
+      "net/http/httptest",
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/ugorji/go/codec"
+    ],
+    "side_effects": [
+      "Writes HTTP response headers and body"
+    ],
+    "complexity": "medium"
+  }
+}

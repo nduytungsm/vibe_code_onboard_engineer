@@ -1,0 +1,34 @@
+{
+  "content_hash": "61f84a0dcdf3e4f8342d72f2092ba40f",
+  "timestamp": "2025-09-24T16:40:05.544804+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for parsing HCL traversals in the HCL syntax package.",
+    "key_types": [
+      "hcl.Traversal",
+      "hcl.TraverseRoot",
+      "hcl.TraverseAttr",
+      "hcl.TraverseIndex",
+      "hcl.TraverseSplat",
+      "hcl.Range",
+      "hcl.Pos"
+    ],
+    "functions": [
+      "TestParseTraversalAbs",
+      "ParseTraversalAbs",
+      "ParseTraversalPartial"
+    ],
+    "imports": [
+      "fmt",
+      "testing",
+      "github.com/go-test/deep",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Logs diagnostic errors if the number of diagnostics does not match expected count.",
+      "Skips tests for unsupported syntax."
+    ],
+    "complexity": "medium"
+  }
+}

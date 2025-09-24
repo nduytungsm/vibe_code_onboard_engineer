@@ -1,0 +1,38 @@
+{
+  "content_hash": "55890679bac6b4666ecee38ea95df232",
+  "timestamp": "2025-09-24T16:59:19.882869+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for running unit tests, copyright checks, and linting for a Go project.",
+    "key_types": [
+      "job",
+      "step"
+    ],
+    "functions": [
+      "checkout",
+      "setup-go",
+      "go test",
+      "upload-artifact",
+      "make copyrightcheck",
+      "make vetcheck",
+      "make fmtcheck",
+      "golangci-lint"
+    ],
+    "imports": [
+      "actions/checkout",
+      "actions/setup-go",
+      "actions/upload-artifact",
+      "golangci/golangci-lint-action"
+    ],
+    "side_effects": [
+      "Modifies git configuration",
+      "Fetches source code from the repository",
+      "Installs Go dependencies"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information in logs",
+      "Dependency on external actions may introduce vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

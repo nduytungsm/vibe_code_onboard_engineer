@@ -1,0 +1,27 @@
+{
+  "content_hash": "7257d2124f2116f2691a7d04eabd9251",
+  "timestamp": "2025-09-24T16:40:34.188773+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality to format HCL (HashiCorp Configuration Language) tokens for canonical representation.",
+    "key_types": [
+      "Tokens",
+      "formatLine",
+      "Token"
+    ],
+    "functions": [
+      "format",
+      "formatIndent",
+      "formatSpaces",
+      "formatCells",
+      "spaceAfterToken"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2/hclsyntax"
+    ],
+    "side_effects": [
+      "Modifies the whitespace attributes of tokens in-place."
+    ],
+    "complexity": "medium"
+  }
+}

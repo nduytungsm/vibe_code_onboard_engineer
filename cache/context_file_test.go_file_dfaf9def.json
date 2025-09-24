@@ -1,0 +1,27 @@
+{
+  "content_hash": "4a9558e91934b5487a9ed63e80054b4c",
+  "timestamp": "2025-09-24T17:06:01.766692+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the Context.File() method to verify its behavior when serving existing and non-existent files.",
+    "key_types": [
+      "Context",
+      "httptest.ResponseRecorder",
+      "http.Request"
+    ],
+    "functions": [
+      "TestContextFileSimple",
+      "TestContextFileNotFound"
+    ],
+    "imports": [
+      "net/http",
+      "net/http/httptest",
+      "testing",
+      "github.com/stretchr/testify/assert"
+    ],
+    "side_effects": [
+      "Writes response to the ResponseRecorder"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "content_hash": "477a217fbecbf922b4a3fc7651beffa7",
+  "timestamp": "2025-09-24T17:06:17.789811+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements a custom file system that wraps an existing http.FileSystem.",
+    "key_types": [
+      "FileSystem"
+    ],
+    "functions": [
+      "Open"
+    ],
+    "imports": [
+      "io/fs",
+      "net/http"
+    ],
+    "complexity": "low"
+  }
+}

@@ -163,11 +163,17 @@ function App() {
 
   // Helper function to get analysis data safely
   const getAnalysisData = () => {
-    if (!analysisResults || !analysisResults.results) {
+    if (!analysisResults) {
       return null;
     }
     
-    const results = analysisResults.results;
+    // Handle both streaming API (direct data) and regular API (wrapped in results)
+    const results = analysisResults.results || analysisResults;
+    
+    if (!results) {
+      return null;
+    }
+    
     return {
       projectSummary: results.project_summary || {},
       projectType: results.project_type || {},
@@ -1195,6 +1201,260 @@ function DatabaseTab({ getAnalysisData }) {
           )}
         </CardContent>
       </Card>
+    </div>
+  );
+}
+
+// Relationships Tab Component
+function RelationshipsTab({ getAnalysisData }) {
+  const data = getAnalysisData();
+  const relationships = data?.relationships || [];
+  
+  if (!data) {
+    return (
+      <div className="text-center py-12">
+        <AlertCircle className="h-12 w-12 mx-auto mb-4 opacity-50" />
+        <p style={{ color: "hsl(var(--slate-500))" }}>No data available</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Link className="h-5 w-5" />
+            Service Relationships
+          </CardTitle>
+          <CardDescription>
+            Connections and dependencies between services
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          {relationships.length > 0 ? (
+            <div className="space-y-4">
+              {relationships.map((rel, index) => (
+                <div key={index} className="flex items-center justify-between p-4 rounded-lg border">
+                  <div>
+                    <div className="font-medium">{rel.from}</div>
+                    <div className="text-sm text-muted-foreground">{rel.type}</div>
+                  </div>
+                  <div className="text-sm">→</div>
+                  <div>
+                    <div className="font-medium">{rel.to}</div>
+                    <div className="text-sm text-muted-foreground">{rel.description}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8 text-muted-foreground">
+              <Link className="h-12 w-12 mx-auto mb-4 opacity-50" />
+              <p>No service relationships detected</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+// Files Tab Component
+function FilesTab({ getAnalysisData }) {
+  const data = getAnalysisData();
+  const fileSummaries = data?.fileSummaries || {};
+  const fileEntries = Object.entries(fileSummaries);
+  
+  if (!data) {
+    return (
+      <div className="text-center py-12">
+        <AlertCircle className="h-12 w-12 mx-auto mb-4 opacity-50" />
+        <p style={{ color: "hsl(var(--slate-500))" }}>No data available</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FileText className="h-5 w-5" />
+            File Analysis
+          </CardTitle>
+          <CardDescription>
+            Detailed analysis of {fileEntries.length} files
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          {fileEntries.length > 0 ? (
+            <div className="space-y-4">
+              {fileEntries.map(([fileName, fileInfo]) => (
+                <Card key={fileName}>
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-sm font-medium">{fileName}</CardTitle>
+                      <Badge variant="secondary">{fileInfo.language}</Badge>
+                    </div>
+                    <CardDescription className="text-sm">
+                      {fileInfo.purpose}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <div className="space-y-3">
+                      {fileInfo.functions && fileInfo.functions.length > 0 && (
+                        <div>
+                          <div className="text-sm font-medium mb-2">Functions</div>
+                          <div className="flex flex-wrap gap-1">
+                            {fileInfo.functions.slice(0, 5).map((func, i) => (
+                              <Badge key={i} variant="outline" className="text-xs">
+                                {func}
+                              </Badge>
+                            ))}
+                            {fileInfo.functions.length > 5 && (
+                              <Badge variant="outline" className="text-xs">
+                                +{fileInfo.functions.length - 5} more
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                      {fileInfo.imports && fileInfo.imports.length > 0 && (
+                        <div>
+                          <div className="text-sm font-medium mb-2">Imports</div>
+                          <div className="flex flex-wrap gap-1">
+                            {fileInfo.imports.slice(0, 3).map((imp, i) => (
+                              <Badge key={i} variant="outline" className="text-xs">
+                                {imp}
+                              </Badge>
+                            ))}
+                            {fileInfo.imports.length > 3 && (
+                              <Badge variant="outline" className="text-xs">
+                                +{fileInfo.imports.length - 3} more
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                      <div className="flex justify-between text-xs text-muted-foreground">
+                        <span>Complexity: {fileInfo.complexity}</span>
+                        <span>Language: {fileInfo.language}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8 text-muted-foreground">
+              <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
+              <p>No file analysis available</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+// Analysis Tab Component
+function AnalysisTab({ getAnalysisData }) {
+  const data = getAnalysisData();
+  const projectSummary = data?.projectSummary || {};
+  const folderSummaries = data?.folderSummaries || {};
+  const folderEntries = Object.entries(folderSummaries);
+  
+  if (!data) {
+    return (
+      <div className="text-center py-12">
+        <AlertCircle className="h-12 w-12 mx-auto mb-4 opacity-50" />
+        <p style={{ color: "hsl(var(--slate-500))" }}>No data available</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <BarChart3 className="h-5 w-5" />
+            Project Analysis
+          </CardTitle>
+          <CardDescription>
+            Comprehensive analysis and insights
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-6">
+            {projectSummary.purpose && (
+              <div>
+                <h3 className="font-medium mb-2">Purpose</h3>
+                <p className="text-sm text-muted-foreground">{projectSummary.purpose}</p>
+              </div>
+            )}
+            
+            {projectSummary.architecture && (
+              <div>
+                <h3 className="font-medium mb-2">Architecture</h3>
+                <Badge variant="secondary">{projectSummary.architecture}</Badge>
+              </div>
+            )}
+            
+            {projectSummary.languages && Object.keys(projectSummary.languages).length > 0 && (
+              <div>
+                <h3 className="font-medium mb-2">Languages</h3>
+                <div className="flex flex-wrap gap-2">
+                  {Object.entries(projectSummary.languages).map(([lang, count]) => (
+                    <Badge key={lang} variant="outline">
+                      {lang} ({count})
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+      
+      {folderEntries.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Folder Analysis</CardTitle>
+            <CardDescription>
+              Analysis of {folderEntries.length} folders
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {folderEntries.map(([folderPath, folderInfo]) => (
+                <Card key={folderPath}>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-sm font-medium">{folderPath}</CardTitle>
+                    <CardDescription className="text-sm">
+                      {folderInfo.purpose}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <div className="space-y-2">
+                      {folderInfo.languages && (
+                        <div className="flex flex-wrap gap-1">
+                          {Object.entries(folderInfo.languages).map(([lang, count]) => (
+                            <Badge key={lang} variant="outline" className="text-xs">
+                              {lang} ({count})
+                            </Badge>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }

@@ -1,0 +1,34 @@
+{
+  "content_hash": "e41ae25836107c395dec9e3f6028e9fe",
+  "timestamp": "2025-09-24T17:01:27.564737+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a command-line tool for running HCL (HashiCorp Configuration Language) tests.",
+    "key_types": [
+      "Runner",
+      "TestFile",
+      "hcl.Diagnostics"
+    ],
+    "functions": [
+      "main",
+      "realMain"
+    ],
+    "imports": [
+      "fmt",
+      "os",
+      "os/exec",
+      "golang.org/x/term",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclparse"
+    ],
+    "side_effects": [
+      "Writes to standard output and standard error",
+      "Executes external commands"
+    ],
+    "risks": [
+      "Potential command injection via exec.LookPath",
+      "Error handling may expose sensitive information"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "content_hash": "178a9c0af06697e6be1af3214e285c6d",
+  "timestamp": "2025-09-24T17:16:26.988944+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an EvalContext for evaluating expressions with variables and functions.",
+    "key_types": [
+      "EvalContext"
+    ],
+    "functions": [
+      "NewChild",
+      "Parent"
+    ],
+    "imports": [
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/function"
+    ],
+    "complexity": "medium"
+  }
+}

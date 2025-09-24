@@ -1,0 +1,19 @@
+{
+  "content_hash": "2a58042dcf2bbd4f8c571207c69c3ea5",
+  "timestamp": "2025-09-24T17:01:36.465541+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Extracts expressions from a static list construct or returns error diagnostics if not applicable.",
+    "key_types": [
+      "Expression",
+      "Diagnostics",
+      "Diagnostic"
+    ],
+    "functions": [
+      "ExprList",
+      "UnwrapExpressionUntil"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

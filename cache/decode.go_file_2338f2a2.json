@@ -1,0 +1,31 @@
+{
+  "content_hash": "661ffd233078faa2d513f3d578025188",
+  "timestamp": "2025-09-24T16:39:17.480846+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a function to decode user-defined functions from HCL (HashiCorp Configuration Language) bodies.",
+    "key_types": [
+      "hcl.Body",
+      "hcl.BodySchema",
+      "hcl.Diagnostics",
+      "function.Function",
+      "cty.Value",
+      "cty.Type"
+    ],
+    "functions": [
+      "decodeUserFunctions"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/function"
+    ],
+    "side_effects": [
+      "Modifies the context for function execution based on the provided parameters."
+    ],
+    "risks": [
+      "Potential for runtime errors if the HCL body does not conform to expected schemas."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "content_hash": "2f717775d17bf3a581acf2903353545f",
+  "timestamp": "2025-09-24T17:32:59.696434+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the web app manifest for a React application.",
+    "key_types": [
+      "object"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "content_hash": "081247a20c8a626c9304eeeab2392f7b",
+  "timestamp": "2025-09-24T16:57:44.589201+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the expandBody struct and methods to handle dynamic blocks in HCL.",
+    "key_types": [
+      "expandBody",
+      "hcl.Body",
+      "hcl.BodyContent",
+      "hcl.BodySchema",
+      "hcl.BlockHeaderSchema",
+      "hcl.Attributes",
+      "hcl.Diagnostics"
+    ],
+    "functions": [
+      "Content",
+      "PartialContent",
+      "extendSchema",
+      "prepareAttributes",
+      "expandBlocks",
+      "expandChild",
+      "JustAttributes",
+      "MissingItemRange"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "content_hash": "0b09cb057c56487e738f8afd42bbbeed",
-  "timestamp": "2025-09-24T15:33:14.711644+07:00",
+  "content_hash": "a2635ef7345357637224faa3fbe5e038",
+  "timestamp": "2025-09-24T16:29:30.494957+07:00",
   "result": {
     "path": "pkg/releasecandidate",
-    "purpose": "Responsible for managing feature configurations and whitelist checks for mobile wallet candidates.",
+    "purpose": "Responsible for managing feature configurations and whitelist devices for mobile wallet candidates.",
     "languages": {
       "Go": 2
     },
@@ -19,11 +19,11 @@
       "github.com/go-redsync/redsync/v4/redis/goredis/v9",
       "github.com/rs/zerolog/log"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating feature management logic and state handling using Redis.",
+    "architecture": "The folder follows a service-oriented architecture pattern, utilizing Redis for state management and providing a clear interface for feature access control.",
     "file_summaries": {
       "pkg/releasecandidate/init.go": {
         "language": "Go",
-        "purpose": "Defines a service interface for managing feature configurations and whitelist checks.",
+        "purpose": "Defines a service interface for managing feature configurations and whitelist devices.",
         "key_types": [
           "Service",
           "CheckAllowFeatureRequest",
@@ -78,12 +78,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/device"
         ],
         "side_effects": [
-          "Modifies Redis state for feature access and whitelist management.",
+          "Modifies Redis state for feature access and whitelists.",
           "Logs information and errors during execution."
         ],
         "risks": [
-          "Potential race conditions when accessing shared resources in Redis.",
-          "Improper handling of Redis errors may lead to incorrect feature access decisions."
+          "Potential race conditions when accessing shared resources.",
+          "Improper handling of Redis errors may lead to incorrect feature access."
         ],
         "complexity": "medium"
       }

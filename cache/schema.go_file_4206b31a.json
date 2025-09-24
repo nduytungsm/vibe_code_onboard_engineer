@@ -1,0 +1,18 @@
+{
+  "content_hash": "1db1fbaa59196352bbb4f0da7bbdecd7",
+  "timestamp": "2025-09-24T17:03:50.338593+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines schemas for Terraform configuration files using HCL.",
+    "key_types": [
+      "hcl.BodySchema",
+      "hcl.BlockHeaderSchema",
+      "hcl.AttributeSchema"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

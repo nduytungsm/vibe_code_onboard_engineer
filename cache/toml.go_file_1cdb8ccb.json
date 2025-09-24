@@ -1,0 +1,24 @@
+{
+  "content_hash": "01c93fc21271861865e6fac3bc268390",
+  "timestamp": "2025-09-24T17:27:27.787308+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality for binding TOML data to Go objects in HTTP requests.",
+    "key_types": [
+      "tomlBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "BindBody",
+      "decodeToml"
+    ],
+    "imports": [
+      "bytes",
+      "io",
+      "net/http",
+      "github.com/pelletier/go-toml/v2"
+    ],
+    "complexity": "medium"
+  }
+}

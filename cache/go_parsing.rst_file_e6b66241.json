@@ -1,0 +1,31 @@
+{
+  "content_hash": "3f5b6592a8f11a87d4cc61e04e45ba88",
+  "timestamp": "2025-09-24T16:58:27.785104+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file describes how to parse HCL input using the hclparse package.",
+    "key_types": [
+      "hclparse.Parser",
+      "hcl.File",
+      "hcl.Diagnostics"
+    ],
+    "functions": [
+      "NewParser",
+      "ParseHCL",
+      "ParseHCLFile",
+      "ParseJSON",
+      "ParseJSONFile"
+    ],
+    "imports": [
+      "hclparse",
+      "hcl"
+    ],
+    "side_effects": [
+      "Caching of parsed files for efficiency"
+    ],
+    "risks": [
+      "Potential for handling malformed HCL or JSON input leading to errors"
+    ],
+    "complexity": "medium"
+  }
+}

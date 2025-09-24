@@ -1,0 +1,36 @@
+{
+  "content_hash": "7e902b74fe2afe6ff701e998dcd024bc",
+  "timestamp": "2025-09-24T16:40:40.806456+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a parser for HCL (HashiCorp Configuration Language) that utilizes the HCL syntax library to parse configuration files and manage tokens.",
+    "key_types": [
+      "File",
+      "inputTokens",
+      "Body",
+      "Attribute",
+      "Block"
+    ],
+    "functions": [
+      "parse",
+      "parseBody",
+      "parseBodyItem",
+      "parseAttribute",
+      "parseBlock"
+    ],
+    "imports": [
+      "fmt",
+      "sort",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Modifies the structure of the parsed HCL configuration based on the input tokens."
+    ],
+    "risks": [
+      "Potential for panic if the input does not conform to expected formats."
+    ],
+    "complexity": "medium"
+  }
+}

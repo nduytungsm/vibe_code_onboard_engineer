@@ -1,0 +1,14 @@
+{
+  "content_hash": "f45f90fe367b04fedd9ab6965c3c5001",
+  "timestamp": "2025-09-24T17:03:59.693152+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines a Terraform module configuration with a source reference.",
+    "key_types": [
+      "module"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

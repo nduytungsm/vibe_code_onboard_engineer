@@ -1,0 +1,14 @@
+{
+  "content_hash": "1a77571e1a8cf36018a41bcedf60db75",
+  "timestamp": "2025-09-24T17:33:13.646526+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Sets up custom Jest matchers for testing DOM nodes.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "@testing-library/jest-dom"
+    ],
+    "complexity": "low"
+  }
+}

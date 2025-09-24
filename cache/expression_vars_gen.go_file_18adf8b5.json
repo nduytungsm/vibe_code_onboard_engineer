@@ -1,0 +1,32 @@
+{
+  "content_hash": "da3775e15b37cbe816edabb81f8745b0",
+  "timestamp": "2025-09-24T16:39:55.719911+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates the 'Variables' method for Expression implementations in the package.",
+    "key_types": [
+      "ast.FuncDecl",
+      "ast.SelectorExpr",
+      "ast.Ident"
+    ],
+    "functions": [
+      "main"
+    ],
+    "imports": [
+      "fmt",
+      "go/ast",
+      "go/parser",
+      "go/token",
+      "os",
+      "sort",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Writes to the file 'expression_vars.go'"
+    ],
+    "risks": [
+      "Potential file overwrite if not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

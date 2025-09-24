@@ -1,0 +1,47 @@
+{
+  "content_hash": "142a75e2fd3bb3530e20e9acdc1bd564",
+  "timestamp": "2025-09-24T16:38:44.609683+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a test runner for HCL specifications, executing tests and reporting diagnostics.",
+    "key_types": [
+      "Runner",
+      "hcl.Diagnostics",
+      "hcl.File",
+      "TestFile"
+    ],
+    "functions": [
+      "Run",
+      "runDir",
+      "runTest",
+      "runTestInput",
+      "hcldecTransform"
+    ],
+    "imports": [
+      "bytes",
+      "encoding/json",
+      "fmt",
+      "os",
+      "os/exec",
+      "path/filepath",
+      "sort",
+      "strings",
+      "github.com/zclconf/go-cty-debug/ctydebug",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/convert",
+      "github.com/zclconf/go-cty/cty/json",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/ext/typeexpr",
+      "github.com/hashicorp/hcl/v2/hclparse"
+    ],
+    "side_effects": [
+      "Reads files from the filesystem",
+      "Executes external commands"
+    ],
+    "risks": [
+      "Potential command injection if input is not sanitized",
+      "File read errors may lead to unhandled exceptions"
+    ],
+    "complexity": "medium"
+  }
+}

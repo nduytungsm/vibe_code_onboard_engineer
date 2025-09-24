@@ -1,0 +1,54 @@
+{
+  "content_hash": "34a23d1f0082ef58b5e6c0ddd02593a2",
+  "timestamp": "2025-09-24T16:36:45.420198+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for mapping form data to Go struct fields",
+    "key_types": [
+      "struct",
+      "int",
+      "string",
+      "time.Time",
+      "time.Duration",
+      "multipart.FileHeader"
+    ],
+    "functions": [
+      "TestMappingBaseTypes",
+      "TestMappingDefault",
+      "TestMappingSkipField",
+      "TestMappingIgnoreField",
+      "TestMappingUnexportedField",
+      "TestMappingPrivateField",
+      "TestMappingUnknownFieldType",
+      "TestMappingURI",
+      "TestMappingForm",
+      "TestMappingFormFieldNotSent",
+      "TestMappingFormWithEmptyToDefault",
+      "TestMapFormWithTag",
+      "TestMappingTime",
+      "TestMappingTimeDuration",
+      "TestMappingSlice",
+      "TestMappingArray",
+      "TestMappingCollectionFormat"
+    ],
+    "imports": [
+      "encoding/hex",
+      "errors",
+      "mime/multipart",
+      "reflect",
+      "strconv",
+      "strings",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies the state of the struct fields based on form data"
+    ],
+    "risks": [
+      "Potential for panic if the form data does not match expected types"
+    ],
+    "complexity": "medium"
+  }
+}

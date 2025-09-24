@@ -1,0 +1,32 @@
+{
+  "content_hash": "8ae2813072235676320042b46e1feb56",
+  "timestamp": "2025-09-24T16:40:25.351629+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides mock implementations for HCL (HashiCorp Configuration Language) bodies and expressions for testing purposes.",
+    "key_types": [
+      "mockBody",
+      "mockExprLiteral",
+      "mockExprVariable",
+      "mockExprTraversal",
+      "mockExprList"
+    ],
+    "functions": [
+      "MockBody",
+      "MockExprLiteral",
+      "MockExprVariable",
+      "MockExprTraversal",
+      "MockAttrs"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Panic if the given traversal string is not syntactically correct in MockExprTraversalSrc"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "content_hash": "ca734aefbe14af36f8fa0723d0f50637",
+  "timestamp": "2025-09-24T16:40:12.046797+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the scanStringLit function to validate string literal scanning behavior.",
+    "key_types": [
+      "struct",
+      "string",
+      "[]string"
+    ],
+    "functions": [
+      "TestScanStringLit",
+      "scanStringLit"
+    ],
+    "imports": [
+      "reflect",
+      "testing",
+      "github.com/davecgh/go-spew/spew"
+    ],
+    "complexity": "medium"
+  }
+}

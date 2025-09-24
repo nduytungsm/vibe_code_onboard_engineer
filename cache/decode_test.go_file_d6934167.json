@@ -1,0 +1,25 @@
+{
+  "content_hash": "04a27ac3abef3ad489dc2f47719f40d0",
+  "timestamp": "2025-09-24T16:58:13.634576+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for decoding user-defined functions in HCL (HashiCorp Configuration Language)",
+    "key_types": [
+      "struct",
+      "hcl.EvalContext",
+      "cty.Value"
+    ],
+    "functions": [
+      "TestDecodeUserFunctions",
+      "decodeUserFunctions"
+    ],
+    "imports": [
+      "fmt",
+      "testing",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

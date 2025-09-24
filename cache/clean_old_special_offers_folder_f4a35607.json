@@ -1,9 +1,9 @@
 {
-  "content_hash": "a2edbe4516c42239fbe75f75dfe0248e",
-  "timestamp": "2025-09-24T15:32:42.902612+07:00",
+  "content_hash": "777c10d1e8fca7584f89e0406c630d72",
+  "timestamp": "2025-09-24T16:30:57.871314+07:00",
   "result": {
     "path": "cmd/clean_old_special_offers",
-    "purpose": "Cleans old special offers from a database based on a specified configuration.",
+    "purpose": "Cleans old special offers from the database based on a specified time period.",
     "languages": {
       "Go": 1
     },
@@ -18,11 +18,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/config",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality to clean old special offers into a single executable module with dependencies on external libraries for database interaction and error tracking.",
+    "architecture": "The folder follows a command-line application architecture, focusing on a single responsibility of cleaning old offers, utilizing a main function to orchestrate database interactions and error tracking.",
     "file_summaries": {
       "cmd/clean_old_special_offers/main.go": {
         "language": "Go",
-        "purpose": "Cleans old special offers from a database based on a specified configuration.",
+        "purpose": "Cleans old special offers from the database based on a specified time period.",
         "key_types": [
           "context.Context",
           "time.Time",
@@ -53,8 +53,9 @@
           "Clears records from the database"
         ],
         "risks": [
-          "Potential database connection failures",
-          "Error handling may not cover all edge cases"
+          "Potential database connection failure",
+          "Error handling may not cover all edge cases",
+          "Sentry initialization failure may go unnoticed"
         ],
         "complexity": "medium"
       }

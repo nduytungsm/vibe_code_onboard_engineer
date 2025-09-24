@@ -1,0 +1,14 @@
+{
+  "content_hash": "e7ba1fc31daa0d473ce9cbcbb9c281a1",
+  "timestamp": "2025-09-24T16:39:26.82956+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides guidance on using HCL (HashiCorp Configuration Language) within Go applications.",
+    "key_types": [
+      "struct"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

@@ -1,25 +1,137 @@
 {
-  "content_hash": "cd70198edcb2f530703c974bc1fe04e6",
-  "timestamp": "2025-09-20T20:28:50.120901+07:00",
+  "content_hash": "ca52fa8f25248d0766b83807d585402e",
+  "timestamp": "2025-09-24T17:38:01.296244+07:00",
   "result": {
     "path": "src/components",
-    "purpose": "Contains reusable UI components and their associated styles for the web application.",
+    "purpose": "Contains reusable React components for the application, including navigation, footer, and visual effects.",
     "languages": {
-      "CSS": 1
+      "JavaScript": 5
     },
     "key_modules": [
-      "styles.css"
+      "Footer.js",
+      "Navbar.js",
+      "Particle.js",
+      "Pre.js",
+      "ScrollToTop.js"
     ],
-    "dependencies": [],
-    "architecture": "The folder follows a component-based architecture, where each component can have its own styles, promoting reusability and separation of concerns.",
+    "dependencies": [
+      "react",
+      "react-bootstrap",
+      "react-router-dom",
+      "react-icons",
+      "react-tsparticles"
+    ],
+    "architecture": "Component-based architecture, utilizing functional components and hooks for state management and side effects.",
     "file_summaries": {
-      "src/components/styles.css": {
-        "language": "CSS",
-        "purpose": "Defines styles for a web application, including layout, typography, and button designs.",
-        "key_types": [],
-        "functions": [],
-        "imports": [],
+      "src/components/Footer.js": {
+        "language": "JavaScript",
+        "purpose": "Defines a Footer component for a React application that displays copyright information and social media links.",
+        "key_types": [
+          "Footer"
+        ],
+        "functions": [
+          "Footer"
+        ],
+        "imports": [
+          "React",
+          "Container",
+          "Row",
+          "Col",
+          "AiFillGithub",
+          "AiOutlineTwitter",
+          "AiFillInstagram",
+          "FaLinkedinIn"
+        ],
+        "side_effects": [
+          "Renders social media links that open in new tabs"
+        ],
+        "risks": [
+          "Potential for phishing if social media links are altered"
+        ],
+        "complexity": "low"
+      },
+      "src/components/Navbar.js": {
+        "language": "JavaScript",
+        "purpose": "This file defines a responsive navigation bar component for a web application using React.",
+        "key_types": [
+          "NavBar",
+          "useState",
+          "Navbar",
+          "Nav",
+          "Container",
+          "Button"
+        ],
+        "functions": [
+          "NavBar",
+          "scrollHandler"
+        ],
+        "imports": [
+          "React",
+          "useState",
+          "react-bootstrap/Navbar",
+          "react-bootstrap/Nav",
+          "react-bootstrap/Container",
+          "logo",
+          "react-bootstrap/Button",
+          "react-router-dom/Link",
+          "react-icons/cg",
+          "react-icons/im",
+          "react-icons/ai"
+        ],
+        "side_effects": [
+          "Adds a scroll event listener to the window"
+        ],
         "complexity": "medium"
+      },
+      "src/components/Particle.js": {
+        "language": "JavaScript",
+        "purpose": "This file defines a React component that renders particle effects using the react-tsparticles library.",
+        "key_types": [
+          "Particle"
+        ],
+        "functions": [
+          "Particle"
+        ],
+        "imports": [
+          "React",
+          "react-tsparticles"
+        ],
+        "side_effects": [
+          "Renders a visual particle effect on the screen"
+        ],
+        "complexity": "medium"
+      },
+      "src/components/Pre.js": {
+        "language": "JavaScript",
+        "purpose": "Defines a React component that conditionally renders a preloader div based on props.",
+        "key_types": [
+          "React.Component"
+        ],
+        "functions": [
+          "Pre"
+        ],
+        "imports": [
+          "React"
+        ],
+        "complexity": "low"
+      },
+      "src/components/ScrollToTop.js": {
+        "language": "JavaScript",
+        "purpose": "A React component that scrolls the window to the top when the route changes.",
+        "key_types": [
+          "ScrollToTop"
+        ],
+        "functions": [
+          "ScrollToTop"
+        ],
+        "imports": [
+          "useEffect",
+          "useLocation"
+        ],
+        "side_effects": [
+          "Scrolls the window to the top on route change"
+        ],
+        "complexity": "low"
       }
     }
   }

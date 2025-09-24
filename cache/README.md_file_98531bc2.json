@@ -1,0 +1,12 @@
+{
+  "content_hash": "320abd45516c55dbbd095f391f852efb",
+  "timestamp": "2025-09-24T16:40:48.62533+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for JSON syntax fuzzing utilities in Go",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

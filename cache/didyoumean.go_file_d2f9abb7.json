@@ -1,0 +1,19 @@
+{
+  "content_hash": "4a81c97cf2283a1c05c36bb7c151067a",
+  "timestamp": "2025-09-24T16:38:46.286444+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a function to suggest a name from a list based on similarity to a given name.",
+    "key_types": [
+      "string",
+      "[]string"
+    ],
+    "functions": [
+      "nameSuggestion"
+    ],
+    "imports": [
+      "github.com/agext/levenshtein"
+    ],
+    "complexity": "medium"
+  }
+}

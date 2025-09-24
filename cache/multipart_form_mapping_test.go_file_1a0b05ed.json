@@ -1,0 +1,38 @@
+{
+  "content_hash": "829d6adf6a1c9eaea8918e3c32c531cf",
+  "timestamp": "2025-09-24T17:05:50.718622+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for multipart form binding in a web application",
+    "key_types": [
+      "struct",
+      "multipart.FileHeader",
+      "http.Request"
+    ],
+    "functions": [
+      "TestFormMultipartBindingBindOneFile",
+      "TestFormMultipartBindingBindTwoFiles",
+      "TestFormMultipartBindingBindError",
+      "createRequestMultipartFiles",
+      "assertMultipartFileHeader"
+    ],
+    "imports": [
+      "bytes",
+      "io",
+      "mime/multipart",
+      "net/http",
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Creates HTTP requests with multipart file data",
+      "Interacts with the file system through file handling"
+    ],
+    "risks": [
+      "Potential for denial of service if large files are uploaded",
+      "Improper handling of file types could lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

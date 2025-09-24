@@ -1,0 +1,22 @@
+{
+  "content_hash": "caaac9c42aaa25299f235caf0dadc34d",
+  "timestamp": "2025-09-24T17:03:52.8743+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "This file defines the configuration for a Terraform setup, including providers, variables, outputs, and managed resources.",
+    "key_types": [
+      "provider",
+      "variable",
+      "output",
+      "managed_resource"
+    ],
+    "functions": [],
+    "imports": [
+      "null"
+    ],
+    "risks": [
+      "sensitive data exposure in outputs"
+    ],
+    "complexity": "medium"
+  }
+}

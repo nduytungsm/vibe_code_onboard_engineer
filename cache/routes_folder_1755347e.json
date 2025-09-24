@@ -1,9 +1,9 @@
 {
-  "content_hash": "610221241cf2e784eb9c15d29c7dd7e4",
-  "timestamp": "2025-09-24T15:33:29.022566+07:00",
+  "content_hash": "cdec2e8e349e2b4ba39fe49336e473de",
+  "timestamp": "2025-09-24T16:29:52.087622+07:00",
   "result": {
     "path": "routes",
-    "purpose": "Responsible for setting up and managing routes for a wallet manager API using the Echo web framework.",
+    "purpose": "Responsible for setting up and managing routes for an Echo web server, including public, private, and internal API endpoints.",
     "languages": {
       "Go": 4
     },
@@ -37,7 +37,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing routes into public, private, and internal categories, each handling specific functionalities of the wallet manager API.",
+    "architecture": "The folder follows a modular architecture pattern, organizing routes into separate files for public, private, and internal APIs, allowing for clear separation of concerns and easier maintenance.",
     "file_summaries": {
       "routes/init.go": {
         "language": "Go",
@@ -54,8 +54,32 @@
         "functions": [
           "SetupRoutes",
           "NewClient",
+          "NewNetworkRepo",
+          "NewDAppRepo",
+          "NewContractRepo",
+          "NewCodeVersionRepo",
+          "NewCommonRepo",
+          "NewAnnouncementRepo",
+          "NewPreferencesRepo",
+          "NewTrustedDomainRepo",
+          "NewQuickAccessDAppRepo",
+          "NewHighlightRepo",
+          "NewRedisClient",
           "NewService",
-          "NewHandler",
+          "NewReleaseCandidateHandler",
+          "NewNetworkHandler",
+          "NewCommonHandler",
+          "NewAccountHandler",
+          "NewMoonpayHandler",
+          "NewLocationHandler",
+          "NewAnnouncementHandler",
+          "NewBinanceHandler",
+          "NewDeviceHandler",
+          "NewTrustedDomainHandler",
+          "NewDAppHandler",
+          "NewTwitterHandler",
+          "NewBlacklistHandler",
+          "TransactionHandler",
           "registerPublic",
           "registerPrivate",
           "registerInternal"
@@ -85,12 +109,13 @@
           "github.com/axieinfinity/ronin-wallet-manager/repositories"
         ],
         "side_effects": [
-          "Logs fatal errors if database client or metrics setup fails",
-          "Initializes multiple services and repositories that may affect application state"
+          "Establishes database connections",
+          "Initializes various services and repositories",
+          "Logs fatal errors if database connection fails"
         ],
         "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized",
-          "Sensitive configuration data may be exposed if not handled securely"
+          "Potential exposure of sensitive configuration data if not handled properly",
+          "Database connection errors could lead to application crashes"
         ],
         "complexity": "medium"
       },
@@ -122,16 +147,17 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking"
         ],
         "side_effects": [
-          "Modifies the state of the application by registering routes and middleware."
+          "Modifies the state of the API by registering routes and middleware."
         ],
         "risks": [
-          "Potential exposure of sensitive endpoints if not properly secured."
+          "Potential exposure of sensitive data if routes are not properly secured.",
+          "Improper handling of user input could lead to security vulnerabilities."
         ],
         "complexity": "medium"
       },
       "routes/private.go": {
         "language": "Go",
-        "purpose": "Defines private routes for wallet management including preferences and device operations.",
+        "purpose": "Defines routes for private wallet management operations in an API.",
         "key_types": [
           "echo.Echo",
           "handlers.AnnouncementHandler",
@@ -147,11 +173,14 @@
           "github.com/axieinfinity/ronin-wallet-manager/handlers",
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
+        "side_effects": [
+          "Modifies the state of the Echo router by adding new routes."
+        ],
         "complexity": "medium"
       },
       "routes/public.go": {
         "language": "Go",
-        "purpose": "Defines public API routes for a wallet manager application, including health checks and various resource endpoints.",
+        "purpose": "Defines public routes for a wallet manager API, including health checks and various resource endpoints.",
         "key_types": [
           "APIVersion",
           "config.Schema",
@@ -182,10 +211,10 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Modifies the state of the application by registering routes and handlers."
+          "Modifies the state of the API by registering routes and handlers."
         ],
         "risks": [
-          "Potential exposure of sensitive information through API endpoints if not properly secured."
+          "Potential exposure of sensitive information through improperly secured endpoints."
         ],
         "complexity": "medium"
       }

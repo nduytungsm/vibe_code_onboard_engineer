@@ -1,0 +1,15 @@
+{
+  "content_hash": "cdbf030aca0934780b3456328548e5a8",
+  "timestamp": "2025-09-24T17:04:03.698814+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines Terraform provider aliases and configurations.",
+    "key_types": [
+      "terraform",
+      "provider"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "content_hash": "eed8a726de5659e2ce243e58c2ec1c41",
+  "timestamp": "2025-09-24T16:57:39.983444+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides functions to unwrap expressions by removing wrapper expressions to recover the original representation.",
+    "key_types": [
+      "unwrapExpression",
+      "Expression"
+    ],
+    "functions": [
+      "UnwrapExpression",
+      "UnwrapExpressionUntil"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies behavior of expressions by stripping away constraints or capabilities."
+    ],
+    "risks": [
+      "Potential for nil dereference if not handled properly."
+    ],
+    "complexity": "medium"
+  }
+}

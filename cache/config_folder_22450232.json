@@ -1,18 +1,18 @@
 {
-  "content_hash": "7c3960b14f6a719b2c361e333b1e8894",
-  "timestamp": "2025-09-24T15:31:52.896083+07:00",
+  "content_hash": "e5241d81269309f5effeaeb601122ebd",
+  "timestamp": "2025-09-24T16:30:39.694524+07:00",
   "result": {
     "path": "config",
-    "purpose": "This folder/module is responsible for defining and managing application configuration settings.",
+    "purpose": "This folder/module is responsible for managing application configuration settings and ensuring sensitive data is handled securely.",
     "languages": {
       "Go": 3,
       "YAML": 1
     },
     "key_modules": [
-      "config.go",
-      "config.yml",
-      "func_print.go",
-      "func_print_test.go"
+      "config/config.go",
+      "config/config.yml",
+      "config/func_print.go",
+      "config/func_print_test.go"
     ],
     "dependencies": [
       "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
@@ -34,11 +34,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
     ],
-    "architecture": "The folder follows a modular architecture pattern, separating configuration definitions, initialization logic, and utility functions for managing sensitive data.",
+    "architecture": "The folder follows a modular architecture pattern, separating configuration logic into distinct files for initialization, data hiding, and testing, while utilizing external libraries for enhanced functionality.",
     "file_summaries": {
       "config/config.go": {
         "language": "Go",
-        "purpose": "This file defines configuration structures and initializes application settings from a configuration file.",
+        "purpose": "This file defines configuration structures and initializes application settings using viper for a service.",
         "key_types": [
           "Schema",
           "Server",
@@ -89,7 +89,7 @@
       },
       "config/config.yml": {
         "language": "YAML",
-        "purpose": "Configuration file for a mobile wallet manager application, defining various settings for services, servers, authentication, logging, and other features.",
+        "purpose": "Configuration file for a mobile wallet manager service, detailing various settings for profiling, server, authentication, logging, and other services.",
         "key_types": [
           "profiler",
           "server",
@@ -121,8 +121,8 @@
         "functions": [],
         "imports": [],
         "risks": [
-          "Exposure of sensitive information due to redacted keys and URLs.",
-          "Potential for misconfiguration leading to security vulnerabilities."
+          "Exposure of sensitive information due to redacted keys and URLs",
+          "Potential for misconfiguration leading to security vulnerabilities"
         ],
         "complexity": "medium"
       },
@@ -130,8 +130,10 @@
         "language": "Go",
         "purpose": "This file contains functions to hide sensitive data in configuration structures.",
         "key_types": [
-          "Schema",
-          "viper.Viper"
+          "struct",
+          "interface",
+          "map",
+          "slice"
         ],
         "functions": [
           "isSecretField",
@@ -149,10 +151,10 @@
           "github.com/spf13/viper"
         ],
         "side_effects": [
-          "Modifies the input data structures to hide sensitive information."
+          "Modifies the input data to hide sensitive information."
         ],
         "risks": [
-          "Potential exposure of sensitive data if the hiding functions are not correctly implemented."
+          "Potential exposure of sensitive data if the hiding logic is incorrect."
         ],
         "complexity": "medium"
       },
@@ -162,8 +164,7 @@
         "key_types": [
           "struct",
           "map",
-          "slice",
-          "interface"
+          "slice"
         ],
         "functions": [
           "TestHideSecretInMap",
@@ -177,7 +178,7 @@
           "Prints test data to the console"
         ],
         "risks": [
-          "Potential exposure of sensitive data if not handled properly"
+          "Potential exposure of sensitive data if not properly handled"
         ],
         "complexity": "medium"
       }

@@ -1,9 +1,9 @@
 {
-  "content_hash": "2a2e493d379992c179caa5c29b081a52",
-  "timestamp": "2025-09-24T15:32:03.0488+07:00",
+  "content_hash": "e6ca1309ab82da467040ebfbae306ba8",
+  "timestamp": "2025-09-24T16:30:49.759967+07:00",
   "result": {
     "path": "cmd/trigger_announcement",
-    "purpose": "This folder/module is responsible for initializing a service to trigger announcements based on configuration and database interactions.",
+    "purpose": "This folder/module is responsible for triggering announcements in a system, initializing configurations, and handling errors.",
     "languages": {
       "Go": 1
     },
@@ -20,15 +20,16 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, initializing services and managing dependencies for triggering announcements.",
+    "architecture": "The folder follows a modular architecture pattern, where the main entry point initializes services and handles dependencies for triggering announcements.",
     "file_summaries": {
       "cmd/trigger_announcement/main.go": {
         "language": "Go",
-        "purpose": "This file initializes a service to trigger announcements based on configuration and database interactions.",
+        "purpose": "This file is the main entry point for triggering announcements in a system, initializing configurations, and handling errors.",
         "key_types": [
           "context.Context",
           "error",
           "gorm.DB",
+          "config.Config",
           "announcement.Service",
           "tracking.Service"
         ],
@@ -58,12 +59,12 @@
         ],
         "side_effects": [
           "Initializes Sentry for error tracking",
-          "Establishes a database connection",
+          "Connects to a PostgreSQL database",
           "Triggers an announcement based on environment variable"
         ],
         "risks": [
           "Potential exposure of sensitive information through environment variables",
-          "Error handling may not cover all failure cases"
+          "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"
       }

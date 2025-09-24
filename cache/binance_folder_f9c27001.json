@@ -1,9 +1,9 @@
 {
-  "content_hash": "3c71b6caca0fbe22f8dfa567f5810973",
-  "timestamp": "2025-09-24T15:33:33.076035+07:00",
+  "content_hash": "7d140e1c9d84c421aa7d5c47a899446a",
+  "timestamp": "2025-09-24T16:29:09.833375+07:00",
   "result": {
     "path": "pkg/binance",
-    "purpose": "Responsible for providing services related to Binance, including configuration and signing payloads using ECDSA.",
+    "purpose": "Handles Binance-specific functionalities including configuration and signing payloads.",
     "languages": {
       "Go": 2
     },
@@ -12,14 +12,9 @@
       "service.go"
     ],
     "dependencies": [
-      "mapstructure",
-      "context",
-      "crypto/ecdsa",
-      "crypto/rand",
-      "encoding/base64",
       "github.com/decred/dcrd/dcrec/secp256k1/v4"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic related to Binance functionality.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic related to Binance.",
     "file_summaries": {
       "pkg/binance/config.go": {
         "language": "Go",
@@ -28,9 +23,7 @@
           "Config"
         ],
         "functions": [],
-        "imports": [
-          "mapstructure"
-        ],
+        "imports": [],
         "complexity": "low"
       },
       "pkg/binance/service.go": {
@@ -39,7 +32,8 @@
         "key_types": [
           "Service",
           "service",
-          "Config"
+          "Config",
+          "ecdsa.PrivateKey"
         ],
         "functions": [
           "Sign",
@@ -53,7 +47,7 @@
           "github.com/decred/dcrd/dcrec/secp256k1/v4"
         ],
         "risks": [
-          "Potential exposure of private key if not handled securely"
+          "Potential exposure of private key if not handled securely."
         ],
         "complexity": "medium"
       }

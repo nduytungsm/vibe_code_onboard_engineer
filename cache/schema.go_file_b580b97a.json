@@ -1,0 +1,31 @@
+{
+  "content_hash": "420c315b8221eef21e957273f83b03c8",
+  "timestamp": "2025-09-24T16:58:21.16839+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a schema for HCL (HashiCorp Configuration Language) based on struct tags.",
+    "key_types": [
+      "fieldTags",
+      "labelField"
+    ],
+    "functions": [
+      "ImpliedBodySchema",
+      "getFieldTags"
+    ],
+    "imports": [
+      "fmt",
+      "reflect",
+      "sort",
+      "strings",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Panic if the input value is not a struct or pointer to a struct.",
+      "Panic if invalid tags are used."
+    ],
+    "risks": [
+      "Potential panic due to invalid input or tag usage."
+    ],
+    "complexity": "medium"
+  }
+}

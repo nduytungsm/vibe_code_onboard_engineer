@@ -1,0 +1,25 @@
+{
+  "content_hash": "ad50d8cc27c26d494fea7ea78ef16725",
+  "timestamp": "2025-09-24T17:11:13.298605+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file defines a React component that displays a toolstack using icons.",
+    "key_types": [
+      "Toolstack"
+    ],
+    "functions": [
+      "Toolstack"
+    ],
+    "imports": [
+      "React",
+      "Col",
+      "Row",
+      "SiVisualstudiocode",
+      "SiPostman",
+      "SiSlack",
+      "SiVercel",
+      "SiMacos"
+    ],
+    "complexity": "low"
+  }
+}

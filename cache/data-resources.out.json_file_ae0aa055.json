@@ -1,0 +1,15 @@
+{
+  "content_hash": "cf56638173b0b3d68f0d7bce503c0941",
+  "timestamp": "2025-09-24T17:03:54.557402+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "This file contains configuration data for Terraform, specifying data resources and their properties.",
+    "key_types": [
+      "object",
+      "string"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

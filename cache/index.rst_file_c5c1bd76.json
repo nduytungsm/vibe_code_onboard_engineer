@@ -1,0 +1,12 @@
+{
+  "content_hash": "50831178af2f57370d639158b2aae483",
+  "timestamp": "2025-09-24T16:39:32.741971+07:00",
+  "result": {
+    "language": "reStructuredText",
+    "purpose": "Documentation for HCL, a toolkit for creating structured configuration languages.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

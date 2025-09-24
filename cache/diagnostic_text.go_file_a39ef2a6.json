@@ -1,0 +1,36 @@
+{
+  "content_hash": "0b3b9d2f1aac38909cd3358f6a9e03ac",
+  "timestamp": "2025-09-24T16:38:44.755585+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a diagnostic text writer that formats and outputs diagnostic messages for HCL (HashiCorp Configuration Language) errors and warnings.",
+    "key_types": [
+      "diagnosticTextWriter",
+      "File",
+      "Diagnostic",
+      "Diagnostics",
+      "Traversal"
+    ],
+    "functions": [
+      "NewDiagnosticTextWriter",
+      "WriteDiagnostic",
+      "WriteDiagnostics",
+      "traversalStr",
+      "valueStr"
+    ],
+    "imports": [
+      "bufio",
+      "bytes",
+      "errors",
+      "fmt",
+      "io",
+      "sort",
+      "github.com/mitchellh/go-wordwrap",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Writes formatted diagnostic messages to the provided io.Writer"
+    ],
+    "complexity": "medium"
+  }
+}

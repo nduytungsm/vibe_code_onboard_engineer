@@ -1,0 +1,36 @@
+{
+  "content_hash": "c9a5d6afb34bcaca93c1c11e68e331fe",
+  "timestamp": "2025-09-24T17:03:45.37556+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functions to load and interpret Terraform modules from a specified directory.",
+    "key_types": [
+      "Module",
+      "Diagnostics",
+      "FS",
+      "ProviderRequirement"
+    ],
+    "functions": [
+      "LoadModule",
+      "LoadModuleFromFilesystem",
+      "IsModuleDir",
+      "IsModuleDirOnFilesystem",
+      "dirFiles",
+      "fileExt",
+      "isIgnoredFile"
+    ],
+    "imports": [
+      "fmt",
+      "path/filepath",
+      "strings",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Reads the filesystem to check for Terraform configuration files."
+    ],
+    "risks": [
+      "Potential for directory traversal if input is not validated."
+    ],
+    "complexity": "medium"
+  }
+}

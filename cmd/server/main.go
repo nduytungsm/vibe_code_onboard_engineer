@@ -1,10 +1,13 @@
 package main
 
 import (
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
+	"fmt"
+
 	"repo-explanation/controllers"
 	"repo-explanation/routes"
+
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
@@ -18,8 +21,10 @@ func main() {
 	// Initialize controllers
 	healthController := controllers.NewHealthController()
 
+	fmt.Println("running into this")
+
 	// Setup routes
-	routes.SetupRoutes(e, healthController)
+	routes.SetupRoutes(e, healthController, nil)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":8080"))

@@ -1,0 +1,28 @@
+{
+  "content_hash": "cf639e6e6f3b4af010216991fa40de6e",
+  "timestamp": "2025-09-24T16:40:55.744396+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains a test case for fuzzing a JSON parser with a specific input structure.",
+    "key_types": [
+      "byte",
+      "string",
+      "bool",
+      "float64"
+    ],
+    "functions": [
+      "FuzzParse"
+    ],
+    "imports": [
+      "testing",
+      "encoding/json"
+    ],
+    "side_effects": [
+      "None"
+    ],
+    "risks": [
+      "Potential for denial of service if input is not properly handled"
+    ],
+    "complexity": "low"
+  }
+}

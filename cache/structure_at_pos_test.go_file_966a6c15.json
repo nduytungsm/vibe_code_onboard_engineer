@@ -1,0 +1,26 @@
+{
+  "content_hash": "47013a0eaf8e3a5aa3f0b827ce7e89be",
+  "timestamp": "2025-09-24T16:40:16.364779+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for HCL syntax parsing functions, checking block and attribute retrieval at specific positions.",
+    "key_types": [
+      "hcl.Pos",
+      "struct"
+    ],
+    "functions": [
+      "TestBlocksAtPos",
+      "TestAttributeAtPos",
+      "TestOutermostExprAtPos"
+    ],
+    "imports": [
+      "reflect",
+      "testing",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Logs diagnostic errors during tests"
+    ],
+    "complexity": "medium"
+  }
+}

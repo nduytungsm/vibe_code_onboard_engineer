@@ -1,0 +1,22 @@
+{
+  "content_hash": "101911756d24a2da3ee24fbaf64bdd9b",
+  "timestamp": "2025-09-24T17:11:18.080207+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "A React component that scrolls the window to the top when the route changes.",
+    "key_types": [
+      "ScrollToTop"
+    ],
+    "functions": [
+      "ScrollToTop"
+    ],
+    "imports": [
+      "useEffect",
+      "useLocation"
+    ],
+    "side_effects": [
+      "Scrolls the window to the top on route change"
+    ],
+    "complexity": "low"
+  }
+}

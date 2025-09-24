@@ -1,56 +1,105 @@
 {
-  "content_hash": "8bf866b8cd2c1293c41005dbb69ddc7a",
-  "timestamp": "2025-09-24T15:47:16.823604+07:00",
+  "content_hash": "2930016e2fbad200499c512ae1de0506",
+  "timestamp": "2025-09-24T17:20:13.334436+07:00",
   "result": {
     "path": ".github/workflows",
-    "purpose": "Defines GitHub Actions workflows for CI/CD processes, including running tests and checks for a Go project.",
+    "purpose": "This folder contains GitHub Actions workflows for automating various tasks such as code analysis, testing, vulnerability scanning, and release processes.",
     "languages": {
-      "YAML": 1
+      "YAML": 3
     },
     "key_modules": [
-      "checks.yml"
+      "codeql.yml",
+      "gin.yml",
+      "goreleaser.yml"
     ],
     "dependencies": [
-      "actions/checkout",
-      "actions/setup-go",
-      "actions/upload-artifact",
-      "golangci/golangci-lint-action"
+      "actions/checkout@v5",
+      "actions/setup-go@v6",
+      "github/codeql-action/init@v3",
+      "github/codeql-action/analyze@v3",
+      "golangci/golangci-lint-action@v8",
+      "actions/cache@v4",
+      "codecov/codecov-action@v5",
+      "aquasecurity/trivy-action@0.33.1",
+      "goreleaser/goreleaser-action@v6"
     ],
-    "architecture": "The folder follows a CI/CD architecture pattern, utilizing GitHub Actions to automate testing and code quality checks.",
+    "architecture": "The folder follows a modular architecture pattern where each YAML file defines a specific workflow for different automation tasks, promoting separation of concerns and reusability.",
     "file_summaries": {
-      ".github/workflows/checks.yml": {
+      ".github/workflows/codeql.yml": {
         "language": "YAML",
-        "purpose": "Defines a GitHub Actions workflow for running unit tests, copyright checks, and linting for a Go project.",
+        "purpose": "Defines a GitHub Actions workflow for CodeQL analysis on a repository.",
         "key_types": [
+          "workflow",
           "job",
           "step"
         ],
         "functions": [
-          "checkout",
-          "setup-go",
-          "go test",
-          "upload-artifact",
-          "make copyrightcheck",
-          "make vetcheck",
-          "make fmtcheck",
-          "golangci-lint"
+          "on",
+          "jobs",
+          "steps"
         ],
         "imports": [
-          "actions/checkout",
-          "actions/setup-go",
-          "actions/upload-artifact",
-          "golangci/golangci-lint-action"
+          "actions/checkout@v5",
+          "github/codeql-action/init@v3",
+          "github/codeql-action/analyze@v3"
         ],
         "side_effects": [
-          "Modifies git configuration for line endings",
-          "Installs Go dependencies",
-          "Generates coverage reports"
+          "Triggers analysis on code changes and scheduled events."
         ],
         "risks": [
-          "Potential exposure of sensitive information in logs",
-          "Dependency on external actions may introduce vulnerabilities"
+          "Potential exposure of sensitive data if not configured properly."
         ],
         "complexity": "medium"
+      },
+      ".github/workflows/gin.yml": {
+        "language": "YAML",
+        "purpose": "Defines a GitHub Actions workflow for running tests and performing vulnerability scanning on a Go project.",
+        "key_types": [
+          "job",
+          "step",
+          "matrix"
+        ],
+        "functions": [
+          "checkout",
+          "setup-go",
+          "golangci-lint",
+          "cache",
+          "run tests",
+          "upload coverage",
+          "vulnerability scanning"
+        ],
+        "imports": [
+          "actions/checkout@v5",
+          "actions/setup-go@v6",
+          "golangci/golangci-lint-action@v8",
+          "actions/cache@v4",
+          "codecov/codecov-action@v5",
+          "aquasecurity/trivy-action@0.33.1"
+        ],
+        "side_effects": [
+          "Code coverage uploaded to Codecov",
+          "Vulnerability scanning results generated"
+        ],
+        "risks": [
+          "Potential exposure of sensitive data in logs",
+          "Dependency vulnerabilities if not regularly updated"
+        ],
+        "complexity": "medium"
+      },
+      ".github/workflows/goreleaser.yml": {
+        "language": "YAML",
+        "purpose": "Defines a GitHub Actions workflow for automating the release process using GoReleaser.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "actions/checkout@v5",
+          "actions/setup-go@v6",
+          "goreleaser/goreleaser-action@v6"
+        ],
+        "side_effects": [
+          "Triggers a Go module reindex at proxy.golang.org"
+        ],
+        "complexity": "low"
       }
     }
   }

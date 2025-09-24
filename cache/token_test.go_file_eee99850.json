@@ -1,0 +1,26 @@
+{
+  "content_hash": "57cca09bfb890a044fc5469b07f84397",
+  "timestamp": "2025-09-24T16:40:18.124309+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for validating token parsing in HCL syntax.",
+    "key_types": [
+      "struct",
+      "string"
+    ],
+    "functions": [
+      "TestCheckInvalidTokensTest"
+    ],
+    "imports": [
+      "testing",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Error reporting on invalid tokens during tests"
+    ],
+    "risks": [
+      "Potential for incorrect error handling if the HCL library changes"
+    ],
+    "complexity": "medium"
+  }
+}

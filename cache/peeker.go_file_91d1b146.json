@@ -1,0 +1,42 @@
+{
+  "content_hash": "a615725382786ed78f2c49f5947efd86",
+  "timestamp": "2025-09-24T16:40:09.110491+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a 'peeker' type for managing and parsing tokens, including handling comments and newlines in a structured way.",
+    "key_types": [
+      "peeker",
+      "peekerNewlineStackChange"
+    ],
+    "functions": [
+      "newPeeker",
+      "Peek",
+      "Read",
+      "NextRange",
+      "PrevRange",
+      "nextToken",
+      "includingNewlines",
+      "PushIncludeNewlines",
+      "PopIncludeNewlines",
+      "AssertEmptyIncludeNewlinesStack",
+      "formatPeekerNewlineStackChanges"
+    ],
+    "imports": [
+      "bytes",
+      "fmt",
+      "path/filepath",
+      "runtime",
+      "strings",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Modifies the IncludeNewlinesStack during parsing and debugging",
+      "Panic if the IncludeNewlinesStack is mismanaged"
+    ],
+    "risks": [
+      "Potential for panic due to stack mismanagement",
+      "Performance penalty when tracing stack during debugging"
+    ],
+    "complexity": "medium"
+  }
+}

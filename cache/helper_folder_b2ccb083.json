@@ -1,9 +1,9 @@
 {
-  "content_hash": "3af7621edef0afa102f4ad092e9790f8",
-  "timestamp": "2025-09-24T15:32:36.289358+07:00",
+  "content_hash": "bb262b1d3e94b77a7a648af7f7c4cf49",
+  "timestamp": "2025-09-24T16:29:56.864173+07:00",
   "result": {
     "path": "pkg/helper",
-    "purpose": "Provides various utility functions for encryption, file handling, token generation, and data manipulation.",
+    "purpose": "Provides various utility functions and helpers for encryption, file handling, random string generation, and Ethereum address normalization.",
     "languages": {
       "Go": 8
     },
@@ -18,35 +18,21 @@
       "tls.go"
     ],
     "dependencies": [
-      "crypto/aes",
-      "crypto/cipher",
-      "crypto/rand",
-      "crypto/sha256",
-      "encoding/base64",
-      "encoding/json",
-      "io",
-      "fmt",
-      "mime/multipart",
-      "reflect",
-      "strings",
       "github.com/labstack/echo/v4",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
       "github.com/ethereum/go-ethereum/common",
       "github.com/ethereum/go-ethereum/common/hexutil",
-      "github.com/ethereum/go-ethereum/crypto",
-      "crypto/tls",
-      "crypto/x509"
+      "github.com/ethereum/go-ethereum/crypto"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for better maintainability and reusability.",
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to helper utilities, promoting reusability and separation of concerns.",
     "file_summaries": {
       "pkg/helper/aes.go": {
         "language": "Go",
-        "purpose": "Provides functions for AES encryption of messages.",
+        "purpose": "Provides functions for AES encryption of messages using a specified key.",
         "key_types": [
           "string",
           "[]byte",
-          "interface{}",
-          "error"
+          "interface{}"
         ],
         "functions": [
           "hashKey",
@@ -65,7 +51,7 @@
           "Generates random initialization vector (IV) for encryption."
         ],
         "risks": [
-          "Potential exposure of sensitive data if the key is weak or compromised."
+          "Potential exposure of sensitive data if the key is not managed securely."
         ],
         "complexity": "medium"
       },
@@ -91,7 +77,7 @@
           "github.com/labstack/echo/v4"
         ],
         "side_effects": [
-          "Modifies the input struct by binding uploaded files to its fields."
+          "Modifies struct fields based on multipart file uploads."
         ],
         "risks": [
           "Potential for denial of service if large files are uploaded.",
@@ -113,9 +99,6 @@
           "fmt",
           "strings",
           "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
-        ],
-        "risks": [
-          "Potential exposure of secret if not handled properly"
         ],
         "complexity": "medium"
       },
@@ -168,7 +151,7 @@
           "github.com/ethereum/go-ethereum/crypto"
         ],
         "risks": [
-          "Potential for signature forgery if not properly validated."
+          "Potential for signature forgery if inputs are not properly validated."
         ],
         "complexity": "medium"
       },
@@ -191,7 +174,7 @@
       },
       "pkg/helper/tls.go": {
         "language": "Go",
-        "purpose": "This file provides a function to convert certificate and key data into a TLS configuration.",
+        "purpose": "This file provides a function to convert given certificate and key data into a TLS configuration.",
         "key_types": [
           "tls.Config",
           "tls.Certificate",

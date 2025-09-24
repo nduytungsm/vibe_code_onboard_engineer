@@ -1,0 +1,30 @@
+{
+  "content_hash": "8e73ddb60f786bec0a5526a99a74bed0",
+  "timestamp": "2025-09-24T17:00:09.059077+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a package for decoding HCL configurations into Go data structures.",
+    "key_types": [
+      "struct",
+      "hcl.Expression",
+      "hcl.Body",
+      "hcl.Attributes",
+      "hcl.Range"
+    ],
+    "functions": [
+      "Decode",
+      "EncodeIntoBody"
+    ],
+    "imports": [
+      "hcl",
+      "gocty"
+    ],
+    "side_effects": [
+      "Panic on invalid struct tags"
+    ],
+    "risks": [
+      "Potential for panics due to bugs in the calling program"
+    ],
+    "complexity": "medium"
+  }
+}

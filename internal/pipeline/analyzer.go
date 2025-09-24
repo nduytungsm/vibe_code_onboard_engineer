@@ -381,13 +381,28 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 		}
 	}
 
-	// Phase 8: Extract database schema from migrations (always run for backend projects)
+	// Phase 8: Extract database schema from migrations (with graceful error handling)
 	var databaseSchema *database.DatabaseSchema
 	if projectType != nil && (strings.ToLower(string(projectType.PrimaryType)) == "backend" || 
 							  strings.ToLower(string(projectType.PrimaryType)) == "fullstack") {
 		fmt.Println("🗃️  Discovering database schema...")
-		databaseSchema = a.extractDatabaseSchema(files)
-		fmt.Println("✅ Database schema extraction complete!")
+		
+		// Graceful database schema extraction with error recovery
+		func() {
+			defer func() {
+				if r := recover(); r != nil {
+					fmt.Printf("⚠️  Database schema extraction failed with panic: %v\n", r)
+					databaseSchema = nil
+				}
+			}()
+			databaseSchema = a.extractDatabaseSchema(files)
+		}()
+		
+		if databaseSchema != nil {
+			fmt.Println("✅ Database schema extraction complete!")
+		} else {
+			fmt.Println("⚠️  Database schema extraction skipped - no schema found")
+		}
 	}
 	
 	fmt.Println("✅ Project analysis complete!")
@@ -632,10 +647,12 @@ func (a *Analyzer) reducePhaseFolder(ctx context.Context, fileSummaries map[stri
 func (a *Analyzer) reducePhaseProject(ctx context.Context, folderSummaries map[string]*openai.FolderSummary) (*openai.ProjectSummary, error) {
 	projectPath := a.crawler.basePath
 	
-	// Convert pointer map to value map for cache and API calls
+	// Convert pointer map to value map for cache and API calls (with nil checks)
 	foldersForAPI := make(map[string]openai.FolderSummary)
 	for k, v := range folderSummaries {
-		foldersForAPI[k] = *v
+		if v != nil {
+			foldersForAPI[k] = *v
+		}
 	}
 	
 	// Check cache

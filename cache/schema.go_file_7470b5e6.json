@@ -1,0 +1,21 @@
+{
+  "content_hash": "3cfc3a17dc4c9348c3632068b6a84fcd",
+  "timestamp": "2025-09-24T17:00:22.364872+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a function to return the HCL BodySchema implied by a given specification.",
+    "key_types": [
+      "Spec",
+      "hcl.BodySchema",
+      "hcl.AttributeSchema",
+      "hcl.BlockHeaderSchema"
+    ],
+    "functions": [
+      "ImpliedSchema"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "content_hash": "f17fc0d7828b8c88df8f20ff59fe925f",
+  "timestamp": "2025-09-24T16:39:30.715681+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides documentation on decoding HCL (HashiCorp Configuration Language) using the hcldec package, which allows for dynamic schema creation at runtime.",
+    "key_types": [
+      "hcldec.Spec",
+      "hcldec.ObjectSpec",
+      "hcldec.AttrSpec",
+      "hcldec.BlockMapSpec",
+      "cty.Type",
+      "cty.Value"
+    ],
+    "functions": [
+      "hcldec.Decode"
+    ],
+    "imports": [
+      "hcldec",
+      "cty"
+    ],
+    "complexity": "medium"
+  }
+}

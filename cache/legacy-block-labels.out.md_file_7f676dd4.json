@@ -1,0 +1,21 @@
+{
+  "content_hash": "4514948b1dd1a62144610c871dbd455c",
+  "timestamp": "2025-09-24T17:03:59.89691+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for a Terraform module including version constraints, provider requirements, input variables, output values, managed resources, data resources, and child modules.",
+    "key_types": [
+      "null_resource",
+      "data",
+      "module"
+    ],
+    "functions": [],
+    "imports": [
+      "aws",
+      "external",
+      "notnull",
+      "noversion"
+    ],
+    "complexity": "low"
+  }
+}

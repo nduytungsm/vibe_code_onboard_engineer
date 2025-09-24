@@ -1,0 +1,20 @@
+{
+  "content_hash": "a3f34a4d49a2fcbae31dc1703e66e483",
+  "timestamp": "2025-09-24T17:05:55.230993+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains a test for YAML binding functionality.",
+    "key_types": [
+      "struct"
+    ],
+    "functions": [
+      "TestYAMLBindingBindBody"
+    ],
+    "imports": [
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "content_hash": "7cec0b4734f30b31904d3661560c6726",
+  "timestamp": "2025-09-24T17:00:07.991319+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for decoding HCL (HashiCorp Configuration Language) bodies into Go structures.",
+    "key_types": [
+      "withNameExpression",
+      "withTwoAttributes",
+      "withNestedBlock",
+      "withListofNestedBlocks",
+      "withListofNestedBlocksNoPointers"
+    ],
+    "functions": [
+      "TestDecodeBody",
+      "deepEquals"
+    ],
+    "imports": [
+      "encoding/json",
+      "fmt",
+      "reflect",
+      "testing",
+      "github.com/davecgh/go-spew/spew",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/json"
+    ],
+    "complexity": "medium"
+  }
+}

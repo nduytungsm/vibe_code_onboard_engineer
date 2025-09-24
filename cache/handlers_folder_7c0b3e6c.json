@@ -1,9 +1,9 @@
 {
-  "content_hash": "35ab95e3ffbd9462339fc7d4c2a7eaa1",
-  "timestamp": "2025-09-24T15:34:02.663152+07:00",
+  "content_hash": "5b300ad8fec6884ab041c553111551f0",
+  "timestamp": "2025-09-24T16:31:17.168179+07:00",
   "result": {
     "path": "handlers",
-    "purpose": "Responsible for handling various operations related to accounts, announcements, devices, external authentication, and other services within the application.",
+    "purpose": "Responsible for handling various operations related to accounts, announcements, devices, external authentication, and other services in a web application.",
     "languages": {
       "Go": 15
     },
@@ -26,22 +26,27 @@
     "dependencies": [
       "github.com/labstack/echo/v4",
       "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-      "github.com/axieinfinity/ecosystem-go-common/errors",
-      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/releasecandidate",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/trusteddomain",
       "github.com/redis/go-redis/v9",
-      "github.com/rs/zerolog/log"
+      "gorm.io/gorm"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each handler file encapsulates specific functionalities and operations, promoting separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, where each handler file encapsulates related functionalities and operations, promoting separation of concerns and maintainability.",
     "file_summaries": {
       "handlers/account.go": {
         "language": "Go",
-        "purpose": "Handles account-related operations such as getting account info, linking accounts, refreshing tokens, and revoking tokens.",
+        "purpose": "Handles account-related operations such as retrieving account info, linking accounts, refreshing tokens, and revoking tokens.",
         "key_types": [
           "AccountHandler",
           "accountHandler",
-          "httpclient.Athena",
           "sso.Config",
           "sso.Client",
+          "httpclient.Athena",
           "md.GetSMUserInfoResponse",
           "md.LinkAccountRequest",
           "md.OkResponse"
@@ -65,18 +70,18 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Modifies user account state by linking accounts and refreshing tokens.",
-          "Logs debug information."
+          "Modifies the state of user accounts",
+          "Logs debug information"
         ],
         "risks": [
-          "Potential exposure of sensitive information in logs.",
-          "Improper handling of authentication tokens may lead to security vulnerabilities."
+          "Potential exposure of sensitive information in logs",
+          "Improper handling of authentication tokens"
         ],
         "complexity": "medium"
       },
       "handlers/announcement.go": {
         "language": "Go",
-        "purpose": "Handles announcements and preferences for a service, providing both internal and public API endpoints.",
+        "purpose": "Handles announcements and preferences for a service, providing internal and public API endpoints.",
         "key_types": [
           "AnnouncementHandler",
           "announcementHandler",
@@ -122,6 +127,14 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
           "github.com/axieinfinity/ronin-wallet-manager/pkg/preference"
         ],
+        "side_effects": [
+          "Interacts with external services for scheduling and managing announcements",
+          "Modifies preferences in the database"
+        ],
+        "risks": [
+          "Potential for SQL injection if input is not properly sanitized",
+          "Exposure of sensitive data through public API endpoints"
+        ],
         "complexity": "medium"
       },
       "handlers/binance.go": {
@@ -149,7 +162,7 @@
       },
       "handlers/blacklist.go": {
         "language": "Go",
-        "purpose": "Handles requests related to blacklist sites and returns the blacklist items in JSON format.",
+        "purpose": "Handles requests related to blacklist sites and returns them in JSON format.",
         "key_types": [
           "BlacklistHandler",
           "blacklistHandler",
@@ -211,23 +224,27 @@
           "github.com/axieinfinity/ronin-wallet-manager/repositories"
         ],
         "side_effects": [
-          "Modifies cache for common configurations and code versions.",
-          "Publishes events to Redis channels."
+          "Modifies cache for common configurations and code versions",
+          "Publishes events to Redis channels"
         ],
         "risks": [
-          "Potential exposure of sensitive configuration data if not properly secured.",
-          "Race conditions due to concurrent access to shared resources."
+          "Potential exposure of sensitive configuration data if not properly secured",
+          "Race conditions due to concurrent access to shared resources"
         ],
         "complexity": "medium"
       },
       "handlers/dapp.go": {
         "language": "Go",
-        "purpose": "This file defines a handler for managing decentralized application (DApp) functionalities, including CRUD operations and public access methods.",
+        "purpose": "This file defines a handler for managing decentralized application (DApp) operations, including CRUD operations and public access to DApp data.",
         "key_types": [
           "DAppHandler",
           "dAppHandler",
-          "dapp.Service",
-          "blacklist.Service"
+          "SaveQuickAccessDAppRequest",
+          "SaveQuickAccessDAppBatchRequest",
+          "UpdateQuickAccessDAppRequest",
+          "GetQuickAccessDAppByIDRequest",
+          "Highlight",
+          "ListResponse"
         ],
         "functions": [
           "InternalSave",
@@ -266,8 +283,8 @@
           "Interacts with external services for blacklist checks"
         ],
         "risks": [
-          "Potential exposure of sensitive data through improper error handling",
-          "Risk of denial of service if the service is overloaded with requests"
+          "Potential exposure of sensitive data through improper handling of requests",
+          "Dependency on external services may introduce vulnerabilities"
         ],
         "complexity": "medium"
       },
@@ -321,11 +338,11 @@
         ],
         "side_effects": [
           "Logs information about device resets",
-          "Asynchronously initializes device registration"
+          "Asynchronously initializes device registration in a goroutine"
         ],
         "risks": [
-          "Potential exposure of sensitive data in logs",
-          "Improper error handling could lead to unhandled exceptions"
+          "Potential for race conditions in asynchronous operations",
+          "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"
       },
@@ -353,13 +370,13 @@
           "Sends HTTP responses based on authentication results."
         ],
         "risks": [
-          "Potential exposure of sensitive authentication data if not handled properly."
+          "Potential exposure of sensitive authentication information if not handled properly."
         ],
         "complexity": "medium"
       },
       "handlers/locationhandler.go": {
         "language": "Go",
-        "purpose": "Handles location-related requests and responses for a web service.",
+        "purpose": "Handles location-related requests and responses in a web application.",
         "key_types": [
           "LocationHandler",
           "locationHandler",
@@ -385,7 +402,7 @@
           "Logs debug information when looking up location"
         ],
         "risks": [
-          "Potential exposure of internal service endpoints if not properly secured"
+          "Potential exposure of internal service methods if not properly secured"
         ],
         "complexity": "medium"
       },
@@ -409,8 +426,11 @@
           "github.com/axieinfinity/ronin-wallet-manager/models",
           "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay"
         ],
+        "side_effects": [
+          "Modifies HTTP response based on request validation and signing process"
+        ],
         "risks": [
-          "Potential exposure of sensitive URL signing information"
+          "Potential for exposing sensitive URL signing information if not handled properly"
         ],
         "complexity": "medium"
       },
@@ -450,11 +470,14 @@
         "side_effects": [
           "Modifies cache for DApps and contracts based on user agent information."
         ],
+        "risks": [
+          "Potential exposure of sensitive network information if not properly secured."
+        ],
         "complexity": "medium"
       },
       "handlers/releasecandidate.go": {
         "language": "Go",
-        "purpose": "Handles release candidate features and configurations through HTTP requests.",
+        "purpose": "Handles release candidate features and configurations for a web service.",
         "key_types": [
           "ReleaseCandidateHandler",
           "releaseCandidateHandler",
@@ -519,11 +542,11 @@
         ],
         "side_effects": [
           "Modifies the state of trusted domains in the database.",
-          "Interacts with external services for blacklist checks."
+          "May alter the response based on blacklist checks."
         ],
         "risks": [
-          "Potential exposure of sensitive domain information.",
-          "Improper validation may lead to security vulnerabilities."
+          "Potential exposure of sensitive domain information if not properly validated.",
+          "Possible denial of service if the input is not sanitized."
         ],
         "complexity": "medium"
       }

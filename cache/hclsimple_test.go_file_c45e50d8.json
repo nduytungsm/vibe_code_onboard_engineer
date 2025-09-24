@@ -1,0 +1,31 @@
+{
+  "content_hash": "c72af66f9719f79c07b947a985fbace6",
+  "timestamp": "2025-09-24T16:39:51.535415+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests and examples for decoding HCL and JSON configurations using the hclsimple package.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "Example_nativeSyntax",
+      "Example_jsonSyntax",
+      "TestDecodeFile"
+    ],
+    "imports": [
+      "fmt",
+      "log",
+      "reflect",
+      "testing",
+      "github.com/hashicorp/hcl/v2/hclsimple"
+    ],
+    "side_effects": [
+      "Logs fatal errors if configuration loading fails",
+      "Prints configuration output to standard output"
+    ],
+    "risks": [
+      "Potential for log injection if error messages are not sanitized"
+    ],
+    "complexity": "medium"
+  }
+}

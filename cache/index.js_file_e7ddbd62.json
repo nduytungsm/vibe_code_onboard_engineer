@@ -1,0 +1,28 @@
+{
+  "content_hash": "abc62dcbd1edc359fcd365be8df3eee5",
+  "timestamp": "2025-09-24T17:11:20.639683+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Entry point for a React application that renders the main App component and measures performance.",
+    "key_types": [
+      "React",
+      "ReactDOM"
+    ],
+    "functions": [
+      "ReactDOM.render",
+      "reportWebVitals"
+    ],
+    "imports": [
+      "React",
+      "ReactDOM",
+      "./index.css",
+      "./App",
+      "./reportWebVitals"
+    ],
+    "side_effects": [
+      "Renders the App component to the DOM",
+      "Measures performance metrics"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "content_hash": "b7926fcf66efaba418fcfdeeb0c3107e",
+  "timestamp": "2025-09-24T17:06:46.073846+07:00",
+  "result": {
+    "language": "text",
+    "purpose": "This file is used for testing the Context.File() method.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

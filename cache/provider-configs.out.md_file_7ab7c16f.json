@@ -1,0 +1,12 @@
+{
+  "content_hash": "974a69940a85802c5bc59367cb681634",
+  "timestamp": "2025-09-24T17:04:04.154896+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation of provider configurations for a module",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

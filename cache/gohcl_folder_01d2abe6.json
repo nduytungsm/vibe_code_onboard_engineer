@@ -1,9 +1,9 @@
 {
-  "content_hash": "f19d7af2ddf3002dacd02fed2695f3cb",
-  "timestamp": "2025-09-24T15:47:22.083794+07:00",
+  "content_hash": "582123ecd529ae0e298b5ec865a3a9df",
+  "timestamp": "2025-09-24T16:46:17.65459+07:00",
   "result": {
     "path": "gohcl",
-    "purpose": "This folder/module is responsible for decoding and encoding HCL (HashiCorp Configuration Language) into Go data structures and vice versa.",
+    "purpose": "This folder/module is responsible for decoding and encoding HCL (HashiCorp Configuration Language) configurations into Go data structures and vice versa.",
     "languages": {
       "Go": 8
     },
@@ -11,10 +11,10 @@
       "decode.go",
       "encode.go",
       "schema.go",
-      "doc.go",
       "decode_test.go",
       "encode_test.go",
       "schema_test.go",
+      "doc.go",
       "types.go"
     ],
     "dependencies": [
@@ -26,16 +26,16 @@
       "github.com/hashicorp/hcl/v2/hclwrite",
       "github.com/davecgh/go-spew/spew"
     ],
-    "architecture": "The folder follows a modular architecture pattern, with separate files for encoding, decoding, schema definitions, and tests, promoting separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, with separate files for encoding, decoding, schema definitions, and testing, promoting separation of concerns and maintainability.",
     "file_summaries": {
       "gohcl/decode.go": {
         "language": "Go",
-        "purpose": "This file provides functionality to decode HCL (HashiCorp Configuration Language) bodies into Go data structures.",
+        "purpose": "This file provides functionality to decode HCL (HashiCorp Configuration Language) bodies into Go structures or maps.",
         "key_types": [
           "hcl.Body",
-          "hcl.EvalContext",
           "hcl.Diagnostics",
-          "reflect.Value"
+          "reflect.Value",
+          "hcl.EvalContext"
         ],
         "functions": [
           "DecodeBody",
@@ -96,7 +96,6 @@
         ],
         "functions": [
           "Decode",
-          "Encode",
           "EncodeIntoBody"
         ],
         "imports": [
@@ -104,11 +103,10 @@
           "gocty"
         ],
         "side_effects": [
-          "Panic on invalid struct tags",
-          "Error diagnostics for configuration errors"
+          "Panic on invalid struct tags"
         ],
         "risks": [
-          "Potential for panics if struct tags are invalid"
+          "Potential for panics due to bugs in the calling program"
         ],
         "complexity": "medium"
       },
@@ -134,16 +132,17 @@
           "github.com/zclconf/go-cty/cty/gocty"
         ],
         "side_effects": [
-          "Panic on inappropriate type or nil body in EncodeIntoBody and EncodeAsBlock functions."
+          "Panic if the provided value is not a struct or pointer to a struct.",
+          "Panic if the destination body is nil."
         ],
         "risks": [
-          "Potential panic if the input value is not a struct or pointer to a struct."
+          "Potential panic if the input types do not match expected struct types."
         ],
         "complexity": "medium"
       },
       "gohcl/encode_test.go": {
         "language": "Go",
-        "purpose": "This file contains tests for encoding HCL (HashiCorp Configuration Language) structures into HCL format.",
+        "purpose": "This file contains a test for encoding a structured application configuration into HCL format.",
         "key_types": [
           "Service",
           "Constraints",
@@ -181,11 +180,11 @@
           "github.com/hashicorp/hcl/v2"
         ],
         "side_effects": [
-          "Panic if an inappropriate value is passed to ImpliedBodySchema",
-          "Panic if invalid tags are encountered in getFieldTags"
+          "Panic if an inappropriate value is passed to ImpliedBodySchema.",
+          "Panic if invalid tags are encountered in getFieldTags."
         ],
         "risks": [
-          "Potential panic due to invalid struct types or tags"
+          "Potential for panic if struct does not meet expected criteria."
         ],
         "complexity": "medium"
       },
@@ -208,6 +207,9 @@
           "testing",
           "github.com/davecgh/go-spew/spew",
           "github.com/hashicorp/hcl/v2"
+        ],
+        "side_effects": [
+          "Prints error messages if the schema or partial flag does not match expected values."
         ],
         "complexity": "medium"
       },

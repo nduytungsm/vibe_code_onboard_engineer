@@ -1,0 +1,33 @@
+{
+  "content_hash": "279a483f6481c0a70168c112e2162999",
+  "timestamp": "2025-09-24T17:05:49.472711+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a binding mechanism for handling plain data in HTTP requests.",
+    "key_types": [
+      "plainBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "BindBody",
+      "decodePlain"
+    ],
+    "imports": [
+      "fmt",
+      "io",
+      "net/http",
+      "reflect",
+      "github.com/gin-gonic/gin/internal/bytesconv"
+    ],
+    "side_effects": [
+      "Reads from the HTTP request body",
+      "Modifies the provided object based on the request data"
+    ],
+    "risks": [
+      "Potential for nil pointer dereference",
+      "Error handling may expose internal types"
+    ],
+    "complexity": "medium"
+  }
+}

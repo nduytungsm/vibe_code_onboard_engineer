@@ -1,0 +1,25 @@
+{
+  "content_hash": "a8085a7e922625af5c6b492cbb007286",
+  "timestamp": "2025-09-24T17:03:44.908472+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates Markdown documentation for a Terraform module based on its configuration.",
+    "key_types": [
+      "Module",
+      "DiagSeverity"
+    ],
+    "functions": [
+      "RenderMarkdown"
+    ],
+    "imports": [
+      "encoding/json",
+      "io",
+      "strings",
+      "text/template"
+    ],
+    "side_effects": [
+      "Writes Markdown output to the provided io.Writer"
+    ],
+    "complexity": "medium"
+  }
+}

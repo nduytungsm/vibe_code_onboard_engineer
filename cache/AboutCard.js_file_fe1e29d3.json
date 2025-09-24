@@ -1,0 +1,21 @@
+{
+  "content_hash": "3c4a386b8b6e80a0562f682b9fd215a8",
+  "timestamp": "2025-09-24T17:11:10.75398+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file defines a React component that displays a personal introduction card.",
+    "key_types": [
+      "React.Component",
+      "Card"
+    ],
+    "functions": [
+      "AboutCard"
+    ],
+    "imports": [
+      "React",
+      "react-bootstrap/Card",
+      "react-icons/im"
+    ],
+    "complexity": "low"
+  }
+}

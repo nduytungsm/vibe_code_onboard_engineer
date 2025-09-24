@@ -1,45 +1,21 @@
 {
-  "content_hash": "4b367f4505d5cbc4a55eafa1150177a7",
-  "timestamp": "2025-09-24T15:47:12.356392+07:00",
+  "content_hash": "d36db1f5b11f614ba1da973c5b87199c",
+  "timestamp": "2025-09-24T16:38:26.983854+07:00",
   "result": {
     "path": "docs",
-    "purpose": "Documentation for the Fiber web framework, including installation instructions, examples, and changes in the latest version.",
+    "purpose": "Documentation for the Gin web framework, providing quick start guides and API examples.",
     "languages": {
-      "Markdown": 2
+      "Markdown": 1
     },
     "key_modules": [
-      "intro.md",
-      "whats_new.md"
+      "doc.md"
     ],
     "dependencies": [],
-    "architecture": "The folder contains Markdown files that provide documentation and guides for the Fiber web framework, structured to facilitate easy navigation and understanding of the framework's features and updates.",
+    "architecture": "The folder contains documentation files that follow a simple structure, focusing on providing clear and concise information about the Gin web framework.",
     "file_summaries": {
-      "docs/intro.md": {
+      "docs/doc.md": {
         "language": "Markdown",
-        "purpose": "Documentation for the Fiber web framework, including installation instructions and examples.",
-        "key_types": [
-          "fiber.Ctx",
-          "fiber.App"
-        ],
-        "functions": [
-          "handler",
-          "main"
-        ],
-        "imports": [
-          "github.com/gofiber/fiber/v3",
-          "github.com/gofiber/fiber/v3/middleware/static"
-        ],
-        "side_effects": [
-          "Modifies HTTP request handling and response behavior based on context values."
-        ],
-        "risks": [
-          "Potential memory leaks if context values are improperly managed."
-        ],
-        "complexity": "medium"
-      },
-      "docs/whats_new.md": {
-        "language": "Markdown",
-        "purpose": "Documentation for the changes and migration process of Fiber v3",
+        "purpose": "Documentation for the Gin web framework, providing quick start guides and API examples.",
         "key_types": [],
         "functions": [],
         "imports": [],

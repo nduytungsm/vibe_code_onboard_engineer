@@ -1,0 +1,19 @@
+{
+  "content_hash": "a25871c559b8e403852e333e16279d03",
+  "timestamp": "2025-09-24T16:36:49.286678+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a query binding for handling HTTP request parameters.",
+    "key_types": [
+      "queryBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind"
+    ],
+    "imports": [
+      "net/http"
+    ],
+    "complexity": "medium"
+  }
+}

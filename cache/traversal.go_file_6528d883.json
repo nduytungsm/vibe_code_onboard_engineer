@@ -1,0 +1,40 @@
+{
+  "content_hash": "cf31b1d2bb3fa4b249764992d2fd7ea3",
+  "timestamp": "2025-09-24T16:41:21.276395+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a Traversal structure and related methods for traversing values through a series of operations such as attribute lookup and index lookup.",
+    "key_types": [
+      "Traversal",
+      "TraversalSplit",
+      "TraverseRoot",
+      "TraverseAttr",
+      "TraverseIndex",
+      "TraverseSplat",
+      "Traverser"
+    ],
+    "functions": [
+      "TraversalJoin",
+      "TraverseRel",
+      "TraverseAbs",
+      "IsRelative",
+      "SimpleSplit",
+      "RootName",
+      "SourceRange",
+      "TraverseAbs",
+      "TraverseRel",
+      "Traverse"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Panic if the traversal is applied incorrectly (e.g., using TraverseRel on an absolute traversal)."
+    ],
+    "risks": [
+      "Potential for panics if traversals are not used as intended."
+    ],
+    "complexity": "medium"
+  }
+}

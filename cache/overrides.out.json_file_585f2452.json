@@ -1,0 +1,15 @@
+{
+  "content_hash": "03af8c26209afd46f97ce121f3685e0a",
+  "timestamp": "2025-09-24T17:04:00.68485+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines configuration overrides for Terraform variables, outputs, and resources.",
+    "key_types": [
+      "object",
+      "string"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

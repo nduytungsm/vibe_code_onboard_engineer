@@ -1,0 +1,21 @@
+{
+  "content_hash": "240e2381f826a9bb84d178b29b7b9abe",
+  "timestamp": "2025-09-24T17:11:20.43419+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file exports a function that reports web vitals metrics using the web-vitals library.",
+    "key_types": [
+      "Function"
+    ],
+    "functions": [
+      "reportWebVitals"
+    ],
+    "imports": [
+      "web-vitals"
+    ],
+    "side_effects": [
+      "Dynamically imports the web-vitals library and calls its functions to report metrics."
+    ],
+    "complexity": "medium"
+  }
+}

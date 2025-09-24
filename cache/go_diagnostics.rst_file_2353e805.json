@@ -1,0 +1,23 @@
+{
+  "content_hash": "35c0b27dad6123f33e7b8e9b17fb8b29",
+  "timestamp": "2025-09-24T16:39:30.461475+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "To describe how to produce and render diagnostic messages in HCL (HashiCorp Configuration Language) applications.",
+    "key_types": [
+      "hcl.Diagnostics"
+    ],
+    "functions": [
+      "returningDiagnosticsExample"
+    ],
+    "imports": [
+      "os",
+      "hcl",
+      "parser"
+    ],
+    "side_effects": [
+      "Rendering diagnostics to terminal or GUI"
+    ],
+    "complexity": "medium"
+  }
+}

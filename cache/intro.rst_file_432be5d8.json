@@ -1,0 +1,16 @@
+{
+  "content_hash": "da00f435f0a788b35f9e156f98a4079c",
+  "timestamp": "2025-09-24T16:58:28.045275+07:00",
+  "result": {
+    "language": "reStructuredText",
+    "purpose": "Documentation of HCL-based configuration language and its constructs.",
+    "key_types": [
+      "arguments",
+      "blocks",
+      "labels"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

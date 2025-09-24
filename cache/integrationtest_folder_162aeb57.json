@@ -1,9 +1,9 @@
 {
-  "content_hash": "bd9cc178b93ef6780814de170fdabf0a",
-  "timestamp": "2025-09-24T15:48:27.935942+07:00",
+  "content_hash": "25dbe8cde2377bba5400d39e7ed814c3",
+  "timestamp": "2025-09-24T16:46:25.274595+07:00",
   "result": {
     "path": "integrationtest",
-    "purpose": "This folder contains integration tests that validate the functionality of HCL features and type conversions in realistic scenarios.",
+    "purpose": "This folder is responsible for integration testing of HCL features, including type conversion, decoding functionality, and parsing Terraform-like configurations.",
     "languages": {
       "Go": 4
     },
@@ -23,12 +23,15 @@
       "github.com/google/go-cmp/cmp/cmpopts",
       "github.com/hashicorp/hcl/v2/ext/customdecode",
       "github.com/hashicorp/hcl/v2/hcldec",
-      "github.com/hashicorp/hcl/v2/json",
-      "github.com/davecgh/go-spew/spew",
       "github.com/hashicorp/hcl/v2/ext/dynblock",
-      "github.com/hashicorp/hcl/v2/gohcl"
+      "github.com/hashicorp/hcl/v2/gohcl",
+      "github.com/hashicorp/hcl/v2/json",
+      "reflect",
+      "sort",
+      "testing",
+      "github.com/davecgh/go-spew/spew"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing integration tests into separate files based on functionality, with a focus on testing HCL parsing and decoding capabilities.",
+    "architecture": "The folder follows a modular architecture pattern, organizing integration tests into separate files based on functionality, allowing for focused testing of specific HCL features.",
     "file_summaries": {
       "integrationtest/convertfunc_test.go": {
         "language": "Go",
@@ -52,13 +55,13 @@
           "github.com/zclconf/go-cty/cty/function"
         ],
         "side_effects": [
-          "Modifies test state based on the success or failure of the conversion."
+          "Modifies test state based on the success or failure of the type conversion."
         ],
         "complexity": "medium"
       },
       "integrationtest/doc.go": {
         "language": "Go",
-        "purpose": "This file defines an internal package for integration tests that exercise HCL features in realistic scenarios.",
+        "purpose": "Defines an internal package for integration tests of HCL features.",
         "key_types": [],
         "functions": [],
         "imports": [],
@@ -66,7 +69,7 @@
       },
       "integrationtest/hcldec_into_expr_test.go": {
         "language": "Go",
-        "purpose": "Integration test for HCL decoding with custom expression rules.",
+        "purpose": "This file contains integration tests for HCL decoding functionality, specifically testing custom expression decoding rules.",
         "key_types": [
           "hcldec.ObjectSpec",
           "hcldec.AttrSpec",
@@ -74,11 +77,7 @@
           "cty.Value"
         ],
         "functions": [
-          "TestHCLDecDecodeToExpr",
-          "hclsyntax.ParseConfig",
-          "hcldec.Decode",
-          "customdecode.ExpressionFromVal",
-          "customdecode.ExpressionClosureFromVal"
+          "TestHCLDecDecodeToExpr"
         ],
         "imports": [
           "testing",
@@ -118,9 +117,6 @@
           "github.com/hashicorp/hcl/v2/json",
           "github.com/zclconf/go-cty/cty",
           "github.com/zclconf/go-cty/cty/function"
-        ],
-        "side_effects": [
-          "Logs diagnostics during parsing and evaluation errors."
         ],
         "complexity": "medium"
       }

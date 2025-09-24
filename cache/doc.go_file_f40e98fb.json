@@ -1,0 +1,26 @@
+{
+  "content_hash": "89c1b84d8a5bfc8bbcd3e8ae9900f0ee",
+  "timestamp": "2025-09-24T17:16:27.028584+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the HCL package for modeling types and utility functions for HCL configurations.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [
+      "main"
+    ],
+    "imports": [
+      "log",
+      "github.com/hashicorp/hcl/v2/hclsimple"
+    ],
+    "side_effects": [
+      "Logs configuration loading errors",
+      "Logs loaded configuration"
+    ],
+    "risks": [
+      "Potential for file path manipulation in DecodeFile"
+    ],
+    "complexity": "medium"
+  }
+}

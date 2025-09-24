@@ -1,0 +1,12 @@
+{
+  "content_hash": "d5e0794798b3e1f22e0052803b1cd2c4",
+  "timestamp": "2025-09-24T16:40:42.533322+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an internal package for integration tests of HCL features.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

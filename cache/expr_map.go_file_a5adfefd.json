@@ -1,0 +1,19 @@
+{
+  "content_hash": "46f70b56f262ffb46cd2f198dcbbb9b8",
+  "timestamp": "2025-09-24T16:38:48.514236+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a function to extract static map expressions from a given expression and returns diagnostics if not valid.",
+    "key_types": [
+      "Expression",
+      "KeyValuePair",
+      "Diagnostics",
+      "Diagnostic"
+    ],
+    "functions": [
+      "ExprMap"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

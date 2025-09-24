@@ -1,0 +1,18 @@
+{
+  "content_hash": "2eebe92f1a6781e209eb4133ce589e2b",
+  "timestamp": "2025-09-24T17:33:09.455455+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that conditionally renders a preloader div based on props.",
+    "key_types": [
+      "React.Component"
+    ],
+    "functions": [
+      "Pre"
+    ],
+    "imports": [
+      "React"
+    ],
+    "complexity": "low"
+  }
+}

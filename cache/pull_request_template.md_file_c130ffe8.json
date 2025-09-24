@@ -1,0 +1,12 @@
+{
+  "content_hash": "05c96527e09dfb0267d772d455dc9530",
+  "timestamp": "2025-09-24T16:38:26.463542+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Template for pull requests in a GitHub repository",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

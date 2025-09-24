@@ -1,0 +1,12 @@
+{
+  "content_hash": "414343b5cabb37a0ebe3c9277c6e7a2c",
+  "timestamp": "2025-09-24T16:39:41.965175+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides functionality to help applications that embed HCL for navigating and analyzing configuration files.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

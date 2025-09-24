@@ -1,0 +1,20 @@
+{
+  "content_hash": "3e743ced8f7625d1b5c09792587b56cb",
+  "timestamp": "2025-09-24T17:00:05.90044+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "This script builds fuzzers for HCL syntax and prepares seed corpora for them.",
+    "key_types": [],
+    "functions": [
+      "compile_go_fuzzer"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates directories",
+      "Copies files",
+      "Zips directories",
+      "Removes directories"
+    ],
+    "complexity": "medium"
+  }
+}

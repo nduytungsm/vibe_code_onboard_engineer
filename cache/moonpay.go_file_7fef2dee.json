@@ -1,0 +1,15 @@
+{
+  "content_hash": "61834c0c0a1e7acfdb0dda859f4ce7e3",
+  "timestamp": "2025-09-24T16:27:55.667815+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for Moonpay signing requests and responses.",
+    "key_types": [
+      "MoonpaySigningRequest",
+      "MoonpaySigningResponse"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

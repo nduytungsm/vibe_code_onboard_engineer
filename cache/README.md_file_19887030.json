@@ -1,0 +1,29 @@
+{
+  "content_hash": "b3c02aba70097db29eb369b6af5aa533",
+  "timestamp": "2025-09-24T16:57:41.642392+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the HCL Custom Static Decoding Extension, explaining its functionality and usage.",
+    "key_types": [
+      "hcldec.AttrSpec",
+      "hcldec.BlockAttrsSpec",
+      "cty.Type",
+      "cty.CapsuleOps",
+      "hcl.Expression",
+      "hcl.EvalContext",
+      "customdecode.ExpressionClosure"
+    ],
+    "functions": [
+      "ExtensionData",
+      "CustomExpressionDecoderFunc",
+      "evalWithLocals"
+    ],
+    "imports": [
+      "hcl",
+      "cty",
+      "reflect",
+      "customdecode"
+    ],
+    "complexity": "medium"
+  }
+}

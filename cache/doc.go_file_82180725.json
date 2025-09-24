@@ -1,0 +1,17 @@
+{
+  "content_hash": "f2b2ce975216512bb4df2609ace0ee7f",
+  "timestamp": "2025-09-24T16:57:54.239731+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a package for writing extensions that apply transforms to bodies.",
+    "key_types": [
+      "transformer"
+    ],
+    "functions": [
+      "ApplyTransform",
+      "NewTransformer"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

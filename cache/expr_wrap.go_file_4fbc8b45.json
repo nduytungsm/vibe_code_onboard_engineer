@@ -1,0 +1,25 @@
+{
+  "content_hash": "f4e9e5ef00a91e1737d4655771bdb637",
+  "timestamp": "2025-09-24T16:38:55.776491+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a wrapper for HCL expressions that manages iteration and result marks.",
+    "key_types": [
+      "exprWrap",
+      "hcl.Expression",
+      "iteration",
+      "cty.ValueMarks"
+    ],
+    "functions": [
+      "Variables",
+      "Value",
+      "UnwrapExpression",
+      "prepareValue"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

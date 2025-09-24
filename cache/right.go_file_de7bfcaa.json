@@ -1,0 +1,16 @@
+{
+  "content_hash": "3c89d0c7af6671948cdbfc9284ddee8e",
+  "timestamp": "2025-09-24T17:10:09.052278+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a database port interface with a method to close the database connection.",
+    "key_types": [
+      "DbPort"
+    ],
+    "functions": [
+      "CloseDbConnection"
+    ],
+    "imports": [],
+    "complexity": "low"
+  }
+}

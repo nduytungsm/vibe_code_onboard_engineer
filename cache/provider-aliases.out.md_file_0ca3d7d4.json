@@ -1,0 +1,12 @@
+{
+  "content_hash": "893103bb206c4587e0152284ad497133",
+  "timestamp": "2025-09-24T17:04:02.186849+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation of provider aliases for a module",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

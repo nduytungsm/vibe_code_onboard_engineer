@@ -1,0 +1,49 @@
+{
+  "content_hash": "6eb9e0ce4777b011eb759094058dbe2b",
+  "timestamp": "2025-09-24T17:04:21.318194+07:00",
+  "result": {
+    "path": "tfconfig/testdata/variable-sensitive",
+    "purpose": "This folder contains a Terraform module that defines configuration, including variables and managed resources, while also providing documentation for its usage.",
+    "languages": {
+      "JSON": 1,
+      "Markdown": 1
+    },
+    "key_modules": [
+      "variable-sensitive.out.json",
+      "variable-sensitive.out.md"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and documentation for a Terraform module, ensuring separation of concerns.",
+    "file_summaries": {
+      "tfconfig/testdata/variable-sensitive/variable-sensitive.out.json": {
+        "language": "JSON",
+        "purpose": "This file defines the configuration for a Terraform module, including variables and managed resources.",
+        "key_types": [
+          "object",
+          "variable",
+          "resource"
+        ],
+        "functions": [],
+        "imports": [
+          "null"
+        ],
+        "risks": [
+          "sensitive data exposure if not handled properly"
+        ],
+        "complexity": "low"
+      },
+      "tfconfig/testdata/variable-sensitive/variable-sensitive.out.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for a Terraform module with input variables and managed resources.",
+        "key_types": [
+          "null_resource"
+        ],
+        "functions": [],
+        "imports": [
+          "null"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

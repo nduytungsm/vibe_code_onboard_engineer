@@ -1,0 +1,25 @@
+{
+  "content_hash": "5f2aebc40f01498ce534dcbecdd76f82",
+  "timestamp": "2025-09-24T16:27:20.362145+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles requests related to blacklist sites and returns them in JSON format.",
+    "key_types": [
+      "BlacklistHandler",
+      "blacklistHandler",
+      "blacklist.Service",
+      "md.ListResponse"
+    ],
+    "functions": [
+      "NewBlacklistHandler",
+      "GetBlacklistSites"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist"
+    ],
+    "complexity": "medium"
+  }
+}

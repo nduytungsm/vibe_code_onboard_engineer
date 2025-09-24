@@ -1,0 +1,22 @@
+{
+  "content_hash": "7d3544a31060d94d8f3f1c6e19998389",
+  "timestamp": "2025-09-24T16:41:04.821895+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Specification for the JSON serialization of HCL (HashiCorp Configuration Language).",
+    "key_types": [
+      "HCL",
+      "JSON",
+      "schema"
+    ],
+    "functions": [
+      "body processing",
+      "attribute definition",
+      "block definition"
+    ],
+    "imports": [
+      "RFC7159"
+    ],
+    "complexity": "medium"
+  }
+}

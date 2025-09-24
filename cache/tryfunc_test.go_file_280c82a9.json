@@ -1,0 +1,25 @@
+{
+  "content_hash": "1e3ef2438242fdd10e2aaa6a4ab9b9ed",
+  "timestamp": "2025-09-24T16:39:08.059378+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the Try and Can functions in the HCL (HashiCorp Configuration Language) context.",
+    "key_types": [
+      "cty.Value",
+      "hcl.EvalContext",
+      "hclsyntax.Expression"
+    ],
+    "functions": [
+      "TestTryFunc",
+      "TestCanFunc"
+    ],
+    "imports": [
+      "testing",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/function"
+    ],
+    "complexity": "medium"
+  }
+}

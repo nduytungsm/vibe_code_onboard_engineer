@@ -1,0 +1,24 @@
+{
+  "content_hash": "25f82b11e2f3006e2dd0ee3959ff76a8",
+  "timestamp": "2025-09-24T17:27:23.575581+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles multipart form data requests and sets values based on the provided form files.",
+    "key_types": [
+      "multipartRequest",
+      "multipart.FileHeader"
+    ],
+    "functions": [
+      "TrySet",
+      "setByMultipartFormFile",
+      "setArrayOfMultipartFormFiles"
+    ],
+    "imports": [
+      "errors",
+      "mime/multipart",
+      "net/http",
+      "reflect"
+    ],
+    "complexity": "medium"
+  }
+}

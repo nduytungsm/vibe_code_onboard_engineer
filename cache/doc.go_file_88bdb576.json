@@ -1,0 +1,25 @@
+{
+  "content_hash": "e258d0fc49f3c83a64f988a543c81df8",
+  "timestamp": "2025-09-24T17:03:40.605517+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "A helper library for parsing Terraform modules to access high-level metadata.",
+    "key_types": [
+      "Package",
+      "Module",
+      "Variable",
+      "Output",
+      "ResourceBlock",
+      "ProviderDependency"
+    ],
+    "functions": [
+      "ParseModule",
+      "GetVariables",
+      "GetOutputs",
+      "GetResourceBlocks",
+      "GetProviderDependencies"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

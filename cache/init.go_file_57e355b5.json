@@ -1,0 +1,25 @@
+{
+  "content_hash": "f776562cc61505a8096529b3db518b66",
+  "timestamp": "2025-09-24T16:28:23.04624+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a service interface for managing feature configurations and whitelist devices.",
+    "key_types": [
+      "Service",
+      "CheckAllowFeatureRequest",
+      "PostFeatureConfigRequest",
+      "PostWhitelistFeaturesRequest",
+      "PostSetConfigForDeviceRequest",
+      "GetCountWhitelistDevices"
+    ],
+    "functions": [
+      "NewService"
+    ],
+    "imports": [
+      "github.com/redis/go-redis/v9",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/device"
+    ],
+    "complexity": "medium"
+  }
+}

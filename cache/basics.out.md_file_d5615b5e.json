@@ -1,0 +1,16 @@
+{
+  "content_hash": "e1189a4e91365a96753c572ad25e7d57",
+  "timestamp": "2025-09-24T17:03:52.506298+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for a Terraform module including provider requirements, input variables, output values, and managed resources.",
+    "key_types": [
+      "null_resource"
+    ],
+    "functions": [],
+    "imports": [
+      "null"
+    ],
+    "complexity": "low"
+  }
+}

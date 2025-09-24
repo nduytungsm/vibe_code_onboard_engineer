@@ -1,0 +1,24 @@
+{
+  "content_hash": "ff67189f77e3ea492d2f9ad3198dabbb",
+  "timestamp": "2025-09-24T16:57:47.783168+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an iteration structure and methods for managing iterations in a context.",
+    "key_types": [
+      "iteration",
+      "cty.Value",
+      "hcl.EvalContext"
+    ],
+    "functions": [
+      "MakeIteration",
+      "Object",
+      "EvalContext",
+      "MakeChild"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

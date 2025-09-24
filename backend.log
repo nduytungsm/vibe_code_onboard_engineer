@@ -7,4 +7,4 @@ High performance, minimalist Go web framework
 https://echo.labstack.com
 ____________________________________O/_______
                                     O\
-{"time":"2025-09-24T15:23:38.802989+07:00","level":"FATAL","prefix":"echo","file":"main.go","line":"48","message":"listen tcp :8080: bind: address already in use"}
+{"time":"2025-09-24T16:38:12.049458+07:00","level":"FATAL","prefix":"echo","file":"main.go","line":"48","message":"listen tcp :8080: bind: address already in use"}

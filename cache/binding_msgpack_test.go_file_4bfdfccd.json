@@ -1,0 +1,33 @@
+{
+  "content_hash": "5c196f2abd5c8834cc597fee82a508fc",
+  "timestamp": "2025-09-24T17:27:14.810713+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for message pack binding functionality in a web application",
+    "key_types": [
+      "FooStruct",
+      "Binding"
+    ],
+    "functions": [
+      "TestBindingMsgPack",
+      "testMsgPackBodyBinding",
+      "TestBindingDefaultMsgPack"
+    ],
+    "imports": [
+      "bytes",
+      "net/http",
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/ugorji/go/codec"
+    ],
+    "side_effects": [
+      "Modifies HTTP request headers",
+      "Encodes data into message pack format"
+    ],
+    "risks": [
+      "Potential for incorrect binding if the content type is not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

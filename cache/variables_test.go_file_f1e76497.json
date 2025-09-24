@@ -1,0 +1,31 @@
+{
+  "content_hash": "ce7764d5dc78e79103c74906cab8fefa",
+  "timestamp": "2025-09-24T16:57:56.184163+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the functionality of variable handling in dynamic blocks using HCL (HashiCorp Configuration Language).",
+    "key_types": [
+      "hcldec.BlockListSpec",
+      "hcldec.BlockMapSpec",
+      "hcldec.AttrSpec"
+    ],
+    "functions": [
+      "TestVariables",
+      "WalkVariables",
+      "WalkExpandVariables"
+    ],
+    "imports": [
+      "reflect",
+      "testing",
+      "github.com/hashicorp/hcl/v2/hcldec",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/davecgh/go-spew/spew",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hclsyntax"
+    ],
+    "side_effects": [
+      "Logs errors if diagnostics are found during parsing."
+    ],
+    "complexity": "medium"
+  }
+}

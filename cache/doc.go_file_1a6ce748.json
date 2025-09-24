@@ -1,0 +1,23 @@
+{
+  "content_hash": "d8d620771c35d32e37c9d9ac245fadee",
+  "timestamp": "2025-09-24T16:40:32.910151+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines the hclwrite package for generating and modifying HCL configurations.",
+    "key_types": [
+      "Node",
+      "HCL configuration"
+    ],
+    "functions": [
+      "CreateNode",
+      "InsertNode",
+      "ModifyNode"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies HCL configurations",
+      "Generates HCL output"
+    ],
+    "complexity": "medium"
+  }
+}

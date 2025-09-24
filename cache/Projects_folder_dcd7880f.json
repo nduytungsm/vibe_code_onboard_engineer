@@ -1,0 +1,76 @@
+{
+  "content_hash": "ef678f1cbe87a4e49d5b32b018caee43",
+  "timestamp": "2025-09-24T17:37:58.352063+07:00",
+  "result": {
+    "path": "src/components/Projects",
+    "purpose": "This folder contains React components responsible for displaying project-related information in a user-friendly format.",
+    "languages": {
+      "JavaScript": 2
+    },
+    "key_modules": [
+      "ProjectCards.js",
+      "Projects.js"
+    ],
+    "dependencies": [
+      "react",
+      "react-bootstrap",
+      "react-icons"
+    ],
+    "architecture": "The folder follows a component-based architecture typical in React applications, where each file represents a distinct UI component.",
+    "file_summaries": {
+      "src/components/Projects/ProjectCards.js": {
+        "language": "JavaScript",
+        "purpose": "A React component that displays project cards with information and links.",
+        "key_types": [
+          "ProjectCards"
+        ],
+        "functions": [
+          "ProjectCards"
+        ],
+        "imports": [
+          "React",
+          "react-bootstrap/Card",
+          "react-bootstrap/Button",
+          "react-icons/cg",
+          "react-icons/bs"
+        ],
+        "side_effects": [
+          "Renders UI components based on props"
+        ],
+        "complexity": "medium"
+      },
+      "src/components/Projects/Projects.js": {
+        "language": "JavaScript",
+        "purpose": "This file defines a React component that displays a list of recent projects with descriptions and links.",
+        "key_types": [
+          "Projects",
+          "Container",
+          "Row",
+          "Col",
+          "ProjectCard"
+        ],
+        "functions": [
+          "Projects"
+        ],
+        "imports": [
+          "React",
+          "Container",
+          "Row",
+          "Col",
+          "ProjectCard",
+          "Particle",
+          "leaf",
+          "emotion",
+          "editor",
+          "chatify",
+          "suicide",
+          "bitsOfCode"
+        ],
+        "side_effects": [
+          "Renders a UI component displaying project information"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "content_hash": "b66d2acf880764b07a2c32119c757971",
+  "timestamp": "2025-09-24T16:39:58.932999+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains directives for code generation and formatting related to HCL syntax.",
+    "key_types": [
+      "package",
+      "struct"
+    ],
+    "functions": [
+      "generateUnicodeDerived",
+      "generateScanStringLit"
+    ],
+    "imports": [
+      "expression_vars_gen.go",
+      "unicode2ragel.rb",
+      "scan_string_lit.rl"
+    ],
+    "side_effects": [
+      "generates code files",
+      "formats code files"
+    ],
+    "complexity": "medium"
+  }
+}

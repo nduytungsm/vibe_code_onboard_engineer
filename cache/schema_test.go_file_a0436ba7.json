@@ -1,0 +1,26 @@
+{
+  "content_hash": "72d4ec5a495c57ec56bb5f6825744c97",
+  "timestamp": "2025-09-24T17:00:12.235413+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the ImpliedBodySchema function in the gohcl package.",
+    "key_types": [
+      "struct",
+      "hcl.BodySchema",
+      "hcl.AttributeSchema",
+      "hcl.BlockHeaderSchema"
+    ],
+    "functions": [
+      "TestImpliedBodySchema",
+      "ImpliedBodySchema"
+    ],
+    "imports": [
+      "fmt",
+      "reflect",
+      "testing",
+      "github.com/davecgh/go-spew/spew",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

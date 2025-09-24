@@ -1,0 +1,32 @@
+{
+  "content_hash": "9df20a9e575b3a921428f26563da23dd",
+  "timestamp": "2025-09-24T17:03:45.103862+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Loads legacy HCL configuration modules and parses them into a structured format.",
+    "key_types": [
+      "Module",
+      "Diagnostics",
+      "Resource",
+      "ProviderRef",
+      "ModuleCall",
+      "Variable"
+    ],
+    "functions": [
+      "loadModuleLegacyHCL",
+      "unwrapLegacyHCLObjectKeysFromJSON"
+    ],
+    "imports": [
+      "strings",
+      "github.com/hashicorp/hcl",
+      "github.com/hashicorp/hcl/hcl/ast"
+    ],
+    "side_effects": [
+      "Modifies the state of the Module object being loaded."
+    ],
+    "risks": [
+      "Potential for unhandled errors during file reading and parsing."
+    ],
+    "complexity": "high"
+  }
+}

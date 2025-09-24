@@ -1,9 +1,9 @@
 {
-  "content_hash": "67b9aa6e487844fd3c349a7e369b19e2",
-  "timestamp": "2025-09-24T15:32:16.607266+07:00",
+  "content_hash": "8f3c36f8362363c9b7620cb558f9a63f",
+  "timestamp": "2025-09-24T16:29:35.867244+07:00",
   "result": {
     "path": "pkg/crypto/hmac",
-    "purpose": "This module is responsible for providing HMAC signing and validation functionalities, including configuration management and handling potential security risks.",
+    "purpose": "Responsible for HMAC (Hash-based Message Authentication Code) functionality, including signing and validation with support for configuration and clock skew management.",
     "languages": {
       "Go": 6
     },
@@ -51,7 +51,8 @@
         "purpose": "Provides HMAC signing functions using SHA256 and SHA512 algorithms.",
         "key_types": [
           "[]byte",
-          "map[string]string"
+          "map[string]string",
+          "error"
         ],
         "functions": [
           "SHA256",
@@ -73,8 +74,8 @@
           "Generates HMAC signatures"
         ],
         "risks": [
-          "Potential for timing attacks if not handled properly",
-          "Improper key management could lead to security vulnerabilities"
+          "Potential for timing attacks if not implemented securely",
+          "Improper handling of keys may lead to security vulnerabilities"
         ],
         "complexity": "medium"
       },
@@ -82,9 +83,10 @@
         "language": "Go",
         "purpose": "Unit tests for HMAC signing functionality",
         "key_types": [
-          "map[string]string",
           "struct",
-          "[]struct"
+          "map",
+          "string",
+          "byte"
         ],
         "functions": [
           "TestSign"
@@ -139,12 +141,6 @@
           "testing",
           "time"
         ],
-        "side_effects": [
-          "None"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data if not handled properly"
-        ],
         "complexity": "medium"
       },
       "pkg/crypto/hmac/init.go": {
@@ -163,7 +159,7 @@
         ],
         "side_effects": [
           "Initializes a global instance of HMAC",
-          "Modifies global configuration"
+          "Sets global configuration"
         ],
         "risks": [
           "Potential race conditions if InitInstance is called concurrently without proper synchronization"

@@ -1,0 +1,28 @@
+{
+  "content_hash": "95ee0317a59bde4c6bd7c7e7219e1b33",
+  "timestamp": "2025-09-24T16:36:29.201943+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for GoReleaser to manage project releases.",
+    "key_types": [
+      "project_name",
+      "builds",
+      "changelog",
+      "groups"
+    ],
+    "functions": [
+      "skip",
+      "disable",
+      "use",
+      "sort"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies release process based on configuration settings."
+    ],
+    "risks": [
+      "Potential for misconfiguration leading to incorrect release notes."
+    ],
+    "complexity": "medium"
+  }
+}

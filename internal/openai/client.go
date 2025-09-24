@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"net/http"
+	"time"
 
 	"github.com/sashabaranov/go-openai"
 	"repo-explanation/config"
@@ -75,12 +77,20 @@ type MonorepoService struct {
 
 // NewClient creates a new OpenAI client with configuration
 func NewClient(cfg *config.Config) *Client {
-	client := openai.NewClient(cfg.OpenAI.APIKey)
-	if cfg.OpenAI.BaseURL != "" {
-		config := openai.DefaultConfig(cfg.OpenAI.APIKey)
-		config.BaseURL = cfg.OpenAI.BaseURL
-		client = openai.NewClientWithConfig(config)
+	// Create HTTP client with longer timeout for analysis operations
+	httpClient := &http.Client{
+		Timeout: 10 * time.Minute, // 10-minute timeout for individual API calls
 	}
+	
+	// Configure OpenAI client with custom HTTP client
+	config := openai.DefaultConfig(cfg.OpenAI.APIKey)
+	config.HTTPClient = httpClient
+	
+	if cfg.OpenAI.BaseURL != "" {
+		config.BaseURL = cfg.OpenAI.BaseURL
+	}
+	
+	client := openai.NewClientWithConfig(config)
 
 	rateLimiter := NewRateLimiter(
 		cfg.RateLimiting.RequestsPerMinute,

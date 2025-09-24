@@ -1,0 +1,12 @@
+{
+  "content_hash": "c017e77e0f4ef3e59e4c500167944578",
+  "timestamp": "2025-09-24T17:04:02.734862+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation of provider requirements for a module",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

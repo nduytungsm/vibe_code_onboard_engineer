@@ -1,0 +1,65 @@
+{
+  "content_hash": "e3968d7b12f64d2cf284f09de74a4a15",
+  "timestamp": "2025-09-24T17:19:10.833044+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the Gin web framework, specifically for loading HTML templates and handling HTTP requests.",
+    "key_types": [
+      "Engine",
+      "Context",
+      "http.Client",
+      "http.Transport"
+    ],
+    "functions": [
+      "formatAsDate",
+      "setupHTMLFiles",
+      "TestLoadHTMLGlobDebugMode",
+      "TestH2c",
+      "TestLoadHTMLGlobTestMode",
+      "TestLoadHTMLGlobReleaseMode",
+      "TestLoadHTMLGlobUsingTLS",
+      "TestLoadHTMLGlobFromFuncMap",
+      "init",
+      "TestCreateEngine",
+      "TestLoadHTMLFilesTestMode",
+      "TestLoadHTMLFilesDebugMode",
+      "TestLoadHTMLFilesReleaseMode",
+      "TestLoadHTMLFilesUsingTLS",
+      "TestLoadHTMLFilesFuncMap",
+      "TestLoadHTMLFSTestMode",
+      "TestLoadHTMLFSDebugMode",
+      "TestLoadHTMLFSReleaseMode",
+      "TestLoadHTMLFSUsingTLS",
+      "TestLoadHTMLFSFuncMap",
+      "TestAddRoute"
+    ],
+    "imports": [
+      "crypto/tls",
+      "fmt",
+      "html/template",
+      "io",
+      "net",
+      "net/http",
+      "net/http/httptest",
+      "reflect",
+      "strconv",
+      "strings",
+      "sync/atomic",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "golang.org/x/net/http2"
+    ],
+    "side_effects": [
+      "Sets the mode for the Gin engine",
+      "Creates HTTP test servers",
+      "Makes HTTP requests to test endpoints"
+    ],
+    "risks": [
+      "Potential for insecure TLS configuration due to InsecureSkipVerify",
+      "HTTP requests may expose sensitive data if not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

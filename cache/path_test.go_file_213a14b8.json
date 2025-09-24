@@ -1,0 +1,29 @@
+{
+  "content_hash": "4bc58916401e4adbeb9dd5346a258ee2",
+  "timestamp": "2025-09-24T16:37:23.396153+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests and benchmarks for a function that cleans up file paths.",
+    "key_types": [
+      "cleanPathTest"
+    ],
+    "functions": [
+      "TestPathClean",
+      "TestPathCleanMallocs",
+      "BenchmarkPathClean",
+      "genLongPaths",
+      "TestPathCleanLong",
+      "BenchmarkPathCleanLong"
+    ],
+    "imports": [
+      "runtime",
+      "strings",
+      "testing",
+      "github.com/stretchr/testify/assert"
+    ],
+    "side_effects": [
+      "skips tests based on runtime conditions"
+    ],
+    "complexity": "medium"
+  }
+}

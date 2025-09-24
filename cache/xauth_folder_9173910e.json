@@ -1,6 +1,6 @@
 {
-  "content_hash": "b75349b743e017a6501175a46f0e0dd3",
-  "timestamp": "2025-09-24T15:34:20.79865+07:00",
+  "content_hash": "14d08c9493c0eec83812a94b52dffc6a",
+  "timestamp": "2025-09-24T16:31:00.577793+07:00",
   "result": {
     "path": "pkg/xauth",
     "purpose": "Responsible for client authentication and external authentication service integration.",
@@ -17,7 +17,7 @@
       "github.com/axieinfinity/ecosystem-go-common/errors",
       "github.com/axieinfinity/ronin-wallet-manager/models"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating authentication logic and configuration management in separate files.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating authentication logic and configuration management.",
     "file_summaries": {
       "pkg/xauth/config.go": {
         "language": "Go",
@@ -56,10 +56,10 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Logs an error if unable to exchange auth code"
+          "Logs an error if unable to exchange auth code."
         ],
         "risks": [
-          "Potential exposure of sensitive information if error handling is not properly managed"
+          "Potential exposure of sensitive information if error handling is not properly managed."
         ],
         "complexity": "medium"
       }

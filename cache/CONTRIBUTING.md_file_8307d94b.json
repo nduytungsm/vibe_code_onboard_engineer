@@ -1,0 +1,12 @@
+{
+  "content_hash": "779533e9fe2efac4b38dd064395c1f65",
+  "timestamp": "2025-09-24T16:36:31.548519+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Guidelines for contributing to the project, including issue reporting and pull request procedures.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

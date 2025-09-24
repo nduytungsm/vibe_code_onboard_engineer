@@ -1,0 +1,26 @@
+{
+  "content_hash": "5e00b6abe9d6e7aba5d50e3718888bca",
+  "timestamp": "2025-09-24T16:41:20.327884+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for expression traversal functionality in HCL (HashiCorp Configuration Language)",
+    "key_types": [
+      "asTraversalSupported",
+      "asTraversalSupportedAttr",
+      "asTraversalNotSupported",
+      "asTraversalDeclined",
+      "asTraversalWrappedDelegated"
+    ],
+    "functions": [
+      "AsTraversal",
+      "UnwrapExpression",
+      "TestAbsTraversalForExpr",
+      "TestRelTraversalForExpr",
+      "TestExprAsKeyword"
+    ],
+    "imports": [
+      "testing"
+    ],
+    "complexity": "medium"
+  }
+}

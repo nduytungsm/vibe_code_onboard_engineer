@@ -1,0 +1,28 @@
+{
+  "content_hash": "86a0321be189a0552fdc4703318d8efd",
+  "timestamp": "2025-09-24T16:40:48.087087+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines types and methods for representing JSON-like structures in an abstract syntax tree (AST) format.",
+    "key_types": [
+      "node",
+      "objectVal",
+      "objectAttr",
+      "arrayVal",
+      "booleanVal",
+      "numberVal",
+      "stringVal",
+      "nullVal",
+      "invalidVal"
+    ],
+    "functions": [
+      "Range",
+      "StartRange"
+    ],
+    "imports": [
+      "math/big",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

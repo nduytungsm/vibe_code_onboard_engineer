@@ -1,0 +1,29 @@
+{
+  "content_hash": "c85e03f2fba6c4e0e3927242b94ee992",
+  "timestamp": "2025-09-24T16:58:35.591357+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains functions for finding and checking HCL traversals against expected specifications.",
+    "key_types": [
+      "hcl.Traversal",
+      "TestFileExpectTraversal",
+      "hcl.Diagnostics",
+      "hcl.Diagnostic"
+    ],
+    "functions": [
+      "findTraversalSpec",
+      "findTraversalForSpec",
+      "traversalsAreEquivalent",
+      "checkTraversalsMatch"
+    ],
+    "imports": [
+      "fmt",
+      "reflect",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Generates diagnostics for mismatched traversals"
+    ],
+    "complexity": "medium"
+  }
+}

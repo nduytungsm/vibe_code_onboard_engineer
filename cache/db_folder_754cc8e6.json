@@ -1,6 +1,6 @@
 {
-  "content_hash": "21fede475a2c67b901a6795156f411b7",
-  "timestamp": "2025-09-24T11:51:07.408012+07:00",
+  "content_hash": "8b816c8f1d1e4aa414c7f376ce5ca2a5",
+  "timestamp": "2025-09-24T17:10:23.845343+07:00",
   "result": {
     "path": "internal/adapters/right/db",
     "purpose": "This folder/module is responsible for database connection management and data fetching functionalities.",
@@ -18,7 +18,7 @@
       "github.com/joho/godotenv",
       "github.com/microsoft/go-mssqldb"
     ],
-    "architecture": "The folder follows a modular architecture pattern, focusing on database interactions and encapsulating related functionalities.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating database-related functionalities within a dedicated module for better separation of concerns.",
     "file_summaries": {
       "internal/adapters/right/db/db.go": {
         "language": "Go",
@@ -47,7 +47,7 @@
           "Establishes a database connection"
         ],
         "risks": [
-          "Potential exposure of sensitive information if environment variables are not managed securely"
+          "Potential exposure of sensitive information if environment variables are not managed properly"
         ],
         "complexity": "medium"
       }

@@ -1,65 +1,53 @@
 {
-  "content_hash": "a4d30e8a812738372f69eabd0e325aa4",
-  "timestamp": "2025-09-24T15:46:20.914915+07:00",
+  "content_hash": "0fd8870132a4f3ee787e055d13727ccd",
+  "timestamp": "2025-09-24T17:20:31.573142+07:00",
   "result": {
     "path": ".github/ISSUE_TEMPLATE",
-    "purpose": "This folder contains templates for submitting various types of issues in a GitHub repository, including bug reports, feature requests, maintenance tasks, and questions.",
+    "purpose": "This folder contains templates for reporting bugs and requesting features in a GitHub repository.",
     "languages": {
-      "YAML": 4
+      "YAML": 3
     },
     "key_modules": [
       "bug-report.yaml",
-      "feature-request.yaml",
-      "maintenance-task.yaml",
-      "question.yaml"
+      "config.yml",
+      "feature-request.yaml"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a simple structure where each YAML file serves as a template for different types of issues, promoting consistency and ease of use in issue tracking.",
+    "architecture": "The folder follows a simple configuration pattern, utilizing YAML files to define templates for issues, which are structured to facilitate user input.",
     "file_summaries": {
       ".github/ISSUE_TEMPLATE/bug-report.yaml": {
         "language": "YAML",
-        "purpose": "Template for submitting bug reports in a GitHub repository.",
+        "purpose": "Template for reporting bugs in a project",
         "key_types": [
           "markdown",
           "textarea",
           "input",
-          "checkboxes"
+          "dropdown"
         ],
+        "functions": [],
+        "imports": [],
+        "side_effects": [
+          "Encourages users to report security issues privately"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if issues are reported publicly"
+        ],
+        "complexity": "low"
+      },
+      ".github/ISSUE_TEMPLATE/config.yml": {
+        "language": "YAML",
+        "purpose": "Configuration file for GitHub issue templates",
+        "key_types": [],
         "functions": [],
         "imports": [],
         "complexity": "low"
       },
       ".github/ISSUE_TEMPLATE/feature-request.yaml": {
         "language": "YAML",
-        "purpose": "Template for proposing features or improvements for the Fiber framework.",
+        "purpose": "Defines a template for feature requests in a GitHub repository.",
         "key_types": [
-          "markdown",
-          "textarea",
-          "checkboxes"
-        ],
-        "functions": [],
-        "imports": [],
-        "complexity": "low"
-      },
-      ".github/ISSUE_TEMPLATE/maintenance-task.yaml": {
-        "language": "YAML",
-        "purpose": "Template for submitting maintenance tasks in the Fiber project.",
-        "key_types": [
-          "markdown",
-          "textarea",
-          "checkboxes"
-        ],
-        "functions": [],
-        "imports": [],
-        "complexity": "low"
-      },
-      ".github/ISSUE_TEMPLATE/question.yaml": {
-        "language": "YAML",
-        "purpose": "Defines a template for asking questions in the issue tracker.",
-        "key_types": [
-          "markdown",
-          "textarea",
-          "checkboxes"
+          "object",
+          "array"
         ],
         "functions": [],
         "imports": [],

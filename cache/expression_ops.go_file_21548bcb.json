@@ -1,0 +1,29 @@
+{
+  "content_hash": "c9ebf3b8123ab91a1fff23844098c05a",
+  "timestamp": "2025-09-24T16:39:51.220674+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines operations for binary and unary expressions in HCL syntax.",
+    "key_types": [
+      "Operation",
+      "BinaryOpExpr",
+      "UnaryOpExpr"
+    ],
+    "functions": [
+      "init",
+      "walkChildNodes",
+      "Value",
+      "Range",
+      "StartRange"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty/cty",
+      "github.com/zclconf/go-cty/cty/convert",
+      "github.com/zclconf/go-cty/cty/function",
+      "github.com/zclconf/go-cty/cty/function/stdlib"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "content_hash": "0f03d3bd7be55f500b99389d610f6713",
+  "timestamp": "2025-09-24T17:03:49.479454+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for rendering Markdown from Terraform module configurations.",
+    "key_types": [
+      "bytes.Buffer",
+      "error",
+      "testing.T"
+    ],
+    "functions": [
+      "TestRenderMarkdown",
+      "LoadModule",
+      "RenderMarkdown"
+    ],
+    "imports": [
+      "bytes",
+      "io/ioutil",
+      "path/filepath",
+      "testing",
+      "github.com/go-test/deep"
+    ],
+    "side_effects": [
+      "Reads files from the filesystem",
+      "Writes output to a buffer"
+    ],
+    "risks": [
+      "File system access may lead to path traversal vulnerabilities if not properly handled"
+    ],
+    "complexity": "medium"
+  }
+}

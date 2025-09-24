@@ -1,0 +1,12 @@
+{
+  "content_hash": "50831178af2f57370d639158b2aae483",
+  "timestamp": "2025-09-24T16:58:27.652838+07:00",
+  "result": {
+    "language": "reStructuredText",
+    "purpose": "Documentation for the HCL Config Language Toolkit, describing its features and usage.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

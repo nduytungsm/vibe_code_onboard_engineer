@@ -1,0 +1,21 @@
+{
+  "content_hash": "69b07bcf786da39b126bee6aaebe810b",
+  "timestamp": "2025-09-24T16:41:09.369377+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the HCL library's path application functionality.",
+    "key_types": [
+      "cty.Value",
+      "cty.Path"
+    ],
+    "functions": [
+      "TestApplyPath"
+    ],
+    "imports": [
+      "fmt",
+      "testing",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

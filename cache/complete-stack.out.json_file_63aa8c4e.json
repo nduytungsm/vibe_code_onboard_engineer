@@ -1,0 +1,22 @@
+{
+  "content_hash": "5d52c22bd0c94e93094fb2f3902c32c9",
+  "timestamp": "2025-09-24T17:04:15.457231+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines a complete stack configuration for a Terraform project including providers, variables, outputs, and components.",
+    "key_types": [
+      "map(string)",
+      "set(string)",
+      "list(string)",
+      "string"
+    ],
+    "functions": [],
+    "imports": [
+      "hashicorp/archive",
+      "hashicorp/aws",
+      "hashicorp/local",
+      "hashicorp/random"
+    ],
+    "complexity": "medium"
+  }
+}

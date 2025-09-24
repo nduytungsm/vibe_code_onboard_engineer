@@ -1,0 +1,28 @@
+{
+  "content_hash": "2d11e5e010f2ef127b4fc6aea0cddd4c",
+  "timestamp": "2025-09-24T16:40:08.386878+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the Peeker functionality in the HCL syntax package.",
+    "key_types": [
+      "TokenType"
+    ],
+    "functions": [
+      "init",
+      "TestPeeker"
+    ],
+    "imports": [
+      "reflect",
+      "testing"
+    ],
+    "side_effects": [
+      "Modifies the tracePeekerNewlinesStack variable",
+      "May affect global state during tests"
+    ],
+    "risks": [
+      "Potential for mismatched token types leading to incorrect parsing",
+      "Test failures may not indicate actual code issues if not properly isolated"
+    ],
+    "complexity": "medium"
+  }
+}

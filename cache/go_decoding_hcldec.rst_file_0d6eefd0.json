@@ -1,0 +1,27 @@
+{
+  "content_hash": "f17fc0d7828b8c88df8f20ff59fe925f",
+  "timestamp": "2025-09-24T16:58:27.526608+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides documentation for the hcldec package, which allows for decoding HCL configurations into dynamic data structures at runtime.",
+    "key_types": [
+      "hcldec.Spec",
+      "hcldec.ObjectSpec",
+      "hcldec.AttrSpec",
+      "hcldec.BlockMapSpec",
+      "cty.Type",
+      "cty.Value"
+    ],
+    "functions": [
+      "hcldec.Decode",
+      "hcldec.ObjectSpec",
+      "hcldec.AttrSpec",
+      "hcldec.BlockMapSpec"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2/hcldec",
+      "github.com/zclconf/go-cty"
+    ],
+    "complexity": "medium"
+  }
+}

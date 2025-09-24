@@ -1,0 +1,34 @@
+{
+  "content_hash": "5bb4cf08564ae544fe7255edb0fd7a15",
+  "timestamp": "2025-09-24T16:40:28.962352+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a structure for HCL blocks and provides methods to manipulate them.",
+    "key_types": [
+      "Block",
+      "blockLabels"
+    ],
+    "functions": [
+      "newBlock",
+      "NewBlock",
+      "init",
+      "Body",
+      "Type",
+      "SetType",
+      "Labels",
+      "SetLabels",
+      "labelsObj",
+      "newBlockLabels",
+      "Replace",
+      "Current"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2/hclsyntax",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "side_effects": [
+      "Modifies the internal state of Block and blockLabels instances when methods are called."
+    ],
+    "complexity": "medium"
+  }
+}

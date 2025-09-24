@@ -1,0 +1,20 @@
+{
+  "content_hash": "fb8444a1bac0d113af42bc31762bafa2",
+  "timestamp": "2025-09-24T17:04:12.935783+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines variable types and their properties for a Terraform configuration.",
+    "key_types": [
+      "primitive",
+      "list",
+      "map",
+      "string",
+      "object",
+      "number",
+      "bool"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -7,3 +7,10 @@
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: http://10.117.64.10:5173/
+5:24:10 PM [vite] (client) hmr update /src/App.jsx, /src/index.css
+5:24:25 PM [vite] (client) hmr update /src/App.jsx, /src/index.css
+5:24:35 PM [vite] (client) hmr update /src/App.jsx, /src/index.css
+5:24:47 PM [vite] (client) hmr update /src/App.jsx, /src/index.css
+5:24:55 PM [vite] (client) hmr update /src/App.jsx, /src/index.css
+5:25:02 PM [vite] (client) hmr update /src/App.jsx, /src/index.css
+5:25:08 PM [vite] (client) hmr update /src/App.jsx, /src/index.css

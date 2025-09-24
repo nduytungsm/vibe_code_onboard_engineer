@@ -1,0 +1,29 @@
+{
+  "content_hash": "8630cd0c6d9ca60a0e9c99347face57d",
+  "timestamp": "2025-09-24T16:59:52.073995+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides functions to create HCL bodies that handle diagnostics for errors and warnings during transformations.",
+    "key_types": [
+      "diagBody",
+      "hcl.Body",
+      "hcl.Diagnostics"
+    ],
+    "functions": [
+      "NewErrorBody",
+      "BodyWithDiagnostics",
+      "Content",
+      "PartialContent",
+      "JustAttributes",
+      "MissingItemRange",
+      "emptyContent"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Panic if NewErrorBody is called without error diagnostics."
+    ],
+    "complexity": "medium"
+  }
+}

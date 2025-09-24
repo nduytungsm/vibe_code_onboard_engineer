@@ -1,0 +1,17 @@
+{
+  "content_hash": "523ff513e7d9a9f8139608b92c4a99a6",
+  "timestamp": "2025-09-24T16:28:12.080476+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration structures for device services.",
+    "key_types": [
+      "ServiceConfig",
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-manager/httpclient"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "content_hash": "5d09cd43f484be284368abb4c42bebf2",
+  "timestamp": "2025-09-24T17:06:27.985383+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides middleware for recovering from panics in HTTP handlers and logging the errors.",
+    "key_types": [
+      "RecoveryFunc",
+      "HandlerFunc",
+      "Context"
+    ],
+    "functions": [
+      "Recovery",
+      "CustomRecovery",
+      "RecoveryWithWriter",
+      "CustomRecoveryWithWriter",
+      "secureRequestDump",
+      "defaultHandleRecovery",
+      "stack",
+      "source",
+      "function",
+      "timeFormat"
+    ],
+    "imports": [
+      "bytes",
+      "errors",
+      "fmt",
+      "io",
+      "log",
+      "net",
+      "net/http",
+      "net/http/httputil",
+      "os",
+      "runtime",
+      "strings",
+      "time",
+      "github.com/gin-gonic/gin/internal/bytesconv"
+    ],
+    "side_effects": [
+      "Logs panic information to the specified writer",
+      "Aborts the HTTP request if a panic occurs"
+    ],
+    "risks": [
+      "Potential information leakage through logs if sensitive data is not properly sanitized"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "content_hash": "e90859a5505a55a256f10b692fb4bce6",
+  "timestamp": "2025-09-24T16:38:53.127403+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the HCL Dynamic Blocks Extension, explaining its functionality and usage.",
+    "key_types": [
+      "dynamic block",
+      "EvalContext",
+      "WalkVariablesNode",
+      "BodySchema",
+      "Spec"
+    ],
+    "functions": [
+      "Expand",
+      "WalkForEachVariables",
+      "ForEachVariablesHCLDec",
+      "decodeBody",
+      "buildEvalContext"
+    ],
+    "imports": [
+      "hcl",
+      "hcldec",
+      "cty"
+    ],
+    "side_effects": [
+      "Generates dynamic blocks based on collections",
+      "May increase memory usage due to temporary data structures"
+    ],
+    "risks": [
+      "Potential performance issues due to high memory usage",
+      "Complexity in managing dynamic block structures"
+    ],
+    "complexity": "medium"
+  }
+}

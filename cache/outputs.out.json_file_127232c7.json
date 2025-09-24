@@ -1,0 +1,16 @@
+{
+  "content_hash": "0ba37b6a73a09e83fd6e6426b1604249",
+  "timestamp": "2025-09-24T17:04:15.78077+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines outputs for a Terraform configuration",
+    "key_types": [
+      "object",
+      "string",
+      "list(string)"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

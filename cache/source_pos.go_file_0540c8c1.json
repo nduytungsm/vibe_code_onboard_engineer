@@ -1,0 +1,21 @@
+{
+  "content_hash": "ef1cdb99219815a90aeedb053d6a733e",
+  "timestamp": "2025-09-24T17:03:51.689772+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a structure for representing the position of elements in a source file and provides functions to create instances of this structure.",
+    "key_types": [
+      "SourcePos"
+    ],
+    "functions": [
+      "sourcePos",
+      "sourcePosHCL",
+      "sourcePosLegacyHCL"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/hcl/token",
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "low"
+  }
+}

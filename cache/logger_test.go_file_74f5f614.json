@@ -1,0 +1,35 @@
+{
+  "content_hash": "b62514266bf983a05b19e6b3feb46903",
+  "timestamp": "2025-09-24T17:19:14.017997+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the logging functionality of a web framework.",
+    "key_types": [
+      "strings.Builder",
+      "Context",
+      "LogFormatterParams",
+      "LoggerConfig"
+    ],
+    "functions": [
+      "TestLogger",
+      "TestLoggerWithConfig",
+      "TestLoggerWithFormatter",
+      "TestLoggerWithConfigFormatting",
+      "TestDefaultLogFormatter"
+    ],
+    "imports": [
+      "errors",
+      "fmt",
+      "net/http",
+      "strings",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/assert"
+    ],
+    "side_effects": [
+      "Modifies the default logger output",
+      "Resets the buffer after each test"
+    ],
+    "complexity": "medium"
+  }
+}

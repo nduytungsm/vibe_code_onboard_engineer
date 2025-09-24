@@ -1,0 +1,30 @@
+{
+  "content_hash": "944873868470c93ccd2fd3b415d435d4",
+  "timestamp": "2025-09-24T17:03:39.486896+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for running unit tests and formatting/linting Go code on push and pull request events.",
+    "key_types": [
+      "job",
+      "step"
+    ],
+    "functions": [
+      "checkout",
+      "setup-go",
+      "go test",
+      "go vet",
+      "go fmt"
+    ],
+    "imports": [
+      "actions/checkout",
+      "actions/setup-go"
+    ],
+    "side_effects": [
+      "Modifies the repository state if formatting is inconsistent."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if the repository contains secrets."
+    ],
+    "complexity": "medium"
+  }
+}

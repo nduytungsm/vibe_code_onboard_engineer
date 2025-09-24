@@ -1,0 +1,19 @@
+{
+  "content_hash": "affd18c8066e38b887f82e63becf07c5",
+  "timestamp": "2025-09-24T16:40:53.456848+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file appears to be a test case for fuzz testing a JSON parsing function, specifically testing an empty block.",
+    "key_types": [
+      "[]byte"
+    ],
+    "functions": [
+      "testFuzzParse"
+    ],
+    "imports": [
+      "testing",
+      "encoding/json"
+    ],
+    "complexity": "low"
+  }
+}

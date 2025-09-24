@@ -1,0 +1,36 @@
+{
+  "content_hash": "3d55f24e8fd52cd487c804e390113644",
+  "timestamp": "2025-09-24T17:17:42.591621+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides middleware for Basic HTTP Authentication and Proxy Authentication.",
+    "key_types": [
+      "Accounts",
+      "authPair",
+      "authPairs"
+    ],
+    "functions": [
+      "BasicAuthForRealm",
+      "BasicAuth",
+      "processAccounts",
+      "authorizationHeader",
+      "BasicAuthForProxy"
+    ],
+    "imports": [
+      "crypto/subtle",
+      "encoding/base64",
+      "net/http",
+      "strconv",
+      "github.com/gin-gonic/gin/internal/bytesconv"
+    ],
+    "side_effects": [
+      "Modifies HTTP response headers for unauthorized access",
+      "Aborts request handling on failed authentication"
+    ],
+    "risks": [
+      "Potential exposure of user credentials if not used over HTTPS",
+      "Improper handling of credentials may lead to unauthorized access"
+    ],
+    "complexity": "medium"
+  }
+}

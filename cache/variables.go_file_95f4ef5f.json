@@ -1,0 +1,28 @@
+{
+  "content_hash": "3bc179b703caa74e3accb2ae513697f2",
+  "timestamp": "2025-09-24T16:40:19.815762+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements functionality to extract variables from HCL expressions.",
+    "key_types": [
+      "Expression",
+      "hcl.Traversal",
+      "variablesWalker",
+      "ChildScope"
+    ],
+    "functions": [
+      "Variables",
+      "Enter",
+      "Exit",
+      "walkChildNodes",
+      "Range"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "side_effects": [
+      "Modifies localScopes during traversal"
+    ],
+    "complexity": "medium"
+  }
+}

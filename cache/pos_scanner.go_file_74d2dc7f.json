@@ -1,0 +1,27 @@
+{
+  "content_hash": "cacb3ad18c45d6c108745d37c1f0d2a5",
+  "timestamp": "2025-09-24T16:41:11.498931+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a RangeScanner that scans over a buffer and provides source ranges for tokens matched, useful for diagnostic messages.",
+    "key_types": [
+      "RangeScanner",
+      "Pos",
+      "Range"
+    ],
+    "functions": [
+      "NewRangeScanner",
+      "NewRangeScannerFragment",
+      "Scan",
+      "Range",
+      "Bytes",
+      "Err"
+    ],
+    "imports": [
+      "bufio",
+      "bytes",
+      "github.com/apparentlymart/go-textseg/v15/textseg"
+    ],
+    "complexity": "medium"
+  }
+}

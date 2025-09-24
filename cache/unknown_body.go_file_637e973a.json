@@ -1,0 +1,27 @@
+{
+  "content_hash": "d1289e4b2606bf76bab1eff3d9a4e4b7",
+  "timestamp": "2025-09-24T16:59:49.03866+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a type that represents an unknown body for dynamic blocks in HCL, allowing for the handling of unknown attributes and blocks.",
+    "key_types": [
+      "unknownBody"
+    ],
+    "functions": [
+      "Unknown",
+      "BodyValueMarks",
+      "Content",
+      "PartialContent",
+      "JustAttributes",
+      "MissingItemRange",
+      "fixupContent",
+      "fixupAttrs"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/hashicorp/hcl/v2/hcldec",
+      "github.com/zclconf/go-cty/cty"
+    ],
+    "complexity": "medium"
+  }
+}

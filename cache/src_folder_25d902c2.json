@@ -1,46 +1,168 @@
 {
-  "content_hash": "ae70f69bb8b00853d0b877fa34b37224",
-  "timestamp": "2025-09-20T21:31:25.703226+07:00",
+  "content_hash": "36217702122bcf4df0a002d87d2d8c26",
+  "timestamp": "2025-09-24T17:37:37.470468+07:00",
   "result": {
     "path": "src",
-    "purpose": "Sets up a database connection and an API server with routes for users, orders, and products.",
+    "purpose": "Contains the main application code for a React application, including components, styles, and tests.",
     "languages": {
-      "Go": 1
+      "CSS": 4,
+      "JavaScript": 6
     },
     "key_modules": [
-      "main.go"
+      "App.js",
+      "index.js",
+      "reportWebVitals.js",
+      "App.test.js"
     ],
     "dependencies": [
-      "database/sql",
-      "github.com/gorilla/mux",
-      "github.com/lib/pq"
+      "React",
+      "ReactDOM",
+      "@testing-library/react",
+      "@testing-library/jest-dom",
+      "web-vitals",
+      "bootstrap"
     ],
-    "architecture": "The folder follows a modular architecture pattern, focusing on separation of concerns with a clear structure for handling database connections and API routing.",
+    "architecture": "The folder follows a component-based architecture typical of React applications, with a focus on modularity and separation of concerns.",
     "file_summaries": {
-      "src/main.go": {
-        "language": "Go",
-        "purpose": "Sets up a database connection and an API server with routes for users, orders, and products.",
+      "src/App.css": {
+        "language": "CSS",
+        "purpose": "Styles for the App component, including layout and animations.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "src/App.js": {
+        "language": "JavaScript",
+        "purpose": "This file defines the main application component for a React application, handling routing and loading state.",
         "key_types": [
-          "sql.DB",
-          "mux.Router"
+          "React.Component",
+          "useState",
+          "useEffect"
         ],
         "functions": [
-          "main",
-          "getUsersHandler",
-          "getOrdersHandler",
-          "getProductsHandler"
+          "App"
         ],
         "imports": [
-          "database/sql",
-          "github.com/gorilla/mux",
-          "github.com/lib/pq"
+          "React",
+          "useState",
+          "useEffect",
+          "Preloader",
+          "Navbar",
+          "Home",
+          "About",
+          "Projects",
+          "Footer",
+          "Resume",
+          "Router",
+          "Route",
+          "Routes",
+          "Navigate",
+          "ScrollToTop",
+          "style.css",
+          "App.css",
+          "bootstrap/dist/css/bootstrap.min.css"
         ],
         "side_effects": [
-          "Establishes a database connection",
-          "Sets up HTTP routes"
+          "Sets a timeout to update loading state after 1200ms"
         ],
-        "risks": [
-          "Potential SQL injection if user input is not properly sanitized"
+        "complexity": "medium"
+      },
+      "src/App.test.js": {
+        "language": "JavaScript",
+        "purpose": "This file contains tests for the App component using React Testing Library.",
+        "key_types": [
+          "App"
+        ],
+        "functions": [
+          "test",
+          "render",
+          "screen.getByText",
+          "expect"
+        ],
+        "imports": [
+          "@testing-library/react",
+          "./App"
+        ],
+        "side_effects": [
+          "renders the App component",
+          "interacts with the DOM"
+        ],
+        "complexity": "low"
+      },
+      "src/index.css": {
+        "language": "CSS",
+        "purpose": "Styles the body of a webpage with a specific font and background gradient.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "https://fonts.googleapis.com/css2?family=Raleway:wght@500\u0026display=swap"
+        ],
+        "complexity": "low"
+      },
+      "src/index.js": {
+        "language": "JavaScript",
+        "purpose": "This file serves as the entry point for a React application, rendering the main App component into the DOM.",
+        "key_types": [
+          "React",
+          "ReactDOM"
+        ],
+        "functions": [
+          "ReactDOM.render",
+          "reportWebVitals"
+        ],
+        "imports": [
+          "React",
+          "ReactDOM",
+          "./index.css",
+          "./App",
+          "./reportWebVitals"
+        ],
+        "side_effects": [
+          "Rendering of the React application into the DOM"
+        ],
+        "complexity": "low"
+      },
+      "src/reportWebVitals.js": {
+        "language": "JavaScript",
+        "purpose": "This file exports a function that reports web vitals metrics.",
+        "key_types": [
+          "Function"
+        ],
+        "functions": [
+          "reportWebVitals"
+        ],
+        "imports": [
+          "web-vitals"
+        ],
+        "side_effects": [
+          "Dynamically imports the web-vitals library and calls its functions."
+        ],
+        "complexity": "medium"
+      },
+      "src/setupTests.js": {
+        "language": "JavaScript",
+        "purpose": "Sets up custom Jest matchers for testing DOM nodes.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "@testing-library/jest-dom"
+        ],
+        "complexity": "low"
+      },
+      "src/style.css": {
+        "language": "CSS",
+        "purpose": "Defines styles for a web page including layout, colors, and animations.",
+        "key_types": [
+          "CSS Variables",
+          "Classes",
+          "Media Queries"
+        ],
+        "functions": [],
+        "imports": [],
+        "side_effects": [
+          "Modifies the appearance of HTML elements",
+          "Affects layout and responsiveness"
         ],
         "complexity": "medium"
       }

@@ -1,0 +1,12 @@
+{
+  "content_hash": "a9537a1913df27eb838f343564b9d3c4",
+  "timestamp": "2025-09-24T17:03:54.674987+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for a Terraform module related to data resources.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

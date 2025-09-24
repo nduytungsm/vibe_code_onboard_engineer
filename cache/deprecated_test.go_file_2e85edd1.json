@@ -1,0 +1,26 @@
+{
+  "content_hash": "655e195d08f8bc0a3576a8dace44af6a",
+  "timestamp": "2025-09-24T17:18:58.606255+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the binding functionality of the gin framework.",
+    "key_types": [
+      "struct"
+    ],
+    "functions": [
+      "TestBindWith"
+    ],
+    "imports": [
+      "bytes",
+      "net/http",
+      "net/http/httptest",
+      "testing",
+      "github.com/gin-gonic/gin/binding",
+      "github.com/stretchr/testify/assert"
+    ],
+    "side_effects": [
+      "Creates an HTTP request and response recorder for testing."
+    ],
+    "complexity": "medium"
+  }
+}

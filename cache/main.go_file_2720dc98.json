@@ -1,0 +1,35 @@
+{
+  "content_hash": "0a21b9cd9ddfb13bb66a4cf612e67561",
+  "timestamp": "2025-09-24T16:32:51.373249+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file serves as the entry point for a Go application that initializes a database connection, sets up an API application, and starts a REST adapter.",
+    "key_types": [
+      "db.Database",
+      "api.Application",
+      "rest.Adapter"
+    ],
+    "functions": [
+      "main",
+      "db.New",
+      "api.NewApplication",
+      "rest.NewAdapter",
+      "fiberAdapter.Start"
+    ],
+    "imports": [
+      "log",
+      "github.com/matigumma/go-fiber-sql-hexagonal/internal/adapters/left/rest",
+      "github.com/matigumma/go-fiber-sql-hexagonal/internal/adapters/right/db",
+      "github.com/matigumma/go-fiber-sql-hexagonal/internal/app/api"
+    ],
+    "side_effects": [
+      "Establishes a database connection",
+      "Starts a REST server"
+    ],
+    "risks": [
+      "Potential database connection failure",
+      "Error handling may lead to application crash"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "content_hash": "4c446e046afe93acd3ff9e6b58f80848",
+  "timestamp": "2025-09-24T16:59:47.82989+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides an extension to HCL for dynamic declaration of nested blocks.",
+    "key_types": [
+      "hcl.Body",
+      "hcl.EvalContext",
+      "ExpandOption"
+    ],
+    "functions": [
+      "Expand"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2"
+    ],
+    "complexity": "medium"
+  }
+}

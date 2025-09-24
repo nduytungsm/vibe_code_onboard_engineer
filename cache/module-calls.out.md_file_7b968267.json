@@ -1,0 +1,16 @@
+{
+  "content_hash": "a4e3847a18bb944a3af006079240aced",
+  "timestamp": "2025-09-24T17:03:59.399353+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation of module calls and their sources",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "./child",
+      "../elsewhere",
+      "foo/bar/baz"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "content_hash": "c3eefc4bf37ffa4a51bd900bb1b85ab7",
+  "timestamp": "2025-09-24T17:00:03.127873+07:00",
+  "result": {
+    "language": "HCL",
+    "purpose": "This file describes an HCL extension that allows user-defined functions.",
+    "key_types": [
+      "function",
+      "params",
+      "result",
+      "variadic_param"
+    ],
+    "functions": [
+      "DecodeUserFunctions"
+    ],
+    "imports": [
+      "cty.Body",
+      "hcl.EvalContext"
+    ],
+    "side_effects": [
+      "modifies the body of HCL content by extracting user-defined functions"
+    ],
+    "complexity": "medium"
+  }
+}

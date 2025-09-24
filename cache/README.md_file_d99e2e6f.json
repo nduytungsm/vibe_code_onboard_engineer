@@ -1,0 +1,12 @@
+{
+  "content_hash": "09432103967df4617cdecba2786b989c",
+  "timestamp": "2025-09-24T17:11:06.03783+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for a personal portfolio website project",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}
