@@ -1,9 +1,9 @@
 {
-  "content_hash": "d6b8ae056986a6880f7fddc06b9016df",
-  "timestamp": "2025-09-25T17:15:16.948087+07:00",
+  "content_hash": "f33983c2ac060a4f35021e411f3b7d5f",
+  "timestamp": "2025-09-25T17:44:44.048674+07:00",
   "result": {
     "path": ".github/ISSUE_TEMPLATE",
-    "purpose": "This folder contains templates for reporting bugs and requesting features in a GitHub repository.",
+    "purpose": "This folder contains templates for reporting bugs and requesting features in a project.",
     "languages": {
       "YAML": 3
     },
@@ -13,7 +13,7 @@
       "feature-request.yaml"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a simple configuration pattern, utilizing YAML files to define templates for issues in a GitHub repository.",
+    "architecture": "The folder follows a simple configuration pattern, utilizing YAML files to define templates for GitHub issues.",
     "file_summaries": {
       ".github/ISSUE_TEMPLATE/bug-report.yaml": {
         "language": "YAML",
@@ -41,7 +41,7 @@
       },
       ".github/ISSUE_TEMPLATE/feature-request.yaml": {
         "language": "YAML",
-        "purpose": "Defines a template for feature requests in a GitHub repository.",
+        "purpose": "Defines a template for submitting feature requests to the Gin framework.",
         "key_types": [],
         "functions": [],
         "imports": [],

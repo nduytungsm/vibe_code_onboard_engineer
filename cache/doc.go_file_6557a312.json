@@ -1,0 +1,27 @@
+{
+  "content_hash": "91061f5710fa7f1506b782eac2a79150",
+  "timestamp": "2025-09-25T17:43:54.184722+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements a HTTP web framework called gin.",
+    "key_types": [
+      "Context",
+      "Engine",
+      "H"
+    ],
+    "functions": [
+      "Default",
+      "GET",
+      "JSON",
+      "Run"
+    ],
+    "imports": [
+      "github.com/gin-gonic/gin"
+    ],
+    "side_effects": [
+      "Listens on a network port",
+      "Serves HTTP requests"
+    ],
+    "complexity": "medium"
+  }
+}

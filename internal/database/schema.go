@@ -58,6 +58,7 @@ type DatabaseSchema struct {
 	MigrationPath     string           `json:"migration_path"`
 	GeneratedAt       time.Time        `json:"generated_at"`
 	FinalMigrationSQL string           `json:"final_migration_sql,omitempty"`
+	LLMRelationships  string           `json:"llm_relationships,omitempty"`
 }
 
 // MigrationFile represents a SQL migration file

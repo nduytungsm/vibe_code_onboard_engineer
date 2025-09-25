@@ -127,6 +127,13 @@ func runDebugDB() {
 	canonicalSchema := result.Schema
 	mermaidERD := result.MermaidERD
 	finalMigrationSQL := result.FinalMigrationSQL
+	llmRelationships := result.LLMRelationships
+	
+	fmt.Printf("🔍 [DEBUG] Result fields from ExtractSchemaWithFinalMigration:\n")
+	fmt.Printf("   📊 Schema: %v\n", canonicalSchema != nil)
+	fmt.Printf("   📊 MermaidERD: %d chars\n", len(mermaidERD))
+	fmt.Printf("   📊 FinalMigrationSQL: %d chars\n", len(finalMigrationSQL))
+	fmt.Printf("   📊 LLMRelationships: %d chars\n", len(llmRelationships))
 
 	// Step 5: Display results
 	fmt.Println("\n🎉 Step 5: Extraction Results")
@@ -204,8 +211,29 @@ func runDebugDB() {
 		fmt.Println(strings.Repeat("─", 60))
 	}
 
+	// Step 8: Display LLM relationship analysis
+	if llmRelationships != "" {
+		fmt.Println("\n🤖 Step 8: LLM Relationship Analysis Results")
+		fmt.Println(strings.Repeat("=", 60))
+		fmt.Printf("📊 LLM-generated Mermaid relationships (%d characters)\n", len(llmRelationships))
+		fmt.Println("🔍 Includes both explicit foreign keys AND implicit relationships!\n")
+		
+		fmt.Println("📋 LLM Relationship Diagram:")
+		fmt.Println(strings.Repeat("─", 60))
+		fmt.Println(llmRelationships)
+		fmt.Println(strings.Repeat("─", 60))
+	} else {
+		fmt.Println("\n🤖 Step 8: LLM Relationship Analysis")
+		fmt.Println(strings.Repeat("=", 60))
+		fmt.Println("⚠️  LLM relationship analysis was not performed or failed")
+		fmt.Println("💡 This could be due to missing OpenAI configuration or API errors")
+	}
+
 	fmt.Println("\n✅ Database schema extraction completed successfully!")
 	fmt.Println("🎯 SUCCESS: Generated single migration file representing final database state!")
+	if llmRelationships != "" {
+		fmt.Println("🤖 BONUS: LLM enhanced with implicit relationship detection!")
+	}
 }
 
 // scanFiles recursively scans a directory for all files

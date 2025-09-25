@@ -1,0 +1,24 @@
+{
+  "content_hash": "b0d58b86e58c4699036f9a25cebfd65d",
+  "timestamp": "2025-09-25T17:43:26.657501+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Benchmarking the performance of slice validation error handling.",
+    "key_types": [
+      "SliceValidationError",
+      "error"
+    ],
+    "functions": [
+      "BenchmarkSliceValidationError"
+    ],
+    "imports": [
+      "errors",
+      "strconv",
+      "testing"
+    ],
+    "side_effects": [
+      "Allocations are reported during benchmarking."
+    ],
+    "complexity": "medium"
+  }
+}

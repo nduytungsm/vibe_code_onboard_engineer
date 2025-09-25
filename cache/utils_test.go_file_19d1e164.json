@@ -1,0 +1,39 @@
+{
+  "content_hash": "f98b207e9e5dbea47d79971e54040f9b",
+  "timestamp": "2025-09-25T17:44:32.442866+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the gin web framework utilities and middleware functions.",
+    "key_types": [
+      "testStruct",
+      "bindTestStruct",
+      "H"
+    ],
+    "functions": [
+      "BenchmarkParseAccept",
+      "ServeHTTP",
+      "TestWrap",
+      "TestLastChar",
+      "TestParseAccept",
+      "TestChooseData",
+      "TestFilterFlags",
+      "TestFunctionName",
+      "TestJoinPaths",
+      "TestBindMiddleware",
+      "TestMarshalXMLforH",
+      "TestIsASCII"
+    ],
+    "imports": [
+      "bytes",
+      "encoding/xml",
+      "fmt",
+      "net/http",
+      "testing",
+      "github.com/stretchr/testify/assert"
+    ],
+    "side_effects": [
+      "Modifies HTTP response status and body in ServeHTTP and test functions."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "content_hash": "71c74c953e1892c019a10c6595ece91b",
+  "timestamp": "2025-09-25T17:44:11.791569+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the Gin web framework's mode settings and binding validation.",
+    "key_types": [
+      "int32",
+      "string",
+      "testing.T"
+    ],
+    "functions": [
+      "init",
+      "TestSetMode",
+      "TestDisableBindValidation",
+      "TestEnableJsonDecoderUseNumber",
+      "TestEnableJsonDecoderDisallowUnknownFields"
+    ],
+    "imports": [
+      "os",
+      "sync/atomic",
+      "testing",
+      "github.com/gin-gonic/gin/binding",
+      "github.com/stretchr/testify/assert"
+    ],
+    "side_effects": [
+      "Sets and unsets environment variables",
+      "Modifies global state of the binding.Validator"
+    ],
+    "risks": [
+      "Potential for panic if an unknown mode is set in SetMode"
+    ],
+    "complexity": "medium"
+  }
+}

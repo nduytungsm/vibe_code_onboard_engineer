@@ -1,0 +1,22 @@
+{
+  "content_hash": "543e9c3e717455a565e02f6319b73f76",
+  "timestamp": "2025-09-25T17:43:24.271471+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines binding interfaces and constants for handling different content types in HTTP requests.",
+    "key_types": [
+      "Binding",
+      "BindingBody",
+      "BindingUri",
+      "StructValidator"
+    ],
+    "functions": [
+      "Default",
+      "validate"
+    ],
+    "imports": [
+      "net/http"
+    ],
+    "complexity": "medium"
+  }
+}

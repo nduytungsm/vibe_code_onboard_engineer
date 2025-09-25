@@ -1,0 +1,20 @@
+{
+  "content_hash": "198f86eb36679549341bef85d25e3639",
+  "timestamp": "2025-09-25T17:43:13.124494+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Template for reporting bugs in a project",
+    "key_types": [
+      "markdown",
+      "textarea",
+      "input",
+      "dropdown"
+    ],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Potential exposure of sensitive information if security issues are reported publicly"
+    ],
+    "complexity": "low"
+  }
+}

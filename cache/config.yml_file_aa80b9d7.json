@@ -1,0 +1,12 @@
+{
+  "content_hash": "cfe60e5924f830474c0d1aca82880632",
+  "timestamp": "2025-09-25T17:48:28.366488+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for GitHub issue templates",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

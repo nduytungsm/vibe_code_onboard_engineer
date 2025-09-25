@@ -1,0 +1,25 @@
+{
+  "content_hash": "51f512b2fb113b2eaba5acb6fd72bf25",
+  "timestamp": "2025-09-25T17:44:01.549644+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines routes for the GitHub API for testing purposes.",
+    "key_types": [
+      "route"
+    ],
+    "functions": [],
+    "imports": [
+      "fmt",
+      "math/rand",
+      "net/http",
+      "net/http/httptest",
+      "os",
+      "strconv",
+      "strings",
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "complexity": "medium"
+  }
+}

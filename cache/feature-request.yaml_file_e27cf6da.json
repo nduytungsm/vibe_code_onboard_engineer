@@ -1,0 +1,12 @@
+{
+  "content_hash": "8102b18ead5d955289d54a99d0f76e78",
+  "timestamp": "2025-09-25T17:48:28.216918+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a template for submitting feature requests for the Gin framework.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

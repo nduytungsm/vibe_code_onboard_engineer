@@ -1,12 +1,17 @@
 package database
 
 import (
+	"context"
 	"fmt"
+	"os"
 	"path/filepath"
 	"regexp"
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/sashabaranov/go-openai"
+	"repo-explanation/config"
 )
 
 // StreamingResponse represents a single streaming response event
@@ -943,6 +948,7 @@ type ExtractSchemaFromProjectResult struct {
 	Schema            *CanonicalSchema
 	MermaidERD        string  
 	FinalMigrationSQL string
+	LLMRelationships  string  // LLM-generated Mermaid relationships including implicit connections
 }
 
 // ExtractSchemaFromProject extracts schema from project files with streaming (with graceful error handling)
@@ -1032,6 +1038,37 @@ func ExtractSchemaWithFinalMigration(projectPath string, files map[string]string
 			finalMermaid = extractor.generateMermaidERD()
 		}
 		
+		// Analyze implicit relationships with LLM
+		fmt.Printf("🔍 [DEBUG] Starting LLM relationship analysis phase\n")
+		var llmRelationships string
+		if finalMigrationSQL != "" {
+			fmt.Printf("✅ [DEBUG] Final migration SQL available for LLM analysis (%d chars)\n", len(finalMigrationSQL))
+			
+			callback(StreamingResponse{
+				Phase:    "llm_analysis",
+				Progress: ProgressInfo{Current: len(migrations), Total: len(migrations)},
+				Message:  "🤖 Analyzing implicit table relationships with LLM...",
+				Schema:   finalSchema,
+				Mermaid:  finalMermaid,
+			})
+			
+			fmt.Printf("🚀 [DEBUG] Calling analyzeImplicitRelationships...\n")
+			llmResult, err := analyzeImplicitRelationships(finalMigrationSQL)
+			if err != nil {
+				fmt.Printf("❌ [DEBUG] LLM relationship analysis failed: %v\n", err)
+				fmt.Printf("❌ [DEBUG] Error type: %T\n", err)
+				llmRelationships = "" // Continue without LLM analysis
+			} else {
+				fmt.Printf("✅ [DEBUG] LLM relationship analysis succeeded!\n")
+				llmRelationships = llmResult
+				relationshipCount := strings.Count(llmRelationships, "\n")
+				fmt.Printf("🎯 [DEBUG] LLM analysis succeeded: %d relationship lines detected\n", relationshipCount)
+				fmt.Printf("📋 [DEBUG] LLM relationships preview: %s\n", llmRelationships[:minInt(200, len(llmRelationships))])
+			}
+		} else {
+			fmt.Printf("❌ [DEBUG] No final migration SQL available for LLM analysis\n")
+		}
+		
 		// Send enhanced completion callback
 		callback(StreamingResponse{
 			Phase:    "complete",
@@ -1045,6 +1082,7 @@ func ExtractSchemaWithFinalMigration(projectPath string, files map[string]string
 			Schema:            finalSchema,
 			MermaidERD:        finalMermaid,
 			FinalMigrationSQL: finalMigrationSQL,
+			LLMRelationships:  llmRelationships,
 		}, nil
 	}
 	
@@ -1057,6 +1095,7 @@ func ExtractSchemaWithFinalMigration(projectPath string, files map[string]string
 		Schema:            finalSchema,
 		MermaidERD:        finalMermaid,
 		FinalMigrationSQL: finalMigrationSQL,
+		LLMRelationships:  "", // No LLM analysis in fallback case
 	}, nil
 }
 
@@ -1425,6 +1464,213 @@ func (se *StreamingSchemaExtractor) sortTablesByDependencies() []string {
 	}
 	
 	return sorted
+}
+
+// analyzeImplicitRelationships uses LLM to analyze the final migration SQL and detect implicit relationships
+func analyzeImplicitRelationships(finalMigrationSQL string) (string, error) {
+	fmt.Printf("🔍 [DEBUG] Starting analyzeImplicitRelationships function\n")
+	fmt.Printf("📊 [DEBUG] Final migration SQL length: %d characters\n", len(finalMigrationSQL))
+	
+	if finalMigrationSQL == "" {
+		fmt.Printf("❌ [DEBUG] No migration SQL provided to analyzeImplicitRelationships\n")
+		return "", fmt.Errorf("no migration SQL provided")
+	}
+
+	fmt.Printf("📋 [DEBUG] First 300 chars of migration SQL: %s...\n", finalMigrationSQL[:minInt(300, len(finalMigrationSQL))])
+
+	// Create prompt for LLM to analyze relationships
+	prompt := `You are a database schema expert. Analyze the following SQL migration file and identify ALL relationships between tables, including:
+
+1. EXPLICIT foreign key relationships (already defined in the schema)
+2. IMPLICIT relationships where one table references another table's ID column (even without formal foreign keys)
+3. Common patterns like user_id, post_id, category_id referencing other tables
+4. Junction/pivot tables that connect two entities
+5. Hierarchical relationships (self-referencing tables)
+
+Return ONLY a valid Mermaid.js erDiagram that shows all these relationships. Use this exact format:
+
+erDiagram
+    TABLE_A ||--o{ TABLE_B : "relationship_description"
+    TABLE_B ||--o{ TABLE_C : "relationship_description"
+
+Rules:
+- Use ||--o{ for one-to-many relationships
+- Use ||--|| for one-to-one relationships  
+- Use }o--o{ for many-to-many relationships
+- Be very careful with table names (match exactly from the SQL)
+- Look for *_id columns that likely reference other tables
+- Include a brief description of the relationship
+- DO NOT include any text before or after the diagram
+- DO NOT wrap in markdown code blocks (no backtick mermaid formatting)
+- START directly with "erDiagram"
+
+SQL Migration:
+` + finalMigrationSQL
+
+	fmt.Printf("✅ [DEBUG] Prompt created successfully, total length: %d characters\n", len(prompt))
+	fmt.Printf("🚀 [DEBUG] Calling LLM API...\n")
+
+	// Call OpenAI API (we'll use the existing openai package)
+	// Note: We need to import and use the existing OpenAI client
+	result, err := callLLMForRelationshipAnalysis(prompt)
+	
+	if err != nil {
+		fmt.Printf("❌ [DEBUG] LLM API call failed in analyzeImplicitRelationships: %v\n", err)
+		return "", err
+	}
+	
+	fmt.Printf("✅ [DEBUG] LLM API call succeeded in analyzeImplicitRelationships\n")
+	fmt.Printf("📝 [DEBUG] LLM result length: %d characters\n", len(result))
+	
+	return result, nil
+}
+
+// callLLMForRelationshipAnalysis makes the actual LLM API call
+func callLLMForRelationshipAnalysis(prompt string) (string, error) {
+	fmt.Printf("🤖 [DEBUG] Starting LLM relationship analysis...\n")
+	fmt.Printf("📝 [DEBUG] Prompt length: %d characters\n", len(prompt))
+	fmt.Printf("📋 [DEBUG] First 200 chars of prompt: %s...\n", prompt[:minInt(200, len(prompt))])
+	
+	// Get OpenAI API key from environment variable (most reliable method)
+	apiKey := os.Getenv("OPENAI_API_KEY")
+	fmt.Printf("🔍 [DEBUG] Environment OPENAI_API_KEY exists: %t\n", apiKey != "")
+	
+	if apiKey == "" {
+		fmt.Printf("⚠️ [DEBUG] No API key in environment, trying config file...\n")
+		// Try loading from config file as fallback
+		cfg, err := config.LoadConfig("config.yaml")
+		if err != nil {
+			fmt.Printf("❌ [DEBUG] Config file load failed: %v\n", err)
+			return "", fmt.Errorf("OpenAI API key not found in environment variables and config file load failed: %v", err)
+		}
+		
+		if cfg.OpenAI.APIKey != "" {
+			apiKey = cfg.OpenAI.APIKey
+			fmt.Printf("✅ [DEBUG] Found API key in config file\n")
+		} else {
+			fmt.Printf("❌ [DEBUG] Config file has no OpenAI API key\n")
+			return "", fmt.Errorf("OpenAI API key not found in environment variables or config file")
+		}
+	} else {
+		fmt.Printf("✅ [DEBUG] Found API key in environment variable\n")
+	}
+	
+	if len(apiKey) < 10 {
+		fmt.Printf("❌ [DEBUG] API key too short: %d characters\n", len(apiKey))
+		return "", fmt.Errorf("invalid API key: too short (%d characters)", len(apiKey))
+	}
+	
+	fmt.Printf("🔑 [DEBUG] Using OpenAI API key: %s...%s (length: %d)\n", apiKey[:minInt(8, len(apiKey))], apiKey[maxInt(0, len(apiKey)-8):], len(apiKey))
+	
+	// Create OpenAI client
+	fmt.Printf("🔧 [DEBUG] Creating OpenAI client...\n")
+	openaiCfg := openai.DefaultConfig(apiKey)
+	client := openai.NewClientWithConfig(openaiCfg)
+	fmt.Printf("✅ [DEBUG] OpenAI client created successfully\n")
+	
+	// Create context with timeout
+	fmt.Printf("⏱️ [DEBUG] Creating context with 60 second timeout...\n")
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+	defer cancel()
+	
+	// Prepare request
+	request := openai.ChatCompletionRequest{
+		Model:       "gpt-3.5-turbo", // Use reliable default model
+		Temperature: 0.1, // Low temperature for consistent structural output
+		MaxTokens:   2000, // Sufficient for Mermaid diagrams
+		Messages: []openai.ChatCompletionMessage{
+			{
+				Role:    openai.ChatMessageRoleSystem,
+				Content: "You are a database schema expert. Analyze SQL and return ONLY a valid Mermaid.js erDiagram showing table relationships. Include both explicit foreign keys and implicit relationships (like user_id columns). Return the raw Mermaid diagram starting with 'erDiagram' - DO NOT wrap in markdown code blocks or use ```mermaid formatting.",
+			},
+			{
+				Role:    openai.ChatMessageRoleUser,
+				Content: prompt,
+			},
+		},
+	}
+	
+	fmt.Printf("📤 [DEBUG] Making OpenAI API call with model: %s\n", request.Model)
+	fmt.Printf("📤 [DEBUG] Request temperature: %f, max tokens: %d\n", request.Temperature, request.MaxTokens)
+	fmt.Printf("📤 [DEBUG] System message length: %d characters\n", len(request.Messages[0].Content))
+	fmt.Printf("📤 [DEBUG] User message length: %d characters\n", len(request.Messages[1].Content))
+	
+	// Make the API call
+	resp, err := client.CreateChatCompletion(ctx, request)
+	
+	if err != nil {
+		fmt.Printf("❌ [DEBUG] OpenAI API call failed: %v\n", err)
+		fmt.Printf("❌ [DEBUG] Error type: %T\n", err)
+		if ctx.Err() != nil {
+			fmt.Printf("❌ [DEBUG] Context error: %v\n", ctx.Err())
+		}
+		return "", fmt.Errorf("OpenAI API error during relationship analysis: %v", err)
+	}
+	
+	fmt.Printf("✅ [DEBUG] OpenAI API call succeeded\n")
+	fmt.Printf("📊 [DEBUG] Response object: %+v\n", resp)
+	
+	if len(resp.Choices) == 0 {
+		fmt.Printf("❌ [DEBUG] No choices in OpenAI response\n")
+		fmt.Printf("📊 [DEBUG] Full response: %+v\n", resp)
+		return "", fmt.Errorf("no response from OpenAI for relationship analysis")
+	}
+	
+	fmt.Printf("✅ [DEBUG] Found %d choices in response\n", len(resp.Choices))
+	
+	mermaidResponse := strings.TrimSpace(resp.Choices[0].Message.Content)
+	fmt.Printf("📝 [DEBUG] Raw response length: %d characters\n", len(mermaidResponse))
+	fmt.Printf("📝 [DEBUG] First 500 chars of response: %s\n", mermaidResponse[:minInt(500, len(mermaidResponse))])
+	
+	// Handle markdown code blocks if present
+	if strings.HasPrefix(mermaidResponse, "```mermaid") {
+		fmt.Printf("🔧 [DEBUG] Detected markdown code block, extracting content...\n")
+		// Extract content between ```mermaid and ```
+		lines := strings.Split(mermaidResponse, "\n")
+		var extractedLines []string
+		inCodeBlock := false
+		for _, line := range lines {
+			if strings.HasPrefix(line, "```mermaid") {
+				inCodeBlock = true
+				continue
+			}
+			if strings.HasPrefix(line, "```") && inCodeBlock {
+				break
+			}
+			if inCodeBlock {
+				extractedLines = append(extractedLines, line)
+			}
+		}
+		mermaidResponse = strings.TrimSpace(strings.Join(extractedLines, "\n"))
+		fmt.Printf("📝 [DEBUG] Extracted from code block, new length: %d characters\n", len(mermaidResponse))
+		fmt.Printf("📝 [DEBUG] Extracted content: %s\n", mermaidResponse[:minInt(200, len(mermaidResponse))])
+	}
+	
+	// Validate that response starts with erDiagram
+	if !strings.HasPrefix(mermaidResponse, "erDiagram") {
+		fmt.Printf("❌ [DEBUG] Response doesn't start with 'erDiagram'\n")
+		fmt.Printf("❌ [DEBUG] Response starts with: %s\n", mermaidResponse[:minInt(50, len(mermaidResponse))])
+		return "", fmt.Errorf("invalid Mermaid response: doesn't start with 'erDiagram', got: %s", mermaidResponse[:minInt(100, len(mermaidResponse))])
+	}
+	
+	fmt.Printf("✅ [DEBUG] Response validation passed\n")
+	fmt.Printf("✅ [DEBUG] LLM relationship analysis completed (%d characters)\n", len(mermaidResponse))
+	return mermaidResponse, nil
+}
+
+// Helper functions for min/max
+func minInt(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+func maxInt(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
 
 // Safe wrapper functions that handle errors gracefully

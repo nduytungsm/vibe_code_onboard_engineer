@@ -1,0 +1,19 @@
+{
+  "content_hash": "81590a5d95f44e59c359b81c48dbc21a",
+  "timestamp": "2025-09-25T17:43:15.952748+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for automating the release process using GoReleaser.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "actions/checkout@v5",
+      "actions/setup-go@v6",
+      "goreleaser/goreleaser-action@v6"
+    ],
+    "side_effects": [
+      "Triggers a Go module reindex at proxy.golang.org"
+    ],
+    "complexity": "low"
+  }
+}

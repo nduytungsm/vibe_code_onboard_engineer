@@ -991,13 +991,14 @@ func (a *Analyzer) extractDatabaseSchema(files []FileInfo) *database.DatabaseSch
 		})
 	}()
 	
-	// Convert canonical schema to legacy format and add final migration SQL
+	// Convert canonical schema to legacy format and add final migration SQL and LLM relationships
 	var schema *database.DatabaseSchema
 	if err == nil && result != nil && result.Schema != nil {
 		schema = database.ConvertToLegacySchema(result.Schema, "")
-		// Add the final migration SQL to the schema
+		// Add the final migration SQL and LLM relationships to the schema
 		if schema != nil {
 			schema.FinalMigrationSQL = result.FinalMigrationSQL
+			schema.LLMRelationships = result.LLMRelationships
 		}
 	}
 	

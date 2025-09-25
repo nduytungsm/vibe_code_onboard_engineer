@@ -16,6 +16,7 @@ import {
   Link,
   ChevronDown,
   ChevronRight,
+  Brain,
 } from "lucide-react";
 import { repositoryAPI } from "./utils/api";
 import { Button } from "@/components/ui/button";
@@ -926,6 +927,7 @@ function DatabaseTab({ getAnalysisData }) {
   };
 
   useEffect(() => {
+    // Handle regular relationships view
     if (activeView === "relationships" && mermaidRef.current && databaseSchema) {
       const renderMermaid = async () => {
         try {
@@ -976,6 +978,59 @@ function DatabaseTab({ getAnalysisData }) {
       };
       
       renderMermaid();
+    }
+    
+    // Handle LLM relationships view
+    if (activeView === "llm_relationships" && databaseSchema && databaseSchema.llm_relationships) {
+      const renderLLMMermaid = async () => {
+        try {
+          const mermaid = (await import('mermaid')).default;
+          mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+              primaryColor: 'hsl(260 84% 65%)', // Purple theme for LLM
+              primaryTextColor: 'hsl(260 60% 30%)',
+              primaryBorderColor: 'hsl(260 40% 80%)',
+              lineColor: 'hsl(260 50% 60%)',
+              secondaryColor: 'hsl(260 40% 95%)',
+              tertiaryColor: 'hsl(260 20% 97%)',
+            },
+            er: {
+              diagramPadding: 20,
+              layoutDirection: 'TB',
+              minEntityWidth: 100,
+              minEntityHeight: 75,
+              entityPadding: 15,
+              stroke: 'hsl(260 40% 80%)',
+              fill: 'hsl(260 40% 95%)',
+              fontSize: 12,
+            }
+          });
+          
+          const llmContainer = document.getElementById("llm-mermaid-container");
+          if (llmContainer && databaseSchema.llm_relationships) {
+            console.log('Rendering LLM Mermaid:', databaseSchema.llm_relationships);
+            llmContainer.innerHTML = databaseSchema.llm_relationships;
+            await mermaid.run({
+              nodes: [llmContainer]
+            });
+          }
+        } catch (error) {
+          console.error('Error rendering LLM Mermaid diagram:', error);
+          const llmContainer = document.getElementById("llm-mermaid-container");
+          if (llmContainer) {
+            llmContainer.innerHTML = `
+              <div class="text-center py-8 text-red-500">
+                <p>Error rendering LLM relationship diagram</p>
+                <p class="text-sm mt-2">${error.message}</p>
+              </div>
+            `;
+          }
+        }
+      };
+      
+      renderLLMMermaid();
     }
   }, [activeView, databaseSchema]);
   
@@ -1090,6 +1145,14 @@ function DatabaseTab({ getAnalysisData }) {
               >
                 <FileText className="h-4 w-4 mr-2" />
                 Final Migration
+              </Button>
+              <Button
+                variant={activeView === "llm_relationships" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setActiveView("llm_relationships")}
+              >
+                <Brain className="h-4 w-4 mr-2" />
+                LLM Relationships
               </Button>
             </div>
           </div>
@@ -1212,7 +1275,7 @@ function DatabaseTab({ getAnalysisData }) {
                 )}
               </div>
             </div>
-          ) : (
+          ) : activeView === "migration" ? (
             <div className="space-y-4">
               <div className="text-center py-4">
                 <div className="text-sm" style={{ color: "hsl(var(--slate-600))" }}>
@@ -1253,6 +1316,65 @@ function DatabaseTab({ getAnalysisData }) {
                     <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
                     <p>Final migration SQL not available</p>
                     <p className="text-sm mt-2">This might happen if no migrations were processed successfully</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="text-center py-4">
+                <div className="text-sm" style={{ color: "hsl(var(--slate-600))" }}>
+                  LLM-Enhanced Relationship Analysis
+                </div>
+                <div className="text-xs mt-2" style={{ color: "hsl(var(--slate-500))" }}>
+                  AI-detected relationships including implicit connections between tables
+                </div>
+              </div>
+              <div className="border rounded-lg" style={{ backgroundColor: "hsl(var(--slate-50))", borderColor: "hsl(var(--slate-200))" }}>
+                {databaseSchema.llm_relationships ? (
+                  <div className="p-4">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="text-sm font-medium" style={{ color: "hsl(var(--slate-700))" }}>
+                        <Brain className="h-4 w-4 inline mr-2" />
+                        AI-Generated Relationships ({databaseSchema.llm_relationships.length} characters)
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          navigator.clipboard.writeText(databaseSchema.llm_relationships);
+                        }}
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Copy Mermaid
+                      </Button>
+                    </div>
+                    <div className="border rounded-lg p-6" style={{ backgroundColor: "white", borderColor: "hsl(var(--slate-200))" }}>
+                      <div id="llm-mermaid-container" className="w-full overflow-auto min-h-48">
+                        {/* Mermaid diagram will be rendered here */}
+                        <div className="flex items-center justify-center h-48">
+                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <details className="mt-4">
+                      <summary className="cursor-pointer text-sm font-medium mb-2" style={{ color: "hsl(var(--slate-700))" }}>
+                        View Raw Mermaid Code
+                      </summary>
+                      <pre className="text-sm overflow-x-auto p-4 rounded-lg font-mono whitespace-pre-wrap" style={{ 
+                        backgroundColor: "hsl(var(--slate-900))", 
+                        color: "hsl(var(--slate-100))",
+                        lineHeight: "1.5"
+                      }}>
+                        {databaseSchema.llm_relationships}
+                      </pre>
+                    </details>
+                  </div>
+                ) : (
+                  <div className="text-center py-8" style={{ color: "hsl(var(--slate-500))" }}>
+                    <Brain className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                    <p>LLM relationship analysis not available</p>
+                    <p className="text-sm mt-2">This could be due to missing OpenAI configuration or analysis failure</p>
                   </div>
                 )}
               </div>

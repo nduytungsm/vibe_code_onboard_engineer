@@ -1,0 +1,12 @@
+{
+  "content_hash": "d743867b7b5e255df1bc0e9a09519164",
+  "timestamp": "2025-09-25T17:43:55.043841+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for Gin examples",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

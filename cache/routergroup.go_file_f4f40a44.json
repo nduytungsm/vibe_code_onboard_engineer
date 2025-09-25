@@ -1,0 +1,46 @@
+{
+  "content_hash": "3b0e9a831de4ee64a5a09f5a34bf1e8e",
+  "timestamp": "2025-09-25T17:44:26.317366+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a router group for handling HTTP requests with middleware support.",
+    "key_types": [
+      "IRouter",
+      "IRoutes",
+      "RouterGroup"
+    ],
+    "functions": [
+      "Use",
+      "Group",
+      "BasePath",
+      "Handle",
+      "POST",
+      "GET",
+      "DELETE",
+      "PATCH",
+      "PUT",
+      "OPTIONS",
+      "HEAD",
+      "Any",
+      "Match",
+      "StaticFile",
+      "StaticFileFS",
+      "Static",
+      "StaticFS"
+    ],
+    "imports": [
+      "net/http",
+      "path",
+      "regexp",
+      "strings"
+    ],
+    "side_effects": [
+      "Panic if an invalid HTTP method is used.",
+      "Panic if URL parameters are used when serving static files."
+    ],
+    "risks": [
+      "Potential for denial of service if too many handlers are added."
+    ],
+    "complexity": "medium"
+  }
+}

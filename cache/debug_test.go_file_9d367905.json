@@ -1,0 +1,49 @@
+{
+  "content_hash": "c7e62b08f0968494a1106ce0c6fe3f8d",
+  "timestamp": "2025-09-25T17:43:51.452033+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains unit tests for debugging functionalities in the Gin web framework.",
+    "key_types": [
+      "Context",
+      "HandlersChain"
+    ],
+    "functions": [
+      "TestIsDebugging",
+      "TestDebugPrint",
+      "TestDebugPrintError",
+      "TestDebugPrintRoutes",
+      "TestDebugPrintRouteFunc",
+      "TestDebugPrintLoadTemplate",
+      "TestDebugPrintWARNINGSetHTMLTemplate",
+      "TestDebugPrintWARNINGDefault",
+      "TestDebugPrintWARNINGNew",
+      "captureOutput",
+      "TestGetMinVer"
+    ],
+    "imports": [
+      "errors",
+      "fmt",
+      "html/template",
+      "io",
+      "log",
+      "net/http",
+      "os",
+      "runtime",
+      "strings",
+      "sync",
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies global logging output during tests",
+      "Changes application mode for testing"
+    ],
+    "risks": [
+      "Potential race conditions due to shared state in tests",
+      "Improper handling of logging output could lead to missed errors"
+    ],
+    "complexity": "medium"
+  }
+}

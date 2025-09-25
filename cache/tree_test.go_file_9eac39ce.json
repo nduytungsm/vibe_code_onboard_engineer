@@ -1,0 +1,35 @@
+{
+  "content_hash": "21a883e4d2a497c65766d2157cdf2380",
+  "timestamp": "2025-09-25T17:44:31.180435+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for a routing tree implementation in a web framework.",
+    "key_types": [
+      "HandlersChain",
+      "Params",
+      "node",
+      "testRequests"
+    ],
+    "functions": [
+      "fakeHandler",
+      "getParams",
+      "getSkippedNodes",
+      "checkRequests",
+      "checkPriorities",
+      "TestCountParams",
+      "TestTreeAddAndGet",
+      "TestTreeWildcard"
+    ],
+    "imports": [
+      "fmt",
+      "reflect",
+      "regexp",
+      "strings",
+      "testing"
+    ],
+    "side_effects": [
+      "Modifies the global variable fakeHandlerValue during tests."
+    ],
+    "complexity": "medium"
+  }
+}

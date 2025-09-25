@@ -1,9 +1,9 @@
 {
-  "content_hash": "0103d105eaf0a8c24a58e3a7dfdc44f9",
-  "timestamp": "2025-09-25T17:14:59.234662+07:00",
+  "content_hash": "19ee901209db3db8839392a47d7dc857",
+  "timestamp": "2025-09-25T17:44:37.90617+07:00",
   "result": {
     "path": "codec/json",
-    "purpose": "Responsible for providing various implementations and interfaces for JSON encoding and decoding.",
+    "purpose": "This folder/module is responsible for providing various interfaces and implementations for JSON encoding and decoding using different libraries.",
     "languages": {
       "Go": 5
     },
@@ -19,11 +19,11 @@
       "github.com/json-iterator/go",
       "github.com/bytedance/sonic"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating different JSON encoding and decoding strategies through separate files, each implementing specific libraries or interfaces.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating different JSON encoding/decoding strategies through separate files, each implementing a specific library's interface.",
     "file_summaries": {
       "codec/json/api.go": {
         "language": "Go",
-        "purpose": "Defines a JSON codec API for marshaling and unmarshaling JSON data.",
+        "purpose": "Defines a JSON codec interface for marshaling and unmarshaling JSON data.",
         "key_types": [
           "Core",
           "Encoder",
@@ -120,9 +120,11 @@
       },
       "codec/json/sonic.go": {
         "language": "Go",
-        "purpose": "This file provides a wrapper around the Sonic library for JSON encoding and decoding.",
+        "purpose": "Provides a JSON encoding and decoding interface using the Sonic library.",
         "key_types": [
-          "sonicApi"
+          "sonicApi",
+          "Encoder",
+          "Decoder"
         ],
         "functions": [
           "init",
@@ -135,9 +137,6 @@
         "imports": [
           "io",
           "github.com/bytedance/sonic"
-        ],
-        "side_effects": [
-          "Initializes the API with sonicApi"
         ],
         "complexity": "medium"
       }

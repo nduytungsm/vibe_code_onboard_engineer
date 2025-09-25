@@ -1,22 +1,38 @@
 {
-  "content_hash": "1187722dd58b4a5f7a958a37eded26ad",
-  "timestamp": "2025-09-25T17:20:02.256041+07:00",
+  "content_hash": "b277e00f224e4fa0a2dbcf5e3fa9cdc9",
+  "timestamp": "2025-09-25T17:44:48.31755+07:00",
   "result": {
     "path": ".github",
-    "purpose": "Contains configuration files and templates for GitHub repository management.",
+    "purpose": "Contains configuration files and templates for GitHub workflows and dependency management.",
     "languages": {
-      "Markdown": 1
+      "Markdown": 1,
+      "YAML": 1
     },
     "key_modules": [
-      "pull_request_template.md"
+      "PULL_REQUEST_TEMPLATE.md",
+      "dependabot.yml"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a simple structure for managing GitHub-related templates and configurations, focusing on enhancing collaboration and standardizing processes.",
+    "architecture": "The folder follows a configuration-based architecture, providing templates and settings for managing pull requests and dependencies.",
     "file_summaries": {
-      ".github/pull_request_template.md": {
+      ".github/PULL_REQUEST_TEMPLATE.md": {
         "language": "Markdown",
-        "purpose": "Template for pull requests in a GitHub repository",
+        "purpose": "Template for pull request checklist",
         "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      ".github/dependabot.yml": {
+        "language": "YAML",
+        "purpose": "Configuration file for Dependabot to manage dependencies in a Go module and GitHub Actions.",
+        "key_types": [
+          "updates",
+          "package-ecosystem",
+          "schedule",
+          "groups",
+          "patterns"
+        ],
         "functions": [],
         "imports": [],
         "complexity": "low"

@@ -1,0 +1,25 @@
+{
+  "content_hash": "db58a86b2f7f983f16e65d54f99af253",
+  "timestamp": "2025-09-25T17:44:20.287756+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a rendering mechanism for string data with a specified format and content type.",
+    "key_types": [
+      "String"
+    ],
+    "functions": [
+      "Render",
+      "WriteContentType",
+      "WriteString"
+    ],
+    "imports": [
+      "fmt",
+      "net/http",
+      "github.com/gin-gonic/gin/internal/bytesconv"
+    ],
+    "side_effects": [
+      "Writes to http.ResponseWriter"
+    ],
+    "complexity": "medium"
+  }
+}
