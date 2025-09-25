@@ -1,0 +1,12 @@
+{
+  "content_hash": "3bf49b84b1ff7693cc390f4b0337d705",
+  "timestamp": "2025-09-25T15:33:24.911368+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "This file outlines the Contributor Code of Conduct for the Rails community.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

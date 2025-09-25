@@ -1,0 +1,27 @@
+{
+  "content_hash": "25893cc8005ad504cfbae1871184c1c4",
+  "timestamp": "2025-09-25T15:49:12.334752+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Responsible for ensuring channel subscribe command is confirmed, retrying until confirmation is received.",
+    "key_types": [
+      "SubscriptionGuarantor"
+    ],
+    "functions": [
+      "constructor",
+      "guarantee",
+      "forget",
+      "startGuaranteeing",
+      "stopGuaranteeing",
+      "retrySubscribing"
+    ],
+    "imports": [
+      "logger"
+    ],
+    "side_effects": [
+      "Logs subscription actions to the logger",
+      "Sets a timeout for retrying subscriptions"
+    ],
+    "complexity": "medium"
+  }
+}

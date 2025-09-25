@@ -1,0 +1,29 @@
+{
+  "content_hash": "d9c37363f6aab3e023afe5c6bb96a516",
+  "timestamp": "2025-09-25T15:50:09.650144+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for the ActionCable server functionality.",
+    "key_types": [
+      "BaseTest",
+      "FakeConnection"
+    ],
+    "functions": [
+      "setup",
+      "test '#restart closes all open connections'",
+      "test '#restart shuts down worker pool'",
+      "test '#restart shuts down pub/sub adapter'"
+    ],
+    "imports": [
+      "test_helper",
+      "stubs/test_server",
+      "active_support/core_ext/hash/indifferent_access"
+    ],
+    "side_effects": [
+      "Creates a new ActionCable server instance",
+      "Adds a connection to the server",
+      "Calls methods on the server's worker pool and pub/sub adapter"
+    ],
+    "complexity": "medium"
+  }
+}

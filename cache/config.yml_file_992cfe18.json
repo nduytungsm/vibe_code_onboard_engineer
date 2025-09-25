@@ -1,0 +1,43 @@
+{
+  "content_hash": "b6ce59f0fee9d7d3adac41729cbfc6e9",
+  "timestamp": "2025-09-24T17:40:02.873942+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for a mobile wallet manager application, defining various settings for services, servers, authentication, logging, and other features.",
+    "key_types": [
+      "profiler",
+      "server",
+      "profiling",
+      "auth_server",
+      "sso_server",
+      "sentry",
+      "hmac_internal",
+      "logging",
+      "redis",
+      "device_service",
+      "postgres",
+      "api_version",
+      "ref_code",
+      "moonpay",
+      "announcement_config",
+      "ip_location_config",
+      "binance_config",
+      "tracking_config",
+      "external_auth_config",
+      "hide_all_spotlights_config",
+      "enable_quest_coming_soon_config",
+      "disable_nft_portfolio_config",
+      "enable_moonpay_config",
+      "enable_transak_config",
+      "hidden_tab_config",
+      "blacklist_site_config"
+    ],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Exposure of sensitive information due to redacted fields",
+      "Potential for misconfiguration leading to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

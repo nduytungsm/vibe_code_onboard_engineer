@@ -1,0 +1,39 @@
+{
+  "content_hash": "d4954a9a46c51ac71245b6d12bdc24c7",
+  "timestamp": "2025-09-25T15:51:23.942226+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for applying metadata commands in a Hasura GraphQL engine CLI.",
+    "key_types": [
+      "Context",
+      "session",
+      "CmdOpts"
+    ],
+    "functions": [
+      "commonMetadataCommandsTest",
+      "inconsistentMetadataTestsForConfigV3",
+      "testConfigV2",
+      "verifyRequestTransformsMetadataIsApplied"
+    ],
+    "imports": [
+      "fmt",
+      "os",
+      "path/filepath",
+      "strings",
+      "github.com/Pallinder/go-randomdata",
+      "github.com/hasura/graphql-engine/cli/v2/internal/testutil",
+      "github.com/onsi/ginkgo",
+      "github.com/onsi/gomega",
+      "github.com/onsi/gomega/gexec"
+    ],
+    "side_effects": [
+      "Creates and removes temporary project directories for testing.",
+      "Writes to the filesystem to create inconsistent metadata."
+    ],
+    "risks": [
+      "Potential for file system errors when creating or deleting directories.",
+      "Inconsistent metadata could lead to unexpected behavior in tests."
+    ],
+    "complexity": "medium"
+  }
+}

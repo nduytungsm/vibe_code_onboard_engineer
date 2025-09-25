@@ -1,0 +1,26 @@
+{
+  "content_hash": "2d0d872f46b9fa87e2c87069f49df78c",
+  "timestamp": "2025-09-25T15:50:00.618099+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for the ActionCable connection identifier functionality.",
+    "key_types": [
+      "ActionCable::Connection::Base",
+      "TestServer"
+    ],
+    "functions": [
+      "connect",
+      "send_async",
+      "open_connection"
+    ],
+    "imports": [
+      "test_helper",
+      "stubs/test_server"
+    ],
+    "side_effects": [
+      "Establishes a connection to a test server",
+      "Triggers WebSocket connection events"
+    ],
+    "complexity": "medium"
+  }
+}

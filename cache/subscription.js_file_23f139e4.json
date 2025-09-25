@@ -1,0 +1,26 @@
+{
+  "content_hash": "978e7ba3c26203d8afcfe935a1124068",
+  "timestamp": "2025-09-25T16:10:28.804075+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a Subscription class for managing ActionCable subscriptions in a client-side application.",
+    "key_types": [
+      "Subscription"
+    ],
+    "functions": [
+      "constructor",
+      "perform",
+      "send",
+      "unsubscribe"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Establishes a connection to the server via ActionCable.",
+      "Sends messages to the server."
+    ],
+    "risks": [
+      "Potential exposure of sensitive data if not properly secured."
+    ],
+    "complexity": "medium"
+  }
+}

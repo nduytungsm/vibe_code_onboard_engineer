@@ -1,0 +1,43 @@
+{
+  "content_hash": "9cec81ab6100e2a7723bb8240ed7da78",
+  "timestamp": "2025-09-25T15:51:14.17569+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for deploying configurations in a Hasura GraphQL engine CLI application.",
+    "key_types": [
+      "string",
+      "func",
+      "context",
+      "struct"
+    ],
+    "functions": [
+      "commonDeployCommandsTest",
+      "BeforeEach",
+      "AfterEach",
+      "It"
+    ],
+    "imports": [
+      "fmt",
+      "io",
+      "io/ioutil",
+      "os",
+      "path/filepath",
+      "github.com/spf13/viper",
+      "github.com/hasura/graphql-engine/cli/v2",
+      "github.com/Pallinder/go-randomdata",
+      "github.com/hasura/graphql-engine/cli/v2/internal/testutil",
+      "github.com/onsi/ginkgo",
+      "github.com/onsi/gomega",
+      "github.com/onsi/gomega/gexec"
+    ],
+    "side_effects": [
+      "Creates and removes temporary project directories",
+      "Starts and stops Docker containers for Hasura and PostgreSQL"
+    ],
+    "risks": [
+      "Potential for resource leaks if teardown functions are not called",
+      "File system modifications could lead to data loss if not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

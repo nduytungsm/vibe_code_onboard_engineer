@@ -1,0 +1,22 @@
+{
+  "content_hash": "3dc57124778aa4d6e29529a38bc3452e",
+  "timestamp": "2025-09-25T16:11:39.042822+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file contains unit tests for the ActionCable.SubscriptionGuarantor class, ensuring it correctly manages subscriptions.",
+    "key_types": [
+      "ActionCable.SubscriptionGuarantor"
+    ],
+    "functions": [
+      "guarantee",
+      "forget"
+    ],
+    "imports": [
+      "ActionCable"
+    ],
+    "side_effects": [
+      "Modifies the state of pendingSubscriptions in SubscriptionGuarantor"
+    ],
+    "complexity": "medium"
+  }
+}

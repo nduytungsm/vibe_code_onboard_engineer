@@ -1,0 +1,12 @@
+{
+  "content_hash": "295066be7490260ae7a5494077b8ad79",
+  "timestamp": "2025-09-25T15:50:43.535229+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Template for reporting bugs related to Hasura DDN or V3 engine.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

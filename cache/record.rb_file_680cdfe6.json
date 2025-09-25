@@ -1,0 +1,23 @@
+{
+  "content_hash": "e93ab50192906ad67fecbec912f64432",
+  "timestamp": "2025-09-25T16:12:16.484671+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines an abstract class for ActionMailbox records that inherits from ActiveRecord.",
+    "key_types": [
+      "ActionMailbox::Record",
+      "ActiveRecord::Base"
+    ],
+    "functions": [
+      "run_load_hooks"
+    ],
+    "imports": [
+      "ActiveRecord",
+      "ActiveSupport"
+    ],
+    "side_effects": [
+      "Defines an abstract class that can be inherited by other models."
+    ],
+    "complexity": "low"
+  }
+}

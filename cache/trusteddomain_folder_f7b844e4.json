@@ -1,9 +1,9 @@
 {
-  "content_hash": "1a20b0e05765baa0692a9245297b8a3a",
-  "timestamp": "2025-09-24T16:31:09.948758+07:00",
+  "content_hash": "abeb42b31b5791ca0636f3f1d5030a15",
+  "timestamp": "2025-09-25T16:34:29.229614+07:00",
   "result": {
     "path": "pkg/trusteddomain",
-    "purpose": "Responsible for managing trusted domains, including caching and database operations.",
+    "purpose": "This folder/module is responsible for managing trusted domains, including caching and database operations.",
     "languages": {
       "Go": 2
     },
@@ -19,15 +19,16 @@
       "github.com/axieinfinity/ronin-wallet-manager/models",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a service-oriented architecture, encapsulating domain management logic and utility functions.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating domain management logic and utility functions.",
     "file_summaries": {
       "pkg/trusteddomain/trusted_domain_svc.go": {
         "language": "Go",
-        "purpose": "Provides a service for managing trusted domains, including caching and database operations.",
+        "purpose": "This file implements a service for managing trusted domains, including caching and database operations.",
         "key_types": [
           "Service",
           "svc",
           "TrustedDomain",
+          "TrustedDomainRepo",
           "GetListTDMRequest"
         ],
         "functions": [
@@ -51,18 +52,18 @@
           "github.com/axieinfinity/ronin-wallet-manager/repositories"
         ],
         "side_effects": [
-          "Caches results to reduce database load",
+          "Caches trusted domain data",
           "Subscribes to a Redis channel for cache invalidation"
         ],
         "risks": [
-          "Potential race conditions in cache management",
+          "Potential race conditions in cache operations",
           "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"
       },
       "pkg/trusteddomain/utils.go": {
         "language": "Go",
-        "purpose": "Generates wildcard domain names from a given domain string.",
+        "purpose": "Generates wildcard domains from a given domain string.",
         "key_types": [
           "string",
           "[]string"

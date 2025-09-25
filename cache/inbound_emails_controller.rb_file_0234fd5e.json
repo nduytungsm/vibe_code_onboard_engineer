@@ -1,0 +1,37 @@
+{
+  "content_hash": "00b1b31f4caf9e4eaf7a8b7b5ad4534c",
+  "timestamp": "2025-09-25T16:12:03.678108+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Handles inbound emails from Mailgun and authenticates requests.",
+    "key_types": [
+      "ActionMailbox::BaseController",
+      "Authenticator"
+    ],
+    "functions": [
+      "create",
+      "mail",
+      "authenticate",
+      "authenticated?",
+      "key",
+      "signed?",
+      "recent?",
+      "expected_signature"
+    ],
+    "imports": [
+      "ActionMailbox",
+      "Rails",
+      "ActiveSupport::SecurityUtils",
+      "OpenSSL"
+    ],
+    "side_effects": [
+      "Modifies request parameters",
+      "Creates and enqueues inbound email"
+    ],
+    "risks": [
+      "Potential exposure of sensitive keys if not properly managed",
+      "Unauthorized access if authentication fails"
+    ],
+    "complexity": "medium"
+  }
+}

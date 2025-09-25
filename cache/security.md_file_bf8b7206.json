@@ -1,0 +1,12 @@
+{
+  "content_hash": "e05505a0ab7790c7c7fba8024972166f",
+  "timestamp": "2025-09-25T16:10:05.588573+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Document outlining the security policy and reporting vulnerabilities for a project.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "content_hash": "26c81a3224e8c3c91a11de80c7d21d5c",
+  "timestamp": "2025-09-25T16:11:50.008523+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for the ActionCable subscription adapter, ensuring that methods are correctly implemented or raise errors when not overridden.",
+    "key_types": [
+      "ActionCable::SubscriptionAdapter::Base",
+      "TestServer",
+      "BrokenAdapter",
+      "SuccessAdapter"
+    ],
+    "functions": [
+      "setup",
+      "#broadcast",
+      "#subscribe",
+      "#unsubscribe"
+    ],
+    "imports": [
+      "test_helper",
+      "stubs/test_server"
+    ],
+    "side_effects": [
+      "Raises NotImplementedError for unimplemented methods",
+      "Prints to console during tests"
+    ],
+    "complexity": "medium"
+  }
+}

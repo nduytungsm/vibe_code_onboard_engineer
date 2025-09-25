@@ -1,0 +1,34 @@
+{
+  "content_hash": "a4d89466e6b9025f52988acafe994771",
+  "timestamp": "2025-09-25T16:10:10.375538+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for setting up a Ruby on Rails application in a Docker container.",
+    "key_types": [
+      "job",
+      "step",
+      "environment variable"
+    ],
+    "functions": [
+      "checkout",
+      "setup-ruby",
+      "run",
+      "build",
+      "test"
+    ],
+    "imports": [
+      "actions/checkout@v5",
+      "ruby/setup-ruby@v1",
+      "zzak/action-discord@4cd181470664aa174b7252e5afb2ecf896001817"
+    ],
+    "side_effects": [
+      "Modifies the file system by removing Gemfile.lock",
+      "Builds and runs a Docker container"
+    ],
+    "risks": [
+      "Exposing sensitive information through environment variables",
+      "Potential for code execution in the container"
+    ],
+    "complexity": "medium"
+  }
+}

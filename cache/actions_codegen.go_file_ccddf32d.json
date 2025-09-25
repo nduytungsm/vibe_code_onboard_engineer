@@ -1,0 +1,33 @@
+{
+  "content_hash": "11daae4911f8c1e5c2a1c8462d7eacad",
+  "timestamp": "2025-09-25T15:50:59.606327+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a command for generating code for Actions in a CLI application.",
+    "key_types": [
+      "actionsCodegenOptions",
+      "cli.ExecutionContext",
+      "types.DerivePayload"
+    ],
+    "functions": [
+      "newActionsCodegenCmd",
+      "run"
+    ],
+    "imports": [
+      "fmt",
+      "strings",
+      "github.com/hasura/graphql-engine/cli/v2",
+      "github.com/hasura/graphql-engine/cli/v2/internal/errors",
+      "github.com/hasura/graphql-engine/cli/v2/internal/metadataobject/actions",
+      "github.com/hasura/graphql-engine/cli/v2/internal/metadataobject/actions/types",
+      "github.com/spf13/cobra"
+    ],
+    "side_effects": [
+      "Modifies the state of the ExecutionContext by setting up codegen assets and generating code."
+    ],
+    "risks": [
+      "Potential errors when fetching introspection schema or generating code, which could lead to incorrect code generation."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "content_hash": "46a961d66c1d75faad8eb6b68b02558b",
+  "timestamp": "2025-09-25T16:11:04.565395+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Provides a test adapter for Action Cable to facilitate testing in Rails applications.",
+    "key_types": [
+      "ActionCable::SubscriptionAdapter::Test",
+      "Async"
+    ],
+    "functions": [
+      "broadcast",
+      "broadcasts",
+      "clear_messages",
+      "clear",
+      "channels_data"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the state of channels_data",
+      "Stores broadcast messages"
+    ],
+    "complexity": "medium"
+  }
+}

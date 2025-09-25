@@ -1,0 +1,12 @@
+{
+  "content_hash": "5ba01d6dcaed07d09099fb7140e2f51a",
+  "timestamp": "2025-09-25T15:50:48.785509+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Guide for contributing to the Hasura GraphQL Engine project.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

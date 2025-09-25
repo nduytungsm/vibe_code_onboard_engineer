@@ -1,0 +1,16 @@
+{
+  "content_hash": "01c59a20e2191d9fb15f4131879d34d7",
+  "timestamp": "2025-09-25T15:50:38.961566+07:00",
+  "result": {
+    "language": "plaintext",
+    "purpose": "This file contains user credentials for PostgreSQL.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Exposing sensitive user credentials",
+      "Potential for unauthorized access if file is not secured"
+    ],
+    "complexity": "low"
+  }
+}

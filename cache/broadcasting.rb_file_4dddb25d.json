@@ -1,0 +1,23 @@
+{
+  "content_hash": "b3f41ecb7a2e19d9528f1310f5d62403",
+  "timestamp": "2025-09-25T15:49:14.380369+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Provides broadcasting functionality for ActionCable channels.",
+    "key_types": [
+      "ActionCable::Channel::Broadcasting"
+    ],
+    "functions": [
+      "broadcast_to",
+      "broadcasting_for",
+      "serialize_broadcasting"
+    ],
+    "imports": [
+      "active_support/core_ext/object/to_param"
+    ],
+    "side_effects": [
+      "Broadcasts messages to clients connected to the channel."
+    ],
+    "complexity": "medium"
+  }
+}

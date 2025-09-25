@@ -1,0 +1,39 @@
+{
+  "content_hash": "8f88694eca5bc66e32a6cc9dedb4d74b",
+  "timestamp": "2025-09-25T16:11:12.428425+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Generates Action Cable channel files and associated JavaScript files for a Rails application.",
+    "key_types": [
+      "ChannelGenerator",
+      "NamedBase"
+    ],
+    "functions": [
+      "create_channel_files",
+      "create_shared_channel_files",
+      "create_channel_file",
+      "create_shared_channel_javascript_files",
+      "create_channel_javascript_file",
+      "import_channels_in_javascript_entrypoint",
+      "import_channel_in_javascript_entrypoint",
+      "install_javascript_dependencies",
+      "pin_javascript_dependencies",
+      "first_setup_required?",
+      "using_javascript?",
+      "using_js_runtime?",
+      "using_bun?",
+      "using_node?",
+      "using_importmap?"
+    ],
+    "imports": [
+      "rails/generators",
+      "application_cable/channel",
+      "application_cable/connection"
+    ],
+    "side_effects": [
+      "Creates files in the app/channels and app/javascript/channels directories.",
+      "Modifies application.js and importmap.rb files."
+    ],
+    "complexity": "medium"
+  }
+}

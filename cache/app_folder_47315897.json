@@ -1,9 +1,9 @@
 {
-  "content_hash": "40c706d2f077a395640488ca683b9665",
-  "timestamp": "2025-09-24T16:30:30.177044+07:00",
+  "content_hash": "05943b58951dc4948aa9bde34f4869c5",
+  "timestamp": "2025-09-25T16:33:20.547062+07:00",
   "result": {
     "path": "cmd/app",
-    "purpose": "This folder/module is responsible for setting up the main application, including an HTTP server and a metrics server, along with middleware for logging, error handling, and monitoring.",
+    "purpose": "This folder/module is responsible for setting up and running the main application, including an HTTP server and a metrics server.",
     "languages": {
       "Go": 1
     },
@@ -25,11 +25,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
       "github.com/axieinfinity/ronin-wallet-manager/routes"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where the main application logic is encapsulated in a single entry point (main.go) that initializes and manages various components such as servers and middleware.",
+    "architecture": "The folder follows a modular architecture pattern, focusing on separation of concerns by handling HTTP requests, metrics, and graceful shutdowns in a structured manner.",
     "file_summaries": {
       "cmd/app/main.go": {
         "language": "Go",
-        "purpose": "This file sets up an HTTP server and a metrics server, handles graceful shutdown, and integrates middleware for logging, error handling, and monitoring.",
+        "purpose": "This file sets up an HTTP server and a metrics server, handling graceful shutdown and logging.",
         "key_types": [
           "context.Context",
           "sync.WaitGroup",
@@ -65,12 +65,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/routes"
         ],
         "side_effects": [
-          "Initializes Sentry for error tracking if enabled",
           "Starts HTTP and metrics servers",
-          "Handles OS interrupt signals for graceful shutdown"
+          "Sets up signal handling for graceful shutdown",
+          "Initializes Sentry for error tracking"
         ],
         "risks": [
-          "Potential exposure of sensitive information in logs if not properly configured",
+          "Potential exposure of sensitive information in logs",
           "Improper error handling could lead to application crashes"
         ],
         "complexity": "medium"

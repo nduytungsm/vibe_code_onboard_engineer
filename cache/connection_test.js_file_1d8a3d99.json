@@ -1,0 +1,23 @@
+{
+  "content_hash": "2b0dd7b5ce38ad8ea9cadb94dc173c70",
+  "timestamp": "2025-09-25T16:11:35.726581+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Unit tests for the ActionCable.Connection class to verify WebSocket adapter functionality.",
+    "key_types": [
+      "ActionCable.Connection",
+      "WebSocket"
+    ],
+    "functions": [
+      "getState",
+      "open"
+    ],
+    "imports": [
+      "ActionCable"
+    ],
+    "side_effects": [
+      "Modifies ActionCable.adapters.WebSocket"
+    ],
+    "complexity": "medium"
+  }
+}

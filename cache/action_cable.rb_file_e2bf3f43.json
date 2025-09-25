@@ -1,0 +1,24 @@
+{
+  "content_hash": "cdc42fe76fa9f47a33d3853f2010311e",
+  "timestamp": "2025-09-25T16:11:07.191973+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines the ActionCable module and sets up the loader for the ActionCable gem.",
+    "key_types": [
+      "ActionCable::Server::Base",
+      "Hash"
+    ],
+    "functions": [
+      "server"
+    ],
+    "imports": [
+      "active_support",
+      "active_support/rails",
+      "zeitwerk"
+    ],
+    "side_effects": [
+      "Sets up a loader for the ActionCable gem"
+    ],
+    "complexity": "medium"
+  }
+}

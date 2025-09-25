@@ -1,0 +1,19 @@
+{
+  "content_hash": "4cf0cc7d880a440dd800cdf54961f68b",
+  "timestamp": "2025-09-25T15:49:29.502458+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines the version of the Action Cable gem.",
+    "key_types": [
+      "Module",
+      "Gem::Version"
+    ],
+    "functions": [
+      "gem_version"
+    ],
+    "imports": [
+      "Gem"
+    ],
+    "complexity": "low"
+  }
+}

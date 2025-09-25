@@ -1,9 +1,9 @@
 {
-  "content_hash": "bee4499ef9f545e8bc9ae587424c12ea",
-  "timestamp": "2025-09-24T16:30:10.543888+07:00",
+  "content_hash": "208e2024eebff973f921899c4a5840ac",
+  "timestamp": "2025-09-25T16:31:54.701489+07:00",
   "result": {
     "path": "pkg/announcement",
-    "purpose": "This folder/module is responsible for managing announcements, including scheduling and retrieving announcements.",
+    "purpose": "This folder/module is responsible for managing announcements, including scheduling and retrieving them.",
     "languages": {
       "Go": 2
     },
@@ -39,7 +39,7 @@
     "file_summaries": {
       "pkg/announcement/announcement_svc.go": {
         "language": "Go",
-        "purpose": "This file implements a service for managing announcements, including scheduling and retrieving announcements.",
+        "purpose": "This file implements a service for managing announcements, including scheduling and retrieving them.",
         "key_types": [
           "Service",
           "service",
@@ -98,11 +98,11 @@
         ],
         "side_effects": [
           "Uploads images to GCS",
-          "Deletes uploaded images on error"
+          "Deletes images from GCS on error"
         ],
         "risks": [
-          "Potential for file size and type vulnerabilities when processing images",
-          "Improper handling of context may lead to resource leaks"
+          "Potential for denial of service if large files are uploaded",
+          "Improper handling of unsupported media types"
         ],
         "complexity": "medium"
       },

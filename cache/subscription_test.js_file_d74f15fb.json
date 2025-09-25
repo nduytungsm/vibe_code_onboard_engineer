@@ -1,0 +1,25 @@
+{
+  "content_hash": "46ae69e1b8b3b6544df5e5e4fcbe98cf",
+  "timestamp": "2025-09-25T15:50:07.816074+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Unit tests for ActionCable subscription functionalities.",
+    "key_types": [
+      "QUnit",
+      "consumer",
+      "subscription"
+    ],
+    "functions": [
+      "module",
+      "consumerTest"
+    ],
+    "imports": [
+      "../test_helpers/consumer_test_helper"
+    ],
+    "side_effects": [
+      "broadcasting messages to the server",
+      "asserting test conditions"
+    ],
+    "complexity": "medium"
+  }
+}

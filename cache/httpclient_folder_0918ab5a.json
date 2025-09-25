@@ -1,9 +1,9 @@
 {
-  "content_hash": "c751f2f45dc2eec01a4fd7ca5122b90c",
-  "timestamp": "2025-09-24T16:31:42.929778+07:00",
+  "content_hash": "0a6b19c53e7a5d9386a7bb1085d8d20d",
+  "timestamp": "2025-09-25T16:31:59.619691+07:00",
   "result": {
     "path": "httpclient",
-    "purpose": "This folder/module is responsible for providing HTTP client implementations for various services including Athena, device management, notifications, and event tracking.",
+    "purpose": "This folder/module is responsible for implementing various HTTP clients for interacting with different APIs and managing device-related operations.",
     "languages": {
       "Go": 5
     },
@@ -20,11 +20,11 @@
       "github.com/rs/zerolog/log",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
     ],
-    "architecture": "The folder follows a modular architecture pattern, with each file representing a specific client interface and its implementation, promoting separation of concerns and reusability.",
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates a specific client implementation with defined interfaces and functions for handling HTTP requests and responses.",
     "file_summaries": {
       "httpclient/athena.go": {
         "language": "Go",
-        "purpose": "This file defines an HTTP client for interacting with an Athena service, specifically for linking accounts.",
+        "purpose": "This file implements an HTTP client for linking accounts using the Athena API.",
         "key_types": [
           "AthenaClientCfg",
           "Athena",
@@ -41,6 +41,13 @@
           "fmt",
           "net/http",
           "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Makes HTTP requests to an external API"
+        ],
+        "risks": [
+          "Potential exposure of sensitive data in HTTP requests",
+          "Improper error handling may lead to information leakage"
         ],
         "complexity": "medium"
       },
@@ -106,12 +113,10 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
         ],
         "side_effects": [
-          "Logs request details and errors",
-          "Modifies request headers"
+          "Logs request details and errors using zerolog."
         ],
         "risks": [
-          "Potential exposure of SecretKey if not handled securely",
-          "Error handling may expose sensitive information in logs"
+          "Potential exposure of sensitive information if the SecretKey is not properly managed."
         ],
         "complexity": "medium"
       },
@@ -139,16 +144,16 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Logs errors if any occur during the notification sending process."
+          "Logs errors when notification sending fails"
         ],
         "risks": [
-          "Potential exposure of sensitive information in logs if errors occur."
+          "Potential exposure of sensitive information in logs if errors occur"
         ],
         "complexity": "medium"
       },
       "httpclient/tracking.go": {
         "language": "Go",
-        "purpose": "Provides a client for tracking events with asynchronous capabilities.",
+        "purpose": "Provides a client for tracking requests asynchronously or synchronously.",
         "key_types": [
           "TrackingClient",
           "trackingClient",

@@ -1,0 +1,14 @@
+{
+  "content_hash": "8283d5efda86b2419339e1025bb2c44d",
+  "timestamp": "2025-09-25T15:24:06.064741+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "This file maps ISO 3166-1 alpha-2 country codes to ISO 3166-1 alpha-3 country codes.",
+    "key_types": [
+      "string"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

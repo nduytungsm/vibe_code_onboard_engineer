@@ -1,0 +1,19 @@
+{
+  "content_hash": "246f3873f3d3acf5b2a5b8f94782f886",
+  "timestamp": "2025-09-25T15:33:54.102269+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Provides a logger proxy that allows tagging logs per connection in Action Cable.",
+    "key_types": [
+      "TaggedLoggerProxy"
+    ],
+    "functions": [
+      "initialize",
+      "add_tags",
+      "tag",
+      "log"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "content_hash": "08556e58764d49be23788543a5cd693c",
-  "timestamp": "2025-09-24T16:29:12.72167+07:00",
+  "content_hash": "1b136f81e874b00abbdc8c2984e5818e",
+  "timestamp": "2025-09-25T16:33:29.087389+07:00",
   "result": {
     "path": "pkg/worker",
     "purpose": "Responsible for managing a pool of worker goroutines to process jobs concurrently.",
@@ -31,7 +31,7 @@
       },
       "pkg/worker/dispatcher.go": {
         "language": "Go",
-        "purpose": "This file implements a dispatcher that manages a pool of worker goroutines to process jobs concurrently.",
+        "purpose": "This file implements a Dispatcher that manages a pool of worker goroutines to process jobs concurrently.",
         "key_types": [
           "Dispatcher",
           "Config",
@@ -50,10 +50,11 @@
         ],
         "side_effects": [
           "Starts goroutines for workers",
-          "Blocks on worker availability"
+          "Blocks until a worker is available for job dispatching"
         ],
         "risks": [
-          "Potential deadlock if jobQueue is not managed properly"
+          "Potential deadlock if jobQueue is not managed properly",
+          "Goroutine leaks if workers are not stopped correctly"
         ],
         "complexity": "medium"
       },
@@ -85,10 +86,10 @@
         ],
         "side_effects": [
           "Starts a goroutine for job processing",
-          "Modifies the WaitGroup state"
+          "Modifies WaitGroup state"
         ],
         "risks": [
-          "Potential deadlock if not managed properly with WaitGroup"
+          "Potential deadlock if WaitGroup is not managed correctly"
         ],
         "complexity": "medium"
       }

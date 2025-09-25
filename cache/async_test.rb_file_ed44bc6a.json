@@ -1,0 +1,23 @@
+{
+  "content_hash": "840622ab3156f9f6dca3315d71cae5d0",
+  "timestamp": "2025-09-25T15:50:14.086619+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for the AsyncAdapter in ActionCable.",
+    "key_types": [
+      "AsyncAdapterTest"
+    ],
+    "functions": [
+      "setup",
+      "cable_config"
+    ],
+    "imports": [
+      "test_helper",
+      "common"
+    ],
+    "side_effects": [
+      "shutdown of @tx_adapter"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "content_hash": "6cf3a5e6190c96b4c6ef926dbd5cc7cc",
+  "timestamp": "2025-09-25T15:49:46.691593+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for Rollup to bundle JavaScript files for testing",
+    "key_types": [
+      "object"
+    ],
+    "functions": [
+      "resolve",
+      "commonjs"
+    ],
+    "imports": [
+      "@rollup/plugin-commonjs",
+      "@rollup/plugin-node-resolve"
+    ],
+    "side_effects": [
+      "bundles JavaScript files",
+      "modifies output file system"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "content_hash": "5800ff7de2028d82688225b9e609dd9a",
+  "timestamp": "2025-09-25T16:10:11.069305+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for testing Ruby on Rails applications in different database environments using Docker.",
+    "key_types": [
+      "job",
+      "step",
+      "action"
+    ],
+    "functions": [
+      "checkout",
+      "login to GitHub Container Registry",
+      "setup Ruby",
+      "generate rails app",
+      "test devcontainer"
+    ],
+    "imports": [
+      "actions/checkout@v5",
+      "docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772",
+      "ruby/setup-ruby@v1",
+      "devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6"
+    ],
+    "side_effects": [
+      "Docker containers are started and stopped during the workflow execution."
+    ],
+    "risks": [
+      "Exposing sensitive information if the password is not properly managed."
+    ],
+    "complexity": "medium"
+  }
+}

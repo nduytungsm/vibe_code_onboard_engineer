@@ -1,6 +1,6 @@
 {
-  "content_hash": "0b4e0b63edd13be81293e8f154945251",
-  "timestamp": "2025-09-24T16:30:32.751693+07:00",
+  "content_hash": "80f0c5e5e4c8f43ab5865614c55f55f2",
+  "timestamp": "2025-09-25T16:32:01.970067+07:00",
   "result": {
     "path": "pkg/blacklist",
     "purpose": "Responsible for managing blacklisted sites and feature flags based on user agent information.",
@@ -14,11 +14,11 @@
     "dependencies": [
       "github.com/axieinfinity/ronin-wallet-manager/models"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating configuration and service logic for blacklist management.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating configuration and service logic related to blacklist management.",
     "file_summaries": {
       "pkg/blacklist/config.go": {
         "language": "Go",
-        "purpose": "Defines configuration structures for managing blacklists and feature flags.",
+        "purpose": "Defines configuration structures for a blacklist feature.",
         "key_types": [
           "BlacklistConfig",
           "Versions",

@@ -1,0 +1,12 @@
+{
+  "content_hash": "8ec40bc7fabf5f76a9bc97f7d0494bf7",
+  "timestamp": "2025-09-25T15:33:13.81869+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for probot-no-response to manage issue responses",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

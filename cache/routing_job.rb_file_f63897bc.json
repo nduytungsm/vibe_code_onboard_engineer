@@ -1,0 +1,23 @@
+{
+  "content_hash": "ccae370baaf0583c9bf8f347df7e9b8a",
+  "timestamp": "2025-09-25T15:50:33.606575+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a job for routing incoming emails asynchronously.",
+    "key_types": [
+      "RoutingJob",
+      "ActiveJob::Base",
+      "inbound_email"
+    ],
+    "functions": [
+      "perform"
+    ],
+    "imports": [
+      "ActiveJob"
+    ],
+    "side_effects": [
+      "Asynchronous processing of incoming emails"
+    ],
+    "complexity": "low"
+  }
+}

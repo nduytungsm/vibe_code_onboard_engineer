@@ -1,0 +1,37 @@
+{
+  "content_hash": "e19b3ae63f34f982ec8ae93f7873c379",
+  "timestamp": "2025-09-25T15:49:33.67897+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines the base class for the Action Cable server, managing connections and broadcasting.",
+    "key_types": [
+      "ActionCable::Server::Base",
+      "ActionCable::Server::Configuration",
+      "ActionCable::Server::Broadcasting",
+      "ActionCable::Server::Connections",
+      "RemoteConnections",
+      "ActionCable::Connection::StreamEventLoop",
+      "ActionCable::Server::Worker"
+    ],
+    "functions": [
+      "call",
+      "disconnect",
+      "restart",
+      "remote_connections",
+      "event_loop",
+      "worker_pool",
+      "pubsub",
+      "connection_identifiers"
+    ],
+    "imports": [
+      "monitor"
+    ],
+    "side_effects": [
+      "Modifies the state of the server and its connections during operations like disconnect and restart."
+    ],
+    "risks": [
+      "Potential for race conditions due to multi-threading with the worker pool."
+    ],
+    "complexity": "medium"
+  }
+}

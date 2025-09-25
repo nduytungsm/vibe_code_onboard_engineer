@@ -1,0 +1,25 @@
+{
+  "content_hash": "756d8f3f2dd4c91cd249dfb6d9923612",
+  "timestamp": "2025-09-25T16:12:15.907797+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines the InboundEmail model for processing incoming emails in Action Mailbox.",
+    "key_types": [
+      "InboundEmail",
+      "Record"
+    ],
+    "functions": [
+      "mail",
+      "source",
+      "processed?",
+      "instrumentation_payload"
+    ],
+    "imports": [
+      "mail"
+    ],
+    "side_effects": [
+      "Interacts with Active Storage to manage raw email attachments."
+    ],
+    "complexity": "medium"
+  }
+}

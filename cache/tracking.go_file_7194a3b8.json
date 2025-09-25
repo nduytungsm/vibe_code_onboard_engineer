@@ -1,0 +1,36 @@
+{
+  "content_hash": "da0ef71b4c1ff6f848ecbbef42346975",
+  "timestamp": "2025-09-25T16:00:22.367851+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a tracking client for sending tracking data over HTTP.",
+    "key_types": [
+      "TrackingClient",
+      "trackingClient",
+      "InternalClient",
+      "InternalClientConfig"
+    ],
+    "functions": [
+      "NewTracingClient",
+      "Track",
+      "TrackAsync"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "encoding/base64",
+      "encoding/json",
+      "fmt",
+      "net/http"
+    ],
+    "side_effects": [
+      "Sends HTTP requests to a specified URL",
+      "Performs asynchronous tracking"
+    ],
+    "risks": [
+      "Potential exposure of API key in logs or errors",
+      "Asynchronous execution may lead to race conditions if not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

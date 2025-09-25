@@ -1,0 +1,26 @@
+{
+  "content_hash": "f5de2b727a752a8ff94862eb28edf0d5",
+  "timestamp": "2025-09-25T15:50:47.900404+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for linting Haskell server code using hlint.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "actions/checkout@v2",
+      "jq",
+      "curl",
+      "tar",
+      "git"
+    ],
+    "side_effects": [
+      "Downloads and extracts hlint from a specified URL.",
+      "Runs hlint on changed Haskell files and outputs results."
+    ],
+    "risks": [
+      "Potential exposure of sensitive data if environment variables are not managed properly.",
+      "Dependency on external URLs for downloading hlint may lead to failures if the URL changes."
+    ],
+    "complexity": "medium"
+  }
+}

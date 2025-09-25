@@ -1,0 +1,33 @@
+{
+  "content_hash": "36366cee0a0daa14ec2b9c8ef2981687",
+  "timestamp": "2025-09-25T16:12:15.011593+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a module for handling Message-ID extraction and creation for inbound emails.",
+    "key_types": [
+      "ActionMailbox::InboundEmail",
+      "Mail::MessageIdField",
+      "ActiveStorage::Blob"
+    ],
+    "functions": [
+      "create_and_extract_message_id!",
+      "extract_message_id",
+      "generate_missing_message_id",
+      "create_and_upload_raw_email!"
+    ],
+    "imports": [
+      "ActiveSupport::Concern",
+      "OpenSSL::Digest",
+      "Mail",
+      "ActiveStorage"
+    ],
+    "side_effects": [
+      "Generates a new Message-ID if one is not provided",
+      "Uploads raw email to Active Storage"
+    ],
+    "risks": [
+      "Potential for duplicate Message-IDs if not handled correctly"
+    ],
+    "complexity": "medium"
+  }
+}

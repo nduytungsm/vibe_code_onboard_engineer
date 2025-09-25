@@ -966,10 +966,8 @@ func (a *Analyzer) discoverServiceRelationships(files []FileInfo, discoveredServ
 	return []relationships.ServiceRelationship{}
 }
 
-// extractDatabaseSchema extracts database schema from SQL migration files
+// extractDatabaseSchema extracts database schema from SQL migration files using streaming extractor
 func (a *Analyzer) extractDatabaseSchema(files []FileInfo) *database.DatabaseSchema {
-	projectPath := a.crawler.basePath
-	
 	// Convert files to map for schema extraction
 	fileMap := make(map[string]string)
 	for _, file := range files {
@@ -979,18 +977,25 @@ func (a *Analyzer) extractDatabaseSchema(files []FileInfo) *database.DatabaseSch
 		}
 	}
 
-	// Create schema extractor
-	schemaExtractor := database.NewSchemaExtractor()
-
-	// Extract schema from migrations with graceful error handling
-	schema, err := func() (*database.DatabaseSchema, error) {
+	// Extract schema using the streaming extractor with progress callback
+	canonicalSchema, _, err := func() (*database.CanonicalSchema, string, error) {
 		defer func() {
 			if r := recover(); r != nil {
 				fmt.Printf("⚠️  Database schema extraction recovered from panic: %v\n", r)
 			}
 		}()
-		return schemaExtractor.ExtractSchemaFromMigrations(projectPath, fileMap)
+		
+		return database.ExtractSchemaFromProject("", fileMap, func(response database.StreamingResponse) {
+			// Progress callback for database extraction
+			fmt.Printf("📋 Database extraction: %s (%s)\n", response.Phase, response.Message)
+		})
 	}()
+	
+	// Convert canonical schema to legacy format if successful
+	var schema *database.DatabaseSchema
+	if err == nil && canonicalSchema != nil {
+		schema = database.ConvertToLegacySchema(canonicalSchema, "")
+	}
 	
 	if err != nil {
 		fmt.Printf("⚠️  Database schema extraction failed: %v\n", err)
@@ -1009,24 +1014,8 @@ func (a *Analyzer) extractDatabaseSchema(files []FileInfo) *database.DatabaseSch
 		return nil
 	}
 
-	// Generate PlantUML ERD (with error recovery)
-	func() {
-		defer func() {
-			if r := recover(); r != nil {
-				fmt.Printf("⚠️  PlantUML generation failed with panic: %v\n", r)
-			}
-		}()
-		
-		pumlContent := schemaExtractor.GeneratePlantUML()
-		
-		// Save PlantUML file
-		if err := schemaExtractor.SavePlantUMLFile(projectPath, pumlContent); err != nil {
-			fmt.Printf("⚠️  Failed to save PlantUML file: %v\n", err)
-		}
-	}()
-
 	// Display summary
-	fmt.Printf("🗃️  Found %d database tables in %s\n", len(schema.Tables), schema.MigrationPath)
+	fmt.Printf("🗃️  Found %d database tables\n", len(schema.Tables))
 	for tableName, table := range schema.Tables {
 		fmt.Printf("   📊 %s (%d columns)\n", tableName, len(table.Columns))
 	}

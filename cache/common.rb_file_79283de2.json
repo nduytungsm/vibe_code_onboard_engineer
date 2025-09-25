@@ -1,0 +1,39 @@
+{
+  "content_hash": "226751b4eb4933ec7ea1b612413eb49a",
+  "timestamp": "2025-09-25T16:11:54.176744+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for a subscription adapter in ActionCable, ensuring that subscriptions and broadcasts work correctly.",
+    "key_types": [
+      "CommonSubscriptionAdapterTest",
+      "Queue",
+      "Concurrent::Event",
+      "ActionCable::Server::Base"
+    ],
+    "functions": [
+      "setup",
+      "teardown",
+      "subscribe_as_queue",
+      "test_subscribe_and_unsubscribe",
+      "test_basic_broadcast",
+      "test_broadcast_after_unsubscribe",
+      "test_multiple_broadcast",
+      "test_identical_subscriptions",
+      "test_simultaneous_subscriptions",
+      "test_channel_filtered_broadcast",
+      "test_long_identifiers"
+    ],
+    "imports": [
+      "test_helper",
+      "concurrent",
+      "active_support/core_ext/hash/indifferent_access",
+      "pathname"
+    ],
+    "side_effects": [
+      "Creates and shuts down ActionCable server instances",
+      "Subscribes and unsubscribes to channels",
+      "Broadcasts messages to channels"
+    ],
+    "complexity": "medium"
+  }
+}

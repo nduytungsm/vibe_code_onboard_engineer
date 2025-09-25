@@ -1,0 +1,26 @@
+{
+  "content_hash": "01abe1ba2032cff737638d32a252b2c3",
+  "timestamp": "2025-09-25T16:12:26.941219+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Encapsulates the routes for Action Mailbox and performs routing for inbound emails.",
+    "key_types": [
+      "Router",
+      "RoutingError"
+    ],
+    "functions": [
+      "initialize",
+      "add_routes",
+      "add_route",
+      "route",
+      "mailbox_for"
+    ],
+    "imports": [
+      "action_mailbox/router/route"
+    ],
+    "side_effects": [
+      "Raises RoutingError if no mailbox is found for the inbound email."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "content_hash": "6381cb22ab82bf7142e39386c2ff055e",
+  "timestamp": "2025-09-25T15:50:48.108852+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "This file contains the changelog for the Hasura GraphQL Engine, detailing bug fixes, improvements, and new features across different versions.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

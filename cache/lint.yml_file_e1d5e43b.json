@@ -1,0 +1,15 @@
+{
+  "content_hash": "e1e0bdcfd805804a8a65ac9ad15b8527",
+  "timestamp": "2025-09-25T15:50:47.074564+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for linting JavaScript code in the console directory on pull requests.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "actions/checkout@v2",
+      "actions/setup-node@v1"
+    ],
+    "complexity": "low"
+  }
+}

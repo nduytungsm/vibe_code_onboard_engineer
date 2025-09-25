@@ -1,0 +1,25 @@
+{
+  "content_hash": "297acc7201eca0c8d2df28cd393d3ee9",
+  "timestamp": "2025-09-25T16:12:13.577434+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Handles the incineration of scheduled InboundMail for removal.",
+    "key_types": [
+      "InboundEmail",
+      "Incineration"
+    ],
+    "functions": [
+      "initialize",
+      "run",
+      "due?",
+      "processed?"
+    ],
+    "imports": [
+      "ActionMailbox"
+    ],
+    "side_effects": [
+      "Modifies the state of InboundEmail by calling destroy!"
+    ],
+    "complexity": "medium"
+  }
+}

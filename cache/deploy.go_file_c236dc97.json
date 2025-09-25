@@ -1,0 +1,37 @@
+{
+  "content_hash": "da934e3259ba64feb9c92f804f557d88",
+  "timestamp": "2025-09-25T15:51:11.424856+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a command for deploying Hasura Metadata and database migrations to the GraphQL engine.",
+    "key_types": [
+      "DeployOptions",
+      "deployCtx",
+      "fsm.StateType",
+      "fsm.EventType"
+    ],
+    "functions": [
+      "NewDeployCmd",
+      "Run"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/hasura/graphql-engine/cli/v2",
+      "github.com/hasura/graphql-engine/cli/v2/internal/errors",
+      "github.com/hasura/graphql-engine/cli/v2/internal/fsm",
+      "github.com/hasura/graphql-engine/cli/v2/util",
+      "github.com/sirupsen/logrus",
+      "github.com/spf13/cobra",
+      "github.com/spf13/viper"
+    ],
+    "side_effects": [
+      "Modifies the execution context and logger settings.",
+      "Interacts with the command line interface."
+    ],
+    "risks": [
+      "Potential for command injection if user inputs are not properly validated.",
+      "Insecure TLS verification if 'insecure-skip-tls-verify' is used."
+    ],
+    "complexity": "medium"
+  }
+}

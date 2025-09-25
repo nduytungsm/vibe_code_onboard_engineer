@@ -1,9 +1,9 @@
 {
-  "content_hash": "cdec2e8e349e2b4ba39fe49336e473de",
-  "timestamp": "2025-09-24T16:29:52.087622+07:00",
+  "content_hash": "ac22362b33f748c7e59c47ae996e8998",
+  "timestamp": "2025-09-25T16:34:01.728015+07:00",
   "result": {
     "path": "routes",
-    "purpose": "Responsible for setting up and managing routes for an Echo web server, including public, private, and internal API endpoints.",
+    "purpose": "Responsible for setting up and managing routes for a wallet manager API using the Echo web framework.",
     "languages": {
       "Go": 4
     },
@@ -37,7 +37,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing routes into separate files for public, private, and internal APIs, allowing for clear separation of concerns and easier maintenance.",
+    "architecture": "The folder follows a modular architecture pattern, organizing routes into public, private, and internal categories, each handling specific functionalities of the wallet manager API.",
     "file_summaries": {
       "routes/init.go": {
         "language": "Go",
@@ -47,42 +47,13 @@
           "config.Schema",
           "postgresql.Client",
           "redis.Client",
-          "handlers.ReleaseCandidateHandler",
-          "handlers.NetworkHandler",
-          "handlers.CommonHandler"
+          "handlers.Handler"
         ],
         "functions": [
           "SetupRoutes",
           "NewClient",
-          "NewNetworkRepo",
-          "NewDAppRepo",
-          "NewContractRepo",
-          "NewCodeVersionRepo",
-          "NewCommonRepo",
-          "NewAnnouncementRepo",
-          "NewPreferencesRepo",
-          "NewTrustedDomainRepo",
-          "NewQuickAccessDAppRepo",
-          "NewHighlightRepo",
-          "NewRedisClient",
           "NewService",
-          "NewReleaseCandidateHandler",
-          "NewNetworkHandler",
-          "NewCommonHandler",
-          "NewAccountHandler",
-          "NewMoonpayHandler",
-          "NewLocationHandler",
-          "NewAnnouncementHandler",
-          "NewBinanceHandler",
-          "NewDeviceHandler",
-          "NewTrustedDomainHandler",
-          "NewDAppHandler",
-          "NewTwitterHandler",
-          "NewBlacklistHandler",
-          "TransactionHandler",
-          "registerPublic",
-          "registerPrivate",
-          "registerInternal"
+          "NewHandler"
         ],
         "imports": [
           "github.com/labstack/echo/v4",
@@ -111,11 +82,11 @@
         "side_effects": [
           "Establishes database connections",
           "Initializes various services and repositories",
-          "Logs fatal errors if database connection fails"
+          "Registers routes with the Echo server"
         ],
         "risks": [
-          "Potential exposure of sensitive configuration data if not handled properly",
-          "Database connection errors could lead to application crashes"
+          "Potential for database connection errors",
+          "Improper handling of configuration values may lead to runtime errors"
         ],
         "complexity": "medium"
       },
@@ -150,14 +121,13 @@
           "Modifies the state of the API by registering routes and middleware."
         ],
         "risks": [
-          "Potential exposure of sensitive data if routes are not properly secured.",
-          "Improper handling of user input could lead to security vulnerabilities."
+          "Potential exposure of sensitive data if routes are not properly secured."
         ],
         "complexity": "medium"
       },
       "routes/private.go": {
         "language": "Go",
-        "purpose": "Defines routes for private wallet management operations in an API.",
+        "purpose": "Defines routes for private wallet management functionalities in an API.",
         "key_types": [
           "echo.Echo",
           "handlers.AnnouncementHandler",
@@ -175,6 +145,9 @@
         ],
         "side_effects": [
           "Modifies the state of the Echo router by adding new routes."
+        ],
+        "risks": [
+          "Potential exposure of sensitive user data if routes are not properly secured."
         ],
         "complexity": "medium"
       },

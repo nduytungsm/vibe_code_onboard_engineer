@@ -1,0 +1,31 @@
+{
+  "content_hash": "63820c94de5cd9585ded167b484f7ecc",
+  "timestamp": "2025-09-25T15:50:23.433905+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file sets up a test environment for ActionCable, including configurations and helper methods for testing asynchronous behavior.",
+    "key_types": [
+      "ActionCable::TestCase",
+      "Logger"
+    ],
+    "functions": [
+      "wait_for_async",
+      "run_in_eventmachine",
+      "wait_for_executor"
+    ],
+    "imports": [
+      "../../tools/strict_warnings",
+      "action_cable",
+      "active_support/testing/autorun",
+      "active_support/testing/method_call_assertions",
+      "puma",
+      "rack/mock",
+      "../../tools/test_common"
+    ],
+    "side_effects": [
+      "Configures ActionCable server with test adapter and logger",
+      "Requires all Ruby files in the stubs directory"
+    ],
+    "complexity": "medium"
+  }
+}

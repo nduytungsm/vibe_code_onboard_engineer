@@ -1,0 +1,25 @@
+{
+  "content_hash": "f143890c32532a603349a99ea7c4cf41",
+  "timestamp": "2025-09-25T16:12:11.197167+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a base controller for the Rails Conductor module that restricts access to development environment only.",
+    "key_types": [
+      "Rails::Conductor::BaseController",
+      "ActionController::Base"
+    ],
+    "functions": [
+      "ensure_development_env"
+    ],
+    "imports": [
+      "ActionController"
+    ],
+    "side_effects": [
+      "Restricts access to non-development environments by returning a forbidden response."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if the environment check is bypassed."
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "content_hash": "081a0a46692e56d63140852855b65e45",
+  "timestamp": "2025-09-25T16:10:04.318321+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for autolabeling in a Rails application",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "actioncable",
+      "actionmailbox",
+      "actionmailer",
+      "actionpack",
+      "actiontext",
+      "actionview",
+      "activejob",
+      "activemodel",
+      "activerecord",
+      "activestorage",
+      "activesupport",
+      "rails-ujs",
+      "railties",
+      "docs"
+    ],
+    "complexity": "low"
+  }
+}

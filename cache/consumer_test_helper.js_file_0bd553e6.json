@@ -1,0 +1,32 @@
+{
+  "content_hash": "63cd0703963cef5928aa7779ff3966bf",
+  "timestamp": "2025-09-25T16:11:34.56336+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file provides a helper function for testing ActionCable consumers using a mock WebSocket server.",
+    "key_types": [
+      "MockWebSocket",
+      "MockServer",
+      "ActionCable",
+      "QUnit"
+    ],
+    "functions": [
+      "default function",
+      "server.on",
+      "server.broadcastTo",
+      "consumer.connect",
+      "consumer.disconnect"
+    ],
+    "imports": [
+      "mock-socket",
+      "../../../../app/javascript/action_cable/index",
+      "./index"
+    ],
+    "side_effects": [
+      "Modifies ActionCable.adapters.WebSocket",
+      "Creates a mock WebSocket server",
+      "Establishes a connection to the mock server"
+    ],
+    "complexity": "medium"
+  }
+}

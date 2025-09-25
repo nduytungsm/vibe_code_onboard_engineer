@@ -1,0 +1,14 @@
+{
+  "content_hash": "bb87a5accaefa659f409b6599ea5257f",
+  "timestamp": "2025-09-25T16:31:06.404583+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a Job type with an executable function.",
+    "key_types": [
+      "Job"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "content_hash": "49aeb5a64ff943893e48ad01975cfcd0",
+  "timestamp": "2025-09-25T16:11:49.956624+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for the channel prefix functionality in ActionCable.",
+    "key_types": [
+      "ActionCable::Server::Base",
+      "ActionCable::Server::Configuration",
+      "Logger"
+    ],
+    "functions": [
+      "test_channel_prefix",
+      "alt_cable_config"
+    ],
+    "imports": [
+      "test_helper"
+    ],
+    "side_effects": [
+      "Creates instances of ActionCable server and adapters",
+      "Logs messages"
+    ],
+    "complexity": "medium"
+  }
+}

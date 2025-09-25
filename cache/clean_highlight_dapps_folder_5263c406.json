@@ -1,6 +1,6 @@
 {
-  "content_hash": "11b7e5a292d8a31070e88790b39bfd85",
-  "timestamp": "2025-09-24T16:31:55.677215+07:00",
+  "content_hash": "047ab46d41b6e59b86d1fe44684760b2",
+  "timestamp": "2025-09-25T16:33:12.874584+07:00",
   "result": {
     "path": "cmd/clean_highlight_dapps",
     "purpose": "This folder/module is responsible for cleaning expired highlights from a database and logging the process.",
@@ -21,7 +21,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where the main entry point initializes necessary services and manages dependencies for cleaning highlights.",
+    "architecture": "The folder follows a modular architecture pattern, where the main entry point initializes necessary services and manages dependencies for cleaning expired highlights.",
     "file_summaries": {
       "cmd/clean_highlight_dapps/main.go": {
         "language": "Go",
@@ -33,7 +33,7 @@
           "config.Config",
           "repositories.QuickAccessDAppRepo",
           "repositories.HighlightRepo",
-          "redis.Client",
+          "redis.RedisClient",
           "dapp.CleanService",
           "md.Highlight"
         ],
@@ -64,11 +64,12 @@
           "Initializes Sentry for error tracking",
           "Connects to PostgreSQL database",
           "Connects to Redis database",
-          "Logs the number of cleaned highlights"
+          "Cleans expired highlights from the database"
         ],
         "risks": [
-          "Potential database connection failures",
-          "Error handling may not cover all cases leading to untracked exceptions"
+          "Potential failure in Sentry initialization",
+          "Database connection failures",
+          "Error handling for cleaning highlights may not be robust"
         ],
         "complexity": "medium"
       }

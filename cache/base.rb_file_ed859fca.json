@@ -1,0 +1,24 @@
+{
+  "content_hash": "569cd99577b72bb83972575e0c7b9c95",
+  "timestamp": "2025-09-25T16:11:00.023867+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a base class for subscription adapters in ActionCable.",
+    "key_types": [
+      "Base"
+    ],
+    "functions": [
+      "initialize",
+      "broadcast",
+      "subscribe",
+      "unsubscribe",
+      "shutdown",
+      "identifier"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies server configuration to set a unique identifier if not already present."
+    ],
+    "complexity": "medium"
+  }
+}

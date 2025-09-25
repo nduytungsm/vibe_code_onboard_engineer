@@ -1,0 +1,29 @@
+{
+  "content_hash": "e40e4807c8a0fba0eb7faac76784d9db",
+  "timestamp": "2025-09-25T15:48:58.020719+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for running tests on the Rail Inspector tool.",
+    "key_types": [
+      "job",
+      "step"
+    ],
+    "functions": [
+      "checkout",
+      "setup-ruby",
+      "run"
+    ],
+    "imports": [
+      "actions/checkout@v5",
+      "ruby/setup-ruby@v1"
+    ],
+    "side_effects": [
+      "Modifies the file system by removing Gemfile.lock",
+      "Changes the working directory to tools/rail_inspector"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if Gemfile.lock contains secrets"
+    ],
+    "complexity": "low"
+  }
+}

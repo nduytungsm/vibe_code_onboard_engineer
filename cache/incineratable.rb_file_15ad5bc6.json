@@ -1,0 +1,25 @@
+{
+  "content_hash": "7bc657fc1566ab84c0b96e619aefffe6",
+  "timestamp": "2025-09-25T15:50:34.828503+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This module ensures that InboundEmail is scheduled for incineration after its status changes to processed.",
+    "key_types": [
+      "ActionMailbox::InboundEmail",
+      "ActiveSupport::Concern",
+      "IncinerationJob"
+    ],
+    "functions": [
+      "incinerate_later",
+      "incinerate"
+    ],
+    "imports": [
+      "ActiveSupport::Concern",
+      "ActionMailbox::IncinerationJob"
+    ],
+    "side_effects": [
+      "Schedules incineration of InboundEmail"
+    ],
+    "complexity": "medium"
+  }
+}

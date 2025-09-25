@@ -1,0 +1,14 @@
+{
+  "content_hash": "718b7ae416f2181ba31973d833e527e1",
+  "timestamp": "2025-09-25T16:29:23.28726+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for GitHub Actions to run golangci-lint on specified branches.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "axieinfinity/workflows-samples/.github/workflows/testing-go.yml"
+    ],
+    "complexity": "low"
+  }
+}

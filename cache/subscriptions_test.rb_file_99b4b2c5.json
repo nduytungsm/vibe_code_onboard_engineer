@@ -1,0 +1,31 @@
+{
+  "content_hash": "38531a5972a5fc32c102d20c1519cf69",
+  "timestamp": "2025-09-25T15:50:02.268202+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Test the subscriptions functionality of ActionCable connections in a chat application.",
+    "key_types": [
+      "ActionCable::Connection::Base",
+      "ActionCable::Channel::Base",
+      "ChatChannelError",
+      "Room"
+    ],
+    "functions": [
+      "send_async",
+      "error_handler",
+      "subscribed",
+      "speak",
+      "throw_exception",
+      "subscribe_to_chat_channel",
+      "setup_connection"
+    ],
+    "imports": [
+      "test_helper",
+      "ActiveSupport::JSON"
+    ],
+    "side_effects": [
+      "Modifies the state of the connection and subscriptions during tests."
+    ],
+    "complexity": "medium"
+  }
+}

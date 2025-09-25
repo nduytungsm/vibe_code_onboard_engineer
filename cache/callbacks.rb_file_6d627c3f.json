@@ -1,0 +1,21 @@
+{
+  "content_hash": "5353f7be6841fbe3e066b76b51872573",
+  "timestamp": "2025-09-25T16:12:19.316049+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines callbacks related to processing in Action Mailbox.",
+    "key_types": [
+      "module",
+      "callbacks"
+    ],
+    "functions": [
+      "before_processing",
+      "after_processing",
+      "around_processing"
+    ],
+    "imports": [
+      "active_support/callbacks"
+    ],
+    "complexity": "medium"
+  }
+}

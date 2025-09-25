@@ -1,0 +1,33 @@
+{
+  "content_hash": "69392da746d430a5581c40b4f6e12a35",
+  "timestamp": "2025-09-25T16:11:55.184088+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Unit tests for the Redis adapter in ActionCable",
+    "key_types": [
+      "RedisAdapterTest",
+      "ActionCable::TestCase",
+      "Redis"
+    ],
+    "functions": [
+      "cable_config",
+      "test_reconnections",
+      "redis_conn",
+      "drop_pubsub_connections",
+      "wait_pubsub_connection",
+      "setup",
+      "expected_connection",
+      "connection_id"
+    ],
+    "imports": [
+      "test_helper",
+      "common",
+      "channel_prefix"
+    ],
+    "side_effects": [
+      "Emulates connection failure by dropping all connections",
+      "Waits for pubsub connections to be established"
+    ],
+    "complexity": "medium"
+  }
+}

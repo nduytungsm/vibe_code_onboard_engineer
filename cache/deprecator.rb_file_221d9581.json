@@ -1,0 +1,19 @@
+{
+  "content_hash": "b3a3a1e44d02ba158055e2ce69942685",
+  "timestamp": "2025-09-25T16:10:49.91487+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a deprecator for the ActionCable module using ActiveSupport's deprecation handling.",
+    "key_types": [
+      "Module",
+      "ActiveSupport::Deprecation"
+    ],
+    "functions": [
+      "deprecator"
+    ],
+    "imports": [
+      "ActiveSupport"
+    ],
+    "complexity": "low"
+  }
+}

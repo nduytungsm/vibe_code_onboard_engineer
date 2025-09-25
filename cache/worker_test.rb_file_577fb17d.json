@@ -1,0 +1,31 @@
+{
+  "content_hash": "55f0edfb9ad701b716a3fed31da8ba36",
+  "timestamp": "2025-09-25T16:11:58.293128+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Unit tests for ActionCable worker functionality",
+    "key_types": [
+      "WorkerTest",
+      "Receiver"
+    ],
+    "functions": [
+      "run",
+      "process",
+      "connection",
+      "logger",
+      "setup",
+      "teardown",
+      "test"
+    ],
+    "imports": [
+      "test_helper",
+      "ActionCable",
+      "Logger",
+      "StringIO"
+    ],
+    "side_effects": [
+      "Modifies the state of @receiver.last_action"
+    ],
+    "complexity": "medium"
+  }
+}

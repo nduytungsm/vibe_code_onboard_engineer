@@ -1,0 +1,29 @@
+{
+  "content_hash": "02fd2b7403d38ea23359bf54d001b63a",
+  "timestamp": "2025-09-25T15:49:31.196567+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Manages remote connections for Action Cable, allowing disconnection of specific connections based on identifiers.",
+    "key_types": [
+      "RemoteConnections",
+      "RemoteConnection",
+      "InvalidIdentifiersError"
+    ],
+    "functions": [
+      "initialize",
+      "where",
+      "disconnect",
+      "identifiers"
+    ],
+    "imports": [
+      "active_support/core_ext/module/redefine_method"
+    ],
+    "side_effects": [
+      "Broadcasts a disconnect message to the internal channel."
+    ],
+    "risks": [
+      "Potential for invalid identifiers leading to exceptions."
+    ],
+    "complexity": "medium"
+  }
+}

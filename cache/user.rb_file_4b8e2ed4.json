@@ -1,0 +1,21 @@
+{
+  "content_hash": "94b0b557f1e643c971f062ce92e8efb4",
+  "timestamp": "2025-09-25T16:11:45.807892+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a User class with methods for global ID generation.",
+    "key_types": [
+      "User",
+      "GlobalID"
+    ],
+    "functions": [
+      "initialize",
+      "to_global_id",
+      "to_gid_param"
+    ],
+    "imports": [
+      "GlobalID"
+    ],
+    "complexity": "low"
+  }
+}

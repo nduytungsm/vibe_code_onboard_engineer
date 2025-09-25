@@ -1,0 +1,95 @@
+{
+  "content_hash": "e6575d1c357a56f714044ccfbfb577f6",
+  "timestamp": "2025-09-25T16:08:05.711817+07:00",
+  "result": {
+    "path": "cmd/gosmm",
+    "purpose": "This folder/module is responsible for the main entry point of a command-line tool that interacts with a database, allowing for commands like status check, migration, and restore.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "main.go",
+      "main_test.go"
+    ],
+    "dependencies": [
+      "database/sql",
+      "fmt",
+      "github.com/joho/godotenv",
+      "github.com/k1e1n04/gosmm/pkg/gosmm",
+      "log",
+      "os",
+      "strconv",
+      "github.com/mattn/go-sqlite3",
+      "bytes",
+      "github.com/stretchr/testify/assert",
+      "strings",
+      "testing"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, with a clear separation between the main application logic and its testing components.",
+    "file_summaries": {
+      "cmd/gosmm/main.go": {
+        "language": "Go",
+        "purpose": "This file is the main entry point for a command-line tool that interacts with a database, allowing for commands like status check, migration, and restore.",
+        "key_types": [
+          "DBConfig"
+        ],
+        "functions": [
+          "main",
+          "executeCommand"
+        ],
+        "imports": [
+          "database/sql",
+          "fmt",
+          "github.com/joho/godotenv",
+          "github.com/k1e1n04/gosmm/pkg/gosmm",
+          "log",
+          "os",
+          "strconv",
+          "github.com/mattn/go-sqlite3"
+        ],
+        "side_effects": [
+          "Loads environment variables from a .env file",
+          "Connects to a database",
+          "Executes commands that may alter the database state"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if environment variables are not properly managed",
+          "Database connection errors may lead to application crashes"
+        ],
+        "complexity": "medium"
+      },
+      "cmd/gosmm/main_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for database migration commands in a command-line application.",
+        "key_types": [
+          "*sql.DB",
+          "testing.T"
+        ],
+        "functions": [
+          "setupTestDB",
+          "TestExecuteStatusCommand",
+          "TestExecuteRestoreCommand",
+          "TestExecuteMigrateCommand",
+          "TestExecuteUnknownCommand"
+        ],
+        "imports": [
+          "bytes",
+          "database/sql",
+          "github.com/stretchr/testify/assert",
+          "os",
+          "strings",
+          "testing"
+        ],
+        "side_effects": [
+          "Creates a temporary in-memory SQLite database",
+          "Sets environment variable GOSMM_MIGRATIONS_DIR",
+          "Creates a test_migrations directory if it doesn't exist"
+        ],
+        "risks": [
+          "Potential for SQL injection if user input is not sanitized in executeCommand"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "content_hash": "736780f80572ff2561ee690fe4cc9f6b",
+  "timestamp": "2025-09-25T16:11:14.249818+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the configuration and metadata for the Action Cable package in Ruby on Rails.",
+    "key_types": [
+      "package",
+      "repository",
+      "devDependencies",
+      "scripts"
+    ],
+    "functions": [
+      "prebuild",
+      "build",
+      "lint",
+      "prepublishOnly",
+      "pretest",
+      "test"
+    ],
+    "imports": [
+      "@eslint/js",
+      "@rollup/plugin-commonjs",
+      "@rollup/plugin-node-resolve",
+      "eslint",
+      "eslint-plugin-import",
+      "globals",
+      "karma",
+      "karma-chrome-launcher",
+      "karma-qunit",
+      "karma-sauce-launcher",
+      "mock-socket",
+      "qunit",
+      "rollup",
+      "rollup-plugin-terser"
+    ],
+    "side_effects": [
+      "Modifies the file structure during build and publish processes."
+    ],
+    "complexity": "medium"
+  }
+}

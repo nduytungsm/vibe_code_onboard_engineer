@@ -1,0 +1,18 @@
+{
+  "content_hash": "cb757d45e25f2ad3f6a3d741b919a849",
+  "timestamp": "2025-09-25T15:50:52.490565+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for cabal project configuration and profiling modes",
+    "key_types": [],
+    "functions": [
+      "hasura_new_sub_config"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates symlinks for project configuration files",
+      "Creates local project configuration file"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "content_hash": "4a6bb96e69d506e2fb9df6421fb1e3af",
+  "timestamp": "2025-09-25T16:11:04.205952+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a test case class for ActionCable using ActiveSupport's test case functionality.",
+    "key_types": [
+      "ActionCable::TestCase"
+    ],
+    "functions": [
+      "ActiveSupport.run_load_hooks"
+    ],
+    "imports": [
+      "active_support/test_case"
+    ],
+    "side_effects": [
+      "Includes ActionCable::TestHelper"
+    ],
+    "complexity": "low"
+  }
+}

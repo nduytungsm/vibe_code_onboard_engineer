@@ -1,9 +1,9 @@
 {
-  "content_hash": "5b300ad8fec6884ab041c553111551f0",
-  "timestamp": "2025-09-24T16:31:17.168179+07:00",
+  "content_hash": "50231f773bfbca3b0fb8f7ba7034fc2e",
+  "timestamp": "2025-09-25T16:33:52.704511+07:00",
   "result": {
     "path": "handlers",
-    "purpose": "Responsible for handling various operations related to accounts, announcements, devices, external authentication, and other services in a web application.",
+    "purpose": "Responsible for handling various operations related to accounts, announcements, devices, DApps, external authentication, and more within a web service.",
     "languages": {
       "Go": 15
     },
@@ -14,7 +14,6 @@
       "blacklist.go",
       "common.go",
       "dapp.go",
-      "default.go",
       "device.go",
       "external_auth.go",
       "locationhandler.go",
@@ -31,12 +30,14 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/releasecandidate",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/trusteddomain",
+      "gorm.io/gorm",
       "github.com/redis/go-redis/v9",
-      "gorm.io/gorm"
+      "github.com/rs/zerolog/log"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each handler file encapsulates related functionalities and operations, promoting separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, where each file corresponds to a specific handler for different functionalities, promoting separation of concerns and maintainability.",
     "file_summaries": {
       "handlers/account.go": {
         "language": "Go",
@@ -47,8 +48,9 @@
           "sso.Config",
           "sso.Client",
           "httpclient.Athena",
-          "md.GetSMUserInfoResponse",
+          "md.GetSMUserInfoRequest",
           "md.LinkAccountRequest",
+          "md.GetSMUserInfoResponse",
           "md.OkResponse"
         ],
         "functions": [
@@ -70,12 +72,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Modifies the state of user accounts",
+          "Modifies HTTP response based on account operations",
           "Logs debug information"
         ],
         "risks": [
           "Potential exposure of sensitive information in logs",
-          "Improper handling of authentication tokens"
+          "Improper error handling could lead to information leakage"
         ],
         "complexity": "medium"
       },
@@ -92,7 +94,6 @@
           "md.InternalGetWalletPreferencesRequest",
           "md.InternalGetWalletPreferenceResponse",
           "md.PublicAnnouncementListItem",
-          "md.ListResponse",
           "md.GetCountNewAnnouncementsRequest",
           "md.GetCountNewAnnouncementsResponse"
         ],
@@ -127,19 +128,11 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
           "github.com/axieinfinity/ronin-wallet-manager/pkg/preference"
         ],
-        "side_effects": [
-          "Interacts with external services for scheduling and managing announcements",
-          "Modifies preferences in the database"
-        ],
-        "risks": [
-          "Potential for SQL injection if input is not properly sanitized",
-          "Exposure of sensitive data through public API endpoints"
-        ],
         "complexity": "medium"
       },
       "handlers/binance.go": {
         "language": "Go",
-        "purpose": "This file defines a handler for signing requests using the Binance service.",
+        "purpose": "Handles Binance signing requests and responses using Echo framework.",
         "key_types": [
           "BinanceHandler",
           "binanceHandler",
@@ -179,6 +172,13 @@
           "github.com/axieinfinity/ronin-wallet-manager/models",
           "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist"
         ],
+        "side_effects": [
+          "Interacts with external services to retrieve blacklist data",
+          "Returns JSON response to HTTP requests"
+        ],
+        "risks": [
+          "Potential exposure of sensitive blacklist data if not properly secured"
+        ],
         "complexity": "medium"
       },
       "handlers/common.go": {
@@ -191,7 +191,10 @@
           "repositories.CodeVersionRepo",
           "redis.Client",
           "blacklist.Service",
-          "xauth.Config"
+          "xauth.Config",
+          "models.EnvironmentConfig",
+          "models.Common",
+          "models.UpdateCodeVersionRequest"
         ],
         "functions": [
           "GetCodePushVersion",
@@ -204,7 +207,8 @@
           "initCacheCommon",
           "fireCacheChangedEvent",
           "refreshCache",
-          "ExternalAuthConfig"
+          "ExternalAuthConfig",
+          "NewCommonHandler"
         ],
         "imports": [
           "context",
@@ -235,14 +239,12 @@
       },
       "handlers/dapp.go": {
         "language": "Go",
-        "purpose": "This file defines a handler for managing decentralized application (DApp) operations, including CRUD operations and public access to DApp data.",
+        "purpose": "This file defines a handler for managing decentralized application (DApp) operations, including saving, updating, retrieving, and deleting DApps and highlights.",
         "key_types": [
           "DAppHandler",
           "dAppHandler",
           "SaveQuickAccessDAppRequest",
-          "SaveQuickAccessDAppBatchRequest",
           "UpdateQuickAccessDAppRequest",
-          "GetQuickAccessDAppByIDRequest",
           "Highlight",
           "ListResponse"
         ],
@@ -250,20 +252,10 @@
           "InternalSave",
           "InternalSaveBatch",
           "InternalUpdate",
-          "InternalUpdateOrder",
           "InternalGetByID",
           "InternalDeleteByID",
-          "InternalGetAll",
-          "InternalSaveHighlight",
-          "InternalSaveBatchHighlight",
-          "InternalUpdateHighlight",
-          "InternalGetHighlightByID",
-          "InternalDeleteHighlightByID",
-          "InternalGetAllHighlight",
-          "InternalRefreshCacheHighlight",
           "PublicGetList",
-          "PublicGetHighlight",
-          "NewDAppHandler"
+          "PublicGetHighlight"
         ],
         "imports": [
           "errors",
@@ -279,12 +271,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
         ],
         "side_effects": [
-          "Modifies the state of the DApp data in the database",
-          "Interacts with external services for blacklist checks"
+          "Interacts with external services for saving, updating, and retrieving DApps and highlights.",
+          "Modifies the state of the application by saving or deleting DApps."
         ],
         "risks": [
-          "Potential exposure of sensitive data through improper handling of requests",
-          "Dependency on external services may introduce vulnerabilities"
+          "Potential exposure of sensitive data if error handling is not properly managed.",
+          "Possible denial of service if the handler is overwhelmed with requests."
         ],
         "complexity": "medium"
       },
@@ -307,7 +299,7 @@
       },
       "handlers/device.go": {
         "language": "Go",
-        "purpose": "Handles device-related operations such as resetting devices, registering devices, updating push tokens, syncing addresses, and importing wallets.",
+        "purpose": "This file defines a device handler for managing device-related operations such as resetting devices, registering devices, updating push tokens, syncing addresses, and importing wallets.",
         "key_types": [
           "DeviceHandler",
           "deviceHandler",
@@ -341,14 +333,14 @@
           "Asynchronously initializes device registration in a goroutine"
         ],
         "risks": [
-          "Potential for race conditions in asynchronous operations",
+          "Potential for race conditions due to asynchronous operations",
           "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"
       },
       "handlers/external_auth.go": {
         "language": "Go",
-        "purpose": "Handles external authentication processes, including exchanging auth codes and revoking tokens.",
+        "purpose": "Handles external authentication processes including exchanging auth codes and revoking tokens.",
         "key_types": [
           "ExternalAuthHandler",
           "externalAuthHandler",
@@ -370,13 +362,13 @@
           "Sends HTTP responses based on authentication results."
         ],
         "risks": [
-          "Potential exposure of sensitive authentication information if not handled properly."
+          "Potential exposure of sensitive authentication data if not handled properly."
         ],
         "complexity": "medium"
       },
       "handlers/locationhandler.go": {
         "language": "Go",
-        "purpose": "Handles location-related requests and responses in a web application.",
+        "purpose": "Handles location-related requests and responses for a web service.",
         "key_types": [
           "LocationHandler",
           "locationHandler",
@@ -399,10 +391,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/location"
         ],
         "side_effects": [
-          "Logs debug information when looking up location"
+          "Logs debug information when looking up location",
+          "Modifies the response context based on the location lookup results"
         ],
         "risks": [
-          "Potential exposure of internal service methods if not properly secured"
+          "Potential exposure of sensitive information through error messages",
+          "Improper handling of IP addresses could lead to security vulnerabilities"
         ],
         "complexity": "medium"
       },
@@ -426,11 +420,9 @@
           "github.com/axieinfinity/ronin-wallet-manager/models",
           "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay"
         ],
-        "side_effects": [
-          "Modifies HTTP response based on request validation and signing process"
-        ],
         "risks": [
-          "Potential for exposing sensitive URL signing information if not handled properly"
+          "Potential for improper error handling",
+          "Dependency on external services for signing URLs"
         ],
         "complexity": "medium"
       },
@@ -466,12 +458,6 @@
           "github.com/axieinfinity/ronin-wallet-manager/models",
           "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
           "github.com/axieinfinity/ronin-wallet-manager/repositories"
-        ],
-        "side_effects": [
-          "Modifies cache for DApps and contracts based on user agent information."
-        ],
-        "risks": [
-          "Potential exposure of sensitive network information if not properly secured."
         ],
         "complexity": "medium"
       },
@@ -513,7 +499,9 @@
           "TrustedDomainHandler",
           "trustedDomainHandler",
           "md.TrustedDomain",
-          "md.SaveTrustedDomainBatchRequest"
+          "md.GetTDMByDomainRequest",
+          "md.SaveTrustedDomainBatchRequest",
+          "md.ListResponse"
         ],
         "functions": [
           "PublicGetByDomain",
@@ -542,11 +530,11 @@
         ],
         "side_effects": [
           "Modifies the state of trusted domains in the database.",
-          "May alter the response based on blacklist checks."
+          "Interacts with external services for blacklist checks."
         ],
         "risks": [
-          "Potential exposure of sensitive domain information if not properly validated.",
-          "Possible denial of service if the input is not sanitized."
+          "Potential exposure of sensitive domain information.",
+          "Improper validation may lead to security vulnerabilities."
         ],
         "complexity": "medium"
       }

@@ -96,8 +96,8 @@ function App() {
           setAnalysisStage(stage);
           setAnalysisProgress(progress);
           
-          // Update partial data as it becomes available
-          if (data) {
+          // Only update partial data for specific data events, not completion
+          if (data && stage !== "🎉 Analysis complete!") {
             setAnalysisResults(prevResults => ({
               ...prevResults,
               ...data
@@ -109,6 +109,7 @@ function App() {
         // onComplete callback
         (finalResults) => {
           console.log("✅ Analysis completed:", finalResults);
+          console.log("🗄️ Database schema in results:", finalResults?.database_schema);
           setAnalysisResults(finalResults);
           setAnalysisComplete(true);
           setAnalysisProgress(100);
@@ -164,6 +165,7 @@ function App() {
   // Helper function to get analysis data safely
   const getAnalysisData = () => {
     if (!analysisResults) {
+      console.log("🚫 No analysisResults available");
       return null;
     }
     
@@ -171,10 +173,11 @@ function App() {
     const results = analysisResults.results || analysisResults;
     
     if (!results) {
+      console.log("🚫 No results in analysisResults:", analysisResults);
       return null;
     }
     
-    return {
+    const mappedData = {
       projectSummary: results.project_summary || {},
       projectType: results.project_type || {},
       services: results.services || [],
@@ -184,6 +187,9 @@ function App() {
       folderSummaries: results.folder_summaries || {},
       stats: results.stats || {}
     };
+    
+    console.log("🗄️ DatabaseSchema from getAnalysisData:", mappedData.databaseSchema);
+    return mappedData;
   };
 
   // Check if analysis failed or returned insufficient data

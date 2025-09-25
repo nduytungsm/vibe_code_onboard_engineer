@@ -1,0 +1,31 @@
+{
+  "content_hash": "6f8d0c8450acaae5462a2a7fe08c0761",
+  "timestamp": "2025-09-25T15:49:56.068371+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Unit tests for ActionCable connection callbacks in a WebSocket environment.",
+    "key_types": [
+      "ActionCable::Connection::Base",
+      "ActionCable::Channel::Base",
+      "TestServer"
+    ],
+    "functions": [
+      "before_command",
+      "around_command",
+      "after_command",
+      "subscribed",
+      "speak",
+      "initialize",
+      "set_current_context",
+      "increment_commands_counter"
+    ],
+    "imports": [
+      "test_helper",
+      "stubs/test_server"
+    ],
+    "side_effects": [
+      "Modifies the subscribed_count and words_spoken class variables."
+    ],
+    "complexity": "medium"
+  }
+}

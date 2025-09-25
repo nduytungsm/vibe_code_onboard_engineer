@@ -1,0 +1,28 @@
+{
+  "content_hash": "4a70813d33feb85a2dbe446e818da1a0",
+  "timestamp": "2025-09-25T15:49:01.40058+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for RuboCop, a Ruby static code analyzer and formatter.",
+    "key_types": [
+      "plugins",
+      "AllCops",
+      "Performance",
+      "Rails",
+      "Layout",
+      "Style",
+      "Lint",
+      "Minitest",
+      "Markdown"
+    ],
+    "functions": [],
+    "imports": [
+      "rubocop-minitest",
+      "rubocop-packaging",
+      "rubocop-performance",
+      "rubocop-rails",
+      "rubocop-md"
+    ],
+    "complexity": "medium"
+  }
+}

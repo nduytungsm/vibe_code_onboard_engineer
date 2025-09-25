@@ -1,0 +1,24 @@
+{
+  "content_hash": "25bde22e7c41007e64c875b986aba741",
+  "timestamp": "2025-09-25T15:49:36.242382+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines an inline subscription adapter for ActionCable that manages subscriptions and broadcasts messages.",
+    "key_types": [
+      "Inline",
+      "Base",
+      "SubscriberMap"
+    ],
+    "functions": [
+      "initialize",
+      "broadcast",
+      "subscribe",
+      "unsubscribe",
+      "shutdown",
+      "subscriber_map",
+      "new_subscriber_map"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

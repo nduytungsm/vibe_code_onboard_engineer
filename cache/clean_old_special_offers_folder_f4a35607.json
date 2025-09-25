@@ -1,9 +1,9 @@
 {
-  "content_hash": "777c10d1e8fca7584f89e0406c630d72",
-  "timestamp": "2025-09-24T16:30:57.871314+07:00",
+  "content_hash": "ce5a16d3c512804e58bf846aaf136e4e",
+  "timestamp": "2025-09-25T16:34:08.575967+07:00",
   "result": {
     "path": "cmd/clean_old_special_offers",
-    "purpose": "Cleans old special offers from the database based on a specified time period.",
+    "purpose": "Cleans old special offers from a database based on a specified time period.",
     "languages": {
       "Go": 1
     },
@@ -18,11 +18,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/config",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a command-line application architecture, focusing on a single responsibility of cleaning old offers, utilizing a main function to orchestrate database interactions and error tracking.",
+    "architecture": "The folder follows a command-line application architecture, focusing on a single responsibility of cleaning old offers, utilizing a main function to orchestrate the process and manage dependencies.",
     "file_summaries": {
       "cmd/clean_old_special_offers/main.go": {
         "language": "Go",
-        "purpose": "Cleans old special offers from the database based on a specified time period.",
+        "purpose": "Cleans old special offers from a database based on a specified time period.",
         "key_types": [
           "context.Context",
           "time.Time",
@@ -50,7 +50,7 @@
         "side_effects": [
           "Initializes Sentry for error tracking",
           "Connects to a PostgreSQL database",
-          "Clears records from the database"
+          "Modifies the database by clearing old special offers"
         ],
         "risks": [
           "Potential database connection failure",

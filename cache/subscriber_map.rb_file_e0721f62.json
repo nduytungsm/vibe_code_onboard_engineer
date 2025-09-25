@@ -1,0 +1,27 @@
+{
+  "content_hash": "e30f16bbe43466e21294d0004e5cbb03",
+  "timestamp": "2025-09-25T16:11:03.45248+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Manages subscribers for channels in an ActionCable subscription adapter.",
+    "key_types": [
+      "SubscriberMap",
+      "Mutex"
+    ],
+    "functions": [
+      "initialize",
+      "add_subscriber",
+      "remove_subscriber",
+      "broadcast",
+      "add_channel",
+      "remove_channel",
+      "invoke_callback"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the state of the @subscribers hash",
+      "Synchronizes access to @subscribers using a Mutex"
+    ],
+    "complexity": "medium"
+  }
+}

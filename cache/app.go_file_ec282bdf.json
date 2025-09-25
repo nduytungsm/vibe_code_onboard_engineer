@@ -1,0 +1,18 @@
+{
+  "content_hash": "f2cd9ec566c5c9fb5c4936002039b792",
+  "timestamp": "2025-09-24T17:40:37.722154+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for code version management and request handling.",
+    "key_types": [
+      "CodeVersion",
+      "UpdateCodeVersionRequest",
+      "EnvironmentConfig"
+    ],
+    "functions": [
+      "ToCodeVersion"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

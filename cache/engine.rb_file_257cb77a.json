@@ -1,0 +1,30 @@
+{
+  "content_hash": "214774ec8ffd2d1c7b12a9e9d9c8e2b1",
+  "timestamp": "2025-09-25T15:49:29.974548+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines the ActionCable engine for integrating WebSocket functionality into a Rails application.",
+    "key_types": [
+      "ActionCable::Engine",
+      "ActiveSupport::OrderedOptions"
+    ],
+    "functions": [
+      "initializer",
+      "config.after_initialize",
+      "ActiveSupport.on_load"
+    ],
+    "imports": [
+      "rails",
+      "action_cable",
+      "active_support/core_ext/hash/indifferent_access"
+    ],
+    "side_effects": [
+      "Modifies Rails application configuration",
+      "Precompiles assets if configured"
+    ],
+    "risks": [
+      "Potential exposure of WebSocket connections if allowed origins are not properly configured"
+    ],
+    "complexity": "medium"
+  }
+}

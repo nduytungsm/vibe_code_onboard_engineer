@@ -1,0 +1,25 @@
+{
+  "content_hash": "36846b79a4b8396fd90d1d5454760a77",
+  "timestamp": "2025-09-25T15:49:21.154131+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a module for identifying connections in ActionCable, allowing for connection identifiers to be registered and retrieved.",
+    "key_types": [
+      "Set",
+      "Module",
+      "ClassMethods"
+    ],
+    "functions": [
+      "identified_by",
+      "connection_identifier",
+      "connection_gid"
+    ],
+    "imports": [
+      "ActiveSupport::Concern"
+    ],
+    "side_effects": [
+      "Creates accessors for identifiers on channel instances"
+    ],
+    "complexity": "medium"
+  }
+}

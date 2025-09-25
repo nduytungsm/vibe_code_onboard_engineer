@@ -1,0 +1,14 @@
+{
+  "content_hash": "0b3dd3b5a887a6664b26778fbbce9595",
+  "timestamp": "2025-09-25T15:33:30.519775+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines an object with logger and WebSocket properties based on their availability.",
+    "key_types": [
+      "Object"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

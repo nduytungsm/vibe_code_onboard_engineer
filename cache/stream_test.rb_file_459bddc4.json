@@ -1,0 +1,46 @@
+{
+  "content_hash": "92c9b2224557f6c9b751e90ee060b859",
+  "timestamp": "2025-09-25T15:49:55.152339+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for ActionCable channels, specifically for streaming functionality.",
+    "key_types": [
+      "ActionCable::Connection::Base",
+      "ActionCable::Channel::Base",
+      "Room",
+      "DummyEncoder",
+      "TestConnection"
+    ],
+    "functions": [
+      "subscribed",
+      "send_confirmation",
+      "pick_coder",
+      "encode",
+      "decode",
+      "stream_from",
+      "unsubscribe_from_channel",
+      "subscribe_to_channel",
+      "stream_for",
+      "stream_or_reject_for",
+      "stop_all_streams",
+      "stop_stream_from",
+      "stop_stream_for"
+    ],
+    "imports": [
+      "test_helper",
+      "minitest/mock",
+      "stubs/test_connection",
+      "stubs/room",
+      "concurrent/atomic/cyclic_barrier"
+    ],
+    "side_effects": [
+      "Modifies the state of the connection and channels during tests",
+      "Interacts with the pubsub system"
+    ],
+    "risks": [
+      "Potential race conditions due to concurrent execution in tests",
+      "Mocking dependencies may lead to false positives in tests"
+    ],
+    "complexity": "medium"
+  }
+}

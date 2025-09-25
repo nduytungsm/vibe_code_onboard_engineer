@@ -1,0 +1,38 @@
+{
+  "content_hash": "6b37a057b835dacd323e974635e7e943",
+  "timestamp": "2025-09-25T15:51:03.43119+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a command for creating Hasura Actions, allowing users to extend Hasura's schema with custom business logic.",
+    "key_types": [
+      "actionsCreateOptions",
+      "cobra.Command",
+      "hasura.IntrospectionSchema"
+    ],
+    "functions": [
+      "newActionsCreateCmd",
+      "run"
+    ],
+    "imports": [
+      "fmt",
+      "strings",
+      "github.com/hasura/graphql-engine/cli/v2/internal/hasura",
+      "github.com/hasura/graphql-engine/cli/v2",
+      "github.com/hasura/graphql-engine/cli/v2/internal/errors",
+      "github.com/hasura/graphql-engine/cli/v2/internal/metadataobject/actions",
+      "github.com/hasura/graphql-engine/cli/v2/internal/metadataobject/actions/types",
+      "github.com/hasura/graphql-engine/cli/v2/util",
+      "github.com/spf13/cobra",
+      "github.com/spf13/viper"
+    ],
+    "side_effects": [
+      "Creates a new Hasura Action",
+      "May prompt the user for confirmation regarding code generation"
+    ],
+    "risks": [
+      "Potential for errors in creating actions if the introspection schema cannot be fetched",
+      "User input errors when confirming code generation"
+    ],
+    "complexity": "medium"
+  }
+}

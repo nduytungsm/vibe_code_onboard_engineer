@@ -1,0 +1,28 @@
+{
+  "content_hash": "d6b97d4b84a93dcf646a4e23f04c407b",
+  "timestamp": "2025-09-25T15:49:46.114005+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for Rollup to bundle JavaScript files for ActionCable.",
+    "key_types": [
+      "object",
+      "function"
+    ],
+    "functions": [
+      "resolve",
+      "terser"
+    ],
+    "imports": [
+      "@rollup/plugin-node-resolve",
+      "rollup-plugin-terser"
+    ],
+    "side_effects": [
+      "Bundling JavaScript files",
+      "Minifying JavaScript code"
+    ],
+    "risks": [
+      "Potential for code obfuscation if minification is enabled"
+    ],
+    "complexity": "medium"
+  }
+}

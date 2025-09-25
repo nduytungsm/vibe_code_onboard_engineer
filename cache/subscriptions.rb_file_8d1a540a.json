@@ -1,0 +1,37 @@
+{
+  "content_hash": "8fffabf792a12254a1e9c086994dcdcc",
+  "timestamp": "2025-09-25T15:49:27.71754+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Manages channel subscriptions for Action Cable connections, routing commands to the appropriate channels.",
+    "key_types": [
+      "Subscriptions",
+      "connection",
+      "subscription_klass"
+    ],
+    "functions": [
+      "initialize",
+      "execute_command",
+      "add",
+      "remove",
+      "remove_subscription",
+      "perform_action",
+      "identifiers",
+      "unsubscribe_from_all",
+      "find"
+    ],
+    "imports": [
+      "active_support/core_ext/hash/indifferent_access"
+    ],
+    "side_effects": [
+      "Logs errors for unrecognized commands",
+      "Logs errors for subscription class not found",
+      "Logs information when unsubscribing"
+    ],
+    "risks": [
+      "Potential for unhandled exceptions if commands are malformed",
+      "Security risks if subscription identifiers are not properly validated"
+    ],
+    "complexity": "medium"
+  }
+}

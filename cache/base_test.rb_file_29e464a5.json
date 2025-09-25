@@ -1,0 +1,33 @@
+{
+  "content_hash": "787ff457a07ebeb706e01806a2fe2c81",
+  "timestamp": "2025-09-25T16:11:23.751806+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for the ActionCable connection functionality.",
+    "key_types": [
+      "ActionCable::Connection::Base",
+      "TestServer",
+      "Rack::MockRequest"
+    ],
+    "functions": [
+      "connect",
+      "disconnect",
+      "send_async",
+      "process",
+      "open_connection"
+    ],
+    "imports": [
+      "test_helper",
+      "stubs/test_server",
+      "active_support/core_ext/object/json"
+    ],
+    "side_effects": [
+      "Establishes and closes websocket connections",
+      "Modifies server connection state"
+    ],
+    "risks": [
+      "Potential denial of service if connection handling is not properly managed"
+    ],
+    "complexity": "medium"
+  }
+}

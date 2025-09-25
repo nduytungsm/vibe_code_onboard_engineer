@@ -1,0 +1,15 @@
+{
+  "content_hash": "326e2c3f1e0927595c9a2f9c97a28ad1",
+  "timestamp": "2025-09-25T16:12:38.672377+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file configures asset linking for images and stylesheets in a web application.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "../images",
+      "../stylesheets"
+    ],
+    "complexity": "low"
+  }
+}

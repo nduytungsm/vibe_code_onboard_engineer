@@ -1,0 +1,16 @@
+{
+  "content_hash": "e10b046bdcfb33d1a2c2a38b3236c1a4",
+  "timestamp": "2025-09-25T16:12:41.505219+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a base channel class for ActionCable in a Rails application.",
+    "key_types": [
+      "ApplicationCable::Channel"
+    ],
+    "functions": [],
+    "imports": [
+      "ActionCable::Channel::Base"
+    ],
+    "complexity": "low"
+  }
+}

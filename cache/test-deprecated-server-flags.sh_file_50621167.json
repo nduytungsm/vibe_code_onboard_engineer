@@ -1,0 +1,36 @@
+{
+  "content_hash": "36eec42628492c3629a4b75104904b88",
+  "timestamp": "2025-09-25T15:50:41.945111+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "This script sets up and tests a GraphQL engine server with deprecated server flags.",
+    "key_types": [
+      "string",
+      "integer"
+    ],
+    "functions": [
+      "echoInfo",
+      "fail_if_port_busy",
+      "wait_for_port",
+      "test_export_metadata_with_access_key",
+      "run_hge_with_flags",
+      "kill_hge"
+    ],
+    "imports": [
+      "nc",
+      "curl",
+      "stack"
+    ],
+    "side_effects": [
+      "Changes current directory",
+      "Creates output directory",
+      "Starts background process",
+      "Sets environment variables"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information through logs",
+      "Dependency on external services (e.g., network availability)"
+    ],
+    "complexity": "medium"
+  }
+}

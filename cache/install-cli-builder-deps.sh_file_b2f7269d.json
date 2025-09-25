@@ -1,0 +1,27 @@
+{
+  "content_hash": "4d6eb3c207fdca5b1d96228a62051759",
+  "timestamp": "2025-09-25T15:50:40.011658+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "This script installs various dependencies and tools required for a CLI builder environment.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "apt-get",
+      "curl",
+      "wget",
+      "tar",
+      "go"
+    ],
+    "side_effects": [
+      "Modifies system package sources",
+      "Installs software packages",
+      "Removes temporary files"
+    ],
+    "risks": [
+      "Potential exposure to vulnerabilities in installed packages",
+      "Dependency on external sources for package installation"
+    ],
+    "complexity": "medium"
+  }
+}

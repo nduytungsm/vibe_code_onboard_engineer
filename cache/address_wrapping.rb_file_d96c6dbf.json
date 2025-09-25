@@ -1,0 +1,16 @@
+{
+  "content_hash": "bcd0114c642476180016fa49df6a0637",
+  "timestamp": "2025-09-25T16:12:21.911705+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a method to wrap an email address in a Mail::Address object if it is not already one.",
+    "key_types": [
+      "Mail::Address"
+    ],
+    "functions": [
+      "self.wrap"
+    ],
+    "imports": [],
+    "complexity": "low"
+  }
+}

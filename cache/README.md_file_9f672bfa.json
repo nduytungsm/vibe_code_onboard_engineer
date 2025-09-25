@@ -1,0 +1,12 @@
+{
+  "content_hash": "1e1082bfc6ec3f38dadcd08d21cdcc46",
+  "timestamp": "2025-09-25T15:50:53.947274+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the Hasura GraphQL Engine CLI installation and usage.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

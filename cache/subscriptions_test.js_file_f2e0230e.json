@@ -1,0 +1,28 @@
+{
+  "content_hash": "33ca92b76a4069382ca531ce6eed837f",
+  "timestamp": "2025-09-25T16:11:39.087724+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Unit tests for ActionCable subscriptions functionality",
+    "key_types": [
+      "QUnit",
+      "consumer",
+      "server"
+    ],
+    "functions": [
+      "module",
+      "consumerTest"
+    ],
+    "imports": [
+      "../test_helpers/consumer_test_helper"
+    ],
+    "side_effects": [
+      "Establishes WebSocket connections",
+      "Interacts with a server"
+    ],
+    "risks": [
+      "Potential for denial of service if server is overwhelmed with messages"
+    ],
+    "complexity": "medium"
+  }
+}

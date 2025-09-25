@@ -1,0 +1,25 @@
+{
+  "content_hash": "a0ffe5cda6faa9f41e755e9168de3a8b",
+  "timestamp": "2025-09-25T15:49:32.261568+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines the configuration for the Action Cable server in a Rails application.",
+    "key_types": [
+      "Configuration"
+    ],
+    "functions": [
+      "initialize",
+      "pubsub_adapter"
+    ],
+    "imports": [
+      "rack"
+    ],
+    "side_effects": [
+      "Requires external adapter gems based on configuration"
+    ],
+    "risks": [
+      "Potential for misconfiguration leading to runtime errors when loading adapters"
+    ],
+    "complexity": "medium"
+  }
+}

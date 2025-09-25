@@ -1,0 +1,24 @@
+{
+  "content_hash": "db5d251e23d2fb6b3a4bba830c5a5093",
+  "timestamp": "2025-09-24T17:40:48.167046+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for managing trusted domains in an application.",
+    "key_types": [
+      "TrustedDomain",
+      "GetTDMByDomainRequest",
+      "SaveTrustedDomainBatchRequest",
+      "TrustedDomainFilter",
+      "TrustedDomainOrderBy",
+      "GetListTDMRequest"
+    ],
+    "functions": [
+      "ToMap"
+    ],
+    "imports": [
+      "time",
+      "github.com/mitchellh/mapstructure"
+    ],
+    "complexity": "medium"
+  }
+}

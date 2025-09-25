@@ -1,0 +1,21 @@
+{
+  "content_hash": "1876040227a7468401fd7e2f267976fd",
+  "timestamp": "2025-09-25T15:50:04.934354+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Unit tests for the ActionCable.ConnectionMonitor class, specifically testing the getPollInterval method.",
+    "key_types": [
+      "ActionCable.ConnectionMonitor"
+    ],
+    "functions": [
+      "getPollInterval"
+    ],
+    "imports": [
+      "../../../../app/javascript/action_cable/index"
+    ],
+    "side_effects": [
+      "Modifies Math.random for testing purposes"
+    ],
+    "complexity": "medium"
+  }
+}

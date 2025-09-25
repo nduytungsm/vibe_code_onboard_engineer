@@ -1,0 +1,38 @@
+{
+  "content_hash": "7a4b95e9bbf7af2e77dbe8a4be240373",
+  "timestamp": "2025-09-25T16:07:47.001317+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for database migration functionality using SQLite.",
+    "key_types": [
+      "*sql.DB",
+      "testing.T"
+    ],
+    "functions": [
+      "setupTestDB",
+      "TestCheckMigrationIntegrity",
+      "TestCheckMigrationIntegrityWithMissingMigrationFile",
+      "TestCheckMigrationIntegrityWithInvalidExtension",
+      "TestMigrateSingleFile",
+      "TestMigrateMultipleFiles"
+    ],
+    "imports": [
+      "database/sql",
+      "github.com/stretchr/testify/assert",
+      "io/ioutil",
+      "os",
+      "path/filepath",
+      "testing",
+      "_ github.com/mattn/go-sqlite3"
+    ],
+    "side_effects": [
+      "Creates and deletes directories and files for testing purposes",
+      "Interacts with an in-memory SQLite database"
+    ],
+    "risks": [
+      "Potential for file system manipulation errors",
+      "Database connection errors"
+    ],
+    "complexity": "medium"
+  }
+}

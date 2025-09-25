@@ -1,0 +1,35 @@
+{
+  "content_hash": "e01ca10dc7870bff93d9245d8d432c2f",
+  "timestamp": "2025-09-25T16:12:20.721876+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines the base class for application mailboxes in Action Mailbox, handling email processing and routing.",
+    "key_types": [
+      "ActionMailbox::Base",
+      "inbound_email",
+      "ActiveSupport::Notifications"
+    ],
+    "functions": [
+      "self.receive",
+      "initialize",
+      "perform_processing",
+      "process",
+      "finished_processing?",
+      "bounce_with",
+      "bounce_now_with"
+    ],
+    "imports": [
+      "active_support/rescuable",
+      "action_mailbox/callbacks",
+      "action_mailbox/routing"
+    ],
+    "side_effects": [
+      "Changes the status of inbound_email during processing",
+      "Enqueues or sends messages based on bounce conditions"
+    ],
+    "risks": [
+      "Potential for unhandled exceptions during email processing"
+    ],
+    "complexity": "medium"
+  }
+}

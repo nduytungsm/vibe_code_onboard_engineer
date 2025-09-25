@@ -1,0 +1,12 @@
+{
+  "content_hash": "7993ce62504db0708b31d3bde9828d0c",
+  "timestamp": "2025-09-25T15:50:41.812653+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Template for reporting bugs in Hasura version 2.x",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

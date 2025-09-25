@@ -1,0 +1,30 @@
+{
+  "content_hash": "787ff457a07ebeb706e01806a2fe2c81",
+  "timestamp": "2025-09-25T15:49:54.332293+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Unit tests for the ActionCable connection handling in a Rails application.",
+    "key_types": [
+      "ActionCable::Connection::Base",
+      "TestServer",
+      "Connection"
+    ],
+    "functions": [
+      "connect",
+      "disconnect",
+      "send_async",
+      "process",
+      "open_connection"
+    ],
+    "imports": [
+      "test_helper",
+      "stubs/test_server",
+      "active_support/core_ext/object/json"
+    ],
+    "side_effects": [
+      "Modifies connection state",
+      "Interacts with a test server"
+    ],
+    "complexity": "medium"
+  }
+}

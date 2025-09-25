@@ -1,0 +1,26 @@
+{
+  "content_hash": "30ceb2fbb3f6fba37b4d44b4b9b457db",
+  "timestamp": "2025-09-25T16:12:30.854446+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines the ActionMailbox module and its configuration options.",
+    "key_types": [
+      "ActionMailbox::Base",
+      "ActionMailbox::Router",
+      "ActionMailbox::TestCase"
+    ],
+    "functions": [
+      "autoload",
+      "mattr_accessor"
+    ],
+    "imports": [
+      "active_support",
+      "active_support/rails",
+      "active_support/core_ext/numeric/time",
+      "action_mailbox/version",
+      "action_mailbox/deprecator",
+      "action_mailbox/mail_ext"
+    ],
+    "complexity": "medium"
+  }
+}

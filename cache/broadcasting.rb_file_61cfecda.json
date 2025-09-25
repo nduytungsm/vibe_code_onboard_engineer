@@ -1,0 +1,25 @@
+{
+  "content_hash": "178a8e5ddbd807b37c18ca49b03bb454",
+  "timestamp": "2025-09-25T15:34:01.706361+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Provides functionality for broadcasting messages to subscribers in Action Cable channels.",
+    "key_types": [
+      "ActionCable::Server::Broadcasting",
+      "Broadcaster"
+    ],
+    "functions": [
+      "broadcast",
+      "broadcaster_for"
+    ],
+    "imports": [
+      "ActiveSupport::JSON",
+      "ActiveSupport::Notifications"
+    ],
+    "side_effects": [
+      "Logs broadcasting messages",
+      "Triggers notifications"
+    ],
+    "complexity": "medium"
+  }
+}

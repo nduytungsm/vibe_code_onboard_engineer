@@ -1,0 +1,35 @@
+{
+  "content_hash": "ac4690cc726032ce41be06549a9dcaa1",
+  "timestamp": "2025-09-25T15:50:14.818037+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a test server for ActionCable with configuration and connection handling.",
+    "key_types": [
+      "TestServer",
+      "FakeConfiguration"
+    ],
+    "functions": [
+      "initialize",
+      "pubsub",
+      "event_loop",
+      "worker_pool"
+    ],
+    "imports": [
+      "ActionCable::Server::Connections",
+      "ActionCable::Server::Broadcasting",
+      "ActionCable::Server::Configuration",
+      "ActiveSupport::TaggedLogging",
+      "ActiveSupport::Logger",
+      "StringIO",
+      "Monitor",
+      "ActionCable::Connection::StreamEventLoop",
+      "Concurrent"
+    ],
+    "side_effects": [
+      "Creates a logger instance",
+      "Initializes a configuration with a subscription adapter",
+      "Sets up a mutex for thread safety"
+    ],
+    "complexity": "medium"
+  }
+}

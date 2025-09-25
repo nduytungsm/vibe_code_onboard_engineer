@@ -1,0 +1,29 @@
+{
+  "content_hash": "bab1eb9ee6d4f919ca3772acf7664f19",
+  "timestamp": "2025-09-25T16:11:27.602171+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Test the functionality of multiple connection identifiers in ActionCable.",
+    "key_types": [
+      "ActionCable::Connection::Base",
+      "User",
+      "Room",
+      "TestServer"
+    ],
+    "functions": [
+      "connect",
+      "open_connection",
+      "test"
+    ],
+    "imports": [
+      "test_helper",
+      "stubs/test_server",
+      "stubs/user"
+    ],
+    "side_effects": [
+      "Establishes a WebSocket connection",
+      "Creates instances of User and Room"
+    ],
+    "complexity": "medium"
+  }
+}

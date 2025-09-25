@@ -1,6 +1,6 @@
 {
-  "content_hash": "4659a1c7fa2b629e4c0ba41e488bf009",
-  "timestamp": "2025-09-24T16:29:20.834019+07:00",
+  "content_hash": "faa87b67ba414296b4b2b7b210c3903c",
+  "timestamp": "2025-09-25T16:34:14.181236+07:00",
   "result": {
     "path": "pkg/dapp",
     "purpose": "Responsible for managing decentralized applications (dApps) including configuration, service management, and CRUD operations.",
@@ -21,7 +21,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, focusing on modular service definitions for handling dApp functionalities.",
+    "architecture": "The folder follows a service-oriented architecture pattern, focusing on modular services for dApp management.",
     "file_summaries": {
       "pkg/dapp/config.go": {
         "language": "Go",
@@ -47,7 +47,6 @@
           "Update",
           "UpdateBatch",
           "GetList",
-          "SearchByTitle",
           "GetAll",
           "GetByID",
           "DeleteByID",

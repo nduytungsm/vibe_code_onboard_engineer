@@ -1,0 +1,18 @@
+{
+  "content_hash": "84dc3769e792bf5fd7d024d9fe404e53",
+  "timestamp": "2025-09-25T16:12:23.490263+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a method to create a Mail object from a given source.",
+    "key_types": [
+      "Mail"
+    ],
+    "functions": [
+      "from_source"
+    ],
+    "imports": [
+      "Mail::Utilities"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "content_hash": "3d91fd0f1438d01df1c71bf383a37b01",
+  "timestamp": "2025-09-25T15:49:48.67527+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for the broadcasting functionality of ActionCable channels.",
+    "key_types": [
+      "ActionCable::Channel::Base",
+      "TestConnection",
+      "Room"
+    ],
+    "functions": [
+      "setup",
+      "test",
+      "assert_called_with",
+      "assert_equal"
+    ],
+    "imports": [
+      "test_helper",
+      "stubs/test_connection",
+      "stubs/room"
+    ],
+    "side_effects": [
+      "Interacts with ActionCable server to perform broadcasts"
+    ],
+    "complexity": "medium"
+  }
+}

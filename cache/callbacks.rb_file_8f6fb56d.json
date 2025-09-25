@@ -1,0 +1,22 @@
+{
+  "content_hash": "368fb51e661b38adff25802e1bb7060d",
+  "timestamp": "2025-09-25T15:33:42.438835+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines callback hooks for Action Cable channels during their lifecycle.",
+    "key_types": [
+      "ActionCable::Channel",
+      "Callbacks"
+    ],
+    "functions": [
+      "before_subscribe",
+      "after_subscribe",
+      "before_unsubscribe",
+      "after_unsubscribe"
+    ],
+    "imports": [
+      "active_support/callbacks"
+    ],
+    "complexity": "medium"
+  }
+}

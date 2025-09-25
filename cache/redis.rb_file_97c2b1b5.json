@@ -1,0 +1,42 @@
+{
+  "content_hash": "7433229c1f829e985bf485ad649c6f91",
+  "timestamp": "2025-09-25T15:49:40.05855+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file defines a Redis subscription adapter for ActionCable, allowing for broadcasting and subscribing to channels using Redis.",
+    "key_types": [
+      "Redis",
+      "Base",
+      "Listener",
+      "SubscriberMap",
+      "SubscribedClient"
+    ],
+    "functions": [
+      "broadcast",
+      "subscribe",
+      "unsubscribe",
+      "shutdown",
+      "listen",
+      "add_channel",
+      "remove_channel",
+      "ensure_listener_running",
+      "when_connected",
+      "retry_connecting",
+      "resubscribe",
+      "reset"
+    ],
+    "imports": [
+      "redis",
+      "active_support/core_ext/hash/except"
+    ],
+    "side_effects": [
+      "Establishes connections to Redis",
+      "Subscribes to channels and listens for messages"
+    ],
+    "risks": [
+      "Potential for connection errors with Redis",
+      "Thread safety issues if not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

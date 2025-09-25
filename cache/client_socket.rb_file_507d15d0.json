@@ -1,0 +1,39 @@
+{
+  "content_hash": "e0b90d2b10a5e4e12a42639ca1bfc6b9",
+  "timestamp": "2025-09-25T15:49:22.125047+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file defines a ClientSocket class for managing WebSocket connections in ActionCable.",
+    "key_types": [
+      "ClientSocket",
+      "Stream"
+    ],
+    "functions": [
+      "determine_url",
+      "secure_request?",
+      "initialize",
+      "start_driver",
+      "rack_response",
+      "write",
+      "transmit",
+      "close",
+      "parse",
+      "client_gone",
+      "alive?",
+      "protocol"
+    ],
+    "imports": [
+      "websocket/driver"
+    ],
+    "side_effects": [
+      "Establishes WebSocket connections",
+      "Handles incoming messages",
+      "Manages connection state"
+    ],
+    "risks": [
+      "Potential denial of service if improperly handled",
+      "Security risks if WebSocket connections are not secured"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "content_hash": "c78c57d28d1c0b0263ea33dcfdb29ae1",
+  "timestamp": "2025-09-25T15:48:52.504128+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a Docker Compose configuration for a development environment with multiple services including Rails, PostgreSQL, MySQL, Redis, and Memcached.",
+    "key_types": [
+      "services",
+      "volumes"
+    ],
+    "functions": [
+      "build",
+      "command",
+      "depends_on",
+      "environment"
+    ],
+    "imports": [
+      "postgres:latest",
+      "mysql:latest",
+      "valkey/valkey:8",
+      "memcached:latest"
+    ],
+    "side_effects": [
+      "Creates and manages Docker containers for specified services."
+    ],
+    "risks": [
+      "Exposing sensitive environment variables such as database passwords."
+    ],
+    "complexity": "medium"
+  }
+}

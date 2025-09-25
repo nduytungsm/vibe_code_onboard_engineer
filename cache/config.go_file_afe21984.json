@@ -1,0 +1,55 @@
+{
+  "content_hash": "8639bb13c50c0818c9b9fd8dd1f24421",
+  "timestamp": "2025-09-25T15:59:58.333395+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines configuration structures and initializes application settings using viper for a service.",
+    "key_types": [
+      "Schema",
+      "Server",
+      "Sentry",
+      "TLSConfig",
+      "Logging",
+      "Profiling"
+    ],
+    "functions": [
+      "StringToByteSizeHookFunc",
+      "Init"
+    ],
+    "imports": [
+      "fmt",
+      "reflect",
+      "runtime",
+      "strconv",
+      "strings",
+      "sync",
+      "time",
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/axieinfinity/ecosystem-go-common/sso",
+      "github.com/inhies/go-bytesize",
+      "github.com/mitchellh/mapstructure",
+      "github.com/rs/zerolog",
+      "github.com/spf13/viper",
+      "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+      "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
+    ],
+    "side_effects": [
+      "Panic if the configuration file cannot be read",
+      "Sets global logging level based on configuration"
+    ],
+    "risks": [
+      "Potential exposure of sensitive configuration data if not handled securely"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "content_hash": "ddd96b8576e98ef94df877d596d099df",
+  "timestamp": "2025-09-25T15:50:19.361772+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Test the PostgreSQL subscription adapter for ActionCable",
+    "key_types": [
+      "PostgresqlAdapterTest",
+      "ActionCable::TestCase",
+      "ActiveRecord::Base"
+    ],
+    "functions": [
+      "setup",
+      "teardown",
+      "cable_config",
+      "test_clear_active_record_connections_adapter_still_works",
+      "test_default_subscription_connection_identifier",
+      "test_custom_subscription_connection_identifier"
+    ],
+    "imports": [
+      "test_helper",
+      "common",
+      "channel_prefix",
+      "active_record"
+    ],
+    "side_effects": [
+      "Establishes a connection to a PostgreSQL database",
+      "Clears all ActiveRecord connections after tests"
+    ],
+    "risks": [
+      "Potential database connection leaks if not properly handled"
+    ],
+    "complexity": "medium"
+  }
+}

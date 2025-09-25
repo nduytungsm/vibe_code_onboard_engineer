@@ -1,0 +1,29 @@
+{
+  "content_hash": "08589ce76ecd5544147f4c9e45ed579c",
+  "timestamp": "2025-09-25T15:50:40.647585+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines the ActionMailbox engine for handling incoming emails in a Rails application.",
+    "key_types": [
+      "Engine",
+      "OrderedOptions",
+      "InheritableOptions"
+    ],
+    "functions": [
+      "initializer"
+    ],
+    "imports": [
+      "rails",
+      "action_controller/railtie",
+      "active_job/railtie",
+      "active_record/railtie",
+      "active_storage/engine",
+      "action_mailbox"
+    ],
+    "side_effects": [
+      "Configures application settings related to ActionMailbox",
+      "Sets up logging and deprecation warnings"
+    ],
+    "complexity": "medium"
+  }
+}

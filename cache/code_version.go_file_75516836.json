@@ -1,0 +1,33 @@
+{
+  "content_hash": "57e7a03ac5713b5e77127544e356907e",
+  "timestamp": "2025-09-25T15:25:55.000083+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing code versions, including retrieving and saving versions to a database.",
+    "key_types": [
+      "CodeVersionRepo",
+      "codeVersionRepo",
+      "gorm.DB"
+    ],
+    "functions": [
+      "GetAllCodeVersions",
+      "SaveVersion",
+      "NewCodeVersionRepo"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "side_effects": [
+      "Database transactions are initiated and may modify the database state."
+    ],
+    "risks": [
+      "Potential SQL injection if inputs are not properly sanitized.",
+      "Error handling may expose sensitive information if not managed correctly."
+    ],
+    "complexity": "medium"
+  }
+}

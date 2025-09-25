@@ -1,0 +1,38 @@
+{
+  "content_hash": "6b334838bfa3cd9b52c264667e491c32",
+  "timestamp": "2025-09-25T15:33:34.572195+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Monitors the health of a cable connection by validating heartbeat pings and attempting reconnections.",
+    "key_types": [
+      "ConnectionMonitor"
+    ],
+    "functions": [
+      "start",
+      "stop",
+      "isRunning",
+      "recordMessage",
+      "recordConnect",
+      "recordDisconnect",
+      "startPolling",
+      "stopPolling",
+      "poll",
+      "getPollInterval",
+      "reconnectIfStale",
+      "connectionIsStale",
+      "disconnectedRecently",
+      "visibilityDidChange"
+    ],
+    "imports": [
+      "logger"
+    ],
+    "side_effects": [
+      "Adds event listener for visibility change",
+      "Logs connection status"
+    ],
+    "risks": [
+      "Potential for infinite polling if not managed correctly"
+    ],
+    "complexity": "medium"
+  }
+}

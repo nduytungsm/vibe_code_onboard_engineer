@@ -1,0 +1,20 @@
+{
+  "content_hash": "b0ff12b66a9083fd6e8530544f0b6d08",
+  "timestamp": "2025-09-25T15:25:46.943455+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates wildcard domains from a given domain string.",
+    "key_types": [
+      "string",
+      "[]string"
+    ],
+    "functions": [
+      "generateWildcardDomains"
+    ],
+    "imports": [
+      "slices",
+      "strings"
+    ],
+    "complexity": "medium"
+  }
+}

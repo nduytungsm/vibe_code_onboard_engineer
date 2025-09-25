@@ -1,0 +1,25 @@
+{
+  "content_hash": "bb9d7e0d4d73b9287d96f07408b2ec24",
+  "timestamp": "2025-09-25T15:50:12.393098+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file defines a test adapter for ActionCable subscriptions, allowing for broadcasting and subscribing to channels.",
+    "key_types": [
+      "SuccessAdapter"
+    ],
+    "functions": [
+      "initialize",
+      "broadcast",
+      "subscribe",
+      "unsubscribe",
+      "subscriber_map"
+    ],
+    "imports": [
+      "ActionCable::SubscriptionAdapter::Base"
+    ],
+    "side_effects": [
+      "sleep during unsubscribe if unsubscribe_latency is set"
+    ],
+    "complexity": "medium"
+  }
+}

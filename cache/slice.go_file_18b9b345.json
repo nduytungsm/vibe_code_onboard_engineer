@@ -1,0 +1,21 @@
+{
+  "content_hash": "ec68bf88063e268036400041b3886cdc",
+  "timestamp": "2025-09-24T17:41:02.30136+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides utility functions for filtering and transforming slices.",
+    "key_types": [
+      "slice",
+      "map",
+      "function"
+    ],
+    "functions": [
+      "Filter",
+      "IndexOf",
+      "SliceToMap",
+      "Map"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

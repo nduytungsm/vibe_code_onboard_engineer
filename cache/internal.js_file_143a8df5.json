@@ -1,0 +1,14 @@
+{
+  "content_hash": "0a5239aee46b3cf5b074ef5691fb8f93",
+  "timestamp": "2025-09-25T15:49:11.086204+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines constants and configurations for Action Cable internal messaging and connection handling.",
+    "key_types": [
+      "Object"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

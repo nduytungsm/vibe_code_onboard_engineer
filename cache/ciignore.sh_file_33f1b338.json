@@ -1,0 +1,32 @@
+{
+  "content_hash": "03a95699c1503421292b37fb9e80ef37",
+  "timestamp": "2025-09-25T15:50:37.035225+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "This script determines whether to skip a CI build based on changes in the repository, ignoring certain files.",
+    "key_types": [
+      "string",
+      "array"
+    ],
+    "functions": [
+      "mkdir",
+      "git diff",
+      "git log",
+      "echo",
+      "exit"
+    ],
+    "imports": [
+      "git",
+      "bash"
+    ],
+    "side_effects": [
+      "Creates a directory",
+      "Writes to a file"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information in git logs",
+      "Improper handling of git commands may lead to unintended consequences"
+    ],
+    "complexity": "medium"
+  }
+}

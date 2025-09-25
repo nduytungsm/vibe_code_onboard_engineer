@@ -1,0 +1,36 @@
+{
+  "content_hash": "580491db3b8ced7200bb3bde612881c4",
+  "timestamp": "2025-09-25T15:51:03.258834+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for creating actions in a CLI application using Ginkgo and Hasura.",
+    "key_types": [
+      "Session",
+      "CmdOpts"
+    ],
+    "functions": [
+      "BeforeEach",
+      "AfterEach",
+      "It",
+      "Expect",
+      "Eventually"
+    ],
+    "imports": [
+      "commands",
+      "testutil",
+      "os",
+      "fmt",
+      "filepath"
+    ],
+    "side_effects": [
+      "Creates a temporary directory for testing",
+      "Modifies configuration files",
+      "Starts a Hasura instance"
+    ],
+    "risks": [
+      "Potential for file system manipulation leading to data loss",
+      "Improper handling of user input could lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

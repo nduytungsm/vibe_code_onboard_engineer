@@ -1,0 +1,15 @@
+{
+  "content_hash": "9e11a130a112df1323074df720d4a254",
+  "timestamp": "2025-09-25T16:07:36.187606+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines the configuration for release notes and changelog management in a GitHub repository.",
+    "key_types": [
+      "changelog",
+      "categories"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

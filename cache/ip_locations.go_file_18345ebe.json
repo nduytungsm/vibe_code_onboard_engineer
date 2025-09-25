@@ -1,0 +1,17 @@
+{
+  "content_hash": "f310bb5b9077bd11076fa5bc8612263e",
+  "timestamp": "2025-09-25T16:30:28.460907+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for IP location information and a request structure for retrieving location data based on an IP address.",
+    "key_types": [
+      "IPLocation",
+      "GetLocationRequest"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

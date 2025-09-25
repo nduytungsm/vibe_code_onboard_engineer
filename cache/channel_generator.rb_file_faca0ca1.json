@@ -1,0 +1,23 @@
+{
+  "content_hash": "35b37aad4aad4fb9063220724e41363c",
+  "timestamp": "2025-09-25T15:49:44.886869+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Generates test files for Action Cable channels in a Rails application.",
+    "key_types": [
+      "ChannelGenerator",
+      "NamedBase"
+    ],
+    "functions": [
+      "create_test_files",
+      "file_name"
+    ],
+    "imports": [
+      "Rails::Generators::NamedBase"
+    ],
+    "side_effects": [
+      "Creates test files in the specified directory."
+    ],
+    "complexity": "medium"
+  }
+}

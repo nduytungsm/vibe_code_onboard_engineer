@@ -1,9 +1,9 @@
 {
-  "content_hash": "f29dcdf84fefc1c96109d45c354d230c",
-  "timestamp": "2025-09-24T16:30:52.424047+07:00",
+  "content_hash": "aa6c1528b0520304f74d445d50e5f416",
+  "timestamp": "2025-09-25T16:32:08.363502+07:00",
   "result": {
     "path": "pkg/moonpay",
-    "purpose": "Responsible for handling configuration and services related to Moonpay, including URL signing.",
+    "purpose": "Responsible for handling configuration and service functionalities related to Moonpay, including URL signing.",
     "languages": {
       "Go": 2
     },
@@ -12,11 +12,9 @@
       "service.go"
     ],
     "dependencies": [
-      "context",
-      "encoding/base64",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic in separate files.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic in separate files for maintainability.",
     "file_summaries": {
       "pkg/moonpay/config.go": {
         "language": "Go",
@@ -30,7 +28,7 @@
       },
       "pkg/moonpay/service.go": {
         "language": "Go",
-        "purpose": "Provides a service for signing URLs using a configuration.",
+        "purpose": "Provides a service for signing URLs using HMAC and base64 encoding.",
         "key_types": [
           "Service",
           "service",

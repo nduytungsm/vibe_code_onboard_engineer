@@ -1,0 +1,46 @@
+{
+  "content_hash": "2ca2d5a1679773208dc73499b0728554",
+  "timestamp": "2025-09-25T15:51:19.95663+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates CLI documentation in various formats.",
+    "key_types": [
+      "cobra.Command",
+      "cli.ExecutionContext",
+      "errors.Op"
+    ],
+    "functions": [
+      "NewDocsCmd",
+      "sphinxLinkHandler",
+      "printOptionsReST",
+      "genReSTCustom",
+      "genReSTTreeCustom",
+      "printOptionsMarkdownX",
+      "genMarkdownXCustom"
+    ],
+    "imports": [
+      "bufio",
+      "bytes",
+      "fmt",
+      "io",
+      "os",
+      "path/filepath",
+      "sort",
+      "strings",
+      "github.com/hasura/graphql-engine/cli/v2",
+      "github.com/hasura/graphql-engine/cli/v2/internal/errors",
+      "github.com/spf13/cobra",
+      "github.com/spf13/cobra/doc",
+      "github.com/spf13/viper"
+    ],
+    "side_effects": [
+      "Creates directories for documentation output.",
+      "Generates documentation files in specified formats."
+    ],
+    "risks": [
+      "Potential for directory creation errors.",
+      "File write errors if permissions are insufficient."
+    ],
+    "complexity": "medium"
+  }
+}

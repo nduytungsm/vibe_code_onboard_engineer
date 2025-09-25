@@ -1,0 +1,25 @@
+{
+  "content_hash": "e6efea2e7d62ea6312b79d3e7f0e4119",
+  "timestamp": "2025-09-25T16:12:10.392382+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Handles rerouting of emails that have been processed or attempted to be processed.",
+    "key_types": [
+      "Rails::Conductor::BaseController",
+      "ActionMailbox::InboundEmail"
+    ],
+    "functions": [
+      "create",
+      "reroute"
+    ],
+    "imports": [
+      "Rails",
+      "ActionMailbox"
+    ],
+    "side_effects": [
+      "Changes the status of inbound_email to pending",
+      "Schedules routing of the inbound_email"
+    ],
+    "complexity": "medium"
+  }
+}

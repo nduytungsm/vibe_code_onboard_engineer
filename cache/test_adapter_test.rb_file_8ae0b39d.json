@@ -1,0 +1,30 @@
+{
+  "content_hash": "ec9c9851093a13e0686de1a30b43f594",
+  "timestamp": "2025-09-25T16:11:55.034778+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for the ActionCable subscription adapter, verifying the behavior of broadcasting and message clearing.",
+    "key_types": [
+      "ActionCable::SubscriptionAdapter",
+      "ActionCable::TestCase"
+    ],
+    "functions": [
+      "setup",
+      "cable_config",
+      "broadcast",
+      "clear_messages",
+      "clear"
+    ],
+    "imports": [
+      "test_helper",
+      "common"
+    ],
+    "side_effects": [
+      "Modifies the state of the @tx_adapter and @rx_adapter during tests."
+    ],
+    "risks": [
+      "Potential for test flakiness if the setup or teardown is not handled correctly."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "content_hash": "69d2e7c125c9cc314d6de08552220449",
+  "timestamp": "2025-09-25T15:33:35.327966+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Establishes a WebSocket connection to a server and manages subscriptions to channels.",
+    "key_types": [
+      "Consumer",
+      "Connection",
+      "Subscriptions"
+    ],
+    "functions": [
+      "constructor",
+      "get url",
+      "send",
+      "connect",
+      "disconnect",
+      "ensureActiveConnection",
+      "addSubProtocol",
+      "createWebSocketURL"
+    ],
+    "imports": [
+      "./connection",
+      "./subscriptions"
+    ],
+    "side_effects": [
+      "Establishes a WebSocket connection",
+      "Automatically resubscribes to channels after disconnect"
+    ],
+    "risks": [
+      "Potential exposure of WebSocket URLs",
+      "Insecure WebSocket connections if not using 'wss'"
+    ],
+    "complexity": "medium"
+  }
+}

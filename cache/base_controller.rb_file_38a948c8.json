@@ -1,0 +1,29 @@
+{
+  "content_hash": "23063b7040e737542bd93e464dc88749",
+  "timestamp": "2025-09-25T16:12:01.995115+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a base controller for Action Mailbox ingress controllers, handling configuration and authentication.",
+    "key_types": [
+      "ActionMailbox::BaseController"
+    ],
+    "functions": [
+      "ensure_configured",
+      "ingress_name",
+      "authenticate_by_password",
+      "password"
+    ],
+    "imports": [
+      "ActionController::Base",
+      "Rails.application.credentials"
+    ],
+    "side_effects": [
+      "Raises ArgumentError if credentials are missing",
+      "Responds with not_found if ingress is not configured"
+    ],
+    "risks": [
+      "Potential exposure of sensitive credentials if not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

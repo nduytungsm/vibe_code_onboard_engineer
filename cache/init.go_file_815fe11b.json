@@ -1,0 +1,52 @@
+{
+  "content_hash": "3c6e53a4c37b4eb707a06dfcaa1ea3ce",
+  "timestamp": "2025-09-25T16:01:42.104983+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Sets up routes for an Echo web server and initializes various services and repositories.",
+    "key_types": [
+      "echo.Echo",
+      "config.Schema",
+      "postgresql.Client",
+      "redis.Client",
+      "handlers.Handler"
+    ],
+    "functions": [
+      "SetupRoutes",
+      "NewClient",
+      "NewService",
+      "NewHandler"
+    ],
+    "imports": [
+      "github.com/labstack/echo/v4",
+      "github.com/rs/zerolog/log",
+      "gorm.io/plugin/prometheus",
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ronin-wallet-manager/config",
+      "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+      "github.com/axieinfinity/ronin-wallet-manager/handlers",
+      "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/preference",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/releasecandidate",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/trusteddomain",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
+    ],
+    "side_effects": [
+      "Logs fatal errors if database client or metrics setup fails."
+    ],
+    "risks": [
+      "Potential exposure of sensitive configuration data if not handled properly."
+    ],
+    "complexity": "medium"
+  }
+}

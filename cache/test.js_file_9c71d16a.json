@@ -1,0 +1,21 @@
+{
+  "content_hash": "2c8a829ddde42417444e7f148765c020",
+  "timestamp": "2025-09-25T16:11:32.758686+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file imports various test modules for Action Cable functionality.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "./test_helpers/index",
+      "./unit/action_cable_test",
+      "./unit/connection_test",
+      "./unit/connection_monitor_test",
+      "./unit/consumer_test",
+      "./unit/subscription_test",
+      "./unit/subscriptions_test",
+      "./unit/subscription_guarantor_test"
+    ],
+    "complexity": "low"
+  }
+}

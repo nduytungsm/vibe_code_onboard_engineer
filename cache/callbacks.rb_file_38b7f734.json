@@ -1,0 +1,21 @@
+{
+  "content_hash": "470d30499d13a5a936f8c1af19e09ea1",
+  "timestamp": "2025-09-25T15:49:20.477289+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines callbacks for Action Cable connection commands.",
+    "key_types": [
+      "module",
+      "class"
+    ],
+    "functions": [
+      "before_command",
+      "after_command",
+      "around_command"
+    ],
+    "imports": [
+      "active_support/callbacks"
+    ],
+    "complexity": "medium"
+  }
+}

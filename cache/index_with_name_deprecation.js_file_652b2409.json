@@ -1,0 +1,17 @@
+{
+  "content_hash": "a7d82d431316072353ac60ef2d904a08",
+  "timestamp": "2025-09-25T16:10:22.859873+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Exports all exports from the index file and logs a deprecation warning.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "./index"
+    ],
+    "side_effects": [
+      "Logs a deprecation warning to the console"
+    ],
+    "complexity": "low"
+  }
+}

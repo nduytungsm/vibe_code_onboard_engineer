@@ -1,0 +1,268 @@
+{
+  "content_hash": "1c508c4cf3174721c26446720f6a8a50",
+  "timestamp": "2025-09-25T16:08:09.935337+07:00",
+  "result": {
+    "path": "pkg/gosmm",
+    "purpose": "This folder/module is responsible for managing database connections, migrations, and migration history within the application.",
+    "languages": {
+      "Go": 8
+    },
+    "key_modules": [
+      "database.go",
+      "migration.go",
+      "restore.go",
+      "status.go",
+      "database_test.go",
+      "migration_test.go",
+      "restore_test.go",
+      "status_test.go"
+    ],
+    "dependencies": [
+      "database/sql",
+      "fmt",
+      "github.com/go-sql-driver/mysql",
+      "github.com/lib/pq",
+      "github.com/mattn/go-sqlite3",
+      "github.com/stretchr/testify/assert",
+      "errors",
+      "io/ioutil",
+      "path/filepath",
+      "sort",
+      "strings",
+      "time",
+      "testing"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing files by functionality related to database management, including connection handling, migrations, and testing.",
+    "file_summaries": {
+      "pkg/gosmm/database.go": {
+        "language": "Go",
+        "purpose": "This file manages database connections and configurations.",
+        "key_types": [
+          "DBConfig"
+        ],
+        "functions": [
+          "validateDBConfig",
+          "ConnectDB",
+          "CloseDB"
+        ],
+        "imports": [
+          "database/sql",
+          "fmt",
+          "github.com/go-sql-driver/mysql",
+          "github.com/lib/pq",
+          "github.com/mattn/go-sqlite3"
+        ],
+        "side_effects": [
+          "Establishes a connection to a database",
+          "Closes the database connection"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if passwords are not handled securely"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/gosmm/database_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for validating database configuration and connection functionality.",
+        "key_types": [
+          "DBConfig"
+        ],
+        "functions": [
+          "TestValidateDBConfig",
+          "TestValidateDBConfigWithInvalidPort",
+          "TestValidateDBConfigWithMissingDriver",
+          "TestValidateDBConfigWithMissingHost",
+          "TestValidateDBConfigWithMissingUser",
+          "TestValidateDBConfigWithMissingPassword",
+          "TestValidateDBConfigWithMissingDBName",
+          "TestConnectDBWithMySQL",
+          "TestConnectDBWithPostgres",
+          "TestConnectDBWithSQLite",
+          "TestConnectDBWithInvalidDriver",
+          "TestCloseDB"
+        ],
+        "imports": [
+          "github.com/stretchr/testify/assert",
+          "testing"
+        ],
+        "side_effects": [
+          "Database connections are opened and closed during tests."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if passwords are not properly handled."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/gosmm/migration.go": {
+        "language": "Go",
+        "purpose": "This file handles database migrations by executing SQL files and maintaining a migration history.",
+        "key_types": [
+          "sql.DB",
+          "sql.Tx",
+          "error"
+        ],
+        "functions": [
+          "checkMigrationIntegrity",
+          "Migrate",
+          "getExecutedMigrations",
+          "getLastSuccessfulMigrationFile",
+          "executeAndRecordMigration",
+          "recordMigration",
+          "createHistoryTable",
+          "getLastInstalledRank",
+          "failedMigrationExists"
+        ],
+        "imports": [
+          "database/sql",
+          "errors",
+          "fmt",
+          "io/ioutil",
+          "path/filepath",
+          "sort",
+          "strings",
+          "time"
+        ],
+        "side_effects": [
+          "Modifies the database by creating tables and inserting migration records."
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not properly sanitized.",
+          "Data loss if migrations are not executed correctly."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/gosmm/migration_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for database migration functionality using SQLite.",
+        "key_types": [
+          "*sql.DB",
+          "testing.T"
+        ],
+        "functions": [
+          "setupTestDB",
+          "TestCheckMigrationIntegrity",
+          "TestCheckMigrationIntegrityWithMissingMigrationFile",
+          "TestCheckMigrationIntegrityWithInvalidExtension",
+          "TestMigrateSingleFile",
+          "TestMigrateMultipleFiles"
+        ],
+        "imports": [
+          "database/sql",
+          "github.com/stretchr/testify/assert",
+          "io/ioutil",
+          "os",
+          "path/filepath",
+          "testing",
+          "_ github.com/mattn/go-sqlite3"
+        ],
+        "side_effects": [
+          "Creates and deletes directories and files for testing purposes",
+          "Interacts with an in-memory SQLite database"
+        ],
+        "risks": [
+          "Potential for file system manipulation errors",
+          "Database connection errors"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/gosmm/restore.go": {
+        "language": "Go",
+        "purpose": "Cleans up the migration history by deleting records with success = false",
+        "key_types": [
+          "sql.DB"
+        ],
+        "functions": [
+          "Restore"
+        ],
+        "imports": [
+          "database/sql",
+          "fmt"
+        ],
+        "side_effects": [
+          "Modifies the database by deleting records"
+        ],
+        "risks": [
+          "Potential data loss if used incorrectly"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/gosmm/restore_test.go": {
+        "language": "Go",
+        "purpose": "This file contains a test for the Restore function, which interacts with a SQLite database to manage migration history records.",
+        "key_types": [
+          "*sql.DB",
+          "error",
+          "testing.T"
+        ],
+        "functions": [
+          "TestRestore",
+          "setupTestDB",
+          "Restore"
+        ],
+        "imports": [
+          "testing",
+          "github.com/mattn/go-sqlite3"
+        ],
+        "side_effects": [
+          "Creates and modifies a SQLite database table",
+          "Inserts records into the database"
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not sanitized",
+          "Database corruption if not handled properly"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/gosmm/status.go": {
+        "language": "Go",
+        "purpose": "Displays the migration status from a database table.",
+        "key_types": [
+          "sql.DB"
+        ],
+        "functions": [
+          "DisplayStatus"
+        ],
+        "imports": [
+          "database/sql",
+          "fmt"
+        ],
+        "side_effects": [
+          "Creates a history table if it doesn't exist.",
+          "Prints output to the console."
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not sanitized (not applicable in this snippet)."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/gosmm/status_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for displaying migration status from a database table.",
+        "key_types": [
+          "*testing.T",
+          "db",
+          "teardown"
+        ],
+        "functions": [
+          "TestDisplayStatusWithNoHistoryRecord",
+          "TestDisplayStatusWithOneHistoryRecord",
+          "TestDisplayStatusWithFailedMigrationFile",
+          "TestDisplayStatusWithMultipleHistoryRecords"
+        ],
+        "imports": [
+          "bytes",
+          "os",
+          "strings",
+          "testing"
+        ],
+        "side_effects": [
+          "Modifies stdout to capture output for testing."
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not sanitized."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

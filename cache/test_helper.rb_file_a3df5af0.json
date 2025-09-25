@@ -1,0 +1,28 @@
+{
+  "content_hash": "e1e0d204a2509ba6df67c3c7d0f0f58c",
+  "timestamp": "2025-09-25T15:49:42.645753+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Provides helper methods for testing Action Cable broadcasting",
+    "key_types": [
+      "ActionCable::SubscriptionAdapter::Test",
+      "ActionCable::Server"
+    ],
+    "functions": [
+      "before_setup",
+      "after_teardown",
+      "assert_broadcasts",
+      "assert_no_broadcasts",
+      "capture_broadcasts",
+      "assert_broadcast_on",
+      "pubsub_adapter"
+    ],
+    "imports": [
+      "ActiveSupport::JSON"
+    ],
+    "side_effects": [
+      "Modifies the pubsub adapter of the ActionCable server during tests"
+    ],
+    "complexity": "medium"
+  }
+}

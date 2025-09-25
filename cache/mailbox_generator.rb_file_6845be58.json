@@ -1,0 +1,24 @@
+{
+  "content_hash": "a8df4f50b50baa155ac32293b27d9dac",
+  "timestamp": "2025-09-25T16:12:29.896899+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Generates mailbox files for a Rails application.",
+    "key_types": [
+      "MailboxGenerator",
+      "NamedBase"
+    ],
+    "functions": [
+      "create_mailbox_file",
+      "file_name",
+      "application_mailbox_file_name"
+    ],
+    "imports": [
+      "rails/generators"
+    ],
+    "side_effects": [
+      "Creates files in the app/mailboxes directory"
+    ],
+    "complexity": "medium"
+  }
+}

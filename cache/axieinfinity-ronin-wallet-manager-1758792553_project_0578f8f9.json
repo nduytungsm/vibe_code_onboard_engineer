@@ -1,0 +1,4146 @@
+{
+  "content_hash": "d2a6a138ce4cb8da8a406fad81018b97",
+  "timestamp": "2025-09-25T16:34:36.102367+07:00",
+  "result": {
+    "purpose": "A wallet management system designed for handling cryptocurrency transactions, user accounts, and decentralized applications (dApps) with features for announcements, device management, and external authentication. It aims to provide a secure and efficient platform for users to manage their digital assets and interact with various blockchain services.",
+    "architecture": "The project follows a modular architecture pattern, utilizing a service-oriented approach with clear separation of concerns across various components such as handlers, services, and middleware. It employs a microservices-like structure for managing different functionalities, including user authentication, announcements, and device management.",
+    "data_models": [
+      "User",
+      "Account",
+      "Announcement",
+      "Device",
+      "DApp",
+      "Transaction",
+      "Location",
+      "TrustedDomain",
+      "Blacklist",
+      "ReferralCode"
+    ],
+    "external_services": [
+      "PostgreSQL",
+      "Redis",
+      "Google Cloud Storage",
+      "Binance API",
+      "Moonpay API",
+      "Sentry for error tracking"
+    ],
+    "languages": {
+      "Bash": 1,
+      "Go": 90,
+      "JSON": 3,
+      "Markdown": 3,
+      "SQL": 6,
+      "YAML": 8
+    },
+    "folder_summaries": {
+      ".github": {
+        "path": ".github",
+        "purpose": "Contains templates and configurations for GitHub workflows, including pull request templates.",
+        "languages": {
+          "Markdown": 1
+        },
+        "key_modules": [
+          "pull_request_template.md"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a simple structure for managing GitHub-related documentation and templates, promoting consistency in contributions.",
+        "file_summaries": {
+          ".github/pull_request_template.md": {
+            "language": "Markdown",
+            "purpose": "Template for pull requests to outline changes and checklist items.",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          }
+        }
+      },
+      ".github/workflows": {
+        "path": ".github/workflows",
+        "purpose": "This folder is responsible for defining GitHub Actions workflows for various automation tasks related to security checks, Dockerization, linting, and release management.",
+        "languages": {
+          "YAML": 4
+        },
+        "key_modules": [
+          "check.yml",
+          "dockerize.yml",
+          "golangci-lint.yml",
+          "sentry.yml"
+        ],
+        "dependencies": [
+          "axieinfinity/workflows-samples"
+        ],
+        "architecture": "The folder follows a modular architecture pattern where each YAML file defines a specific workflow, allowing for separation of concerns and reusability of workflow components.",
+        "file_summaries": {
+          ".github/workflows/check.yml": {
+            "language": "YAML",
+            "purpose": "Defines a GitHub Actions workflow for security checks on pull requests to the develop branch.",
+            "key_types": [
+              "job",
+              "event",
+              "permission"
+            ],
+            "functions": [
+              "security_scan"
+            ],
+            "imports": [
+              "axieinfinity/workflows-samples/.github/workflows/security-basic-scan.yml"
+            ],
+            "side_effects": [
+              "Triggers a security scan on pull requests"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if the security scan is misconfigured"
+            ],
+            "complexity": "low"
+          },
+          ".github/workflows/dockerize.yml": {
+            "language": "YAML",
+            "purpose": "Defines a GitHub Actions workflow for Dockerizing a mobile wallet manager.",
+            "key_types": [
+              "workflow",
+              "job",
+              "permissions"
+            ],
+            "functions": [
+              "on",
+              "jobs",
+              "uses",
+              "with",
+              "secrets"
+            ],
+            "imports": [
+              "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml"
+            ],
+            "side_effects": [
+              "Triggers on push and pull request events",
+              "Uses secrets for secure operations"
+            ],
+            "risks": [
+              "Exposure of sensitive information if secrets are not managed properly"
+            ],
+            "complexity": "medium"
+          },
+          ".github/workflows/golangci-lint.yml": {
+            "language": "YAML",
+            "purpose": "Configuration file for GitHub Actions to run golangci-lint on specified branches.",
+            "key_types": [],
+            "functions": [],
+            "imports": [
+              "axieinfinity/workflows-samples/.github/workflows/testing-go.yml"
+            ],
+            "complexity": "low"
+          },
+          ".github/workflows/sentry.yml": {
+            "language": "YAML",
+            "purpose": "Defines a GitHub Actions workflow for Sentry release management.",
+            "key_types": [],
+            "functions": [],
+            "imports": [
+              "axieinfinity/workflows-samples/.github/workflows/sentry-release.yml@main"
+            ],
+            "complexity": "low"
+          }
+        }
+      },
+      "cmd/app": {
+        "path": "cmd/app",
+        "purpose": "This folder/module is responsible for setting up and running the main application, including an HTTP server and a metrics server.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ecosystem-go-common/echo/profiling",
+          "github.com/axieinfinity/ecosystem-go-common/validation",
+          "github.com/getsentry/sentry-go",
+          "github.com/getsentry/sentry-go/echo",
+          "github.com/labstack/echo-contrib/echoprometheus",
+          "github.com/labstack/echo/v4",
+          "github.com/labstack/echo/v4/middleware",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/middleware",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-manager/routes"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, focusing on separation of concerns by handling HTTP requests, metrics, and graceful shutdowns in a structured manner.",
+        "file_summaries": {
+          "cmd/app/main.go": {
+            "language": "Go",
+            "purpose": "This file sets up an HTTP server and a metrics server, handling graceful shutdown and logging.",
+            "key_types": [
+              "context.Context",
+              "sync.WaitGroup",
+              "echo.Echo",
+              "config.Schema"
+            ],
+            "functions": [
+              "main",
+              "startHTTPServer",
+              "startMetricsServer",
+              "shutdown"
+            ],
+            "imports": [
+              "context",
+              "fmt",
+              "os",
+              "os/signal",
+              "strings",
+              "sync",
+              "time",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/axieinfinity/ecosystem-go-common/echo/profiling",
+              "github.com/axieinfinity/ecosystem-go-common/validation",
+              "github.com/getsentry/sentry-go",
+              "github.com/getsentry/sentry-go/echo",
+              "github.com/labstack/echo-contrib/echoprometheus",
+              "github.com/labstack/echo/v4",
+              "github.com/labstack/echo/v4/middleware",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/config",
+              "github.com/axieinfinity/ronin-wallet-manager/middleware",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+              "github.com/axieinfinity/ronin-wallet-manager/routes"
+            ],
+            "side_effects": [
+              "Starts HTTP and metrics servers",
+              "Sets up signal handling for graceful shutdown",
+              "Initializes Sentry for error tracking"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information in logs",
+              "Improper error handling could lead to application crashes"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/clean_cronjob": {
+        "path": "cmd/clean_cronjob",
+        "purpose": "This folder/module is responsible for implementing a command-line application that cleans old cron jobs related to announcements.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+          "github.com/getsentry/sentry-go",
+          "github.com/rs/zerolog/log",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "architecture": "The folder follows a command-line application architecture pattern, utilizing a main entry point that initializes necessary services and dependencies to perform its task.",
+        "file_summaries": {
+          "cmd/clean_cronjob/main.go": {
+            "language": "Go",
+            "purpose": "This file implements a command-line application that cleans old cron jobs related to announcements.",
+            "key_types": [
+              "context.Context",
+              "time.Time",
+              "gorm.DB",
+              "config.Config",
+              "mRd.RedisClient",
+              "repositories.AnnouncementRepo",
+              "repositories.PreferencesRepo",
+              "tracking.Service",
+              "announcement.Service"
+            ],
+            "functions": [
+              "main",
+              "sentry.Init",
+              "postgresql.NewClient",
+              "mRd.NewRedisClient",
+              "repositories.NewAnnouncementRepo",
+              "repositories.NewPreferencesRepo",
+              "tracking.NewService",
+              "announcement.NewService",
+              "svc.CleanOldCronJobs"
+            ],
+            "imports": [
+              "context",
+              "time",
+              "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+              "github.com/getsentry/sentry-go",
+              "github.com/rs/zerolog/log",
+              "gorm.io/gorm",
+              "github.com/axieinfinity/ronin-wallet-manager/config",
+              "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+              "github.com/axieinfinity/ronin-wallet-manager/repositories"
+            ],
+            "side_effects": [
+              "Initializes Sentry for error tracking",
+              "Connects to PostgreSQL and Redis databases",
+              "Cleans old cron jobs and logs the result"
+            ],
+            "risks": [
+              "Potential failure to initialize Sentry or database connections",
+              "Error handling may not cover all edge cases"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/clean_highlight_dapps": {
+        "path": "cmd/clean_highlight_dapps",
+        "purpose": "This folder/module is responsible for cleaning expired highlights from a database and logging the process.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+          "github.com/getsentry/sentry-go",
+          "github.com/rs/zerolog/log",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, where the main entry point initializes necessary services and manages dependencies for cleaning expired highlights.",
+        "file_summaries": {
+          "cmd/clean_highlight_dapps/main.go": {
+            "language": "Go",
+            "purpose": "This file is the main entry point for a program that cleans expired highlights from a database and logs the process.",
+            "key_types": [
+              "context.Context",
+              "time.Time",
+              "gorm.DB",
+              "config.Config",
+              "repositories.QuickAccessDAppRepo",
+              "repositories.HighlightRepo",
+              "redis.RedisClient",
+              "dapp.CleanService",
+              "md.Highlight"
+            ],
+            "functions": [
+              "main",
+              "sentry.Init",
+              "postgresql.NewClient",
+              "repositories.NewQuickAccessDAppRepo",
+              "repositories.NewHighlightRepo",
+              "redis.NewRedisClient",
+              "dapp.NewCleanService",
+              "dAppSvc.CleanExpireHighlights"
+            ],
+            "imports": [
+              "context",
+              "time",
+              "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+              "github.com/getsentry/sentry-go",
+              "github.com/rs/zerolog/log",
+              "gorm.io/gorm",
+              "github.com/axieinfinity/ronin-wallet-manager/config",
+              "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+              "github.com/axieinfinity/ronin-wallet-manager/repositories"
+            ],
+            "side_effects": [
+              "Initializes Sentry for error tracking",
+              "Connects to PostgreSQL database",
+              "Connects to Redis database",
+              "Cleans expired highlights from the database"
+            ],
+            "risks": [
+              "Potential failure in Sentry initialization",
+              "Database connection failures",
+              "Error handling for cleaning highlights may not be robust"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/clean_old_special_offers": {
+        "path": "cmd/clean_old_special_offers",
+        "purpose": "Cleans old special offers from a database based on a specified time period.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+          "github.com/getsentry/sentry-go",
+          "github.com/rs/zerolog/log",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "architecture": "The folder follows a command-line application architecture, focusing on a single responsibility of cleaning old offers, utilizing a main function to orchestrate the process and manage dependencies.",
+        "file_summaries": {
+          "cmd/clean_old_special_offers/main.go": {
+            "language": "Go",
+            "purpose": "Cleans old special offers from a database based on a specified time period.",
+            "key_types": [
+              "context.Context",
+              "time.Time",
+              "gorm.DB",
+              "config.Config",
+              "repositories.AnnouncementRepo"
+            ],
+            "functions": [
+              "main",
+              "sentry.Init",
+              "postgresql.NewClient",
+              "repositories.NewAnnouncementRepo",
+              "announcementRepo.ClearSpecialOffers"
+            ],
+            "imports": [
+              "context",
+              "time",
+              "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+              "github.com/getsentry/sentry-go",
+              "github.com/rs/zerolog/log",
+              "gorm.io/gorm",
+              "github.com/axieinfinity/ronin-wallet-manager/config",
+              "github.com/axieinfinity/ronin-wallet-manager/repositories"
+            ],
+            "side_effects": [
+              "Initializes Sentry for error tracking",
+              "Connects to a PostgreSQL database",
+              "Modifies the database by clearing old special offers"
+            ],
+            "risks": [
+              "Potential database connection failure",
+              "Error handling may not cover all edge cases",
+              "Sentry initialization failure may go unnoticed"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/ip_location": {
+        "path": "cmd/ip_location",
+        "purpose": "This folder/module is responsible for initializing a Sentry client for error tracking and downloading a new IP location database using Redis.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "github.com/getsentry/sentry-go",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/location"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, focusing on separation of concerns by handling error tracking and database management in a single entry point.",
+        "file_summaries": {
+          "cmd/ip_location/main.go": {
+            "language": "Go",
+            "purpose": "This file initializes a Sentry client for error tracking and downloads a new IP location database using Redis.",
+            "key_types": [
+              "context.Context",
+              "time.Time",
+              "sentry.ClientOptions",
+              "redis.Client",
+              "location.Service"
+            ],
+            "functions": [
+              "main",
+              "sentry.Init",
+              "redis.NewRedisClient",
+              "location.NewService",
+              "locationService.DownloadNewDB"
+            ],
+            "imports": [
+              "context",
+              "time",
+              "github.com/getsentry/sentry-go",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/config",
+              "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/location"
+            ],
+            "side_effects": [
+              "Initializes Sentry for error tracking",
+              "Logs errors if Sentry initialization fails",
+              "Logs total process time",
+              "Downloads a new IP location database"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information in logs",
+              "Failure to initialize Sentry may lead to untracked errors"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/trigger_announcement": {
+        "path": "cmd/trigger_announcement",
+        "purpose": "This folder/module is responsible for triggering announcements in the application.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+          "github.com/getsentry/sentry-go",
+          "github.com/rs/zerolog/log",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, where the main entry point initializes services and manages dependencies for triggering announcements.",
+        "file_summaries": {
+          "cmd/trigger_announcement/main.go": {
+            "language": "Go",
+            "purpose": "This file is the main entry point for triggering announcements in the application.",
+            "key_types": [
+              "context.Context",
+              "error",
+              "gorm.DB",
+              "announcement.Service",
+              "tracking.Service"
+            ],
+            "functions": [
+              "main",
+              "sentry.Init",
+              "postgresql.NewClient",
+              "repositories.NewAnnouncementRepo",
+              "repositories.NewPreferencesRepo",
+              "tracking.NewService",
+              "announcement.NewService",
+              "announcementSvc.TriggerAnnouncement"
+            ],
+            "imports": [
+              "context",
+              "errors",
+              "os",
+              "time",
+              "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+              "github.com/getsentry/sentry-go",
+              "github.com/rs/zerolog/log",
+              "gorm.io/gorm",
+              "github.com/axieinfinity/ronin-wallet-manager/config",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+              "github.com/axieinfinity/ronin-wallet-manager/repositories"
+            ],
+            "side_effects": [
+              "Initializes Sentry for error tracking",
+              "Establishes a database connection",
+              "Triggers an announcement based on environment variable"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if environment variables are not managed securely",
+              "Error handling may not cover all edge cases"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "config": {
+        "path": "config",
+        "purpose": "This folder/module is responsible for defining and managing application configuration settings.",
+        "languages": {
+          "Go": 3,
+          "YAML": 1
+        },
+        "key_modules": [
+          "config/config.go",
+          "config/config.yml",
+          "config/func_print.go",
+          "config/func_print_test.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+          "github.com/axieinfinity/ecosystem-go-common/sso",
+          "github.com/inhies/go-bytesize",
+          "github.com/mitchellh/mapstructure",
+          "github.com/rs/zerolog",
+          "github.com/spf13/viper",
+          "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+          "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, organizing configuration-related files and separating concerns for better maintainability and testing.",
+        "file_summaries": {
+          "config/config.go": {
+            "language": "Go",
+            "purpose": "This file defines configuration structures and initializes application settings using viper for a service.",
+            "key_types": [
+              "Schema",
+              "Server",
+              "Sentry",
+              "TLSConfig",
+              "Logging",
+              "Profiling"
+            ],
+            "functions": [
+              "StringToByteSizeHookFunc",
+              "Init"
+            ],
+            "imports": [
+              "fmt",
+              "reflect",
+              "runtime",
+              "strconv",
+              "strings",
+              "sync",
+              "time",
+              "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+              "github.com/axieinfinity/ecosystem-go-common/sso",
+              "github.com/inhies/go-bytesize",
+              "github.com/mitchellh/mapstructure",
+              "github.com/rs/zerolog",
+              "github.com/spf13/viper",
+              "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+              "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
+            ],
+            "side_effects": [
+              "Panic if the configuration file cannot be read",
+              "Sets global logging level based on configuration"
+            ],
+            "risks": [
+              "Potential exposure of sensitive configuration data if not handled securely"
+            ],
+            "complexity": "medium"
+          },
+          "config/config.yml": {
+            "language": "YAML",
+            "purpose": "Configuration file for a mobile wallet manager application, defining various settings for services, servers, authentication, logging, and other features.",
+            "key_types": [
+              "profiler",
+              "server",
+              "profiling",
+              "auth_server",
+              "sso_server",
+              "sentry",
+              "hmac_internal",
+              "logging",
+              "redis",
+              "device_service",
+              "postgres",
+              "api_version",
+              "ref_code",
+              "moonpay",
+              "announcement_config",
+              "ip_location_config",
+              "binance_config",
+              "tracking_config",
+              "external_auth_config",
+              "hide_all_spotlights_config",
+              "enable_quest_coming_soon_config",
+              "disable_nft_portfolio_config",
+              "enable_moonpay_config",
+              "enable_transak_config",
+              "hidden_tab_config",
+              "blacklist_site_config"
+            ],
+            "functions": [],
+            "imports": [],
+            "risks": [
+              "Exposure of sensitive information due to redacted keys and URLs.",
+              "Potential misconfiguration leading to security vulnerabilities."
+            ],
+            "complexity": "medium"
+          },
+          "config/func_print.go": {
+            "language": "Go",
+            "purpose": "This file contains functions to hide sensitive data in configuration structures.",
+            "key_types": [
+              "Schema"
+            ],
+            "functions": [
+              "isSecretField",
+              "hideSecret",
+              "hideSensitiveDataInSlice",
+              "hideSensitiveDataInMap",
+              "hideSensitiveDataInStruct",
+              "printConfigSafety"
+            ],
+            "imports": [
+              "reflect",
+              "strings",
+              "github.com/mitchellh/mapstructure",
+              "github.com/rs/zerolog/log",
+              "github.com/spf13/viper"
+            ],
+            "side_effects": [
+              "Modifies the input data to hide sensitive information."
+            ],
+            "risks": [
+              "Potential exposure of sensitive data if the hiding functions are not correctly implemented."
+            ],
+            "complexity": "medium"
+          },
+          "config/func_print_test.go": {
+            "language": "Go",
+            "purpose": "Unit tests for functions that hide sensitive data in maps and slices.",
+            "key_types": [
+              "struct",
+              "map",
+              "slice"
+            ],
+            "functions": [
+              "TestHideSecretInMap",
+              "TestHideSecretInSlice"
+            ],
+            "imports": [
+              "fmt",
+              "testing"
+            ],
+            "side_effects": [
+              "Prints test data to the console"
+            ],
+            "risks": [
+              "Potential exposure of sensitive data if not properly handled"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "database/redis": {
+        "path": "database/redis",
+        "purpose": "This folder/module is responsible for creating and managing a Redis client connection with optional TLS configuration.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "redis.go"
+        ],
+        "dependencies": [
+          "github.com/prometheus/client_golang/prometheus",
+          "github.com/redis/go-redis/extra/redisprometheus/v9",
+          "github.com/redis/go-redis/v9",
+          "github.com/rs/zerolog/log"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating Redis client functionality and configuration management within a single Go file.",
+        "file_summaries": {
+          "database/redis/redis.go": {
+            "language": "Go",
+            "purpose": "This file provides functionality to create and manage a Redis client connection with optional TLS configuration.",
+            "key_types": [
+              "Redis",
+              "Cache"
+            ],
+            "functions": [
+              "NewRedisClient"
+            ],
+            "imports": [
+              "context",
+              "crypto/tls",
+              "crypto/x509",
+              "fmt",
+              "os",
+              "time",
+              "github.com/prometheus/client_golang/prometheus",
+              "github.com/redis/go-redis/extra/redisprometheus/v9",
+              "github.com/redis/go-redis/v9",
+              "github.com/rs/zerolog/log"
+            ],
+            "side_effects": [
+              "Logs connection attempts and errors to Redis server."
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if the password is logged or mishandled.",
+              "Insecure TLS configuration if 'InsecureSkipVerify' is set to true."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "docs": {
+        "path": "docs",
+        "purpose": "This folder is responsible for storing documentation and configuration files related to the project.",
+        "languages": {
+          "JSON": 1
+        },
+        "key_modules": [
+          "http-client.env.json"
+        ],
+        "dependencies": [],
+        "architecture": "The folder contains configuration files in a simple structure, primarily focusing on settings for the HTTP client.",
+        "file_summaries": {
+          "docs/http-client.env.json": {
+            "language": "JSON",
+            "purpose": "configuration file for HTTP client settings",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          }
+        }
+      },
+      "handlers": {
+        "path": "handlers",
+        "purpose": "Responsible for handling various operations related to accounts, announcements, devices, DApps, external authentication, and more within a web service.",
+        "languages": {
+          "Go": 15
+        },
+        "key_modules": [
+          "account.go",
+          "announcement.go",
+          "binance.go",
+          "blacklist.go",
+          "common.go",
+          "dapp.go",
+          "device.go",
+          "external_auth.go",
+          "locationhandler.go",
+          "moonpay.go",
+          "network.go",
+          "releasecandidate.go",
+          "trusted_domain.go"
+        ],
+        "dependencies": [
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/releasecandidate",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/trusteddomain",
+          "gorm.io/gorm",
+          "github.com/redis/go-redis/v9",
+          "github.com/rs/zerolog/log"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, where each file corresponds to a specific handler for different functionalities, promoting separation of concerns and maintainability.",
+        "file_summaries": {
+          "handlers/account.go": {
+            "language": "Go",
+            "purpose": "Handles account-related operations such as retrieving account info, linking accounts, refreshing tokens, and revoking tokens.",
+            "key_types": [
+              "AccountHandler",
+              "accountHandler",
+              "sso.Config",
+              "sso.Client",
+              "httpclient.Athena",
+              "md.GetSMUserInfoRequest",
+              "md.LinkAccountRequest",
+              "md.GetSMUserInfoResponse",
+              "md.OkResponse"
+            ],
+            "functions": [
+              "GetAccountInfo",
+              "LinkAccount",
+              "RefreshToken",
+              "RevokeToken",
+              "NewAccountHandler"
+            ],
+            "imports": [
+              "net/http",
+              "strconv",
+              "strings",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/axieinfinity/ecosystem-go-common/sso",
+              "github.com/labstack/echo/v4",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+              "github.com/axieinfinity/ronin-wallet-manager/models"
+            ],
+            "side_effects": [
+              "Modifies HTTP response based on account operations",
+              "Logs debug information"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information in logs",
+              "Improper error handling could lead to information leakage"
+            ],
+            "complexity": "medium"
+          },
+          "handlers/announcement.go": {
+            "language": "Go",
+            "purpose": "Handles announcements and preferences for a service, providing internal and public API endpoints.",
+            "key_types": [
+              "AnnouncementHandler",
+              "announcementHandler",
+              "md.ScheduleNewAnnouncementRequest",
+              "md.ScheduleNewSpecialOfferRequest",
+              "md.GetAnnouncementByID",
+              "md.GetAnnouncementsListRequest",
+              "md.InternalGetWalletPreferencesRequest",
+              "md.InternalGetWalletPreferenceResponse",
+              "md.PublicAnnouncementListItem",
+              "md.GetCountNewAnnouncementsRequest",
+              "md.GetCountNewAnnouncementsResponse"
+            ],
+            "functions": [
+              "InternalScheduleNewAnnouncement",
+              "InternalScheduleNewSpecialOffer",
+              "InternalGetAnnouncementByID",
+              "InternalGetAnnouncementsList",
+              "InternalMarkPublished",
+              "InternalManualCleanPublishedJobs",
+              "InternalDeleteAnnouncement",
+              "InternalGetWalletPreferences",
+              "PublicGetAnnouncementByID",
+              "PublicGetAnnouncementsList",
+              "PublicCountNewAnnouncements",
+              "PrivateGetPreferences",
+              "PrivateUpdatePreferences",
+              "PrivateGetDevicePreference",
+              "PrivateUpdateDevicePreference",
+              "NewAnnouncementHandler"
+            ],
+            "imports": [
+              "errors",
+              "net/http",
+              "slices",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/labstack/echo/v4",
+              "gorm.io/gorm",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/preference"
+            ],
+            "complexity": "medium"
+          },
+          "handlers/binance.go": {
+            "language": "Go",
+            "purpose": "Handles Binance signing requests and responses using Echo framework.",
+            "key_types": [
+              "BinanceHandler",
+              "binanceHandler",
+              "binance.Service",
+              "md.BinanceSignRequest",
+              "md.BinanceSignResponse"
+            ],
+            "functions": [
+              "Sign",
+              "NewBinanceHandler"
+            ],
+            "imports": [
+              "net/http",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/binance"
+            ],
+            "complexity": "medium"
+          },
+          "handlers/blacklist.go": {
+            "language": "Go",
+            "purpose": "Handles requests related to blacklist sites and returns them in JSON format.",
+            "key_types": [
+              "BlacklistHandler",
+              "blacklistHandler",
+              "blacklist.Service",
+              "md.ListResponse"
+            ],
+            "functions": [
+              "NewBlacklistHandler",
+              "GetBlacklistSites"
+            ],
+            "imports": [
+              "net/http",
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist"
+            ],
+            "side_effects": [
+              "Interacts with external services to retrieve blacklist data",
+              "Returns JSON response to HTTP requests"
+            ],
+            "risks": [
+              "Potential exposure of sensitive blacklist data if not properly secured"
+            ],
+            "complexity": "medium"
+          },
+          "handlers/common.go": {
+            "language": "Go",
+            "purpose": "This file defines a common handler for managing configurations and code versions in a web application.",
+            "key_types": [
+              "CommonHandler",
+              "commonHandler",
+              "repositories.CommonRepo",
+              "repositories.CodeVersionRepo",
+              "redis.Client",
+              "blacklist.Service",
+              "xauth.Config",
+              "models.EnvironmentConfig",
+              "models.Common",
+              "models.UpdateCodeVersionRequest"
+            ],
+            "functions": [
+              "GetCodePushVersion",
+              "GetCommonConfig",
+              "GetEncodedCommonConfig",
+              "RefreshKnownContracts",
+              "UpdateCommonConfig",
+              "UpdateCodeVersion",
+              "initCacheCodeVersion",
+              "initCacheCommon",
+              "fireCacheChangedEvent",
+              "refreshCache",
+              "ExternalAuthConfig",
+              "NewCommonHandler"
+            ],
+            "imports": [
+              "context",
+              "encoding/json",
+              "errors",
+              "fmt",
+              "net/http",
+              "strings",
+              "sync",
+              "github.com/labstack/echo/v4",
+              "github.com/redis/go-redis/v9",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
+              "github.com/axieinfinity/ronin-wallet-manager/repositories"
+            ],
+            "side_effects": [
+              "Modifies cache for common configurations and code versions",
+              "Publishes events to Redis channels"
+            ],
+            "risks": [
+              "Potential exposure of sensitive configuration data if not properly secured",
+              "Race conditions due to concurrent access to shared resources"
+            ],
+            "complexity": "medium"
+          },
+          "handlers/dapp.go": {
+            "language": "Go",
+            "purpose": "This file defines a handler for managing decentralized application (DApp) operations, including saving, updating, retrieving, and deleting DApps and highlights.",
+            "key_types": [
+              "DAppHandler",
+              "dAppHandler",
+              "SaveQuickAccessDAppRequest",
+              "UpdateQuickAccessDAppRequest",
+              "Highlight",
+              "ListResponse"
+            ],
+            "functions": [
+              "InternalSave",
+              "InternalSaveBatch",
+              "InternalUpdate",
+              "InternalGetByID",
+              "InternalDeleteByID",
+              "PublicGetList",
+              "PublicGetHighlight"
+            ],
+            "imports": [
+              "errors",
+              "net/http",
+              "strings",
+              "github.com/labstack/echo/v4",
+              "gorm.io/gorm",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+            ],
+            "side_effects": [
+              "Interacts with external services for saving, updating, and retrieving DApps and highlights.",
+              "Modifies the state of the application by saving or deleting DApps."
+            ],
+            "risks": [
+              "Potential exposure of sensitive data if error handling is not properly managed.",
+              "Possible denial of service if the handler is overwhelmed with requests."
+            ],
+            "complexity": "medium"
+          },
+          "handlers/default.go": {
+            "language": "Go",
+            "purpose": "This file defines a handler function to retrieve agent information from the context.",
+            "key_types": [
+              "echo.Context",
+              "models.AgentInfo"
+            ],
+            "functions": [
+              "getAgentInfo"
+            ],
+            "imports": [
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ronin-wallet-manager/middleware",
+              "github.com/axieinfinity/ronin-wallet-manager/models"
+            ],
+            "complexity": "low"
+          },
+          "handlers/device.go": {
+            "language": "Go",
+            "purpose": "This file defines a device handler for managing device-related operations such as resetting devices, registering devices, updating push tokens, syncing addresses, and importing wallets.",
+            "key_types": [
+              "DeviceHandler",
+              "deviceHandler",
+              "md.GetDeviceByIDRequest",
+              "md.PostDeviceRegistrationRequest",
+              "md.PutDeviceAddressesReq",
+              "md.PostImportWalletReq"
+            ],
+            "functions": [
+              "ResetDeviceByID",
+              "Registration",
+              "UpdatePushToken",
+              "SyncAddresses",
+              "ImportWallet",
+              "NewDeviceHandler"
+            ],
+            "imports": [
+              "context",
+              "encoding/json",
+              "net/http",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/labstack/echo/v4",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/preference"
+            ],
+            "side_effects": [
+              "Logs information about device resets",
+              "Asynchronously initializes device registration in a goroutine"
+            ],
+            "risks": [
+              "Potential for race conditions due to asynchronous operations",
+              "Error handling may not cover all edge cases"
+            ],
+            "complexity": "medium"
+          },
+          "handlers/external_auth.go": {
+            "language": "Go",
+            "purpose": "Handles external authentication processes including exchanging auth codes and revoking tokens.",
+            "key_types": [
+              "ExternalAuthHandler",
+              "externalAuthHandler",
+              "xauth.Service"
+            ],
+            "functions": [
+              "ExchangeAuthCode",
+              "RevokeToken",
+              "NewTwitterHandler"
+            ],
+            "imports": [
+              "net/http",
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
+            ],
+            "side_effects": [
+              "Sends HTTP responses based on authentication results."
+            ],
+            "risks": [
+              "Potential exposure of sensitive authentication data if not handled properly."
+            ],
+            "complexity": "medium"
+          },
+          "handlers/locationhandler.go": {
+            "language": "Go",
+            "purpose": "Handles location-related requests and responses for a web service.",
+            "key_types": [
+              "LocationHandler",
+              "locationHandler",
+              "models.GetLocationRequest"
+            ],
+            "functions": [
+              "PublicGetLocation",
+              "InternalGetLocation",
+              "InternalDownloadDB",
+              "lookupLocation",
+              "NewLocationHandler"
+            ],
+            "imports": [
+              "errors",
+              "net/http",
+              "github.com/labstack/echo/v4",
+              "github.com/rs/zerolog/log",
+              "gorm.io/gorm",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/location"
+            ],
+            "side_effects": [
+              "Logs debug information when looking up location",
+              "Modifies the response context based on the location lookup results"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information through error messages",
+              "Improper handling of IP addresses could lead to security vulnerabilities"
+            ],
+            "complexity": "medium"
+          },
+          "handlers/moonpay.go": {
+            "language": "Go",
+            "purpose": "Handles Moonpay URL signing requests",
+            "key_types": [
+              "MoonpayHandler",
+              "moonpayHandler",
+              "models.MoonpaySigningRequest",
+              "models.MoonpaySigningResponse"
+            ],
+            "functions": [
+              "SignURL",
+              "NewMoonpayHandler"
+            ],
+            "imports": [
+              "net/http",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay"
+            ],
+            "risks": [
+              "Potential for improper error handling",
+              "Dependency on external services for signing URLs"
+            ],
+            "complexity": "medium"
+          },
+          "handlers/network.go": {
+            "language": "Go",
+            "purpose": "This file defines a network handler for managing network-related operations in a web application.",
+            "key_types": [
+              "NetworkHandler",
+              "networkHandler"
+            ],
+            "functions": [
+              "GetDApps",
+              "GetNetworkConfig",
+              "getDAppsPublic",
+              "getContractsPublic",
+              "GetContracts",
+              "GetAllConfigs"
+            ],
+            "imports": [
+              "context",
+              "encoding/json",
+              "fmt",
+              "net/http",
+              "slices",
+              "sort",
+              "sync",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/hashicorp/go-version",
+              "github.com/labstack/echo/v4",
+              "github.com/mitchellh/mapstructure",
+              "github.com/redis/go-redis/v9",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+              "github.com/axieinfinity/ronin-wallet-manager/repositories"
+            ],
+            "complexity": "medium"
+          },
+          "handlers/releasecandidate.go": {
+            "language": "Go",
+            "purpose": "Handles release candidate features and configurations for a web service.",
+            "key_types": [
+              "ReleaseCandidateHandler",
+              "releaseCandidateHandler",
+              "models.CheckAllowFeatureRequest",
+              "models.PostFeatureConfigRequest",
+              "models.PostWhitelistFeaturesRequest",
+              "models.PostSetConfigForDeviceRequest",
+              "models.GetCountWhitelistDevices",
+              "models.OkResponse"
+            ],
+            "functions": [
+              "CheckAllowFeature",
+              "SetFeatureConfig",
+              "SetWhitelistFeatures",
+              "SetConfigForDevice",
+              "CountWhitelistDevices",
+              "NewReleaseCandidateHandler"
+            ],
+            "imports": [
+              "fmt",
+              "net/http",
+              "strconv",
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/releasecandidate"
+            ],
+            "complexity": "medium"
+          },
+          "handlers/trusted_domain.go": {
+            "language": "Go",
+            "purpose": "Handles trusted domain operations including retrieval, saving, and deletion of trusted domains.",
+            "key_types": [
+              "TrustedDomainHandler",
+              "trustedDomainHandler",
+              "md.TrustedDomain",
+              "md.GetTDMByDomainRequest",
+              "md.SaveTrustedDomainBatchRequest",
+              "md.ListResponse"
+            ],
+            "functions": [
+              "PublicGetByDomain",
+              "PublicGetAll",
+              "InternalSave",
+              "InternalSaveBatch",
+              "InternalGetByDomain",
+              "InternalDeleteByDomain",
+              "InternalGetList",
+              "validateAndNormalizeDomain",
+              "normalizeDomain"
+            ],
+            "imports": [
+              "errors",
+              "net/http",
+              "net/url",
+              "regexp",
+              "strings",
+              "github.com/labstack/echo/v4",
+              "gorm.io/gorm",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/trusteddomain"
+            ],
+            "side_effects": [
+              "Modifies the state of trusted domains in the database.",
+              "Interacts with external services for blacklist checks."
+            ],
+            "risks": [
+              "Potential exposure of sensitive domain information.",
+              "Improper validation may lead to security vulnerabilities."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "httpclient": {
+        "path": "httpclient",
+        "purpose": "This folder/module is responsible for implementing various HTTP clients for interacting with different APIs and managing device-related operations.",
+        "languages": {
+          "Go": 5
+        },
+        "key_modules": [
+          "athena.go",
+          "device.go",
+          "internal_client.go",
+          "mercury.go",
+          "tracking.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, where each file encapsulates a specific client implementation with defined interfaces and functions for handling HTTP requests and responses.",
+        "file_summaries": {
+          "httpclient/athena.go": {
+            "language": "Go",
+            "purpose": "This file implements an HTTP client for linking accounts using the Athena API.",
+            "key_types": [
+              "AthenaClientCfg",
+              "Athena",
+              "athenaClient"
+            ],
+            "functions": [
+              "NewAthenaClient",
+              "LinkAccount"
+            ],
+            "imports": [
+              "bytes",
+              "context",
+              "encoding/json",
+              "fmt",
+              "net/http",
+              "github.com/axieinfinity/ronin-wallet-manager/models"
+            ],
+            "side_effects": [
+              "Makes HTTP requests to an external API"
+            ],
+            "risks": [
+              "Potential exposure of sensitive data in HTTP requests",
+              "Improper error handling may lead to information leakage"
+            ],
+            "complexity": "medium"
+          },
+          "httpclient/device.go": {
+            "language": "Go",
+            "purpose": "This file defines a DeviceClient interface and its implementation for managing device-related operations via HTTP requests.",
+            "key_types": [
+              "DeviceClient",
+              "deviceClient",
+              "InternalClient",
+              "InternalClientConfig"
+            ],
+            "functions": [
+              "GetDeviceByID",
+              "ResetDeviceByID",
+              "MigrateNotificationSettings",
+              "Registration",
+              "UpdatePushToken",
+              "CreateDevice",
+              "SyncDeviceAddresses",
+              "NewDeviceClient"
+            ],
+            "imports": [
+              "bytes",
+              "context",
+              "encoding/json",
+              "fmt",
+              "net/http",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/models"
+            ],
+            "side_effects": [
+              "Logs warnings for not registered devices during address synchronization."
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if SecretKey is not handled securely."
+            ],
+            "complexity": "medium"
+          },
+          "httpclient/internal_client.go": {
+            "language": "Go",
+            "purpose": "This file implements an internal HTTP client with HMAC authentication for making requests to a specified URL.",
+            "key_types": [
+              "InternalClientConfig",
+              "InternalClient"
+            ],
+            "functions": [
+              "SetUserAgent",
+              "doRequestWithHMacAuth",
+              "doRequest",
+              "doRequestWithHMacAuthReturnRaw"
+            ],
+            "imports": [
+              "encoding/json",
+              "fmt",
+              "io",
+              "net/http",
+              "strings",
+              "time",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
+            ],
+            "side_effects": [
+              "Logs request details and errors using zerolog."
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if the SecretKey is not properly managed."
+            ],
+            "complexity": "medium"
+          },
+          "httpclient/mercury.go": {
+            "language": "Go",
+            "purpose": "This file defines a MercuryClient interface and its implementation for sending notifications via HTTP.",
+            "key_types": [
+              "MercuryClient",
+              "mercuryClient",
+              "InternalClient",
+              "InternalClientConfig",
+              "PostPushNotificationRequest"
+            ],
+            "functions": [
+              "SendNotification",
+              "NewMercuryClient"
+            ],
+            "imports": [
+              "bytes",
+              "context",
+              "encoding/json",
+              "fmt",
+              "net/http",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/models"
+            ],
+            "side_effects": [
+              "Logs errors when notification sending fails"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information in logs if errors occur"
+            ],
+            "complexity": "medium"
+          },
+          "httpclient/tracking.go": {
+            "language": "Go",
+            "purpose": "Provides a client for tracking requests asynchronously or synchronously.",
+            "key_types": [
+              "TrackingClient",
+              "trackingClient",
+              "InternalClient",
+              "InternalClientConfig"
+            ],
+            "functions": [
+              "NewTracingClient",
+              "Track",
+              "TrackAsync"
+            ],
+            "imports": [
+              "bytes",
+              "context",
+              "encoding/base64",
+              "encoding/json",
+              "fmt",
+              "net/http"
+            ],
+            "side_effects": [
+              "Asynchronous tracking may lead to race conditions if not handled properly."
+            ],
+            "risks": [
+              "Potential exposure of API key in logs or errors if not handled securely."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "middleware": {
+        "path": "middleware",
+        "purpose": "This folder/module is responsible for implementing various middleware functions for an Echo web application, including error handling, authentication, request tracking, and user agent parsing.",
+        "languages": {
+          "Go": 7
+        },
+        "key_modules": [
+          "custom_requests_total_prometheus.go",
+          "error_handler.go",
+          "internal_auth.go",
+          "network_api_v1_checking.go",
+          "tracking_internal_api.go",
+          "user_agent_parsing.go",
+          "wallet_auth.go"
+        ],
+        "dependencies": [
+          "github.com/labstack/echo/v4",
+          "github.com/labstack/echo-contrib/echoprometheus",
+          "github.com/prometheus/client_golang/prometheus",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/axieinfinity/ecosystem-go-common/validation",
+          "github.com/golang-jwt/jwt",
+          "github.com/jackc/pgconn",
+          "golang.org/x/oauth2",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, where each middleware is encapsulated in its own file, promoting separation of concerns and reusability.",
+        "file_summaries": {
+          "middleware/custom_requests_total_prometheus.go": {
+            "language": "Go",
+            "purpose": "This file defines a middleware for tracking custom HTTP requests using Prometheus metrics.",
+            "key_types": [
+              "echo.MiddlewareFunc",
+              "prometheus.CounterVec",
+              "prometheus.CounterOpts",
+              "models.AgentInfo"
+            ],
+            "functions": [
+              "NewCustomRequestsTotalPrometheus"
+            ],
+            "imports": [
+              "github.com/labstack/echo-contrib/echoprometheus",
+              "github.com/labstack/echo/v4",
+              "github.com/prometheus/client_golang/prometheus",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/models"
+            ],
+            "side_effects": [
+              "Registers a new Prometheus counter metric",
+              "Logs fatal errors if metric registration fails"
+            ],
+            "risks": [
+              "Potential logging of sensitive user agent information"
+            ],
+            "complexity": "medium"
+          },
+          "middleware/error_handler.go": {
+            "language": "Go",
+            "purpose": "Handles errors globally in an Echo web application, formatting and logging them appropriately.",
+            "key_types": [
+              "echo.Context",
+              "mErrs.Error",
+              "jwt.ValidationError",
+              "pgconn.PgError",
+              "validation.Errors"
+            ],
+            "functions": [
+              "GlobalErrorHandler",
+              "Init"
+            ],
+            "imports": [
+              "context",
+              "errors",
+              "fmt",
+              "net/http",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/axieinfinity/ecosystem-go-common/validation",
+              "github.com/golang-jwt/jwt",
+              "github.com/jackc/pgconn",
+              "github.com/labstack/echo/v4",
+              "github.com/labstack/echo/v4/middleware",
+              "golang.org/x/oauth2"
+            ],
+            "side_effects": [
+              "Logs error details to the context's logger",
+              "Sends JSON response with error details to the client"
+            ],
+            "risks": [
+              "Potential exposure of sensitive error details in logs",
+              "Improper handling of JWT errors may lead to unauthorized access"
+            ],
+            "complexity": "medium"
+          },
+          "middleware/internal_auth.go": {
+            "language": "Go",
+            "purpose": "This file implements HMAC authentication middleware for validating HMAC signatures in HTTP requests.",
+            "key_types": [
+              "hmac.Config",
+              "echo.Context",
+              "echo.MiddlewareFunc",
+              "error"
+            ],
+            "functions": [
+              "HmacAuthentication"
+            ],
+            "imports": [
+              "fmt",
+              "net/http",
+              "regexp",
+              "strings",
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
+            ],
+            "side_effects": [
+              "Modifies HTTP request handling by adding HMAC authentication."
+            ],
+            "risks": [
+              "Potential for unauthorized access if HMAC validation fails."
+            ],
+            "complexity": "medium"
+          },
+          "middleware/network_api_v1_checking.go": {
+            "language": "Go",
+            "purpose": "Defines a middleware function to check if the API version is v1 and sets a context key accordingly.",
+            "key_types": [
+              "string",
+              "echo.Context",
+              "echo.MiddlewareFunc",
+              "echo.HandlerFunc"
+            ],
+            "functions": [
+              "NetworkAPIV1CheckingMiddleware"
+            ],
+            "imports": [
+              "strings",
+              "github.com/labstack/echo/v4"
+            ],
+            "side_effects": [
+              "Sets a context key in the echo.Context"
+            ],
+            "complexity": "medium"
+          },
+          "middleware/tracking_internal_api.go": {
+            "language": "Go",
+            "purpose": "Defines a middleware for tracking internal API requests and logging tracking events.",
+            "key_types": [
+              "echo.MiddlewareFunc",
+              "tracking.Service",
+              "tracking.TrackingRequest",
+              "tracking.Event"
+            ],
+            "functions": [
+              "NewTrackingInternalAPIMiddleware"
+            ],
+            "imports": [
+              "context",
+              "time",
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking"
+            ],
+            "side_effects": [
+              "Asynchronously tracks events using the tracking service."
+            ],
+            "complexity": "medium"
+          },
+          "middleware/user_agent_parsing.go": {
+            "language": "Go",
+            "purpose": "This file provides middleware for parsing user agent strings in a web application.",
+            "key_types": [
+              "echo.MiddlewareFunc",
+              "models.AgentInfo"
+            ],
+            "functions": [
+              "getAgentInfo",
+              "NewUserAgentParsing"
+            ],
+            "imports": [
+              "strings",
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ronin-wallet-manager/models"
+            ],
+            "side_effects": [
+              "Modifies the context with parsed user agent information"
+            ],
+            "complexity": "medium"
+          },
+          "middleware/wallet_auth.go": {
+            "language": "Go",
+            "purpose": "Middleware for verifying wallet signatures in HTTP requests.",
+            "key_types": [
+              "hmac.Config",
+              "echo.Context",
+              "error"
+            ],
+            "functions": [
+              "VerifyWalletSignature",
+              "newClockSkewValidator"
+            ],
+            "imports": [
+              "fmt",
+              "math",
+              "net/http",
+              "sort",
+              "strings",
+              "time",
+              "github.com/labstack/echo/v4",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+            ],
+            "side_effects": [
+              "Logs request information"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information through logs"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "migrations": {
+        "path": "migrations",
+        "purpose": "Responsible for managing database schema changes and data migrations for a blockchain application.",
+        "languages": {
+          "SQL": 6
+        },
+        "key_modules": [
+          "20230407150000_init.sql",
+          "20231005150000_add_announcement.sql",
+          "20240111120000_alter_preferences.sql",
+          "20240206110000_add_trusted_domain.sql",
+          "20240410140000_add_dapp_highlight.sql",
+          "20240808130000_alter_preferences.sql"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a versioned migration pattern, where each migration file is timestamped to ensure sequential execution and maintain database integrity.",
+        "file_summaries": {
+          "migrations/20230407150000_init.sql": {
+            "language": "SQL",
+            "purpose": "Database migration script to create and initialize tables and types for a blockchain application.",
+            "key_types": [
+              "networks",
+              "contracts",
+              "d_apps",
+              "commons",
+              "code_versions",
+              "contract_type",
+              "dapp_url"
+            ],
+            "functions": [
+              "CREATE EXTENSION",
+              "CREATE TABLE",
+              "DROP TYPE",
+              "CREATE TYPE",
+              "INSERT INTO"
+            ],
+            "imports": [],
+            "side_effects": [
+              "Creates database tables and types",
+              "Inserts initial data into tables"
+            ],
+            "risks": [
+              "Potential SQL injection if user input is not sanitized",
+              "Data integrity risks if foreign key constraints are not enforced"
+            ],
+            "complexity": "medium"
+          },
+          "migrations/20231005150000_add_announcement.sql": {
+            "language": "SQL",
+            "purpose": "Defines database schema for announcements, special offers, and user preferences.",
+            "key_types": [
+              "UUID",
+              "VARCHAR",
+              "TEXT",
+              "JSONB",
+              "TIMESTAMP"
+            ],
+            "functions": [
+              "CREATE TABLE",
+              "CREATE INDEX",
+              "DROP TABLE"
+            ],
+            "imports": [],
+            "side_effects": [
+              "Creates tables and indexes in the database",
+              "Drops tables if they exist"
+            ],
+            "risks": [
+              "Potential for SQL injection if user input is not sanitized",
+              "Data loss if DROP TABLE is executed unintentionally"
+            ],
+            "complexity": "medium"
+          },
+          "migrations/20240111120000_alter_preferences.sql": {
+            "language": "SQL",
+            "purpose": "This file contains migration scripts to alter the preferences table in a database.",
+            "key_types": [
+              "TABLE",
+              "COLUMN",
+              "INDEX"
+            ],
+            "functions": [
+              "ALTER TABLE",
+              "CREATE INDEX",
+              "DELETE"
+            ],
+            "imports": [],
+            "side_effects": [
+              "Modifies the database schema",
+              "Changes default values",
+              "Creates and drops constraints"
+            ],
+            "risks": [
+              "Potential data loss during deletion",
+              "Integrity issues if constraints are not properly managed"
+            ],
+            "complexity": "medium"
+          },
+          "migrations/20240206110000_add_trusted_domain.sql": {
+            "language": "SQL",
+            "purpose": "This file contains database migration scripts to create and drop tables for trusted domains and quick access D apps.",
+            "key_types": [
+              "trusted_domains",
+              "quick_access_d_apps"
+            ],
+            "functions": [
+              "CREATE TABLE",
+              "DROP TABLE",
+              "CREATE INDEX"
+            ],
+            "imports": [],
+            "side_effects": [
+              "Creates tables in the database",
+              "Creates an index on a table"
+            ],
+            "complexity": "low"
+          },
+          "migrations/20240410140000_add_dapp_highlight.sql": {
+            "language": "SQL",
+            "purpose": "This file contains database migration scripts to modify the schema of a PostgreSQL database.",
+            "key_types": [
+              "TABLE",
+              "INDEX",
+              "COLLATION",
+              "EXTENSION"
+            ],
+            "functions": [
+              "CREATE EXTENSION",
+              "CREATE COLLATION",
+              "ALTER TABLE",
+              "CREATE INDEX",
+              "CREATE TABLE"
+            ],
+            "imports": [],
+            "side_effects": [
+              "Modifies the database schema",
+              "Creates new tables and indexes"
+            ],
+            "risks": [
+              "Potential data loss if not properly managed during migration"
+            ],
+            "complexity": "medium"
+          },
+          "migrations/20240808130000_alter_preferences.sql": {
+            "language": "SQL",
+            "purpose": "This file contains migration scripts to create and drop an index on the preferences table.",
+            "key_types": [
+              "INDEX",
+              "TABLE"
+            ],
+            "functions": [
+              "CREATE INDEX",
+              "DROP INDEX"
+            ],
+            "imports": [],
+            "side_effects": [
+              "Modifies the database schema by adding or removing an index."
+            ],
+            "risks": [
+              "Potential performance impact if the index is not used effectively."
+            ],
+            "complexity": "low"
+          }
+        }
+      },
+      "models": {
+        "path": "models",
+        "purpose": "Defines data structures and methods for various functionalities related to user accounts, announcements, devices, contracts, notifications, and more within the application.",
+        "languages": {
+          "Go": 30
+        },
+        "key_modules": [
+          "account.go",
+          "announcement.go",
+          "app.go",
+          "contract.go",
+          "notification.go",
+          "device.go",
+          "ref_code.go"
+        ],
+        "dependencies": [
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/mitchellh/mapstructure",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, where each file encapsulates related data structures and methods, promoting separation of concerns and maintainability.",
+        "file_summaries": {
+          "models/account.go": {
+            "language": "Go",
+            "purpose": "Defines request and response structures for user authentication and account linking.",
+            "key_types": [
+              "GetSMUserInfoRequest",
+              "GetSMUserInfoResponse",
+              "LinkAccountRequest",
+              "RefreshTokenRequest",
+              "RevokeTokenRequest"
+            ],
+            "functions": [
+              "ToAuthOptions"
+            ],
+            "imports": [],
+            "complexity": "medium"
+          },
+          "models/announcement.go": {
+            "language": "Go",
+            "purpose": "Defines models and methods for handling announcements and related notifications.",
+            "key_types": [
+              "Buttons",
+              "Announcement",
+              "PublicAnnouncementListItem",
+              "PublicAnnouncement",
+              "ScheduleNewAnnouncementRequest",
+              "ScheduleNewSpecialOfferRequest",
+              "SpecialOffer"
+            ],
+            "functions": [
+              "Scan",
+              "Value",
+              "createNotificationData",
+              "ToPushNotificationRequest",
+              "ToTargetPushNotificationRequest",
+              "ToPublicListItem",
+              "ToPublicFullContent",
+              "ToAnnouncement",
+              "ToAnnouncement (ScheduleNewSpecialOfferRequest)"
+            ],
+            "imports": [
+              "database/sql/driver",
+              "encoding/json",
+              "errors",
+              "mime/multipart",
+              "strconv",
+              "strings",
+              "time",
+              "github.com/ethereum/go-ethereum/common",
+              "github.com/mitchellh/mapstructure",
+              "github.com/rs/zerolog/log"
+            ],
+            "side_effects": [
+              "Logs an error if buttons_json_str is not a valid JSON string."
+            ],
+            "complexity": "medium"
+          },
+          "models/app.go": {
+            "language": "Go",
+            "purpose": "Defines data structures for managing code versioning and updates.",
+            "key_types": [
+              "CodeVersion",
+              "UpdateCodeVersionRequest",
+              "EnvironmentConfig"
+            ],
+            "functions": [
+              "ToCodeVersion"
+            ],
+            "imports": [],
+            "complexity": "medium"
+          },
+          "models/binance.go": {
+            "language": "Go",
+            "purpose": "Defines data structures for signing requests and responses in a Binance API context.",
+            "key_types": [
+              "BinanceSignRequest",
+              "BinanceSignResponse"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "models/blacklist.go": {
+            "language": "Go",
+            "purpose": "Defines a request structure for getting blacklist sites.",
+            "key_types": [
+              "GetBlacklistSitesReq",
+              "Paging",
+              "AgentInfo"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "models/chain.go": {
+            "language": "Go",
+            "purpose": "Defines a configuration structure for a blockchain chain model.",
+            "key_types": [
+              "ChainConfig",
+              "Network",
+              "Contract",
+              "DApp",
+              "GasPrice"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "models/common.go": {
+            "language": "Go",
+            "purpose": "Defines data models for common structures used in the application.",
+            "key_types": [
+              "Common",
+              "SupportURL",
+              "KnownContract",
+              "KnownContracts"
+            ],
+            "functions": [],
+            "imports": [
+              "encoding/json",
+              "time"
+            ],
+            "complexity": "medium"
+          },
+          "models/contract.go": {
+            "language": "Go",
+            "purpose": "Defines data structures and methods for handling smart contract information and metadata.",
+            "key_types": [
+              "ContractType",
+              "ERC721Type",
+              "ERC1155Type",
+              "Metadata",
+              "Contract",
+              "ContractResponse",
+              "ContractFilter",
+              "CreateContractRequest",
+              "UpdateContractRequest",
+              "GetContractByIDRequest",
+              "ERC20Metadata",
+              "ERC721Metadata",
+              "ERC1155Metadata",
+              "DAppURL",
+              "DAppURLSlice",
+              "StringSlice",
+              "InjectScript"
+            ],
+            "functions": [
+              "Scan",
+              "Value",
+              "MarshalJSON",
+              "UnmarshalJSON",
+              "Copy",
+              "ToMap",
+              "ToContract"
+            ],
+            "imports": [
+              "database/sql",
+              "database/sql/driver",
+              "encoding/json",
+              "errors",
+              "fmt",
+              "strings",
+              "time",
+              "github.com/mitchellh/mapstructure",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+            ],
+            "complexity": "medium"
+          },
+          "models/default.go": {
+            "language": "Go",
+            "purpose": "Defines data structures and methods for handling responses and pagination.",
+            "key_types": [
+              "OkResponse",
+              "Paging",
+              "Preload",
+              "ListResponse"
+            ],
+            "functions": [
+              "GetPage",
+              "GetOffset",
+              "GetLimit"
+            ],
+            "imports": [],
+            "complexity": "medium"
+          },
+          "models/device.go": {
+            "language": "Go",
+            "purpose": "Defines data structures for device management and requests related to devices.",
+            "key_types": [
+              "Device",
+              "GetDeviceByIDRequest",
+              "PostDeviceRegistrationRequest",
+              "PutWalletDeviceUpdatePushToken",
+              "PostImportWalletReq",
+              "PutDeviceAddressesReq"
+            ],
+            "functions": [],
+            "imports": [
+              "time",
+              "github.com/ethereum/go-ethereum/common"
+            ],
+            "complexity": "medium"
+          },
+          "models/external_auth.go": {
+            "language": "Go",
+            "purpose": "Defines data structures for handling external authentication requests and responses.",
+            "key_types": [
+              "XExchangeAuthCodeReq",
+              "XRefreshAccessTokenReq",
+              "XAccessTokenInfo",
+              "XAccessTokenRes",
+              "OAuthConfig"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "medium"
+          },
+          "models/highlight.go": {
+            "language": "Go",
+            "purpose": "Defines data models and request/response structures for highlights in an application.",
+            "key_types": [
+              "Highlight",
+              "InternalHighlightResponse",
+              "GetHighlightRequest",
+              "SaveHighlightRequest",
+              "SaveHighlightBatchRequest",
+              "GetHighlightsListResponse",
+              "UpdateHighlightRequest",
+              "UpdateHighlightBatchRequest",
+              "GetHighlightByIDRequest"
+            ],
+            "functions": [
+              "ToInternalResponse",
+              "ToDApp",
+              "ToUpdateMap"
+            ],
+            "imports": [
+              "time",
+              "github.com/mitchellh/mapstructure"
+            ],
+            "complexity": "medium"
+          },
+          "models/ip_locations.go": {
+            "language": "Go",
+            "purpose": "Defines data models for IP location information and a request structure for retrieving location data based on an IP address.",
+            "key_types": [
+              "IPLocation",
+              "GetLocationRequest"
+            ],
+            "functions": [],
+            "imports": [
+              "time"
+            ],
+            "complexity": "low"
+          },
+          "models/moonpay.go": {
+            "language": "Go",
+            "purpose": "Defines data structures for Moonpay signing requests and responses.",
+            "key_types": [
+              "MoonpaySigningRequest",
+              "MoonpaySigningResponse"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "models/network.go": {
+            "language": "Go",
+            "purpose": "Defines the Network model and related request structures for managing blockchain network data.",
+            "key_types": [
+              "Network",
+              "GasPrice",
+              "GetNetworkRequest",
+              "GetDAppsRequest",
+              "GetContractsRequest",
+              "NetworkFilter",
+              "NetworkOrderBy",
+              "CreateNetworkRequest",
+              "UpdateNetworkRequest",
+              "GetNetworkByIDRequest"
+            ],
+            "functions": [
+              "GetCacheDApps",
+              "GetCacheContracts",
+              "ToMap",
+              "ToNetWork"
+            ],
+            "imports": [
+              "sync",
+              "time",
+              "github.com/mitchellh/mapstructure",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+            ],
+            "complexity": "medium"
+          },
+          "models/notification.go": {
+            "language": "Go",
+            "purpose": "Defines data structures and constants for managing push notifications and their recipients.",
+            "key_types": [
+              "DeviceStatus",
+              "PushRecipient",
+              "DevicePlatform",
+              "RecipientFilterField",
+              "RecipientFilter",
+              "Recipient",
+              "Payload",
+              "PostPushNotificationRequest"
+            ],
+            "functions": [
+              "ParsePlatform"
+            ],
+            "imports": [
+              "strings"
+            ],
+            "complexity": "medium"
+          },
+          "models/preference.go": {
+            "language": "Go",
+            "purpose": "Defines data models for user preferences and filters related to device preferences.",
+            "key_types": [
+              "Preference",
+              "PreferenceFilter",
+              "DevicePreferences"
+            ],
+            "functions": [
+              "ToMap"
+            ],
+            "imports": [
+              "time",
+              "github.com/mitchellh/mapstructure"
+            ],
+            "complexity": "medium"
+          },
+          "models/quickaccess.go": {
+            "language": "Go",
+            "purpose": "Defines data structures and methods for managing quick access decentralized applications (DApps).",
+            "key_types": [
+              "QuickAccessDApp",
+              "SaveQuickAccessDAppRequest",
+              "InternalQuickAccessDAppResponse",
+              "GetQuickAccessDAppByIDRequest",
+              "SaveQuickAccessDAppBatchRequest",
+              "GetQuickAccessListRequest",
+              "SearchDAppRequest",
+              "GetQuickAccessListResponse",
+              "UpdateQuickAccessOrderRequest",
+              "UpdateQuickAccessDAppRequest",
+              "UpdateQuickAccessDAppBatchRequest"
+            ],
+            "functions": [
+              "ToInternalResponse",
+              "ToDApp",
+              "ToUpdateMap"
+            ],
+            "imports": [
+              "time",
+              "github.com/mitchellh/mapstructure"
+            ],
+            "complexity": "medium"
+          },
+          "models/ref_code.go": {
+            "language": "Go",
+            "purpose": "Defines data structures and methods for managing referral codes and wallets.",
+            "key_types": [
+              "ReferralCode",
+              "ReferralCodeFilter",
+              "ReferralCodeOrderBy",
+              "ReferralWallet",
+              "ReferralWalletFilter",
+              "ReferralWalletOrderBy",
+              "SubmitSelfGenCode",
+              "UpdateRefCodeStatus",
+              "GetCodeByOwner",
+              "GetReferralWalletsRequest",
+              "GenerateCodeRequest",
+              "SubmitReferralCodeRequest",
+              "GetSubmittedRefCode",
+              "VerifyReferralCode"
+            ],
+            "functions": [
+              "ToMap (ReferralCodeFilter)",
+              "ToMap (ReferralWalletFilter)",
+              "ToReferralCode (SubmitSelfGenCode)"
+            ],
+            "imports": [
+              "strings",
+              "time",
+              "github.com/mitchellh/mapstructure",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+            ],
+            "complexity": "medium"
+          },
+          "models/releasecandidate.go": {
+            "language": "Go",
+            "purpose": "Defines request structures for feature management in a device context.",
+            "key_types": [
+              "CheckAllowFeatureRequest",
+              "PostFeatureConfigRequest",
+              "PostWhitelistFeaturesRequest",
+              "PostSetConfigForDeviceRequest",
+              "GetCountWhitelistDevices"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "models/trusted_domain.go": {
+            "language": "Go",
+            "purpose": "Defines data models and request structures for managing trusted domains.",
+            "key_types": [
+              "TrustedDomain",
+              "GetTDMByDomainRequest",
+              "SaveTrustedDomainBatchRequest",
+              "TrustedDomainFilter",
+              "TrustedDomainOrderBy",
+              "GetListTDMRequest"
+            ],
+            "functions": [
+              "ToMap"
+            ],
+            "imports": [
+              "time",
+              "github.com/mitchellh/mapstructure"
+            ],
+            "complexity": "medium"
+          },
+          "models/useragent.go": {
+            "language": "Go",
+            "purpose": "Defines a structure for user agent information and provides a method to check if the information is incomplete.",
+            "key_types": [
+              "AgentInfo"
+            ],
+            "functions": [
+              "IsEmpty"
+            ],
+            "imports": [],
+            "complexity": "low"
+          }
+        }
+      },
+      "pkg/announcement": {
+        "path": "pkg/announcement",
+        "purpose": "This folder/module is responsible for managing announcements, including scheduling and retrieving them.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "announcement_svc.go",
+          "config.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/getsentry/sentry-go",
+          "github.com/h2non/filetype",
+          "github.com/labstack/echo/v4",
+          "github.com/redis/go-redis/v9",
+          "github.com/rs/zerolog/log",
+          "gorm.io/gorm",
+          "k8s.io/api/batch/v1",
+          "k8s.io/api/core/v1",
+          "k8s.io/apimachinery/pkg/api/resource",
+          "k8s.io/apimachinery/pkg/apis/meta/v1",
+          "k8s.io/client-go/kubernetes",
+          "k8s.io/client-go/rest",
+          "k8s.io/client-go/tools/clientcmd",
+          "k8s.io/client-go/util/homedir",
+          "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/worker",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the announcement management logic within dedicated service and configuration files.",
+        "file_summaries": {
+          "pkg/announcement/announcement_svc.go": {
+            "language": "Go",
+            "purpose": "This file implements a service for managing announcements, including scheduling and retrieving them.",
+            "key_types": [
+              "Service",
+              "service",
+              "Config",
+              "Announcement",
+              "GetAnnouncementByID",
+              "GetAnnouncementsListRequest",
+              "ScheduleNewAnnouncementRequest",
+              "ScheduleNewSpecialOfferRequest"
+            ],
+            "functions": [
+              "GetByID",
+              "GetListAsAdmin",
+              "GetListAsUser",
+              "ScheduleNewAnnouncement",
+              "ScheduleNewSpecialOffer",
+              "processImage",
+              "processTargetAddresses"
+            ],
+            "imports": [
+              "bytes",
+              "context",
+              "encoding/csv",
+              "errors",
+              "flag",
+              "fmt",
+              "image",
+              "mime/multipart",
+              "path/filepath",
+              "slices",
+              "strings",
+              "sync",
+              "time",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/getsentry/sentry-go",
+              "github.com/h2non/filetype",
+              "github.com/labstack/echo/v4",
+              "github.com/redis/go-redis/v9",
+              "github.com/rs/zerolog/log",
+              "gorm.io/gorm",
+              "k8s.io/api/batch/v1",
+              "k8s.io/api/core/v1",
+              "k8s.io/apimachinery/pkg/api/resource",
+              "k8s.io/apimachinery/pkg/apis/meta/v1",
+              "k8s.io/client-go/kubernetes",
+              "k8s.io/client-go/rest",
+              "k8s.io/client-go/tools/clientcmd",
+              "k8s.io/client-go/util/homedir",
+              "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/worker",
+              "github.com/axieinfinity/ronin-wallet-manager/repositories"
+            ],
+            "side_effects": [
+              "Uploads images to GCS",
+              "Deletes images from GCS on error"
+            ],
+            "risks": [
+              "Potential for denial of service if large files are uploaded",
+              "Improper handling of unsupported media types"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/announcement/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration structures for an announcement service, including communication, storage, and Kubernetes settings.",
+            "key_types": [
+              "CommunicationServiceCfg",
+              "StorageConfig",
+              "BankerConfig",
+              "EnvConfig",
+              "K8sConfig",
+              "Config"
+            ],
+            "functions": [],
+            "imports": [
+              "time",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/worker"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/binance": {
+        "path": "pkg/binance",
+        "purpose": "Responsible for handling Binance-specific configurations and services related to signing payloads using ECDSA.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "service.go"
+        ],
+        "dependencies": [
+          "context",
+          "crypto/ecdsa",
+          "crypto/rand",
+          "encoding/base64",
+          "github.com/decred/dcrd/dcrec/secp256k1/v4"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service functionalities related to Binance.",
+        "file_summaries": {
+          "pkg/binance/config.go": {
+            "language": "Go",
+            "purpose": "Defines a configuration structure for Binance with a private key.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "pkg/binance/service.go": {
+            "language": "Go",
+            "purpose": "Provides a service for signing payloads using ECDSA.",
+            "key_types": [
+              "Service",
+              "service",
+              "Config"
+            ],
+            "functions": [
+              "Sign",
+              "NewService"
+            ],
+            "imports": [
+              "context",
+              "crypto/ecdsa",
+              "crypto/rand",
+              "encoding/base64",
+              "github.com/decred/dcrd/dcrec/secp256k1/v4"
+            ],
+            "risks": [
+              "Potential exposure of private key if not handled securely"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/blacklist": {
+        "path": "pkg/blacklist",
+        "purpose": "Responsible for managing blacklisted sites and feature flags based on user agent information.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "service.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "architecture": "The folder follows a service-oriented architecture pattern, encapsulating configuration and service logic related to blacklist management.",
+        "file_summaries": {
+          "pkg/blacklist/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration structures for a blacklist feature.",
+            "key_types": [
+              "BlacklistConfig",
+              "Versions",
+              "FeatureFlagConfig"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "pkg/blacklist/service.go": {
+            "language": "Go",
+            "purpose": "Provides a service for managing blacklisted sites and feature flags based on user agent information.",
+            "key_types": [
+              "Service",
+              "service",
+              "BlacklistConfig",
+              "FeatureFlagConfig",
+              "models.AgentInfo"
+            ],
+            "functions": [
+              "NewBlacklistService",
+              "GetBlacklistSites",
+              "GetHiddenTabs",
+              "ShouldHideAllSpotlight",
+              "ShouldShowQuestComingSoon",
+              "ShouldEnableMoonpay",
+              "ShouldEnableTransak",
+              "ShouldDisableNFTTab",
+              "DisableNFTTransfer",
+              "DisableHomeBanner",
+              "isCfgAvailable"
+            ],
+            "imports": [
+              "strings",
+              "github.com/axieinfinity/ronin-wallet-manager/models"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/crypto/hmac": {
+        "path": "pkg/crypto/hmac",
+        "purpose": "This module is responsible for providing HMAC signing and validation functionalities, including configuration management and unit testing.",
+        "languages": {
+          "Go": 6
+        },
+        "key_modules": [
+          "config.go",
+          "funcs.go",
+          "funcs_test.go",
+          "hmac.go",
+          "hmac_test.go",
+          "init.go"
+        ],
+        "dependencies": [
+          "crypto/hmac",
+          "crypto/sha256",
+          "crypto/sha512",
+          "encoding/base64",
+          "errors",
+          "fmt",
+          "sort",
+          "strings",
+          "sync",
+          "testing",
+          "time",
+          "math",
+          "net/http"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating HMAC-related functionalities and tests within dedicated files, promoting separation of concerns and maintainability.",
+        "file_summaries": {
+          "pkg/crypto/hmac/config.go": {
+            "language": "Go",
+            "purpose": "Defines a configuration structure for HMAC with normalization of whitelist addresses.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": [
+              "NormalizeWhitelistAddresses"
+            ],
+            "imports": [
+              "strings"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/crypto/hmac/funcs.go": {
+            "language": "Go",
+            "purpose": "Provides HMAC signing functions using SHA256 and SHA512 algorithms.",
+            "key_types": [
+              "[]byte",
+              "map[string]string"
+            ],
+            "functions": [
+              "SHA256",
+              "SHA512",
+              "Sign"
+            ],
+            "imports": [
+              "crypto/hmac",
+              "crypto/sha256",
+              "crypto/sha512",
+              "encoding/base64",
+              "errors",
+              "fmt",
+              "sort",
+              "strings"
+            ],
+            "side_effects": [
+              "Modifies the order of parameters for signing",
+              "Generates HMAC signatures"
+            ],
+            "risks": [
+              "Potential for timing attacks if not handled properly",
+              "Improper handling of secret keys can lead to security vulnerabilities"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/crypto/hmac/funcs_test.go": {
+            "language": "Go",
+            "purpose": "Unit tests for the HMAC signing functionality.",
+            "key_types": [
+              "map[string]string",
+              "struct",
+              "[]struct"
+            ],
+            "functions": [
+              "TestSign"
+            ],
+            "imports": [
+              "testing",
+              "time"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/crypto/hmac/hmac.go": {
+            "language": "Go",
+            "purpose": "Provides functionality for HMAC signature validation with clock skew allowance.",
+            "key_types": [
+              "HMAC",
+              "Config"
+            ],
+            "functions": [
+              "New",
+              "validateClockSkew",
+              "ValidateSignature"
+            ],
+            "imports": [
+              "encoding/base64",
+              "errors",
+              "fmt",
+              "math",
+              "net/http",
+              "sort",
+              "time"
+            ],
+            "side_effects": [
+              "Prints error messages to console"
+            ],
+            "risks": [
+              "Potential for time-based attacks if clock skew is not properly managed"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/crypto/hmac/hmac_test.go": {
+            "language": "Go",
+            "purpose": "Unit tests for HMAC validation functions, checking clock skew and signature validation.",
+            "key_types": [
+              "Config",
+              "HMAC"
+            ],
+            "functions": [
+              "TestHMAC_validateClockSkew",
+              "TestHMAC_ValidateSignature"
+            ],
+            "imports": [
+              "testing",
+              "time"
+            ],
+            "side_effects": [
+              "None"
+            ],
+            "risks": [
+              "Potential exposure of sensitive data if not handled properly"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/crypto/hmac/init.go": {
+            "language": "Go",
+            "purpose": "This file initializes a singleton instance of HMAC with a configuration.",
+            "key_types": [
+              "HMAC",
+              "Config"
+            ],
+            "functions": [
+              "init",
+              "InitInstance"
+            ],
+            "imports": [
+              "sync"
+            ],
+            "side_effects": [
+              "Initializes global variables Instance and HConfig"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/dapp": {
+        "path": "pkg/dapp",
+        "purpose": "Responsible for managing decentralized applications (dApps) including configuration, service management, and CRUD operations.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "d_app_svc.go"
+        ],
+        "dependencies": [
+          "github.com/getsentry/sentry-go",
+          "github.com/hashicorp/go-version",
+          "github.com/jellydator/ttlcache/v3",
+          "github.com/redis/go-redis/v9",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "architecture": "The folder follows a service-oriented architecture pattern, focusing on modular services for dApp management.",
+        "file_summaries": {
+          "pkg/dapp/config.go": {
+            "language": "Go",
+            "purpose": "Defines a configuration structure for a decentralized application.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "pkg/dapp/d_app_svc.go": {
+            "language": "Go",
+            "purpose": "This file defines a service for managing quick access decentralized applications (dApps) and highlights, including CRUD operations and caching mechanisms.",
+            "key_types": [
+              "Service",
+              "svc",
+              "Config"
+            ],
+            "functions": [
+              "Save",
+              "SaveBatch",
+              "Update",
+              "UpdateBatch",
+              "GetList",
+              "GetAll",
+              "GetByID",
+              "DeleteByID",
+              "UpdateOrder",
+              "SaveHighlight",
+              "SaveBatchHighlight",
+              "UpdateHighlight",
+              "UpdateBatchHighlight",
+              "GetAllHighlight",
+              "GetHighlightByID",
+              "DeleteHighlightByID",
+              "GetHighlights"
+            ],
+            "imports": [
+              "context",
+              "fmt",
+              "slices",
+              "sync",
+              "time",
+              "github.com/getsentry/sentry-go",
+              "github.com/hashicorp/go-version",
+              "github.com/jellydator/ttlcache/v3",
+              "github.com/redis/go-redis/v9",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+              "github.com/axieinfinity/ronin-wallet-manager/repositories"
+            ],
+            "side_effects": [
+              "Publishing messages to refresh cache asynchronously"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/device": {
+        "path": "pkg/device",
+        "purpose": "Responsible for managing device-related services and configurations.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "service.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+        ],
+        "architecture": "The folder follows a service-oriented architecture pattern, encapsulating device management functionalities and configurations.",
+        "file_summaries": {
+          "pkg/device/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration structures for device services.",
+            "key_types": [
+              "ServiceConfig",
+              "Config"
+            ],
+            "functions": [],
+            "imports": [
+              "github.com/axieinfinity/ronin-wallet-manager/httpclient"
+            ],
+            "complexity": "low"
+          },
+          "pkg/device/service.go": {
+            "language": "Go",
+            "purpose": "Provides a service for managing devices, including operations like getting, resetting, and creating devices.",
+            "key_types": [
+              "Service",
+              "service",
+              "Config"
+            ],
+            "functions": [
+              "GetDeviceByID",
+              "ResetDeviceByID",
+              "MigrateNotificationSettings",
+              "Registration",
+              "UpdatePushToken",
+              "CreateDevice",
+              "SyncDeviceAddresses",
+              "NewService"
+            ],
+            "imports": [
+              "context",
+              "strings",
+              "github.com/ethereum/go-ethereum/common",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/gcs": {
+        "path": "pkg/gcs",
+        "purpose": "Responsible for interacting with Google Cloud Storage, including file uploads, deletions, and downloads.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "service.go"
+        ],
+        "dependencies": [
+          "cloud.google.com/go/storage",
+          "github.com/rs/zerolog/log"
+        ],
+        "architecture": "The folder follows a service-oriented architecture, encapsulating configuration and service logic for Google Cloud Storage operations.",
+        "file_summaries": {
+          "pkg/gcs/config.go": {
+            "language": "Go",
+            "purpose": "Defines a configuration structure for Google Cloud Storage.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": [],
+            "imports": [
+              "time"
+            ],
+            "complexity": "low"
+          },
+          "pkg/gcs/service.go": {
+            "language": "Go",
+            "purpose": "Provides a service for uploading, deleting, and downloading files to/from Google Cloud Storage.",
+            "key_types": [
+              "Service",
+              "service",
+              "Config"
+            ],
+            "functions": [
+              "UploadFile",
+              "DeleteFile",
+              "DownloadFile",
+              "NewService"
+            ],
+            "imports": [
+              "context",
+              "fmt",
+              "io",
+              "time",
+              "cloud.google.com/go/storage",
+              "github.com/rs/zerolog/log"
+            ],
+            "side_effects": [
+              "Interacts with Google Cloud Storage",
+              "Logs errors using zerolog"
+            ],
+            "risks": [
+              "Potential exposure of sensitive data if file URLs are not secured",
+              "Error handling may lead to unhandled exceptions"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/helper": {
+        "path": "pkg/helper",
+        "purpose": "This folder/module provides various helper functions for encryption, file handling, token generation, random string generation, Ethereum address normalization, and slice manipulation.",
+        "languages": {
+          "Go": 8
+        },
+        "key_modules": [
+          "aes.go",
+          "binder.go",
+          "hmac_token.go",
+          "pointer.go",
+          "random.go",
+          "ronin.go",
+          "slice.go",
+          "tls.go"
+        ],
+        "dependencies": [
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/ethereum/go-ethereum/crypto"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to helper operations, promoting code reusability and separation of concerns.",
+        "file_summaries": {
+          "pkg/helper/aes.go": {
+            "language": "Go",
+            "purpose": "Provides functions for AES encryption of messages using a hashed key.",
+            "key_types": [
+              "string",
+              "[]byte",
+              "interface{}"
+            ],
+            "functions": [
+              "hashKey",
+              "EncryptEAS"
+            ],
+            "imports": [
+              "crypto/aes",
+              "crypto/cipher",
+              "crypto/rand",
+              "crypto/sha256",
+              "encoding/base64",
+              "encoding/json",
+              "io"
+            ],
+            "side_effects": [
+              "Generates random initialization vector (IV) for encryption."
+            ],
+            "risks": [
+              "Potential exposure of sensitive data if the key is weak or compromised."
+            ],
+            "complexity": "medium"
+          },
+          "pkg/helper/binder.go": {
+            "language": "Go",
+            "purpose": "This file provides functionality to bind multipart file uploads to struct fields in an Echo web framework context.",
+            "key_types": [
+              "BindFunc",
+              "multipart.FileHeader"
+            ],
+            "functions": [
+              "Bind",
+              "NewBindWithHeaders",
+              "NewBindFile",
+              "echoBindFile",
+              "getFiles"
+            ],
+            "imports": [
+              "fmt",
+              "mime/multipart",
+              "reflect",
+              "strings",
+              "github.com/labstack/echo/v4"
+            ],
+            "side_effects": [
+              "Modifies the input struct by binding uploaded files to its fields."
+            ],
+            "risks": [
+              "Potential for denial of service if large files are uploaded.",
+              "Improper handling of file types could lead to security vulnerabilities."
+            ],
+            "complexity": "medium"
+          },
+          "pkg/helper/hmac_token.go": {
+            "language": "Go",
+            "purpose": "Generates an HMAC access token for authentication purposes.",
+            "key_types": [
+              "string",
+              "error"
+            ],
+            "functions": [
+              "GenerateHMACAccessToken"
+            ],
+            "imports": [
+              "fmt",
+              "strings",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/helper/pointer.go": {
+            "language": "Go",
+            "purpose": "Defines a generic function to create a pointer to a value of any type.",
+            "key_types": [
+              "T"
+            ],
+            "functions": [
+              "NewPointer"
+            ],
+            "imports": [],
+            "complexity": "low"
+          },
+          "pkg/helper/random.go": {
+            "language": "Go",
+            "purpose": "Generates a random string of specified length using alphanumeric characters.",
+            "key_types": [
+              "rune",
+              "int",
+              "big.Int"
+            ],
+            "functions": [
+              "RandStr"
+            ],
+            "imports": [
+              "crypto/rand",
+              "math/big"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/helper/ronin.go": {
+            "language": "Go",
+            "purpose": "Provides utility functions for normalizing Ethereum addresses, hashing messages, and validating signatures.",
+            "key_types": [
+              "string",
+              "common.Hash"
+            ],
+            "functions": [
+              "NormalizeAddress",
+              "HashMessage",
+              "IsValidSignature"
+            ],
+            "imports": [
+              "fmt",
+              "strings",
+              "github.com/ethereum/go-ethereum/common",
+              "github.com/ethereum/go-ethereum/common/hexutil",
+              "github.com/ethereum/go-ethereum/crypto"
+            ],
+            "risks": [
+              "Potential for signature forgery if inputs are not properly validated."
+            ],
+            "complexity": "medium"
+          },
+          "pkg/helper/slice.go": {
+            "language": "Go",
+            "purpose": "Provides utility functions for manipulating slices, including filtering, finding index, converting slices to maps, and mapping elements.",
+            "key_types": [
+              "T",
+              "T1",
+              "T2"
+            ],
+            "functions": [
+              "Filter",
+              "IndexOf",
+              "SliceToMap",
+              "Map"
+            ],
+            "imports": [],
+            "complexity": "medium"
+          },
+          "pkg/helper/tls.go": {
+            "language": "Go",
+            "purpose": "This file provides a function to convert certificate and key data into a TLS configuration.",
+            "key_types": [
+              "tls.Config",
+              "tls.Certificate",
+              "x509.CertPool"
+            ],
+            "functions": [
+              "ConvertToTLSConfig"
+            ],
+            "imports": [
+              "crypto/tls",
+              "crypto/x509"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/location": {
+        "path": "pkg/location",
+        "purpose": "Responsible for managing location information based on IP addresses and handling related database operations.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "location_svc.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs",
+          "compress/gzip",
+          "context",
+          "encoding/json",
+          "errors",
+          "fmt",
+          "io",
+          "net",
+          "net/http",
+          "os",
+          "sync",
+          "time",
+          "github.com/oschwald/maxminddb-golang",
+          "github.com/redis/go-redis/v9",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "architecture": "The folder follows a service-oriented architecture, encapsulating configuration and service logic related to location data management.",
+        "file_summaries": {
+          "pkg/location/config.go": {
+            "language": "Go",
+            "purpose": "Defines a configuration structure for the application, including database URLs and file names.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": [],
+            "imports": [
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs"
+            ],
+            "complexity": "low"
+          },
+          "pkg/location/location_svc.go": {
+            "language": "Go",
+            "purpose": "Provides a service to get location information based on IP addresses and manage the database of IP locations.",
+            "key_types": [
+              "Service",
+              "service",
+              "Config",
+              "md.IPLocation"
+            ],
+            "functions": [
+              "GetLocationByIP",
+              "DownloadNewDB",
+              "decompressGzip",
+              "setupFromStorage",
+              "setupFromLocalDB",
+              "setupLocationDB",
+              "subscribeToAutoRefresh",
+              "loadMapCountryCode",
+              "loadMapCurrencyCode",
+              "loadAndParseDefaultData",
+              "NewService"
+            ],
+            "imports": [
+              "compress/gzip",
+              "context",
+              "encoding/json",
+              "errors",
+              "fmt",
+              "io",
+              "net",
+              "net/http",
+              "os",
+              "sync",
+              "time",
+              "github.com/oschwald/maxminddb-golang",
+              "github.com/redis/go-redis/v9",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs"
+            ],
+            "side_effects": [
+              "Creates and deletes files on the filesystem.",
+              "Makes HTTP requests to download the IP database.",
+              "Publishes messages to a Redis channel."
+            ],
+            "risks": [
+              "Potential exposure of sensitive data through logs.",
+              "Improper error handling may lead to application crashes."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/moonpay": {
+        "path": "pkg/moonpay",
+        "purpose": "Responsible for handling configuration and service functionalities related to Moonpay, including URL signing.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "service.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic in separate files for maintainability.",
+        "file_summaries": {
+          "pkg/moonpay/config.go": {
+            "language": "Go",
+            "purpose": "Defines a configuration structure for Moonpay with a secret field.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "pkg/moonpay/service.go": {
+            "language": "Go",
+            "purpose": "Provides a service for signing URLs using HMAC and base64 encoding.",
+            "key_types": [
+              "Service",
+              "service",
+              "Config"
+            ],
+            "functions": [
+              "SignURL",
+              "NewService"
+            ],
+            "imports": [
+              "context",
+              "encoding/base64",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/preference": {
+        "path": "pkg/preference",
+        "purpose": "This folder/module is responsible for managing user preferences related to a wallet application.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "pref_svc.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/labstack/echo/v4",
+          "github.com/rs/zerolog/log",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the logic for user preference management within a dedicated service file.",
+        "file_summaries": {
+          "pkg/preference/pref_svc.go": {
+            "language": "Go",
+            "purpose": "This file defines a service for managing user preferences related to a wallet application.",
+            "key_types": [
+              "Service",
+              "service",
+              "md.Preference",
+              "md.GetPreferencesRequest",
+              "md.UpdatePreferencesRequest",
+              "md.GetDevicePreferenceRequest",
+              "md.UpdateDevicePreferenceRequest",
+              "md.InternalGetWalletPreferencesRequest",
+              "md.GetBatchPreferencesResponse"
+            ],
+            "functions": [
+              "GetByAddress",
+              "UpdateForAddress",
+              "PrivateGetDevicePreferences",
+              "PrivateUpdateDevicePreferences",
+              "SyncDeviceAddresses",
+              "InternalGetList",
+              "ResetDevice",
+              "InitForDeviceRegistration"
+            ],
+            "imports": [
+              "context",
+              "net/http",
+              "regexp",
+              "slices",
+              "strings",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/ethereum/go-ethereum/common",
+              "github.com/labstack/echo/v4",
+              "github.com/rs/zerolog/log",
+              "gorm.io/gorm",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+              "github.com/axieinfinity/ronin-wallet-manager/repositories"
+            ],
+            "side_effects": [
+              "Logs information and errors during execution.",
+              "Performs asynchronous migration of notification settings."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/releasecandidate": {
+        "path": "pkg/releasecandidate",
+        "purpose": "Responsible for managing feature configurations and whitelist devices for mobile wallet candidates.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "init.go",
+          "service.go"
+        ],
+        "dependencies": [
+          "github.com/redis/go-redis/v9",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+          "github.com/go-redsync/redsync/v4",
+          "github.com/go-redsync/redsync/v4/redis/goredis/v9",
+          "github.com/rs/zerolog/log"
+        ],
+        "architecture": "The folder follows a service-oriented architecture pattern, utilizing Redis for state management and providing a clear interface for feature access control.",
+        "file_summaries": {
+          "pkg/releasecandidate/init.go": {
+            "language": "Go",
+            "purpose": "Defines a service interface for managing feature configurations and whitelist devices.",
+            "key_types": [
+              "Service",
+              "CheckAllowFeatureRequest",
+              "PostFeatureConfigRequest",
+              "PostWhitelistFeaturesRequest",
+              "PostSetConfigForDeviceRequest",
+              "GetCountWhitelistDevices"
+            ],
+            "functions": [
+              "NewService"
+            ],
+            "imports": [
+              "github.com/redis/go-redis/v9",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/device"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/releasecandidate/service.go": {
+            "language": "Go",
+            "purpose": "Manages feature access for mobile wallet candidates using Redis for state management.",
+            "key_types": [
+              "service",
+              "models.CheckAllowFeatureRequest",
+              "models.PostFeatureConfigRequest",
+              "models.PostWhitelistFeaturesRequest",
+              "models.PostSetConfigForDeviceRequest",
+              "models.GetCountWhitelistDevices"
+            ],
+            "functions": [
+              "newService",
+              "refreshWhitelist",
+              "CheckAllowFeature",
+              "SetFeatureConfig",
+              "SetWhitelistFeatures",
+              "SetConfigForDevice",
+              "CountWhitelistDevices",
+              "VerifyWhitelistFeature",
+              "convertKey"
+            ],
+            "imports": [
+              "context",
+              "errors",
+              "fmt",
+              "strings",
+              "time",
+              "github.com/go-redsync/redsync/v4",
+              "github.com/go-redsync/redsync/v4/redis/goredis/v9",
+              "github.com/redis/go-redis/v9",
+              "github.com/rs/zerolog/log",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/device"
+            ],
+            "side_effects": [
+              "Modifies Redis state for feature access and device configurations.",
+              "Logs information and errors during execution."
+            ],
+            "risks": [
+              "Potential race conditions when accessing shared resources in Redis.",
+              "Improper handling of Redis errors may lead to incorrect feature access decisions."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/tracking": {
+        "path": "pkg/tracking",
+        "purpose": "Responsible for tracking events and requests, providing services to manage and process tracking data.",
+        "languages": {
+          "Go": 3
+        },
+        "key_modules": [
+          "config.go",
+          "models.go",
+          "tracking_svc.go"
+        ],
+        "dependencies": [
+          "github.com/axieinfinity/ronin-wallet-manager/httpclient"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating configuration, data models, and service logic related to tracking functionalities.",
+        "file_summaries": {
+          "pkg/tracking/config.go": {
+            "language": "Go",
+            "purpose": "Defines a configuration structure for tracking with associated methods.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": [
+              "SetUserAgent"
+            ],
+            "imports": [
+              "time"
+            ],
+            "complexity": "low"
+          },
+          "pkg/tracking/models.go": {
+            "language": "Go",
+            "purpose": "Defines data structures for tracking events and requests.",
+            "key_types": [
+              "Event",
+              "TrackingRequest"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "pkg/tracking/tracking_svc.go": {
+            "language": "Go",
+            "purpose": "Provides tracking services for events using a tracking client.",
+            "key_types": [
+              "Service",
+              "service",
+              "Config",
+              "TrackingRequest"
+            ],
+            "functions": [
+              "Track",
+              "TrackAsync",
+              "NewService"
+            ],
+            "imports": [
+              "context",
+              "github.com/axieinfinity/ronin-wallet-manager/httpclient"
+            ],
+            "side_effects": [
+              "Modifies event data if certain conditions are met.",
+              "Makes network calls to track events."
+            ],
+            "risks": [
+              "Potential exposure of API keys if not handled securely.",
+              "Network call failures may not be handled explicitly."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/trusteddomain": {
+        "path": "pkg/trusteddomain",
+        "purpose": "This folder/module is responsible for managing trusted domains, including caching and database operations.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "trusted_domain_svc.go",
+          "utils.go"
+        ],
+        "dependencies": [
+          "github.com/jellydator/ttlcache/v3",
+          "github.com/redis/go-redis/v9",
+          "github.com/rs/zerolog/log",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "architecture": "The folder follows a service-oriented architecture pattern, encapsulating domain management logic and utility functions.",
+        "file_summaries": {
+          "pkg/trusteddomain/trusted_domain_svc.go": {
+            "language": "Go",
+            "purpose": "This file implements a service for managing trusted domains, including caching and database operations.",
+            "key_types": [
+              "Service",
+              "svc",
+              "TrustedDomain",
+              "TrustedDomainRepo",
+              "GetListTDMRequest"
+            ],
+            "functions": [
+              "GetByDomain",
+              "Save",
+              "SaveBatch",
+              "GetAll",
+              "DeleteByDomain",
+              "GetList",
+              "NewService"
+            ],
+            "imports": [
+              "context",
+              "math",
+              "time",
+              "github.com/jellydator/ttlcache/v3",
+              "github.com/redis/go-redis/v9",
+              "github.com/rs/zerolog/log",
+              "gorm.io/gorm",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/repositories"
+            ],
+            "side_effects": [
+              "Caches trusted domain data",
+              "Subscribes to a Redis channel for cache invalidation"
+            ],
+            "risks": [
+              "Potential race conditions in cache operations",
+              "Error handling may not cover all edge cases"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/trusteddomain/utils.go": {
+            "language": "Go",
+            "purpose": "Generates wildcard domains from a given domain string.",
+            "key_types": [
+              "string",
+              "[]string"
+            ],
+            "functions": [
+              "generateWildcardDomains"
+            ],
+            "imports": [
+              "slices",
+              "strings"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/worker": {
+        "path": "pkg/worker",
+        "purpose": "Responsible for managing a pool of worker goroutines to process jobs concurrently.",
+        "languages": {
+          "Go": 4
+        },
+        "key_modules": [
+          "config.go",
+          "dispatcher.go",
+          "job.go",
+          "worker.go"
+        ],
+        "dependencies": [
+          "sync",
+          "github.com/rs/zerolog/log"
+        ],
+        "architecture": "The folder follows a concurrent processing architecture using goroutines, with a dispatcher managing worker pools and job execution.",
+        "file_summaries": {
+          "pkg/worker/config.go": {
+            "language": "Go",
+            "purpose": "Defines a configuration structure for a worker package.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "pkg/worker/dispatcher.go": {
+            "language": "Go",
+            "purpose": "This file implements a Dispatcher that manages a pool of worker goroutines to process jobs concurrently.",
+            "key_types": [
+              "Dispatcher",
+              "Config",
+              "Job",
+              "Worker"
+            ],
+            "functions": [
+              "NewDispatcher",
+              "Run",
+              "dispatch",
+              "Stop",
+              "AddNewJob"
+            ],
+            "imports": [
+              "sync"
+            ],
+            "side_effects": [
+              "Starts goroutines for workers",
+              "Blocks until a worker is available for job dispatching"
+            ],
+            "risks": [
+              "Potential deadlock if jobQueue is not managed properly",
+              "Goroutine leaks if workers are not stopped correctly"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/worker/job.go": {
+            "language": "Go",
+            "purpose": "Defines a Job type with an executable function.",
+            "key_types": [
+              "Job"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "pkg/worker/worker.go": {
+            "language": "Go",
+            "purpose": "This file defines a Worker type that manages job execution in a worker pool.",
+            "key_types": [
+              "Worker",
+              "Job"
+            ],
+            "functions": [
+              "NewWorker",
+              "Start",
+              "Stop"
+            ],
+            "imports": [
+              "sync",
+              "github.com/rs/zerolog/log"
+            ],
+            "side_effects": [
+              "Starts a goroutine for job processing",
+              "Modifies WaitGroup state"
+            ],
+            "risks": [
+              "Potential deadlock if WaitGroup is not managed correctly"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/xauth": {
+        "path": "pkg/xauth",
+        "purpose": "Responsible for client authentication and external authentication service implementation.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "external_auth_svc.go"
+        ],
+        "dependencies": [
+          "context",
+          "net/http",
+          "strings",
+          "github.com/rs/zerolog/log",
+          "golang.org/x/oauth2",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating authentication-related functionalities in separate files for configuration and service implementation.",
+        "file_summaries": {
+          "pkg/xauth/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration structures for client authentication.",
+            "key_types": [
+              "ClientConfig",
+              "Config"
+            ],
+            "functions": [],
+            "imports": [
+              "time"
+            ],
+            "complexity": "low"
+          },
+          "pkg/xauth/external_auth_svc.go": {
+            "language": "Go",
+            "purpose": "This file implements an external authentication service that exchanges authorization codes for access tokens.",
+            "key_types": [
+              "Service",
+              "service",
+              "Config",
+              "md.XExchangeAuthCodeReq",
+              "md.XAccessTokenRes"
+            ],
+            "functions": [
+              "ExchangeAuthCode",
+              "NewService"
+            ],
+            "imports": [
+              "context",
+              "net/http",
+              "strings",
+              "github.com/rs/zerolog/log",
+              "golang.org/x/oauth2",
+              "github.com/axieinfinity/ecosystem-go-common/errors",
+              "github.com/axieinfinity/ronin-wallet-manager/models"
+            ],
+            "side_effects": [
+              "Logs an error if unable to exchange auth code"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information due to redacted fields",
+              "Improper handling of OAuth tokens could lead to security vulnerabilities"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "root": {
+        "path": "root",
+        "purpose": "This folder/module is responsible for the wallet-manager project, including configuration, documentation, and service definitions.",
+        "languages": {
+          "JSON": 2,
+          "Markdown": 2,
+          "YAML": 2,
+          "bash": 1
+        },
+        "key_modules": [
+          ".golangci.yaml",
+          "README.md",
+          "SECURITY.md",
+          "country_iso2_to_currency.json",
+          "country_iso2_to_iso3.json",
+          "docker-compose.yml",
+          "entrypoint.sh"
+        ],
+        "dependencies": [
+          "PostgreSQL",
+          "Redis"
+        ],
+        "architecture": "The folder follows a modular architecture with configuration files, documentation, and service definitions for containerized applications.",
+        "file_summaries": {
+          ".golangci.yaml": {
+            "language": "YAML",
+            "purpose": "Configuration file for GolangCI-Lint, specifying linting rules and settings for Go code.",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "complexity": "medium"
+          },
+          "README.md": {
+            "language": "Markdown",
+            "purpose": "Documentation for the wallet-manager project",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "SECURITY.md": {
+            "language": "Markdown",
+            "purpose": "Documentation of the security policy for the project, including supported versions and vulnerability reporting.",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "country_iso2_to_currency.json": {
+            "language": "JSON",
+            "purpose": "This file maps country ISO 3166-1 alpha-2 codes to their respective currencies.",
+            "key_types": [
+              "string",
+              "string"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "country_iso2_to_iso3.json": {
+            "language": "JSON",
+            "purpose": "This file maps ISO 3166-1 alpha-2 country codes to ISO 3166-1 alpha-3 country codes.",
+            "key_types": [
+              "string"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          "docker-compose.yml": {
+            "language": "YAML",
+            "purpose": "Defines services for a Docker Compose setup including PostgreSQL and Redis.",
+            "key_types": [
+              "services",
+              "environment"
+            ],
+            "functions": [],
+            "imports": [],
+            "side_effects": [
+              "Creates Docker containers for PostgreSQL and Redis services."
+            ],
+            "risks": [
+              "Exposing database ports may lead to unauthorized access if not properly secured."
+            ],
+            "complexity": "low"
+          },
+          "entrypoint.sh": {
+            "language": "bash",
+            "purpose": "This script serves as an entry point to run a service application.",
+            "key_types": [],
+            "functions": [
+              "main"
+            ],
+            "imports": [
+              "./app"
+            ],
+            "side_effects": [
+              "Exits the script if any command fails due to 'set -e'."
+            ],
+            "complexity": "low"
+          }
+        }
+      },
+      "routes": {
+        "path": "routes",
+        "purpose": "Responsible for setting up and managing routes for a wallet manager API using the Echo web framework.",
+        "languages": {
+          "Go": 4
+        },
+        "key_modules": [
+          "init.go",
+          "internal.go",
+          "private.go",
+          "public.go"
+        ],
+        "dependencies": [
+          "github.com/labstack/echo/v4",
+          "github.com/rs/zerolog/log",
+          "gorm.io/plugin/prometheus",
+          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+          "github.com/axieinfinity/ronin-wallet-manager/handlers",
+          "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/preference",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/releasecandidate",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/trusteddomain",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, organizing routes into public, private, and internal categories, each handling specific functionalities of the wallet manager API.",
+        "file_summaries": {
+          "routes/init.go": {
+            "language": "Go",
+            "purpose": "Sets up routes for an Echo web server and initializes various services and repositories.",
+            "key_types": [
+              "echo.Echo",
+              "config.Schema",
+              "postgresql.Client",
+              "redis.Client",
+              "handlers.Handler"
+            ],
+            "functions": [
+              "SetupRoutes",
+              "NewClient",
+              "NewService",
+              "NewHandler"
+            ],
+            "imports": [
+              "github.com/labstack/echo/v4",
+              "github.com/rs/zerolog/log",
+              "gorm.io/plugin/prometheus",
+              "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/axieinfinity/ronin-wallet-manager/config",
+              "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+              "github.com/axieinfinity/ronin-wallet-manager/handlers",
+              "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/preference",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/releasecandidate",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/trusteddomain",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
+              "github.com/axieinfinity/ronin-wallet-manager/repositories"
+            ],
+            "side_effects": [
+              "Establishes database connections",
+              "Initializes various services and repositories",
+              "Registers routes with the Echo server"
+            ],
+            "risks": [
+              "Potential for database connection errors",
+              "Improper handling of configuration values may lead to runtime errors"
+            ],
+            "complexity": "medium"
+          },
+          "routes/internal.go": {
+            "language": "Go",
+            "purpose": "Defines internal routes for a wallet manager API, handling various network and announcement functionalities.",
+            "key_types": [
+              "echo.Echo",
+              "config.Schema",
+              "handlers.ReleaseCandidateHandler",
+              "handlers.NetworkHandler",
+              "handlers.CommonHandler",
+              "handlers.LocationHandler",
+              "handlers.AnnouncementHandler",
+              "handlers.TrustedDomainHandler",
+              "handlers.DAppHandler",
+              "tracking.Service"
+            ],
+            "functions": [
+              "registerInternal"
+            ],
+            "imports": [
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/axieinfinity/ronin-wallet-manager/config",
+              "github.com/axieinfinity/ronin-wallet-manager/handlers",
+              "github.com/axieinfinity/ronin-wallet-manager/middleware",
+              "github.com/axieinfinity/ronin-wallet-manager/models",
+              "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking"
+            ],
+            "side_effects": [
+              "Modifies the state of the API by registering routes and middleware."
+            ],
+            "risks": [
+              "Potential exposure of sensitive data if routes are not properly secured."
+            ],
+            "complexity": "medium"
+          },
+          "routes/private.go": {
+            "language": "Go",
+            "purpose": "Defines routes for private wallet management functionalities in an API.",
+            "key_types": [
+              "echo.Echo",
+              "handlers.AnnouncementHandler",
+              "handlers.DeviceHandler",
+              "echo.MiddlewareFunc"
+            ],
+            "functions": [
+              "registerPrivate"
+            ],
+            "imports": [
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ronin-wallet-manager/handlers",
+              "github.com/axieinfinity/ronin-wallet-manager/models"
+            ],
+            "side_effects": [
+              "Modifies the state of the Echo router by adding new routes."
+            ],
+            "risks": [
+              "Potential exposure of sensitive user data if routes are not properly secured."
+            ],
+            "complexity": "medium"
+          },
+          "routes/public.go": {
+            "language": "Go",
+            "purpose": "Defines public routes for a wallet manager API, including health checks and various resource endpoints.",
+            "key_types": [
+              "APIVersion",
+              "config.Schema",
+              "handlers.ReleaseCandidateHandler",
+              "handlers.NetworkHandler",
+              "handlers.CommonHandler",
+              "handlers.AccountHandler",
+              "handlers.MoonpayHandler",
+              "handlers.LocationHandler",
+              "handlers.AnnouncementHandler",
+              "handlers.BinanceHandler",
+              "handlers.TrustedDomainHandler",
+              "handlers.DAppHandler",
+              "handlers.ExternalAuthHandler",
+              "handlers.BlacklistHandler"
+            ],
+            "functions": [
+              "HealthCheck",
+              "registerPublic"
+            ],
+            "imports": [
+              "net/http",
+              "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+              "github.com/labstack/echo/v4",
+              "github.com/axieinfinity/ronin-wallet-manager/config",
+              "github.com/axieinfinity/ronin-wallet-manager/handlers",
+              "github.com/axieinfinity/ronin-wallet-manager/middleware",
+              "github.com/axieinfinity/ronin-wallet-manager/models"
+            ],
+            "side_effects": [
+              "Modifies the state of the API by registering routes and handlers."
+            ],
+            "risks": [
+              "Potential exposure of sensitive information through improperly secured endpoints."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "tests": {
+        "path": "tests",
+        "purpose": "This folder contains tests for the web server that provides an endpoint to sign messages using ECDSA.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "github.com/ethereum/go-ethereum",
+          "github.com/labstack/echo/v4"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, focusing on the implementation of a web server with clear separation of concerns for handling requests and signing messages.",
+        "file_summaries": {
+          "tests/main.go": {
+            "language": "Go",
+            "purpose": "This file implements a web server that provides an endpoint to sign messages using ECDSA.",
+            "key_types": [
+              "SignRequest",
+              "ecdsa.PrivateKey"
+            ],
+            "functions": [
+              "signHash",
+              "signMessage",
+              "main"
+            ],
+            "imports": [
+              "context",
+              "crypto/ecdsa",
+              "fmt",
+              "log",
+              "net/http",
+              "os",
+              "os/signal",
+              "sort",
+              "strings",
+              "time",
+              "github.com/ethereum/go-ethereum/common",
+              "github.com/ethereum/go-ethereum/common/hexutil",
+              "github.com/ethereum/go-ethereum/crypto",
+              "github.com/labstack/echo/v4"
+            ],
+            "side_effects": [
+              "Starts an HTTP server on port 8888",
+              "Listens for OS interrupt signals to gracefully shut down the server"
+            ],
+            "risks": [
+              "Potential exposure of private keys if not handled securely",
+              "Logging sensitive information (e.g., errors) could lead to information leakage"
+            ],
+            "complexity": "medium"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,481 @@
+{
+  "content_hash": "43503fd5152881c424627e26d77549cb",
+  "timestamp": "2025-09-25T16:08:13.806925+07:00",
+  "result": {
+    "purpose": "A SQL migration management tool designed to facilitate database schema changes and version control for developers. It allows users to execute, track, and restore database migrations efficiently, ensuring data integrity and consistency.",
+    "architecture": "The project follows a modular architecture pattern, separating concerns between command-line interface, database management, and testing functionalities.",
+    "data_models": [
+      "DBConfig",
+      "MigrationHistory"
+    ],
+    "external_services": [
+      "SQLite",
+      "MySQL",
+      "PostgreSQL"
+    ],
+    "languages": {
+      "Go": 10,
+      "Markdown": 2,
+      "YAML": 2
+    },
+    "folder_summaries": {
+      ".github": {
+        "path": ".github",
+        "purpose": "Contains configuration files and templates for managing GitHub repository workflows, including pull requests and release notes.",
+        "languages": {
+          "Markdown": 1,
+          "YAML": 1
+        },
+        "key_modules": [
+          "PULL_REQUEST_TEMPLATE.md",
+          "release.yml"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a simple configuration pattern, providing templates and settings for repository management without complex interdependencies.",
+        "file_summaries": {
+          ".github/PULL_REQUEST_TEMPLATE.md": {
+            "language": "Markdown",
+            "purpose": "Template for pull requests in a GitHub repository",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          },
+          ".github/release.yml": {
+            "language": "YAML",
+            "purpose": "Defines the configuration for release notes and changelog management in a GitHub repository.",
+            "key_types": [
+              "changelog",
+              "categories"
+            ],
+            "functions": [],
+            "imports": [],
+            "complexity": "low"
+          }
+        }
+      },
+      ".github/workflows": {
+        "path": ".github/workflows",
+        "purpose": "Responsible for defining GitHub Actions workflows for CI/CD processes.",
+        "languages": {
+          "YAML": 1
+        },
+        "key_modules": [
+          "unit_test.yml"
+        ],
+        "dependencies": [
+          "actions/checkout@v2",
+          "actions/setup-go@v2",
+          "actions/cache@v2",
+          "codecov/codecov-action@v1"
+        ],
+        "architecture": "The folder follows a CI/CD architecture pattern, utilizing GitHub Actions to automate testing and reporting processes.",
+        "file_summaries": {
+          ".github/workflows/unit_test.yml": {
+            "language": "YAML",
+            "purpose": "Defines a GitHub Actions workflow for running Go tests and generating coverage reports.",
+            "key_types": [],
+            "functions": [],
+            "imports": [
+              "actions/checkout@v2",
+              "actions/setup-go@v2",
+              "actions/cache@v2",
+              "codecov/codecov-action@v1"
+            ],
+            "side_effects": [
+              "Code is checked out from the repository.",
+              "Go environment is set up.",
+              "Dependencies are cached and installed.",
+              "Tests are executed and coverage report is generated.",
+              "Coverage report is uploaded to Codecov."
+            ],
+            "risks": [
+              "Exposure of sensitive information if the token is not properly secured."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/gosmm": {
+        "path": "cmd/gosmm",
+        "purpose": "This folder/module is responsible for the main entry point of a command-line tool that interacts with a database, allowing for commands like status check, migration, and restore.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "main.go",
+          "main_test.go"
+        ],
+        "dependencies": [
+          "database/sql",
+          "fmt",
+          "github.com/joho/godotenv",
+          "github.com/k1e1n04/gosmm/pkg/gosmm",
+          "log",
+          "os",
+          "strconv",
+          "github.com/mattn/go-sqlite3",
+          "bytes",
+          "github.com/stretchr/testify/assert",
+          "strings",
+          "testing"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, with a clear separation between the main application logic and its testing components.",
+        "file_summaries": {
+          "cmd/gosmm/main.go": {
+            "language": "Go",
+            "purpose": "This file is the main entry point for a command-line tool that interacts with a database, allowing for commands like status check, migration, and restore.",
+            "key_types": [
+              "DBConfig"
+            ],
+            "functions": [
+              "main",
+              "executeCommand"
+            ],
+            "imports": [
+              "database/sql",
+              "fmt",
+              "github.com/joho/godotenv",
+              "github.com/k1e1n04/gosmm/pkg/gosmm",
+              "log",
+              "os",
+              "strconv",
+              "github.com/mattn/go-sqlite3"
+            ],
+            "side_effects": [
+              "Loads environment variables from a .env file",
+              "Connects to a database",
+              "Executes commands that may alter the database state"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if environment variables are not properly managed",
+              "Database connection errors may lead to application crashes"
+            ],
+            "complexity": "medium"
+          },
+          "cmd/gosmm/main_test.go": {
+            "language": "Go",
+            "purpose": "Unit tests for database migration commands in a command-line application.",
+            "key_types": [
+              "*sql.DB",
+              "testing.T"
+            ],
+            "functions": [
+              "setupTestDB",
+              "TestExecuteStatusCommand",
+              "TestExecuteRestoreCommand",
+              "TestExecuteMigrateCommand",
+              "TestExecuteUnknownCommand"
+            ],
+            "imports": [
+              "bytes",
+              "database/sql",
+              "github.com/stretchr/testify/assert",
+              "os",
+              "strings",
+              "testing"
+            ],
+            "side_effects": [
+              "Creates a temporary in-memory SQLite database",
+              "Sets environment variable GOSMM_MIGRATIONS_DIR",
+              "Creates a test_migrations directory if it doesn't exist"
+            ],
+            "risks": [
+              "Potential for SQL injection if user input is not sanitized in executeCommand"
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/gosmm": {
+        "path": "pkg/gosmm",
+        "purpose": "This folder/module is responsible for managing database connections, migrations, and migration history within the application.",
+        "languages": {
+          "Go": 8
+        },
+        "key_modules": [
+          "database.go",
+          "migration.go",
+          "restore.go",
+          "status.go",
+          "database_test.go",
+          "migration_test.go",
+          "restore_test.go",
+          "status_test.go"
+        ],
+        "dependencies": [
+          "database/sql",
+          "fmt",
+          "github.com/go-sql-driver/mysql",
+          "github.com/lib/pq",
+          "github.com/mattn/go-sqlite3",
+          "github.com/stretchr/testify/assert",
+          "errors",
+          "io/ioutil",
+          "path/filepath",
+          "sort",
+          "strings",
+          "time",
+          "testing"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, organizing files by functionality related to database management, including connection handling, migrations, and testing.",
+        "file_summaries": {
+          "pkg/gosmm/database.go": {
+            "language": "Go",
+            "purpose": "This file manages database connections and configurations.",
+            "key_types": [
+              "DBConfig"
+            ],
+            "functions": [
+              "validateDBConfig",
+              "ConnectDB",
+              "CloseDB"
+            ],
+            "imports": [
+              "database/sql",
+              "fmt",
+              "github.com/go-sql-driver/mysql",
+              "github.com/lib/pq",
+              "github.com/mattn/go-sqlite3"
+            ],
+            "side_effects": [
+              "Establishes a connection to a database",
+              "Closes the database connection"
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if passwords are not handled securely"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/gosmm/database_test.go": {
+            "language": "Go",
+            "purpose": "Unit tests for validating database configuration and connection functionality.",
+            "key_types": [
+              "DBConfig"
+            ],
+            "functions": [
+              "TestValidateDBConfig",
+              "TestValidateDBConfigWithInvalidPort",
+              "TestValidateDBConfigWithMissingDriver",
+              "TestValidateDBConfigWithMissingHost",
+              "TestValidateDBConfigWithMissingUser",
+              "TestValidateDBConfigWithMissingPassword",
+              "TestValidateDBConfigWithMissingDBName",
+              "TestConnectDBWithMySQL",
+              "TestConnectDBWithPostgres",
+              "TestConnectDBWithSQLite",
+              "TestConnectDBWithInvalidDriver",
+              "TestCloseDB"
+            ],
+            "imports": [
+              "github.com/stretchr/testify/assert",
+              "testing"
+            ],
+            "side_effects": [
+              "Database connections are opened and closed during tests."
+            ],
+            "risks": [
+              "Potential exposure of sensitive information if passwords are not properly handled."
+            ],
+            "complexity": "medium"
+          },
+          "pkg/gosmm/migration.go": {
+            "language": "Go",
+            "purpose": "This file handles database migrations by executing SQL files and maintaining a migration history.",
+            "key_types": [
+              "sql.DB",
+              "sql.Tx",
+              "error"
+            ],
+            "functions": [
+              "checkMigrationIntegrity",
+              "Migrate",
+              "getExecutedMigrations",
+              "getLastSuccessfulMigrationFile",
+              "executeAndRecordMigration",
+              "recordMigration",
+              "createHistoryTable",
+              "getLastInstalledRank",
+              "failedMigrationExists"
+            ],
+            "imports": [
+              "database/sql",
+              "errors",
+              "fmt",
+              "io/ioutil",
+              "path/filepath",
+              "sort",
+              "strings",
+              "time"
+            ],
+            "side_effects": [
+              "Modifies the database by creating tables and inserting migration records."
+            ],
+            "risks": [
+              "Potential SQL injection if user input is not properly sanitized.",
+              "Data loss if migrations are not executed correctly."
+            ],
+            "complexity": "medium"
+          },
+          "pkg/gosmm/migration_test.go": {
+            "language": "Go",
+            "purpose": "This file contains tests for database migration functionality using SQLite.",
+            "key_types": [
+              "*sql.DB",
+              "testing.T"
+            ],
+            "functions": [
+              "setupTestDB",
+              "TestCheckMigrationIntegrity",
+              "TestCheckMigrationIntegrityWithMissingMigrationFile",
+              "TestCheckMigrationIntegrityWithInvalidExtension",
+              "TestMigrateSingleFile",
+              "TestMigrateMultipleFiles"
+            ],
+            "imports": [
+              "database/sql",
+              "github.com/stretchr/testify/assert",
+              "io/ioutil",
+              "os",
+              "path/filepath",
+              "testing",
+              "_ github.com/mattn/go-sqlite3"
+            ],
+            "side_effects": [
+              "Creates and deletes directories and files for testing purposes",
+              "Interacts with an in-memory SQLite database"
+            ],
+            "risks": [
+              "Potential for file system manipulation errors",
+              "Database connection errors"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/gosmm/restore.go": {
+            "language": "Go",
+            "purpose": "Cleans up the migration history by deleting records with success = false",
+            "key_types": [
+              "sql.DB"
+            ],
+            "functions": [
+              "Restore"
+            ],
+            "imports": [
+              "database/sql",
+              "fmt"
+            ],
+            "side_effects": [
+              "Modifies the database by deleting records"
+            ],
+            "risks": [
+              "Potential data loss if used incorrectly"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/gosmm/restore_test.go": {
+            "language": "Go",
+            "purpose": "This file contains a test for the Restore function, which interacts with a SQLite database to manage migration history records.",
+            "key_types": [
+              "*sql.DB",
+              "error",
+              "testing.T"
+            ],
+            "functions": [
+              "TestRestore",
+              "setupTestDB",
+              "Restore"
+            ],
+            "imports": [
+              "testing",
+              "github.com/mattn/go-sqlite3"
+            ],
+            "side_effects": [
+              "Creates and modifies a SQLite database table",
+              "Inserts records into the database"
+            ],
+            "risks": [
+              "Potential SQL injection if user input is not sanitized",
+              "Database corruption if not handled properly"
+            ],
+            "complexity": "medium"
+          },
+          "pkg/gosmm/status.go": {
+            "language": "Go",
+            "purpose": "Displays the migration status from a database table.",
+            "key_types": [
+              "sql.DB"
+            ],
+            "functions": [
+              "DisplayStatus"
+            ],
+            "imports": [
+              "database/sql",
+              "fmt"
+            ],
+            "side_effects": [
+              "Creates a history table if it doesn't exist.",
+              "Prints output to the console."
+            ],
+            "risks": [
+              "Potential SQL injection if user input is not sanitized (not applicable in this snippet)."
+            ],
+            "complexity": "medium"
+          },
+          "pkg/gosmm/status_test.go": {
+            "language": "Go",
+            "purpose": "Unit tests for displaying migration status from a database table.",
+            "key_types": [
+              "*testing.T",
+              "db",
+              "teardown"
+            ],
+            "functions": [
+              "TestDisplayStatusWithNoHistoryRecord",
+              "TestDisplayStatusWithOneHistoryRecord",
+              "TestDisplayStatusWithFailedMigrationFile",
+              "TestDisplayStatusWithMultipleHistoryRecords"
+            ],
+            "imports": [
+              "bytes",
+              "os",
+              "strings",
+              "testing"
+            ],
+            "side_effects": [
+              "Modifies stdout to capture output for testing."
+            ],
+            "risks": [
+              "Potential SQL injection if user input is not sanitized."
+            ],
+            "complexity": "medium"
+          }
+        }
+      },
+      "root": {
+        "path": "root",
+        "purpose": "Documentation for GoSMM, a SQL migration manager written in Go.",
+        "languages": {
+          "Markdown": 1
+        },
+        "key_modules": [
+          "README.md"
+        ],
+        "dependencies": [],
+        "architecture": "The folder contains documentation for a SQL migration manager, indicating a focus on providing guidance and information for users.",
+        "file_summaries": {
+          "README.md": {
+            "language": "Markdown",
+            "purpose": "Documentation for GoSMM, a SQL migration manager written in Go.",
+            "key_types": [],
+            "functions": [],
+            "imports": [],
+            "risks": [
+              "Potential data loss if migrations are not handled properly."
+            ],
+            "complexity": "low"
+          }
+        }
+      }
+    }
+  }
+}

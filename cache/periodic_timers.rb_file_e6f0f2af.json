@@ -1,0 +1,28 @@
+{
+  "content_hash": "fc6f025ace87a0717f39da091c9e153c",
+  "timestamp": "2025-09-25T16:10:35.961109+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Provides functionality for periodically executing tasks in ActionCable channels.",
+    "key_types": [
+      "Module",
+      "ClassMethods"
+    ],
+    "functions": [
+      "periodically",
+      "start_periodic_timers",
+      "stop_periodic_timers",
+      "start_periodic_timer"
+    ],
+    "imports": [
+      "ActiveSupport::Concern"
+    ],
+    "side_effects": [
+      "Starts and stops timers upon subscription and unsubscription."
+    ],
+    "risks": [
+      "Potential for resource leaks if timers are not stopped properly."
+    ],
+    "complexity": "medium"
+  }
+}

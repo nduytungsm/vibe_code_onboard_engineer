@@ -1,0 +1,30 @@
+{
+  "content_hash": "357912c6296cf823ac1c5291b645a186",
+  "timestamp": "2025-09-24T17:40:42.774347+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures and methods for managing highlights, including requests and responses for saving and updating highlights.",
+    "key_types": [
+      "Highlight",
+      "InternalHighlightResponse",
+      "GetHighlightRequest",
+      "SaveHighlightRequest",
+      "SaveHighlightBatchRequest",
+      "GetHighlightsListResponse",
+      "UpdateHighlightRequest",
+      "UpdateHighlightBatchRequest",
+      "GetHighlightByIDRequest"
+    ],
+    "functions": [
+      "ToInternalResponse",
+      "ToDApp",
+      "ToUpdateMap",
+      "ToUpdateMap (UpdateHighlightBatchRequest)"
+    ],
+    "imports": [
+      "time",
+      "github.com/mitchellh/mapstructure"
+    ],
+    "complexity": "medium"
+  }
+}

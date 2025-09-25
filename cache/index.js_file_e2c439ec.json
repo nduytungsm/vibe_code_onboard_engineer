@@ -1,0 +1,22 @@
+{
+  "content_hash": "abd7dfdf186ebaf40b7fb2a77b065c8a",
+  "timestamp": "2025-09-25T15:50:03.437648+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Provides test helpers for ActionCable WebSocket connections.",
+    "key_types": [
+      "WebSocket",
+      "ActionCable"
+    ],
+    "functions": [
+      "defer"
+    ],
+    "imports": [
+      "../../../../app/javascript/action_cable/index"
+    ],
+    "side_effects": [
+      "Modifies ActionCable.adapters.WebSocket after tests are done."
+    ],
+    "complexity": "low"
+  }
+}

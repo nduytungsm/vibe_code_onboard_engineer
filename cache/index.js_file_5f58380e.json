@@ -1,0 +1,22 @@
+{
+  "content_hash": "abd7dfdf186ebaf40b7fb2a77b065c8a",
+  "timestamp": "2025-09-25T16:11:33.259181+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Provides test helpers for ActionCable WebSocket connections.",
+    "key_types": [
+      "WebSocket",
+      "QUnit"
+    ],
+    "functions": [
+      "defer"
+    ],
+    "imports": [
+      "ActionCable"
+    ],
+    "side_effects": [
+      "Modifies ActionCable's WebSocket adapter after tests are done."
+    ],
+    "complexity": "low"
+  }
+}

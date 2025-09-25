@@ -1,9 +1,9 @@
 {
-  "content_hash": "8f3c36f8362363c9b7620cb558f9a63f",
-  "timestamp": "2025-09-24T16:29:35.867244+07:00",
+  "content_hash": "2ffb7ea47365b82d1a652e164a293c39",
+  "timestamp": "2025-09-25T16:31:38.178384+07:00",
   "result": {
     "path": "pkg/crypto/hmac",
-    "purpose": "Responsible for HMAC (Hash-based Message Authentication Code) functionality, including signing and validation with support for configuration and clock skew management.",
+    "purpose": "This module is responsible for providing HMAC signing and validation functionalities, including configuration management and unit testing.",
     "languages": {
       "Go": 6
     },
@@ -22,13 +22,13 @@
       "encoding/base64",
       "errors",
       "fmt",
-      "math",
-      "net/http",
       "sort",
       "strings",
       "sync",
       "testing",
-      "time"
+      "time",
+      "math",
+      "net/http"
     ],
     "architecture": "The folder follows a modular architecture pattern, encapsulating HMAC-related functionalities and tests within dedicated files, promoting separation of concerns and maintainability.",
     "file_summaries": {
@@ -51,8 +51,7 @@
         "purpose": "Provides HMAC signing functions using SHA256 and SHA512 algorithms.",
         "key_types": [
           "[]byte",
-          "map[string]string",
-          "error"
+          "map[string]string"
         ],
         "functions": [
           "SHA256",
@@ -74,19 +73,18 @@
           "Generates HMAC signatures"
         ],
         "risks": [
-          "Potential for timing attacks if not implemented securely",
-          "Improper handling of keys may lead to security vulnerabilities"
+          "Potential for timing attacks if not handled properly",
+          "Improper handling of secret keys can lead to security vulnerabilities"
         ],
         "complexity": "medium"
       },
       "pkg/crypto/hmac/funcs_test.go": {
         "language": "Go",
-        "purpose": "Unit tests for HMAC signing functionality",
+        "purpose": "Unit tests for the HMAC signing functionality.",
         "key_types": [
+          "map[string]string",
           "struct",
-          "map",
-          "string",
-          "byte"
+          "[]struct"
         ],
         "functions": [
           "TestSign"
@@ -141,11 +139,17 @@
           "testing",
           "time"
         ],
+        "side_effects": [
+          "None"
+        ],
+        "risks": [
+          "Potential exposure of sensitive data if not handled properly"
+        ],
         "complexity": "medium"
       },
       "pkg/crypto/hmac/init.go": {
         "language": "Go",
-        "purpose": "This file initializes a singleton instance of the HMAC structure with a configuration.",
+        "purpose": "This file initializes a singleton instance of HMAC with a configuration.",
         "key_types": [
           "HMAC",
           "Config"
@@ -158,11 +162,7 @@
           "sync"
         ],
         "side_effects": [
-          "Initializes a global instance of HMAC",
-          "Sets global configuration"
-        ],
-        "risks": [
-          "Potential race conditions if InitInstance is called concurrently without proper synchronization"
+          "Initializes global variables Instance and HConfig"
         ],
         "complexity": "medium"
       }

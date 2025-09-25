@@ -1,0 +1,12 @@
+{
+  "content_hash": "eb6d9f79d17544d6a0eb64bc1d8f7867",
+  "timestamp": "2025-09-25T15:50:50.255798+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Document describing Hasura's architecture for scaling GraphQL subscriptions to handle a million active live queries.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

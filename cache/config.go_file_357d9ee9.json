@@ -1,0 +1,17 @@
+{
+  "content_hash": "f40c0984107eebc22ce78fdf5f563db9",
+  "timestamp": "2025-09-25T16:31:07.699015+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration structures for client authentication.",
+    "key_types": [
+      "ClientConfig",
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

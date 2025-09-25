@@ -1,0 +1,34 @@
+{
+  "content_hash": "3f6c7e564d28e0e3508f2977b7c0b40b",
+  "timestamp": "2025-09-25T15:49:59.671882+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for the ActionCable connection stream functionality.",
+    "key_types": [
+      "ActionCable::Connection::Base",
+      "TestServer",
+      "Connection"
+    ],
+    "functions": [
+      "initialize",
+      "connect",
+      "disconnect",
+      "send_async",
+      "on_error",
+      "open_connection"
+    ],
+    "imports": [
+      "test_helper",
+      "minitest/mock",
+      "stubs/test_server"
+    ],
+    "side_effects": [
+      "Modifies connection state",
+      "Writes to a socket"
+    ],
+    "risks": [
+      "Potential for unhandled exceptions during socket operations"
+    ],
+    "complexity": "medium"
+  }
+}

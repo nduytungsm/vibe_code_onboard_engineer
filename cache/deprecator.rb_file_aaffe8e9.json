@@ -1,0 +1,19 @@
+{
+  "content_hash": "677cec10da6cc0bc605a9a829f7126f4",
+  "timestamp": "2025-09-25T15:50:39.629608+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines a module for ActionMailbox that provides a deprecation mechanism.",
+    "key_types": [
+      "Module",
+      "ActiveSupport::Deprecation"
+    ],
+    "functions": [
+      "deprecator"
+    ],
+    "imports": [
+      "ActiveSupport::Deprecation"
+    ],
+    "complexity": "low"
+  }
+}

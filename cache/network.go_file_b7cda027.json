@@ -1,0 +1,39 @@
+{
+  "content_hash": "7d98dccc8d719cb1d2a9f63690dbc320",
+  "timestamp": "2025-09-25T16:30:01.822003+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a network handler for managing network-related operations in a web application.",
+    "key_types": [
+      "NetworkHandler",
+      "networkHandler"
+    ],
+    "functions": [
+      "GetDApps",
+      "GetNetworkConfig",
+      "getDAppsPublic",
+      "getContractsPublic",
+      "GetContracts",
+      "GetAllConfigs"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "fmt",
+      "net/http",
+      "slices",
+      "sort",
+      "sync",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/hashicorp/go-version",
+      "github.com/labstack/echo/v4",
+      "github.com/mitchellh/mapstructure",
+      "github.com/redis/go-redis/v9",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
+    ],
+    "complexity": "medium"
+  }
+}

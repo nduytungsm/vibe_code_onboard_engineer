@@ -1,0 +1,31 @@
+{
+  "content_hash": "4f581d06c242182c86e0ef3b5e103d3d",
+  "timestamp": "2025-09-25T15:49:50.5465+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Test the rejection behavior of ActionCable channels.",
+    "key_types": [
+      "ActionCable::Channel::RejectionTest",
+      "SecretChannel",
+      "User",
+      "TestConnection"
+    ],
+    "functions": [
+      "subscribed",
+      "secret_action",
+      "setup",
+      "test 'subscription rejection'",
+      "test 'does not execute action if subscription is rejected'"
+    ],
+    "imports": [
+      "test_helper",
+      "minitest/mock",
+      "stubs/test_connection",
+      "stubs/room"
+    ],
+    "side_effects": [
+      "Modifies the state of the connection based on subscription rejection."
+    ],
+    "complexity": "medium"
+  }
+}

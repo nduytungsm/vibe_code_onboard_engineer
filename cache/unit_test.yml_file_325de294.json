@@ -1,0 +1,27 @@
+{
+  "content_hash": "0b14b9724fe88f4680c73686d82d749c",
+  "timestamp": "2025-09-25T16:07:40.123976+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for running Go tests and generating coverage reports.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "actions/checkout@v2",
+      "actions/setup-go@v2",
+      "actions/cache@v2",
+      "codecov/codecov-action@v1"
+    ],
+    "side_effects": [
+      "Code is checked out from the repository.",
+      "Go environment is set up.",
+      "Dependencies are cached and installed.",
+      "Tests are executed and coverage report is generated.",
+      "Coverage report is uploaded to Codecov."
+    ],
+    "risks": [
+      "Exposure of sensitive information if the token is not properly secured."
+    ],
+    "complexity": "medium"
+  }
+}

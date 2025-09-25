@@ -1,0 +1,20 @@
+{
+  "content_hash": "2635b5910b77b26430552ada35bb7bac",
+  "timestamp": "2025-09-25T16:12:19.738621+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines the version of the Action Mailbox module.",
+    "key_types": [
+      "ActionMailbox",
+      "Gem::Version",
+      "VERSION"
+    ],
+    "functions": [
+      "gem_version"
+    ],
+    "imports": [
+      "Gem"
+    ],
+    "complexity": "low"
+  }
+}

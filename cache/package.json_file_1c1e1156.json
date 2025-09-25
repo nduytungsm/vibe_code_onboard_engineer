@@ -1,0 +1,44 @@
+{
+  "content_hash": "736780f80572ff2561ee690fe4cc9f6b",
+  "timestamp": "2025-09-25T15:49:46.135616+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the configuration and dependencies for the Action Cable WebSocket framework for Ruby on Rails.",
+    "key_types": [
+      "package",
+      "repository",
+      "devDependencies"
+    ],
+    "functions": [
+      "prebuild",
+      "build",
+      "lint",
+      "prepublishOnly",
+      "pretest",
+      "test"
+    ],
+    "imports": [
+      "@eslint/js",
+      "@rollup/plugin-commonjs",
+      "@rollup/plugin-node-resolve",
+      "eslint",
+      "eslint-plugin-import",
+      "globals",
+      "karma",
+      "karma-chrome-launcher",
+      "karma-qunit",
+      "karma-sauce-launcher",
+      "mock-socket",
+      "qunit",
+      "rollup",
+      "rollup-plugin-terser"
+    ],
+    "side_effects": [
+      "modifies the file system during build and test processes"
+    ],
+    "risks": [
+      "potential exposure of sensitive information if not properly configured"
+    ],
+    "complexity": "medium"
+  }
+}

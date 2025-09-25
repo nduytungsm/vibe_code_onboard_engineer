@@ -1,0 +1,42 @@
+{
+  "content_hash": "641f4cad7957869ba81c8b3bce4c1b9f",
+  "timestamp": "2025-09-25T16:10:32.736221+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Manages channel subscriptions for ActionCable in a WebSocket environment.",
+    "key_types": [
+      "Subscriptions",
+      "Subscription",
+      "SubscriptionGuarantor"
+    ],
+    "functions": [
+      "constructor",
+      "create",
+      "add",
+      "remove",
+      "reject",
+      "forget",
+      "findAll",
+      "reload",
+      "notifyAll",
+      "notify",
+      "subscribe",
+      "confirmSubscription",
+      "sendCommand"
+    ],
+    "imports": [
+      "./logger",
+      "./subscription",
+      "./subscription_guarantor"
+    ],
+    "side_effects": [
+      "Establishes WebSocket connections",
+      "Modifies internal state of subscriptions"
+    ],
+    "risks": [
+      "Potential for memory leaks if subscriptions are not properly removed",
+      "Improper handling of WebSocket connections could lead to denial of service"
+    ],
+    "complexity": "medium"
+  }
+}

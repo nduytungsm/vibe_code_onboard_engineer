@@ -1,0 +1,32 @@
+{
+  "content_hash": "6bdece86f52392f91fc32a008ff305e2",
+  "timestamp": "2025-09-25T16:12:41.50529+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Test the InboundEmailsController for handling inbound emails relayed from an SMTP server.",
+    "key_types": [
+      "ActionMailbox::Ingresses::Relay::InboundEmailsControllerTest",
+      "ActionMailbox::InboundEmail"
+    ],
+    "functions": [
+      "setup",
+      "test",
+      "assert_difference",
+      "assert_response",
+      "assert_equal",
+      "assert_no_difference",
+      "assert_raises"
+    ],
+    "imports": [
+      "test_helper"
+    ],
+    "side_effects": [
+      "Modifies the ActionMailbox ingress setting",
+      "Interacts with the database by creating or not creating InboundEmail records"
+    ],
+    "risks": [
+      "Potential exposure of sensitive email content if unauthorized access is not properly handled"
+    ],
+    "complexity": "medium"
+  }
+}

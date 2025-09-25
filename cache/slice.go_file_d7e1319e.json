@@ -1,0 +1,21 @@
+{
+  "content_hash": "ec68bf88063e268036400041b3886cdc",
+  "timestamp": "2025-09-25T15:25:32.257367+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides utility functions for manipulating slices, including filtering, finding index, converting slices to maps, and mapping elements.",
+    "key_types": [
+      "T",
+      "T1",
+      "T2"
+    ],
+    "functions": [
+      "Filter",
+      "IndexOf",
+      "SliceToMap",
+      "Map"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "content_hash": "38046070735821369b5bc178b0a7e2e7",
+  "timestamp": "2025-09-25T15:50:56.750309+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file serves as the entry point for a command line executable that executes Hasura commands.",
+    "key_types": [
+      "commands.Command"
+    ],
+    "functions": [
+      "main"
+    ],
+    "imports": [
+      "github.com/hasura/graphql-engine/cli/v2/commands",
+      "github.com/sirupsen/logrus"
+    ],
+    "side_effects": [
+      "Logs fatal errors if command execution fails"
+    ],
+    "risks": [
+      "Potential for logging sensitive information if errors occur"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "content_hash": "fec3c18ad52fbc01f8c6a5c98e181f1f",
+  "timestamp": "2025-09-25T16:11:22.377497+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Test the authorization of ActionCable connections.",
+    "key_types": [
+      "ActionCable::Connection::Base",
+      "TestServer"
+    ],
+    "functions": [
+      "connect",
+      "send_async",
+      "test"
+    ],
+    "imports": [
+      "test_helper",
+      "stubs/test_server"
+    ],
+    "side_effects": [
+      "Establishes a websocket connection",
+      "Rejects unauthorized connections"
+    ],
+    "risks": [
+      "Potential for unauthorized access if not properly tested"
+    ],
+    "complexity": "medium"
+  }
+}

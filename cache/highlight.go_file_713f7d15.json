@@ -1,0 +1,29 @@
+{
+  "content_hash": "357912c6296cf823ac1c5291b645a186",
+  "timestamp": "2025-09-25T16:00:41.272214+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models and request/response structures for highlights in an application.",
+    "key_types": [
+      "Highlight",
+      "InternalHighlightResponse",
+      "GetHighlightRequest",
+      "SaveHighlightRequest",
+      "SaveHighlightBatchRequest",
+      "GetHighlightsListResponse",
+      "UpdateHighlightRequest",
+      "UpdateHighlightBatchRequest",
+      "GetHighlightByIDRequest"
+    ],
+    "functions": [
+      "ToInternalResponse",
+      "ToDApp",
+      "ToUpdateMap"
+    ],
+    "imports": [
+      "time",
+      "github.com/mitchellh/mapstructure"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "content_hash": "bed86ea1197646a2863b63c9b5caea8c",
+  "timestamp": "2025-09-25T16:00:30.860247+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file defines database migrations for creating and initializing tables related to networks, contracts, decentralized applications (d_apps), common data, and code versions.",
+    "key_types": [
+      "networks",
+      "contracts",
+      "d_apps",
+      "commons",
+      "code_versions",
+      "contract_type",
+      "dapp_url"
+    ],
+    "functions": [
+      "CREATE EXTENSION",
+      "CREATE TABLE",
+      "DROP TYPE",
+      "CREATE TYPE",
+      "INSERT INTO",
+      "CREATE INDEX"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates database tables and types",
+      "Inserts initial data into tables"
+    ],
+    "risks": [
+      "Potential SQL injection if user input is not sanitized",
+      "Data integrity risks if foreign key constraints are not properly managed"
+    ],
+    "complexity": "medium"
+  }
+}

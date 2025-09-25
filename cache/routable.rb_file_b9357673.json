@@ -1,0 +1,25 @@
+{
+  "content_hash": "358b6694aaa8094ce6fa2cb1bb8eef28",
+  "timestamp": "2025-09-25T15:50:36.823242+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Defines behavior for routing inbound emails asynchronously in ActionMailbox.",
+    "key_types": [
+      "ActionMailbox::InboundEmail",
+      "RoutingJob"
+    ],
+    "functions": [
+      "route_later",
+      "route"
+    ],
+    "imports": [
+      "ActiveSupport::Concern",
+      "ActionMailbox::RoutingJob",
+      "ApplicationMailbox"
+    ],
+    "side_effects": [
+      "Enqueues a job for routing the inbound email"
+    ],
+    "complexity": "medium"
+  }
+}

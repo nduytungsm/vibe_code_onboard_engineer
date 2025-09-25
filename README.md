@@ -1,6 +1,26 @@
-# Repo Explanation Tool
+# 🚀 Repository Analyzer
 
-A production-ready Golang application that helps onboard new developers by analyzing and explaining codebases using advanced LLM integration. The tool automatically crawls code repositories, processes files through a sophisticated map-reduce pipeline, and generates comprehensive summaries of project architecture, purpose, and functionality.
+A **production-ready Golang application** that revolutionizes developer onboarding by providing comprehensive codebase analysis through advanced LLM integration. Transform complex repositories into clear, actionable insights with real-time progress tracking and beautiful visualizations.
+
+## 🌟 New Features
+
+### **🎨 Modern Web Interface**
+- **GitHub URL Analysis**: Simply paste a GitHub URL and get instant insights
+- **Real-time Progress**: Live streaming updates with detailed progress indicators
+- **Multi-tab Visualization**: Organized results across Overview, Analysis, Services, Database, Relationships, and Files tabs
+- **Authentication Support**: Private repository access with GitHub tokens
+
+### **🗄️ Advanced Database Analysis**
+- **Streaming Schema Extraction**: Professional-grade migration analysis with real-time progress
+- **Mermaid ERD Generation**: Beautiful database relationship diagrams
+- **Comprehensive DDL Support**: CREATE/ALTER/DROP tables, constraints, indexes, enums, views
+- **Multi-dialect Support**: PostgreSQL, MySQL, SQLite compatibility
+
+### **🔗 Service Discovery & Relationships**
+- **Microservice Detection**: Automatic service identification and mapping
+- **Dependency Visualization**: Clear service relationship diagrams
+- **Architecture Analysis**: Monolith vs microservices detection
+- **Tech Stack Identification**: Comprehensive technology stack analysis
 
 ## 🚀 Key Features
 
@@ -12,9 +32,10 @@ A production-ready Golang application that helps onboard new developers by analy
 - **Rate Limiting**: Built-in OpenAI API rate limiting and error handling
 
 ### **Dual Mode Application**
-- **Interactive CLI**: REPL-style interface for repository analysis
-- **Web API**: RESTful API with health check endpoint
-- **Flexible Deployment**: Run as CLI tool or web service
+- **Modern Web Application**: React-based frontend with intuitive GitHub URL analysis
+- **Interactive CLI**: REPL-style interface for local repository analysis
+- **Streaming API**: Real-time Server-Sent Events with progress updates
+- **Flexible Deployment**: Docker Compose, single container, or cloud platform deployment
 
 ### **Production Ready**
 - **Security**: Secret redaction, configurable file filtering
@@ -25,22 +46,36 @@ A production-ready Golang application that helps onboard new developers by analy
 ## 📁 Project Structure
 
 ```
-├── analyzer/              # Core analysis pipeline
-├── cache/                 # Caching system with file hashing
-├── cli/                   # Interactive CLI/REPL
-├── cmd/                   # Standalone entry points
-├── config/                # Configuration management
-├── controllers/           # HTTP request handlers  
-├── internal/              # Internal packages
-│   ├── chunker/          # File chunking system
-│   ├── gitignore/        # .gitignore parser
-│   ├── openai/           # OpenAI client with rate limiting
-│   └── pipeline/         # Analysis pipeline orchestration
-├── models/                # Data models
-├── routes/                # API routes
-├── config.yaml           # Main configuration file
-├── .env.example          # Environment variables template
-└── README.md             # This file
+├── frontend/                    # React Web Application
+│   ├── src/
+│   │   ├── App.jsx             # Main application with tab system
+│   │   ├── utils/api.js        # Streaming API client
+│   │   └── components/ui/      # shadcn/ui component library
+│   ├── package.json            # Frontend dependencies
+│   └── vite.config.js          # Vite build configuration
+├── controllers/                 # HTTP request handlers
+│   └── analysis_controller.go  # Streaming analysis endpoints
+├── internal/                    # Internal packages
+│   ├── pipeline/               # Analysis orchestration
+│   │   ├── analyzer.go         # Main analysis pipeline
+│   │   └── crawler.go          # Repository file discovery
+│   ├── database/               # Database schema analysis
+│   │   ├── schema.go           # Legacy schema extractor
+│   │   └── streaming_extractor.go  # New streaming extractor
+│   ├── detector/               # Project type detection
+│   │   ├── project_type.go     # 8-category classification
+│   │   └── display.go          # Results visualization
+│   ├── microservices/          # Service discovery
+│   ├── relationships/          # Service relationship mapping
+│   ├── openai/                 # LLM integration
+│   ├── chunker/                # File processing
+│   └── gitignore/              # Repository filtering
+├── cache/                       # Analysis result caching
+├── cli/                        # Interactive CLI interface
+├── docker-compose.yml          # Production deployment
+├── config.yaml                # Main configuration
+├── .env.example               # Environment template
+└── README.md                  # This documentation
 ```
 
 ## 🛠️ Setup & Installation
@@ -67,17 +102,87 @@ OPENAI_API_KEY=sk-your-openai-api-key-here
 ```
 
 ### 3. Test Installation
+
+#### **Quick Start - Web Application**
 ```bash
-# Test CLI mode
+# Start with Docker Compose (Recommended)
+docker-compose up -d
+
+# Access the application
+open http://localhost
+```
+
+#### **CLI Mode (Local Analysis)**
+```bash
+# Interactive CLI for local repositories
 ./bin/repo-explanation -mode=cli
 
-# Test server mode
+# When prompted, enter a local path:
+# Please enter the relative path to a folder: ./my-project
+```
+
+#### **Server Mode (API Only)**
+```bash
+# Start API server only
 ./bin/repo-explanation -mode=server
+
+# Access API at http://localhost:8080
+curl http://localhost:8080/health
 ```
 
 ## 🧠 Repository Analysis Usage
 
-### **Interactive CLI Analysis**
+### **🌐 Web Application Analysis (Recommended)**
+
+#### **Step 1: Access the Application**
+```
+1. Start: docker-compose up -d
+2. Open: http://localhost
+3. Interface: Modern React application with real-time progress
+```
+
+#### **Step 2: Analyze GitHub Repository**
+```
+1. Paste GitHub URL: https://github.com/owner/repository
+2. Optional: Add GitHub token for private repositories
+3. Click "Analyze Repository"
+4. Watch real-time progress with detailed stages
+```
+
+#### **Step 3: Explore Results Across Tabs**
+
+**📊 Overview Tab**
+- Project type and confidence score
+- Quick statistics (files, languages, architecture)
+- Two-sentence summary for new developers
+
+**🔬 Analysis Tab** 
+- Detailed architectural analysis
+- Purpose and technology stack
+- Folder-by-folder breakdown
+
+**🏢 Services Tab**
+- Discovered microservices and their purposes
+- Service technology stacks and endpoints
+- API and configuration details
+
+**🗄️ Database Tab**
+- Interactive Mermaid ERD diagrams
+- Table structures with columns and constraints
+- Primary keys, foreign keys, and relationships
+- Migration history analysis
+
+**🔗 Relationships Tab**
+- Service dependency mapping
+- Communication patterns
+- Architecture visualization
+
+**📁 Files Tab**
+- Individual file analysis results
+- Functions, imports, and complexity scores
+- Security insights and recommendations
+
+### **🖥️ CLI Analysis (Local Repositories)**
 ```bash
 # Start the CLI
 ./bin/repo-explanation -mode=cli
@@ -102,7 +207,62 @@ The tool provides:
 - **External Services**: APIs, databases, and integrations
 - **Two-sentence Summary**: Concise explanation for new developers
 
-### **Example Analysis Session**
+### **🎯 Real-World Analysis Examples**
+
+#### **Web Application Example: Go Backend Project**
+```
+🚀 Repository: https://github.com/gin-gonic/gin
+📊 Progress: [████████████████████] 100% Complete
+
+📋 OVERVIEW RESULTS:
+   🎯 Type: Backend (Confidence: 9.2/10)
+   📊 Files: 116 analyzed (0.79 MB)
+   🛠️ Languages: Go (95 files), YAML (10 files)
+   🏗️ Architecture: Monolith
+
+🔬 DETAILED ANALYSIS:
+   Purpose: High-performance HTTP web framework for Go
+   Tech Stack: Go, Testing frameworks, Documentation tools
+   Architecture: Clean, well-structured framework library
+
+🗄️ DATABASE SCHEMA:
+   Status: No database migrations found
+   Type: Framework/Library project
+
+🏢 SERVICES DISCOVERED:
+   • gin-framework (Go) - Core HTTP framework implementation
+   • examples (Go) - Usage examples and demonstrations
+   • testing (Go) - Comprehensive test suite
+
+🔗 RELATIONSHIPS:
+   • Framework-to-examples dependency
+   • Test-to-framework validation relationship
+```
+
+#### **Frontend Project Example**
+```
+🚀 Repository: https://github.com/facebook/react
+📊 Progress: [████████████████████] 100% Complete
+
+📋 OVERVIEW RESULTS:
+   🎯 Type: Frontend (Confidence: 8.7/10)
+   📊 Files: 2,847 analyzed (45.2 MB)
+   🛠️ Languages: JavaScript (1,205), TypeScript (892), Flow (301)
+   🏗️ Architecture: Monorepo
+
+🔬 DETAILED ANALYSIS:
+   Purpose: JavaScript library for building user interfaces
+   Tech Stack: JavaScript, TypeScript, Flow, Jest, Rollup
+   Architecture: Component-based, declarative UI framework
+
+🏢 MONOREPO SERVICES:
+   • react (JavaScript) - Core React library
+   • react-dom (JavaScript) - DOM renderer for React
+   • scheduler (JavaScript) - Cooperative scheduling for React
+   • react-reconciler (JavaScript) - React reconciliation algorithm
+```
+
+### **Example CLI Analysis Session**
 ```
 🚀 Repo Explanation CLI Started
 Please enter the relative path to a folder: ./my-go-project
@@ -158,6 +318,65 @@ Type 'try me' to test, '/end' to exit
 >
 ```
 
+## 🚀 Deployment
+
+### **Production Deployment (Recommended)**
+
+#### **Docker Compose - Full Stack**
+```bash
+# Quick deployment script
+./deploy.sh
+
+# Manual deployment
+docker-compose up -d
+
+# View application logs
+docker-compose logs -f
+
+# Health check
+curl http://localhost/health  # Frontend
+curl http://localhost:8080/health  # Backend API
+```
+
+**Architecture:**
+- **Frontend**: React app served by Nginx on port 80
+- **Backend**: Go API server on port 8080  
+- **Services**: Automatic restarts and health checks
+- **Networking**: Internal Docker network with external access
+
+#### **Single Container Deployment**
+```bash
+# Build and run combined container
+docker build -f Dockerfile.combined -t repo-analyzer .
+docker run -d -p 8080:8080 --name repo-analyzer repo-analyzer
+
+# Access application at http://localhost:8080
+```
+
+#### **Cloud Platform Deployment**
+
+**Railway**
+```bash
+railway up  # Automatic deployment from repository
+```
+
+**Render/Heroku**
+- Connect GitHub repository
+- Use `Dockerfile.combined` for build
+- Set `OPENAI_API_KEY` environment variable
+
+### **Development Setup**
+```bash
+# Backend development
+go run main.go -mode=server
+
+# Frontend development  
+cd frontend && npm run dev
+
+# Access frontend at http://localhost:5173
+# API available at http://localhost:8080
+```
+
 ## ⚙️ Configuration
 
 ### **Main Configuration** (`config.yaml`)
@@ -207,13 +426,47 @@ OPENAI_API_KEY=sk-your-actual-key-here
 
 ## 🔧 Advanced Usage
 
-### **API Server Mode**
-```bash
-# Start as web server
-./bin/repo-explanation -mode=server
+### **🌐 Streaming API**
 
-# Health check
+#### **Analyze GitHub Repository**
+```bash
+curl -X POST http://localhost:8080/api/analyze/stream \
+  -H "Content-Type: application/json" \
+  -H "Accept: text/event-stream" \
+  -d '{
+    "url": "https://github.com/owner/repository",
+    "type": "github_url",
+    "token": "ghp_optional_private_repo_token"
+  }'
+```
+
+**Response: Server-Sent Events (SSE)**
+```
+data: {"type":"progress","stage":"🚀 Initializing analysis...","progress":0,"message":"Starting repository analysis"}
+
+data: {"type":"progress","stage":"📂 Cloning repository...","progress":5,"message":"Downloading repository files"}
+
+data: {"type":"data","stage":"Project type detected","progress":32,"data":{"project_type":{"primary_type":"Backend","confidence":8.5}}}
+
+data: {"type":"data","stage":"Database schema extracted","progress":92,"data":{"database_schema":{"tables":{...},"mermaid":"erDiagram..."}}}
+
+data: {"type":"complete","stage":"🎉 Analysis complete!","progress":100,"data":{"project_summary":{...},"database_schema":{...}}}
+```
+
+#### **Traditional API (Non-streaming)**
+```bash
+curl -X POST http://localhost:8080/api/analyze \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://github.com/owner/repository",
+    "type": "github_url"
+  }'
+```
+
+#### **Health Check**
+```bash
 curl http://localhost:8080/health
+# Response: {"message":"Server is running","service":"repo-explanation","status":"healthy"}
 ```
 
 ### **Custom Configuration**
@@ -286,23 +539,70 @@ cache:
 
 ### **Common Issues**
 
+**"Frontend not loading"**
+```bash
+# Check if services are running
+docker-compose ps
+
+# View frontend logs
+docker-compose logs frontend
+
+# Restart frontend service
+docker-compose restart frontend
+```
+
+**"GitHub repository cloning failed"**
+```bash
+# Check if repository is public or add GitHub token
+# For private repositories, add token in the web interface
+
+# Check backend logs for cloning errors
+docker-compose logs backend
+```
+
+**"Analysis progress stuck or timeout"**
+```bash
+# Large repositories may take 5-10 minutes
+# Check backend logs for detailed progress
+docker-compose logs -f backend
+
+# Increase timeout in browser if needed
+# The system has 35-minute timeout built-in
+```
+
 **"OpenAI API key not configured"**
 ```bash
-# Set environment variable
+# Set environment variable before starting
 export OPENAI_API_KEY=sk-your-key-here
+docker-compose up -d
+
 # OR update .env file
+echo "OPENAI_API_KEY=sk-your-key-here" > .env
 ```
 
 **"Rate limit exceeded"**
 - Adjust `rate_limiting` settings in config.yaml
 - Check your OpenAI tier limits
+- Reduce `concurrent_workers` from 5 to 2-3
 
-**"Analysis taking too long"**
-- Reduce `concurrent_workers`
-- Enable caching: `cache.enabled: true`
-- Check file size limits: `max_file_size_mb`
+**"Database schema not displaying"**
+```bash
+# Ensure repository has SQL migration files
+# Supported patterns: migrations/, sql_migrations/, db/migrate/
 
-**"Too many files"**
-- Add patterns to .gitignore
-- Adjust `supported_extensions` in config
-- Use `skip_secret_files` to exclude unnecessary files
+# Check backend logs for schema extraction details
+docker-compose logs backend | grep -i database
+```
+
+**"Service discovery not working"**
+- Ensure repository has clear service structure
+- Works best with microservice architectures
+- Check for docker-compose.yml, package.json, go.mod files
+
+**"Analysis incomplete or partial results"**
+```bash
+# Check OpenAI API quota and billing
+# Verify internet connectivity for API calls
+# Check backend logs for specific failures
+docker-compose logs backend | grep -i error
+```

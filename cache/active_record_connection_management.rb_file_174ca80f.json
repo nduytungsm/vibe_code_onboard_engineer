@@ -1,0 +1,23 @@
+{
+  "content_hash": "88d24c689c5fee49248cf071ecce281e",
+  "timestamp": "2025-09-25T15:34:02.380106+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Manages ActiveRecord database connections for ActionCable server worker.",
+    "key_types": [
+      "Module",
+      "Class"
+    ],
+    "functions": [
+      "with_database_connections"
+    ],
+    "imports": [
+      "ActiveSupport::Concern",
+      "ActiveRecord::Base"
+    ],
+    "side_effects": [
+      "Sets a callback for the work method to manage database connections."
+    ],
+    "complexity": "medium"
+  }
+}

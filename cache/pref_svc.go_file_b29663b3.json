@@ -1,0 +1,50 @@
+{
+  "content_hash": "3de9fc4345aee43db01a0e794ebeffa9",
+  "timestamp": "2025-09-25T16:31:03.300215+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for managing user preferences related to a wallet application.",
+    "key_types": [
+      "Service",
+      "service",
+      "md.Preference",
+      "md.GetPreferencesRequest",
+      "md.UpdatePreferencesRequest",
+      "md.GetDevicePreferenceRequest",
+      "md.UpdateDevicePreferenceRequest",
+      "md.InternalGetWalletPreferencesRequest",
+      "md.GetBatchPreferencesResponse"
+    ],
+    "functions": [
+      "GetByAddress",
+      "UpdateForAddress",
+      "PrivateGetDevicePreferences",
+      "PrivateUpdateDevicePreferences",
+      "SyncDeviceAddresses",
+      "InternalGetList",
+      "ResetDevice",
+      "InitForDeviceRegistration"
+    ],
+    "imports": [
+      "context",
+      "net/http",
+      "regexp",
+      "slices",
+      "strings",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/labstack/echo/v4",
+      "github.com/rs/zerolog/log",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
+    ],
+    "side_effects": [
+      "Logs information and errors during execution.",
+      "Performs asynchronous migration of notification settings."
+    ],
+    "complexity": "medium"
+  }
+}

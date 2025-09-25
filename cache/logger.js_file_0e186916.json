@@ -1,0 +1,21 @@
+{
+  "content_hash": "6ef0de50d55b05c7c80d889f99858b81",
+  "timestamp": "2025-09-25T15:33:37.165392+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Provides a logging utility for ActionCable with an option to enable or disable logging.",
+    "key_types": [
+      "Object"
+    ],
+    "functions": [
+      "log"
+    ],
+    "imports": [
+      "./adapters"
+    ],
+    "side_effects": [
+      "Logs messages to the console if logging is enabled."
+    ],
+    "complexity": "low"
+  }
+}

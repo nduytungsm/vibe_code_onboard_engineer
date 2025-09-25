@@ -1,0 +1,23 @@
+{
+  "content_hash": "016dcbf2f6a4788c4728857032864c54",
+  "timestamp": "2025-09-25T16:10:06.981251+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for managing stale issues in a repository",
+    "key_types": [
+      "string",
+      "boolean",
+      "array"
+    ],
+    "functions": [],
+    "imports": [],
+    "side_effects": [
+      "Automatically marks issues as stale after a period of inactivity",
+      "Closes stale issues after a specified time"
+    ],
+    "risks": [
+      "Potential loss of important issues if not properly exempted"
+    ],
+    "complexity": "low"
+  }
+}

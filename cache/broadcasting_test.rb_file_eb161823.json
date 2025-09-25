@@ -1,0 +1,28 @@
+{
+  "content_hash": "04a14d869a61e72535fd1137f4484079",
+  "timestamp": "2025-09-25T16:11:41.77615+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file contains tests for the broadcasting functionality of ActionCable.",
+    "key_types": [
+      "BroadcastingTest",
+      "TestServer"
+    ],
+    "functions": [
+      "setup",
+      "test",
+      "assert_equal",
+      "assert_notifications_count",
+      "assert_notification"
+    ],
+    "imports": [
+      "test_helper",
+      "stubs/test_server"
+    ],
+    "side_effects": [
+      "Interacts with the ActionCable broadcasting system",
+      "Generates notifications"
+    ],
+    "complexity": "medium"
+  }
+}

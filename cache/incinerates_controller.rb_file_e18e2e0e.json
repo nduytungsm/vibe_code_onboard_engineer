@@ -1,0 +1,20 @@
+{
+  "content_hash": "42ae4fc9e7cd292db5ba12a38d9c4e27",
+  "timestamp": "2025-09-25T16:12:09.813821+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "This file defines a controller for incinerating processed emails in the Action Mailbox framework.",
+    "key_types": [
+      "Rails::Conductor::BaseController",
+      "ActionMailbox::InboundEmail"
+    ],
+    "functions": [
+      "create"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Destroys an email that has been processed."
+    ],
+    "complexity": "low"
+  }
+}
