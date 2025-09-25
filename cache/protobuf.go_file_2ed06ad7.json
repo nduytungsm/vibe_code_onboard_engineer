@@ -1,0 +1,26 @@
+{
+  "content_hash": "91f5b50be1ba35a40ab0285431acb97e",
+  "timestamp": "2025-09-25T17:14:28.603645+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a ProtoBuf renderer that marshals data into the ProtoBuf format and writes it to an HTTP response.",
+    "key_types": [
+      "ProtoBuf"
+    ],
+    "functions": [
+      "Render",
+      "WriteContentType"
+    ],
+    "imports": [
+      "net/http",
+      "google.golang.org/protobuf/proto"
+    ],
+    "side_effects": [
+      "Writes data to an HTTP response writer"
+    ],
+    "risks": [
+      "Potential for type assertion panic if Data is not of type proto.Message"
+    ],
+    "complexity": "medium"
+  }
+}

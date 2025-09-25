@@ -1,9 +1,9 @@
 {
-  "content_hash": "0a6b19c53e7a5d9386a7bb1085d8d20d",
-  "timestamp": "2025-09-25T16:31:59.619691+07:00",
+  "content_hash": "4f8e69b96ba5c635274d067f528c260e",
+  "timestamp": "2025-09-25T17:21:01.852355+07:00",
   "result": {
     "path": "httpclient",
-    "purpose": "This folder/module is responsible for implementing various HTTP clients for interacting with different APIs and managing device-related operations.",
+    "purpose": "This folder/module is responsible for defining various HTTP clients for interacting with different APIs and managing device-related operations.",
     "languages": {
       "Go": 5
     },
@@ -20,11 +20,11 @@
       "github.com/rs/zerolog/log",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates a specific client implementation with defined interfaces and functions for handling HTTP requests and responses.",
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates a specific client or functionality related to HTTP requests, promoting separation of concerns and reusability.",
     "file_summaries": {
       "httpclient/athena.go": {
         "language": "Go",
-        "purpose": "This file implements an HTTP client for linking accounts using the Athena API.",
+        "purpose": "This file defines an HTTP client for linking accounts using the Athena API.",
         "key_types": [
           "AthenaClientCfg",
           "Athena",
@@ -41,13 +41,6 @@
           "fmt",
           "net/http",
           "github.com/axieinfinity/ronin-wallet-manager/models"
-        ],
-        "side_effects": [
-          "Makes HTTP requests to an external API"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data in HTTP requests",
-          "Improper error handling may lead to information leakage"
         ],
         "complexity": "medium"
       },
@@ -81,10 +74,10 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Logs warnings for not registered devices during address synchronization."
+          "Logs warnings for not registered devices during address sync"
         ],
         "risks": [
-          "Potential exposure of sensitive information if SecretKey is not handled securely."
+          "Potential exposure of sensitive information if SecretKey is not handled securely"
         ],
         "complexity": "medium"
       },
@@ -113,10 +106,11 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
         ],
         "side_effects": [
-          "Logs request details and errors using zerolog."
+          "Logs request details and errors using zerolog",
+          "Modifies HTTP request headers"
         ],
         "risks": [
-          "Potential exposure of sensitive information if the SecretKey is not properly managed."
+          "Potential exposure of sensitive information if SecretKey is logged or mishandled"
         ],
         "complexity": "medium"
       },
@@ -144,7 +138,7 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Logs errors when notification sending fails"
+          "Logs errors when marshaling JSON or creating HTTP requests"
         ],
         "risks": [
           "Potential exposure of sensitive information in logs if errors occur"
@@ -153,7 +147,7 @@
       },
       "httpclient/tracking.go": {
         "language": "Go",
-        "purpose": "Provides a client for tracking requests asynchronously or synchronously.",
+        "purpose": "Provides a client for tracking events with asynchronous and synchronous methods.",
         "key_types": [
           "TrackingClient",
           "trackingClient",
@@ -177,7 +171,7 @@
           "Asynchronous tracking may lead to race conditions if not handled properly."
         ],
         "risks": [
-          "Potential exposure of API key in logs or errors if not handled securely."
+          "Exposing API key in logs or error messages if not handled correctly."
         ],
         "complexity": "medium"
       }

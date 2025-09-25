@@ -1,0 +1,26 @@
+{
+  "content_hash": "8d66df07cf740508c4c997ded97a0260",
+  "timestamp": "2025-09-25T17:13:54.62448+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides an interface for JSON encoding and decoding using the go-json library.",
+    "key_types": [
+      "gojsonApi",
+      "Encoder",
+      "Decoder"
+    ],
+    "functions": [
+      "init",
+      "Marshal",
+      "Unmarshal",
+      "MarshalIndent",
+      "NewEncoder",
+      "NewDecoder"
+    ],
+    "imports": [
+      "io",
+      "github.com/goccy/go-json"
+    ],
+    "complexity": "medium"
+  }
+}

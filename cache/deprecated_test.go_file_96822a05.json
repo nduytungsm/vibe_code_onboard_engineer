@@ -1,0 +1,34 @@
+{
+  "content_hash": "655e195d08f8bc0a3576a8dace44af6a",
+  "timestamp": "2025-09-25T17:14:04.752338+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains a test for binding form data to a struct in the Gin web framework.",
+    "key_types": [
+      "struct",
+      "http.Request",
+      "httptest.ResponseRecorder"
+    ],
+    "functions": [
+      "TestBindWith",
+      "CreateTestContext",
+      "http.NewRequest",
+      "c.BindWith"
+    ],
+    "imports": [
+      "bytes",
+      "net/http",
+      "net/http/httptest",
+      "testing",
+      "github.com/gin-gonic/gin/binding",
+      "github.com/stretchr/testify/assert"
+    ],
+    "side_effects": [
+      "Creates an HTTP request and response recorder for testing purposes."
+    ],
+    "risks": [
+      "Potential for incorrect binding if the struct tags do not match the form data."
+    ],
+    "complexity": "medium"
+  }
+}

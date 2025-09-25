@@ -1,0 +1,52 @@
+{
+  "content_hash": "1ccb946e6dcc87657f286213bba83df1",
+  "timestamp": "2025-09-25T17:14:04.707668+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the gin framework's context handling, specifically for file serving and multipart form handling.",
+    "key_types": [
+      "Context",
+      "http.Request",
+      "http.ResponseWriter",
+      "multipart.FileHeader"
+    ],
+    "functions": [
+      "createMultipartRequest",
+      "must",
+      "TestContextFile",
+      "TestContextFormFile",
+      "TestContextMultipartForm",
+      "TestSaveUploadedFileWithPermission"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "errors",
+      "fmt",
+      "html/template",
+      "io",
+      "io/fs",
+      "mime/multipart",
+      "net/http",
+      "net/http/httptest",
+      "os",
+      "path/filepath",
+      "testing",
+      "github.com/gin-contrib/sse",
+      "github.com/gin-gonic/gin/binding",
+      "github.com/gin-gonic/gin/codec/json",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "google.golang.org/protobuf/proto"
+    ],
+    "side_effects": [
+      "Creates temporary files for testing",
+      "Modifies file system permissions during tests"
+    ],
+    "risks": [
+      "Potential for file system access issues if paths are not properly sanitized",
+      "Panic on error in 'must' function could lead to test failures"
+    ],
+    "complexity": "medium"
+  }
+}

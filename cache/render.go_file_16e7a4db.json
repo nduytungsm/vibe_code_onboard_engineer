@@ -1,0 +1,40 @@
+{
+  "content_hash": "ee0550de6c260ae08ef70bc36f501b9d",
+  "timestamp": "2025-09-25T17:14:32.464844+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a Render interface for various data formats and implements content type handling.",
+    "key_types": [
+      "Render",
+      "JSON",
+      "IndentedJSON",
+      "SecureJSON",
+      "JsonpJSON",
+      "XML",
+      "String",
+      "Redirect",
+      "Data",
+      "HTML",
+      "HTMLRender",
+      "HTMLDebug",
+      "HTMLProduction",
+      "YAML",
+      "Reader",
+      "AsciiJSON",
+      "ProtoBuf",
+      "TOML"
+    ],
+    "functions": [
+      "Render",
+      "WriteContentType",
+      "writeContentType"
+    ],
+    "imports": [
+      "net/http"
+    ],
+    "side_effects": [
+      "Modifies the HTTP response header to set the Content-Type if not already set."
+    ],
+    "complexity": "medium"
+  }
+}

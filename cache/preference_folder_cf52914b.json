@@ -1,9 +1,9 @@
 {
-  "content_hash": "e3e069d10aa059ab044431c8d4ba165e",
-  "timestamp": "2025-09-25T16:33:08.157183+07:00",
+  "content_hash": "f1c85872268e7ca035054e3943936690",
+  "timestamp": "2025-09-25T17:20:40.543754+07:00",
   "result": {
     "path": "pkg/preference",
-    "purpose": "This folder/module is responsible for managing user preferences related to a wallet application.",
+    "purpose": "This folder/module is responsible for managing user preferences related to a wallet application, including fetching, updating, and syncing preferences based on device and address.",
     "languages": {
       "Go": 1
     },
@@ -21,11 +21,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the logic for user preference management within a dedicated service file.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the logic for user preferences management within a dedicated service file.",
     "file_summaries": {
       "pkg/preference/pref_svc.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing user preferences related to a wallet application.",
+        "purpose": "This file defines a service for managing user preferences related to a wallet application, including fetching, updating, and syncing preferences based on device and address.",
         "key_types": [
           "Service",
           "service",
@@ -64,8 +64,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/repositories"
         ],
         "side_effects": [
-          "Logs information and errors during execution.",
-          "Performs asynchronous migration of notification settings."
+          "Logs information and errors during preference migration and updates.",
+          "Asynchronously migrates notification settings for devices."
+        ],
+        "risks": [
+          "Potential for SQL injection if input is not properly sanitized.",
+          "Error handling may expose sensitive information through logs."
         ],
         "complexity": "medium"
       }

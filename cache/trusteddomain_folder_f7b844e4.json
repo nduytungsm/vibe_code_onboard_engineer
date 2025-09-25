@@ -1,9 +1,9 @@
 {
-  "content_hash": "abeb42b31b5791ca0636f3f1d5030a15",
-  "timestamp": "2025-09-25T16:34:29.229614+07:00",
+  "content_hash": "6755da500a77e556139743b47cb460ff",
+  "timestamp": "2025-09-25T17:20:32.374513+07:00",
   "result": {
     "path": "pkg/trusteddomain",
-    "purpose": "This folder/module is responsible for managing trusted domains, including caching and database operations.",
+    "purpose": "Responsible for managing trusted domains, including caching and database interactions.",
     "languages": {
       "Go": 2
     },
@@ -19,16 +19,15 @@
       "github.com/axieinfinity/ronin-wallet-manager/models",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating domain management logic and utility functions.",
+    "architecture": "The folder follows a service-oriented architecture, encapsulating domain management logic and utility functions.",
     "file_summaries": {
       "pkg/trusteddomain/trusted_domain_svc.go": {
         "language": "Go",
-        "purpose": "This file implements a service for managing trusted domains, including caching and database operations.",
+        "purpose": "Provides a service for managing trusted domains, including caching and database interactions.",
         "key_types": [
           "Service",
           "svc",
           "TrustedDomain",
-          "TrustedDomainRepo",
           "GetListTDMRequest"
         ],
         "functions": [
@@ -52,11 +51,11 @@
           "github.com/axieinfinity/ronin-wallet-manager/repositories"
         ],
         "side_effects": [
-          "Caches trusted domain data",
+          "Caches results for domain queries",
           "Subscribes to a Redis channel for cache invalidation"
         ],
         "risks": [
-          "Potential race conditions in cache operations",
+          "Potential cache inconsistency if not properly managed",
           "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"

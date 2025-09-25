@@ -1,0 +1,36 @@
+{
+  "content_hash": "d877ccd953da5987c17edc2f85590b92",
+  "timestamp": "2025-09-25T17:17:41.794267+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles location-related requests and responses in a web application.",
+    "key_types": [
+      "LocationHandler",
+      "locationHandler",
+      "models.GetLocationRequest"
+    ],
+    "functions": [
+      "PublicGetLocation",
+      "InternalGetLocation",
+      "InternalDownloadDB",
+      "lookupLocation",
+      "NewLocationHandler"
+    ],
+    "imports": [
+      "errors",
+      "net/http",
+      "github.com/labstack/echo/v4",
+      "github.com/rs/zerolog/log",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/location"
+    ],
+    "side_effects": [
+      "Logs debug information when looking up location."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information through error messages."
+    ],
+    "complexity": "medium"
+  }
+}

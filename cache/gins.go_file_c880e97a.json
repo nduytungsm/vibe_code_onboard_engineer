@@ -1,0 +1,51 @@
+{
+  "content_hash": "0c423449ec00e919428a0a6a35131c25",
+  "timestamp": "2025-09-25T17:14:12.541825+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a wrapper around the Gin web framework to facilitate the creation and management of HTTP routes and middleware.",
+    "key_types": [
+      "gin.Engine",
+      "gin.RouterGroup",
+      "gin.IRoutes",
+      "http.FileSystem"
+    ],
+    "functions": [
+      "LoadHTMLGlob",
+      "LoadHTMLFiles",
+      "LoadHTMLFS",
+      "SetHTMLTemplate",
+      "NoRoute",
+      "NoMethod",
+      "Group",
+      "Handle",
+      "POST",
+      "GET",
+      "DELETE",
+      "PATCH",
+      "PUT",
+      "OPTIONS",
+      "HEAD",
+      "Any",
+      "StaticFile",
+      "Static",
+      "StaticFS",
+      "Use",
+      "Routes",
+      "Run",
+      "RunTLS",
+      "RunUnix",
+      "RunFd"
+    ],
+    "imports": [
+      "html/template",
+      "net/http",
+      "sync",
+      "github.com/gin-gonic/gin"
+    ],
+    "side_effects": [
+      "Starts an HTTP server when Run, RunTLS, RunUnix, or RunFd is called."
+    ],
+    "complexity": "medium"
+  }
+}

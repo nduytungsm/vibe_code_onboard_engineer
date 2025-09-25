@@ -1083,6 +1083,14 @@ function DatabaseTab({ getAnalysisData }) {
                 <Link className="h-4 w-4 mr-2" />
                 Relationships
               </Button>
+              <Button
+                variant={activeView === "migration" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setActiveView("migration")}
+              >
+                <FileText className="h-4 w-4 mr-2" />
+                Final Migration
+              </Button>
             </div>
           </div>
         </CardHeader>
@@ -1182,7 +1190,7 @@ function DatabaseTab({ getAnalysisData }) {
                 );
               })}
             </div>
-          ) : (
+          ) : activeView === "relationships" ? (
             <div className="space-y-4">
               <div className="text-center py-4">
                 <div className="text-sm" style={{ color: "hsl(var(--slate-600))" }}>
@@ -1200,6 +1208,51 @@ function DatabaseTab({ getAnalysisData }) {
                   <div className="text-center py-8" style={{ color: "hsl(var(--slate-500))" }}>
                     <Link className="h-12 w-12 mx-auto mb-4 opacity-50" />
                     <p>No foreign key relationships detected in the database schema</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="text-center py-4">
+                <div className="text-sm" style={{ color: "hsl(var(--slate-600))" }}>
+                  Final Migration SQL - Complete Database Schema
+                </div>
+                <div className="text-xs mt-2" style={{ color: "hsl(var(--slate-500))" }}>
+                  Run this single file instead of all individual migrations
+                </div>
+              </div>
+              <div className="border rounded-lg" style={{ backgroundColor: "hsl(var(--slate-50))", borderColor: "hsl(var(--slate-200))" }}>
+                {databaseSchema.final_migration_sql ? (
+                  <div className="p-4">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="text-sm font-medium" style={{ color: "hsl(var(--slate-700))" }}>
+                        Generated Migration ({databaseSchema.final_migration_sql.length} characters)
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          navigator.clipboard.writeText(databaseSchema.final_migration_sql);
+                        }}
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Copy SQL
+                      </Button>
+                    </div>
+                    <pre className="text-sm overflow-x-auto p-4 rounded-lg font-mono whitespace-pre-wrap" style={{ 
+                      backgroundColor: "hsl(var(--slate-900))", 
+                      color: "hsl(var(--slate-100))",
+                      lineHeight: "1.5"
+                    }}>
+                      {databaseSchema.final_migration_sql}
+                    </pre>
+                  </div>
+                ) : (
+                  <div className="text-center py-8" style={{ color: "hsl(var(--slate-500))" }}>
+                    <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                    <p>Final migration SQL not available</p>
+                    <p className="text-sm mt-2">This might happen if no migrations were processed successfully</p>
                   </div>
                 )}
               </div>

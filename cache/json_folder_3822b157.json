@@ -1,9 +1,9 @@
 {
-  "content_hash": "047e54aadfaa20164b0e8ca96841ae44",
-  "timestamp": "2025-09-24T17:19:56.78758+07:00",
+  "content_hash": "0103d105eaf0a8c24a58e3a7dfdc44f9",
+  "timestamp": "2025-09-25T17:14:59.234662+07:00",
   "result": {
     "path": "codec/json",
-    "purpose": "Responsible for providing various interfaces and implementations for JSON encoding and decoding using different libraries.",
+    "purpose": "Responsible for providing various implementations and interfaces for JSON encoding and decoding.",
     "languages": {
       "Go": 5
     },
@@ -19,11 +19,11 @@
       "github.com/json-iterator/go",
       "github.com/bytedance/sonic"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating different JSON encoding/decoding strategies through separate files, each implementing interfaces for specific libraries.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating different JSON encoding and decoding strategies through separate files, each implementing specific libraries or interfaces.",
     "file_summaries": {
       "codec/json/api.go": {
         "language": "Go",
-        "purpose": "Defines interfaces and types for JSON encoding and decoding.",
+        "purpose": "Defines a JSON codec API for marshaling and unmarshaling JSON data.",
         "key_types": [
           "Core",
           "Encoder",
@@ -45,10 +45,10 @@
           "io"
         ],
         "side_effects": [
-          "None"
+          "Escaping HTML characters in JSON output when SetEscapeHTML is true."
         ],
         "risks": [
-          "Potential security issues with JSON encoding in HTML contexts if not properly escaped."
+          "Potential security issues when embedding JSON in HTML if escaping is not handled properly."
         ],
         "complexity": "medium"
       },
@@ -120,11 +120,9 @@
       },
       "codec/json/sonic.go": {
         "language": "Go",
-        "purpose": "Provides a JSON encoding and decoding interface using the Sonic library.",
+        "purpose": "This file provides a wrapper around the Sonic library for JSON encoding and decoding.",
         "key_types": [
-          "sonicApi",
-          "Encoder",
-          "Decoder"
+          "sonicApi"
         ],
         "functions": [
           "init",
@@ -137,6 +135,9 @@
         "imports": [
           "io",
           "github.com/bytedance/sonic"
+        ],
+        "side_effects": [
+          "Initializes the API with sonicApi"
         ],
         "complexity": "medium"
       }

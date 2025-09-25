@@ -1,6 +1,6 @@
 {
-  "content_hash": "0fd8870132a4f3ee787e055d13727ccd",
-  "timestamp": "2025-09-24T17:20:31.573142+07:00",
+  "content_hash": "d6b8ae056986a6880f7fddc06b9016df",
+  "timestamp": "2025-09-25T17:15:16.948087+07:00",
   "result": {
     "path": ".github/ISSUE_TEMPLATE",
     "purpose": "This folder contains templates for reporting bugs and requesting features in a GitHub repository.",
@@ -13,7 +13,7 @@
       "feature-request.yaml"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a simple configuration pattern, utilizing YAML files to define templates for issues, which are structured to facilitate user input.",
+    "architecture": "The folder follows a simple configuration pattern, utilizing YAML files to define templates for issues in a GitHub repository.",
     "file_summaries": {
       ".github/ISSUE_TEMPLATE/bug-report.yaml": {
         "language": "YAML",
@@ -26,11 +26,8 @@
         ],
         "functions": [],
         "imports": [],
-        "side_effects": [
-          "Encourages users to report security issues privately"
-        ],
         "risks": [
-          "Potential exposure of sensitive information if issues are reported publicly"
+          "Potential exposure of sensitive information if security issues are reported publicly"
         ],
         "complexity": "low"
       },
@@ -45,10 +42,7 @@
       ".github/ISSUE_TEMPLATE/feature-request.yaml": {
         "language": "YAML",
         "purpose": "Defines a template for feature requests in a GitHub repository.",
-        "key_types": [
-          "object",
-          "array"
-        ],
+        "key_types": [],
         "functions": [],
         "imports": [],
         "complexity": "low"

@@ -1,0 +1,30 @@
+{
+  "content_hash": "dc88727db75967960b4769e21b907364",
+  "timestamp": "2025-09-25T17:13:42.954513+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality for binding and decoding MessagePack data from HTTP requests.",
+    "key_types": [
+      "msgpackBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "BindBody",
+      "decodeMsgPack"
+    ],
+    "imports": [
+      "bytes",
+      "io",
+      "net/http",
+      "github.com/ugorji/go/codec"
+    ],
+    "side_effects": [
+      "Decodes MessagePack data from HTTP request body or byte array."
+    ],
+    "risks": [
+      "Potential for denial of service through large payloads."
+    ],
+    "complexity": "medium"
+  }
+}

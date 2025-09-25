@@ -1,0 +1,22 @@
+{
+  "content_hash": "9dd35c7c2705ade02ed594c46030de24",
+  "timestamp": "2025-09-25T17:14:22.894994+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a Data structure for rendering HTTP responses with custom content types.",
+    "key_types": [
+      "Data"
+    ],
+    "functions": [
+      "Render",
+      "WriteContentType"
+    ],
+    "imports": [
+      "net/http"
+    ],
+    "side_effects": [
+      "Writes to an HTTP response writer"
+    ],
+    "complexity": "medium"
+  }
+}

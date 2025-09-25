@@ -1,0 +1,49 @@
+{
+  "content_hash": "821467f65af36a5646e2aed5a017b521",
+  "timestamp": "2025-09-25T17:17:23.742281+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is the main entry point for triggering announcements in the application.",
+    "key_types": [
+      "context.Context",
+      "error",
+      "gorm.DB",
+      "announcement.Service",
+      "tracking.Service"
+    ],
+    "functions": [
+      "main",
+      "sentry.Init",
+      "postgresql.NewClient",
+      "repositories.NewAnnouncementRepo",
+      "repositories.NewPreferencesRepo",
+      "tracking.NewService",
+      "announcement.NewService",
+      "announcementSvc.TriggerAnnouncement"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "os",
+      "time",
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/getsentry/sentry-go",
+      "github.com/rs/zerolog/log",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-manager/config",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
+    ],
+    "side_effects": [
+      "Initializes Sentry for error tracking",
+      "Connects to a PostgreSQL database",
+      "Triggers an announcement based on environment variable"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information through environment variables",
+      "Error handling may not cover all scenarios leading to unhandled exceptions"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "content_hash": "b5fd9ac4363df0a5282eb799c4411c9f",
+  "timestamp": "2025-09-25T17:14:12.720682+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Integration tests for the Gin web framework, testing various server configurations and request handling.",
+    "key_types": [
+      "*testing.T",
+      "http.Client",
+      "http.Transport",
+      "Context"
+    ],
+    "functions": [
+      "testRequest",
+      "TestRunEmpty",
+      "TestBadTrustedCIDRs",
+      "TestRunTLS",
+      "TestPusher",
+      "TestRunEmptyWithEnv",
+      "TestRunTooMuchParams",
+      "TestRunWithPort",
+      "TestUnixSocket",
+      "TestBadUnixSocket",
+      "TestRunQUIC",
+      "TestFileDescriptor"
+    ],
+    "imports": [
+      "bufio",
+      "crypto/tls",
+      "fmt",
+      "html/template",
+      "io",
+      "net",
+      "net/http",
+      "net/http/httptest",
+      "os",
+      "path/filepath",
+      "runtime",
+      "sync",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies environment variables",
+      "Starts HTTP servers in goroutines",
+      "Creates temporary files and sockets"
+    ],
+    "risks": [
+      "Potential for race conditions due to concurrent server starts",
+      "Insecure TLS configuration with InsecureSkipVerify"
+    ],
+    "complexity": "medium"
+  }
+}

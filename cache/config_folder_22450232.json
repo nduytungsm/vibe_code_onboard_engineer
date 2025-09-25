@@ -1,9 +1,9 @@
 {
-  "content_hash": "fe156aee81fac6053107ff4376b823c3",
-  "timestamp": "2025-09-25T16:33:38.764799+07:00",
+  "content_hash": "9c89d4d4fa28e9057f7e026acd204195",
+  "timestamp": "2025-09-25T17:20:55.028795+07:00",
   "result": {
     "path": "config",
-    "purpose": "This folder/module is responsible for defining and managing application configuration settings.",
+    "purpose": "This folder/module is responsible for managing application configuration settings and ensuring sensitive data is handled securely.",
     "languages": {
       "Go": 3,
       "YAML": 1
@@ -34,7 +34,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing configuration-related files and separating concerns for better maintainability and testing.",
+    "architecture": "The folder follows a modular architecture pattern, separating configuration definitions, sensitive data handling, and unit testing into distinct files for maintainability and clarity.",
     "file_summaries": {
       "config/config.go": {
         "language": "Go",
@@ -79,21 +79,19 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
         ],
         "side_effects": [
-          "Panic if the configuration file cannot be read",
-          "Sets global logging level based on configuration"
+          "Panic if the configuration file cannot be read or unmarshalled."
         ],
         "risks": [
-          "Potential exposure of sensitive configuration data if not handled securely"
+          "Potential exposure of sensitive configuration data if not handled securely."
         ],
         "complexity": "medium"
       },
       "config/config.yml": {
         "language": "YAML",
-        "purpose": "Configuration file for a mobile wallet manager application, defining various settings for services, servers, authentication, logging, and other features.",
+        "purpose": "Configuration file for a mobile wallet manager service, defining various settings for profiling, server, authentication, logging, and other services.",
         "key_types": [
           "profiler",
           "server",
-          "profiling",
           "auth_server",
           "sso_server",
           "sentry",
@@ -102,9 +100,6 @@
           "redis",
           "device_service",
           "postgres",
-          "api_version",
-          "ref_code",
-          "moonpay",
           "announcement_config",
           "ip_location_config",
           "binance_config",
@@ -121,8 +116,8 @@
         "functions": [],
         "imports": [],
         "risks": [
-          "Exposure of sensitive information due to redacted keys and URLs.",
-          "Potential misconfiguration leading to security vulnerabilities."
+          "Exposure of sensitive information due to redacted keys",
+          "Potential for misconfiguration leading to service downtime"
         ],
         "complexity": "medium"
       },
@@ -130,7 +125,8 @@
         "language": "Go",
         "purpose": "This file contains functions to hide sensitive data in configuration structures.",
         "key_types": [
-          "Schema"
+          "Schema",
+          "viper.Viper"
         ],
         "functions": [
           "isSecretField",
@@ -148,7 +144,7 @@
           "github.com/spf13/viper"
         ],
         "side_effects": [
-          "Modifies the input data to hide sensitive information."
+          "Modifies the input data structures to hide sensitive information."
         ],
         "risks": [
           "Potential exposure of sensitive data if the hiding functions are not correctly implemented."
@@ -175,7 +171,7 @@
           "Prints test data to the console"
         ],
         "risks": [
-          "Potential exposure of sensitive data if not properly handled"
+          "Potential exposure of sensitive data if not handled properly"
         ],
         "complexity": "medium"
       }

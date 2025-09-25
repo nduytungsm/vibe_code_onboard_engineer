@@ -1,6 +1,6 @@
 {
-  "content_hash": "1b136f81e874b00abbdc8c2984e5818e",
-  "timestamp": "2025-09-25T16:33:29.087389+07:00",
+  "content_hash": "876f30b8233d23b1d3c6c029c7cf80bb",
+  "timestamp": "2025-09-25T17:20:09.116177+07:00",
   "result": {
     "path": "pkg/worker",
     "purpose": "Responsible for managing a pool of worker goroutines to process jobs concurrently.",
@@ -17,7 +17,7 @@
       "sync",
       "github.com/rs/zerolog/log"
     ],
-    "architecture": "The folder follows a concurrent processing architecture using goroutines, with a dispatcher managing worker pools and job execution.",
+    "architecture": "The folder follows a concurrent processing architecture using goroutines, with a dispatcher managing worker pools to handle jobs.",
     "file_summaries": {
       "pkg/worker/config.go": {
         "language": "Go",
@@ -31,7 +31,7 @@
       },
       "pkg/worker/dispatcher.go": {
         "language": "Go",
-        "purpose": "This file implements a Dispatcher that manages a pool of worker goroutines to process jobs concurrently.",
+        "purpose": "This file implements a dispatcher that manages a pool of worker goroutines to process jobs concurrently.",
         "key_types": [
           "Dispatcher",
           "Config",
@@ -50,11 +50,11 @@
         ],
         "side_effects": [
           "Starts goroutines for workers",
-          "Blocks until a worker is available for job dispatching"
+          "Blocks until a worker is available for a job"
         ],
         "risks": [
           "Potential deadlock if jobQueue is not managed properly",
-          "Goroutine leaks if workers are not stopped correctly"
+          "Resource exhaustion if too many jobs are added without available workers"
         ],
         "complexity": "medium"
       },
@@ -86,10 +86,10 @@
         ],
         "side_effects": [
           "Starts a goroutine for job processing",
-          "Modifies WaitGroup state"
+          "Logs errors during job execution"
         ],
         "risks": [
-          "Potential deadlock if WaitGroup is not managed correctly"
+          "Potential deadlock if not managed properly with WaitGroup"
         ],
         "complexity": "medium"
       }

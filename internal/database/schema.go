@@ -53,10 +53,11 @@ type Table struct {
 
 // DatabaseSchema represents the complete database schema state
 type DatabaseSchema struct {
-	Tables        map[string]Table `json:"tables"`
-	ForeignKeys   []ForeignKeyRef  `json:"foreign_keys"`
-	MigrationPath string           `json:"migration_path"`
-	GeneratedAt   time.Time        `json:"generated_at"`
+	Tables            map[string]Table `json:"tables"`
+	ForeignKeys       []ForeignKeyRef  `json:"foreign_keys"`
+	MigrationPath     string           `json:"migration_path"`
+	GeneratedAt       time.Time        `json:"generated_at"`
+	FinalMigrationSQL string           `json:"final_migration_sql,omitempty"`
 }
 
 // MigrationFile represents a SQL migration file

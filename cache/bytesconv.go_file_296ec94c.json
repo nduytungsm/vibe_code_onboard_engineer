@@ -1,0 +1,23 @@
+{
+  "content_hash": "5c26b624fcc419c64fc9a8c2db68d2ba",
+  "timestamp": "2025-09-25T17:14:14.985443+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides functions to convert between strings and byte slices without memory allocation.",
+    "key_types": [
+      "string",
+      "[]byte"
+    ],
+    "functions": [
+      "StringToBytes",
+      "BytesToString"
+    ],
+    "imports": [
+      "unsafe"
+    ],
+    "risks": [
+      "Using unsafe package may lead to memory safety issues."
+    ],
+    "complexity": "medium"
+  }
+}

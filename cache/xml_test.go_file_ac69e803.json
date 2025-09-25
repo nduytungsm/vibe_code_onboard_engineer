@@ -1,0 +1,21 @@
+{
+  "content_hash": "e266c712a3c9580f2d601dc06e2fb9fa",
+  "timestamp": "2025-09-25T17:13:49.770002+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains a test for XML binding functionality.",
+    "key_types": [
+      "struct",
+      "xmlBinding"
+    ],
+    "functions": [
+      "TestXMLBindingBindBody"
+    ],
+    "imports": [
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "complexity": "low"
+  }
+}

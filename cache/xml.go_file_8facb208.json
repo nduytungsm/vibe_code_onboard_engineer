@@ -1,0 +1,30 @@
+{
+  "content_hash": "6a0bf2f604ecc2cf395d44040087ceee",
+  "timestamp": "2025-09-25T17:13:52.220099+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality for XML binding in HTTP requests.",
+    "key_types": [
+      "xmlBinding"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "BindBody",
+      "decodeXML"
+    ],
+    "imports": [
+      "bytes",
+      "encoding/xml",
+      "io",
+      "net/http"
+    ],
+    "side_effects": [
+      "Decodes XML data from HTTP request body or byte array."
+    ],
+    "risks": [
+      "Potential for XML External Entity (XXE) attacks if input is not properly validated."
+    ],
+    "complexity": "medium"
+  }
+}

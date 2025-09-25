@@ -977,24 +977,28 @@ func (a *Analyzer) extractDatabaseSchema(files []FileInfo) *database.DatabaseSch
 		}
 	}
 
-	// Extract schema using the streaming extractor with progress callback
-	canonicalSchema, _, err := func() (*database.CanonicalSchema, string, error) {
+	// Extract schema using the streaming extractor with final migration generation
+	result, err := func() (*database.ExtractSchemaFromProjectResult, error) {
 		defer func() {
 			if r := recover(); r != nil {
 				fmt.Printf("⚠️  Database schema extraction recovered from panic: %v\n", r)
 			}
 		}()
 		
-		return database.ExtractSchemaFromProject("", fileMap, func(response database.StreamingResponse) {
+		return database.ExtractSchemaWithFinalMigration("", fileMap, func(response database.StreamingResponse) {
 			// Progress callback for database extraction
 			fmt.Printf("📋 Database extraction: %s (%s)\n", response.Phase, response.Message)
 		})
 	}()
 	
-	// Convert canonical schema to legacy format if successful
+	// Convert canonical schema to legacy format and add final migration SQL
 	var schema *database.DatabaseSchema
-	if err == nil && canonicalSchema != nil {
-		schema = database.ConvertToLegacySchema(canonicalSchema, "")
+	if err == nil && result != nil && result.Schema != nil {
+		schema = database.ConvertToLegacySchema(result.Schema, "")
+		// Add the final migration SQL to the schema
+		if schema != nil {
+			schema.FinalMigrationSQL = result.FinalMigrationSQL
+		}
 	}
 	
 	if err != nil {

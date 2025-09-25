@@ -1,0 +1,30 @@
+{
+  "content_hash": "c12c98108a7b74a0281c6450d3512b73",
+  "timestamp": "2025-09-25T17:13:40.091986+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a binding for HTTP headers to a struct, allowing for the mapping and validation of header values.",
+    "key_types": [
+      "headerBinding",
+      "headerSource"
+    ],
+    "functions": [
+      "Name",
+      "Bind",
+      "mapHeader",
+      "TrySet"
+    ],
+    "imports": [
+      "net/http",
+      "net/textproto",
+      "reflect"
+    ],
+    "side_effects": [
+      "Modifies the provided object by mapping HTTP headers to its fields."
+    ],
+    "risks": [
+      "Potential for reflection-based vulnerabilities if not properly validated."
+    ],
+    "complexity": "medium"
+  }
+}

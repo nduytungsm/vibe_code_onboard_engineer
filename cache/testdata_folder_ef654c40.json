@@ -1,9 +1,9 @@
 {
   "content_hash": "bb7ed86172cdbc5b5425c7cb42f4740e",
-  "timestamp": "2025-09-24T15:42:43.408393+07:00",
+  "timestamp": "2025-09-25T17:15:37.736389+07:00",
   "result": {
     "path": "testdata",
-    "purpose": "This folder is responsible for holding test data files used in testing functionalities.",
+    "purpose": "This folder is responsible for holding test data files used for testing purposes.",
     "languages": {
       "text": 1
     },
@@ -11,7 +11,7 @@
       "test_file.txt"
     ],
     "dependencies": [],
-    "architecture": "The folder contains simple text files used for testing purposes, following a flat structure.",
+    "architecture": "The folder contains simple text files used for testing, following a flat structure.",
     "file_summaries": {
       "testdata/test_file.txt": {
         "language": "text",

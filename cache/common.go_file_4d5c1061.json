@@ -1,0 +1,56 @@
+{
+  "content_hash": "b9e50b8d115c3cb61abc145b4ab33177",
+  "timestamp": "2025-09-25T17:17:38.156357+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a common handler for managing configurations and code versions in a web application.",
+    "key_types": [
+      "CommonHandler",
+      "commonHandler",
+      "repositories.CommonRepo",
+      "repositories.CodeVersionRepo",
+      "redis.Client",
+      "blacklist.Service",
+      "xauth.Config"
+    ],
+    "functions": [
+      "GetCodePushVersion",
+      "GetCommonConfig",
+      "GetEncodedCommonConfig",
+      "RefreshKnownContracts",
+      "UpdateCommonConfig",
+      "UpdateCodeVersion",
+      "initCacheCodeVersion",
+      "initCacheCommon",
+      "fireCacheChangedEvent",
+      "refreshCache",
+      "ExternalAuthConfig"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "net/http",
+      "strings",
+      "sync",
+      "github.com/labstack/echo/v4",
+      "github.com/redis/go-redis/v9",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
+    ],
+    "side_effects": [
+      "Modifies cache for common configurations and code versions.",
+      "Publishes events to Redis channels."
+    ],
+    "risks": [
+      "Potential for race conditions due to concurrent access to shared resources.",
+      "Improper error handling may expose sensitive information."
+    ],
+    "complexity": "medium"
+  }
+}

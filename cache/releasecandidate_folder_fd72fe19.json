@@ -1,6 +1,6 @@
 {
-  "content_hash": "c0ac81349e552a9786b890839a6f5b7e",
-  "timestamp": "2025-09-25T16:32:23.268132+07:00",
+  "content_hash": "eb82e0638c79933c23d6d9788d75c82c",
+  "timestamp": "2025-09-25T17:21:05.778182+07:00",
   "result": {
     "path": "pkg/releasecandidate",
     "purpose": "Responsible for managing feature configurations and whitelist devices for mobile wallet candidates.",
@@ -17,7 +17,12 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
       "github.com/go-redsync/redsync/v4",
       "github.com/go-redsync/redsync/v4/redis/goredis/v9",
-      "github.com/rs/zerolog/log"
+      "github.com/rs/zerolog/log",
+      "context",
+      "errors",
+      "fmt",
+      "strings",
+      "time"
     ],
     "architecture": "The folder follows a service-oriented architecture pattern, utilizing Redis for state management and providing a clear interface for feature access control.",
     "file_summaries": {
@@ -33,7 +38,13 @@
           "GetCountWhitelistDevices"
         ],
         "functions": [
-          "NewService"
+          "NewService",
+          "CheckAllowFeature",
+          "SetFeatureConfig",
+          "SetWhitelistFeatures",
+          "SetConfigForDevice",
+          "CountWhitelistDevices",
+          "VerifyWhitelistFeature"
         ],
         "imports": [
           "github.com/redis/go-redis/v9",
@@ -78,12 +89,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/device"
         ],
         "side_effects": [
-          "Modifies Redis state for feature access and device configurations.",
-          "Logs information and errors during execution."
+          "Modifies Redis database state",
+          "Logs information and errors"
         ],
         "risks": [
-          "Potential race conditions when accessing shared resources in Redis.",
-          "Improper handling of Redis errors may lead to incorrect feature access decisions."
+          "Potential race conditions with concurrent access to Redis",
+          "Improper handling of Redis errors could lead to incorrect feature access"
         ],
         "complexity": "medium"
       }

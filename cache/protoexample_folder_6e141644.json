@@ -1,9 +1,9 @@
 {
-  "content_hash": "62286c2b9395a66740179d64638d2b41",
-  "timestamp": "2025-09-24T17:20:18.039647+07:00",
+  "content_hash": "b2e21145b58be27edbadcfda8949e944",
+  "timestamp": "2025-09-25T17:15:30.9375+07:00",
   "result": {
     "path": "testdata/protoexample",
-    "purpose": "This folder/module is responsible for defining protocol buffer message types and enums for use with the protobuf library.",
+    "purpose": "This folder/module is responsible for handling protocol buffer definitions and their associated methods in Go.",
     "languages": {
       "Go": 1
     },
@@ -16,11 +16,11 @@
       "reflect",
       "sync"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating protocol buffer definitions and related functionalities in a single Go file.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating protocol buffer definitions and their generated methods in a single Go file.",
     "file_summaries": {
       "testdata/protoexample/test.pb.go": {
         "language": "Go",
-        "purpose": "This file defines protocol buffer message types and enums for use with the protobuf library.",
+        "purpose": "This file contains generated code for protocol buffer definitions and their associated methods.",
         "key_types": [
           "FOO",
           "Test",

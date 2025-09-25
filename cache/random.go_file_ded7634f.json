@@ -1,0 +1,20 @@
+{
+  "content_hash": "c0459236bda96eb171482a6b100b3302",
+  "timestamp": "2025-09-25T17:18:33.684893+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates a random string of specified length using alphanumeric characters.",
+    "key_types": [
+      "rune",
+      "big.Int"
+    ],
+    "functions": [
+      "RandStr"
+    ],
+    "imports": [
+      "crypto/rand",
+      "math/big"
+    ],
+    "complexity": "medium"
+  }
+}

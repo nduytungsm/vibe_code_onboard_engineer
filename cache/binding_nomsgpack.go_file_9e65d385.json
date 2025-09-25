@@ -1,0 +1,22 @@
+{
+  "content_hash": "543e9c3e717455a565e02f6319b73f76",
+  "timestamp": "2025-09-25T17:13:31.676523+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines interfaces and constants for binding data from HTTP requests in a web application.",
+    "key_types": [
+      "Binding",
+      "BindingBody",
+      "BindingUri",
+      "StructValidator"
+    ],
+    "functions": [
+      "Default",
+      "validate"
+    ],
+    "imports": [
+      "net/http"
+    ],
+    "complexity": "medium"
+  }
+}

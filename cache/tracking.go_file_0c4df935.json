@@ -1,0 +1,34 @@
+{
+  "content_hash": "da0ef71b4c1ff6f848ecbbef42346975",
+  "timestamp": "2025-09-25T17:17:53.838067+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a client for tracking events with asynchronous and synchronous methods.",
+    "key_types": [
+      "TrackingClient",
+      "trackingClient",
+      "InternalClient",
+      "InternalClientConfig"
+    ],
+    "functions": [
+      "NewTracingClient",
+      "Track",
+      "TrackAsync"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "encoding/base64",
+      "encoding/json",
+      "fmt",
+      "net/http"
+    ],
+    "side_effects": [
+      "Asynchronous tracking may lead to race conditions if not handled properly."
+    ],
+    "risks": [
+      "Exposing API key in logs or error messages if not handled correctly."
+    ],
+    "complexity": "medium"
+  }
+}

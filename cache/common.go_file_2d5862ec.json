@@ -1,0 +1,33 @@
+{
+  "content_hash": "ecdcfe8a2dd02aaacd87de7047dae092",
+  "timestamp": "2025-09-25T17:18:51.25712+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository interface and its implementation for managing common entities in a database using GORM.",
+    "key_types": [
+      "CommonRepo",
+      "commonRepo",
+      "gorm.DB"
+    ],
+    "functions": [
+      "GetAllCommons",
+      "SaveCommons",
+      "NewCommonRepo"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "side_effects": [
+      "Database transactions are initiated and may modify the database state."
+    ],
+    "risks": [
+      "Potential SQL injection if inputs are not properly sanitized.",
+      "Error handling may expose sensitive information if not managed correctly."
+    ],
+    "complexity": "medium"
+  }
+}

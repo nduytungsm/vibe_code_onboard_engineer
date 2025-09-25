@@ -1,9 +1,9 @@
 {
-  "content_hash": "ce5a16d3c512804e58bf846aaf136e4e",
-  "timestamp": "2025-09-25T16:34:08.575967+07:00",
+  "content_hash": "d2f33cdd6828fc5ce773ffecc8bf0941",
+  "timestamp": "2025-09-25T17:21:15.976305+07:00",
   "result": {
     "path": "cmd/clean_old_special_offers",
-    "purpose": "Cleans old special offers from a database based on a specified time period.",
+    "purpose": "This folder/module is responsible for cleaning old special offers from an announcement repository based on a specified time period.",
     "languages": {
       "Go": 1
     },
@@ -18,11 +18,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/config",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a command-line application architecture, focusing on a single responsibility of cleaning old offers, utilizing a main function to orchestrate the process and manage dependencies.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality for cleaning old special offers within a single main file that initializes necessary services and manages database interactions.",
     "file_summaries": {
       "cmd/clean_old_special_offers/main.go": {
         "language": "Go",
-        "purpose": "Cleans old special offers from a database based on a specified time period.",
+        "purpose": "This file contains a main function that initializes Sentry for error tracking, connects to a PostgreSQL database, and cleans old special offers from an announcement repository based on a specified time period.",
         "key_types": [
           "context.Context",
           "time.Time",
@@ -55,7 +55,7 @@
         "risks": [
           "Potential database connection failure",
           "Error handling may not cover all edge cases",
-          "Sentry initialization failure may go unnoticed"
+          "Sentry initialization failure may lead to untracked errors"
         ],
         "complexity": "medium"
       }
