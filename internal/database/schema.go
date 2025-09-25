@@ -14,11 +14,11 @@ import (
 type ColumnConstraint string
 
 const (
-	PrimaryKey  ColumnConstraint = "PK"
-	ForeignKey  ColumnConstraint = "FK"
-	Unique      ColumnConstraint = "unique"
-	NotNull     ColumnConstraint = "not null"
-	Default     ColumnConstraint = "default"
+	PrimaryKey ColumnConstraint = "PK"
+	ForeignKey ColumnConstraint = "FK"
+	Unique     ColumnConstraint = "unique"
+	NotNull    ColumnConstraint = "not null"
+	Default    ColumnConstraint = "default"
 )
 
 // Column represents a database column
@@ -88,12 +88,12 @@ func NewSchemaExtractor() *SchemaExtractor {
 func (se *SchemaExtractor) FindMigrationFolders(projectPath string, files map[string]string) []string {
 	var migrationFolders []string
 	folderSet := make(map[string]bool)
-	
+
 	// Extract unique folder paths from file paths
 	for filePath := range files {
 		if strings.HasSuffix(strings.ToLower(filePath), ".sql") {
 			dir := filepath.Dir(filePath)
-			
+
 			// Check if any part of the path contains "migration"
 			pathParts := strings.Split(dir, string(os.PathSeparator))
 			for _, part := range pathParts {
@@ -117,7 +117,7 @@ func (se *SchemaExtractor) FindMigrationFolders(projectPath string, files map[st
 func (se *SchemaExtractor) ExtractSchemaFromMigrations(projectPath string, files map[string]string) (*DatabaseSchema, error) {
 	// Find migration folders
 	migrationFolders := se.FindMigrationFolders(projectPath, files)
-	
+
 	if len(migrationFolders) == 0 {
 		return nil, fmt.Errorf("no migration folders found")
 	}
@@ -174,10 +174,10 @@ func (se *SchemaExtractor) extractTimestampFromFilename(filename string) string 
 // processMigration processes a single migration file
 func (se *SchemaExtractor) processMigration(migration MigrationFile) error {
 	content := strings.ToUpper(migration.Content)
-	
+
 	// Split into statements
 	statements := se.splitSQLStatements(content)
-	
+
 	for _, stmt := range statements {
 		stmt = strings.TrimSpace(stmt)
 		if stmt == "" {
@@ -205,12 +205,12 @@ func (se *SchemaExtractor) splitSQLStatements(content string) []string {
 	// Split by semicolon
 	statements := strings.Split(content, ";")
 	var cleanStatements []string
-	
+
 	for _, stmt := range statements {
 		// Clean up the statement
 		lines := strings.Split(stmt, "\n")
 		var cleanLines []string
-		
+
 		for _, line := range lines {
 			line = strings.TrimSpace(line)
 			// Skip comment lines and empty lines
@@ -218,7 +218,7 @@ func (se *SchemaExtractor) splitSQLStatements(content string) []string {
 				cleanLines = append(cleanLines, line)
 			}
 		}
-		
+
 		if len(cleanLines) > 0 {
 			cleanStmt := strings.Join(cleanLines, " ")
 			cleanStmt = strings.TrimSpace(cleanStmt)
@@ -227,14 +227,14 @@ func (se *SchemaExtractor) splitSQLStatements(content string) []string {
 			}
 		}
 	}
-	
+
 	return cleanStatements
 }
 
 // processStatement processes a single SQL statement
 func (se *SchemaExtractor) processStatement(stmt string) error {
 	stmt = strings.TrimSpace(stmt)
-	
+
 	if strings.HasPrefix(stmt, "CREATE TABLE") {
 		return se.processCreateTable(stmt)
 	} else if strings.HasPrefix(stmt, "ALTER TABLE") {
@@ -244,26 +244,24 @@ func (se *SchemaExtractor) processStatement(stmt string) error {
 	} else if strings.HasPrefix(stmt, "CREATE INDEX") || strings.HasPrefix(stmt, "CREATE UNIQUE INDEX") {
 		return se.processCreateIndex(stmt)
 	}
-	
+
 	// Ignore other statements (INSERT, UPDATE, etc.)
 	return nil
 }
 
 // processCreateTable processes CREATE TABLE statements
 func (se *SchemaExtractor) processCreateTable(stmt string) error {
-	// Extract table name - improved regex to handle parentheses properly
-	tableNameRegex := regexp.MustCompile(`CREATE TABLE\s+(?:IF NOT EXISTS\s+)?(?:"?([^"\s(]+)"?|\[([^\]]+)\]|([^\s(]+))`)
+	// Extract table name
+	tableNameRegex := regexp.MustCompile(`CREATE TABLE\s+(?:IF NOT EXISTS\s+)?(?:"?([^"\s]+)"?|\[([^\]]+)\]|([^\s(]+))`)
 	matches := tableNameRegex.FindStringSubmatch(stmt)
 	if len(matches) < 2 {
 		return fmt.Errorf("could not extract table name from: %s", stmt)
 	}
-	
+
 	tableName := ""
 	for i := 1; i < len(matches); i++ {
 		if matches[i] != "" {
-			// Clean up table name by removing any trailing parentheses or punctuation
-			tableName = strings.ToLower(strings.TrimSpace(matches[i]))
-			tableName = strings.TrimRight(tableName, "(),;")
+			tableName = strings.ToLower(matches[i])
 			break
 		}
 	}
@@ -276,7 +274,7 @@ func (se *SchemaExtractor) processCreateTable(stmt string) error {
 	}
 
 	columnDefs := columnMatches[1]
-	
+
 	// Create table
 	table := Table{
 		Name:        tableName,
@@ -298,10 +296,10 @@ func (se *SchemaExtractor) processCreateTable(stmt string) error {
 func (se *SchemaExtractor) parseColumnDefinitions(columnDefs string, table *Table) error {
 	// Split by commas, but be careful with parentheses
 	columns := se.splitColumnDefinitions(columnDefs)
-	
+
 	for _, colDef := range columns {
 		colDef = strings.TrimSpace(colDef)
-		
+
 		if strings.HasPrefix(colDef, "PRIMARY KEY") {
 			se.parsePrimaryKeyConstraint(colDef, table)
 		} else if strings.HasPrefix(colDef, "FOREIGN KEY") || strings.HasPrefix(colDef, "CONSTRAINT") {
@@ -313,7 +311,7 @@ func (se *SchemaExtractor) parseColumnDefinitions(columnDefs string, table *Tabl
 			column := se.parseColumnDefinition(colDef)
 			if column.Name != "" {
 				table.Columns[column.Name] = column
-				
+
 				// Check if this column is a primary key
 				for _, constraint := range column.Constraints {
 					if constraint == PrimaryKey {
@@ -323,7 +321,7 @@ func (se *SchemaExtractor) parseColumnDefinitions(columnDefs string, table *Tabl
 			}
 		}
 	}
-	
+
 	return nil
 }
 
@@ -332,7 +330,7 @@ func (se *SchemaExtractor) splitColumnDefinitions(columnDefs string) []string {
 	var result []string
 	var current strings.Builder
 	parenLevel := 0
-	
+
 	for _, char := range columnDefs {
 		if char == '(' {
 			parenLevel++
@@ -345,11 +343,11 @@ func (se *SchemaExtractor) splitColumnDefinitions(columnDefs string) []string {
 		}
 		current.WriteRune(char)
 	}
-	
+
 	if current.Len() > 0 {
 		result = append(result, current.String())
 	}
-	
+
 	return result
 }
 
@@ -368,7 +366,7 @@ func (se *SchemaExtractor) parseColumnDefinition(colDef string) Column {
 
 	// Parse additional constraints
 	colDefUpper := strings.ToUpper(colDef)
-	
+
 	if strings.Contains(colDefUpper, "PRIMARY KEY") {
 		column.Constraints = append(column.Constraints, PrimaryKey)
 	}
@@ -378,7 +376,7 @@ func (se *SchemaExtractor) parseColumnDefinition(colDef string) Column {
 	if strings.Contains(colDefUpper, "UNIQUE") {
 		column.Constraints = append(column.Constraints, Unique)
 	}
-	
+
 	// Extract default value
 	defaultRegex := regexp.MustCompile(`DEFAULT\s+([^,\s]+|\([^)]+\)|'[^']*')`)
 	defaultMatches := defaultRegex.FindStringSubmatch(colDefUpper)
@@ -434,7 +432,7 @@ func (se *SchemaExtractor) parseForeignKeyConstraint(constraint string, table *T
 		localCol := strings.ToLower(strings.TrimSpace(strings.Trim(matches[1], `"[]`)))
 		refTable := strings.ToLower(strings.TrimSpace(strings.Trim(matches[2], `"[]`)))
 		refCol := strings.ToLower(strings.TrimSpace(strings.Trim(matches[3], `"[]`)))
-		
+
 		// Update column constraint if column exists
 		if col, exists := table.Columns[localCol]; exists {
 			col.References = &ForeignKeyRef{Table: refTable, Column: refCol}
@@ -449,7 +447,7 @@ func (se *SchemaExtractor) parseForeignKeyConstraint(constraint string, table *T
 				References:  &ForeignKeyRef{Table: refTable, Column: refCol},
 			}
 		}
-		
+
 		// Add to schema foreign keys
 		se.schema.ForeignKeys = append(se.schema.ForeignKeys, ForeignKeyRef{
 			Table:  refTable,
@@ -465,12 +463,12 @@ func (se *SchemaExtractor) parseUniqueConstraint(constraint string, table *Table
 	if len(matches) > 1 {
 		columns := strings.Split(matches[1], ",")
 		indexName := fmt.Sprintf("unique_%s_%s", table.Name, strings.Join(columns, "_"))
-		
+
 		var cleanColumns []string
 		for _, col := range columns {
 			cleanColumns = append(cleanColumns, strings.ToLower(strings.TrimSpace(strings.Trim(col, `"[]`))))
 		}
-		
+
 		table.Indexes[indexName] = Index{
 			Name:    indexName,
 			Columns: cleanColumns,
@@ -487,9 +485,9 @@ func (se *SchemaExtractor) processAlterTable(stmt string) error {
 	if len(matches) < 2 {
 		return fmt.Errorf("could not extract table name from ALTER TABLE")
 	}
-	
+
 	tableName := strings.ToLower(strings.Trim(matches[1], `"[]`))
-	
+
 	// Get or create table
 	table, exists := se.schema.Tables[tableName]
 	if !exists {
@@ -524,12 +522,12 @@ func (se *SchemaExtractor) processAddColumn(stmt string, table *Table) error {
 	if len(matches) < 2 {
 		return fmt.Errorf("could not extract column definition from ADD COLUMN")
 	}
-	
+
 	columnDef := matches[1]
 	column := se.parseColumnDefinition(columnDef)
 	if column.Name != "" {
 		table.Columns[column.Name] = column
-		
+
 		// Check if this column is a primary key
 		for _, constraint := range column.Constraints {
 			if constraint == PrimaryKey {
@@ -537,7 +535,7 @@ func (se *SchemaExtractor) processAddColumn(stmt string, table *Table) error {
 			}
 		}
 	}
-	
+
 	return nil
 }
 
@@ -548,10 +546,10 @@ func (se *SchemaExtractor) processDropColumn(stmt string, table *Table) error {
 	if len(matches) < 2 {
 		return fmt.Errorf("could not extract column name from DROP COLUMN")
 	}
-	
+
 	columnName := strings.ToLower(strings.Trim(matches[1], `"[]`))
 	delete(table.Columns, columnName)
-	
+
 	// Remove from primary keys if present
 	var newPKs []string
 	for _, pk := range table.PrimaryKeys {
@@ -560,7 +558,7 @@ func (se *SchemaExtractor) processDropColumn(stmt string, table *Table) error {
 		}
 	}
 	table.PrimaryKeys = newPKs
-	
+
 	return nil
 }
 
@@ -571,10 +569,10 @@ func (se *SchemaExtractor) processAlterColumn(stmt string, table *Table) error {
 	if len(matches) < 3 {
 		return fmt.Errorf("could not extract column info from ALTER COLUMN")
 	}
-	
+
 	columnName := strings.ToLower(strings.Trim(matches[1], `"[]`))
 	newDef := matches[2]
-	
+
 	// Update existing column
 	if _, exists := table.Columns[columnName]; exists {
 		newColumn := se.parseColumnDefinition(columnName + " " + newDef)
@@ -583,7 +581,7 @@ func (se *SchemaExtractor) processAlterColumn(stmt string, table *Table) error {
 			table.Columns[columnName] = newColumn
 		}
 	}
-	
+
 	return nil
 }
 
@@ -612,118 +610,87 @@ func (se *SchemaExtractor) processDropTable(stmt string) error {
 	if len(matches) < 2 {
 		return fmt.Errorf("could not extract table name from DROP TABLE")
 	}
-	
+
 	tableName := strings.ToLower(strings.Trim(matches[1], `"[]`))
 	delete(se.schema.Tables, tableName)
-	
+
 	return nil
 }
 
-// processCreateIndex processes CREATE INDEX statements (with graceful error handling)
+// processCreateIndex processes CREATE INDEX statements
 func (se *SchemaExtractor) processCreateIndex(stmt string) error {
-	// Try multiple regex patterns for different CREATE INDEX formats
-	patterns := []string{
-		`CREATE\s+(UNIQUE\s+)?INDEX\s+([^\s]+)\s+ON\s+([^\s(]+)\s*\(([^)]+)\)`,           // Standard format
-		`CREATE\s+(UNIQUE\s+)?INDEX\s+(?:IF\s+NOT\s+EXISTS\s+)?([^\s]+)\s+ON\s+([^\s(]+)\s*\(([^)]+)\)`, // With IF NOT EXISTS
-		`CREATE\s+(UNIQUE\s+)?INDEX\s+"?([^"\s]+)"?\s+ON\s+"?([^"\s(]+)"?\s*\(([^)]+)\)`, // With quotes
-		`CREATE\s+(UNIQUE\s+)?INDEX\s+\[([^\]]+)\]\s+ON\s+\[([^\]]+)\]\s*\(([^)]+)\)`,     // With brackets
+	indexRegex := regexp.MustCompile(`CREATE\s+(UNIQUE\s+)?INDEX\s+([^\s]+)\s+ON\s+([^\s(]+)\s*\(([^)]+)\)`)
+	matches := indexRegex.FindStringSubmatch(stmt)
+	if len(matches) < 5 {
+		return fmt.Errorf("could not parse CREATE INDEX statement")
 	}
-	
-	for _, pattern := range patterns {
-		indexRegex := regexp.MustCompile(pattern)
-		matches := indexRegex.FindStringSubmatch(stmt)
-		if len(matches) >= 5 {
-			return se.createIndexFromMatches(matches)
-		}
-	}
-	
-	// If all patterns fail, log warning but don't crash
-	fmt.Printf("⚠️  Could not parse CREATE INDEX statement (skipping): %s\n", strings.TrimSpace(stmt))
-	return nil // Return nil instead of error to continue processing
-}
 
-// createIndexFromMatches creates an index from regex matches
-func (se *SchemaExtractor) createIndexFromMatches(matches []string) error {
-	isUnique := strings.TrimSpace(matches[1]) != ""
-	indexName := strings.ToLower(strings.Trim(matches[2], `"[] `))
-	tableName := strings.ToLower(strings.Trim(matches[3], `"[] `))
+	isUnique := matches[1] != ""
+	indexName := strings.ToLower(strings.Trim(matches[2], `"[]`))
+	tableName := strings.ToLower(strings.Trim(matches[3], `"[]`))
 	columnList := matches[4]
-	
-	// Handle empty or invalid names
-	if indexName == "" || tableName == "" {
-		return nil // Skip invalid indexes
-	}
-	
+
 	var columns []string
 	for _, col := range strings.Split(columnList, ",") {
-		cleanCol := strings.ToLower(strings.TrimSpace(strings.Trim(col, `"[] `)))
-		if cleanCol != "" {
-			columns = append(columns, cleanCol)
-		}
+		columns = append(columns, strings.ToLower(strings.TrimSpace(strings.Trim(col, `"[]`))))
 	}
-	
-	// Only add index if we have valid columns and table exists
-	if len(columns) > 0 {
-		if table, exists := se.schema.Tables[tableName]; exists {
-			if table.Indexes == nil {
-				table.Indexes = make(map[string]Index)
-			}
-			table.Indexes[indexName] = Index{
-				Name:    indexName,
-				Columns: columns,
-				Unique:  isUnique,
-			}
-			se.schema.Tables[tableName] = table
+
+	if table, exists := se.schema.Tables[tableName]; exists {
+		table.Indexes[indexName] = Index{
+			Name:    indexName,
+			Columns: columns,
+			Unique:  isUnique,
 		}
+		se.schema.Tables[tableName] = table
 	}
-	
+
 	return nil
 }
 
 // GeneratePlantUML generates PlantUML ERD from the final schema
 func (se *SchemaExtractor) GeneratePlantUML() string {
 	var puml strings.Builder
-	
+
 	puml.WriteString("@startuml\n")
 	puml.WriteString("!define MASTER_COLOR #E8F4FD\n")
 	puml.WriteString("!define DETAIL_COLOR #FFF2CC\n")
 	puml.WriteString("\n")
-	
+
 	// Sort tables for consistent output
 	var tableNames []string
 	for tableName := range se.schema.Tables {
 		tableNames = append(tableNames, tableName)
 	}
 	sort.Strings(tableNames)
-	
+
 	// Generate entity definitions
 	for _, tableName := range tableNames {
 		table := se.schema.Tables[tableName]
 		puml.WriteString(fmt.Sprintf("entity %s {\n", table.Name))
-		
+
 		// Sort columns for consistent output
 		var columnNames []string
 		for colName := range table.Columns {
 			columnNames = append(columnNames, colName)
 		}
 		sort.Strings(columnNames)
-		
+
 		// Add primary key columns first
 		for _, pkCol := range table.PrimaryKeys {
 			if col, exists := table.Columns[pkCol]; exists {
 				puml.WriteString(fmt.Sprintf("  * %s : %s [PK]\n", col.Name, col.Type))
 			}
 		}
-		
+
 		// Add separator if there are primary keys
 		if len(table.PrimaryKeys) > 0 {
 			puml.WriteString("  --\n")
 		}
-		
+
 		// Add other columns
 		for _, colName := range columnNames {
 			col := table.Columns[colName]
-			
+
 			// Skip if already added as primary key
 			isPrimaryKey := false
 			for _, pk := range table.PrimaryKeys {
@@ -735,7 +702,7 @@ func (se *SchemaExtractor) GeneratePlantUML() string {
 			if isPrimaryKey {
 				continue
 			}
-			
+
 			// Build column definition
 			var constraints []string
 			for _, constraint := range col.Constraints {
@@ -752,32 +719,32 @@ func (se *SchemaExtractor) GeneratePlantUML() string {
 					}
 				}
 			}
-			
+
 			constraintStr := ""
 			if len(constraints) > 0 {
 				constraintStr = fmt.Sprintf(" [%s]", strings.Join(constraints, ", "))
 			}
-			
+
 			puml.WriteString(fmt.Sprintf("  %s : %s%s\n", col.Name, col.Type, constraintStr))
 		}
-		
+
 		puml.WriteString("}\n\n")
 	}
-	
+
 	// Generate relationships
 	for _, tableName := range tableNames {
 		table := se.schema.Tables[tableName]
-		
+
 		for _, col := range table.Columns {
 			if col.References != nil {
-				puml.WriteString(fmt.Sprintf("%s::%s --> %s::%s\n", 
+				puml.WriteString(fmt.Sprintf("%s::%s --> %s::%s\n",
 					col.References.Table, col.References.Column, table.Name, col.Name))
 			}
 		}
 	}
-	
+
 	puml.WriteString("\n@enduml\n")
-	
+
 	return puml.String()
 }
 
@@ -785,19 +752,19 @@ func (se *SchemaExtractor) GeneratePlantUML() string {
 func (se *SchemaExtractor) SavePlantUMLFile(projectPath, pumlContent string) error {
 	// Create output directory
 	outputDir := "./database_schemas"
-	if err := os.MkdirAll(outputDir, 0755); err != nil {
+	if err := os.MkdirAll(outputDir, 0o755); err != nil {
 		return fmt.Errorf("failed to create output directory: %v", err)
 	}
-	
+
 	// Generate filename from project path
 	filename := generateSchemaFilename(projectPath)
 	filePath := filepath.Join(outputDir, filename)
-	
+
 	// Write PUML content to file
-	if err := os.WriteFile(filePath, []byte(pumlContent), 0644); err != nil {
+	if err := os.WriteFile(filePath, []byte(pumlContent), 0o644); err != nil {
 		return fmt.Errorf("failed to write PUML file: %v", err)
 	}
-	
+
 	fmt.Printf("📄 Database schema saved to: %s\n", filePath)
 	return nil
 }
@@ -810,10 +777,10 @@ func generateSchemaFilename(projectPath string) string {
 	filename = strings.ReplaceAll(filename, ":", "")
 	filename = strings.ReplaceAll(filename, " ", "_")
 	filename = strings.Trim(filename, "_")
-	
+
 	if filename == "" {
 		filename = "root"
 	}
-	
+
 	return filename + "_database_schema.puml"
 }

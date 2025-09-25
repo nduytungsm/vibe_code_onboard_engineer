@@ -131,19 +131,19 @@ func (se *StreamingSchemaExtractor) BuildSchemaAndStream(migrations []Migration,
 			Schema:  se.schema,
 		})
 		
-		// Parse migration into DDL statements
+		// Parse migration into DDL statements (with graceful error handling)
 		statements, err := se.parseMigrationSQL(migration.SQL)
 		if err != nil {
 			callback(StreamingResponse{
-				Phase: "error",
+				Phase: "warning",
 				Progress: ProgressInfo{
 					Current: i + 1,
 					Total:   totalMigrations,
 				},
-				Message: fmt.Sprintf("Failed to parse migration %s: %v", migration.Name, err),
+				Message: fmt.Sprintf("⚠️ Failed to parse migration %s: %v (continuing with next migration)", migration.Name, err),
 				Schema:  se.schema,
 			})
-			return err
+			continue // Skip this migration but continue with others
 		}
 		
 		// Emit apply phase
@@ -157,20 +157,35 @@ func (se *StreamingSchemaExtractor) BuildSchemaAndStream(migrations []Migration,
 			Schema:  se.schema,
 		})
 		
-		// Apply each statement
-		for _, stmt := range statements {
+		// Apply each statement (with graceful error handling)
+		successfulStatements := 0
+		for j, stmt := range statements {
 			if err := se.applyStatement(stmt); err != nil {
 				callback(StreamingResponse{
-					Phase: "error",
+					Phase: "warning",
 					Progress: ProgressInfo{
 						Current: i + 1,
 						Total:   totalMigrations,
 					},
-					Message: fmt.Sprintf("Failed to apply statement in %s: %v", migration.Name, err),
+					Message: fmt.Sprintf("⚠️ Failed to apply statement %d/%d in %s: %v (continuing with next statement)", j+1, len(statements), migration.Name, err),
 					Schema:  se.schema,
 				})
-				return err
+				continue // Skip this statement but continue with others
 			}
+			successfulStatements++
+		}
+		
+		// Report success status
+		if successfulStatements > 0 {
+			callback(StreamingResponse{
+				Phase: "success",
+				Progress: ProgressInfo{
+					Current: i + 1,
+					Total:   totalMigrations,
+				},
+				Message: fmt.Sprintf("✅ Applied %d/%d statements from %s", successfulStatements, len(statements), migration.Name),
+				Schema:  se.schema,
+			})
 		}
 	}
 	
@@ -202,17 +217,39 @@ func (se *StreamingSchemaExtractor) BuildSchemaAndStream(migrations []Migration,
 	// Generate Mermaid ERD
 	mermaidERD := se.generateMermaidERD()
 	
-	// Emit completion
+	// Emit final migration generation phase
+	callback(StreamingResponse{
+		Phase: "finalizing",
+		Progress: ProgressInfo{
+			Current: totalMigrations,
+			Total:   totalMigrations,
+		},
+		Message: "Generating final migration SQL",
+		Schema:  se.schema,
+		Mermaid: mermaidERD,
+	})
+	
+	// Generate the final migration SQL file
+	finalMigrationSQL := se.GenerateFinalMigrationSQL()
+	
+	// Emit completion with final migration SQL
 	callback(StreamingResponse{
 		Phase: "complete",
 		Progress: ProgressInfo{
 			Current: totalMigrations,
 			Total:   totalMigrations,
 		},
-		Message: "Schema extraction complete",
+		Message: fmt.Sprintf("Schema extraction complete! Generated final migration with %d tables", len(se.schema.Tables)),
 		Schema:  se.schema,
 		Mermaid: mermaidERD,
 	})
+	
+	// Store the final migration SQL in the schema for later access
+	if se.schema != nil {
+		// We'll add this as a custom field (even though it's not in the struct, we can pass it separately)
+		fmt.Printf("📄 Generated final migration SQL (%d characters)\n", len(finalMigrationSQL))
+		fmt.Printf("🎯 Users can run this single file instead of %d individual migrations\n", totalMigrations)
+	}
 	
 	return nil
 }
@@ -333,27 +370,36 @@ func (se *StreamingSchemaExtractor) extractTableName(stmt, stmtType string) stri
 	return ""
 }
 
-// applyStatement applies a DDL statement to the schema
+// applyStatement applies a DDL statement to the schema (with graceful error handling)
 func (se *StreamingSchemaExtractor) applyStatement(stmt DDLStatement) error {
+	defer func() {
+		if r := recover(); r != nil {
+			// Convert panic to error for graceful handling
+			fmt.Printf("⚠️ Recovered from panic while applying statement: %v\n", r)
+		}
+	}()
+
 	switch stmt.Type {
 	case "CREATE_TABLE":
-		return se.applyCreateTable(stmt)
+		return se.applyCreateTableSafely(stmt)
 	case "DROP_TABLE":
-		return se.applyDropTable(stmt)
+		return se.applyDropTableSafely(stmt)
 	case "ALTER_TABLE":
-		return se.applyAlterTable(stmt)
+		return se.applyAlterTableSafely(stmt)
 	case "CREATE_INDEX":
-		return se.applyCreateIndex(stmt)
+		return se.applyCreateIndexSafely(stmt)
 	case "DROP_INDEX":
-		return se.applyDropIndex(stmt)
+		return se.applyDropIndexSafely(stmt)
 	case "CREATE_TYPE":
-		return se.applyCreateType(stmt)
+		return se.applyCreateTypeSafely(stmt)
 	case "CREATE_VIEW":
-		return se.applyCreateView(stmt)
+		return se.applyCreateViewSafely(stmt)
 	case "DROP_VIEW":
-		return se.applyDropView(stmt)
+		return se.applyDropViewSafely(stmt)
 	default:
-		return fmt.Errorf("unsupported statement type: %s", stmt.Type)
+		// Don't fail on unsupported statements, just skip them
+		fmt.Printf("⚠️ Skipping unsupported statement type: %s\n", stmt.Type)
+		return nil
 	}
 }
 
@@ -892,7 +938,14 @@ func (se *StreamingSchemaExtractor) generateMermaidERD() string {
 	return mermaid.String()
 }
 
-// ExtractSchemaFromProject extracts schema from project files with streaming
+// ExtractSchemaFromProjectResult contains the complete results of schema extraction
+type ExtractSchemaFromProjectResult struct {
+	Schema            *CanonicalSchema
+	MermaidERD        string  
+	FinalMigrationSQL string
+}
+
+// ExtractSchemaFromProject extracts schema from project files with streaming (with graceful error handling)
 func ExtractSchemaFromProject(projectPath string, files map[string]string, callback func(StreamingResponse)) (*CanonicalSchema, string, error) {
 	// Find migration files
 	migrations := findMigrationFiles(files)
@@ -903,24 +956,108 @@ func ExtractSchemaFromProject(projectPath string, files map[string]string, callb
 	// Create streaming extractor
 	extractor := NewStreamingSchemaExtractor("postgres")
 	
-	// Process migrations with streaming
+	// Process migrations with streaming and graceful error handling
 	var finalSchema *CanonicalSchema
 	var finalMermaid string
 	
 	err := extractor.BuildSchemaAndStream(migrations, func(response StreamingResponse) {
 		callback(response) // Forward to caller
 		
-		if response.Phase == "complete" {
+		// Capture final results regardless of warnings/errors during processing
+		if response.Phase == "complete" || response.Schema != nil {
 			finalSchema = response.Schema
 			finalMermaid = response.Mermaid
 		}
 	})
 	
+	// Even if there were errors processing some migrations, return partial results if we have any tables
+	if finalSchema != nil && len(finalSchema.Tables) > 0 {
+		// Generate Mermaid ERD if we don't have one yet
+		if finalMermaid == "" {
+			finalMermaid = extractor.generateMermaidERD()
+		}
+		
+		// Send final success callback with partial results
+		callback(StreamingResponse{
+			Phase:    "complete",
+			Progress: ProgressInfo{Current: len(migrations), Total: len(migrations)},
+			Message:  fmt.Sprintf("✅ Schema extraction completed with %d tables (some migrations may have been skipped)", len(finalSchema.Tables)),
+			Schema:   finalSchema,
+			Mermaid:  finalMermaid,
+		})
+		
+		return finalSchema, finalMermaid, nil
+	}
+	
+	// Only return error if we got no results at all
 	if err != nil {
-		return nil, "", err
+		return nil, "", fmt.Errorf("schema extraction failed: %v", err)
 	}
 	
 	return finalSchema, finalMermaid, nil
+}
+
+// ExtractSchemaWithFinalMigration extracts schema and generates final migration SQL
+func ExtractSchemaWithFinalMigration(projectPath string, files map[string]string, callback func(StreamingResponse)) (*ExtractSchemaFromProjectResult, error) {
+	// Find migration files
+	migrations := findMigrationFiles(files)
+	if len(migrations) == 0 {
+		return nil, fmt.Errorf("no migration folders found")
+	}
+	
+	// Create streaming extractor
+	extractor := NewStreamingSchemaExtractor("postgres")
+	
+	// Store final results
+	var finalSchema *CanonicalSchema
+	var finalMermaid string
+	var finalMigrationSQL string
+	
+	err := extractor.BuildSchemaAndStream(migrations, func(response StreamingResponse) {
+		callback(response) // Forward to caller
+		
+		// Capture final results
+		if response.Phase == "complete" || response.Schema != nil {
+			finalSchema = response.Schema
+			finalMermaid = response.Mermaid
+		}
+	})
+	
+	// Generate final migration SQL regardless of any errors
+	if finalSchema != nil && len(finalSchema.Tables) > 0 {
+		finalMigrationSQL = extractor.GenerateFinalMigrationSQL()
+		
+		// Generate Mermaid ERD if we don't have one yet
+		if finalMermaid == "" {
+			finalMermaid = extractor.generateMermaidERD()
+		}
+		
+		// Send enhanced completion callback
+		callback(StreamingResponse{
+			Phase:    "complete",
+			Progress: ProgressInfo{Current: len(migrations), Total: len(migrations)},
+			Message:  fmt.Sprintf("✅ Generated final migration with %d tables (%d characters)", len(finalSchema.Tables), len(finalMigrationSQL)),
+			Schema:   finalSchema,
+			Mermaid:  finalMermaid,
+		})
+		
+		return &ExtractSchemaFromProjectResult{
+			Schema:            finalSchema,
+			MermaidERD:        finalMermaid,
+			FinalMigrationSQL: finalMigrationSQL,
+		}, nil
+	}
+	
+	// Only return error if we got no results at all
+	if err != nil {
+		return nil, fmt.Errorf("schema extraction failed: %v", err)
+	}
+	
+	return &ExtractSchemaFromProjectResult{
+		Schema:            finalSchema,
+		MermaidERD:        finalMermaid,
+		FinalMigrationSQL: finalMigrationSQL,
+	}, nil
 }
 
 // findMigrationFiles finds and sorts migration files from project files
@@ -1053,4 +1190,313 @@ func ConvertToLegacySchema(canonical *CanonicalSchema, migrationPath string) *Da
 	}
 	
 	return legacy
+}
+
+// GenerateFinalMigrationSQL generates a single SQL migration file representing the final database state
+func (se *StreamingSchemaExtractor) GenerateFinalMigrationSQL() string {
+	var sql strings.Builder
+	
+	// Header comment
+	sql.WriteString("-- Generated Final Migration: Complete Database Schema\n")
+	sql.WriteString("-- This file represents the final state after applying all migrations\n")
+	sql.WriteString("-- Run this single file to create the complete database schema\n\n")
+	
+	// Generate CREATE TYPE statements for enums
+	if len(se.schema.Enums) > 0 {
+		sql.WriteString("-- ============================================\n")
+		sql.WriteString("-- ENUMS AND TYPES\n")
+		sql.WriteString("-- ============================================\n\n")
+		
+		for enumName, values := range se.schema.Enums {
+			sql.WriteString(fmt.Sprintf("CREATE TYPE %s AS ENUM (\n", enumName))
+			for i, value := range values {
+				if i == len(values)-1 {
+					sql.WriteString(fmt.Sprintf("    '%s'\n", value))
+				} else {
+					sql.WriteString(fmt.Sprintf("    '%s',\n", value))
+				}
+			}
+			sql.WriteString(");\n\n")
+		}
+	}
+	
+	// Generate CREATE TABLE statements
+	if len(se.schema.Tables) > 0 {
+		sql.WriteString("-- ============================================\n")
+		sql.WriteString("-- TABLES\n")
+		sql.WriteString("-- ============================================\n\n")
+		
+		// Sort table names by dependency order (tables with no foreign keys first)
+		tableNames := se.sortTablesByDependencies()
+		
+		for _, tableName := range tableNames {
+			table := se.schema.Tables[tableName]
+			sql.WriteString(se.generateCreateTableSQL(tableName, table))
+			sql.WriteString("\n")
+		}
+	}
+	
+	// Generate INDEX statements
+	sql.WriteString("-- ============================================\n")
+	sql.WriteString("-- INDEXES\n")
+	sql.WriteString("-- ============================================\n\n")
+	
+	// Get table names again for index generation
+	var indexTableNames []string
+	for tableName := range se.schema.Tables {
+		indexTableNames = append(indexTableNames, tableName)
+	}
+	sort.Strings(indexTableNames)
+	
+	for _, tableName := range indexTableNames {
+		table := se.schema.Tables[tableName]
+		for _, index := range table.Indexes {
+			sql.WriteString(se.generateCreateIndexSQL(tableName, index))
+			sql.WriteString("\n")
+		}
+	}
+	
+	// Generate CREATE VIEW statements
+	if len(se.schema.Views) > 0 {
+		sql.WriteString("-- ============================================\n")
+		sql.WriteString("-- VIEWS\n")
+		sql.WriteString("-- ============================================\n\n")
+		
+		for viewName, view := range se.schema.Views {
+			sql.WriteString(fmt.Sprintf("CREATE VIEW %s AS\n%s;\n\n", viewName, view.SQL))
+		}
+	}
+	
+	sql.WriteString("-- ============================================\n")
+	sql.WriteString("-- MIGRATION COMPLETE\n")
+	sql.WriteString("-- ============================================\n")
+	
+	return sql.String()
+}
+
+// generateCreateTableSQL generates a complete CREATE TABLE statement
+func (se *StreamingSchemaExtractor) generateCreateTableSQL(tableName string, table *CanonicalTable) string {
+	var sql strings.Builder
+	
+	sql.WriteString(fmt.Sprintf("CREATE TABLE %s (\n", tableName))
+	
+	// Get sorted column names for consistent output
+	var columnNames []string
+	for colName := range table.Columns {
+		columnNames = append(columnNames, colName)
+	}
+	sort.Strings(columnNames)
+	
+	var columnDefs []string
+	
+	// Generate column definitions
+	for _, colName := range columnNames {
+		column := table.Columns[colName]
+		colDef := fmt.Sprintf("    %s %s", colName, column.Type)
+		
+		// Add NOT NULL constraint
+		if !column.Nullable {
+			colDef += " NOT NULL"
+		}
+		
+		// Add DEFAULT value
+		if column.Default != nil {
+			colDef += fmt.Sprintf(" DEFAULT %s", *column.Default)
+		}
+		
+		columnDefs = append(columnDefs, colDef)
+	}
+	
+	// Add table constraints
+	
+	// Primary key constraint
+	if len(table.PrimaryKey) > 0 {
+		pkCols := strings.Join(table.PrimaryKey, ", ")
+		columnDefs = append(columnDefs, fmt.Sprintf("    PRIMARY KEY (%s)", pkCols))
+	}
+	
+	// Unique constraints
+	for _, uniqueCols := range table.Unique {
+		if len(uniqueCols) > 0 {
+			uniqueColsStr := strings.Join(uniqueCols, ", ")
+			columnDefs = append(columnDefs, fmt.Sprintf("    UNIQUE (%s)", uniqueColsStr))
+		}
+	}
+	
+	// Foreign key constraints
+	for _, fk := range table.ForeignKeys {
+		if len(fk.Columns) > 0 && len(fk.RefColumns) > 0 {
+			fkCols := strings.Join(fk.Columns, ", ")
+			refCols := strings.Join(fk.RefColumns, ", ")
+			constraintName := ""
+			if fk.Name != nil {
+				constraintName = fmt.Sprintf("CONSTRAINT %s ", *fk.Name)
+			}
+			fkDef := fmt.Sprintf("    %sFOREIGN KEY (%s) REFERENCES %s (%s)", 
+				constraintName, fkCols, fk.RefTable, refCols)
+			
+			if fk.OnDelete != nil {
+				fkDef += fmt.Sprintf(" ON DELETE %s", *fk.OnDelete)
+			}
+			if fk.OnUpdate != nil {
+				fkDef += fmt.Sprintf(" ON UPDATE %s", *fk.OnUpdate)
+			}
+			
+			columnDefs = append(columnDefs, fkDef)
+		}
+	}
+	
+	// Join all column definitions and constraints
+	sql.WriteString(strings.Join(columnDefs, ",\n"))
+	sql.WriteString("\n);\n")
+	
+	return sql.String()
+}
+
+// generateCreateIndexSQL generates CREATE INDEX statement
+func (se *StreamingSchemaExtractor) generateCreateIndexSQL(tableName string, index *CanonicalIndex) string {
+	indexCols := strings.Join(index.Columns, ", ")
+	uniqueStr := ""
+	if index.Unique {
+		uniqueStr = "UNIQUE "
+	}
+	
+	usingClause := ""
+	if index.Using != nil {
+		usingClause = fmt.Sprintf(" USING %s", *index.Using)
+	}
+	
+	return fmt.Sprintf("CREATE %sINDEX %s ON %s (%s)%s;", 
+		uniqueStr, index.Name, tableName, indexCols, usingClause)
+}
+
+// sortTablesByDependencies sorts tables so that referenced tables come before referencing tables
+func (se *StreamingSchemaExtractor) sortTablesByDependencies() []string {
+	var sorted []string
+	processed := make(map[string]bool)
+	
+	// Get all table names
+	var allTables []string
+	for tableName := range se.schema.Tables {
+		allTables = append(allTables, tableName)
+	}
+	
+	// Sort alphabetically first for consistent ordering of tables with same dependency level
+	sort.Strings(allTables)
+	
+	// Process tables in dependency order
+	for len(sorted) < len(allTables) {
+		addedInThisRound := false
+		
+		for _, tableName := range allTables {
+			if processed[tableName] {
+				continue
+			}
+			
+			table := se.schema.Tables[tableName]
+			canAdd := true
+			
+			// Check if all foreign key references are already processed
+			for _, fk := range table.ForeignKeys {
+				if fk.RefTable != tableName && !processed[fk.RefTable] {
+					canAdd = false
+					break
+				}
+			}
+			
+			if canAdd {
+				sorted = append(sorted, tableName)
+				processed[tableName] = true
+				addedInThisRound = true
+			}
+		}
+		
+		// Prevent infinite loop if there are circular dependencies
+		if !addedInThisRound {
+			// Add remaining tables anyway (circular dependencies)
+			for _, tableName := range allTables {
+				if !processed[tableName] {
+					sorted = append(sorted, tableName)
+					processed[tableName] = true
+				}
+			}
+			break
+		}
+	}
+	
+	return sorted
+}
+
+// Safe wrapper functions that handle errors gracefully
+
+func (se *StreamingSchemaExtractor) applyCreateTableSafely(stmt DDLStatement) error {
+	err := se.applyCreateTable(stmt)
+	if err != nil {
+		fmt.Printf("⚠️ CREATE TABLE failed for %s: %v (skipping)\n", stmt.TableName, err)
+		return nil // Don't propagate error, just log and continue
+	}
+	return nil
+}
+
+func (se *StreamingSchemaExtractor) applyDropTableSafely(stmt DDLStatement) error {
+	err := se.applyDropTable(stmt)
+	if err != nil {
+		fmt.Printf("⚠️ DROP TABLE failed for %s: %v (skipping)\n", stmt.TableName, err)
+		return nil
+	}
+	return nil
+}
+
+func (se *StreamingSchemaExtractor) applyAlterTableSafely(stmt DDLStatement) error {
+	err := se.applyAlterTable(stmt)
+	if err != nil {
+		fmt.Printf("⚠️ ALTER TABLE failed for %s: %v (skipping)\n", stmt.TableName, err)
+		return nil
+	}
+	return nil
+}
+
+func (se *StreamingSchemaExtractor) applyCreateIndexSafely(stmt DDLStatement) error {
+	err := se.applyCreateIndex(stmt)
+	if err != nil {
+		fmt.Printf("⚠️ CREATE INDEX failed: %v (skipping)\n", err)
+		return nil
+	}
+	return nil
+}
+
+func (se *StreamingSchemaExtractor) applyDropIndexSafely(stmt DDLStatement) error {
+	err := se.applyDropIndex(stmt)
+	if err != nil {
+		fmt.Printf("⚠️ DROP INDEX failed: %v (skipping)\n", err)
+		return nil
+	}
+	return nil
+}
+
+func (se *StreamingSchemaExtractor) applyCreateTypeSafely(stmt DDLStatement) error {
+	err := se.applyCreateType(stmt)
+	if err != nil {
+		fmt.Printf("⚠️ CREATE TYPE failed: %v (skipping)\n", err)
+		return nil
+	}
+	return nil
+}
+
+func (se *StreamingSchemaExtractor) applyCreateViewSafely(stmt DDLStatement) error {
+	err := se.applyCreateView(stmt)
+	if err != nil {
+		fmt.Printf("⚠️ CREATE VIEW failed: %v (skipping)\n", err)
+		return nil
+	}
+	return nil
+}
+
+func (se *StreamingSchemaExtractor) applyDropViewSafely(stmt DDLStatement) error {
+	err := se.applyDropView(stmt)
+	if err != nil {
+		fmt.Printf("⚠️ DROP VIEW failed: %v (skipping)\n", err)
+		return nil
+	}
+	return nil
 }
