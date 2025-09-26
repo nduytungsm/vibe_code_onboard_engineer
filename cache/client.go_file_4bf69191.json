@@ -1,0 +1,16 @@
+{
+  "content_hash": "b59f179815ff09a611337bedaa243cf1",
+  "timestamp": "2025-09-26T17:08:39.109575+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a client for interacting with a wallet proxy service, providing methods to retrieve user balances, activities, NFT items, and token prices.",
+    "key_types": [
+      "Client",
+      "Config",
+      "NewClient"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

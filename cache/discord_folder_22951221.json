@@ -1,9 +1,9 @@
 {
-  "content_hash": "d08dbbb15cabcf4352e0e703d8fc992d",
-  "timestamp": "2025-09-26T15:01:21.935782+07:00",
+  "content_hash": "c3703deadf71841aa3ce8a5d6d1fb55d",
+  "timestamp": "2025-09-26T17:39:00.015771+07:00",
   "result": {
     "path": "internal/services/discord",
-    "purpose": "Responsible for interacting with the Discord API, managing user sessions, and handling configuration settings.",
+    "purpose": "Responsible for interactions with the Discord API, including user verification and server information retrieval.",
     "languages": {
       "Go": 3
     },
@@ -27,7 +27,7 @@
       },
       "internal/services/discord/discord_svc.go": {
         "language": "Go",
-        "purpose": "Provides a service for interacting with Discord API to verify user server joins and retrieve user information.",
+        "purpose": "Provides a service for interacting with Discord API for user verification and server information retrieval.",
         "key_types": [
           "DiscordService",
           "discordSvc",

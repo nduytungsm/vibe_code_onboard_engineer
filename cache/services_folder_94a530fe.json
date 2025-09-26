@@ -1,9 +1,9 @@
 {
-  "content_hash": "fbea1a166493c7ee2f22c0698e6d2eee",
-  "timestamp": "2025-09-26T15:06:16.994089+07:00",
+  "content_hash": "aadfc0d352b187daf86c55523193c633",
+  "timestamp": "2025-09-26T17:42:17.627255+07:00",
   "result": {
     "path": "internal/domains/manager/services",
-    "purpose": "Responsible for managing various services related to application versioning, authentication, notifications, and updates within the manager domain.",
+    "purpose": "Responsible for providing various services related to application management, including version control, authentication, notifications, and updates.",
     "languages": {
       "Go": 8
     },
@@ -18,7 +18,7 @@
       "operators.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a service-oriented architecture pattern, where each file represents a distinct service with its own responsibilities and interfaces.",
+    "architecture": "The folder follows a service-oriented architecture pattern, where each file represents a specific service with defined interfaces and implementations.",
     "file_summaries": {
       "internal/domains/manager/services/app_version.go": {
         "language": "Go",
@@ -48,9 +48,9 @@
         "language": "Go",
         "purpose": "Provides services for interacting with Coinbase API for session token creation and asset selection.",
         "key_types": [
-          "CoinbaseSvc",
-          "coinbaseSvc",
-          "NewCoinbaseSvc"
+          "CoinbaseSvc interface",
+          "coinbaseSvc struct",
+          "NewCoinbaseSvc function"
         ],
         "functions": null,
         "imports": null,
@@ -103,11 +103,11 @@
       },
       "internal/domains/manager/services/operators.go": {
         "language": "Go",
-        "purpose": "Defines the Operator service interface and its implementation for managing operators in the system.",
+        "purpose": "Defines the Operator service for managing operators in the system.",
         "key_types": [
-          "OperatorSvc",
-          "operatorSvc",
-          "NewOperatorSvc"
+          "OperatorSvc interface",
+          "operatorSvc struct",
+          "NewOperatorSvc function"
         ],
         "functions": null,
         "imports": null,

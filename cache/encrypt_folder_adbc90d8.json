@@ -1,6 +1,6 @@
 {
-  "content_hash": "05d2511f779645ed85d2ee0f74a1c4fc",
-  "timestamp": "2025-09-26T15:04:47.927235+07:00",
+  "content_hash": "71ed0786037ad2d05cc44d4cb69c3faa",
+  "timestamp": "2025-09-26T17:14:02.673759+07:00",
   "result": {
     "path": "pkg/crypto/encrypt",
     "purpose": "This folder/module is responsible for providing functions for AES encryption and decryption using CBC mode.",
@@ -28,7 +28,7 @@
       },
       "pkg/crypto/encrypt/encrypt_test.go": {
         "language": "Go",
-        "purpose": "This file contains unit tests for the encryption and decryption functionality.",
+        "purpose": "This file contains tests for the encryption and decryption functionality.",
         "key_types": [
           "Test"
         ],

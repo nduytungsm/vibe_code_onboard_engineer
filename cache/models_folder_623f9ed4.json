@@ -1,11 +1,11 @@
 {
-  "content_hash": "08f9e2c770b4059e8090bbdc06a5c242",
-  "timestamp": "2025-09-26T15:05:04.690711+07:00",
+  "content_hash": "9f9bb1835bcc99cd4a93a7b34bda4936",
+  "timestamp": "2025-09-26T17:42:46.148456+07:00",
   "result": {
     "path": "internal/repositories/models",
-    "purpose": "Defines data models and validation logic for various entities in a gaming context, including quests, rewards, user interactions, and external services.",
+    "purpose": "Defines data models and validation logic for various entities related to quests, activities, rewards, and user interactions in a gaming context.",
     "languages": {
-      "Go": 30
+      "Go": 24
     },
     "key_modules": [
       "action.go",
@@ -28,11 +28,10 @@
       "user.go",
       "user_action.go",
       "user_quest.go",
-      "user_reward.go",
       "user_role.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, where each file defines specific data models related to different aspects of the gaming application, promoting separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, where each file defines specific data models and their interactions, promoting separation of concerns and maintainability.",
     "file_summaries": {
       "internal/repositories/models/action.go": {
         "language": "Go",
@@ -69,7 +68,7 @@
       },
       "internal/repositories/models/events.go": {
         "language": "Go",
-        "purpose": "Defines data models for events and user interactions in a quest system.",
+        "purpose": "Defines data models for events and user interactions within a quest system.",
         "key_types": [
           "Event",
           "EventSponsor",
@@ -123,7 +122,7 @@
       },
       "internal/repositories/models/preference.go": {
         "language": "Go",
-        "purpose": "Defines the Preference model and its associated filter for managing user preferences.",
+        "purpose": "Defines the Preference model and its associated filter for managing user preferences in a database.",
         "key_types": [
           "Preference",
           "PreferenceFilter",
@@ -157,7 +156,7 @@
         "complexity": "medium"
       },
       "internal/repositories/models/quest_resolve.go": {
-        "language": "go",
+        "language": "Go",
         "purpose": "Defines data models for logging history of actions performed by operators.",
         "key_types": [
           "HistoryEntity",
@@ -180,7 +179,7 @@
       },
       "internal/repositories/models/reward.go": {
         "language": "Go",
-        "purpose": "Defines data models for rewards and transactions in a quest system.",
+        "purpose": "Defines data models for reward and transaction entities in a reward system.",
         "key_types": [
           "RewardInfoEntity",
           "TopUpTxEntity",
@@ -192,7 +191,7 @@
       },
       "internal/repositories/models/reward_allocation.go": {
         "language": "Go",
-        "purpose": "Defines the RewardAllocation model for database interactions using GORM.",
+        "purpose": "Defines the RewardAllocation model for managing reward allocations in a database.",
         "key_types": [
           "RewardAllocation"
         ],
@@ -202,7 +201,7 @@
       },
       "internal/repositories/models/shop.go": {
         "language": "Go",
-        "purpose": "Defines models for shop items, categories, and tiers in an e-commerce context.",
+        "purpose": "Defines models for shop items, categories, and tiers in an e-commerce system.",
         "key_types": [
           "ShopItem",
           "ShopItemTier",
@@ -223,7 +222,7 @@
         "complexity": "low"
       },
       "internal/repositories/models/user.go": {
-        "language": "Go",
+        "language": "go",
         "purpose": "Defines the UserEntity model for database interactions using GORM.",
         "key_types": [
           "UserEntity"
@@ -234,7 +233,7 @@
       },
       "internal/repositories/models/user_action.go": {
         "language": "Go",
-        "purpose": "Defines the UserActionEntity model for database interactions related to user actions in a quest system.",
+        "purpose": "Defines the UserActionEntity model for user actions in a quest system.",
         "key_types": [
           "UserActionEntity"
         ],
@@ -254,21 +253,9 @@
         "imports": null,
         "complexity": "medium"
       },
-      "internal/repositories/models/user_reward.go": {
-        "language": "Go",
-        "purpose": "Defines data models for user rewards and reward pools in a quest system.",
-        "key_types": [
-          "UserRewardEntity",
-          "RewardPoolExtra",
-          "DistributeInfoV3"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
       "internal/repositories/models/user_role.go": {
         "language": "Go",
-        "purpose": "Defines user role models for database interactions.",
+        "purpose": "Defines user role models and their associated permissions for a database using GORM.",
         "key_types": [
           "RoleEntity",
           "RoleWithExtraInfo",

@@ -1,0 +1,14 @@
+{
+  "content_hash": "7e3bbabdedb9ae17e01fa32de763ad9e",
+  "timestamp": "2025-09-26T17:35:52.511493+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration structures for various services including token, Coingecko, and CDN settings.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

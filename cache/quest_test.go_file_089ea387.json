@@ -1,0 +1,15 @@
+{
+  "content_hash": "6c8050ca1be53a935d30c2cc1e919ab1",
+  "timestamp": "2025-09-26T17:37:33.64235+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Unit tests for streak calculation in wallet check-in logs.",
+    "key_types": [
+      "TestFindStreak_ShouldNot_BreakStreak",
+      "TestFindStreak_Should_BreakStreak"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

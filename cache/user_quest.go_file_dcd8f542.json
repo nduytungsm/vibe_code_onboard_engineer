@@ -1,0 +1,16 @@
+{
+  "content_hash": "214dba4d7715df891c2257f99adecff2",
+  "timestamp": "2025-09-26T17:36:37.817755+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for user quests and related entities in a quest management system.",
+    "key_types": [
+      "UserQuestEntity",
+      "PQuestAuditResult",
+      "QuestWhitelistEntity"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "fcce1037ab433eed0ff1258e4b6dd988",
+  "timestamp": "2025-09-26T16:56:42.250162+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a multi-container Docker application with user service, API gateway, and Nginx.",
+    "key_types": [
+      "user-service",
+      "api-gateway",
+      "nginx"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

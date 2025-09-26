@@ -1,0 +1,16 @@
+{
+  "content_hash": "3c71a4b5f9fa3c4317cd88cfacbc139f",
+  "timestamp": "2025-09-26T17:37:17.231099+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file defines and modifies database schemas related to reward pools and campaigns.",
+    "key_types": [
+      "ENUM types",
+      "TABLE campaigns",
+      "TABLE reward_pool_modification_logs"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

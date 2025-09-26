@@ -1,0 +1,16 @@
+{
+  "content_hash": "d550a831360049d217149ab800915cf1",
+  "timestamp": "2025-09-26T17:36:46.213317+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the layout service for managing layouts and widgets in the discovery module.",
+    "key_types": [
+      "Layout interface",
+      "NewLayoutService function",
+      "Error variables"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

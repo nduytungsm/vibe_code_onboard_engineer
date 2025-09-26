@@ -1,0 +1,16 @@
+{
+  "content_hash": "174fd7cbb4e0e83dc737488e44e651d8",
+  "timestamp": "2025-09-26T17:25:09.886983+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines the repository interface for managing announcements in the application.",
+    "key_types": [
+      "AnnouncementRepo",
+      "AddNew",
+      "GetAnnouncementByID"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

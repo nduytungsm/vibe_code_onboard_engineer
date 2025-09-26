@@ -1,0 +1,14 @@
+{
+  "content_hash": "9461b7f81e22666b88800b85c74cdee1",
+  "timestamp": "2025-09-26T17:09:20.679635+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Configures a connection to Redis for the asynq task queue.",
+    "key_types": [
+      "NewAsyncQConnectConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

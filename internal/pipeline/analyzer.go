@@ -236,17 +236,23 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 		})
 	}
 	
-	// Phase 6: Microservice discovery
-	var discoveredServices []microservices.DiscoveredService
+	// Phase 6: Enhanced Microservice Discovery (works for all project types)
+	var discoveredServices []microservices.DiscoveredService  
 	var serviceRelationships []relationships.ServiceRelationship
-	if projectSummary.DetailedAnalysis != nil && projectSummary.DetailedAnalysis.RepoLayout == "monorepo" {
-		callback("progress", "⚙️ Analyzing microservices architecture...", "Discovering services and components", 78, nil)
-		
-		discoveredServices = a.enhanceWithMicroserviceDiscovery(ctx, files, projectType, projectSummary)
-		
+	
+	callback("progress", "⚙️ Analyzing microservices architecture...", "Using enhanced discovery patterns", 78, nil)
+	
+	discoveredServices = a.enhanceWithMicroserviceDiscovery(ctx, files, projectType, projectSummary)
+	
+	if len(discoveredServices) > 0 {
 		callback("data", "Microservice discovery complete", fmt.Sprintf("Found %d services", len(discoveredServices)), 80, map[string]interface{}{
 			"services": discoveredServices,
 		})
+	} else {
+		callback("data", "Microservice discovery complete", "No microservices detected", 80, map[string]interface{}{
+			"services": []microservices.DiscoveredService{},
+		})
+	}
 		
 		// Phase 7: Service relationships
 		if len(discoveredServices) > 1 {
@@ -258,7 +264,6 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 				"relationships": serviceRelationships,
 			})
 		}
-	}
 
 	// Phase 8: Database schema extraction (with graceful error handling)
 	var databaseSchema *database.DatabaseSchema
@@ -472,20 +477,19 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 		fmt.Println("✅ Detailed analysis complete!")
 	}
 	
-	// Phase 6: Enhance with intelligent microservice discovery if it's a monorepo
+	// Phase 6: Enhanced microservice discovery (CLI version - works for all project types)
 	var discoveredServices []microservices.DiscoveredService
 	var serviceRelationships []relationships.ServiceRelationship
-	if projectSummary.DetailedAnalysis != nil && projectSummary.DetailedAnalysis.RepoLayout == "monorepo" {
-		fmt.Println("🔍 Discovering microservices...")
-		discoveredServices = a.enhanceWithMicroserviceDiscovery(ctx, files, projectType, projectSummary)
-		fmt.Println("✅ Microservice discovery complete!")
-		
-		// Phase 7: Discover service relationships using the discovered services
-		if len(discoveredServices) > 1 {
-			fmt.Println("🔗 Discovering service relationships...")
-			serviceRelationships = a.discoverServiceRelationships(files, discoveredServices, projectSummary)
-			fmt.Println("✅ Service relationship discovery complete!")
-		}
+	
+	fmt.Println("🔍 Discovering microservices...")
+	discoveredServices = a.enhanceWithMicroserviceDiscovery(ctx, files, projectType, projectSummary)
+	fmt.Println("✅ Microservice discovery complete!")
+	
+	// Phase 7: Discover service relationships using the discovered services
+	if len(discoveredServices) > 1 {
+		fmt.Println("🔗 Discovering service relationships...")
+		serviceRelationships = a.discoverServiceRelationships(files, discoveredServices, projectSummary)
+		fmt.Println("✅ Service relationship discovery complete!")
 	}
 
 	// Phase 8: Extract database schema from migrations (with graceful error handling)
@@ -873,9 +877,8 @@ func (a *Analyzer) extractImportantFiles(files []FileInfo) map[string]string {
 
 // enhanceWithMicroserviceDiscovery enhances the analysis with intelligent microservice discovery
 func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files []FileInfo, projectType *detector.DetectionResult, projectSummary *internalOpenai.ProjectSummary) []microservices.DiscoveredService {
-	if projectSummary.DetailedAnalysis == nil {
-		return nil
-	}
+	// Enhanced microservice discovery - now works for all project types, not just monorepos
+	fmt.Printf("🔍 Starting enhanced microservice discovery...\n")
 
 	// Determine project language/type for service discovery
 	var projectTypeStr string
@@ -894,47 +897,63 @@ func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files [
 			} else if a.hasNodeFiles(files) {
 				projectTypeStr = "node.js"
 			}
+		default:
+			// Try to infer from files for other project types
+			if a.hasGoFiles(files) {
+				projectTypeStr = "go"
+			} else if a.hasNodeFiles(files) {
+				projectTypeStr = "node.js"
+			}
 		}
 	}
 
 	if projectTypeStr == "" {
-		return nil // Unsupported project type for microservice discovery
+		fmt.Printf("⚠️  Could not determine project type for microservice discovery\n")
+		return nil
 	}
 
-	// Create service discovery instance
-	discovery := microservices.NewServiceDiscovery(a.crawler.basePath, projectTypeStr)
+	// Use enhanced discovery for deterministic service detection
+	enhancedDiscovery := microservices.NewEnhancedServiceDiscovery(a.crawler.basePath, projectTypeStr)
 
-	// Convert files to map for discovery
+	// Convert files to map for enhanced discovery
 	fileMap := make(map[string]string)
-	folderStructure := make([]string, 0)
 	
 	for _, file := range files {
 		content, err := a.crawler.ReadFile(file)
 		if err == nil {
 			fileMap[file.RelativePath] = content
 		}
-		
-		// Build folder structure
-		dir := filepath.Dir(file.RelativePath)
-		if dir != "." {
-			folderStructure = append(folderStructure, dir)
-		}
 	}
 
-	// Discover services
-	discoveredServices, err := discovery.DiscoverServices(fileMap, folderStructure)
+	// Use enhanced discovery (works with just file map, no folder structure needed)
+	discoveredServices, err := enhancedDiscovery.DiscoverMicroservices(fileMap)
 	if err != nil {
-		fmt.Printf("⚠️  Service discovery failed: %v\n", err)
+		fmt.Printf("⚠️  Enhanced service discovery failed: %v\n", err)
+		return nil
+	}
+
+	if len(discoveredServices) == 0 {
+		fmt.Printf("📋 No microservices detected\n")
 		return nil
 	}
 
 	// Convert discovered services to MonorepoService format
 	var enhancedServices []internalOpenai.MonorepoService
 	for _, service := range discoveredServices {
+		language := a.getLanguageFromProjectType(projectTypeStr)
+		if service.Description != "" && strings.Contains(service.Description, "detected via") {
+			// Extract language from description if available
+			if strings.Contains(service.Description, "Go service") {
+				language = "Go"
+			} else if strings.Contains(service.Description, "Node.js service") {
+				language = "Node.js"
+			}
+		}
+		
 		enhancedService := internalOpenai.MonorepoService{
 			Name:         service.Name,
 			Path:         service.Path,
-			Language:     a.getLanguageFromProjectType(projectTypeStr),
+			Language:     language,
 			ShortPurpose: a.generateServicePurpose(service.Name, service.APIType),
 			APIType:      string(service.APIType),
 			Port:         service.Port,
@@ -943,10 +962,29 @@ func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files [
 		enhancedServices = append(enhancedServices, enhancedService)
 	}
 
-	// Replace or enhance existing MonorepoServices with discovered ones
+	// Enhance project summary with discovered services
 	if len(enhancedServices) > 0 {
+		// Update or create DetailedAnalysis if needed
+		if projectSummary.DetailedAnalysis == nil {
+			projectSummary.DetailedAnalysis = &internalOpenai.RepositoryAnalysis{
+				RepoSummaryLine: projectSummary.Purpose,
+				Architecture:    "microservices", // If we found multiple services, it's likely microservices
+				RepoLayout:      "monorepo",
+			}
+		}
+		
 		projectSummary.DetailedAnalysis.MonorepoServices = enhancedServices
-		fmt.Printf("📦 Discovered %d microservices with external APIs\n", len(enhancedServices))
+		
+		// Update architecture if we found multiple services
+		if len(enhancedServices) > 1 {
+			projectSummary.DetailedAnalysis.Architecture = "microservices"
+		}
+		
+		fmt.Printf("📦 Enhanced discovery found %d microservices\n", len(enhancedServices))
+		for i, service := range enhancedServices {
+			fmt.Printf("   %d. %s (%s %s service at %s)\n", 
+				i+1, service.Name, service.Language, service.APIType, service.Path)
+		}
 	}
 
 	return discoveredServices

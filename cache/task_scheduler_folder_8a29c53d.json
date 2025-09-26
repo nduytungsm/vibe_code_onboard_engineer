@@ -1,9 +1,9 @@
 {
-  "content_hash": "19993911834c202cc05a0d129675e878",
-  "timestamp": "2025-09-26T15:00:16.102973+07:00",
+  "content_hash": "04815e32a3583bc5639ca57833554197",
+  "timestamp": "2025-09-26T17:37:42.425098+07:00",
   "result": {
     "path": "cmd/task_scheduler",
-    "purpose": "Responsible for managing and executing scheduled tasks within an application.",
+    "purpose": "Responsible for initializing and managing a task scheduling application, including configuration and dependency injection.",
     "languages": {
       "Go": 4
     },
@@ -16,7 +16,7 @@
     "dependencies": [
       "Google Wire"
     ],
-    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for managing components and configurations.",
+    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for better separation of concerns and easier testing.",
     "file_summaries": {
       "cmd/task_scheduler/config.go": {
         "language": "Go",
@@ -34,9 +34,7 @@
         "language": "Go",
         "purpose": "Initializes and starts a task scheduler application with configuration and logging.",
         "key_types": [
-          "main",
-          "NewConfig",
-          "Start"
+          "main"
         ],
         "functions": null,
         "imports": null,
@@ -48,7 +46,7 @@
         "key_types": [
           "wireTaskScheduler",
           "provideScheduler",
-          "provideAsyncQueueClient"
+          "provideHttpServer"
         ],
         "functions": null,
         "imports": null,
@@ -56,7 +54,7 @@
       },
       "cmd/task_scheduler/wire_gen.go": {
         "language": "Go",
-        "purpose": "Generates dependency injection code for a task scheduler application.",
+        "purpose": "Generates dependency injection code for a task scheduler application using Wire.",
         "key_types": [
           "wireTaskScheduler",
           "provideScheduler",

@@ -1,11 +1,11 @@
 {
-  "content_hash": "9834bf9227012ae01ee8b488d8d0ac4e",
-  "timestamp": "2025-09-26T15:07:48.838537+07:00",
+  "content_hash": "82bc45454614ca40348fc68f1f06e095",
+  "timestamp": "2025-09-26T17:40:31.668187+07:00",
   "result": {
     "path": "internal/domains/manager/handlers/dtos/responses",
-    "purpose": "This folder/module is responsible for defining data transfer objects (DTOs) for various response structures used in the application, including version, authentication, notifications, and pagination.",
+    "purpose": "This folder/module is responsible for defining response data structures for various application functionalities, including authentication, notifications, and application versioning.",
     "languages": {
-      "Go": 6
+      "go": 6
     },
     "key_modules": [
       "app_version.go",
@@ -16,11 +16,11 @@
       "operator.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing response DTOs into separate files for clarity and maintainability, allowing for easy extension and modification.",
+    "architecture": "The folder follows a modular architecture pattern, organizing response DTOs (Data Transfer Objects) for different functionalities, promoting separation of concerns and reusability.",
     "file_summaries": {
       "internal/domains/manager/handlers/dtos/responses/app_version.go": {
-        "language": "Go",
-        "purpose": "Defines the Version response structure for app version information.",
+        "language": "go",
+        "purpose": "Defines the response structure for application version information.",
         "key_types": [
           "Version"
         ],
@@ -29,7 +29,7 @@
         "complexity": "low"
       },
       "internal/domains/manager/handlers/dtos/responses/auth.go": {
-        "language": "Go",
+        "language": "go",
         "purpose": "Defines the Auth response structure for authentication-related data.",
         "key_types": [
           "Auth"
@@ -63,7 +63,7 @@
       },
       "internal/domains/manager/handlers/dtos/responses/noti.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects for notification responses in the application.",
+        "purpose": "Defines data transfer objects (DTOs) for notification responses in a service.",
         "key_types": [
           "UpsertNoti",
           "NotiButton",

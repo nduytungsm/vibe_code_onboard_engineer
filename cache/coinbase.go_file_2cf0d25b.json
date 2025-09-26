@@ -1,0 +1,16 @@
+{
+  "content_hash": "a6bc904c2933ff68b4d3c0a2fce07b44",
+  "timestamp": "2025-09-26T17:07:48.253813+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Defines request data transfer objects for handling Coinbase-related operations.",
+    "key_types": [
+      "Address",
+      "CbOnrampToken",
+      "CbSelectAssets"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "1aef94e98ed187c2efb4060de85beeba",
+  "timestamp": "2025-09-26T17:35:34.703774+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles application version management and mandatory updates for the service.",
+    "key_types": [
+      "AppInternalVersionHandler",
+      "AppVersionHandler",
+      "NewInternalAppVersionHandler"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

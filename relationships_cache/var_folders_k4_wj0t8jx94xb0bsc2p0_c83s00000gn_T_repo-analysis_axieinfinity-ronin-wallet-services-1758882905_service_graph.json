@@ -1,0 +1,640 @@
+{
+  "services": [
+    {
+      "name": "discovery",
+      "path": "cmd/discovery",
+      "entry_point": "cmd/discovery/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory and directory"
+    },
+    {
+      "name": "cron_job",
+      "path": "cmd/cron_job",
+      "entry_point": "cmd/cron_job/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "device_manager",
+      "path": "cmd/device_manager",
+      "entry_point": "cmd/device_manager/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "proxy",
+      "path": "cmd/proxy",
+      "entry_point": "cmd/proxy/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "push_notification",
+      "path": "cmd/push_notification",
+      "entry_point": "cmd/push_notification/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "antenna",
+      "path": "cmd/antenna",
+      "entry_point": "cmd/antenna/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "models",
+      "path": "internal/domains/trusted-domain/models",
+      "entry_point": "internal/domains/trusted-domain/models/trusted_domain.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go"
+    },
+    {
+      "name": "trusted_domain.go",
+      "path": "internal/domains/trusted-domain/services",
+      "entry_point": "internal/domains/trusted-domain/services/trusted_domain.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "task_server",
+      "path": "cmd/task_server",
+      "entry_point": "cmd/task_server/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "consumer",
+      "path": "cmd/consumer",
+      "entry_point": "cmd/consumer/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "cms",
+      "path": "cmd/cms",
+      "entry_point": "cmd/cms/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "quest_center",
+      "path": "cmd/quest_center",
+      "entry_point": "cmd/quest_center/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "repos",
+      "path": "internal/domains/trusted-domain/repos",
+      "entry_point": "internal/domains/trusted-domain/repos/trusted_domain.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go"
+    },
+    {
+      "name": "task_scheduler",
+      "path": "cmd/task_scheduler",
+      "entry_point": "cmd/task_scheduler/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "wallet_manager",
+      "path": "cmd/wallet_manager",
+      "entry_point": "cmd/wallet_manager/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "postgres",
+      "path": "service-postgres",
+      "entry_point": "docker-compose.yml",
+      "api_type": "http",
+      "description": "Unknown service detected via docker_compose"
+    },
+    {
+      "name": "kafka",
+      "path": "service-kafka",
+      "entry_point": "docker-compose.yml",
+      "api_type": "http",
+      "description": "Unknown service detected via docker_compose"
+    },
+    {
+      "name": "redis",
+      "path": "service-redis",
+      "entry_point": "docker-compose.yml",
+      "api_type": "http",
+      "description": "Unknown service detected via docker_compose"
+    },
+    {
+      "name": "kafka-console",
+      "path": "service-kafka-console",
+      "entry_point": "docker-compose.yml",
+      "api_type": "http",
+      "description": "Unknown service detected via docker_compose"
+    },
+    {
+      "name": "auth.go",
+      "path": "internal/domains/manager/services/auth.go",
+      "entry_point": "internal/domains/manager/services/auth.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "profile.go",
+      "path": "internal/domains/proxy/services/profile.go",
+      "entry_point": "internal/domains/proxy/services/profile.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "providers",
+      "path": "internal/domains/proxy/services/providers",
+      "entry_point": "internal/domains/proxy/services/providers",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "task_monitor.go",
+      "path": "internal/services/task_monitor.go",
+      "entry_point": "internal/services/task_monitor.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "reward-randomize",
+      "path": "internal/services/reward-randomize",
+      "entry_point": "internal/services/reward-randomize",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "token.go",
+      "path": "internal/domains/deception/services/token.go",
+      "entry_point": "internal/domains/deception/services/token.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "provider",
+      "path": "internal/domains/dex/services/provider",
+      "entry_point": "internal/domains/dex/services/provider",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "activity.go",
+      "path": "internal/domains/proxy/services/activity.go",
+      "entry_point": "internal/domains/proxy/services/activity.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "noti.go",
+      "path": "internal/domains/manager/services/noti.go",
+      "entry_point": "internal/domains/manager/services/noti.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "game_data.go",
+      "path": "internal/services/game_data.go",
+      "entry_point": "internal/services/game_data.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "discord",
+      "path": "internal/services/discord",
+      "entry_point": "internal/services/discord",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "decoder_normalizer.go",
+      "path": "internal/domains/web3/services/decoder_normalizer.go",
+      "entry_point": "internal/domains/web3/services/decoder_normalizer.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "simulate.go",
+      "path": "internal/domains/proxy/services/simulate.go",
+      "entry_point": "internal/domains/proxy/services/simulate.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "push",
+      "path": "internal/domains/notification/services/push",
+      "entry_point": "internal/domains/notification/services/push",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "device.go",
+      "path": "internal/domains/devicemanager/services/device.go",
+      "entry_point": "internal/domains/devicemanager/services/device.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "slack-alerts",
+      "path": "internal/services/slack-alerts",
+      "entry_point": "internal/services/slack-alerts",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "quest-center",
+      "path": "internal/services/quest-center",
+      "entry_point": "internal/services/quest-center",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "utils.go",
+      "path": "internal/domains/proxy/services/utils.go",
+      "entry_point": "internal/domains/proxy/services/utils.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "decoder.go",
+      "path": "internal/domains/web3/services/decoder.go",
+      "entry_point": "internal/domains/web3/services/decoder.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "definitions.go",
+      "path": "internal/services/definitions.go",
+      "entry_point": "internal/services/definitions.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "config.go",
+      "path": "internal/domains/proxy/services/config.go",
+      "entry_point": "internal/domains/proxy/services/config.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "atia_blessing_test.go",
+      "path": "tests/services/atia_blessing_test.go",
+      "entry_point": "tests/services/atia_blessing_test.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "quest_alert_service.go",
+      "path": "mocks/services/quest_alert_service.go",
+      "entry_point": "mocks/services/quest_alert_service.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "notification.go",
+      "path": "internal/domains/notification/services/notification.go",
+      "entry_point": "internal/domains/notification/services/notification.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "siwe",
+      "path": "internal/services/siwe",
+      "entry_point": "internal/services/siwe",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "token_test.go",
+      "path": "internal/domains/deception/services/token_test.go",
+      "entry_point": "internal/domains/deception/services/token_test.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "trusted_domain_test.go",
+      "path": "internal/domains/trusted-domain/services/trusted_domain_test.go",
+      "entry_point": "internal/domains/trusted-domain/services/trusted_domain_test.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "check_in_wallet_test.go",
+      "path": "tests/services/check_in_wallet_test.go",
+      "entry_point": "tests/services/check_in_wallet_test.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "tasks",
+      "path": "internal/domains/manager/services/tasks",
+      "entry_point": "internal/domains/manager/services/tasks",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "banners",
+      "path": "internal/services/banners",
+      "entry_point": "internal/services/banners",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "testdata",
+      "path": "internal/domains/proxy/services/testdata",
+      "entry_point": "internal/domains/proxy/services/testdata",
+      "api_type": "http",
+      "description": "Unknown service detected via directory"
+    },
+    {
+      "name": "reward.go",
+      "path": "internal/services/reward.go",
+      "entry_point": "internal/services/reward.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "operators.go",
+      "path": "internal/domains/manager/services/operators.go",
+      "entry_point": "internal/domains/manager/services/operators.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "checkpoint.go",
+      "path": "internal/domains/notification/services/checkpoint.go",
+      "entry_point": "internal/domains/notification/services/checkpoint.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "distribute_reward_test.go",
+      "path": "tests/services/distribute_reward_test.go",
+      "entry_point": "tests/services/distribute_reward_test.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "restful.go",
+      "path": "internal/services/restful.go",
+      "entry_point": "internal/services/restful.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "dapp.go",
+      "path": "internal/domains/proxy/services/dapp.go",
+      "entry_point": "internal/domains/proxy/services/dapp.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "game_data_service.go",
+      "path": "mocks/services/game_data_service.go",
+      "entry_point": "mocks/services/game_data_service.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "check_in_wallet.go",
+      "path": "internal/services/check_in_wallet.go",
+      "entry_point": "internal/services/check_in_wallet.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "rpc.go",
+      "path": "internal/domains/proxy/services/rpc.go",
+      "entry_point": "internal/domains/proxy/services/rpc.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "quest-verifiers",
+      "path": "internal/services/quest-verifiers",
+      "entry_point": "internal/services/quest-verifiers",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "reward_distributor.go",
+      "path": "internal/services/reward_distributor.go",
+      "entry_point": "internal/services/reward_distributor.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "check_in_game_test.go",
+      "path": "tests/services/check_in_game_test.go",
+      "entry_point": "tests/services/check_in_game_test.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "noti_helper.go",
+      "path": "internal/domains/manager/services/noti_helper.go",
+      "entry_point": "internal/domains/manager/services/noti_helper.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "provider.go",
+      "path": "internal/domains/proxy/services/provider.go",
+      "entry_point": "internal/domains/proxy/services/provider.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "bridge.go",
+      "path": "internal/domains/bridge/services/bridge.go",
+      "entry_point": "internal/domains/bridge/services/bridge.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "app_version.go",
+      "path": "internal/domains/manager/services/app_version.go",
+      "entry_point": "internal/domains/manager/services/app_version.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "cache_codec.go",
+      "path": "internal/domains/antenna/services/cache_codec.go",
+      "entry_point": "internal/domains/antenna/services/cache_codec.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "check-in-trackers",
+      "path": "internal/services/check-in-trackers",
+      "entry_point": "internal/services/check-in-trackers",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "skynet_token.go",
+      "path": "internal/domains/antenna/services/skynet_token.go",
+      "entry_point": "internal/domains/antenna/services/skynet_token.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "trending-token.go",
+      "path": "internal/domains/discovery/services/trending-token.go",
+      "entry_point": "internal/domains/discovery/services/trending-token.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "decoder_test.go",
+      "path": "internal/domains/web3/services/decoder_test.go",
+      "entry_point": "internal/domains/web3/services/decoder_test.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "id_generator.go",
+      "path": "mocks/services/id_generator.go",
+      "entry_point": "mocks/services/id_generator.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "verify.go",
+      "path": "internal/domains/captcha/services/verify.go",
+      "entry_point": "internal/domains/captcha/services/verify.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "fiat.go",
+      "path": "internal/domains/proxy/services/fiat.go",
+      "entry_point": "internal/domains/proxy/services/fiat.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "ai.go",
+      "path": "internal/domains/proxy/services/ai.go",
+      "entry_point": "internal/domains/proxy/services/ai.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "swanlake_service.go",
+      "path": "mocks/services/swanlake_service.go",
+      "entry_point": "mocks/services/swanlake_service.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "helpers.go",
+      "path": "internal/domains/manager/services/helpers.go",
+      "entry_point": "internal/domains/manager/services/helpers.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "balance.go",
+      "path": "internal/domains/proxy/services/balance.go",
+      "entry_point": "internal/domains/proxy/services/balance.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "coinbase.go",
+      "path": "internal/domains/manager/services/coinbase.go",
+      "entry_point": "internal/domains/manager/services/coinbase.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "tranfer_decoder.go",
+      "path": "internal/domains/antenna/services/tranfer_decoder.go",
+      "entry_point": "internal/domains/antenna/services/tranfer_decoder.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "router.go",
+      "path": "internal/domains/dex/services/router.go",
+      "entry_point": "internal/domains/dex/services/router.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "swanlake",
+      "path": "internal/services/swanlake",
+      "entry_point": "internal/services/swanlake",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "metrics.go",
+      "path": "internal/domains/proxy/services/metrics.go",
+      "entry_point": "internal/domains/proxy/services/metrics.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "offchain_action_test.go",
+      "path": "tests/services/offchain_action_test.go",
+      "entry_point": "tests/services/offchain_action_test.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "mandatory_update.go",
+      "path": "internal/domains/manager/services/mandatory_update.go",
+      "entry_point": "internal/domains/manager/services/mandatory_update.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "ron_staked_test.go",
+      "path": "tests/services/ron_staked_test.go",
+      "entry_point": "tests/services/ron_staked_test.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "cron-jobs",
+      "path": "internal/services/cron-jobs",
+      "entry_point": "internal/services/cron-jobs",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "signature.go",
+      "path": "internal/domains/web3/services/signature.go",
+      "entry_point": "internal/domains/web3/services/signature.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    },
+    {
+      "name": "coingecko.go",
+      "path": "internal/domains/proxy/services/coingecko.go",
+      "entry_point": "internal/domains/proxy/services/coingecko.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    }
+  ],
+  "relationships": [
+    {
+      "from": "kafka-console",
+      "to": "kafka",
+      "evidence_type": "config",
+      "evidence": "depends_on: kafka",
+      "file_path": "docker-compose.yml",
+      "confidence": 1
+    }
+  ],
+  "project_path": "/var/folders/k4/wj0t8jx94xb0bsc2p0_c83s00000gn/T/repo-analysis/axieinfinity-ronin-wallet-services-1758882905",
+  "generated_at": "2025-09-26T17:44:16.69048+07:00",
+  "mermaid_graph": "graph TD\\n  discovery[discovery - HTTP]\\n  cron_job[cron_job - HTTP]\\n  device_manager[device_manager - HTTP]\\n  proxy[proxy - HTTP]\\n  push_notification[push_notification - HTTP]\\n  antenna[antenna - HTTP]\\n  models[models - HTTP]\\n  trusted_domain_go[trusted_domain.go - HTTP]\\n  task_server[task_server - HTTP]\\n  consumer[consumer - HTTP]\\n  cms[cms - HTTP]\\n  quest_center[quest_center - HTTP]\\n  repos[repos - HTTP]\\n  task_scheduler[task_scheduler - HTTP]\\n  wallet_manager[wallet_manager - HTTP]\\n  postgres[postgres - HTTP]\\n  kafka[kafka - HTTP]\\n  redis[redis - HTTP]\\n  kafka_console[kafka-console - HTTP]\\n  auth_go[auth.go - HTTP]\\n  profile_go[profile.go - HTTP]\\n  providers[providers - HTTP]\\n  task_monitor_go[task_monitor.go - HTTP]\\n  reward_randomize[reward-randomize - HTTP]\\n  token_go[token.go - HTTP]\\n  provider[provider - HTTP]\\n  activity_go[activity.go - HTTP]\\n  noti_go[noti.go - HTTP]\\n  game_data_go[game_data.go - HTTP]\\n  discord[discord - HTTP]\\n  decoder_normalizer_go[decoder_normalizer.go - HTTP]\\n  simulate_go[simulate.go - HTTP]\\n  push[push - HTTP]\\n  device_go[device.go - HTTP]\\n  slack_alerts[slack-alerts - HTTP]\\n  quest_center[quest-center - HTTP]\\n  utils_go[utils.go - HTTP]\\n  decoder_go[decoder.go - HTTP]\\n  definitions_go[definitions.go - HTTP]\\n  config_go[config.go - HTTP]\\n  atia_blessing_test_go[atia_blessing_test.go - HTTP]\\n  quest_alert_service_go[quest_alert_service.go - HTTP]\\n  notification_go[notification.go - HTTP]\\n  siwe[siwe - HTTP]\\n  token_test_go[token_test.go - HTTP]\\n  trusted_domain_test_go[trusted_domain_test.go - HTTP]\\n  check_in_wallet_test_go[check_in_wallet_test.go - HTTP]\\n  tasks[tasks - HTTP]\\n  banners[banners - HTTP]\\n  testdata[testdata - HTTP]\\n  reward_go[reward.go - HTTP]\\n  operators_go[operators.go - HTTP]\\n  checkpoint_go[checkpoint.go - HTTP]\\n  distribute_reward_test_go[distribute_reward_test.go - HTTP]\\n  restful_go[restful.go - HTTP]\\n  dapp_go[dapp.go - HTTP]\\n  game_data_service_go[game_data_service.go - HTTP]\\n  check_in_wallet_go[check_in_wallet.go - HTTP]\\n  rpc_go[rpc.go - HTTP]\\n  quest_verifiers[quest-verifiers - HTTP]\\n  reward_distributor_go[reward_distributor.go - HTTP]\\n  check_in_game_test_go[check_in_game_test.go - HTTP]\\n  noti_helper_go[noti_helper.go - HTTP]\\n  provider_go[provider.go - HTTP]\\n  bridge_go[bridge.go - HTTP]\\n  app_version_go[app_version.go - HTTP]\\n  cache_codec_go[cache_codec.go - HTTP]\\n  check_in_trackers[check-in-trackers - HTTP]\\n  skynet_token_go[skynet_token.go - HTTP]\\n  trending_token_go[trending-token.go - HTTP]\\n  decoder_test_go[decoder_test.go - HTTP]\\n  id_generator_go[id_generator.go - HTTP]\\n  verify_go[verify.go - HTTP]\\n  fiat_go[fiat.go - HTTP]\\n  ai_go[ai.go - HTTP]\\n  swanlake_service_go[swanlake_service.go - HTTP]\\n  helpers_go[helpers.go - HTTP]\\n  balance_go[balance.go - HTTP]\\n  coinbase_go[coinbase.go - HTTP]\\n  tranfer_decoder_go[tranfer_decoder.go - HTTP]\\n  router_go[router.go - HTTP]\\n  swanlake[swanlake - HTTP]\\n  metrics_go[metrics.go - HTTP]\\n  offchain_action_test_go[offchain_action_test.go - HTTP]\\n  mandatory_update_go[mandatory_update.go - HTTP]\\n  ron_staked_test_go[ron_staked_test.go - HTTP]\\n  cron_jobs[cron-jobs - HTTP]\\n  signature_go[signature.go - HTTP]\\n  coingecko_go[coingecko.go - HTTP]\\n\\n  kafka_console --\u003e|config| kafka\\n\\n  classDef httpService fill:#e1f5fe,stroke:#01579b,stroke-width:2px\\n  classDef grpcService fill:#f3e5f5,stroke:#4a148c,stroke-width:2px\\n  classDef graphqlService fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px\\n"
+}

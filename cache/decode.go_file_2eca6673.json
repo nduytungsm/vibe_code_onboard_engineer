@@ -1,0 +1,16 @@
+{
+  "content_hash": "19fdd7ca7ea1a3f4276b2c4a5067c58f",
+  "timestamp": "2025-09-26T17:08:16.560562+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for decoding transaction parameters in a blockchain context.",
+    "key_types": [
+      "Token",
+      "DecodedParam",
+      "Decoded"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

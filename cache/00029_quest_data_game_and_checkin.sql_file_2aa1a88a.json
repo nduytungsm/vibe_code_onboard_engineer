@@ -1,0 +1,15 @@
+{
+  "content_hash": "29adab86f529de5578d104d2c11871b5",
+  "timestamp": "2025-09-26T17:37:22.414214+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Creates and drops the game_played_logs table for tracking game play data.",
+    "key_types": [
+      "CREATE TABLE",
+      "DROP TABLE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

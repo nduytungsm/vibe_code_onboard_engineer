@@ -1,0 +1,16 @@
+{
+  "content_hash": "a09872ee257e9a2bc8e7e6779257be5a",
+  "timestamp": "2025-09-26T17:07:40.042601+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a notification service for processing on-chain notifications to user devices.",
+    "key_types": [
+      "NotificationService",
+      "NewNotificationService",
+      "notificationService"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

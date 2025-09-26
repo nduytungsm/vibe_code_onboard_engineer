@@ -1,9 +1,9 @@
 {
-  "content_hash": "dcf07269135a8c1bd5d0a7fcf6ec1ee6",
-  "timestamp": "2025-09-26T15:04:45.392164+07:00",
+  "content_hash": "0bb49d5c9cc3c412aab5e9de59845c13",
+  "timestamp": "2025-09-26T17:43:00.532411+07:00",
   "result": {
     "path": "internal/domains/bridge/services/providers",
-    "purpose": "Responsible for defining provider interfaces and configurations for bridge services in a blockchain context.",
+    "purpose": "Responsible for defining provider interfaces and configurations for bridge services in a blockchain application.",
     "languages": {
       "Go": 2
     },
@@ -16,7 +16,7 @@
     "file_summaries": {
       "internal/domains/bridge/services/providers/provider.go": {
         "language": "Go",
-        "purpose": "Defines the Provider interface and configuration for bridge services in a blockchain context.",
+        "purpose": "Defines the Provider interface and configuration for bridge services in a blockchain application.",
         "key_types": [
           "Provider interface",
           "SupportedProviderCfg struct",

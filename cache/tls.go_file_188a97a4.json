@@ -1,0 +1,14 @@
+{
+  "content_hash": "b5a454e8944124a5f29ddc2d5eb67bda",
+  "timestamp": "2025-09-26T17:09:24.470232+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Creates and configures a TLS configuration based on provided certificates.",
+    "key_types": [
+      "ConvertToTLSConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

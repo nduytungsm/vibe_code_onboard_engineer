@@ -1,6 +1,6 @@
 {
-  "content_hash": "47e4cadf7ba373cc2ffbcca4e5a01f1f",
-  "timestamp": "2025-09-26T14:58:52.562559+07:00",
+  "content_hash": "5ad640f5eb159c4866a860b4e0380773",
+  "timestamp": "2025-09-26T17:38:49.136621+07:00",
   "result": {
     "path": "mocks/services",
     "purpose": "This folder contains mock implementations of various services for testing purposes.",
@@ -14,7 +14,7 @@
       "swanlake_service.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, providing isolated mock implementations of services to facilitate unit testing.",
+    "architecture": "The folder follows a modular architecture pattern, providing isolated mock implementations of service interfaces for unit testing.",
     "file_summaries": {
       "mocks/services/game_data_service.go": {
         "language": "Go",
@@ -26,7 +26,7 @@
         ],
         "functions": null,
         "imports": null,
-        "complexity": "medium"
+        "complexity": "low"
       },
       "mocks/services/id_generator.go": {
         "language": "Go",
@@ -38,7 +38,7 @@
         ],
         "functions": null,
         "imports": null,
-        "complexity": "low"
+        "complexity": "medium"
       },
       "mocks/services/quest_alert_service.go": {
         "language": "Go",
@@ -62,7 +62,7 @@
         ],
         "functions": null,
         "imports": null,
-        "complexity": "low"
+        "complexity": "medium"
       }
     }
   }

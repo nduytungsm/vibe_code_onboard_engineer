@@ -1,9 +1,9 @@
 {
-  "content_hash": "8c3f6e113513f58905cd19a6f4b7815f",
-  "timestamp": "2025-09-26T15:03:44.69211+07:00",
+  "content_hash": "ada65d7b0cccbf68a3a963b49745b110",
+  "timestamp": "2025-09-26T17:41:51.104267+07:00",
   "result": {
     "path": "internal/infras/relay",
-    "purpose": "Responsible for providing client functionalities and data structures for interacting with a relay service for blockchain operations.",
+    "purpose": "This folder/module is responsible for implementing a client for interacting with a relay service and defining data models for handling relay operations and token transactions.",
     "languages": {
       "Go": 2
     },
@@ -12,11 +12,11 @@
       "models.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating client logic and data models related to relay services.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating client functionality and data models related to relay operations.",
     "file_summaries": {
       "internal/infras/relay/client.go": {
         "language": "Go",
-        "purpose": "Defines a client for interacting with a relay service for blockchain operations.",
+        "purpose": "This file implements a client for interacting with a relay service, providing methods to fetch chains, tokens, quotes, and fee balances.",
         "key_types": [
           "Config",
           "Client",
@@ -28,7 +28,7 @@
       },
       "internal/infras/relay/models.go": {
         "language": "Go",
-        "purpose": "Defines data structures for handling relay operations and token transactions.",
+        "purpose": "Defines data models for handling relay operations and token transactions.",
         "key_types": [
           "RelayError",
           "ChainListResponse",

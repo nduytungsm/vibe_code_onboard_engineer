@@ -1,11 +1,11 @@
 {
-  "content_hash": "2ce608b4030bacf58449497938d5e1f2",
-  "timestamp": "2025-09-26T15:04:08.955296+07:00",
+  "content_hash": "4c420d9a2c8d1c594489984ee8e9b096",
+  "timestamp": "2025-09-26T17:42:35.372099+07:00",
   "result": {
     "path": "pkg/docker",
-    "purpose": "This folder is responsible for managing various containerized services (Kafka, PostgreSQL, Redis) for testing purposes using Testcontainers.",
+    "purpose": "This folder is responsible for managing Docker containers for various services (Kafka, PostgreSQL, Redis) used in testing environments.",
     "languages": {
-      "go": 4
+      "Go": 4
     },
     "key_modules": [
       "helper.go",
@@ -16,10 +16,10 @@
     "dependencies": [
       "Testcontainers"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates the logic for managing a specific type of container, promoting separation of concerns and reusability.",
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates the logic for managing a specific type of Docker container.",
     "file_summaries": {
       "pkg/docker/helper.go": {
-        "language": "go",
+        "language": "Go",
         "purpose": "Provides a function to find an available TCP port on localhost.",
         "key_types": [
           "getFreePort"
@@ -43,7 +43,7 @@
       },
       "pkg/docker/postgres.go": {
         "language": "Go",
-        "purpose": "Manages a PostgreSQL database container for testing purposes using Testcontainers.",
+        "purpose": "Manages a PostgreSQL database container for testing purposes using Docker.",
         "key_types": [
           "Postgres",
           "NewPostgres",

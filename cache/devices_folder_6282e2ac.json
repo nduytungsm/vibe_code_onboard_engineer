@@ -1,6 +1,6 @@
 {
-  "content_hash": "ece2096c72b641c725c65ed72cfbf1c0",
-  "timestamp": "2025-09-26T15:06:48.726314+07:00",
+  "content_hash": "2fb041d8736882e9a0163e8a52d7f956",
+  "timestamp": "2025-09-26T17:39:16.154006+07:00",
   "result": {
     "path": "sql_migrations/devices",
     "purpose": "Responsible for managing the database schema related to devices, including initialization and indexing.",
@@ -18,9 +18,9 @@
         "language": "SQL",
         "purpose": "Initializes the devices table and related types for device management.",
         "key_types": [
-          "CREATE TABLE",
-          "CREATE TYPE",
-          "CREATE INDEX"
+          "CREATE TABLE devices",
+          "CREATE TYPE device_status",
+          "CREATE TYPE device_platform"
         ],
         "functions": null,
         "imports": null,

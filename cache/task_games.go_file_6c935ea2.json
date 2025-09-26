@@ -1,0 +1,16 @@
+{
+  "content_hash": "f2c57bba02bcd756865b1c506e717a28",
+  "timestamp": "2025-09-26T17:36:44.555839+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a cron job task for tracking classic game played activities.",
+    "key_types": [
+      "ClassicGamePlayedCrawlerTaskLogic",
+      "NewClassicGamePlayedCrawlerTaskLogic",
+      "EligibleQuestActivities"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

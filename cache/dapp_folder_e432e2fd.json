@@ -1,0 +1,41 @@
+{
+  "content_hash": "bfc7d07f52267331a414ad4bcab052a3",
+  "timestamp": "2025-09-26T17:26:41.827536+07:00",
+  "result": {
+    "path": "pkg/dapp",
+    "purpose": "Responsible for managing decentralized applications (dApps) including configuration and service interfaces.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "config.go",
+      "d_app_svc.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic for dApps.",
+    "file_summaries": {
+      "pkg/dapp/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration settings for decentralized applications.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "pkg/dapp/d_app_svc.go": {
+        "language": "Go",
+        "purpose": "This file defines a service interface for managing quick access decentralized applications (dApps) and highlights.",
+        "key_types": [
+          "Service",
+          "Save",
+          "GetList"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

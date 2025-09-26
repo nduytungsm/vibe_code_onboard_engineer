@@ -1,0 +1,15 @@
+{
+  "content_hash": "7783024fc8fa966d98e5a163acb8f02c",
+  "timestamp": "2025-09-26T17:36:50.293017+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles user quest operations including verification and creation of user quests.",
+    "key_types": [
+      "verifyTakeQuestStatus",
+      "createUserQuest"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

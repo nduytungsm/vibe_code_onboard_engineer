@@ -1,0 +1,14 @@
+{
+  "content_hash": "3a6e76cbd6a79c9b0d5b76389411e749",
+  "timestamp": "2025-09-26T17:35:36.517876+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Defines the response structure for application version information.",
+    "key_types": [
+      "Version"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

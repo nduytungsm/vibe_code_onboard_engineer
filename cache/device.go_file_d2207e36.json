@@ -1,0 +1,16 @@
+{
+  "content_hash": "032cdf60d1d6623a70e343c4aec3607d",
+  "timestamp": "2025-09-26T17:24:37.017329+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles device-related operations such as registration, resetting, and updating push tokens.",
+    "key_types": [
+      "DeviceHandler",
+      "deviceHandler",
+      "ResetDeviceByID"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

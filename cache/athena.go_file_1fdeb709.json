@@ -1,0 +1,16 @@
+{
+  "content_hash": "b0e38087f33233826230be7ac68c659d",
+  "timestamp": "2025-09-26T17:24:37.966707+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an HTTP client for linking accounts with Athena service.",
+    "key_types": [
+      "AthenaClientCfg",
+      "Athena",
+      "athenaClient"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

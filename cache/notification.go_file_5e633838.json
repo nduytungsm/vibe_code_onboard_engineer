@@ -1,0 +1,16 @@
+{
+  "content_hash": "3849e6f600335d3f7813fca8e8db82e3",
+  "timestamp": "2025-09-26T17:07:56.488847+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides notification services for sending push notifications.",
+    "key_types": [
+      "NotificationService",
+      "service",
+      "NewNotificationService"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

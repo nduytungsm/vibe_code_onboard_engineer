@@ -1,9 +1,9 @@
 {
-  "content_hash": "894680e21c276143bd514eac76499050",
-  "timestamp": "2025-09-26T15:07:19.581406+07:00",
+  "content_hash": "678a70055f76834a345e2d4100aac139",
+  "timestamp": "2025-09-26T17:11:10.575296+07:00",
   "result": {
     "path": "internal/infras/coingecko",
-    "purpose": "Defines a client for interacting with the CoinGecko API to retrieve cryptocurrency data.",
+    "purpose": "Defines a client for interacting with the CoinGecko API to fetch cryptocurrency data.",
     "languages": {
       "Go": 1
     },
@@ -15,7 +15,7 @@
     "file_summaries": {
       "internal/infras/coingecko/client.go": {
         "language": "Go",
-        "purpose": "Defines a client for interacting with the CoinGecko API to retrieve cryptocurrency data.",
+        "purpose": "Defines a client for interacting with the CoinGecko API to fetch cryptocurrency data.",
         "key_types": [
           "Client interface",
           "Config struct",

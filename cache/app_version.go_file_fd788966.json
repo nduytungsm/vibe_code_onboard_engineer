@@ -1,0 +1,16 @@
+{
+  "content_hash": "224ce94940d3edd695cfaa44ac1c5848",
+  "timestamp": "2025-09-26T17:07:53.391621+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a repository for managing application versions in a database.",
+    "key_types": [
+      "appVersionRepo",
+      "NewAppVersionRepo",
+      "NewTx"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

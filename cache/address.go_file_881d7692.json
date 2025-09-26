@@ -1,0 +1,14 @@
+{
+  "content_hash": "face8ea27b9e2d09aa0b0d641767fc12",
+  "timestamp": "2025-09-26T17:35:24.95204+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Converts a hexadecimal hash string to a lowercase Ethereum address.",
+    "key_types": [
+      "AddressFromTopic"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "content_hash": "961a7d880d4f920848dfbf4578340f46",
-  "timestamp": "2025-09-26T15:06:10.36307+07:00",
+  "content_hash": "18961a1860ce36c4fa9ec46314aa4dd9",
+  "timestamp": "2025-09-26T17:41:06.481677+07:00",
   "result": {
     "path": "internal/infras/walletmanager",
     "purpose": "This folder/module is responsible for managing wallet preferences in a service.",
@@ -27,8 +27,8 @@
         "complexity": "medium"
       },
       "internal/infras/walletmanager/models.go": {
-        "language": "Go",
-        "purpose": "Defines data models for managing user wallet preferences.",
+        "language": "go",
+        "purpose": "Defines data structures for managing user wallet preferences.",
         "key_types": [
           "Preference",
           "PreferencesRequest",

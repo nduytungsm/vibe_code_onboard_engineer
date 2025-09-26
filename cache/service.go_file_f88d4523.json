@@ -1,0 +1,16 @@
+{
+  "content_hash": "6cbc6cd18334de45efed98e0398b330c",
+  "timestamp": "2025-09-26T17:24:55.652947+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a service interface and implementation for managing blacklist configurations and feature flags.",
+    "key_types": [
+      "Service interface",
+      "service struct",
+      "NewBlacklistService function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

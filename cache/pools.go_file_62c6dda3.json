@@ -1,0 +1,16 @@
+{
+  "content_hash": "79f36f2d02c996ef7cbc6ff9f1ca101d",
+  "timestamp": "2025-09-26T17:08:11.688571+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines HTTP handlers for managing quest pools in a gaming application.",
+    "key_types": [
+      "PoolHandler",
+      "InternalPoolHandler",
+      "NewPoolHandler"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

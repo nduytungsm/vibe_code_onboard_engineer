@@ -1,9 +1,9 @@
 {
-  "content_hash": "03becaa2293f30e2e6d826f6023c766d",
-  "timestamp": "2025-09-26T15:07:42.077858+07:00",
+  "content_hash": "2d47eae0bce15004c141f26a9a47f2e6",
+  "timestamp": "2025-09-26T17:41:57.665551+07:00",
   "result": {
     "path": "internal/handlers/cms",
-    "purpose": "Handles operations related to the content management system (CMS), specifically for banner management.",
+    "purpose": "Handles banner-related operations for a CMS, including creation, editing, and retrieval.",
     "languages": {
       "Go": 1
     },
@@ -11,11 +11,11 @@
       "banner.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, focusing on encapsulating CMS-related handler logic in separate files for maintainability and scalability.",
+    "architecture": "The folder follows a modular architecture pattern, focusing on specific functionalities related to the CMS, encapsulating related operations and types within individual files.",
     "file_summaries": {
       "internal/handlers/cms/banner.go": {
         "language": "Go",
-        "purpose": "Handles banner-related operations in the CMS.",
+        "purpose": "Handles banner-related operations for a CMS, including creation, editing, and retrieval.",
         "key_types": [
           "BannerHandler",
           "bannerHandler",

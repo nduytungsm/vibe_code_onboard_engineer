@@ -1,9 +1,9 @@
 {
-  "content_hash": "66950d6404684bf3d30ec73e4d204aab",
-  "timestamp": "2025-09-26T14:58:37.267551+07:00",
+  "content_hash": "c5e3a6cfe3f04ce544c7afd70081c40c",
+  "timestamp": "2025-09-26T17:38:53.217611+07:00",
   "result": {
     "path": "internal/repositories/discovery/models",
-    "purpose": "Defines data models for various entities used in the discovery module of the application.",
+    "purpose": "Defines data models for various entities used in the discovery repository.",
     "languages": {
       "Go": 11
     },
@@ -21,11 +21,11 @@
       "service_item.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing data models related to different entities within the discovery module, facilitating maintainability and scalability.",
+    "architecture": "The folder follows a modular architecture pattern, organizing data models related to discovery functionalities into separate files for clarity and maintainability.",
     "file_summaries": {
       "internal/repositories/discovery/models/announcement.go": {
         "language": "Go",
-        "purpose": "Defines data models for announcements in the discovery module.",
+        "purpose": "Defines data models for announcements in a discovery repository.",
         "key_types": [
           "AnounceEntity",
           "AnounceEntityWithStatus",
@@ -37,7 +37,7 @@
       },
       "internal/repositories/discovery/models/collections.go": {
         "language": "Go",
-        "purpose": "Defines data models for collections in a discovery service using GORM.",
+        "purpose": "Defines data models for collections in the discovery module using GORM.",
         "key_types": [
           "CollectionEntity",
           "CollectionEntityWithExtraInfo"
@@ -48,7 +48,7 @@
       },
       "internal/repositories/discovery/models/contact.go": {
         "language": "Go",
-        "purpose": "Defines data models for contact entities in the discovery module.",
+        "purpose": "Defines data models for contact entities in a discovery repository.",
         "key_types": [
           "ContactEntity",
           "ContactWithExtraInfo",
@@ -71,7 +71,7 @@
       },
       "internal/repositories/discovery/models/feature_banner.go": {
         "language": "Go",
-        "purpose": "Defines data models for feature banners and their headlines in a discovery module.",
+        "purpose": "Defines data models for feature banners and their headlines in a discovery context.",
         "key_types": [
           "FeatureBannerEntity",
           "FeatureHeadlineEntity"
@@ -94,7 +94,7 @@
       },
       "internal/repositories/discovery/models/graph.go": {
         "language": "Go",
-        "purpose": "Defines data models for Mavis sales responses and related metadata.",
+        "purpose": "Defines data models for Mavis sales responses in a discovery context.",
         "key_types": [
           "MavisSalesResponse",
           "MavisSale",
@@ -129,7 +129,7 @@
       },
       "internal/repositories/discovery/models/product.go": {
         "language": "Go",
-        "purpose": "Defines data models for product entities in the discovery module.",
+        "purpose": "Defines data models for product entities in a discovery repository.",
         "key_types": [
           "ProductEntity",
           "ProductWithStudioInfo"

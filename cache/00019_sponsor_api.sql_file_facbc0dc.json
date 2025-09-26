@@ -1,0 +1,16 @@
+{
+  "content_hash": "6ddef9c0da891e3e7efbe52d18365def",
+  "timestamp": "2025-09-26T17:09:33.27644+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file manages database migrations for adding and removing sponsor-related permissions.",
+    "key_types": [
+      "ALTER TYPE",
+      "INSERT INTO",
+      "UPDATE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

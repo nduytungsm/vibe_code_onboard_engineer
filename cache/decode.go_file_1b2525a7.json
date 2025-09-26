@@ -1,0 +1,16 @@
+{
+  "content_hash": "0b9bef5f1d858ece43416b9565949041",
+  "timestamp": "2025-09-26T17:08:16.116121+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles decoding of Ethereum transactions, calls, and logs.",
+    "key_types": [
+      "decodeHandler",
+      "NewDecodeHandler",
+      "decodeTx"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

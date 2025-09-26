@@ -1,0 +1,16 @@
+{
+  "content_hash": "c6264603ff0708fcbfcc4eed83f79fb5",
+  "timestamp": "2025-09-26T17:36:47.607903+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the ServiceItem interface and its implementation for managing layout services and widget items.",
+    "key_types": [
+      "ServiceItem interface",
+      "serviceItem struct",
+      "NewServiceItem function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

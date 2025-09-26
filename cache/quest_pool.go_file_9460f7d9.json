@@ -1,0 +1,16 @@
+{
+  "content_hash": "a7107244e2650f81c966c71585301b9a",
+  "timestamp": "2025-09-26T17:36:14.695356+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles quest pool operations including upserting, deleting, and listing quest pools.",
+    "key_types": [
+      "QuestPool interface",
+      "questPool struct",
+      "NewQuestPoolHandler function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

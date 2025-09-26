@@ -1,0 +1,16 @@
+{
+  "content_hash": "e9c10a5ea97db92570f55c528bbde04a",
+  "timestamp": "2025-09-26T17:36:55.511193+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Defines custom error types for handling SIWE message validation errors.",
+    "key_types": [
+      "ExpiredMessage",
+      "InvalidMessage",
+      "InvalidSignature"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

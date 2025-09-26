@@ -1,9 +1,9 @@
 {
-  "content_hash": "28050ee978625b8a5efbeda7254f46bb",
-  "timestamp": "2025-09-26T15:00:11.398124+07:00",
+  "content_hash": "329eb7fde28bb7feb5b508e42ec09bb3",
+  "timestamp": "2025-09-26T17:38:38.276477+07:00",
   "result": {
     "path": "internal/domains/manager/handlers",
-    "purpose": "Responsible for handling various HTTP requests and services related to application version management, Coinbase API interactions, notifications, and operator management within the manager domain.",
+    "purpose": "Handles various HTTP requests and services related to application version management, Coinbase API interactions, notifications, and operator management within the manager domain.",
     "languages": {
       "Go": 4
     },
@@ -14,7 +14,7 @@
       "operators.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, where each file corresponds to a specific handler for different functionalities within the manager domain, promoting separation of concerns.",
+    "architecture": "The folder follows a modular architecture pattern, where each file corresponds to a specific handler for different functionalities within the manager domain.",
     "file_summaries": {
       "internal/domains/manager/handlers/app_version.go": {
         "language": "Go",
@@ -59,7 +59,7 @@
         "key_types": [
           "InternalOperatorHandler",
           "OperatorHandler",
-          "Setup"
+          "NewInternalOperatorHandler"
         ],
         "functions": null,
         "imports": null,

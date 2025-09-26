@@ -1,0 +1,16 @@
+{
+  "content_hash": "a27ddf559d092e60b492e8a804d85cd3",
+  "timestamp": "2025-09-26T17:24:58.532687+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service interface for managing quick access decentralized applications (dApps) and highlights.",
+    "key_types": [
+      "Service",
+      "Save",
+      "GetList"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

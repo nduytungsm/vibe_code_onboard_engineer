@@ -1,0 +1,14 @@
+{
+  "content_hash": "728bdb1d509713806012bb03ac0f5746",
+  "timestamp": "2025-09-26T17:35:55.098072+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the ABI and signatures for the Ethereum 'transfer' function.",
+    "key_types": [
+      "function: transfer"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

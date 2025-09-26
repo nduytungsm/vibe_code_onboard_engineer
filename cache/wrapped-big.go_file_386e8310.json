@@ -1,0 +1,16 @@
+{
+  "content_hash": "3a29b320c0629045f0630d0877d7b914",
+  "timestamp": "2025-09-26T17:37:18.213644+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a BigInt type for handling large integers with various base conversions.",
+    "key_types": [
+      "BigInt",
+      "BigIntFromStr",
+      "WrapBigInt"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

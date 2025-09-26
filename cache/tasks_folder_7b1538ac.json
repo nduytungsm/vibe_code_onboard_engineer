@@ -1,6 +1,6 @@
 {
-  "content_hash": "1ed00b5a3ad898c168fa94ff3a862779",
-  "timestamp": "2025-09-26T15:00:35.342662+07:00",
+  "content_hash": "6f8e29ff68edd2973b107708774c02ba",
+  "timestamp": "2025-09-26T17:39:09.433679+07:00",
   "result": {
     "path": "internal/domains/web3/tasks",
     "purpose": "Responsible for generating and handling tasks related to crawling ABI data from Ethereum contracts.",
@@ -28,7 +28,7 @@
       },
       "internal/domains/web3/tasks/abi_crawler.go": {
         "language": "Go",
-        "purpose": "Handles tasks for crawling ABI data from Ethereum contracts.",
+        "purpose": "Handles tasks related to crawling ABI data from Ethereum contracts.",
         "key_types": [
           "ABICrawlerTaskHandler",
           "NewABICrawlerTaskHandler",

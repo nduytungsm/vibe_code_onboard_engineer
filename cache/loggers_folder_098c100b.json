@@ -1,9 +1,9 @@
 {
-  "content_hash": "9d8939e536e3de651c4c2c553f4f88cd",
-  "timestamp": "2025-09-26T15:03:04.792301+07:00",
+  "content_hash": "cb804bd2580e1b964c8ded3984f23d43",
+  "timestamp": "2025-09-26T17:09:57.157837+07:00",
   "result": {
     "path": "pkg/loggers",
-    "purpose": "Responsible for configuring and initializing logging mechanisms, specifically Sentry and Zap loggers for error tracking and logging levels.",
+    "purpose": "Responsible for configuring and initializing logging mechanisms using Sentry and Zap loggers.",
     "languages": {
       "Go": 2
     },
@@ -16,7 +16,7 @@
     "file_summaries": {
       "pkg/loggers/sentry.go": {
         "language": "Go",
-        "purpose": "Configures and initializes a Sentry logger for error tracking.",
+        "purpose": "Configures and initializes a Sentry logger with specified settings.",
         "key_types": [
           "SentryConfig",
           "NewSentryLogger",

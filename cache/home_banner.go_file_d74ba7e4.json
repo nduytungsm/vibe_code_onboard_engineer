@@ -1,0 +1,16 @@
+{
+  "content_hash": "40b81ea62029bdad816138649621e1f6",
+  "timestamp": "2025-09-26T17:36:11.45343+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles operations related to home banners in the discovery service.",
+    "key_types": [
+      "HomeBanner interface",
+      "homeBanner struct",
+      "NewHomeBanner function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

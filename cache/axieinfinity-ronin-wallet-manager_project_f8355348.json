@@ -1,0 +1,1985 @@
+{
+  "content_hash": "4b112a79107dfaef3d2e65165e3054ab",
+  "timestamp": "2025-09-26T17:27:10.609411+07:00",
+  "result": {
+    "purpose": "A wallet management system designed for handling cryptocurrency transactions, user accounts, and decentralized applications (dApps) while providing features like announcements, device management, and user preferences. It integrates with external services for authentication and tracking, ensuring secure and efficient operations in the blockchain ecosystem.",
+    "architecture": "The project follows a modular architecture pattern, utilizing a service-oriented approach for various functionalities, including wallet management, user authentication, and data handling, while employing a repository pattern for data access.",
+    "data_models": [
+      "User",
+      "Account",
+      "Announcement",
+      "Device",
+      "DApp",
+      "Network",
+      "Preference",
+      "TrustedDomain"
+    ],
+    "external_services": [
+      "PostgreSQL",
+      "Redis",
+      "Sentry",
+      "Moonpay",
+      "Athena"
+    ],
+    "languages": {
+      "Bash": 1,
+      "Go": 109,
+      "JSON": 4,
+      "Markdown": 2,
+      "SQL": 6,
+      "YAML": 4
+    },
+    "folder_summaries": {
+      "cmd/app": {
+        "path": "cmd/app",
+        "purpose": "Sets up an HTTP server with middleware for handling requests and graceful shutdown.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, focusing on the setup and configuration of the HTTP server.",
+        "file_summaries": {
+          "cmd/app/main.go": {
+            "language": "Go",
+            "purpose": "Sets up an HTTP server with middleware for handling requests and graceful shutdown.",
+            "key_types": [
+              "main",
+              "startHTTPServer",
+              "shutdown"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/clean_cronjob": {
+        "path": "cmd/clean_cronjob",
+        "purpose": "Cleans old cron jobs related to announcements in a scheduled task.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a simple structure with a single main file that contains the entry point and core functionality for cleaning old cron jobs.",
+        "file_summaries": {
+          "cmd/clean_cronjob/main.go": {
+            "language": "Go",
+            "purpose": "Cleans old cron jobs related to announcements in a scheduled task.",
+            "key_types": [
+              "main",
+              "NewClient",
+              "CleanOldCronJobs"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/clean_highlight_dapps": {
+        "path": "cmd/clean_highlight_dapps",
+        "purpose": "Cleans expired highlights from a database and logs the process.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a simple structure with a single main file that encapsulates the application's functionality.",
+        "file_summaries": {
+          "cmd/clean_highlight_dapps/main.go": {
+            "language": "Go",
+            "purpose": "Cleans expired highlights from a database and logs the process.",
+            "key_types": [
+              "main"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/clean_old_special_offers": {
+        "path": "cmd/clean_old_special_offers",
+        "purpose": "Cleans old special offers from the database based on a configurable retention period.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a simple command-line application architecture, focusing on a single responsibility of cleaning up old data.",
+        "file_summaries": {
+          "cmd/clean_old_special_offers/main.go": {
+            "language": "Go",
+            "purpose": "Cleans old special offers from the database based on a configurable retention period.",
+            "key_types": [
+              "main"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/ip_location": {
+        "path": "cmd/ip_location",
+        "purpose": "Initializes Sentry for error tracking and downloads a new IP location database.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [
+          "Sentry"
+        ],
+        "architecture": "The folder follows a simple structure with a single entry point in main.go, focusing on initialization and database management.",
+        "file_summaries": {
+          "cmd/ip_location/main.go": {
+            "language": "Go",
+            "purpose": "Initializes Sentry for error tracking and downloads a new IP location database.",
+            "key_types": [
+              "main"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "cmd/trigger_announcement": {
+        "path": "cmd/trigger_announcement",
+        "purpose": "Triggers an announcement based on configuration and environment variables.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a simple command pattern where the main entry point is defined in main.go, encapsulating the logic for triggering announcements.",
+        "file_summaries": {
+          "cmd/trigger_announcement/main.go": {
+            "language": "Go",
+            "purpose": "Triggers an announcement based on configuration and environment variables.",
+            "key_types": [
+              "main",
+              "TriggerAnnouncement",
+              "NewService"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "config": {
+        "path": "config",
+        "purpose": "Configuration management for the Ronin Wallet Manager application.",
+        "languages": {
+          "Go": 3,
+          "YAML": 1
+        },
+        "key_modules": [
+          "config.go",
+          "config.yml",
+          "func_print.go",
+          "func_print_test.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, organizing configuration management and utility functions into separate files for clarity and maintainability.",
+        "file_summaries": {
+          "config/config.go": {
+            "language": "Go",
+            "purpose": "Configuration management for the Ronin Wallet Manager application.",
+            "key_types": [
+              "Schema",
+              "Server",
+              "Sentry"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "config/config.yml": {
+            "language": "YAML",
+            "purpose": "Configuration file for a mobile wallet manager service.",
+            "key_types": [
+              "profiler",
+              "server",
+              "auth_server"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "config/func_print.go": {
+            "language": "Go",
+            "purpose": "This file contains functions to hide sensitive data in configurations.",
+            "key_types": [
+              "isSecretField",
+              "hideSecret",
+              "hideSensitiveDataInSlice"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "config/func_print_test.go": {
+            "language": "Go",
+            "purpose": "Unit tests for hiding sensitive data in maps and slices.",
+            "key_types": [
+              "TestHideSecretInMap",
+              "TestHideSecretInSlice"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "database/redis": {
+        "path": "database/redis",
+        "purpose": "This folder/module is responsible for configuring and initializing a Redis client for connecting to a Redis database.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "redis.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating the Redis client configuration and initialization logic within a single Go file.",
+        "file_summaries": {
+          "database/redis/redis.go": {
+            "language": "Go",
+            "purpose": "This file defines a Redis client configuration and initialization for connecting to a Redis database.",
+            "key_types": [
+              "Redis",
+              "Cache",
+              "NewRedisClient"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "docs": {
+        "path": "docs",
+        "purpose": "Contains configuration files for the HTTP client environment.",
+        "languages": {
+          "JSON": 1
+        },
+        "key_modules": [
+          "http-client.env.json"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a simple configuration pattern, storing environment-specific settings in JSON format.",
+        "file_summaries": {
+          "docs/http-client.env.json": {
+            "language": "JSON",
+            "purpose": "Defines environment configuration for an HTTP client in development.",
+            "key_types": [],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          }
+        }
+      },
+      "handlers": {
+        "path": "handlers",
+        "purpose": "Responsible for handling various operations related to accounts, announcements, devices, and other functionalities in a wallet management system.",
+        "languages": {
+          "Go": 15
+        },
+        "key_modules": [
+          "account.go",
+          "announcement.go",
+          "binance.go",
+          "blacklist.go",
+          "common.go",
+          "dapp.go",
+          "default.go",
+          "device.go",
+          "external_auth.go",
+          "locationhandler.go",
+          "moonpay.go",
+          "network.go",
+          "releasecandidate.go",
+          "trusted_domain.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, where each file handles specific functionalities related to the wallet management system, promoting separation of concerns.",
+        "file_summaries": {
+          "handlers/account.go": {
+            "language": "Go",
+            "purpose": "Handles account-related operations such as retrieving account info, linking accounts, and managing tokens.",
+            "key_types": [
+              "AccountHandler",
+              "accountHandler",
+              "GetAccountInfo"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/announcement.go": {
+            "language": "Go",
+            "purpose": "Handles announcements and preferences for a wallet management system.",
+            "key_types": [
+              "AnnouncementHandler",
+              "announcementHandler",
+              "InternalScheduleNewAnnouncement"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/binance.go": {
+            "language": "go",
+            "purpose": "Handles Binance signing requests and responses in an Echo web framework.",
+            "key_types": [
+              "BinanceHandler",
+              "binanceHandler",
+              "Sign"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/blacklist.go": {
+            "language": "Go",
+            "purpose": "Handles requests related to retrieving blacklist sites.",
+            "key_types": [
+              "BlacklistHandler",
+              "blacklistHandler",
+              "GetBlacklistSites"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/common.go": {
+            "language": "Go",
+            "purpose": "Handles common configurations and version management for a wallet manager application.",
+            "key_types": [
+              "CommonHandler interface",
+              "commonHandler struct",
+              "GetCodePushVersion function"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/dapp.go": {
+            "language": "Go",
+            "purpose": "Handles DApp-related HTTP requests and operations.",
+            "key_types": [
+              "DAppHandler",
+              "dAppHandler",
+              "InternalSave"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/default.go": {
+            "language": "Go",
+            "purpose": "Handles agent information retrieval in a web context using Echo framework.",
+            "key_types": [
+              "getAgentInfo"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "handlers/device.go": {
+            "language": "Go",
+            "purpose": "Handles device-related operations such as registration, resetting, and updating push tokens.",
+            "key_types": [
+              "DeviceHandler",
+              "deviceHandler",
+              "ResetDeviceByID"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/external_auth.go": {
+            "language": "Go",
+            "purpose": "Handles external authentication processes including exchanging auth codes and revoking tokens.",
+            "key_types": [
+              "ExternalAuthHandler",
+              "externalAuthHandler",
+              "ExchangeAuthCode"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/locationhandler.go": {
+            "language": "Go",
+            "purpose": "Handles location-related requests and responses in a web application.",
+            "key_types": [
+              "LocationHandler",
+              "PublicGetLocation",
+              "InternalGetLocation"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/moonpay.go": {
+            "language": "Go",
+            "purpose": "Handles Moonpay URL signing requests.",
+            "key_types": [
+              "MoonpayHandler",
+              "moonpayHandler",
+              "SignURL"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/network.go": {
+            "language": "Go",
+            "purpose": "Handles network-related operations and configurations for a wallet manager.",
+            "key_types": [
+              "NetworkHandler",
+              "networkHandler",
+              "GetDApps"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/releasecandidate.go": {
+            "language": "Go",
+            "purpose": "Handles release candidate feature configurations and validations.",
+            "key_types": [
+              "ReleaseCandidateHandler",
+              "CheckAllowFeature",
+              "SetFeatureConfig"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "handlers/trusted_domain.go": {
+            "language": "Go",
+            "purpose": "Handles trusted domain operations including retrieval and management of trusted domains.",
+            "key_types": [
+              "TrustedDomainHandler",
+              "trustedDomainHandler",
+              "PublicGetByDomain"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "httpclient": {
+        "path": "httpclient",
+        "purpose": "Responsible for defining various HTTP clients for interacting with different services and managing device-related operations.",
+        "languages": {
+          "Go": 5
+        },
+        "key_modules": [
+          "athena.go",
+          "device.go",
+          "internal_client.go",
+          "mercury.go",
+          "tracking.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, where each file defines a specific client or interface for handling HTTP requests related to different services.",
+        "file_summaries": {
+          "httpclient/athena.go": {
+            "language": "Go",
+            "purpose": "Defines an HTTP client for linking accounts with Athena service.",
+            "key_types": [
+              "AthenaClientCfg",
+              "Athena",
+              "athenaClient"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "httpclient/device.go": {
+            "language": "Go",
+            "purpose": "Defines a DeviceClient interface and its implementation for managing device-related operations via HTTP requests.",
+            "key_types": [
+              "DeviceClient",
+              "deviceClient",
+              "GetDeviceByID"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "httpclient/internal_client.go": {
+            "language": "Go",
+            "purpose": "Implements an internal HTTP client with HMAC authentication for secure API requests.",
+            "key_types": [
+              "InternalClientConfig",
+              "InternalClient",
+              "doRequestWithHMacAuth"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "httpclient/mercury.go": {
+            "language": "Go",
+            "purpose": "Implements a MercuryClient for sending notifications via HTTP.",
+            "key_types": [
+              "MercuryClient",
+              "mercuryClient",
+              "SendNotification"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "httpclient/tracking.go": {
+            "language": "Go",
+            "purpose": "This file implements a tracking client for sending tracking data to a specified URL using HTTP requests.",
+            "key_types": [
+              "TrackingClient",
+              "trackingClient",
+              "NewTracingClient"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "middleware": {
+        "path": "middleware",
+        "purpose": "This folder is responsible for implementing various middleware components for an Echo web server, including error handling, authentication, request tracking, and user agent parsing.",
+        "languages": {
+          "Go": 7
+        },
+        "key_modules": [
+          "custom_requests_total_prometheus.go",
+          "error_handler.go",
+          "internal_auth.go",
+          "network_api_v1_checking.go",
+          "tracking_internal_api.go",
+          "user_agent_parsing.go",
+          "wallet_auth.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, where each middleware component is encapsulated in its own file, promoting separation of concerns and reusability.",
+        "file_summaries": {
+          "middleware/custom_requests_total_prometheus.go": {
+            "language": "Go",
+            "purpose": "Defines a middleware for tracking custom HTTP request metrics in Prometheus.",
+            "key_types": [
+              "NewCustomRequestsTotalPrometheus"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "middleware/error_handler.go": {
+            "language": "Go",
+            "purpose": "Handles global error responses for an Echo web server.",
+            "key_types": [
+              "GlobalErrorHandler"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "middleware/internal_auth.go": {
+            "language": "Go",
+            "purpose": "Implements HMAC authentication middleware for validating request signatures.",
+            "key_types": [
+              "HmacAuthentication"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "middleware/network_api_v1_checking.go": {
+            "language": "Go",
+            "purpose": "Middleware to check if the API version is v1 and set a context key accordingly.",
+            "key_types": [
+              "NetworkAPIV1CheckingMiddleware"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "middleware/tracking_internal_api.go": {
+            "language": "Go",
+            "purpose": "Defines middleware for tracking API requests in an Echo web framework.",
+            "key_types": [
+              "NewTrackingInternalAPIMiddleware"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "middleware/user_agent_parsing.go": {
+            "language": "Go",
+            "purpose": "Middleware for parsing user agent strings in an Echo web framework application.",
+            "key_types": [
+              "getAgentInfo",
+              "NewUserAgentParsing"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "middleware/wallet_auth.go": {
+            "language": "Go",
+            "purpose": "Middleware for verifying wallet signatures in HTTP requests.",
+            "key_types": [
+              "VerifyWalletSignature",
+              "validateClockSkew",
+              "ErrorWalletIsNotWhitelisted"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "migrations": {
+        "path": "migrations",
+        "purpose": "Responsible for managing database schema changes and updates through SQL migration scripts.",
+        "languages": {
+          "SQL": 6
+        },
+        "key_modules": [
+          "20230407150000_init.sql",
+          "20231005150000_add_announcement.sql",
+          "20240111120000_alter_preferences.sql",
+          "20240206110000_add_trusted_domain.sql",
+          "20240410140000_add_dapp_highlight.sql",
+          "20240808130000_alter_preferences.sql"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a sequential migration pattern where each file represents a specific change to the database schema, allowing for version control and rollback capabilities.",
+        "file_summaries": {
+          "migrations/20230407150000_init.sql": {
+            "language": "SQL",
+            "purpose": "Initializes database schema for networks and contracts with UUID support.",
+            "key_types": [
+              "networks table",
+              "contracts table",
+              "contract_type enum"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "migrations/20231005150000_add_announcement.sql": {
+            "language": "SQL",
+            "purpose": "Creates tables and indexes for managing announcements and special offers in a database.",
+            "key_types": [
+              "announcements",
+              "special_offers"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "migrations/20240111120000_alter_preferences.sql": {
+            "language": "SQL",
+            "purpose": "Modifies the preferences table by altering columns, adding constraints, and creating an index.",
+            "key_types": [
+              "ALTER TABLE",
+              "CREATE INDEX",
+              "DELETE"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "migrations/20240206110000_add_trusted_domain.sql": {
+            "language": "SQL",
+            "purpose": "Creates tables for trusted domains and quick access applications in the database.",
+            "key_types": [
+              "CREATE TABLE trusted_domains",
+              "CREATE TABLE quick_access_d_apps",
+              "CREATE INDEX idx_quick_access_d_apps_position"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "migrations/20240410140000_add_dapp_highlight.sql": {
+            "language": "SQL",
+            "purpose": "This file adds a new highlights table and modifies the quick_access_d_apps table for enhanced data handling.",
+            "key_types": [
+              "CREATE TABLE highlights",
+              "ALTER TABLE quick_access_d_apps",
+              "CREATE INDEX"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "migrations/20240808130000_alter_preferences.sql": {
+            "language": "SQL",
+            "purpose": "This file alters the preferences table by creating and dropping an index for the receive_news column.",
+            "key_types": [
+              "CREATE INDEX",
+              "DROP INDEX"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          }
+        }
+      },
+      "models": {
+        "path": "models",
+        "purpose": "Defines data models and request/response structures for various components of the application, including user accounts, announcements, devices, and blockchain configurations.",
+        "languages": {
+          "Go": 30
+        },
+        "key_modules": [
+          "account.go",
+          "announcement.go",
+          "app.go",
+          "binance.go",
+          "blacklist.go",
+          "chain.go",
+          "common.go",
+          "contract.go",
+          "default.go",
+          "device.go",
+          "external_auth.go",
+          "highlight.go",
+          "ip_locations.go",
+          "moonpay.go",
+          "network.go",
+          "notification.go",
+          "preference.go",
+          "quickaccess.go",
+          "ref_code.go",
+          "releasecandidate.go",
+          "trusted_domain.go",
+          "useragent.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, where each file defines specific data models and request/response structures, promoting separation of concerns and reusability.",
+        "file_summaries": {
+          "models/account.go": {
+            "language": "Go",
+            "purpose": "Defines data models and request/response structures for user account management and authentication.",
+            "key_types": [
+              "GetSMUserInfoRequest",
+              "GetSMUserInfoResponse",
+              "LinkAccountRequest"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/announcement.go": {
+            "language": "Go",
+            "purpose": "Defines the Announcement model and its associated methods for handling announcements in a database.",
+            "key_types": [
+              "Announcement",
+              "Buttons",
+              "Scan"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/app.go": {
+            "language": "Go",
+            "purpose": "Defines data models for code version management and update requests.",
+            "key_types": [
+              "CodeVersion",
+              "UpdateCodeVersionRequest",
+              "EnvironmentConfig"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "models/binance.go": {
+            "language": "go",
+            "purpose": "Defines data structures for signing requests and responses for Binance API.",
+            "key_types": [
+              "BinanceSignRequest",
+              "BinanceSignResponse"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "models/blacklist.go": {
+            "language": "Go",
+            "purpose": "Defines a request structure for retrieving blacklist sites.",
+            "key_types": [
+              "GetBlacklistSitesReq"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "models/chain.go": {
+            "language": "Go",
+            "purpose": "Defines the configuration structure for a blockchain network including contracts and decentralized applications.",
+            "key_types": [
+              "ChainConfig"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "models/common.go": {
+            "language": "Go",
+            "purpose": "Defines data models for common structures used in the application.",
+            "key_types": [
+              "Common",
+              "SupportURL",
+              "KnownContract"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/contract.go": {
+            "language": "Go",
+            "purpose": "Defines data models and types for handling smart contract information.",
+            "key_types": [
+              "ContractType",
+              "Metadata",
+              "Contract"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/default.go": {
+            "language": "Go",
+            "purpose": "Defines data models and response structures for handling API responses and pagination.",
+            "key_types": [
+              "OkResponse",
+              "Paging",
+              "ListResponse"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "models/device.go": {
+            "language": "Go",
+            "purpose": "Defines device-related data structures and request types for device management.",
+            "key_types": [
+              "Device",
+              "GetDeviceByIDRequest",
+              "PostDeviceRegistrationRequest"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/external_auth.go": {
+            "language": "Go",
+            "purpose": "Defines data structures for handling external authentication requests and responses.",
+            "key_types": [
+              "XExchangeAuthCodeReq",
+              "XRefreshAccessTokenReq",
+              "OAuthConfig"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/highlight.go": {
+            "language": "Go",
+            "purpose": "Defines the Highlight model and related structures for managing highlight data.",
+            "key_types": [
+              "Highlight",
+              "InternalHighlightResponse",
+              "ToInternalResponse"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/ip_locations.go": {
+            "language": "Go",
+            "purpose": "Defines data models for IP location information and request handling.",
+            "key_types": [
+              "IPLocation",
+              "GetLocationRequest"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "models/moonpay.go": {
+            "language": "Go",
+            "purpose": "Defines data structures for Moonpay signing requests and responses.",
+            "key_types": [
+              "MoonpaySigningRequest",
+              "MoonpaySigningResponse"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "models/network.go": {
+            "language": "Go",
+            "purpose": "Defines the Network model for managing blockchain network configurations.",
+            "key_types": [
+              "Network",
+              "GetCacheDApps",
+              "GetCacheContracts"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/notification.go": {
+            "language": "Go",
+            "purpose": "Defines data structures and constants for managing push notifications.",
+            "key_types": [
+              "Recipient",
+              "Payload",
+              "PostPushNotificationRequest"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "models/preference.go": {
+            "language": "Go",
+            "purpose": "Defines data models for user preferences and filters in a system.",
+            "key_types": [
+              "Preference",
+              "PreferenceFilter",
+              "DevicePreferences"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/quickaccess.go": {
+            "language": "Go",
+            "purpose": "Defines the QuickAccessDApp model and related request structures for managing quick access decentralized applications.",
+            "key_types": [
+              "QuickAccessDApp",
+              "SaveQuickAccessDAppRequest",
+              "ToInternalResponse"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/ref_code.go": {
+            "language": "Go",
+            "purpose": "Defines models and filters for managing referral codes and associated wallets.",
+            "key_types": [
+              "ReferralCode",
+              "ReferralCodeFilter",
+              "ReferralWallet"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/releasecandidate.go": {
+            "language": "Go",
+            "purpose": "Defines request structures for feature management in a device context.",
+            "key_types": [
+              "CheckAllowFeatureRequest",
+              "PostFeatureConfigRequest",
+              "PostSetConfigForDeviceRequest"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "models/trusted_domain.go": {
+            "language": "Go",
+            "purpose": "Defines the TrustedDomain model and related request/response structures for managing trusted domains in an application.",
+            "key_types": [
+              "TrustedDomain",
+              "GetTDMByDomainRequest",
+              "GetListTDMRequest"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "models/useragent.go": {
+            "language": "Go",
+            "purpose": "Defines the AgentInfo struct and a method to check if its fields are empty.",
+            "key_types": [
+              "AgentInfo",
+              "IsEmpty"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          }
+        }
+      },
+      "pkg/announcement": {
+        "path": "pkg/announcement",
+        "purpose": "Responsible for managing announcements, including retrieval and validation.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "announcement_svc.go",
+          "config.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a service-oriented architecture pattern, focusing on encapsulating announcement-related functionalities and configurations.",
+        "file_summaries": {
+          "pkg/announcement/announcement_svc.go": {
+            "language": "Go",
+            "purpose": "Provides services for managing announcements, including retrieval and validation.",
+            "key_types": [
+              "Service",
+              "GetByID",
+              "GetListAsAdmin"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/announcement/config.go": {
+            "language": "Go",
+            "purpose": "Configuration structures for the announcement service in a wallet manager application.",
+            "key_types": [
+              "CommunicationServiceCfg",
+              "StorageConfig",
+              "K8sConfig"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/blacklist": {
+        "path": "pkg/blacklist",
+        "purpose": "Responsible for managing blacklists and feature flags across platforms.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "service.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic related to blacklists and feature flags.",
+        "file_summaries": {
+          "pkg/blacklist/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration structures for managing blacklists and feature flags across platforms.",
+            "key_types": [
+              "BlacklistConfig",
+              "Versions",
+              "FeatureFlagConfig"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/blacklist/service.go": {
+            "language": "Go",
+            "purpose": "Defines a service interface and implementation for managing blacklist configurations and feature flags.",
+            "key_types": [
+              "Service interface",
+              "service struct",
+              "NewBlacklistService function"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/crypto/hmac": {
+        "path": "pkg/crypto/hmac",
+        "purpose": "Responsible for HMAC authentication, including configuration, signing, and validation.",
+        "languages": {
+          "Go": 6
+        },
+        "key_modules": [
+          "config.go",
+          "funcs.go",
+          "hmac.go",
+          "init.go",
+          "funcs_test.go",
+          "hmac_test.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating HMAC-related functionalities and tests within dedicated files.",
+        "file_summaries": {
+          "pkg/crypto/hmac/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration settings for HMAC authentication.",
+            "key_types": [
+              "Config",
+              "NormalizeWhitelistAddresses"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/crypto/hmac/funcs.go": {
+            "language": "Go",
+            "purpose": "Provides HMAC signing functions using SHA256 and SHA512 algorithms.",
+            "key_types": [
+              "SHA256",
+              "SHA512",
+              "Sign"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/crypto/hmac/funcs_test.go": {
+            "language": "Go",
+            "purpose": "Unit tests for HMAC signing functionality.",
+            "key_types": [
+              "TestSign"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/crypto/hmac/hmac.go": {
+            "language": "Go",
+            "purpose": "Implements HMAC signature validation with clock skew allowance.",
+            "key_types": [
+              "HMAC",
+              "New",
+              "ValidateSignature"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/crypto/hmac/hmac_test.go": {
+            "language": "Go",
+            "purpose": "Unit tests for HMAC validation functions including clock skew and signature validation.",
+            "key_types": [
+              "TestHMAC_validateClockSkew",
+              "TestHMAC_ValidateSignature"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/crypto/hmac/init.go": {
+            "language": "Go",
+            "purpose": "This file initializes a singleton instance of the HMAC structure with a configuration.",
+            "key_types": [
+              "init",
+              "InitInstance"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          }
+        }
+      },
+      "pkg/dapp": {
+        "path": "pkg/dapp",
+        "purpose": "Responsible for managing decentralized applications (dApps) including configuration and service interfaces.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "d_app_svc.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic for dApps.",
+        "file_summaries": {
+          "pkg/dapp/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration settings for decentralized applications.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/dapp/d_app_svc.go": {
+            "language": "Go",
+            "purpose": "This file defines a service interface for managing quick access decentralized applications (dApps) and highlights.",
+            "key_types": [
+              "Service",
+              "Save",
+              "GetList"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/device": {
+        "path": "pkg/device",
+        "purpose": "Responsible for managing device-related operations and configurations within the application.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "service.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating device-related functionalities and configurations in separate files.",
+        "file_summaries": {
+          "pkg/device/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration structures for device services in the application.",
+            "key_types": [
+              "ServiceConfig",
+              "Config"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/device/service.go": {
+            "language": "Go",
+            "purpose": "Defines a service interface and its implementation for managing device-related operations.",
+            "key_types": [
+              "Service interface",
+              "service struct",
+              "GetDeviceByID function"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/gcs": {
+        "path": "pkg/gcs",
+        "purpose": "Responsible for interacting with Google Cloud Storage, including configuration and file operations.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "service.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic for Google Cloud Storage operations.",
+        "file_summaries": {
+          "pkg/gcs/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration settings for Google Cloud Storage.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/gcs/service.go": {
+            "language": "Go",
+            "purpose": "Provides a service for uploading, deleting, and downloading files from Google Cloud Storage.",
+            "key_types": [
+              "Service interface",
+              "service struct",
+              "NewService function"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/helper": {
+        "path": "pkg/helper",
+        "purpose": "Provides various utility functions and cryptographic features to support application functionality.",
+        "languages": {
+          "Go": 8
+        },
+        "key_modules": [
+          "aes.go",
+          "binder.go",
+          "hmac_token.go",
+          "pointer.go",
+          "random.go",
+          "ronin.go",
+          "slice.go",
+          "tls.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating related functionalities into separate files for better organization and maintainability.",
+        "file_summaries": {
+          "pkg/helper/aes.go": {
+            "language": "Go",
+            "purpose": "Provides AES encryption functionality for messages using a hashed key.",
+            "key_types": [
+              "hashKey",
+              "EncryptEAS"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/helper/binder.go": {
+            "language": "Go",
+            "purpose": "Provides custom binding functions for handling multipart file uploads in Echo framework.",
+            "key_types": [
+              "BindFunc",
+              "NewBindWithHeaders",
+              "NewBindFile"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/helper/hmac_token.go": {
+            "language": "Go",
+            "purpose": "Generates an HMAC access token for authentication purposes.",
+            "key_types": [
+              "GenerateHMACAccessToken"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/helper/pointer.go": {
+            "language": "Go",
+            "purpose": "Provides a generic function to create a pointer to a value of any type.",
+            "key_types": [
+              "NewPointer"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/helper/random.go": {
+            "language": "Go",
+            "purpose": "Generates a random string of specified length using alphanumeric characters.",
+            "key_types": [
+              "RandStr"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/helper/ronin.go": {
+            "language": "Go",
+            "purpose": "Provides utility functions for Ethereum address normalization, message hashing, and signature validation.",
+            "key_types": [
+              "NormalizeAddress",
+              "HashMessage",
+              "IsValidSignature"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/helper/slice.go": {
+            "language": "Go",
+            "purpose": "Provides utility functions for filtering, indexing, and transforming slices.",
+            "key_types": [
+              "Filter",
+              "IndexOf",
+              "SliceToMap"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/helper/tls.go": {
+            "language": "Go",
+            "purpose": "This file provides a function to convert certificate and key data into a TLS configuration.",
+            "key_types": [
+              "ConvertToTLSConfig"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/location": {
+        "path": "pkg/location",
+        "purpose": "Responsible for managing location-related services, including retrieving location information based on IP addresses and handling configuration.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "location_svc.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a service-oriented architecture pattern, encapsulating configuration and service logic related to location functionalities.",
+        "file_summaries": {
+          "pkg/location/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration structure for the location package.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/location/location_svc.go": {
+            "language": "Go",
+            "purpose": "Provides a service for retrieving location information based on IP addresses and downloading a database of IP locations.",
+            "key_types": [
+              "Service",
+              "GetLocationByIP",
+              "DownloadNewDB"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/moonpay": {
+        "path": "pkg/moonpay",
+        "purpose": "Responsible for integrating with Moonpay services, including configuration and URL signing.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "service.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic related to Moonpay integration.",
+        "file_summaries": {
+          "pkg/moonpay/config.go": {
+            "language": "Go",
+            "purpose": "Defines the configuration structure for Moonpay integration.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/moonpay/service.go": {
+            "language": "go",
+            "purpose": "Provides a service for signing URLs using a configuration.",
+            "key_types": [
+              "Service interface",
+              "service struct",
+              "SignURL method"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/preference": {
+        "path": "pkg/preference",
+        "purpose": "Provides a service for managing user preferences related to devices and wallets.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "pref_svc.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the logic for user preference management within a dedicated service.",
+        "file_summaries": {
+          "pkg/preference/pref_svc.go": {
+            "language": "Go",
+            "purpose": "Provides a service for managing user preferences related to devices and wallets.",
+            "key_types": [
+              "Service interface",
+              "service struct",
+              "GetByAddress function"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/tracking": {
+        "path": "pkg/tracking",
+        "purpose": "Responsible for handling tracking functionality, including configuration, data structures, and service implementation for event tracking.",
+        "languages": {
+          "Go": 3
+        },
+        "key_modules": [
+          "config.go",
+          "models.go",
+          "tracking_svc.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, separating configuration, data models, and service logic into distinct files for better maintainability and clarity.",
+        "file_summaries": {
+          "pkg/tracking/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration settings for tracking functionality.",
+            "key_types": [
+              "Config struct",
+              "SetUserAgent function"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/tracking/models.go": {
+            "language": "Go",
+            "purpose": "Defines data structures for tracking events and requests.",
+            "key_types": [
+              "Event",
+              "TrackingRequest"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/tracking/tracking_svc.go": {
+            "language": "Go",
+            "purpose": "Provides a tracking service for handling event tracking requests.",
+            "key_types": [
+              "Service interface",
+              "service struct",
+              "NewService function"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/trusteddomain": {
+        "path": "pkg/trusteddomain",
+        "purpose": "Responsible for managing trusted domains with caching and database interactions.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "trusted_domain_svc.go",
+          "utils.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a service-oriented architecture pattern, focusing on domain management functionalities.",
+        "file_summaries": {
+          "pkg/trusteddomain/trusted_domain_svc.go": {
+            "language": "Go",
+            "purpose": "Provides a service for managing trusted domains with caching and database interactions.",
+            "key_types": [
+              "Service interface",
+              "svc struct",
+              "GetByDomain function"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/trusteddomain/utils.go": {
+            "language": "Go",
+            "purpose": "Generates wildcard domain variations from a given domain string.",
+            "key_types": [
+              "generateWildcardDomains"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/worker": {
+        "path": "pkg/worker",
+        "purpose": "Responsible for managing a pool of worker goroutines to process jobs concurrently.",
+        "languages": {
+          "Go": 4
+        },
+        "key_modules": [
+          "config.go",
+          "dispatcher.go",
+          "job.go",
+          "worker.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating the worker functionality into distinct files for configuration, job definition, dispatcher management, and worker execution.",
+        "file_summaries": {
+          "pkg/worker/config.go": {
+            "language": "Go",
+            "purpose": "Defines the configuration structure for the worker package.",
+            "key_types": [
+              "Config"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/worker/dispatcher.go": {
+            "language": "Go",
+            "purpose": "Implements a dispatcher for managing a pool of worker goroutines to process jobs concurrently.",
+            "key_types": [
+              "Dispatcher",
+              "NewDispatcher",
+              "Run"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "pkg/worker/job.go": {
+            "language": "Go",
+            "purpose": "Defines a Job struct that holds a function to execute.",
+            "key_types": [
+              "Job"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/worker/worker.go": {
+            "language": "Go",
+            "purpose": "Defines a Worker struct that manages job execution in a worker pool.",
+            "key_types": [
+              "Worker",
+              "NewWorker",
+              "Start",
+              "Stop"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "pkg/xauth": {
+        "path": "pkg/xauth",
+        "purpose": "Responsible for client authentication settings and implementing an external authentication service.",
+        "languages": {
+          "Go": 2
+        },
+        "key_modules": [
+          "config.go",
+          "external_auth_svc.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, encapsulating authentication-related functionalities in separate files.",
+        "file_summaries": {
+          "pkg/xauth/config.go": {
+            "language": "Go",
+            "purpose": "Defines configuration structures for client authentication settings.",
+            "key_types": [
+              "ClientConfig",
+              "Config"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "pkg/xauth/external_auth_svc.go": {
+            "language": "Go",
+            "purpose": "Implements an external authentication service for exchanging authorization codes and tokens.",
+            "key_types": [
+              "Service",
+              "ExchangeAuthCode",
+              "NewService"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "repositories": {
+        "path": "repositories",
+        "purpose": "This folder contains repository interfaces and implementations for managing various entities in the application, including announcements, code versions, contracts, and user preferences.",
+        "languages": {
+          "Go": 11
+        },
+        "key_modules": [
+          "announcement.go",
+          "code_version.go",
+          "common.go",
+          "contract.go",
+          "dapp.go",
+          "highlight.go",
+          "init.go",
+          "network.go",
+          "preference.go",
+          "quickaccess.go",
+          "trusted_domain.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a repository pattern, encapsulating data access logic and providing a clean interface for interacting with the underlying data sources.",
+        "file_summaries": {
+          "repositories/announcement.go": {
+            "language": "Go",
+            "purpose": "This file defines the repository interface for managing announcements in the application.",
+            "key_types": [
+              "AnnouncementRepo",
+              "AddNew",
+              "GetAnnouncementByID"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "repositories/code_version.go": {
+            "language": "Go",
+            "purpose": "This file defines a repository for managing code version records in a database.",
+            "key_types": [
+              "CodeVersionRepo",
+              "GetAllCodeVersions",
+              "SaveVersion"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "repositories/common.go": {
+            "language": "Go",
+            "purpose": "Defines a repository interface and implementation for managing common entities in a database.",
+            "key_types": [
+              "CommonRepo",
+              "GetAllCommons",
+              "SaveCommons"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "repositories/contract.go": {
+            "language": "Go",
+            "purpose": "Defines a repository interface and implementation for managing contract data in a database.",
+            "key_types": [
+              "ContractRepo interface",
+              "contractRepo struct",
+              "CreateContract method"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "repositories/dapp.go": {
+            "language": "Go",
+            "purpose": "Defines a repository interface and implementation for managing decentralized application (DApp) data.",
+            "key_types": [
+              "DAppRepo interface",
+              "dAppRepo struct",
+              "CreateDApp function"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "repositories/highlight.go": {
+            "language": "Go",
+            "purpose": "This file defines a repository for managing highlights in a database using GORM.",
+            "key_types": [
+              "HighlightRepo",
+              "highlightRepo",
+              "GetList"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "repositories/init.go": {
+            "language": "Go",
+            "purpose": "Provides pagination functionality for database queries using GORM.",
+            "key_types": [
+              "paginate"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "repositories/network.go": {
+            "language": "Go",
+            "purpose": "Defines a repository interface and implementation for managing network data in a database.",
+            "key_types": [
+              "NetworkRepo interface",
+              "networkRepo struct",
+              "GetNetwork function"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "repositories/preference.go": {
+            "language": "Go",
+            "purpose": "This file defines a repository for managing user preferences in a database using GORM.",
+            "key_types": [
+              "PreferenceRepo",
+              "prefRepo",
+              "GetByAddress"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "repositories/quickaccess.go": {
+            "language": "Go",
+            "purpose": "This file defines a repository interface and implementation for managing Quick Access DApps in a database.",
+            "key_types": [
+              "QuickAccessDAppRepo",
+              "quickAccessDAppRepo",
+              "GetList"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "repositories/trusted_domain.go": {
+            "language": "Go",
+            "purpose": "This file defines a repository interface and implementation for managing trusted domains in a database.",
+            "key_types": [
+              "TrustedDomainRepo",
+              "trustedDomainsRepo",
+              "GetByDomain"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      },
+      "root": {
+        "path": "root",
+        "purpose": "This folder/module is responsible for the wallet-manager project, including configuration, documentation, and service definitions.",
+        "languages": {
+          "JSON": 2,
+          "Markdown": 2,
+          "YAML": 2,
+          "bash": 1
+        },
+        "key_modules": [
+          ".golangci.yaml",
+          "README.md",
+          "SECURITY.md",
+          "docker-compose.yml",
+          "entrypoint.sh"
+        ],
+        "dependencies": [
+          "PostgreSQL",
+          "Redis"
+        ],
+        "architecture": "The folder follows a modular architecture pattern, organizing configuration, documentation, and service definitions for easy management and deployment.",
+        "file_summaries": {
+          ".golangci.yaml": {
+            "language": "YAML",
+            "purpose": "Configuration file for GolangCI-Lint to manage linting rules and settings.",
+            "key_types": [
+              "linters-settings",
+              "rules",
+              "checks"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          },
+          "README.md": {
+            "language": "Markdown",
+            "purpose": "Documentation for the wallet-manager project.",
+            "key_types": [],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "SECURITY.md": {
+            "language": "Markdown",
+            "purpose": "Defines the security policy for the project, including supported versions and vulnerability reporting.",
+            "key_types": [],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "country_iso2_to_currency.json": {
+            "language": "JSON",
+            "purpose": "Maps ISO 3166-1 alpha-2 country codes to their respective currencies.",
+            "key_types": [],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "country_iso2_to_iso3.json": {
+            "language": "JSON",
+            "purpose": "Maps ISO 2-letter country codes to ISO 3-letter country codes.",
+            "key_types": [],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "docker-compose.yml": {
+            "language": "YAML",
+            "purpose": "Defines services for a PostgreSQL database and a Redis cache using Docker Compose.",
+            "key_types": [
+              "services",
+              "environment",
+              "ports"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          },
+          "entrypoint.sh": {
+            "language": "bash",
+            "purpose": "This script serves as the entry point to run the application.",
+            "key_types": [
+              "main"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "low"
+          }
+        }
+      },
+      "tests": {
+        "path": "tests",
+        "purpose": "This folder is responsible for testing the HTTP server that signs messages using Ethereum ECDSA private keys.",
+        "languages": {
+          "Go": 1
+        },
+        "key_modules": [
+          "main.go"
+        ],
+        "dependencies": [],
+        "architecture": "The folder follows a modular architecture pattern, focusing on the implementation of a specific functionality related to signing messages.",
+        "file_summaries": {
+          "tests/main.go": {
+            "language": "Go",
+            "purpose": "This file implements an HTTP server that signs messages using Ethereum ECDSA private keys.",
+            "key_types": [
+              "SignRequest",
+              "signHash",
+              "signMessage"
+            ],
+            "functions": null,
+            "imports": null,
+            "complexity": "medium"
+          }
+        }
+      }
+    }
+  }
+}

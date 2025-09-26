@@ -1,9 +1,9 @@
 {
-  "content_hash": "01330956e5c7612111ceb72bef7af9d5",
-  "timestamp": "2025-09-26T15:06:13.22901+07:00",
+  "content_hash": "a5996d01b8b6275d7017fd398842f3f8",
+  "timestamp": "2025-09-26T17:38:33.76843+07:00",
   "result": {
     "path": "cmd/antenna",
-    "purpose": "Responsible for the Antenna service in the application, including configuration, routing, and dependency injection.",
+    "purpose": "Responsible for the Antenna service in the Ronin Wallet application, handling configuration, routing, and dependency injection.",
     "languages": {
       "Go": 5
     },
@@ -17,11 +17,11 @@
     "dependencies": [
       "Google Wire"
     ],
-    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for better separation of concerns and easier testing.",
+    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for managing application components and routing for handling requests.",
     "file_summaries": {
       "cmd/antenna/config.go": {
         "language": "Go",
-        "purpose": "Defines configuration structures for the antenna service in the application.",
+        "purpose": "Defines configuration structures for the antenna service in the Ronin Wallet application.",
         "key_types": [
           "config"
         ],
@@ -40,7 +40,7 @@
         "complexity": "medium"
       },
       "cmd/antenna/routes.go": {
-        "language": "go",
+        "language": "Go",
         "purpose": "Defines route handlers for private and public groups in an antenna service.",
         "key_types": [
           "PrivateGroup",

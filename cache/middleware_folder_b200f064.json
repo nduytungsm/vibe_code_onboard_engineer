@@ -1,0 +1,97 @@
+{
+  "content_hash": "caefb633d2ac7a276fe87a734d3b976c",
+  "timestamp": "2025-09-26T17:25:51.013978+07:00",
+  "result": {
+    "path": "middleware",
+    "purpose": "This folder is responsible for implementing various middleware components for an Echo web server, including error handling, authentication, request tracking, and user agent parsing.",
+    "languages": {
+      "Go": 7
+    },
+    "key_modules": [
+      "custom_requests_total_prometheus.go",
+      "error_handler.go",
+      "internal_auth.go",
+      "network_api_v1_checking.go",
+      "tracking_internal_api.go",
+      "user_agent_parsing.go",
+      "wallet_auth.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, where each middleware component is encapsulated in its own file, promoting separation of concerns and reusability.",
+    "file_summaries": {
+      "middleware/custom_requests_total_prometheus.go": {
+        "language": "Go",
+        "purpose": "Defines a middleware for tracking custom HTTP request metrics in Prometheus.",
+        "key_types": [
+          "NewCustomRequestsTotalPrometheus"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "middleware/error_handler.go": {
+        "language": "Go",
+        "purpose": "Handles global error responses for an Echo web server.",
+        "key_types": [
+          "GlobalErrorHandler"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "middleware/internal_auth.go": {
+        "language": "Go",
+        "purpose": "Implements HMAC authentication middleware for validating request signatures.",
+        "key_types": [
+          "HmacAuthentication"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "middleware/network_api_v1_checking.go": {
+        "language": "Go",
+        "purpose": "Middleware to check if the API version is v1 and set a context key accordingly.",
+        "key_types": [
+          "NetworkAPIV1CheckingMiddleware"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "middleware/tracking_internal_api.go": {
+        "language": "Go",
+        "purpose": "Defines middleware for tracking API requests in an Echo web framework.",
+        "key_types": [
+          "NewTrackingInternalAPIMiddleware"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "middleware/user_agent_parsing.go": {
+        "language": "Go",
+        "purpose": "Middleware for parsing user agent strings in an Echo web framework application.",
+        "key_types": [
+          "getAgentInfo",
+          "NewUserAgentParsing"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "middleware/wallet_auth.go": {
+        "language": "Go",
+        "purpose": "Middleware for verifying wallet signatures in HTTP requests.",
+        "key_types": [
+          "VerifyWalletSignature",
+          "validateClockSkew",
+          "ErrorWalletIsNotWhitelisted"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

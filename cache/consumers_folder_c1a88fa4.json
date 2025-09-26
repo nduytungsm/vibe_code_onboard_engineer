@@ -1,9 +1,9 @@
 {
-  "content_hash": "333f2d93eb32fe054f730d089b2cad5e",
-  "timestamp": "2025-09-26T15:07:38.865208+07:00",
+  "content_hash": "3b2b4cc29c0526113bfd231d1fa56404",
+  "timestamp": "2025-09-26T17:39:19.042571+07:00",
   "result": {
     "path": "internal/domains/antenna/consumers",
-    "purpose": "Responsible for handling events related to block processing, ensuring idempotency in message processing, and monitoring consumer routines.",
+    "purpose": "Responsible for handling events related to token transfers, ensuring message idempotency, and monitoring consumer performance.",
     "languages": {
       "Go": 3
     },
@@ -14,14 +14,13 @@
     ],
     "dependencies": [
       "Kafka",
-      "Redis",
-      "Prometheus"
+      "Redis"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each file is responsible for a specific aspect of event handling and monitoring, promoting separation of concerns.",
+    "architecture": "The folder follows a modular architecture pattern, where each file handles a specific aspect of event consumption and processing.",
     "file_summaries": {
       "internal/domains/antenna/consumers/block_full_event.go": {
         "language": "Go",
-        "purpose": "Handles full block events and processes notifications related to token transfers.",
+        "purpose": "Handles block full events and processes notifications related to token transfers.",
         "key_types": [
           "BlockFullEventHandler",
           "NewBlockFullEventHandler",
@@ -45,7 +44,7 @@
       },
       "internal/domains/antenna/consumers/metrics.go": {
         "language": "Go",
-        "purpose": "Defines and initializes Prometheus metrics for monitoring consumer routines in the antenna service.",
+        "purpose": "Defines metrics for monitoring consumer performance in the antenna service.",
         "key_types": [
           "metricCollectors",
           "initMetrics"

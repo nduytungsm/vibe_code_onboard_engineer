@@ -1,0 +1,16 @@
+{
+  "content_hash": "0b2ec5eec36b51e27d92a11012290596",
+  "timestamp": "2025-09-26T17:35:13.774588+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file sets up dependency injection for cron job services in the application.",
+    "key_types": [
+      "wireCronJob",
+      "provideSugarLogger",
+      "provideHttpMetric"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "content_hash": "1a57662f849ae21088273c694f4835f3",
+  "timestamp": "2025-09-26T17:09:20.679535+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates HMAC access tokens for HTTP requests.",
+    "key_types": [
+      "GenerateHMACAccessToken"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

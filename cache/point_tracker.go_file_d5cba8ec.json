@@ -1,0 +1,16 @@
+{
+  "content_hash": "8da67e1f01e8f765342ecc3563ba17b6",
+  "timestamp": "2025-09-26T17:09:02.866684+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Implements a service for tracking and managing points associated with user quests.",
+    "key_types": [
+      "PointTrackerService",
+      "pointTrackerService",
+      "CreatePoints"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

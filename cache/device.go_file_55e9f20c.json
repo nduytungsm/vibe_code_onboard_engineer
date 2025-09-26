@@ -1,0 +1,16 @@
+{
+  "content_hash": "dc8b095f0f082123c464d2128687bc1c",
+  "timestamp": "2025-09-26T17:24:50.381979+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines device-related data structures and request types for device management.",
+    "key_types": [
+      "Device",
+      "GetDeviceByIDRequest",
+      "PostDeviceRegistrationRequest"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

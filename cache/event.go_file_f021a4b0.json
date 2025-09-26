@@ -1,0 +1,16 @@
+{
+  "content_hash": "d263c70d01fcb60303a2fc3c62fddae6",
+  "timestamp": "2025-09-26T17:36:32.086758+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an event repository interface and its implementation for managing event data in a database.",
+    "key_types": [
+      "EventRepo interface",
+      "evRepo struct",
+      "NewEventRepo function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

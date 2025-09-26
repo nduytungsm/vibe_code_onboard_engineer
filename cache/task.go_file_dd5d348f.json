@@ -1,0 +1,14 @@
+{
+  "content_hash": "e91073ae75aebcfca833c3e072f6aaa5",
+  "timestamp": "2025-09-26T17:09:16.289858+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an interface for handling asynchronous tasks in a queue.",
+    "key_types": [
+      "TaskHandler"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

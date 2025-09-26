@@ -1,0 +1,16 @@
+{
+  "content_hash": "e51deb7b570fc03f04ab766d68542de2",
+  "timestamp": "2025-09-26T17:37:10.210563+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines HTTP client configuration and error handling for making HTTP requests.",
+    "key_types": [
+      "RequestError",
+      "AuthConfig",
+      "ClientConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

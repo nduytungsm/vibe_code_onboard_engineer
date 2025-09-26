@@ -1,0 +1,16 @@
+{
+  "content_hash": "63ee98658508131dd17e76fc4c974bf0",
+  "timestamp": "2025-09-26T17:08:56.679093+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines and registers Prometheus metrics for cron job monitoring.",
+    "key_types": [
+      "registerMetrics",
+      "cronJobHistogramVec",
+      "cronJobCounterVec"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

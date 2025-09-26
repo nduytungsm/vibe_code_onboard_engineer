@@ -1,0 +1,99 @@
+{
+  "services": [
+    {
+      "name": "clean_highlight_dapps",
+      "path": "cmd/clean_highlight_dapps",
+      "entry_point": "cmd/clean_highlight_dapps/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "clean_cronjob",
+      "path": "cmd/clean_cronjob",
+      "entry_point": "cmd/clean_cronjob/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "tests",
+      "path": "tests",
+      "entry_point": "tests/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go"
+    },
+    {
+      "name": "ip_location",
+      "path": "cmd/ip_location",
+      "entry_point": "cmd/ip_location/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "app",
+      "path": "cmd/app",
+      "entry_point": "cmd/app/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "repositories",
+      "path": "repositories",
+      "entry_point": "repositories/trusted_domain.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go"
+    },
+    {
+      "name": "trigger_announcement",
+      "path": "cmd/trigger_announcement",
+      "entry_point": "cmd/trigger_announcement/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "clean_old_special_offers",
+      "path": "cmd/clean_old_special_offers",
+      "entry_point": "cmd/clean_old_special_offers/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and directory"
+    },
+    {
+      "name": "models",
+      "path": "models",
+      "entry_point": "models/trusted_domain.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go"
+    },
+    {
+      "name": "handlers",
+      "path": "handlers",
+      "entry_point": "handlers/trusted_domain.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go"
+    },
+    {
+      "name": "postgres",
+      "path": "service-postgres",
+      "entry_point": "docker-compose.yml",
+      "api_type": "http",
+      "description": "Unknown service detected via docker_compose"
+    },
+    {
+      "name": "redis",
+      "path": "service-redis",
+      "entry_point": "docker-compose.yml",
+      "api_type": "http",
+      "description": "Unknown service detected via docker_compose"
+    },
+    {
+      "name": "main.go",
+      "path": "cmd/app/main.go",
+      "entry_point": "cmd/app/main.go",
+      "api_type": "http",
+      "description": "Go service detected via directory"
+    }
+  ],
+  "relationships": null,
+  "project_path": "/var/folders/k4/wj0t8jx94xb0bsc2p0_c83s00000gn/T/repo-analysis/axieinfinity-ronin-wallet-manager-1758882259",
+  "generated_at": "2025-09-26T17:27:21.837914+07:00",
+  "mermaid_graph": "graph TD\\n  clean_highlight_dapps[clean_highlight_dapps - HTTP]\\n  clean_cronjob[clean_cronjob - HTTP]\\n  tests[tests - HTTP]\\n  ip_location[ip_location - HTTP]\\n  app[app - HTTP]\\n  repositories[repositories - HTTP]\\n  trigger_announcement[trigger_announcement - HTTP]\\n  clean_old_special_offers[clean_old_special_offers - HTTP]\\n  models[models - HTTP]\\n  handlers[handlers - HTTP]\\n  postgres[postgres - HTTP]\\n  redis[redis - HTTP]\\n  main_go[main.go - HTTP]\\n\\n  classDef httpService fill:#e1f5fe,stroke:#01579b,stroke-width:2px\\n  classDef grpcService fill:#f3e5f5,stroke:#4a148c,stroke-width:2px\\n  classDef graphqlService fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px\\n"
+}

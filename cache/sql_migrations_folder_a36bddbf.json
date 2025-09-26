@@ -1,9 +1,9 @@
 {
-  "content_hash": "2367742d8cc35db3297df87e0aa876a7",
-  "timestamp": "2025-09-26T15:07:26.241249+07:00",
+  "content_hash": "fa59ce50a4f03e093bdc5e9218ed4768",
+  "timestamp": "2025-09-26T17:40:25.581183+07:00",
   "result": {
     "path": "sql_migrations",
-    "purpose": "This folder is responsible for managing database schema migrations, including creating, modifying, and deleting tables, columns, and constraints to support application features.",
+    "purpose": "This folder is responsible for managing database schema changes through SQL migration scripts.",
     "languages": {
       "SQL": 59
     },
@@ -20,7 +20,7 @@
       "00010_view_audit_role.sql"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a sequential migration pattern where each file represents a specific migration step, allowing for incremental updates to the database schema.",
+    "architecture": "The folder follows a linear migration pattern where each SQL file represents a sequential change to the database schema, allowing for version control and rollback capabilities.",
     "file_summaries": {
       "sql_migrations/00001_init_schema.sql": {
         "language": "SQL",
@@ -46,7 +46,7 @@
       },
       "sql_migrations/00003_reward_pool_modification.sql": {
         "language": "SQL",
-        "purpose": "Modifies the 'actions' table to update and standardize activity types.",
+        "purpose": "Modifies the 'actions' table by updating the activity type enumeration and renaming columns.",
         "key_types": [
           "CREATE TYPE",
           "ALTER TABLE",
@@ -58,7 +58,7 @@
       },
       "sql_migrations/00004_reward_pool_related.sql": {
         "language": "SQL",
-        "purpose": "This file contains migration scripts to modify the reward pool related database schema.",
+        "purpose": "This file contains SQL migration scripts to modify the reward_fund_sources table and the reward_pool_status type.",
         "key_types": [
           "ALTER TYPE",
           "ALTER TABLE"
@@ -93,7 +93,7 @@
       },
       "sql_migrations/00007_reward_pool_top_up_record.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration scripts to create and manage the 'top_up_tx' table and modify the 'reward_fund_sources' table.",
+        "purpose": "Defines a migration for creating and dropping a table related to reward pool top-up transactions.",
         "key_types": [
           "CREATE TABLE",
           "ALTER TABLE",
@@ -105,7 +105,7 @@
       },
       "sql_migrations/00008_claim_reward.sql": {
         "language": "SQL",
-        "purpose": "This file defines database migrations for managing participant rewards and related statuses.",
+        "purpose": "This file defines database migrations for managing participant rewards and their statuses.",
         "key_types": [
           "CREATE TYPE",
           "CREATE TABLE",
@@ -119,9 +119,9 @@
         "language": "SQL",
         "purpose": "Creates a new table for activities guidance and updates permissions for roles.",
         "key_types": [
+          "CREATE TABLE",
           "INSERT",
-          "UPDATE",
-          "CREATE TABLE"
+          "UPDATE"
         ],
         "functions": null,
         "imports": null,
@@ -141,10 +141,10 @@
       },
       "sql_migrations/00011_safely_use_enum.sql": {
         "language": "SQL",
-        "purpose": "This file defines a migration to add and remove permissions in a database.",
+        "purpose": "This file contains migration scripts to manage permissions and roles in a database.",
         "key_types": [
-          "INSERT INTO permissions",
-          "UPDATE roles"
+          "INSERT",
+          "UPDATE"
         ],
         "functions": null,
         "imports": null,
@@ -152,7 +152,7 @@
       },
       "sql_migrations/00012_add_quest_id_to_quest_history_logs.sql": {
         "language": "SQL",
-        "purpose": "Adds a quest_id column to the quest_history_logs table.",
+        "purpose": "This file adds a 'quest_id' column to the 'quest_history_logs' table in the database.",
         "key_types": [],
         "functions": null,
         "imports": null,
@@ -160,10 +160,9 @@
       },
       "sql_migrations/00013_unregister_activity.sql": {
         "language": "SQL",
-        "purpose": "Defines a new table and types for logging game match history and updates existing types.",
+        "purpose": "This file defines a database migration for unregistering activity and logging game match history.",
         "key_types": [
-          "ENUM match_types",
-          "ENUM match_results",
+          "ENUM types",
           "TABLE game_match_history_logs"
         ],
         "functions": null,
@@ -184,7 +183,7 @@
       },
       "sql_migrations/00015_constraint_reward_address.sql": {
         "language": "SQL",
-        "purpose": "This file defines a database migration to add a unique constraint and modify enum types.",
+        "purpose": "This file defines a migration to add a unique constraint and modify enums in the database.",
         "key_types": [
           "ALTER TABLE",
           "ALTER TYPE"
@@ -195,11 +194,11 @@
       },
       "sql_migrations/00016_game_match.sql": {
         "language": "SQL",
-        "purpose": "This file contains database migration scripts to modify the game_match_history_logs and reward_pools tables.",
+        "purpose": "This file contains SQL migration scripts to modify the game_match_history_logs and reward_pools tables.",
         "key_types": [
           "ALTER TABLE",
           "PRIMARY KEY",
-          "DROP COLUMN"
+          "RENAME COLUMN"
         ],
         "functions": null,
         "imports": null,
@@ -207,7 +206,7 @@
       },
       "sql_migrations/00017_user_reward_amount.sql": {
         "language": "SQL",
-        "purpose": "This file contains migration scripts to modify the participant_rewards table by altering columns related to reward amounts.",
+        "purpose": "This file contains migration scripts to modify the participant_rewards table by altering reward amount columns.",
         "key_types": [
           "ALTER TABLE",
           "DROP COLUMN",
@@ -219,7 +218,7 @@
       },
       "sql_migrations/00018_complete_quest_time.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration scripts to update the database schema for quest completion tracking and reward status.",
+        "purpose": "This file contains SQL migration scripts to update the database schema for quest completion tracking.",
         "key_types": [
           "ALTER TABLE",
           "CREATE TYPE",
@@ -254,7 +253,7 @@
       },
       "sql_migrations/00021_numeric_columns.sql": {
         "language": "SQL",
-        "purpose": "Migrates numeric columns in the quest_rewards and reward_pools tables to a standardized numeric type.",
+        "purpose": "Migrates numeric columns in the quest_rewards and reward_pools tables to a standardized numeric format.",
         "key_types": [
           "ALTER TABLE",
           "UPDATE"
@@ -265,8 +264,11 @@
       },
       "sql_migrations/00022_migration_name_.sql": {
         "language": "SQL",
-        "purpose": "Defines a database migration with up and down SQL queries.",
-        "key_types": [],
+        "purpose": "Defines migration steps for database schema changes.",
+        "key_types": [
+          "Up migration",
+          "Down migration"
+        ],
         "functions": null,
         "imports": null,
         "complexity": "low"
@@ -285,11 +287,11 @@
       },
       "sql_migrations/00024_remove_granting_flow.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration scripts to remove and recreate certain database tables and modify a column in another table.",
+        "purpose": "This file manages the migration of database schema changes related to reward pools and participant reward pools.",
         "key_types": [
           "DROP TABLE",
-          "CREATE TABLE",
-          "ALTER TABLE"
+          "ALTER TABLE",
+          "CREATE TABLE"
         ],
         "functions": null,
         "imports": null,
@@ -297,7 +299,7 @@
       },
       "sql_migrations/00025_internal_release.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration scripts to create and drop the quest_whitelists table and update quest_infos.",
+        "purpose": "This file contains migration scripts to create and drop the quest_whitelists table and update quest_infos.",
         "key_types": [
           "CREATE TABLE",
           "UPDATE",
@@ -321,11 +323,11 @@
       },
       "sql_migrations/00027_verify_new_activities.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration scripts to update database schema and manage activity logs.",
+        "purpose": "This file contains SQL migration scripts to modify database schema and types related to activities and logs.",
         "key_types": [
           "ALTER TABLE",
           "CREATE TABLE",
-          "ENUM TYPE"
+          "CREATE TYPE"
         ],
         "functions": null,
         "imports": null,
@@ -356,7 +358,7 @@
       },
       "sql_migrations/00030_distribute_permission.sql": {
         "language": "SQL",
-        "purpose": "This file contains migration scripts to add and remove a permission ID for the 'quest_master' role.",
+        "purpose": "This file contains migration scripts to add and remove a permission ID for a specific role in the database.",
         "key_types": [
           "UPDATE"
         ],
@@ -391,8 +393,7 @@
         "language": "SQL",
         "purpose": "This file defines a migration to update role permissions for 'quest_master'.",
         "key_types": [
-          "UPDATE",
-          "SELECT"
+          "UPDATE statement"
         ],
         "functions": null,
         "imports": null,
@@ -400,7 +401,7 @@
       },
       "sql_migrations/00034_fullpage_widget.sql": {
         "language": "SQL",
-        "purpose": "This file contains migration scripts to update the database schema and manage data for discovery widgets and social platforms.",
+        "purpose": "This file contains SQL migration scripts to modify the database schema and manage data for the discovery_widgets and discovery_social_platforms tables.",
         "key_types": [
           "ALTER TABLE",
           "INSERT INTO",
@@ -412,7 +413,7 @@
       },
       "sql_migrations/00035_prod_schema_patch.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration scripts to update the database schema and seed initial data.",
+        "purpose": "This file contains SQL migration scripts to update the production database schema.",
         "key_types": [
           "ALTER TABLE",
           "INSERT INTO",
@@ -434,15 +435,15 @@
       },
       "sql_migrations/00037_category_values.sql": {
         "language": "SQL",
-        "purpose": "This file contains a migration script to update the discovery_categories table by truncating it, adding a new column, and inserting category values.",
+        "purpose": "This file contains SQL migration commands to update the discovery_categories table by truncating it, adding a new column, and inserting category values.",
         "key_types": [
-          "TRUNCATE",
+          "TRUNCATE TABLE",
           "ALTER TABLE",
           "INSERT INTO"
         ],
         "functions": null,
         "imports": null,
-        "complexity": "medium"
+        "complexity": "low"
       },
       "sql_migrations/00038_community_gaming.sql": {
         "language": "SQL",
@@ -457,7 +458,7 @@
       },
       "sql_migrations/00039_studios_auto_increase.sql": {
         "language": "SQL",
-        "purpose": "This file manages the auto-incrementing IDs for the discovery_studios table using a sequence.",
+        "purpose": "This file contains SQL migration scripts to create a sequence and reassign IDs for the discovery_studios table.",
         "key_types": [
           "CREATE SEQUENCE",
           "UPDATE",
@@ -469,7 +470,7 @@
       },
       "sql_migrations/00040_widget_trending_token.sql": {
         "language": "SQL",
-        "purpose": "This file contains migration scripts to modify database types and tables for widget functionality.",
+        "purpose": "This file contains SQL migration scripts to modify database types and tables for widget functionality.",
         "key_types": [
           "ALTER TYPE",
           "ALTER TABLE"
@@ -480,11 +481,11 @@
       },
       "sql_migrations/00041_discovery_calendar_event.sql": {
         "language": "SQL",
-        "purpose": "Defines a new event type and creates a table for discovery event items in a database.",
+        "purpose": "Defines a new table for discovery event items and modifies existing types for event categorization.",
         "key_types": [
-          "CREATE TYPE",
           "CREATE TABLE",
-          "ALTER TYPE"
+          "ALTER TYPE",
+          "ENUM"
         ],
         "functions": null,
         "imports": null,
@@ -492,7 +493,7 @@
       },
       "sql_migrations/00042_quest_drop_reward_constraints.sql": {
         "language": "SQL",
-        "purpose": "This file modifies the reward_infos and reward_fund_sources tables by dropping and adding constraints and columns.",
+        "purpose": "This file modifies the reward_infos and reward_fund_sources tables by dropping constraints and adding new columns.",
         "key_types": [
           "ALTER TYPE",
           "ALTER TABLE"
@@ -503,7 +504,7 @@
       },
       "sql_migrations/00043_quest_user_reward_index.sql": {
         "language": "SQL",
-        "purpose": "Creates indexes on the participant_rewards table for performance optimization.",
+        "purpose": "This file defines a migration to create indexes on the participant_rewards table.",
         "key_types": [
           "CREATE INDEX"
         ],
@@ -556,7 +557,7 @@
       },
       "sql_migrations/00048_quest_center_v2.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration scripts to update the database schema for quest-related tables.",
+        "purpose": "This file contains SQL migration scripts to modify the database schema for quest-related tables.",
         "key_types": [
           "ALTER TABLE",
           "CREATE INDEX",
@@ -568,7 +569,7 @@
       },
       "sql_migrations/00049_quest_on_offchain_activity.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration scripts to modify the activity_type and platforms enums.",
+        "purpose": "This file adds new values to existing enums for activity types and platforms in a database schema.",
         "key_types": [
           "ALTER TYPE"
         ],
@@ -578,7 +579,7 @@
       },
       "sql_migrations/00050_new_widget.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration commands to modify the schema of discovery_widget_items and discovery_widgets tables.",
+        "purpose": "This file contains SQL migration commands to modify the schema of the discovery_widget_items and discovery_widgets tables.",
         "key_types": [
           "ALTER TABLE",
           "ALTER TYPE"
@@ -600,9 +601,10 @@
       },
       "sql_migrations/00052_profile_as_precondition.sql": {
         "language": "SQL",
-        "purpose": "This file contains migration scripts to add and remove a column in the quest_infos table.",
+        "purpose": "This file contains SQL migration scripts to add and remove a column in the quest_infos table.",
         "key_types": [
-          "ALTER TABLE"
+          "ALTER TABLE",
+          "SELECT"
         ],
         "functions": null,
         "imports": null,
@@ -610,10 +612,11 @@
       },
       "sql_migrations/00053_ronin_fest.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration scripts to modify database schema and create new tables for an application.",
+        "purpose": "This file contains SQL migration scripts to modify database schema and create new tables for a quest and event management system.",
         "key_types": [
           "ALTER TABLE",
-          "CREATE TABLE"
+          "CREATE TABLE",
+          "SELECT"
         ],
         "functions": null,
         "imports": null,
@@ -655,7 +658,7 @@
       },
       "sql_migrations/00057_ronin_fest_event_update.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration scripts to update the events table and create new tables related to event sponsorships and user interactions.",
+        "purpose": "This file contains SQL migration scripts to update the events table and create related tables for event sponsorships and user interactions.",
         "key_types": [
           "ALTER TABLE",
           "CREATE TABLE",
@@ -667,12 +670,11 @@
       },
       "sql_migrations/00058_shop_schema_complete.sql": {
         "language": "SQL",
-        "purpose": "Defines the complete schema for a shop with item types, categories, tiers, and items.",
+        "purpose": "Defines the complete schema for a shop including item types, categories, tiers, and items.",
         "key_types": [
           "shop_item_type",
           "shop_categories",
-          "shop_item_tiers",
-          "shop_items"
+          "shop_item_tiers"
         ],
         "functions": null,
         "imports": null,

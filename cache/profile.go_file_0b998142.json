@@ -1,0 +1,14 @@
+{
+  "content_hash": "5e74753dd5df0918c4b8d3d786ad4bf9",
+  "timestamp": "2025-09-26T17:07:58.378295+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a request structure for checking profile existence.",
+    "key_types": [
+      "CheckProfileExistence"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

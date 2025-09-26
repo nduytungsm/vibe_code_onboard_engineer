@@ -1,0 +1,16 @@
+{
+  "content_hash": "872e719dc5306d665462f1a419553506",
+  "timestamp": "2025-09-26T17:08:22.356194+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines quest pool tiers and provides utility functions for handling them.",
+    "key_types": [
+      "QuestPoolTier",
+      "QuestPoolTierFromString",
+      "IsValid"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "content_hash": "e74b174b8e313a2decc8df05d46aa393",
+  "timestamp": "2025-09-26T17:26:46.652593+07:00",
+  "result": {
+    "path": "cmd/app",
+    "purpose": "Sets up an HTTP server with middleware for handling requests and graceful shutdown.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on the setup and configuration of the HTTP server.",
+    "file_summaries": {
+      "cmd/app/main.go": {
+        "language": "Go",
+        "purpose": "Sets up an HTTP server with middleware for handling requests and graceful shutdown.",
+        "key_types": [
+          "main",
+          "startHTTPServer",
+          "shutdown"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

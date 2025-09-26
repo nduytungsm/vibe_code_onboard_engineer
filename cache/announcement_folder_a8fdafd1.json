@@ -1,0 +1,43 @@
+{
+  "content_hash": "91be9c2ac95ec9c81f79a3d8242a157e",
+  "timestamp": "2025-09-26T17:25:32.891807+07:00",
+  "result": {
+    "path": "pkg/announcement",
+    "purpose": "Responsible for managing announcements, including retrieval and validation.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "announcement_svc.go",
+      "config.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture pattern, focusing on encapsulating announcement-related functionalities and configurations.",
+    "file_summaries": {
+      "pkg/announcement/announcement_svc.go": {
+        "language": "Go",
+        "purpose": "Provides services for managing announcements, including retrieval and validation.",
+        "key_types": [
+          "Service",
+          "GetByID",
+          "GetListAsAdmin"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/announcement/config.go": {
+        "language": "Go",
+        "purpose": "Configuration structures for the announcement service in a wallet manager application.",
+        "key_types": [
+          "CommunicationServiceCfg",
+          "StorageConfig",
+          "K8sConfig"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

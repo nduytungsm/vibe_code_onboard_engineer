@@ -1,9 +1,9 @@
 {
-  "content_hash": "7a17e8dda3a38a9b0bc733acd03b21f8",
-  "timestamp": "2025-09-26T14:59:47.317951+07:00",
+  "content_hash": "4ad219e59168b92ee3f51893e6f111da",
+  "timestamp": "2025-09-26T17:38:43.333037+07:00",
   "result": {
     "path": "internal/domains/proxy/handlers",
-    "purpose": "Handles various HTTP requests related to proxy services, including activities, AI processing, balance management, configuration retrieval, DApp interactions, fiat token pricing, user profiles, RPC requests, simulations, and token management.",
+    "purpose": "Handles various HTTP requests related to proxy services, including activities, AI processing, balance management, configuration retrieval, DApp interactions, fiat token pricing, profile checks, RPC requests, simulation, and token management.",
     "languages": {
       "Go": 10
     },
@@ -36,7 +36,7 @@
       },
       "internal/domains/proxy/handlers/ai.go": {
         "language": "Go",
-        "purpose": "Handles AI-related requests for processing chat functions.",
+        "purpose": "Handles AI-related requests for processing chat functions in a web service.",
         "key_types": [
           "AIHandler",
           "NewAIHandler",
@@ -96,7 +96,7 @@
       },
       "internal/domains/proxy/handlers/profile.go": {
         "language": "Go",
-        "purpose": "Handles profile-related HTTP requests, specifically checking profile existence by user address.",
+        "purpose": "Handles profile-related HTTP requests for checking profile existence.",
         "key_types": [
           "profileHandler",
           "NewProfileHandler",
@@ -120,7 +120,7 @@
       },
       "internal/domains/proxy/handlers/simulate.go": {
         "language": "Go",
-        "purpose": "Handles simulation requests via JSON-RPC in a web server context.",
+        "purpose": "Handles simulation requests via a JSON-RPC endpoint.",
         "key_types": [
           "simulationHandler",
           "NewSimulationHandler",
@@ -134,7 +134,7 @@
         "language": "Go",
         "purpose": "Handles token-related HTTP requests for a proxy service.",
         "key_types": [
-          "NewTokenHandler",
+          "tokenHandler",
           "GetToken",
           "ListTokens"
         ],

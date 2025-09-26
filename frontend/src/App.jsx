@@ -29,6 +29,7 @@ import { Progress } from "@/components/ui/progress";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import ZoomableMermaid from "./components/ZoomableMermaid";
 
 function App() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -885,7 +886,6 @@ function DatabaseTab({ getAnalysisData }) {
   const databaseSchema = data?.databaseSchema;
   const [expandedTables, setExpandedTables] = useState(new Set());
   const [activeView, setActiveView] = useState("tables");
-  const mermaidRef = useRef(null);
 
   const toggleTableExpansion = (tableName) => {
     const newExpanded = new Set(expandedTables);
@@ -940,113 +940,7 @@ function DatabaseTab({ getAnalysisData }) {
     return mermaid;
   };
 
-  useEffect(() => {
-    // Handle regular relationships view
-    if (activeView === "relationships" && mermaidRef.current && databaseSchema) {
-      const renderMermaid = async () => {
-        try {
-          const mermaid = (await import('mermaid')).default;
-          mermaid.initialize({
-            startOnLoad: true,
-            theme: 'base',
-            themeVariables: {
-              primaryColor: 'hsl(215 28% 17%)',
-              primaryTextColor: 'hsl(215 25% 27%)',
-              primaryBorderColor: 'hsl(215 20% 89%)',
-              lineColor: 'hsl(215 16% 65%)',
-              secondaryColor: 'hsl(210 40% 94%)',
-              tertiaryColor: 'hsl(210 20% 96%)',
-            },
-            er: {
-              diagramPadding: 20,
-              layoutDirection: 'TB',
-              minEntityWidth: 100,
-              minEntityHeight: 75,
-              entityPadding: 15,
-              stroke: 'hsl(215 20% 89%)',
-              fill: 'hsl(210 20% 98%)',
-              fontSize: 12,
-            }
-          });
-          
-          const mermaidCode = generateMermaidERD();
-          console.log('Generated Mermaid ERD:', mermaidCode);
-          
-          if (mermaidCode && mermaidRef.current) {
-            mermaidRef.current.innerHTML = mermaidCode;
-            await mermaid.run({
-              nodes: [mermaidRef.current]
-            });
-          }
-        } catch (error) {
-          console.error('Error rendering Mermaid diagram:', error);
-          if (mermaidRef.current) {
-            mermaidRef.current.innerHTML = `
-              <div class="text-center py-8 text-red-500">
-                <p>Error rendering database diagram</p>
-                <p class="text-sm mt-2">${error.message}</p>
-              </div>
-            `;
-          }
-        }
-      };
-      
-      renderMermaid();
-    }
-    
-    // Handle LLM relationships view
-    if (activeView === "llm_relationships" && databaseSchema && databaseSchema.llm_relationships) {
-      const renderLLMMermaid = async () => {
-        try {
-          const mermaid = (await import('mermaid')).default;
-          mermaid.initialize({
-            startOnLoad: true,
-            theme: 'base',
-            themeVariables: {
-              primaryColor: 'hsl(260 84% 65%)', // Purple theme for LLM
-              primaryTextColor: 'hsl(260 60% 30%)',
-              primaryBorderColor: 'hsl(260 40% 80%)',
-              lineColor: 'hsl(260 50% 60%)',
-              secondaryColor: 'hsl(260 40% 95%)',
-              tertiaryColor: 'hsl(260 20% 97%)',
-            },
-            er: {
-              diagramPadding: 20,
-              layoutDirection: 'TB',
-              minEntityWidth: 100,
-              minEntityHeight: 75,
-              entityPadding: 15,
-              stroke: 'hsl(260 40% 80%)',
-              fill: 'hsl(260 40% 95%)',
-              fontSize: 12,
-            }
-          });
-          
-          const llmContainer = document.getElementById("llm-mermaid-container");
-          if (llmContainer && databaseSchema.llm_relationships) {
-            console.log('Rendering LLM Mermaid:', databaseSchema.llm_relationships);
-            llmContainer.innerHTML = databaseSchema.llm_relationships;
-            await mermaid.run({
-              nodes: [llmContainer]
-            });
-          }
-        } catch (error) {
-          console.error('Error rendering LLM Mermaid diagram:', error);
-          const llmContainer = document.getElementById("llm-mermaid-container");
-          if (llmContainer) {
-            llmContainer.innerHTML = `
-              <div class="text-center py-8 text-red-500">
-                <p>Error rendering LLM relationship diagram</p>
-                <p class="text-sm mt-2">${error.message}</p>
-              </div>
-            `;
-          }
-        }
-      };
-      
-      renderLLMMermaid();
-    }
-  }, [activeView, databaseSchema]);
+
   
   if (!databaseSchema || !databaseSchema.tables || Object.keys(databaseSchema.tables).length === 0) {
     return (
@@ -1274,20 +1168,21 @@ function DatabaseTab({ getAnalysisData }) {
                   Database Relationship Diagram
                 </div>
               </div>
-              <div className="border rounded-lg p-6" style={{ backgroundColor: "hsl(var(--slate-50))", borderColor: "hsl(var(--slate-200))" }}>
-                <div ref={mermaidRef} className="w-full overflow-auto min-h-48">
-                  {/* Mermaid diagram will be rendered here */}
-                  <div className="flex items-center justify-center h-48">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                  </div>
+              <ZoomableMermaid
+                mermaidCode={generateMermaidERD()}
+                title="Database Entity Relationship Diagram"
+                className="min-h-96"
+                containerClassName="bg-white"
+                initialZoom={0.8}
+                maxZoom={3.0}
+                minZoom={0.2}
+              />
+              {totalRelationships === 0 && (
+                <div className="text-center py-8" style={{ color: "hsl(var(--slate-500))" }}>
+                  <Link className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                  <p>No foreign key relationships detected in the database schema</p>
                 </div>
-                {totalRelationships === 0 && (
-                  <div className="text-center py-8" style={{ color: "hsl(var(--slate-500))" }}>
-                    <Link className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                    <p>No foreign key relationships detected in the database schema</p>
-                  </div>
-                )}
-              </div>
+              )}
             </div>
           ) : activeView === "migration" ? (
             <div className="space-y-4">
@@ -1363,14 +1258,15 @@ function DatabaseTab({ getAnalysisData }) {
                         Copy Mermaid
                       </Button>
                     </div>
-                    <div className="border rounded-lg p-6" style={{ backgroundColor: "white", borderColor: "hsl(var(--slate-200))" }}>
-                      <div id="llm-mermaid-container" className="w-full overflow-auto min-h-48">
-                        {/* Mermaid diagram will be rendered here */}
-                        <div className="flex items-center justify-center h-48">
-                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                        </div>
-                      </div>
-                    </div>
+                    <ZoomableMermaid
+                      mermaidCode={databaseSchema.llm_relationships}
+                      title="AI-Generated Database Relationships"
+                      className="min-h-96"
+                      containerClassName=""
+                      initialZoom={0.7}
+                      maxZoom={4.0}
+                      minZoom={0.1}
+                    />
                     <details className="mt-4">
                       <summary className="cursor-pointer text-sm font-medium mb-2" style={{ color: "hsl(var(--slate-700))" }}>
                         View Raw Mermaid Code
@@ -1518,7 +1414,59 @@ function QuestionsTab({ getAnalysisData }) {
 function RelationshipsTab({ getAnalysisData }) {
   const data = getAnalysisData();
   const relationships = data?.relationships || [];
+  const services = data?.services || [];
   
+  // Generate Mermaid diagram for service relationships
+  const generateServiceMermaid = () => {
+    if (!relationships.length && !services.length) return "";
+    
+    let mermaid = "graph TD\n";
+    
+    // Create nodes for all services
+    const serviceNodes = new Set();
+    
+    // Add services from the services array
+    services.forEach(service => {
+      const nodeId = service.name.replace(/[^a-zA-Z0-9]/g, '_');
+      const serviceType = service.api_type || 'http';
+      serviceNodes.add(nodeId);
+      mermaid += `    ${nodeId}[${service.name} - ${serviceType.toUpperCase()}]\n`;
+    });
+    
+    // Add services from relationships if not already added
+    relationships.forEach(rel => {
+      const fromId = rel.from.replace(/[^a-zA-Z0-9]/g, '_');
+      const toId = rel.to.replace(/[^a-zA-Z0-9]/g, '_');
+      
+      if (!serviceNodes.has(fromId)) {
+        serviceNodes.add(fromId);
+        mermaid += `    ${fromId}[${rel.from}]\n`;
+      }
+      if (!serviceNodes.has(toId)) {
+        serviceNodes.add(toId);
+        mermaid += `    ${toId}[${rel.to}]\n`;
+      }
+    });
+    
+    mermaid += "\n";
+    
+    // Add relationships
+    relationships.forEach(rel => {
+      const fromId = rel.from.replace(/[^a-zA-Z0-9]/g, '_');
+      const toId = rel.to.replace(/[^a-zA-Z0-9]/g, '_');
+      const linkType = rel.type || 'depends on';
+      mermaid += `    ${fromId} --> ${toId}\n`;
+    });
+    
+    // Add styling
+    mermaid += "\n";
+    mermaid += "    classDef httpService fill:#e1f5fe,stroke:#01579b,stroke-width:2px\n";
+    mermaid += "    classDef grpcService fill:#f3e5f5,stroke:#4a148c,stroke-width:2px\n";
+    mermaid += "    classDef graphqlService fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px\n";
+    
+    return mermaid;
+  };
+
   if (!data) {
     return (
       <div className="text-center py-12">
@@ -1528,8 +1476,37 @@ function RelationshipsTab({ getAnalysisData }) {
     );
   }
 
+  const hasDiagramData = relationships.length > 0 || services.length > 0;
+
   return (
     <div className="space-y-6">
+      {/* Service Relationship Diagram */}
+      {hasDiagramData && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Link className="h-5 w-5" />
+              Service Architecture Diagram
+            </CardTitle>
+            <CardDescription>
+              Visual representation of service dependencies and relationships
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ZoomableMermaid
+              mermaidCode={generateServiceMermaid()}
+              title="Service Relationship Diagram"
+              className="min-h-80"
+              containerClassName="bg-white"
+              initialZoom={0.9}
+              maxZoom={3.0}
+              minZoom={0.3}
+            />
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Detailed Relationships List */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -1537,7 +1514,7 @@ function RelationshipsTab({ getAnalysisData }) {
             Service Relationships
           </CardTitle>
           <CardDescription>
-            Connections and dependencies between services
+            Detailed connections and dependencies between services
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -1547,15 +1524,24 @@ function RelationshipsTab({ getAnalysisData }) {
                 <div key={index} className="flex items-center justify-between p-4 rounded-lg border">
                   <div>
                     <div className="font-medium">{rel.from}</div>
-                    <div className="text-sm text-muted-foreground">{rel.type}</div>
+                    <div className="text-sm text-muted-foreground">{rel.type || 'dependency'}</div>
                   </div>
-                  <div className="text-sm">→</div>
-                  <div>
+                  <div className="flex items-center text-sm text-muted-foreground">
+                    <div className="w-8 border-t border-gray-300"></div>
+                    <div className="mx-2">→</div>
+                  </div>
+                  <div className="text-right">
                     <div className="font-medium">{rel.to}</div>
-                    <div className="text-sm text-muted-foreground">{rel.description}</div>
+                    <div className="text-sm text-muted-foreground">{rel.description || 'Connected service'}</div>
                   </div>
                 </div>
               ))}
+            </div>
+          ) : services.length > 0 ? (
+            <div className="text-center py-8 text-muted-foreground">
+              <Link className="h-12 w-12 mx-auto mb-4 opacity-50" />
+              <p>Services detected but no explicit relationships found</p>
+              <p className="text-sm mt-2">See the diagram above for service architecture</p>
             </div>
           ) : (
             <div className="text-center py-8 text-muted-foreground">

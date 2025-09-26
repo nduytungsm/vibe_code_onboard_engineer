@@ -1,0 +1,16 @@
+{
+  "content_hash": "627bfac4ca0ed34eaa6d6b629a26c605",
+  "timestamp": "2025-09-26T17:07:29.985943+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines routes and handlers for push notification services.",
+    "key_types": [
+      "PrivateGroup",
+      "NewPrivateGroup",
+      "GroupHandlers"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

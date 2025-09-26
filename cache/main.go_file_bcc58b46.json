@@ -1,0 +1,14 @@
+{
+  "content_hash": "b2c7a351b31a09bcaa6b62ef3de49be9",
+  "timestamp": "2025-09-26T17:07:32.739875+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Initializes and starts a task server application with configuration and logging.",
+    "key_types": [
+      "main"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

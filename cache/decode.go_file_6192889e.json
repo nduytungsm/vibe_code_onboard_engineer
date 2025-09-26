@@ -1,0 +1,16 @@
+{
+  "content_hash": "1f85dd81f56c64e0f3059f96206f8a40",
+  "timestamp": "2025-09-26T17:36:03.245341+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects for decoding Ethereum-related requests.",
+    "key_types": [
+      "DecodeCall",
+      "DecodeLog",
+      "DecodeTx"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

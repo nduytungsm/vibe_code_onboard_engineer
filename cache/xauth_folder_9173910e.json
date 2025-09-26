@@ -1,0 +1,42 @@
+{
+  "content_hash": "170f40d21d8e6f3fdd4b1b58bf4b217c",
+  "timestamp": "2025-09-26T17:26:07.025646+07:00",
+  "result": {
+    "path": "pkg/xauth",
+    "purpose": "Responsible for client authentication settings and implementing an external authentication service.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "config.go",
+      "external_auth_svc.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating authentication-related functionalities in separate files.",
+    "file_summaries": {
+      "pkg/xauth/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration structures for client authentication settings.",
+        "key_types": [
+          "ClientConfig",
+          "Config"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "pkg/xauth/external_auth_svc.go": {
+        "language": "Go",
+        "purpose": "Implements an external authentication service for exchanging authorization codes and tokens.",
+        "key_types": [
+          "Service",
+          "ExchangeAuthCode",
+          "NewService"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "cda8b9c152f317817de46ab74a22fd9d",
+  "timestamp": "2025-09-26T17:07:53.138148+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Manages mandatory updates for an application, including creation and removal of updates.",
+    "key_types": [
+      "MandatoryUpdateSvc",
+      "mandatoryUpdateSvc",
+      "NewMandatoryUpdateSvc"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "d72905afee5a7c774419de9ac88838c2",
+  "timestamp": "2025-09-26T17:36:27.551742+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a repository interface and implementation for managing activity guidance entities in a database.",
+    "key_types": [
+      "ActivityGuidanceRepository",
+      "activityGuidanceRepository",
+      "NewActivityGuidanceRepository"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

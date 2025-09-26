@@ -1,0 +1,16 @@
+{
+  "content_hash": "8ebdd2aae85655a50704a1aab7a6c2ef",
+  "timestamp": "2025-09-26T17:09:14.950498+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a mock implementation of the SwanlakeService for testing purposes.",
+    "key_types": [
+      "SwanlakeService",
+      "SwanlakeService_Expecter",
+      "ChQuack"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

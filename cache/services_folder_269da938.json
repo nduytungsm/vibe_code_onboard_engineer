@@ -1,9 +1,9 @@
 {
-  "content_hash": "25c073b396f392bd618cb59aeac8230a",
-  "timestamp": "2025-09-26T15:01:27.609942+07:00",
+  "content_hash": "a8c7c12fc76d2427c659840a778a726a",
+  "timestamp": "2025-09-26T17:43:05.34157+07:00",
   "result": {
     "path": "internal/domains/discovery/services",
-    "purpose": "Provides services for fetching trending tokens and their OHLCV charts.",
+    "purpose": "Provides services for fetching trending tokens and OHLCV charts from a gecko client.",
     "languages": {
       "Go": 1
     },
@@ -11,11 +11,11 @@
       "trending-token.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a service-oriented architecture pattern, focusing on providing specific functionalities related to trending tokens.",
+    "architecture": "The folder follows a service-oriented architecture, focusing on encapsulating the logic related to trending tokens within a dedicated service module.",
     "file_summaries": {
       "internal/domains/discovery/services/trending-token.go": {
         "language": "Go",
-        "purpose": "Provides services for fetching trending tokens and their OHLCV charts.",
+        "purpose": "Provides services for fetching trending tokens and OHLCV charts from a gecko client.",
         "key_types": [
           "TrendingTokenService",
           "geckoTrendingTokenService",

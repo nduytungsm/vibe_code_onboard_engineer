@@ -1,0 +1,16 @@
+{
+  "content_hash": "0cfb9ab97d7d99b3cc84cc9d189decc4",
+  "timestamp": "2025-09-26T17:37:12.060801+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements a metrics pusher to send data to a Prometheus push gateway.",
+    "key_types": [
+      "PusherConfig",
+      "Pusher",
+      "NewPusher"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

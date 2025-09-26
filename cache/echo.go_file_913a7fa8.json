@@ -1,0 +1,16 @@
+{
+  "content_hash": "16331131375b6a4612a396f8d2f00f71",
+  "timestamp": "2025-09-26T17:37:12.959922+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines middleware configurations and functions for an Echo web server.",
+    "key_types": [
+      "EchoLoggerConfig",
+      "EchoPrometheusConfig",
+      "NewEchoMiddleware"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

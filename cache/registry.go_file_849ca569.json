@@ -1,0 +1,16 @@
+{
+  "content_hash": "0b209599ebf9ade9eba50318273e63f1",
+  "timestamp": "2025-09-26T17:09:27.869774+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Manages Prometheus metric collectors with caching and registration functionality.",
+    "key_types": [
+      "cachedRegistry",
+      "GetOrRegisterCollector",
+      "CollectorCreator"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

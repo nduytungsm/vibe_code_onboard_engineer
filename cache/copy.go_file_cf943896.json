@@ -1,0 +1,16 @@
+{
+  "content_hash": "cf8309fa95a28639283a97f1a0e5594b",
+  "timestamp": "2025-09-26T17:37:05.830928+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides type converters for various data types using the copier library.",
+    "key_types": [
+      "BigIntToStrCvt",
+      "NumToStrCvt",
+      "StringToPgTextCvt"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

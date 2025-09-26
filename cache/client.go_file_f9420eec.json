@@ -1,0 +1,16 @@
+{
+  "content_hash": "0506ec99bfebd97d4882de733143e054",
+  "timestamp": "2025-09-26T17:36:24.271407+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a client for tracking notifications via HTTP requests.",
+    "key_types": [
+      "Config",
+      "client",
+      "TrackNotification"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

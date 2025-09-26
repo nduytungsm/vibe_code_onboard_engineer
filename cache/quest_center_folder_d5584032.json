@@ -1,9 +1,9 @@
 {
-  "content_hash": "aa06afd29252a1c87aead4e26d034a51",
-  "timestamp": "2025-09-26T15:06:56.125925+07:00",
+  "content_hash": "f7e99df892ed720511935af7fd4b0f5c",
+  "timestamp": "2025-09-26T17:40:43.089323+07:00",
   "result": {
     "path": "internal/enums/quest_center",
-    "purpose": "Defines enumerations and types related to quests, events, rewards, and user interactions for a gaming application.",
+    "purpose": "Defines enumerations and utility functions related to quests, events, users, and rewards in a gaming application.",
     "languages": {
       "Go": 11
     },
@@ -21,15 +21,15 @@
       "user_tier.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing related enumerations and types into separate files for clarity and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, organizing related enumerations and utility functions into separate files for clarity and maintainability.",
     "file_summaries": {
       "internal/enums/quest_center/action_v2.go": {
         "language": "Go",
         "purpose": "Defines quest-related actions as an enumeration for a gaming application.",
         "key_types": [
           "QuestAction",
-          "IsValid",
-          "QuestActionFromStr"
+          "IsValid()",
+          "QuestActionFromStr()"
         ],
         "functions": null,
         "imports": null,
@@ -59,7 +59,7 @@
       },
       "internal/enums/quest_center/op_action_v2.go": {
         "language": "Go",
-        "purpose": "Defines operation actions for quest management in an enum-like structure.",
+        "purpose": "Defines enumeration for quest-related actions in a gaming context.",
         "key_types": [
           "OpAction",
           "ActionFromString",
@@ -95,7 +95,7 @@
       },
       "internal/enums/quest_center/reward.go": {
         "language": "Go",
-        "purpose": "Defines enums for reward distribution and resource types with associated methods.",
+        "purpose": "Defines enums for reward distribution and resource types in a quest system.",
         "key_types": [
           "RewardDistribution",
           "ResourceType",
@@ -131,7 +131,7 @@
       },
       "internal/enums/quest_center/user_reward_v2.go": {
         "language": "Go",
-        "purpose": "Defines user reward statuses and provides functionality for handling them.",
+        "purpose": "Defines user reward statuses and provides methods for handling them.",
         "key_types": [
           "UserRewardStatus",
           "UserRewardStatusFromStr",
@@ -143,7 +143,7 @@
       },
       "internal/enums/quest_center/user_tier.go": {
         "language": "Go",
-        "purpose": "Defines user tiers for a quest system and provides methods for handling them.",
+        "purpose": "Defines user tiers for a quest system and provides utility functions for handling them.",
         "key_types": [
           "UserTier",
           "UserTierFromString",

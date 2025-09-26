@@ -1,0 +1,16 @@
+{
+  "content_hash": "5ab5362c55858ddbf5e6665435a57c30",
+  "timestamp": "2025-09-26T17:24:33.449995+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles DApp-related HTTP requests and operations.",
+    "key_types": [
+      "DAppHandler",
+      "dAppHandler",
+      "InternalSave"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

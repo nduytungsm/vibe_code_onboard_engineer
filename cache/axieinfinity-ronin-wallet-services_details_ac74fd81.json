@@ -1,8 +1,8 @@
 {
-  "content_hash": "b6784563b9b3d5c02311491c5e72a4c3",
-  "timestamp": "2025-09-26T15:08:28.954309+07:00",
+  "content_hash": "42968e0a58fa4541bce85268edda2e34",
+  "timestamp": "2025-09-26T17:44:16.395531+07:00",
   "result": {
-    "repo_summary_line": "A microservices ecosystem for the Ronin Wallet, providing services for quest management, reward distribution, and device handling.",
+    "repo_summary_line": "A comprehensive microservices ecosystem for the Ronin Wallet, providing quest management, reward distribution, device management, and discovery services for the Ronin ecosystem.",
     "architecture": "microservices",
     "repo_layout": "monorepo",
     "main_stacks": [
@@ -10,76 +10,76 @@
     ],
     "monorepo_services": [
       {
-        "name": "Antenna",
+        "name": "antenna",
         "path": "cmd/antenna",
         "language": "Go",
-        "short_purpose": "Responsible for the Antenna service in the application, including configuration, routing, and dependency injection."
+        "short_purpose": "Responsible for the Antenna service in the Ronin Wallet application, handling configuration, routing, and dependency injection."
       },
       {
-        "name": "CMS",
+        "name": "cms",
         "path": "cmd/cms",
         "language": "Go",
         "short_purpose": "Responsible for the configuration, initialization, and dependency injection of the CMS application."
       },
       {
-        "name": "Consumer",
+        "name": "consumer",
         "path": "cmd/consumer",
         "language": "Go",
-        "short_purpose": "Responsible for initializing and managing the consumer service in a wallet application."
+        "short_purpose": "Responsible for the consumer service in a wallet application, handling configuration, initialization, and dependency injection."
       },
       {
-        "name": "Cron Job",
+        "name": "cron_job",
         "path": "cmd/cron_job",
         "language": "Go",
-        "short_purpose": "Responsible for managing and executing scheduled tasks within the application."
+        "short_purpose": "Responsible for managing and executing scheduled tasks (cron jobs) within the application."
       },
       {
-        "name": "Device Manager",
+        "name": "device_manager",
         "path": "cmd/device_manager",
         "language": "Go",
-        "short_purpose": "Responsible for managing devices within the application."
+        "short_purpose": "Responsible for managing device operations and configurations in a web service environment."
       },
       {
-        "name": "Discovery",
+        "name": "discovery",
         "path": "cmd/discovery",
         "language": "Go",
-        "short_purpose": "Responsible for the configuration, initialization, and dependency injection of the discovery service."
+        "short_purpose": "Responsible for the configuration, initialization, and dependency injection of the discovery service in the application."
       },
       {
-        "name": "Proxy",
+        "name": "proxy",
         "path": "cmd/proxy",
         "language": "Go",
-        "short_purpose": "Responsible for managing the proxy service in the Ronin wallet application."
+        "short_purpose": "Responsible for managing the proxy service in the Ronin wallet application, including configuration, routing, and dependency injection."
       },
       {
-        "name": "Push Notification",
+        "name": "push_notification",
         "path": "cmd/push_notification",
         "language": "Go",
         "short_purpose": "Responsible for managing push notification services within the application."
       },
       {
-        "name": "Quest Center",
+        "name": "quest_center",
         "path": "cmd/quest_center",
         "language": "Go",
-        "short_purpose": "Responsible for the quest center service in the Ronin wallet application."
+        "short_purpose": "Responsible for the quest center service in the Ronin wallet application, handling configuration, routing, and dependency injection."
       },
       {
-        "name": "Task Scheduler",
+        "name": "task_scheduler",
         "path": "cmd/task_scheduler",
         "language": "Go",
-        "short_purpose": "Responsible for managing and executing scheduled tasks within an application."
+        "short_purpose": "Responsible for initializing and managing a task scheduling application, including configuration and dependency injection."
       },
       {
-        "name": "Task Server",
+        "name": "task_server",
         "path": "cmd/task_server",
         "language": "Go",
-        "short_purpose": "Responsible for managing the task server application."
+        "short_purpose": "Responsible for the task server application, including configuration management, dependency injection, and server initialization."
       },
       {
-        "name": "Wallet Manager",
+        "name": "wallet_manager",
         "path": "cmd/wallet_manager",
         "language": "Go",
-        "short_purpose": "Responsible for managing wallet operations and providing API endpoints."
+        "short_purpose": "Responsible for managing wallet operations, including configuration, routing, and dependency injection for the wallet manager application."
       }
     ],
     "evidence_paths": [

@@ -1,0 +1,15 @@
+{
+  "content_hash": "c9fa4461f07d609477c5ee0d56376c52",
+  "timestamp": "2025-09-26T17:09:36.563624+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to modify database types and tables for widget functionality.",
+    "key_types": [
+      "ALTER TYPE",
+      "ALTER TABLE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "content_hash": "03bc9726b92ea467e2df06f0b5233429",
+  "timestamp": "2025-09-26T17:25:00.70759+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides AES encryption functionality for messages using a hashed key.",
+    "key_types": [
+      "hashKey",
+      "EncryptEAS"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

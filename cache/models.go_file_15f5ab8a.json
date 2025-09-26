@@ -1,0 +1,16 @@
+{
+  "content_hash": "9778eb5440f42f5739874630353d030f",
+  "timestamp": "2025-09-26T17:08:32.007811+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for handling responses and contract information in an explorer module.",
+    "key_types": [
+      "Response",
+      "ListResult",
+      "Contract"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

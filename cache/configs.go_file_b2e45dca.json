@@ -1,0 +1,14 @@
+{
+  "content_hash": "807035e37707ea5301b5dcf2e6ae9c50",
+  "timestamp": "2025-09-26T17:37:02.011539+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a function to load and parse configuration files into a specified struct type.",
+    "key_types": [
+      "NewConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

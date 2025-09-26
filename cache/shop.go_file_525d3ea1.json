@@ -1,0 +1,16 @@
+{
+  "content_hash": "ac54d3f79cd876f7b5941596adfc5319",
+  "timestamp": "2025-09-26T17:08:12.206706+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines HTTP handlers for shop-related routes in a web service.",
+    "key_types": [
+      "InternalShopHandler",
+      "ShopHandler",
+      "NewInternalShopHandler"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

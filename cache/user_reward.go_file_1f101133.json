@@ -1,0 +1,16 @@
+{
+  "content_hash": "1c3222f735541bf23fa7f93038d4d09d",
+  "timestamp": "2025-09-26T17:36:39.689445+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Repository for managing user rewards and related database operations.",
+    "key_types": [
+      "UserRewardRepo",
+      "userRewardRepo",
+      "NewUserRewardRepo"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

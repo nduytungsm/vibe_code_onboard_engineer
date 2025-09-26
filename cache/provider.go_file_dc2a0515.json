@@ -1,0 +1,16 @@
+{
+  "content_hash": "81cc21510b98fe63fb357928c32e49d3",
+  "timestamp": "2025-09-26T17:35:53.244072+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a service for managing multi-chain providers based on chain ID and method.",
+    "key_types": [
+      "ProviderService",
+      "providerMap",
+      "providerMapBuilder"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

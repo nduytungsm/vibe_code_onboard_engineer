@@ -1,0 +1,16 @@
+{
+  "content_hash": "6a4b9dcd088c0763133c172e3c827ea5",
+  "timestamp": "2025-09-26T17:36:29.3101+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Manages home banner entities in a database, including creation, retrieval, deletion, and listing.",
+    "key_types": [
+      "HomeBanner interface",
+      "homeBanner struct",
+      "NewHomeBanner function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

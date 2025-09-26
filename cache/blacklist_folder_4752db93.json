@@ -1,0 +1,43 @@
+{
+  "content_hash": "b9f28841b6a243632246049df680fec2",
+  "timestamp": "2025-09-26T17:26:25.867239+07:00",
+  "result": {
+    "path": "pkg/blacklist",
+    "purpose": "Responsible for managing blacklists and feature flags across platforms.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "config.go",
+      "service.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic related to blacklists and feature flags.",
+    "file_summaries": {
+      "pkg/blacklist/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration structures for managing blacklists and feature flags across platforms.",
+        "key_types": [
+          "BlacklistConfig",
+          "Versions",
+          "FeatureFlagConfig"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "pkg/blacklist/service.go": {
+        "language": "Go",
+        "purpose": "Defines a service interface and implementation for managing blacklist configurations and feature flags.",
+        "key_types": [
+          "Service interface",
+          "service struct",
+          "NewBlacklistService function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

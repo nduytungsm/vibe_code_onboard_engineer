@@ -1,0 +1,16 @@
+{
+  "content_hash": "b0e04e5179f48dd0976b7a645801a5be",
+  "timestamp": "2025-09-26T17:35:51.097906+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a data model for dApp sites and provides conversion functions between database and application models.",
+    "key_types": [
+      "dappSite",
+      "fromDBDAppSite",
+      "fromDAppSite"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

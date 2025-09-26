@@ -1,0 +1,16 @@
+{
+  "content_hash": "3449ae0787262f3b2ed2be5cae424d4c",
+  "timestamp": "2025-09-26T17:08:13.701632+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service for matching URLs against trusted domains.",
+    "key_types": [
+      "TrustedDomainService",
+      "trustedDomainService",
+      "MatchURL"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

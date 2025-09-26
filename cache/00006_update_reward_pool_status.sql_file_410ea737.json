@@ -1,0 +1,16 @@
+{
+  "content_hash": "3d1fd4a46cf1902e2f9999767abe2d2e",
+  "timestamp": "2025-09-26T17:37:18.231121+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Updates the reward pool status and modifies roles permissions in the database.",
+    "key_types": [
+      "ALTER TYPE",
+      "ALTER TABLE",
+      "UPDATE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

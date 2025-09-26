@@ -1,0 +1,16 @@
+{
+  "content_hash": "cfec915755a8bfe46ca0f6b7d6df7332",
+  "timestamp": "2025-09-26T17:35:55.088126+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "This file contains decoded data for a smart contract function call, specifically for a transfer function.",
+    "key_types": [
+      "function",
+      "params",
+      "signature"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

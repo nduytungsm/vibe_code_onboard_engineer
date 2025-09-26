@@ -1,0 +1,16 @@
+{
+  "content_hash": "34ef6ae675601a190c91bdf2c1bb92b9",
+  "timestamp": "2025-09-26T17:36:22.148268+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines models and request structures for interacting with the KyberSwap protocol.",
+    "key_types": [
+      "ChargeFeeBy",
+      "ExtraFee",
+      "GetRoutesRequest"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

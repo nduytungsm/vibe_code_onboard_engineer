@@ -1,0 +1,16 @@
+{
+  "content_hash": "c27325644682dd306d916b38d9a49e90",
+  "timestamp": "2025-09-26T17:37:06.047614+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Provides a custom binder function for handling HTTP request headers in Echo framework.",
+    "key_types": [
+      "BindFunc",
+      "Bind",
+      "NewBindWithHeaders"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

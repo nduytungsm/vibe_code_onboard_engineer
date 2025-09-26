@@ -1,9 +1,9 @@
 {
-  "content_hash": "2b82bb0485b1e875d76e3ec8be4eaefb",
-  "timestamp": "2025-09-26T15:02:04.929921+07:00",
+  "content_hash": "eb54a56adfdfa67e716df3918b8836f9",
+  "timestamp": "2025-09-26T17:43:56.680091+07:00",
   "result": {
     "path": "internal/domains/web3/models",
-    "purpose": "Responsible for defining data structures and models related to blockchain transactions, signatures, and token information in a web3 context.",
+    "purpose": "Defines data models related to web3 transactions, signatures, and decoding parameters.",
     "languages": {
       "Go": 3
     },
@@ -13,11 +13,11 @@
       "transaction.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing related data models and structures into separate files for clarity and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating related data models for web3 functionalities.",
     "file_summaries": {
       "internal/domains/web3/models/decode.go": {
         "language": "Go",
-        "purpose": "Defines data structures for decoding blockchain transaction parameters and related token information.",
+        "purpose": "Defines data models for decoding transaction parameters in a web3 context.",
         "key_types": [
           "Token",
           "DecodedParam",
@@ -29,7 +29,7 @@
       },
       "internal/domains/web3/models/signature.go": {
         "language": "Go",
-        "purpose": "Defines data models for handling blockchain signatures and their categories.",
+        "purpose": "Defines data models for handling signatures in a web3 context.",
         "key_types": [
           "Signature",
           "Category",

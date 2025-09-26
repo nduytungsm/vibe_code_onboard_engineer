@@ -1,11 +1,11 @@
 {
-  "content_hash": "e8478216a04c0270406169e115eb6a04",
-  "timestamp": "2025-09-26T15:07:13.503217+07:00",
+  "content_hash": "8841b6e1c1a418d2d36262dc5497bfa6",
+  "timestamp": "2025-09-26T17:41:45.931455+07:00",
   "result": {
     "path": "internal/domains/proxy/handlers/dtos/requests",
-    "purpose": "Defines data transfer objects (DTOs) for various request types related to portfolio activities, balances, DApps, fiat tokens, profiles, RPC requests, Ethereum transaction simulations, and token operations.",
+    "purpose": "Defines data transfer objects (DTOs) for various request types related to portfolio activities, AI tool choices, balances, DApps, fiat tokens, profiles, RPC, Ethereum transaction simulations, and tokens.",
     "languages": {
-      "Go": 10
+      "go": 10
     },
     "key_modules": [
       "activity.go",
@@ -20,10 +20,10 @@
       "token_test.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing related DTOs into separate files for clarity and maintainability, facilitating easy extension and testing.",
+    "architecture": "The folder follows a modular architecture pattern, organizing DTOs by request type, facilitating clear separation of concerns and maintainability.",
     "file_summaries": {
       "internal/domains/proxy/handlers/dtos/requests/activity.go": {
-        "language": "Go",
+        "language": "go",
         "purpose": "Defines data transfer objects (DTOs) for handling portfolio activity and transaction requests.",
         "key_types": [
           "PortfolioActivityDTO",
@@ -35,7 +35,7 @@
         "complexity": "medium"
       },
       "internal/domains/proxy/handlers/dtos/requests/ai.go": {
-        "language": "Go",
+        "language": "go",
         "purpose": "Defines data transfer objects for AI tool choice requests.",
         "key_types": [
           "ToolChoiceRequest",
@@ -71,7 +71,7 @@
       },
       "internal/domains/proxy/handlers/dtos/requests/fiat.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects for handling fiat token information requests.",
+        "purpose": "Defines data transfer objects for fiat token information requests.",
         "key_types": [
           "TokenFiatInfoDTO",
           "GetTokenFiatInfoDTO"
@@ -82,7 +82,7 @@
       },
       "internal/domains/proxy/handlers/dtos/requests/profile.go": {
         "language": "Go",
-        "purpose": "Defines a data transfer object for checking profile existence.",
+        "purpose": "Defines a request structure for checking profile existence.",
         "key_types": [
           "CheckProfileExistence"
         ],
@@ -92,7 +92,7 @@
       },
       "internal/domains/proxy/handlers/dtos/requests/rpc.go": {
         "language": "Go",
-        "purpose": "Defines an RpcRequest struct for handling RPC request data with JSON unmarshalling.",
+        "purpose": "Defines an RPC request structure and custom JSON unmarshalling logic.",
         "key_types": [
           "RpcRequest",
           "UnmarshalJSON",

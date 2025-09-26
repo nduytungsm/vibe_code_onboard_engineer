@@ -1,0 +1,16 @@
+{
+  "content_hash": "acc12d94cf0a0f934c61d37e2f8ce2b4",
+  "timestamp": "2025-09-26T17:36:05.118607+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines metrics for monitoring service performance using Prometheus.",
+    "key_types": [
+      "observeServiceFn",
+      "histogramVec",
+      "counterVec"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "content_hash": "1ecb74ac3cc944e00d164da50aaf650a",
-  "timestamp": "2025-09-26T15:01:39.581288+07:00",
+  "content_hash": "3abc148015737b686b7cdc89bf3fd2e7",
+  "timestamp": "2025-09-26T17:39:36.632522+07:00",
   "result": {
     "path": "internal/infras/waypoint",
-    "purpose": "Responsible for managing waypoint profiles and point management functionalities.",
+    "purpose": "Responsible for defining the client interface and data models for interacting with a waypoint service.",
     "languages": {
       "Go": 2
     },
@@ -12,15 +12,15 @@
       "models.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating client interfaces and data models related to waypoint functionalities.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating client interactions and data models related to waypoint functionalities.",
     "file_summaries": {
       "internal/infras/waypoint/client.go": {
         "language": "Go",
-        "purpose": "Defines a client interface and its implementation for interacting with waypoint profiles and point management.",
+        "purpose": "Defines a client interface and configuration for interacting with a waypoint service.",
         "key_types": [
           "Client interface",
           "Config struct",
-          "cli struct"
+          "HMACAuth struct"
         ],
         "functions": null,
         "imports": null,
@@ -28,11 +28,11 @@
       },
       "internal/infras/waypoint/models.go": {
         "language": "Go",
-        "purpose": "Defines data models for waypoint-related functionalities including user profiles, wallets, and reward systems.",
+        "purpose": "Defines data models for waypoint-related functionalities including error handling, wallet management, and point system.",
         "key_types": [
           "WaypointErr",
           "Wallet",
-          "PublicProfile"
+          "AwardPointsRequest"
         ],
         "functions": null,
         "imports": null,

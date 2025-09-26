@@ -1,0 +1,16 @@
+{
+  "content_hash": "4f5252e549ca91150f7e3f39fdc020e3",
+  "timestamp": "2025-09-26T17:24:54.415319+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration structures for managing blacklists and feature flags across platforms.",
+    "key_types": [
+      "BlacklistConfig",
+      "Versions",
+      "FeatureFlagConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

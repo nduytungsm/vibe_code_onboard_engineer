@@ -1,0 +1,16 @@
+{
+  "content_hash": "b73bbdccc4dcb3a4c5015de37c4b39ab",
+  "timestamp": "2025-09-26T17:35:36.71475+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for notification management requests.",
+    "key_types": [
+      "WhitelistNoti",
+      "UpsertNewsNoti",
+      "ListNoti"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

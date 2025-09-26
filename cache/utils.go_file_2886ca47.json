@@ -1,0 +1,16 @@
+{
+  "content_hash": "cff21e385518c9e82e45866e4fda9afc",
+  "timestamp": "2025-09-26T17:35:55.838953+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Utility functions for handling NFT metadata attributes in a proxy service.",
+    "key_types": [
+      "extractMetadataAttributes",
+      "loopFetcher",
+      "transferDecodeResult"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

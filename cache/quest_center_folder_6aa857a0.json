@@ -1,6 +1,6 @@
 {
-  "content_hash": "a2b1298738e52067e35b1cc698fbeee3",
-  "timestamp": "2025-09-26T14:58:58.919977+07:00",
+  "content_hash": "5268e7261ba868b60361f3a54d8e9545",
+  "timestamp": "2025-09-26T17:43:25.175093+07:00",
   "result": {
     "path": "cmd/quest_center",
     "purpose": "Responsible for the quest center service in the Ronin wallet application, handling configuration, routing, and dependency injection.",
@@ -14,10 +14,8 @@
       "wire.go",
       "wire_gen.go"
     ],
-    "dependencies": [
-      "Google Wire"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for service management and routing for handling API requests.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on separation of concerns with distinct files for configuration, routing, and dependency management.",
     "file_summaries": {
       "cmd/quest_center/config.go": {
         "language": "Go",
@@ -45,7 +43,7 @@
       },
       "cmd/quest_center/routes.go": {
         "language": "Go",
-        "purpose": "Defines routing groups for user and private quest-related endpoints in a web service.",
+        "purpose": "Defines route groups for user and private quest-related endpoints in a web service.",
         "key_types": [
           "PublicGroup",
           "PrivateGroup",
@@ -57,11 +55,11 @@
       },
       "cmd/quest_center/wire.go": {
         "language": "Go",
-        "purpose": "This file sets up dependency injection for the quest center service using Google Wire.",
+        "purpose": "This file sets up dependency injection for the quest center service in a web application.",
         "key_types": [
+          "wire.ProviderSet",
           "main",
-          "injector",
-          "service"
+          "InitializeQuestCenter"
         ],
         "functions": null,
         "imports": null,

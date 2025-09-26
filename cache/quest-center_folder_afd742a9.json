@@ -1,9 +1,9 @@
 {
-  "content_hash": "aa7dbc58b37ba4952a7b2bc09e5cd635",
-  "timestamp": "2025-09-26T15:04:57.052784+07:00",
+  "content_hash": "5b4ceee3d6be8f81ee86167675cce18c",
+  "timestamp": "2025-09-26T17:43:08.853845+07:00",
   "result": {
     "path": "internal/services/quest-center",
-    "purpose": "Responsible for managing quests, user profiles, events, rewards, and shop services in a gaming context.",
+    "purpose": "Responsible for managing quests, user profiles, events, rewards, and shop functionalities within a gaming application.",
     "languages": {
       "Go": 20
     },
@@ -25,11 +25,11 @@
       "user_reward.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing services related to quests and user interactions into separate files for maintainability and scalability.",
+    "architecture": "The folder follows a modular architecture pattern, organizing related services and functionalities into separate files for maintainability and scalability.",
     "file_summaries": {
       "internal/services/quest-center/actions.go": {
         "language": "Go",
-        "purpose": "Provides services for retrieving quest actions from a repository.",
+        "purpose": "Provides services to retrieve quest actions from a repository.",
         "key_types": [
           "ActionV2 interface",
           "actionSvcV2 struct",
@@ -41,7 +41,7 @@
       },
       "internal/services/quest-center/event.go": {
         "language": "Go",
-        "purpose": "Provides services for managing events in a quest center, including caching and retrieval.",
+        "purpose": "Provides services for managing events, including caching and retrieval from a database.",
         "key_types": [
           "EventSvc interface",
           "eventSvc struct",
@@ -75,7 +75,7 @@
       },
       "internal/services/quest-center/pools.go": {
         "language": "Go",
-        "purpose": "Provides services for managing quest pools in a gaming context.",
+        "purpose": "Provides services for managing quest pools in a gaming application.",
         "key_types": [
           "PoolSvc interface",
           "poolSvc struct",
@@ -87,7 +87,7 @@
       },
       "internal/services/quest-center/profile.go": {
         "language": "Go",
-        "purpose": "Defines a service for managing user profiles in a quest center application.",
+        "purpose": "Defines a service for managing user profiles and wallets in a quest center.",
         "key_types": [
           "ProfileService",
           "PublicProfile",
@@ -147,7 +147,7 @@
       },
       "internal/services/quest-center/shop_helper.go": {
         "language": "Go",
-        "purpose": "Provides helper functions for managing shop-related operations, including caching and purchase validation.",
+        "purpose": "Provides helper functions for managing shop-related operations, including caching and validating purchase requests.",
         "key_types": [
           "shopSvc",
           "validatePurchaseRequest",
@@ -173,7 +173,7 @@
         "key_types": [
           "SponsorSvcV2 interface",
           "sponsorSvc struct",
-          "NewSponsorSvcV2 function"
+          "FindSponsors function"
         ],
         "functions": null,
         "imports": null,
@@ -193,11 +193,11 @@
       },
       "internal/services/quest-center/user_event.go": {
         "language": "Go",
-        "purpose": "Provides services related to user events in the quest center, including premium user management.",
+        "purpose": "Provides services for managing user events and premium status in a quest center.",
         "key_types": [
           "UserEventSvc",
           "userEventSvc",
-          "UserOwnPremiumNFTByGeth"
+          "FindEventUser"
         ],
         "functions": null,
         "imports": null,
@@ -205,7 +205,7 @@
       },
       "internal/services/quest-center/user_quest.go": {
         "language": "Go",
-        "purpose": "Provides services for managing user quests in a quest center system.",
+        "purpose": "Provides services for managing user quests in a quest center.",
         "key_types": [
           "UserQuestSvc",
           "userQuestSvc",

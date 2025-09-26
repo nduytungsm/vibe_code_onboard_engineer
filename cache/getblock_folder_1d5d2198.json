@@ -1,22 +1,22 @@
 {
-  "content_hash": "619a5cd24b7a43e0ce4a2607fd8738d7",
-  "timestamp": "2025-09-26T15:03:33.040241+07:00",
+  "content_hash": "31006a950ad139ebcda78276cf1b3c9b",
+  "timestamp": "2025-09-26T17:38:27.601866+07:00",
   "result": {
     "path": "internal/infras/getblock",
-    "purpose": "Responsible for interacting with a blockchain node to retrieve block information.",
+    "purpose": "Responsible for interacting with a blockchain service to retrieve block data.",
     "languages": {
-      "go": 2
+      "Go": 2
     },
     "key_modules": [
       "client.go",
       "models.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to blockchain interactions in a dedicated package.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to blockchain RPC calls and data models.",
     "file_summaries": {
       "internal/infras/getblock/client.go": {
-        "language": "go",
-        "purpose": "Provides a client for executing RPC calls to a blockchain node.",
+        "language": "Go",
+        "purpose": "Provides a client for executing RPC calls to a blockchain service.",
         "key_types": [
           "Client interface",
           "client struct",
@@ -28,7 +28,7 @@
       },
       "internal/infras/getblock/models.go": {
         "language": "Go",
-        "purpose": "Defines models for the getblock package.",
+        "purpose": "Defines models for handling block data in the getblock package.",
         "key_types": [
           "Block",
           "Transaction",

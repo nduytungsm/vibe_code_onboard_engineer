@@ -1,9 +1,9 @@
 {
-  "content_hash": "6744a788d130361cb7fe56acff143d37",
-  "timestamp": "2025-09-26T15:02:23.666908+07:00",
+  "content_hash": "0bcf65cb78af06798ad200e89a332287",
+  "timestamp": "2025-09-26T17:40:40.048186+07:00",
   "result": {
     "path": "internal/services/cron-jobs",
-    "purpose": "Responsible for managing and scheduling cron jobs, including task definitions and monitoring.",
+    "purpose": "Responsible for managing and executing scheduled tasks (cron jobs) within the application, including configuration, monitoring, and task definitions.",
     "languages": {
       "Go": 10
     },
@@ -19,7 +19,7 @@
       "task_mvh.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing files by functionality related to cron job management and scheduling.",
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to cron job management, allowing for separation of concerns and easier maintenance.",
     "file_summaries": {
       "internal/services/cron-jobs/config.go": {
         "language": "Go",
@@ -35,7 +35,7 @@
       },
       "internal/services/cron-jobs/job.go": {
         "language": "Go",
-        "purpose": "Manages and registers scheduled tasks for cron jobs.",
+        "purpose": "Manages and registers scheduled tasks for cron jobs in the application.",
         "key_types": [
           "TaskRegistry",
           "NewTaskRegistry",
@@ -55,7 +55,7 @@
         ],
         "functions": null,
         "imports": null,
-        "complexity": "medium"
+        "complexity": "low"
       },
       "internal/services/cron-jobs/scheduler.go": {
         "language": "Go",
@@ -63,7 +63,7 @@
         "key_types": [
           "ProvideScheduler",
           "NewCronJobService",
-          "cronJobService"
+          "loggingJobMonitor"
         ],
         "functions": null,
         "imports": null,
@@ -71,7 +71,7 @@
       },
       "internal/services/cron-jobs/task.go": {
         "language": "Go",
-        "purpose": "Defines cron job tasks for crawling quest data in a gaming service.",
+        "purpose": "Defines cron job tasks for crawling and processing quest data in a gaming service.",
         "key_types": [
           "CronTask",
           "CrawlTaskLogic",
@@ -83,7 +83,7 @@
       },
       "internal/services/cron-jobs/task_collections.go": {
         "language": "Go",
-        "purpose": "Defines data structures and functions for handling marketplace collection data in cron jobs.",
+        "purpose": "Defines data structures and functionality for handling marketplace collection data in cron jobs.",
         "key_types": [
           "MarketplaceCollectionResult",
           "MarketplaceCollectionsRanking",
@@ -107,7 +107,7 @@
       },
       "internal/services/cron-jobs/task_mkp.go": {
         "language": "Go",
-        "purpose": "Defines a task for crawling purchase history of Axie NFTs from a marketplace.",
+        "purpose": "Defines a cron job task for crawling Axie purchase history from a database.",
         "key_types": [
           "PurchaseAxieCrawlerTaskLogic",
           "NewPurchaseAxieCrawlerTaskLogic",
@@ -119,7 +119,7 @@
       },
       "internal/services/cron-jobs/task_mvh.go": {
         "language": "Go",
-        "purpose": "Defines a task for crawling console games and managing related data.",
+        "purpose": "Defines a cron job for crawling console games data from a specified API.",
         "key_types": [
           "ConsoleGamesCrawlerTask",
           "NewConsoleGamesCrawlerTask",

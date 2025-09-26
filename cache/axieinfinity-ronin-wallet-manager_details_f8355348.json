@@ -1,0 +1,18 @@
+{
+  "content_hash": "3cd2f9c2f3f74b9ddb991e9b1b788636",
+  "timestamp": "2025-09-26T17:27:21.784357+07:00",
+  "result": {
+    "repo_summary_line": "wallet-manager project serves as a management platform for a cryptocurrency wallet, including functionalities for announcements, user accounts, and device management.",
+    "architecture": "monolith",
+    "repo_layout": "single-repo",
+    "main_stacks": [
+      "Go"
+    ],
+    "monorepo_services": [],
+    "evidence_paths": [
+      "README.md",
+      "docker-compose.yml"
+    ],
+    "confidence": 0.9
+  }
+}

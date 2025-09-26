@@ -1,9 +1,9 @@
 {
-  "content_hash": "90be68610af1d8b9098b7214e0e9571a",
-  "timestamp": "2025-09-26T15:01:58.296981+07:00",
+  "content_hash": "f1624c70e31280203846482669de1d70",
+  "timestamp": "2025-09-26T17:41:30.373535+07:00",
   "result": {
     "path": "internal/services/siwe",
-    "purpose": "Responsible for handling Sign-In with Ethereum (SIWE) messages, including their creation, validation, and associated error handling.",
+    "purpose": "Handles the creation, validation, and parsing of Sign-In with Ethereum (SIWE) messages.",
     "languages": {
       "go": 5
     },
@@ -15,11 +15,11 @@
       "utils.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to SIWE messages in separate files for error handling, message struct definition, regular expressions, message processing, and utility functions.",
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for error handling, message struct definition, regex parsing, and utility functions.",
     "file_summaries": {
       "internal/services/siwe/error.go": {
         "language": "go",
-        "purpose": "Defines error types related to SIWE (Sign-In with Ethereum) messages.",
+        "purpose": "Defines custom error types for handling SIWE message validation errors.",
         "key_types": [
           "ExpiredMessage",
           "InvalidMessage",
@@ -45,7 +45,7 @@
         "language": "Go",
         "purpose": "Defines regular expressions for parsing SIWE (Sign-In with Ethereum) messages.",
         "key_types": [
-          "regexp.MustCompile"
+          "SIWEMsg"
         ],
         "functions": null,
         "imports": null,
@@ -65,7 +65,7 @@
       },
       "internal/services/siwe/utils.go": {
         "language": "Go",
-        "purpose": "Utility functions for handling timestamps, hashing, and nonce generation in the SIWE context.",
+        "purpose": "Utility functions for handling timestamps, hashing, and generating nonces in the SIWE context.",
         "key_types": [
           "parseTimestamp",
           "isEmpty",

@@ -1,0 +1,16 @@
+{
+  "content_hash": "d708ffbc212a4f41663e34e0e3fc9316",
+  "timestamp": "2025-09-26T17:36:16.837429+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a client for interacting with a blockchain RPC service.",
+    "key_types": [
+      "Client interface",
+      "NewClient function",
+      "httpClient struct"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

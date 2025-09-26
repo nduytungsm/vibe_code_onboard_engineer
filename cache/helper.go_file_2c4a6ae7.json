@@ -1,0 +1,16 @@
+{
+  "content_hash": "6276c77ae376126b35f27b30c4942f7e",
+  "timestamp": "2025-09-26T17:08:16.304843+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality to categorize and manage token and NFT balances for users in a web3 context.",
+    "key_types": [
+      "balance",
+      "countTokens",
+      "computeBalance"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,11 +1,11 @@
 {
-  "content_hash": "16095e5a6972f76dd70a59defbe8b639",
-  "timestamp": "2025-09-26T15:05:54.974884+07:00",
+  "content_hash": "32064bafdbfd1deb32db66a816434715",
+  "timestamp": "2025-09-26T17:38:57.194716+07:00",
   "result": {
     "path": "tests/handlers",
     "purpose": "This folder is responsible for unit testing various handler functions related to activities, quests, rewards, and user roles in the Ronin wallet services.",
     "languages": {
-      "go": 6
+      "Go": 6
     },
     "key_modules": [
       "activity_test.go",
@@ -16,15 +16,15 @@
       "user_role_test.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, where each test file corresponds to a specific handler functionality, ensuring separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, organizing tests by functionality related to different handlers, ensuring separation of concerns and maintainability.",
     "file_summaries": {
       "tests/handlers/activity_test.go": {
-        "language": "go",
+        "language": "Go",
         "purpose": "Unit tests for activity handler functions in the Ronin wallet services.",
         "key_types": [
           "TestTryModifyQuest",
           "TestGenerateID",
-          "TestBulkInsert"
+          "TestFindSingleQuest"
         ],
         "functions": null,
         "imports": null,
@@ -32,7 +32,7 @@
       },
       "tests/handlers/helpers_test.go": {
         "language": "Go",
-        "purpose": "Unit tests for the QuestStateMachine transitions in the handlers package.",
+        "purpose": "Unit tests for the quest state machine transitions in the handlers package.",
         "key_types": [
           "TestStateMachine_On_Submit",
           "TestStateMachine_On_CopywriterApprove",
@@ -44,7 +44,7 @@
       },
       "tests/handlers/participant_quest_test.go": {
         "language": "Go",
-        "purpose": "Unit tests for participant quest handler functionality.",
+        "purpose": "Unit tests for participant quest handler functionalities.",
         "key_types": [
           "PQuestHandlerTestKit",
           "testing.T",
@@ -56,7 +56,7 @@
       },
       "tests/handlers/quest_test.go": {
         "language": "Go",
-        "purpose": "Unit tests for quest handler functionalities in the Ronin wallet services.",
+        "purpose": "Unit tests for quest-related handler functions in the application.",
         "key_types": [
           "TestFindQuests",
           "TestUpdateQuest",

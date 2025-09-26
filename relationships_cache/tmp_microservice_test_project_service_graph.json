@@ -1,0 +1,46 @@
+{
+  "services": [
+    {
+      "name": "api-gateway",
+      "path": "cmd/api-gateway",
+      "entry_point": "cmd/api-gateway/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and docker_compose and directory"
+    },
+    {
+      "name": "user-service",
+      "path": "cmd/user-service",
+      "entry_point": "cmd/user-service/main.go",
+      "api_type": "http",
+      "description": "Go service detected via main_go and docker_compose and directory"
+    },
+    {
+      "name": "nginx",
+      "path": "service-nginx",
+      "entry_point": "docker-compose.yml",
+      "api_type": "http",
+      "description": "Unknown service detected via docker_compose"
+    }
+  ],
+  "relationships": [
+    {
+      "from": "api-gateway",
+      "to": "user-service",
+      "evidence_type": "config",
+      "evidence": "depends_on: user-service",
+      "file_path": "docker-compose.yml",
+      "confidence": 1
+    },
+    {
+      "from": "nginx",
+      "to": "api-gateway",
+      "evidence_type": "config",
+      "evidence": "depends_on: api-gateway",
+      "file_path": "docker-compose.yml",
+      "confidence": 1
+    }
+  ],
+  "project_path": "/tmp/microservice_test_project",
+  "generated_at": "2025-09-26T16:56:58.516153+07:00",
+  "mermaid_graph": "graph TD\\n  api_gateway[api-gateway - HTTP]\\n  user_service[user-service - HTTP]\\n  nginx[nginx - HTTP]\\n\\n  api_gateway --\u003e|config| user_service\\n  nginx --\u003e|config| api_gateway\\n\\n  classDef httpService fill:#e1f5fe,stroke:#01579b,stroke-width:2px\\n  classDef grpcService fill:#f3e5f5,stroke:#4a148c,stroke-width:2px\\n  classDef graphqlService fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px\\n"
+}

@@ -1,9 +1,9 @@
 {
-  "content_hash": "f6bfc4795f2f408eea0980be7a38b708",
-  "timestamp": "2025-09-26T15:05:59.428075+07:00",
+  "content_hash": "64f451680a06def796b616b423b6a090",
+  "timestamp": "2025-09-26T17:42:53.819994+07:00",
   "result": {
     "path": "internal/handlers/discovery",
-    "purpose": "Responsible for handling various discovery-related operations such as announcements, events, feature banners, home banners, products, and tokens.",
+    "purpose": "Responsible for handling various discovery-related operations including announcements, events, feature banners, home banners, products, and tokens.",
     "languages": {
       "Go": 10
     },
@@ -20,7 +20,7 @@
       "tokens.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for clarity and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, where each file handles specific aspects of the discovery service, promoting separation of concerns and maintainability.",
     "file_summaries": {
       "internal/handlers/discovery/announcement.go": {
         "language": "Go",
@@ -36,11 +36,11 @@
       },
       "internal/handlers/discovery/event.go": {
         "language": "Go",
-        "purpose": "Handles event-related operations for the discovery service.",
+        "purpose": "Handles event-related operations for discovery services.",
         "key_types": [
           "Event interface",
           "event struct",
-          "CreateEventItem function"
+          "NewEventHandler function"
         ],
         "functions": null,
         "imports": null,
@@ -48,7 +48,7 @@
       },
       "internal/handlers/discovery/feature_banner.go": {
         "language": "Go",
-        "purpose": "Handles feature banner creation, deletion, and retrieval in the discovery module.",
+        "purpose": "Handles feature banner operations including creation, deletion, and retrieval by version.",
         "key_types": [
           "FeatureBanner interface",
           "featureBanner struct",
@@ -60,11 +60,11 @@
       },
       "internal/handlers/discovery/generic.go": {
         "language": "Go",
-        "purpose": "Defines a generic handler for discovery-related operations in the application.",
+        "purpose": "Handles discovery-related functionalities such as listing social platforms, studios, categories, and image uploads.",
         "key_types": [
           "Generic interface",
-          "ListSocialPlatforms function",
-          "Search function"
+          "generic struct",
+          "ListSocialPlatforms function"
         ],
         "functions": null,
         "imports": null,
@@ -72,7 +72,7 @@
       },
       "internal/handlers/discovery/helpers.go": {
         "language": "Go",
-        "purpose": "Provides helper functions for validating and checking duplicates in widget layouts for discovery handlers.",
+        "purpose": "Contains helper functions for validating and checking duplicates in widget layouts for discovery handlers.",
         "key_types": [
           "isWidgetDuplicated",
           "isWidgetItemDuplicated",
@@ -84,7 +84,7 @@
       },
       "internal/handlers/discovery/home_banner.go": {
         "language": "Go",
-        "purpose": "Handles operations related to home banners in the discovery module.",
+        "purpose": "Handles operations related to home banners in the discovery service.",
         "key_types": [
           "HomeBanner interface",
           "homeBanner struct",

@@ -1,0 +1,16 @@
+{
+  "content_hash": "53dffb8aeff2e18d519b8f7e50699773",
+  "timestamp": "2025-09-26T17:07:45.840366+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the Katana service for handling token operations in a decentralized exchange context.",
+    "key_types": [
+      "Katana",
+      "NewKatana",
+      "KatanaExtraConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

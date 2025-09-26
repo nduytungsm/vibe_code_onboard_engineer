@@ -1,0 +1,15 @@
+{
+  "content_hash": "befd80b77fb3a3be4e9003e7c3e81805",
+  "timestamp": "2025-09-26T17:09:32.67452+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file defines a migration for adding and removing permissions in a database.",
+    "key_types": [
+      "INSERT INTO permissions",
+      "UPDATE roles"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

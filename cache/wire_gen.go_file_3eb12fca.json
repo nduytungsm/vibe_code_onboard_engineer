@@ -1,0 +1,16 @@
+{
+  "content_hash": "e14668dedc02f393348e62fc180c8bb8",
+  "timestamp": "2025-09-26T17:07:25.933056+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates dependency injection code for cron job services using Wire.",
+    "key_types": [
+      "wireCronJob",
+      "provideSugarLogger",
+      "provideServices"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

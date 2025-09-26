@@ -1,0 +1,15 @@
+{
+  "content_hash": "726f680566d3a50fcb3c6fb31ef6b776",
+  "timestamp": "2025-09-26T17:09:28.53678+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines metrics for Kafka consumer performance monitoring using Prometheus.",
+    "key_types": [
+      "consumerMetrics",
+      "initConsumerMetrics"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

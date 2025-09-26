@@ -1,0 +1,16 @@
+{
+  "content_hash": "e64fe7d5c53987f56b21250f9a89d688",
+  "timestamp": "2025-09-26T16:56:41.078329+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for a microservice test project with service discovery.",
+    "key_types": [
+      "user-service",
+      "api-gateway",
+      "Docker Compose"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

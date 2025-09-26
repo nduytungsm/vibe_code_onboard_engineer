@@ -1,9 +1,9 @@
 {
-  "content_hash": "9ad66c363fc591e378438a9180ce4915",
-  "timestamp": "2025-09-26T14:59:38.873447+07:00",
+  "content_hash": "061aeb17a904ff921b8ca77830063068",
+  "timestamp": "2025-09-26T17:40:36.482649+07:00",
   "result": {
     "path": "pkg/helper",
-    "purpose": "Provides utility functions and helpers for various operations in a Go application, including data manipulation, request handling, and token management.",
+    "purpose": "Provides utility functions and helpers for various operations including data manipulation, HTTP request handling, and task queue configuration.",
     "languages": {
       "Go": 30
     },
@@ -36,7 +36,7 @@
     "file_summaries": {
       "pkg/helper/asyncq.go": {
         "language": "Go",
-        "purpose": "Configures and returns Redis connection options for the asynq library.",
+        "purpose": "Configures a connection to Redis for the asynq task queue.",
         "key_types": [
           "NewAsyncQConnectConfig"
         ],
@@ -46,7 +46,7 @@
       },
       "pkg/helper/big.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for handling big integers and numeric types in PostgreSQL.",
+        "purpose": "Provides utility functions for converting and manipulating big integers and numeric types.",
         "key_types": [
           "strToBig",
           "BigToNumeric",
@@ -58,7 +58,7 @@
       },
       "pkg/helper/binder.go": {
         "language": "go",
-        "purpose": "Provides a custom binder for handling request headers in Echo framework.",
+        "purpose": "Provides a custom binder function for handling HTTP request headers in Echo framework.",
         "key_types": [
           "BindFunc",
           "Bind",
@@ -94,7 +94,7 @@
       },
       "pkg/helper/file.go": {
         "language": "Go",
-        "purpose": "Extracts user addresses from a 2D slice of string records with validation.",
+        "purpose": "Extracts user addresses from a 2D slice of strings with validation on row count.",
         "key_types": [
           "ExtractUserAddresses"
         ],
@@ -136,7 +136,7 @@
       },
       "pkg/helper/mapstruct_hook.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for binding struct fields to environment variables and converting string representations of byte sizes.",
+        "purpose": "Provides helper functions for binding struct fields to environment variables and decoding specific types.",
         "key_types": [
           "StringToByteSizeHookFunc",
           "BindStructPathsToEnvs",
@@ -148,7 +148,7 @@
       },
       "pkg/helper/mapstruct_test.go": {
         "language": "go",
-        "purpose": "Unit tests for decoding and validating a struct using mapstructure.",
+        "purpose": "Unit tests for decoding a struct and validating its fields using mapstructure.",
         "key_types": [
           "TestDecodeStructAndValidate"
         ],
@@ -158,7 +158,7 @@
       },
       "pkg/helper/number.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for parsing numbers and converting hex strings to big integers.",
+        "purpose": "Provides utility functions for parsing numbers and converting hexadecimal strings to big integers.",
         "key_types": [
           "ParseInt64",
           "ParseFloat64",
@@ -180,7 +180,7 @@
       },
       "pkg/helper/pagination.go": {
         "language": "Go",
-        "purpose": "Provides pagination helper functions for calculating offsets and limits for paginated data.",
+        "purpose": "Provides pagination helper functions for calculating offsets and limits.",
         "key_types": [
           "CalOffsetLimit",
           "FallbackPage",
@@ -188,7 +188,7 @@
         ],
         "functions": null,
         "imports": null,
-        "complexity": "medium"
+        "complexity": "low"
       },
       "pkg/helper/pointer.go": {
         "language": "Go",
@@ -203,7 +203,7 @@
       },
       "pkg/helper/push_token.go": {
         "language": "Go",
-        "purpose": "This file provides functions to hide sensitive tokens by obscuring their representation.",
+        "purpose": "This file provides functions to hide sensitive tokens by masking them.",
         "key_types": [
           "HideToken",
           "HideTokens"
@@ -237,7 +237,7 @@
         "complexity": "medium"
       },
       "pkg/helper/slice_test.go": {
-        "language": "go",
+        "language": "Go",
         "purpose": "Unit tests for the SliceChunk function in the helper package.",
         "key_types": [
           "TestSliceChunk",
@@ -246,11 +246,11 @@
         ],
         "functions": null,
         "imports": null,
-        "complexity": "medium"
+        "complexity": "low"
       },
       "pkg/helper/strings.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for string manipulation and fallback value handling.",
+        "purpose": "Provides utility functions for string manipulation and handling nil values.",
         "key_types": [
           "EllipticalTruncate",
           "FallbackNilString",
@@ -262,7 +262,7 @@
       },
       "pkg/helper/sync.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for concurrent processing and aggregation of slices.",
+        "purpose": "Provides utility functions for concurrent processing of slices with error handling.",
         "key_types": [
           "SliceRoutine",
           "Routine",
@@ -286,7 +286,7 @@
       },
       "pkg/helper/tls.go": {
         "language": "Go",
-        "purpose": "This file provides a function to create a TLS configuration from provided certificate, key, and CA certificate.",
+        "purpose": "Creates and configures a TLS configuration based on provided certificates.",
         "key_types": [
           "ConvertToTLSConfig"
         ],

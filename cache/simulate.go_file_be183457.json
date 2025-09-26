@@ -1,0 +1,16 @@
+{
+  "content_hash": "d3c4c0714f3c9d153490ee136094bbec",
+  "timestamp": "2025-09-26T17:35:48.348327+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles simulation requests via a JSON-RPC endpoint.",
+    "key_types": [
+      "simulationHandler",
+      "NewSimulationHandler",
+      "simulateJsonRPC"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

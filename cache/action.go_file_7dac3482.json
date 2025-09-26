@@ -1,0 +1,16 @@
+{
+  "content_hash": "8e3c4d55bc1f4a0dc8e6468abca54b43",
+  "timestamp": "2025-09-26T17:08:47.923005+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models and validation logic for quest actions in a gaming context.",
+    "key_types": [
+      "QuestActionEntity",
+      "ActivityExtra",
+      "XAction"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

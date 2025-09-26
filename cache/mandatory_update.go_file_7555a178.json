@@ -1,0 +1,16 @@
+{
+  "content_hash": "3fb1c891447079264cfaddd1a91a0c75",
+  "timestamp": "2025-09-26T17:35:39.318365+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing mandatory updates in a database.",
+    "key_types": [
+      "mandatoryUpdateRepo",
+      "NewMandatoryUpdateRepo",
+      "Create"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

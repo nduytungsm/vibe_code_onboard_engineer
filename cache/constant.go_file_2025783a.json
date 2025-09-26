@@ -1,0 +1,16 @@
+{
+  "content_hash": "86359c5e16bc77df714ff373822875c0",
+  "timestamp": "2025-09-26T17:35:24.949687+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines constants used throughout the application.",
+    "key_types": [
+      "BasicAuthScheme",
+      "DD_MM_YYYY__HH_MM_SS",
+      "CSVExtension"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "content_hash": "920ba339f226243ba4d9d575686662dd",
+  "timestamp": "2025-09-26T17:09:36.937284+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Creates indexes on the participant_rewards table for performance optimization.",
+    "key_types": [
+      "CREATE INDEX"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

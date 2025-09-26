@@ -1,0 +1,16 @@
+{
+  "content_hash": "cb3a98982da87374975486986e7a065e",
+  "timestamp": "2025-09-26T17:35:32.696303+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the device model and conversion functions for the device manager.",
+    "key_types": [
+      "device struct",
+      "ToMap()",
+      "fromDevice()"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

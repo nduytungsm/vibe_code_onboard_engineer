@@ -1,0 +1,16 @@
+{
+  "content_hash": "14226d30a9b9d3be6bcc011ba3595650",
+  "timestamp": "2025-09-26T17:36:49.226874+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines services and data structures for managing quests in a quest center.",
+    "key_types": [
+      "QuestSvcV2 interface",
+      "QuestRelatedInfo struct",
+      "questSvcV2 struct"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

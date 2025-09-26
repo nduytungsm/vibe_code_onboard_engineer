@@ -1,0 +1,16 @@
+{
+  "content_hash": "a0fe101b5e8353315fc3264cf3f5c311",
+  "timestamp": "2025-09-26T17:24:34.607719+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Handles Binance signing requests and responses in an Echo web framework.",
+    "key_types": [
+      "BinanceHandler",
+      "binanceHandler",
+      "Sign"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

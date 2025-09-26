@@ -1,0 +1,28 @@
+{
+  "content_hash": "3d0a742c8a50ee857978aabd2a25c0cc",
+  "timestamp": "2025-09-26T16:56:44.97614+07:00",
+  "result": {
+    "path": "cmd/api-gateway",
+    "purpose": "This folder/module is responsible for implementing an API gateway that proxies requests to a user service.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a microservices architecture pattern, where the API gateway acts as a single entry point for client requests, routing them to the appropriate backend services.",
+    "file_summaries": {
+      "cmd/api-gateway/main.go": {
+        "language": "Go",
+        "purpose": "This file implements an API gateway that proxies requests to a user service.",
+        "key_types": [
+          "main"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

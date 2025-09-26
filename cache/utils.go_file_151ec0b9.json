@@ -1,0 +1,16 @@
+{
+  "content_hash": "7127bfc3db8f883c275c423a4cf8cec6",
+  "timestamp": "2025-09-26T17:36:55.816235+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Utility functions for handling timestamps, hashing, and generating nonces in the SIWE context.",
+    "key_types": [
+      "parseTimestamp",
+      "isEmpty",
+      "GenerateNonce"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

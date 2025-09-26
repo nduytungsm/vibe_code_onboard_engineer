@@ -1,0 +1,16 @@
+{
+  "content_hash": "63707b62a7150a05b0bac087febd782f",
+  "timestamp": "2025-09-26T17:35:13.526619+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Initializes and starts the device manager application.",
+    "key_types": [
+      "main",
+      "NewConfig",
+      "Start"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

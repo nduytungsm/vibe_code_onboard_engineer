@@ -1,0 +1,42 @@
+{
+  "content_hash": "6e8052d8da787a1ddc3431ad500f9470",
+  "timestamp": "2025-09-26T17:26:31.070839+07:00",
+  "result": {
+    "path": "pkg/device",
+    "purpose": "Responsible for managing device-related operations and configurations within the application.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "config.go",
+      "service.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating device-related functionalities and configurations in separate files.",
+    "file_summaries": {
+      "pkg/device/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration structures for device services in the application.",
+        "key_types": [
+          "ServiceConfig",
+          "Config"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/device/service.go": {
+        "language": "Go",
+        "purpose": "Defines a service interface and its implementation for managing device-related operations.",
+        "key_types": [
+          "Service interface",
+          "service struct",
+          "GetDeviceByID function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "971b2982a0b5ec4d33ae35940677883b",
+  "timestamp": "2025-09-26T17:07:47.821654+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines request data transfer objects for mandatory update operations.",
+    "key_types": [
+      "SetMandatoryUpdate",
+      "GetVersionStatus",
+      "GetLatestVersion"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

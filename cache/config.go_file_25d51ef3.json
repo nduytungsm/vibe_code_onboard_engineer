@@ -1,0 +1,16 @@
+{
+  "content_hash": "8639bb13c50c0818c9b9fd8dd1f24421",
+  "timestamp": "2025-09-26T17:24:28.255887+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Configuration management for the Ronin Wallet Manager application.",
+    "key_types": [
+      "Schema",
+      "Server",
+      "Sentry"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

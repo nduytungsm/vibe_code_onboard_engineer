@@ -1,0 +1,14 @@
+{
+  "content_hash": "5e8539e425eb8f7b6e9f6ecb6c5ad252",
+  "timestamp": "2025-09-26T17:24:35.387518+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles agent information retrieval in a web context using Echo framework.",
+    "key_types": [
+      "getAgentInfo"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

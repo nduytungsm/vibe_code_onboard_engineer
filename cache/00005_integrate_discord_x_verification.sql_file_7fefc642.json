@@ -1,0 +1,16 @@
+{
+  "content_hash": "a1002c7e86a45ba24a65613e139e80a0",
+  "timestamp": "2025-09-26T17:09:31.602056+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Creates tables to manage verification actions for Discord and Twitter users in quests.",
+    "key_types": [
+      "CREATE TABLE participant_discord_actions",
+      "CREATE TABLE participant_twitter_actions",
+      "DROP TABLE participant_discord_actions"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

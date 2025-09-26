@@ -1,0 +1,14 @@
+{
+  "content_hash": "5db3527d5428a5b8a61bb0cd5e5d2320",
+  "timestamp": "2025-09-26T17:07:40.774926+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Decodes logs into token transfer information for Ethereum-based transactions.",
+    "key_types": [
+      "TransferDecoder"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

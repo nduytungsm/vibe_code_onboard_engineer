@@ -1,0 +1,16 @@
+{
+  "content_hash": "a6ad00937bbff281900433d7940b0421",
+  "timestamp": "2025-09-26T17:37:11.404575+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file configures and creates a Zap logger with custom encoding for logging levels.",
+    "key_types": [
+      "NewZapLogger",
+      "MustNewLogger",
+      "LoggerConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "2ec4302525316c8487b1b15095487f18",
+  "timestamp": "2025-09-26T17:09:04.769723+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides helper functions for managing shop-related operations, including caching and validating purchase requests.",
+    "key_types": [
+      "shopSvc",
+      "validatePurchaseRequest",
+      "validateTierAccess"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "content_hash": "4ced63531bcae20dc40cd752e5e20e4c",
-  "timestamp": "2025-09-26T15:00:31.530577+07:00",
+  "content_hash": "f71dcd5bb91ea46f38515712679152a7",
+  "timestamp": "2025-09-26T17:40:04.628861+07:00",
   "result": {
     "path": "internal/domains/manager/handlers/dtos/requests",
-    "purpose": "Defines data transfer objects (DTOs) for various request handling in the manager domain, including application versions, authorization, Coinbase operations, mandatory updates, notifications, and operator management.",
+    "purpose": "Defines data transfer objects (DTOs) for various request types related to application management, authorization, notifications, and updates.",
     "languages": {
       "Go": 7
     },
@@ -17,7 +17,7 @@
       "operator.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing DTOs by functionality to facilitate clear and maintainable request handling.",
+    "architecture": "The folder follows a modular architecture pattern, organizing DTOs by their respective functionalities to facilitate request handling in the application.",
     "file_summaries": {
       "internal/domains/manager/handlers/dtos/requests/app_version.go": {
         "language": "Go",
@@ -33,7 +33,7 @@
       },
       "internal/domains/manager/handlers/dtos/requests/auth.go": {
         "language": "go",
-        "purpose": "Defines a request structure for authorization handling.",
+        "purpose": "Defines a structure for authorization requests including HTTP request and required roles.",
         "key_types": [
           "Authorization"
         ],
@@ -42,8 +42,8 @@
         "complexity": "low"
       },
       "internal/domains/manager/handlers/dtos/requests/coinbase.go": {
-        "language": "go",
-        "purpose": "Defines request data transfer objects for handling Coinbase-related operations.",
+        "language": "Go",
+        "purpose": "Defines data transfer objects for handling requests related to Coinbase operations.",
         "key_types": [
           "Address",
           "CbOnrampToken",
@@ -64,7 +64,7 @@
         "complexity": "low"
       },
       "internal/domains/manager/handlers/dtos/requests/mandatory_update.go": {
-        "language": "go",
+        "language": "Go",
         "purpose": "Defines request data transfer objects for mandatory update operations.",
         "key_types": [
           "SetMandatoryUpdate",
@@ -77,7 +77,7 @@
       },
       "internal/domains/manager/handlers/dtos/requests/noti.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects (DTOs) for notification management in the application.",
+        "purpose": "Defines data transfer objects (DTOs) for notification management requests.",
         "key_types": [
           "WhitelistNoti",
           "UpsertNewsNoti",

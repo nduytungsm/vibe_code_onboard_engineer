@@ -1,0 +1,14 @@
+{
+  "content_hash": "5ad7fa3848f91f68f21e51220819dc50",
+  "timestamp": "2025-09-26T17:09:49.449504+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a no-operation logger for testing purposes.",
+    "key_types": [
+      "SugaredLogger"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "abdd653379e3288e0cec5efd5287c6e6",
+  "timestamp": "2025-09-26T17:37:16.647688+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides validation functionality for struct data using the validator package.",
+    "key_types": [
+      "InitValidate",
+      "RegisterCustomValidation",
+      "ValidateStruct"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

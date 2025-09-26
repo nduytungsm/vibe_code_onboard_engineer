@@ -1,0 +1,16 @@
+{
+  "content_hash": "84c72a4c991938869282bfebad85291e",
+  "timestamp": "2025-09-26T17:35:20.406286+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates dependency injection code for a task scheduler application using Wire.",
+    "key_types": [
+      "wireTaskScheduler",
+      "provideScheduler",
+      "provideHttpServer"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

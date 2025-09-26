@@ -1,0 +1,15 @@
+{
+  "content_hash": "688cd9a2b6946276610b748b5fb35432",
+  "timestamp": "2025-09-26T17:24:57.5121+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for HMAC validation functions including clock skew and signature validation.",
+    "key_types": [
+      "TestHMAC_validateClockSkew",
+      "TestHMAC_ValidateSignature"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

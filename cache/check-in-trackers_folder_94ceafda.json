@@ -1,9 +1,9 @@
 {
-  "content_hash": "b87b1b53782c445ee092c76286340dc8",
-  "timestamp": "2025-09-26T15:06:59.072068+07:00",
+  "content_hash": "9df57c134341dd299ba71a277af2e8ab",
+  "timestamp": "2025-09-26T17:11:25.243044+07:00",
   "result": {
     "path": "tests/services/check-in-trackers",
-    "purpose": "Unit testing for the CheckInStreak functionality in the check-in trackers service.",
+    "purpose": "Unit testing for the check-in streak functionality in the game data service.",
     "languages": {
       "Go": 1
     },
@@ -11,11 +11,11 @@
       "game_data_test.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a testing architecture pattern, focusing on unit tests to validate the functionality of the CheckInStreak component.",
+    "architecture": "The folder follows a testing architecture pattern, focusing on unit tests to validate the functionality of the check-in streak feature.",
     "file_summaries": {
       "tests/services/check-in-trackers/game_data_test.go": {
         "language": "Go",
-        "purpose": "Unit tests for the CheckInStreak functionality in the check-in trackers service.",
+        "purpose": "Unit tests for the check-in streak functionality in the game data service.",
         "key_types": [
           "Test_CheckInStreak_CurrentEqualMaxStreak",
           "Test_CheckInStreak_BreakStreakCurrentLessThanMaxStreak"

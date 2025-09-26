@@ -1,0 +1,16 @@
+{
+  "content_hash": "a2aef3eeccd0ac569384f1dacf9047f8",
+  "timestamp": "2025-09-26T17:08:37.000496+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a client interface for interacting with the Skynet service, including transaction and token retrieval.",
+    "key_types": [
+      "Client interface",
+      "Config struct",
+      "skynetSvc struct"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

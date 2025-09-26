@@ -1,9 +1,9 @@
 {
-  "content_hash": "29ce23f1bb6272ab4315f71a19c15c0b",
-  "timestamp": "2025-09-26T15:04:52.082417+07:00",
+  "content_hash": "f7f28ea3b70ae3b7ff8ab4094fc2f18e",
+  "timestamp": "2025-09-26T17:41:24.889284+07:00",
   "result": {
     "path": "tests/services",
-    "purpose": "This folder is responsible for containing unit tests for various service functionalities within the application.",
+    "purpose": "This folder contains unit tests for various service functionalities within the application.",
     "languages": {
       "Go": 6
     },
@@ -16,7 +16,7 @@
       "ron_staked_test.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, where each test file corresponds to a specific service, ensuring separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, focusing on unit testing individual service components.",
     "file_summaries": {
       "tests/services/atia_blessing_test.go": {
         "language": "Go",
@@ -32,9 +32,7 @@
         "language": "Go",
         "purpose": "Contains unit tests for the check-in game service functionality.",
         "key_types": [
-          "TestCheckInGame",
-          "TestCheckInGameWithInvalidData",
-          "TestCheckInGameEdgeCases"
+          "TestCheckInGame"
         ],
         "functions": null,
         "imports": null,
@@ -52,7 +50,7 @@
       },
       "tests/services/distribute_reward_test.go": {
         "language": "Go",
-        "purpose": "Unit tests for the reward distribution service in the Ronin wallet services.",
+        "purpose": "Unit tests for the reward distribution service in the Ronin wallet application.",
         "key_types": [
           "Test_DistributeReward"
         ],

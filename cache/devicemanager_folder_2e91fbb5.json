@@ -1,6 +1,6 @@
 {
-  "content_hash": "440640d668b00dfeba70b6ddeebbc642",
-  "timestamp": "2025-09-26T15:03:47.751786+07:00",
+  "content_hash": "4737e358b29725352ad0203030beb82f",
+  "timestamp": "2025-09-26T17:43:03.236253+07:00",
   "result": {
     "path": "internal/infras/devicemanager",
     "purpose": "This folder/module is responsible for managing device-related operations within a service.",
@@ -27,8 +27,8 @@
         "complexity": "medium"
       },
       "internal/infras/devicemanager/models.go": {
-        "language": "Go",
-        "purpose": "Defines models and types for managing devices in a device manager service.",
+        "language": "go",
+        "purpose": "Defines models and structures for managing devices in the device manager service.",
         "key_types": [
           "Device",
           "ListDevicesRequest",

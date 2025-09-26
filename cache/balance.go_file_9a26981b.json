@@ -1,0 +1,16 @@
+{
+  "content_hash": "6cd34dee060e57022eed46e7b118d780",
+  "timestamp": "2025-09-26T17:35:51.350175+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the BalanceService interface and its implementation for managing portfolio balance and NFT items.",
+    "key_types": [
+      "BalanceService",
+      "balanceService",
+      "GetPortfolioBalance"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

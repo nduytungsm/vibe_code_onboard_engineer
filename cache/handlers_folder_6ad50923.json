@@ -1,9 +1,9 @@
 {
-  "content_hash": "1277780439af068827a235371db1d173",
-  "timestamp": "2025-09-26T14:59:51.805512+07:00",
+  "content_hash": "30f046770bd54a048b481f0626d6192e",
+  "timestamp": "2025-09-26T17:42:03.393947+07:00",
   "result": {
     "path": "internal/domains/quest/handlers",
-    "purpose": "Defines HTTP handlers for managing quests, events, rewards, and user interactions in a gaming web service.",
+    "purpose": "Defines HTTP handlers for managing quests, events, rewards, and related operations in a gaming application and web service.",
     "languages": {
       "Go": 8
     },
@@ -18,7 +18,7 @@
       "user.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing HTTP handlers by domain functionality related to quests and user interactions.",
+    "architecture": "The folder follows a modular architecture pattern, organizing HTTP handlers by domain functionality related to quests and events.",
     "file_summaries": {
       "internal/domains/quest/handlers/events.go": {
         "language": "Go",
@@ -70,7 +70,7 @@
       },
       "internal/domains/quest/handlers/quest_action.go": {
         "language": "Go",
-        "purpose": "Defines HTTP handlers for quest actions in a web service.",
+        "purpose": "Defines HTTP handlers for quest-related actions in a web service.",
         "key_types": [
           "InternalActionHandler",
           "ActionHandler",
@@ -106,7 +106,7 @@
       },
       "internal/domains/quest/handlers/user.go": {
         "language": "Go",
-        "purpose": "Handles user-related operations for quests, rewards, and events in a web service.",
+        "purpose": "Handles user-related operations for quests, rewards, and events in the application.",
         "key_types": [
           "InternalUserHandler",
           "PublicUserHandler",

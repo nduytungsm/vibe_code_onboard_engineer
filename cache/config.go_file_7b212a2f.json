@@ -1,0 +1,14 @@
+{
+  "content_hash": "bb4653942f8c2b70a46e79b65ce3b27f",
+  "timestamp": "2025-09-26T17:35:11.175787+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration structures for the antenna service in the Ronin Wallet application.",
+    "key_types": [
+      "config"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

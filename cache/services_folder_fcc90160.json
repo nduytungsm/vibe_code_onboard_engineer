@@ -1,9 +1,9 @@
 {
-  "content_hash": "5f04c1b6d38fe2b7ad6d555516aa350a",
-  "timestamp": "2025-09-26T15:07:45.399221+07:00",
+  "content_hash": "eb00bcdf43998cf42ccb88df707cd029",
+  "timestamp": "2025-09-26T17:41:27.82556+07:00",
   "result": {
     "path": "internal/domains/web3/services",
-    "purpose": "Responsible for providing services related to decoding Ethereum transactions and managing digital signatures.",
+    "purpose": "Responsible for providing services related to Ethereum transactions, including decoding, normalizing parameters, managing digital signatures, and monitoring service performance.",
     "languages": {
       "Go": 5
     },
@@ -14,8 +14,10 @@
       "metrics.go",
       "signature.go"
     ],
-    "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating services related to Ethereum transaction decoding and signature management, with a focus on maintainability and testability.",
+    "dependencies": [
+      "Prometheus"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, with each file encapsulating specific functionalities related to web3 services, promoting separation of concerns and maintainability.",
     "file_summaries": {
       "internal/domains/web3/services/decoder.go": {
         "language": "Go",
@@ -43,7 +45,7 @@
       },
       "internal/domains/web3/services/decoder_test.go": {
         "language": "Go",
-        "purpose": "Unit tests for decoding Ethereum call signatures and associated data.",
+        "purpose": "Unit tests for decoding call signatures in a web3 service.",
         "key_types": [
           "decoderSignature",
           "decodeCallTestcase",
@@ -55,7 +57,7 @@
       },
       "internal/domains/web3/services/metrics.go": {
         "language": "Go",
-        "purpose": "Defines metrics for monitoring service performance in a wallet proxy application using Prometheus.",
+        "purpose": "Defines metrics for monitoring service performance using Prometheus.",
         "key_types": [
           "observeServiceFn",
           "histogramVec",
@@ -70,8 +72,8 @@
         "purpose": "Provides a service for managing digital signatures in a web3 context.",
         "key_types": [
           "SignatureService",
-          "signatureService",
-          "Upsert"
+          "Upsert",
+          "Find"
         ],
         "functions": null,
         "imports": null,

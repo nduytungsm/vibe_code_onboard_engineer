@@ -1,0 +1,16 @@
+{
+  "content_hash": "838a053b531876a5d73ed4e110e702f1",
+  "timestamp": "2025-09-26T17:09:35.520087+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines enum types and creates tables for a discovery center feature in a database.",
+    "key_types": [
+      "discovery_layouts",
+      "discovery_widgets",
+      "discovery_widget_items"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

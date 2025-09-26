@@ -1,0 +1,16 @@
+{
+  "content_hash": "9d5c67fd199052c57e5727999aff6586",
+  "timestamp": "2025-09-26T17:07:30.068446+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file sets up dependency injection for the push notification application using Google Wire.",
+    "key_types": [
+      "wirePushNotificationApp",
+      "provideSugarLogger",
+      "provideHttpServer"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

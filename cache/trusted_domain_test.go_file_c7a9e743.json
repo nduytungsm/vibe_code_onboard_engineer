@@ -1,0 +1,14 @@
+{
+  "content_hash": "fd491be533cd77787ae492c3ee73a04e",
+  "timestamp": "2025-09-26T17:08:13.625802+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the generateWildcardDomains function.",
+    "key_types": [
+      "Test_generateWildcardDomains"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "content_hash": "af1b4708ad01051bfd5ccafa77879634",
+  "timestamp": "2025-09-26T17:25:57.502878+07:00",
+  "result": {
+    "path": "docs",
+    "purpose": "Contains configuration files for the HTTP client environment.",
+    "languages": {
+      "JSON": 1
+    },
+    "key_modules": [
+      "http-client.env.json"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a simple configuration pattern, storing environment-specific settings in JSON format.",
+    "file_summaries": {
+      "docs/http-client.env.json": {
+        "language": "JSON",
+        "purpose": "Defines environment configuration for an HTTP client in development.",
+        "key_types": [],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

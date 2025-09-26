@@ -1,0 +1,16 @@
+{
+  "content_hash": "8e4a47acfc482122127c7cef219431dc",
+  "timestamp": "2025-09-26T17:08:25.502787+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides helper functions for validating and checking duplicates in widget layouts for discovery handlers.",
+    "key_types": [
+      "isWidgetDuplicated",
+      "isWidgetItemDuplicated",
+      "validateWidgetLogic"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

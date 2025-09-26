@@ -1,0 +1,14 @@
+{
+  "content_hash": "496af74a41ec3d8b8c85a8b2aa7567a3",
+  "timestamp": "2025-09-26T17:09:09.246812+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Verifies wallet check-in actions for user quests.",
+    "key_types": [
+      "verifyWalletCheckInProxy"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "content_hash": "e341609c3e669b68e572abcc9b3a8622",
+  "timestamp": "2025-09-26T17:26:52.204242+07:00",
+  "result": {
+    "path": "cmd/clean_old_special_offers",
+    "purpose": "Cleans old special offers from the database based on a configurable retention period.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a simple command-line application architecture, focusing on a single responsibility of cleaning up old data.",
+    "file_summaries": {
+      "cmd/clean_old_special_offers/main.go": {
+        "language": "Go",
+        "purpose": "Cleans old special offers from the database based on a configurable retention period.",
+        "key_types": [
+          "main"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

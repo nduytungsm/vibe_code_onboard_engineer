@@ -1,0 +1,16 @@
+{
+  "content_hash": "965e9d13d630675ae7c9b5fe39a60505",
+  "timestamp": "2025-09-26T17:35:20.255705+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file sets up dependency injection for the task scheduler application using Google Wire.",
+    "key_types": [
+      "wireTaskScheduler",
+      "provideScheduler",
+      "provideHttpServer"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

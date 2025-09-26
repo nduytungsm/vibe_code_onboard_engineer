@@ -1,0 +1,16 @@
+{
+  "content_hash": "63a0e6968b893a3d5db132143fc4d60f",
+  "timestamp": "2025-09-26T17:08:40.762916+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a client interface and configuration for interacting with a waypoint service.",
+    "key_types": [
+      "Client interface",
+      "Config struct",
+      "cli struct"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

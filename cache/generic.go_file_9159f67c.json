@@ -1,0 +1,16 @@
+{
+  "content_hash": "ea4d65e448d90cea32bb33d9f42da40b",
+  "timestamp": "2025-09-26T17:36:45.541805+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides generic discovery services for handling images and social platform interactions.",
+    "key_types": [
+      "NewGenericService",
+      "ProvideCollect",
+      "error handling"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

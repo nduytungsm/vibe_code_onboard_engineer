@@ -1,9 +1,9 @@
 {
-  "content_hash": "3c48ca8d43f2ada5bcbda4b86660d103",
-  "timestamp": "2025-09-26T15:05:13.978301+07:00",
+  "content_hash": "3f767e7d8c4ef4ee81d22538952d0a79",
+  "timestamp": "2025-09-26T17:38:25.077409+07:00",
   "result": {
     "path": "internal/domains/devicemanager/repos",
-    "purpose": "Responsible for managing device data in a database through repository interfaces and models.",
+    "purpose": "Responsible for managing device data through repository interfaces and models.",
     "languages": {
       "Go": 2
     },
@@ -12,7 +12,7 @@
       "models.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a repository pattern, encapsulating data access logic and providing a clear interface for device management.",
+    "architecture": "The folder follows a repository pattern, encapsulating data access logic and providing an interface for device management.",
     "file_summaries": {
       "internal/domains/devicemanager/repos/device.go": {
         "language": "Go",
@@ -28,11 +28,11 @@
       },
       "internal/domains/devicemanager/repos/models.go": {
         "language": "Go",
-        "purpose": "Defines the device model and conversion functions for the device manager domain.",
+        "purpose": "Defines the device model and conversion functions for the device manager.",
         "key_types": [
           "device struct",
-          "ToMap function",
-          "fromDevice function"
+          "ToMap()",
+          "fromDevice()"
         ],
         "functions": null,
         "imports": null,

@@ -1,0 +1,16 @@
+{
+  "content_hash": "f93d5ea8b4c7351bada1e23c58891a5e",
+  "timestamp": "2025-09-26T17:35:17.496674+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines HTTP route groups for private and public proxy services in a wallet application.",
+    "key_types": [
+      "PrivateGroup",
+      "PublicGroup",
+      "NewPrivateGroup"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

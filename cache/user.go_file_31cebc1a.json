@@ -1,0 +1,16 @@
+{
+  "content_hash": "e51a0c92296e244bf1dc0e5bca6ebe8d",
+  "timestamp": "2025-09-26T17:36:41.450085+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a user repository interface and its implementation for database operations related to users.",
+    "key_types": [
+      "UserRepo interface",
+      "userRepo struct",
+      "NewUserRepo function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

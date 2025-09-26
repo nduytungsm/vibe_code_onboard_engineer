@@ -1,0 +1,16 @@
+{
+  "content_hash": "357912c6296cf823ac1c5291b645a186",
+  "timestamp": "2025-09-26T17:24:51.820627+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the Highlight model and related structures for managing highlight data.",
+    "key_types": [
+      "Highlight",
+      "InternalHighlightResponse",
+      "ToInternalResponse"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

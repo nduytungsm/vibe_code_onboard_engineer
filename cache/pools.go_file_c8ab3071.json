@@ -1,0 +1,16 @@
+{
+  "content_hash": "a902ebc23c41c21fd1a97d7a2e2df52b",
+  "timestamp": "2025-09-26T17:09:02.671922+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides services for managing quest pools in a gaming context.",
+    "key_types": [
+      "PoolSvc interface",
+      "poolSvc struct",
+      "NewPoolSvc function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

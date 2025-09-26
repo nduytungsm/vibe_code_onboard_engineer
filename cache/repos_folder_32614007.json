@@ -1,6 +1,6 @@
 {
-  "content_hash": "1444d1c43c8603609e744252c883e810",
-  "timestamp": "2025-09-26T15:04:12.091887+07:00",
+  "content_hash": "83ce40eda9fc5a76043018a5ce5618ac",
+  "timestamp": "2025-09-26T17:41:01.951584+07:00",
   "result": {
     "path": "internal/domains/trusted-domain/repos",
     "purpose": "Responsible for managing trusted domains in a database using GORM.",
@@ -12,7 +12,7 @@
       "trusted_domain_model.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a repository pattern, encapsulating data access logic and providing a clear interface for interacting with trusted domain data.",
+    "architecture": "The folder follows a repository pattern, encapsulating database interactions for trusted domains.",
     "file_summaries": {
       "internal/domains/trusted-domain/repos/trusted_domain.go": {
         "language": "Go",
@@ -28,7 +28,7 @@
       },
       "internal/domains/trusted-domain/repos/trusted_domain_model.go": {
         "language": "Go",
-        "purpose": "Defines the trustedDomain model and functions to convert it to a TrustedDomain model for use in the application.",
+        "purpose": "Defines the trustedDomain model and conversion functions for database interactions.",
         "key_types": [
           "trustedDomain",
           "fromDBTrustedDomain",

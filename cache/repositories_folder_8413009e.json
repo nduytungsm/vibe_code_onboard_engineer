@@ -1,0 +1,158 @@
+{
+  "content_hash": "afff2e0549f8466463e4c854ebbbafef",
+  "timestamp": "2025-09-26T17:26:56.146357+07:00",
+  "result": {
+    "path": "repositories",
+    "purpose": "This folder contains repository interfaces and implementations for managing various entities in the application, including announcements, code versions, contracts, and user preferences.",
+    "languages": {
+      "Go": 11
+    },
+    "key_modules": [
+      "announcement.go",
+      "code_version.go",
+      "common.go",
+      "contract.go",
+      "dapp.go",
+      "highlight.go",
+      "init.go",
+      "network.go",
+      "preference.go",
+      "quickaccess.go",
+      "trusted_domain.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a repository pattern, encapsulating data access logic and providing a clean interface for interacting with the underlying data sources.",
+    "file_summaries": {
+      "repositories/announcement.go": {
+        "language": "Go",
+        "purpose": "This file defines the repository interface for managing announcements in the application.",
+        "key_types": [
+          "AnnouncementRepo",
+          "AddNew",
+          "GetAnnouncementByID"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "repositories/code_version.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing code version records in a database.",
+        "key_types": [
+          "CodeVersionRepo",
+          "GetAllCodeVersions",
+          "SaveVersion"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "repositories/common.go": {
+        "language": "Go",
+        "purpose": "Defines a repository interface and implementation for managing common entities in a database.",
+        "key_types": [
+          "CommonRepo",
+          "GetAllCommons",
+          "SaveCommons"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "repositories/contract.go": {
+        "language": "Go",
+        "purpose": "Defines a repository interface and implementation for managing contract data in a database.",
+        "key_types": [
+          "ContractRepo interface",
+          "contractRepo struct",
+          "CreateContract method"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "repositories/dapp.go": {
+        "language": "Go",
+        "purpose": "Defines a repository interface and implementation for managing decentralized application (DApp) data.",
+        "key_types": [
+          "DAppRepo interface",
+          "dAppRepo struct",
+          "CreateDApp function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "repositories/highlight.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing highlights in a database using GORM.",
+        "key_types": [
+          "HighlightRepo",
+          "highlightRepo",
+          "GetList"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "repositories/init.go": {
+        "language": "Go",
+        "purpose": "Provides pagination functionality for database queries using GORM.",
+        "key_types": [
+          "paginate"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "repositories/network.go": {
+        "language": "Go",
+        "purpose": "Defines a repository interface and implementation for managing network data in a database.",
+        "key_types": [
+          "NetworkRepo interface",
+          "networkRepo struct",
+          "GetNetwork function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "repositories/preference.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing user preferences in a database using GORM.",
+        "key_types": [
+          "PreferenceRepo",
+          "prefRepo",
+          "GetByAddress"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "repositories/quickaccess.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository interface and implementation for managing Quick Access DApps in a database.",
+        "key_types": [
+          "QuickAccessDAppRepo",
+          "quickAccessDAppRepo",
+          "GetList"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "repositories/trusted_domain.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository interface and implementation for managing trusted domains in a database.",
+        "key_types": [
+          "TrustedDomainRepo",
+          "trustedDomainsRepo",
+          "GetByDomain"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

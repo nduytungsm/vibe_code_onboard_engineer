@@ -1,0 +1,15 @@
+{
+  "content_hash": "0c2dc9d0df877456a0dccd108fb571c4",
+  "timestamp": "2025-09-26T17:09:39.099753+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to modify database schema and create new tables for a quest and event management system.",
+    "key_types": [
+      "ALTER TABLE",
+      "CREATE TABLE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

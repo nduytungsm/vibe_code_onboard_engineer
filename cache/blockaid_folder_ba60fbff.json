@@ -1,9 +1,9 @@
 {
-  "content_hash": "91341b4bbbcf695836d7f971234869ae",
-  "timestamp": "2025-09-26T15:04:15.670541+07:00",
+  "content_hash": "3a420fc9c659453bd63d01b67e484aa8",
+  "timestamp": "2025-09-26T17:38:45.862507+07:00",
   "result": {
     "path": "internal/infras/blockaid",
-    "purpose": "This folder/module is responsible for providing a client and configuration setup for interacting with the BlockAid API and handling blockchain asset validation.",
+    "purpose": "This folder/module is responsible for providing client configuration and interaction with the BlockAid API and blockchain RPC services.",
     "languages": {
       "Go": 4
     },
@@ -14,11 +14,11 @@
       "models_test.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to the BlockAid API and blockchain interactions within distinct files, promoting separation of concerns.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to BlockAid API interactions and blockchain asset validation within distinct files.",
     "file_summaries": {
       "internal/infras/blockaid/blockaid.go": {
         "language": "Go",
-        "purpose": "This file provides a configuration and client setup for interacting with the BlockAid API.",
+        "purpose": "This file provides a client configuration and initialization for interacting with the BlockAid API.",
         "key_types": [
           "Config",
           "NewBlockAidClient",
@@ -30,7 +30,7 @@
       },
       "internal/infras/blockaid/client.go": {
         "language": "Go",
-        "purpose": "Implements a client for interacting with a blockchain RPC service.",
+        "purpose": "Defines a client for interacting with a blockchain RPC service.",
         "key_types": [
           "Client interface",
           "NewClient function",

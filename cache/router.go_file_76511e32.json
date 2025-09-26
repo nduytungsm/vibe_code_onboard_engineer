@@ -1,0 +1,16 @@
+{
+  "content_hash": "c66d2f2e9aee8052c70059424be30491",
+  "timestamp": "2025-09-26T17:35:33.893745+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the DexRouterService interface and its implementation for routing in a decentralized exchange.",
+    "key_types": [
+      "DexRouterService",
+      "DexRouterConfig",
+      "NewDexRouterService"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

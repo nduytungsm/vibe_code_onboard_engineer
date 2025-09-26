@@ -1,0 +1,16 @@
+{
+  "content_hash": "61f78cf2281e7d968bf4247fe0983271",
+  "timestamp": "2025-09-26T17:08:17.368288+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository interface and implementation for managing Ethereum signatures in a PostgreSQL database.",
+    "key_types": [
+      "SignatureRepo",
+      "pgSignatureRepo",
+      "Find"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "ff0d887ac9adcd0137a77a253b314ac4",
+  "timestamp": "2025-09-26T17:37:27.765273+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to update the events table and create related tables for event sponsorships and user interactions.",
+    "key_types": [
+      "ALTER TABLE",
+      "CREATE TABLE",
+      "UPDATE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

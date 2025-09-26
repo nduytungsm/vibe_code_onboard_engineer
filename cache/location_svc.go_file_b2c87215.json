@@ -1,0 +1,16 @@
+{
+  "content_hash": "26addd870b8868be73de2acaf92968f2",
+  "timestamp": "2025-09-26T17:25:04.664833+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service for retrieving location information based on IP addresses and downloading a database of IP locations.",
+    "key_types": [
+      "Service",
+      "GetLocationByIP",
+      "DownloadNewDB"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

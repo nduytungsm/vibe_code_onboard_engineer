@@ -1,9 +1,9 @@
 {
-  "content_hash": "346327b22badea8d6449fdbb073eecd4",
-  "timestamp": "2025-09-26T15:00:08.86662+07:00",
+  "content_hash": "563f680c7166ab58d40b3e7e54abd024",
+  "timestamp": "2025-09-26T17:43:53.644953+07:00",
   "result": {
     "path": "internal/infras/turnstile",
-    "purpose": "Responsible for implementing the client and models for verifying turnstile challenges.",
+    "purpose": "Responsible for handling turnstile verification challenges and related models.",
     "languages": {
       "Go": 2
     },
@@ -12,11 +12,11 @@
       "models.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to turnstile verification in separate files.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to turnstile verification in separate files for clients and models.",
     "file_summaries": {
       "internal/infras/turnstile/client.go": {
         "language": "Go",
-        "purpose": "Client implementation for verifying turnstile challenges.",
+        "purpose": "Client for verifying turnstile challenges using a specified configuration.",
         "key_types": [
           "Config",
           "Client",

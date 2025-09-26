@@ -1,0 +1,16 @@
+{
+  "content_hash": "6527920b58a597672d0bc513e3636bd6",
+  "timestamp": "2025-09-26T17:08:29.511566+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles user quest operations including taking quests and exporting audit results.",
+    "key_types": [
+      "UserQuest interface",
+      "ExportAuditResult",
+      "TakeQuest"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

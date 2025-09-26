@@ -1,0 +1,16 @@
+{
+  "content_hash": "cfec915755a8bfe46ca0f6b7d6df7332",
+  "timestamp": "2025-09-26T17:08:08.478557+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines a decoded representation of a smart contract function call for a token transfer.",
+    "key_types": [
+      "function",
+      "params",
+      "signature"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

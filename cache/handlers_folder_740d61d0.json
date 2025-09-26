@@ -1,6 +1,6 @@
 {
-  "content_hash": "33849fd091a78ed245f314a65c043e3f",
-  "timestamp": "2025-09-26T15:05:27.098111+07:00",
+  "content_hash": "08a213bb07f0a3ca31acbea8695dbffc",
+  "timestamp": "2025-09-26T17:42:58.417469+07:00",
   "result": {
     "path": "mocks/handlers",
     "purpose": "This folder contains mock implementations of various interfaces for testing purposes.",
@@ -18,7 +18,7 @@
       "user_reward.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, where each file provides a mock implementation of a specific interface, facilitating unit testing.",
+    "architecture": "The folder follows a modular architecture pattern, where each file represents a mock implementation of a specific interface, facilitating isolated testing.",
     "file_summaries": {
       "mocks/handlers/quest.go": {
         "language": "Go",
@@ -30,7 +30,7 @@
         ],
         "functions": null,
         "imports": null,
-        "complexity": "low"
+        "complexity": "medium"
       },
       "mocks/handlers/quest_action.go": {
         "language": "Go",
@@ -58,7 +58,7 @@
       },
       "mocks/handlers/reward.go": {
         "language": "Go",
-        "purpose": "This file provides a mock implementation of the Reward type for testing purposes.",
+        "purpose": "This file defines a mock implementation of the Reward interface for testing purposes.",
         "key_types": [
           "Reward",
           "Reward_Expecter",
@@ -70,7 +70,7 @@
       },
       "mocks/handlers/sponsor.go": {
         "language": "Go",
-        "purpose": "This file defines a mock implementation of the Sponsor interface for testing purposes.",
+        "purpose": "This file provides a mock implementation of the Sponsor interface for testing purposes.",
         "key_types": [
           "Sponsor",
           "Sponsor_Expecter",
@@ -94,7 +94,7 @@
       },
       "mocks/handlers/user_quest.go": {
         "language": "Go",
-        "purpose": "This file provides a mock implementation for the UserQuest interface, enabling testing of its methods.",
+        "purpose": "This file defines a mock implementation for the UserQuest interface used in testing.",
         "key_types": [
           "UserQuest",
           "UserQuest_Expecter",
@@ -106,7 +106,7 @@
       },
       "mocks/handlers/user_reward.go": {
         "language": "Go",
-        "purpose": "This file defines a mock implementation of the UserReward interface for testing purposes.",
+        "purpose": "This file defines a mock implementation for the UserReward type used in testing.",
         "key_types": [
           "UserReward",
           "UserReward_Expecter",

@@ -1,9 +1,9 @@
 {
-  "content_hash": "6a38ef9b95f442a670cb40c590cbd452",
-  "timestamp": "2025-09-26T15:06:22.694549+07:00",
+  "content_hash": "dae6917ebfcb8a85e0d18f4ee65fbabd",
+  "timestamp": "2025-09-26T17:41:48.662668+07:00",
   "result": {
     "path": "internal/infras/indexer",
-    "purpose": "Responsible for providing a GraphQL client and defining request/response structures for querying staked amounts by user addresses.",
+    "purpose": "This folder/module is responsible for implementing a GraphQL client and defining request/response structures for fetching staked amounts of Ronin tokens by user address.",
     "languages": {
       "Go": 2
     },
@@ -12,11 +12,11 @@
       "models.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to GraphQL interactions and data modeling.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the GraphQL client and data models in separate files for better organization and maintainability.",
     "file_summaries": {
       "internal/infras/indexer/client.go": {
         "language": "Go",
-        "purpose": "Provides a GraphQL client for fetching staked RON amounts for user addresses.",
+        "purpose": "This file implements a GraphQL client for fetching staked amounts of Ronin tokens by user address.",
         "key_types": [
           "Config",
           "Client",

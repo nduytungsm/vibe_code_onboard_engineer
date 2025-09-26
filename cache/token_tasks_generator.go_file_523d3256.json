@@ -1,0 +1,16 @@
+{
+  "content_hash": "dcae3c56c1ae7eecd912c667f4e5a9c2",
+  "timestamp": "2025-09-26T17:08:11.783841+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates and handles token tasks for a proxy service using asynchronous job processing.",
+    "key_types": [
+      "TokenTaskGeneratorTaskHandler",
+      "NewTokenTaskGeneratorTaskHandler",
+      "tokenTaskGeneratorTaskConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

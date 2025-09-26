@@ -1,0 +1,16 @@
+{
+  "content_hash": "4ad7711ec32eed84984adaec2705d35a",
+  "timestamp": "2025-09-26T17:24:49.147736+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for common structures used in the application.",
+    "key_types": [
+      "Common",
+      "SupportURL",
+      "KnownContract"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

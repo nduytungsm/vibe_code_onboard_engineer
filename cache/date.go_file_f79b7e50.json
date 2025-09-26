@@ -1,0 +1,15 @@
+{
+  "content_hash": "a3e2ec7b5ef985c587a4b8b070412efe",
+  "timestamp": "2025-09-26T17:35:25.635996+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides utility functions for date manipulation in UTC.",
+    "key_types": [
+      "DateUTC",
+      "NumDaysBetweenTime"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

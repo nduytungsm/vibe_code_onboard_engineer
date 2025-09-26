@@ -1,0 +1,16 @@
+{
+  "content_hash": "3ecf83f5cc229a955a54096fc4c6b1f0",
+  "timestamp": "2025-09-26T17:36:20.573758+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Unit tests for the Katana client functionality.",
+    "key_types": [
+      "TestKatanaClient",
+      "NewClient",
+      "GetQuote"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

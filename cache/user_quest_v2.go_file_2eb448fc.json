@@ -1,0 +1,16 @@
+{
+  "content_hash": "073123ba4d69e446479bdd6e0b5451bd",
+  "timestamp": "2025-09-26T17:08:23.22728+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines user quest status enums and related functionalities for quest management.",
+    "key_types": [
+      "UserQuestStatus",
+      "UserQuestStatusFromStr",
+      "UserQuestFilter"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

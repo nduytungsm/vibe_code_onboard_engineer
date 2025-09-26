@@ -1,0 +1,15 @@
+{
+  "content_hash": "cd9b71c4921a98ab95dd88a7562d113f",
+  "timestamp": "2025-09-26T17:09:20.059638+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles loading and parsing of cryptographic keys and certificates from byte arrays.",
+    "key_types": [
+      "CertFromP12Bytes",
+      "KeyFromP8Bytes"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

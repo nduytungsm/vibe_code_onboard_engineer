@@ -1,0 +1,15 @@
+{
+  "content_hash": "c0ede333cbc6809c937e6c84490093b1",
+  "timestamp": "2025-09-26T17:36:33.79885+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the PointTrackerEntity model for tracking user points in a database.",
+    "key_types": [
+      "PointTrackerEntity",
+      "TableName"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

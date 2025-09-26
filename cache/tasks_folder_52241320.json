@@ -1,9 +1,9 @@
 {
-  "content_hash": "9fe07476ad98fc9144635c3ae894f2c2",
-  "timestamp": "2025-09-26T15:01:42.751224+07:00",
+  "content_hash": "5f4b55346bf297d9ef49bb6df3d98311",
+  "timestamp": "2025-09-26T17:37:49.03904+07:00",
   "result": {
     "path": "internal/domains/proxy/tasks",
-    "purpose": "Responsible for managing and processing token-related tasks for a proxy service, including crawling and task generation with rate limiting.",
+    "purpose": "Responsible for managing and processing token-related tasks for a proxy service, including crawling and generating tasks with rate limiting.",
     "languages": {
       "Go": 3
     },
@@ -13,7 +13,7 @@
       "tokens.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, with separate files handling distinct aspects of token task management and processing.",
+    "architecture": "The folder follows a modular architecture pattern, focusing on task handling and processing with asynchronous capabilities.",
     "file_summaries": {
       "internal/domains/proxy/tasks/skynet_tokens.go": {
         "language": "Go",
@@ -29,7 +29,7 @@
       },
       "internal/domains/proxy/tasks/token_tasks_generator.go": {
         "language": "Go",
-        "purpose": "Generates and manages token tasks for processing in an asynchronous queue.",
+        "purpose": "Generates and manages token tasks for a proxy service using asynchronous processing.",
         "key_types": [
           "TokenTaskGeneratorTaskHandler",
           "NewTokenTaskGeneratorTaskHandler",

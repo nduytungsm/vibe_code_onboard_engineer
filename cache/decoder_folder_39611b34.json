@@ -1,9 +1,9 @@
 {
-  "content_hash": "0ec0210e3b4ef682736a7a6a147582a9",
-  "timestamp": "2025-09-26T15:00:42.174336+07:00",
+  "content_hash": "4788b2bda7d2ea8b24e118b0e48e7aab",
+  "timestamp": "2025-09-26T17:43:15.073906+07:00",
   "result": {
     "path": "internal/domains/proxy/services/testdata/decoder",
-    "purpose": "This folder/module is responsible for defining and decoding representations of smart contract function calls and their associated signatures in a blockchain context.",
+    "purpose": "This folder/module is responsible for storing JSON files that contain decoded data and ABI signatures for smart contract function calls in a blockchain context.",
     "languages": {
       "JSON": 4
     },
@@ -14,11 +14,11 @@
       "decode_call_02_signature.json"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, organizing files by functionality related to decoding smart contract interactions and their signatures.",
+    "architecture": "The folder follows a modular architecture pattern, organizing files by function call types and their respective signatures, facilitating easy access and maintenance.",
     "file_summaries": {
       "internal/domains/proxy/services/testdata/decoder/decode_call_01_decoded.json": {
         "language": "JSON",
-        "purpose": "Defines a decoded representation of a smart contract function call for a token transfer.",
+        "purpose": "This file contains decoded data for a smart contract function call, specifically for a transfer function.",
         "key_types": [
           "function",
           "params",
@@ -32,7 +32,7 @@
         "language": "JSON",
         "purpose": "Defines the ABI and signatures for the Ethereum 'transfer' function.",
         "key_types": [
-          "transfer"
+          "function: transfer"
         ],
         "functions": null,
         "imports": null,

@@ -1,0 +1,82 @@
+{
+  "content_hash": "5b0debb26c3bd8324db643cd2b1df587",
+  "timestamp": "2025-09-26T17:25:22.75429+07:00",
+  "result": {
+    "path": "httpclient",
+    "purpose": "Responsible for defining various HTTP clients for interacting with different services and managing device-related operations.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "athena.go",
+      "device.go",
+      "internal_client.go",
+      "mercury.go",
+      "tracking.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, where each file defines a specific client or interface for handling HTTP requests related to different services.",
+    "file_summaries": {
+      "httpclient/athena.go": {
+        "language": "Go",
+        "purpose": "Defines an HTTP client for linking accounts with Athena service.",
+        "key_types": [
+          "AthenaClientCfg",
+          "Athena",
+          "athenaClient"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "httpclient/device.go": {
+        "language": "Go",
+        "purpose": "Defines a DeviceClient interface and its implementation for managing device-related operations via HTTP requests.",
+        "key_types": [
+          "DeviceClient",
+          "deviceClient",
+          "GetDeviceByID"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "httpclient/internal_client.go": {
+        "language": "Go",
+        "purpose": "Implements an internal HTTP client with HMAC authentication for secure API requests.",
+        "key_types": [
+          "InternalClientConfig",
+          "InternalClient",
+          "doRequestWithHMacAuth"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "httpclient/mercury.go": {
+        "language": "Go",
+        "purpose": "Implements a MercuryClient for sending notifications via HTTP.",
+        "key_types": [
+          "MercuryClient",
+          "mercuryClient",
+          "SendNotification"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "httpclient/tracking.go": {
+        "language": "Go",
+        "purpose": "This file implements a tracking client for sending tracking data to a specified URL using HTTP requests.",
+        "key_types": [
+          "TrackingClient",
+          "trackingClient",
+          "NewTracingClient"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

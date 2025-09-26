@@ -1,9 +1,9 @@
 {
-  "content_hash": "a8d1e89c1544eed5f54e5c86865c6ae7",
-  "timestamp": "2025-09-26T15:05:31.515504+07:00",
+  "content_hash": "258d138e0991c2a12840460513210591",
+  "timestamp": "2025-09-26T17:38:30.782676+07:00",
   "result": {
     "path": "cmd/wallet_manager",
-    "purpose": "Responsible for managing wallet operations and providing API endpoints for wallet services.",
+    "purpose": "Responsible for managing wallet operations, including configuration, routing, and dependency injection for the wallet manager application.",
     "languages": {
       "Go": 5
     },
@@ -17,7 +17,7 @@
     "dependencies": [
       "Google Wire"
     ],
-    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for managing components and services.",
+    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for better separation of concerns and easier testing.",
     "file_summaries": {
       "cmd/wallet_manager/config.go": {
         "language": "Go",
@@ -43,9 +43,10 @@
         "language": "Go",
         "purpose": "Defines route groups for public and private API endpoints in a wallet management service.",
         "key_types": [
+          "PublicGroup",
+          "PrivateGroup",
           "NewPrivateGroup",
-          "NewPublicGroup",
-          "PublicGroup"
+          "NewPublicGroup"
         ],
         "functions": null,
         "imports": null,

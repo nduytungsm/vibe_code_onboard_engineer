@@ -1,0 +1,16 @@
+{
+  "content_hash": "9d9d5852fe5a4c9540aeb428c2ea4616",
+  "timestamp": "2025-09-26T17:07:26.941044+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates dependency injection code for the consumer application using Wire.",
+    "key_types": [
+      "wireConsumerApp",
+      "provideContractsTracking",
+      "provideMetricsService"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

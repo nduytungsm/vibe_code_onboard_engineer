@@ -1,0 +1,17 @@
+{
+  "content_hash": "1a4ac8704c5beed3856c42eaee7a2c67",
+  "timestamp": "2025-09-26T17:09:40.325142+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines the complete schema for a shop including item types, categories, tiers, and items.",
+    "key_types": [
+      "shop_item_type",
+      "shop_categories",
+      "shop_item_tiers",
+      "shop_items"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

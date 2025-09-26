@@ -1,0 +1,16 @@
+{
+  "content_hash": "088d84bbdf2adc16c70be9dd1ca5d608",
+  "timestamp": "2025-09-26T17:36:06.876225+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines quest-related actions as an enumeration for a gaming application.",
+    "key_types": [
+      "QuestAction",
+      "IsValid()",
+      "QuestActionFromStr()"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

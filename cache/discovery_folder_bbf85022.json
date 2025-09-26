@@ -1,9 +1,9 @@
 {
-  "content_hash": "f4d37b9d5c8ad32bcae5c1e76294a1e7",
-  "timestamp": "2025-09-26T14:58:44.526552+07:00",
+  "content_hash": "44e92fff8ea3499b5f0dc06c7bde6b5c",
+  "timestamp": "2025-09-26T17:42:40.78174+07:00",
   "result": {
     "path": "internal/services/discovery",
-    "purpose": "Responsible for managing various discovery-related services including announcements, collections, contacts, events, banners, layouts, products, and tokens.",
+    "purpose": "This folder/module is responsible for managing various discovery services including announcements, collections, contacts, events, feature banners, home banners, layouts, products, service items, and trending tokens.",
     "languages": {
       "Go": 13
     },
@@ -23,15 +23,15 @@
       "token.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, with each file defining a specific service or functionality related to the discovery module.",
+    "architecture": "The folder follows a modular architecture pattern, where each file defines a specific service interface and its implementation, promoting separation of concerns and maintainability.",
     "file_summaries": {
       "internal/services/discovery/announcement.go": {
         "language": "Go",
-        "purpose": "Provides services for managing announcements and banners in the discovery module.",
+        "purpose": "This file defines the announcement service for managing banners and widget items in the discovery module.",
         "key_types": [
           "Announcement interface",
-          "ProvideAnnouncementService",
-          "error variables"
+          "ProvideAnnouncementService variable",
+          "Error variables"
         ],
         "functions": null,
         "imports": null,
@@ -39,7 +39,7 @@
       },
       "internal/services/discovery/collection.go": {
         "language": "Go",
-        "purpose": "Defines the Collection service for managing and retrieving collection data.",
+        "purpose": "Defines the collection service for managing and retrieving collection data.",
         "key_types": [
           "Collection interface",
           "collection struct",
@@ -51,7 +51,7 @@
       },
       "internal/services/discovery/contact.go": {
         "language": "Go",
-        "purpose": "Provides a contact service for managing layout contacts and widget items.",
+        "purpose": "Provides a service for managing contact-related operations in the discovery module.",
         "key_types": [
           "Contact interface",
           "contact struct",
@@ -62,8 +62,8 @@
         "complexity": "medium"
       },
       "internal/services/discovery/data.go": {
-        "language": "go",
-        "purpose": "Provides a data service to fetch collection statistics from an external API.",
+        "language": "Go",
+        "purpose": "Provides a data service for fetching collection statistics from an external API.",
         "key_types": [
           "DataServiceCfg",
           "Data",
@@ -99,7 +99,7 @@
       },
       "internal/services/discovery/generic.go": {
         "language": "Go",
-        "purpose": "Provides services for discovery-related functionalities including image handling and social platform management.",
+        "purpose": "Provides generic discovery services for handling images and social platform interactions.",
         "key_types": [
           "NewGenericService",
           "ProvideCollect",
@@ -123,7 +123,7 @@
       },
       "internal/services/discovery/home_banner.go": {
         "language": "Go",
-        "purpose": "Defines the HomeBanner service interface and its implementation for managing home banners in the discovery service.",
+        "purpose": "Defines the HomeBanner service interface and its implementation for managing home banners in the discovery module.",
         "key_types": [
           "HomeBanner interface",
           "homeBanner struct",
@@ -135,7 +135,7 @@
       },
       "internal/services/discovery/layout.go": {
         "language": "Go",
-        "purpose": "Defines services for managing layouts and widgets in a discovery context.",
+        "purpose": "Defines the layout service for managing layouts and widgets in the discovery module.",
         "key_types": [
           "Layout interface",
           "NewLayoutService function",
@@ -147,11 +147,11 @@
       },
       "internal/services/discovery/product.go": {
         "language": "Go",
-        "purpose": "Defines the product service for managing dapps and products in the discovery module.",
+        "purpose": "This file defines a service for managing products and dapps within the discovery module.",
         "key_types": [
           "Product interface",
-          "ProvideProductService variable",
-          "Error variables"
+          "NewProductService function",
+          "error variables"
         ],
         "functions": null,
         "imports": null,

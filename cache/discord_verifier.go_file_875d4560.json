@@ -1,0 +1,15 @@
+{
+  "content_hash": "417a30f9b6af9d8d13858701dc8b1024",
+  "timestamp": "2025-09-26T17:36:51.577976+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Verifies Discord user actions related to quests in a gaming service.",
+    "key_types": [
+      "verifyJoinProxy",
+      "findDiscordUserCache"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

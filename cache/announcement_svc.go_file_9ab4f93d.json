@@ -1,0 +1,16 @@
+{
+  "content_hash": "89b3e05946c5ecbbde43a4d6e6f6c4dc",
+  "timestamp": "2025-09-26T17:24:55.419306+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides services for managing announcements, including retrieval and validation.",
+    "key_types": [
+      "Service",
+      "GetByID",
+      "GetListAsAdmin"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

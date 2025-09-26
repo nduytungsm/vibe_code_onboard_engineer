@@ -1,0 +1,93 @@
+{
+  "content_hash": "37e90d4a32578a09cc995cf2220b7d02",
+  "timestamp": "2025-09-26T17:25:25.807234+07:00",
+  "result": {
+    "path": "migrations",
+    "purpose": "Responsible for managing database schema changes and updates through SQL migration scripts.",
+    "languages": {
+      "SQL": 6
+    },
+    "key_modules": [
+      "20230407150000_init.sql",
+      "20231005150000_add_announcement.sql",
+      "20240111120000_alter_preferences.sql",
+      "20240206110000_add_trusted_domain.sql",
+      "20240410140000_add_dapp_highlight.sql",
+      "20240808130000_alter_preferences.sql"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a sequential migration pattern where each file represents a specific change to the database schema, allowing for version control and rollback capabilities.",
+    "file_summaries": {
+      "migrations/20230407150000_init.sql": {
+        "language": "SQL",
+        "purpose": "Initializes database schema for networks and contracts with UUID support.",
+        "key_types": [
+          "networks table",
+          "contracts table",
+          "contract_type enum"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "migrations/20231005150000_add_announcement.sql": {
+        "language": "SQL",
+        "purpose": "Creates tables and indexes for managing announcements and special offers in a database.",
+        "key_types": [
+          "announcements",
+          "special_offers"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "migrations/20240111120000_alter_preferences.sql": {
+        "language": "SQL",
+        "purpose": "Modifies the preferences table by altering columns, adding constraints, and creating an index.",
+        "key_types": [
+          "ALTER TABLE",
+          "CREATE INDEX",
+          "DELETE"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "migrations/20240206110000_add_trusted_domain.sql": {
+        "language": "SQL",
+        "purpose": "Creates tables for trusted domains and quick access applications in the database.",
+        "key_types": [
+          "CREATE TABLE trusted_domains",
+          "CREATE TABLE quick_access_d_apps",
+          "CREATE INDEX idx_quick_access_d_apps_position"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "migrations/20240410140000_add_dapp_highlight.sql": {
+        "language": "SQL",
+        "purpose": "This file adds a new highlights table and modifies the quick_access_d_apps table for enhanced data handling.",
+        "key_types": [
+          "CREATE TABLE highlights",
+          "ALTER TABLE quick_access_d_apps",
+          "CREATE INDEX"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "migrations/20240808130000_alter_preferences.sql": {
+        "language": "SQL",
+        "purpose": "This file alters the preferences table by creating and dropping an index for the receive_news column.",
+        "key_types": [
+          "CREATE INDEX",
+          "DROP INDEX"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

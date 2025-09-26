@@ -1,0 +1,16 @@
+{
+  "content_hash": "e27bbe32753aa7c2739bfbcc684f0d65",
+  "timestamp": "2025-09-26T17:08:27.887614+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the Shop interface and its methods for managing shop categories, tiers, items, and user inventory.",
+    "key_types": [
+      "Shop interface",
+      "shop struct",
+      "NewShopHandler function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

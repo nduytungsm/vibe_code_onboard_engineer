@@ -1,9 +1,9 @@
 {
-  "content_hash": "c7916c6d095cf3f9d2b7f8085c632d5f",
-  "timestamp": "2025-09-26T15:04:36.608232+07:00",
+  "content_hash": "041ba19276c8a89db24a110bbf42d4c7",
+  "timestamp": "2025-09-26T17:43:43.167371+07:00",
   "result": {
     "path": "pkg/async-queue",
-    "purpose": "This folder/module is responsible for implementing an asynchronous queue system with features like client configuration, metrics tracking, rate limiting, and task handling.",
+    "purpose": "This folder/module is responsible for implementing an asynchronous queue system using Redis, including client configuration, task handling, rate limiting, and metrics tracking.",
     "languages": {
       "Go": 5
     },
@@ -19,7 +19,7 @@
       "Prometheus",
       "asynq"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating different functionalities related to asynchronous queue management, allowing for separation of concerns and easier maintenance.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating different functionalities related to asynchronous queue processing, with clear separation of concerns for client configuration, task handling, rate limiting, and metrics tracking.",
     "file_summaries": {
       "pkg/async-queue/client.go": {
         "language": "Go",
@@ -46,7 +46,7 @@
       },
       "pkg/async-queue/rate_limit.go": {
         "language": "Go",
-        "purpose": "Implements rate limiting for task handling in an asynchronous queue.",
+        "purpose": "Implements rate limiting for asynchronous task handling.",
         "key_types": [
           "RateLimitError",
           "IsRateLimitError",

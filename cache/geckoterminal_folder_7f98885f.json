@@ -1,9 +1,9 @@
 {
-  "content_hash": "c3c16000467ef09d10caabb8beb15e30",
-  "timestamp": "2025-09-26T14:59:59.999993+07:00",
+  "content_hash": "a4660361a4f94b0c35036ad630e14b62",
+  "timestamp": "2025-09-26T17:42:50.163613+07:00",
   "result": {
     "path": "internal/infras/geckoterminal",
-    "purpose": "This folder/module is responsible for interacting with the GeckoTerminal API and defining data models for the application.",
+    "purpose": "This folder/module is responsible for interacting with the Gecko terminal API to fetch pool data and trends, as well as defining data models for trading pool information.",
     "languages": {
       "Go": 2
     },
@@ -12,11 +12,11 @@
       "models.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating API client functionality and data models in separate files.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to the Gecko terminal API and its data models within dedicated files.",
     "file_summaries": {
       "internal/infras/geckoterminal/client.go": {
         "language": "Go",
-        "purpose": "This file defines a client for interacting with a GeckoTerminal API to retrieve pool and token data.",
+        "purpose": "This file defines a client for interacting with a Gecko terminal API to fetch pool data and trends.",
         "key_types": [
           "Config",
           "Client",
@@ -28,7 +28,7 @@
       },
       "internal/infras/geckoterminal/models.go": {
         "language": "Go",
-        "purpose": "Defines data models and types for the Gecko terminal application.",
+        "purpose": "Defines data models for handling trading pool information and time ranges in the geckoterminal package.",
         "key_types": [
           "TimeRange",
           "TrendingDimension",

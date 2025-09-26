@@ -1,0 +1,16 @@
+{
+  "content_hash": "da9c6fadb6dc819c473f766b2becd501",
+  "timestamp": "2025-09-26T17:08:44.79084+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an interface and implementation for managing event-related database operations.",
+    "key_types": [
+      "Event interface",
+      "event struct",
+      "NewEventRepo function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

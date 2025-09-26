@@ -1,0 +1,16 @@
+{
+  "content_hash": "6f152ba9dc1e85a14688e85bd3ba0d60",
+  "timestamp": "2025-09-26T17:35:31.743186+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles routing and requests for a decentralized exchange (DEX) service.",
+    "key_types": [
+      "DexRouterHandler",
+      "NewDexRouterHandler",
+      "Setup"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

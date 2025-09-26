@@ -1,6 +1,6 @@
 {
-  "content_hash": "79d172c1ed3be226e608af189a7e23df",
-  "timestamp": "2025-09-26T15:00:13.52151+07:00",
+  "content_hash": "2e51d73c84f656c41e71ce20fa071fcb",
+  "timestamp": "2025-09-26T17:10:35.044273+07:00",
   "result": {
     "path": "internal/infras/moralis",
     "purpose": "Responsible for defining the EVM client interface and data models for interacting with Moralis API endpoints and handling blockchain tokens.",
@@ -16,7 +16,7 @@
     "file_summaries": {
       "internal/infras/moralis/client.go": {
         "language": "Go",
-        "purpose": "Defines the EVM client interface and related configurations for interacting with Moralis API endpoints.",
+        "purpose": "Defines the EVM client interface and configuration for interacting with Moralis API endpoints.",
         "key_types": [
           "evmPathConfig",
           "EvmCli",

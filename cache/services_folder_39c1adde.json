@@ -1,9 +1,9 @@
 {
-  "content_hash": "4a30324139948ee86022ee717fe0b445",
-  "timestamp": "2025-09-26T15:03:39.372538+07:00",
+  "content_hash": "576f17528150a9c2aec3372a4253564c",
+  "timestamp": "2025-09-26T17:39:54.850771+07:00",
   "result": {
     "path": "internal/domains/proxy/services",
-    "purpose": "Responsible for providing various services related to user activity, balance management, AI processing, cryptocurrency data fetching, and decentralized application management within a proxy architecture.",
+    "purpose": "Responsible for providing various services related to user activity, balance management, AI processing, and interaction with external APIs in a blockchain context.",
     "languages": {
       "Go": 14
     },
@@ -23,7 +23,10 @@
       "token.go",
       "utils.go"
     ],
-    "dependencies": [],
+    "dependencies": [
+      "OpenAI API",
+      "CoinGecko API"
+    ],
     "architecture": "The folder follows a service-oriented architecture pattern, where each file defines a specific service interface and its implementation, facilitating modularity and separation of concerns.",
     "file_summaries": {
       "internal/domains/proxy/services/activity.go": {
@@ -64,7 +67,7 @@
       },
       "internal/domains/proxy/services/coingecko.go": {
         "language": "Go",
-        "purpose": "Defines the Coingecko service interface and its implementation for fetching cryptocurrency data.",
+        "purpose": "Defines a service for interacting with the CoinGecko API to retrieve cryptocurrency platform data and price charts.",
         "key_types": [
           "CoingeckoService",
           "NewCoingeckoService",
@@ -76,7 +79,7 @@
       },
       "internal/domains/proxy/services/config.go": {
         "language": "Go",
-        "purpose": "Defines configuration structures for various services including token management and caching settings.",
+        "purpose": "Defines configuration structures for various services including token, Coingecko, and CDN settings.",
         "key_types": [
           "Config"
         ],
@@ -86,7 +89,7 @@
       },
       "internal/domains/proxy/services/dapp.go": {
         "language": "Go",
-        "purpose": "Defines a service for managing decentralized application (DApp) sites, including retrieval, deletion, and scanning functionalities.",
+        "purpose": "Defines a service for managing decentralized application (DApp) sites including retrieval, deletion, and scanning.",
         "key_types": [
           "DAppService",
           "dappService",
@@ -98,7 +101,7 @@
       },
       "internal/domains/proxy/services/fiat.go": {
         "language": "Go",
-        "purpose": "Implements a service for retrieving fiat information related to tokens.",
+        "purpose": "Defines a service for retrieving fiat information related to tokens.",
         "key_types": [
           "FiatService",
           "fiatService",
@@ -134,7 +137,7 @@
       },
       "internal/domains/proxy/services/provider.go": {
         "language": "Go",
-        "purpose": "Defines a service for managing multi-chain providers in a proxy architecture.",
+        "purpose": "Defines a service for managing multi-chain providers based on chain ID and method.",
         "key_types": [
           "ProviderService",
           "providerMap",
@@ -145,7 +148,7 @@
         "complexity": "medium"
       },
       "internal/domains/proxy/services/rpc.go": {
-        "language": "go",
+        "language": "Go",
         "purpose": "Defines an RPC service for executing remote procedure calls.",
         "key_types": [
           "RpcService",
@@ -158,7 +161,7 @@
       },
       "internal/domains/proxy/services/simulate.go": {
         "language": "Go",
-        "purpose": "Implements a simulation service for processing RPC requests related to blockchain transactions.",
+        "purpose": "Provides a simulation service for processing RPC requests in a blockchain context.",
         "key_types": [
           "SimulationService",
           "blockaidSimulationService",
@@ -182,7 +185,7 @@
       },
       "internal/domains/proxy/services/utils.go": {
         "language": "Go",
-        "purpose": "Utility functions for managing and combining NFT items in a portfolio.",
+        "purpose": "Utility functions for handling NFT items in a portfolio.",
         "key_types": [
           "combineNftItems",
           "inlineSortNftItems"

@@ -1,9 +1,9 @@
 {
-  "content_hash": "778d945d273201c369f2d8cb3f3478ec",
-  "timestamp": "2025-09-26T15:07:09.308028+07:00",
+  "content_hash": "3df38575f786cf4aa02320de368739d7",
+  "timestamp": "2025-09-26T17:40:50.96236+07:00",
   "result": {
     "path": "cmd/consumer",
-    "purpose": "Responsible for initializing and managing the consumer service in a wallet application, including configuration and dependency injection.",
+    "purpose": "Responsible for the consumer service in a wallet application, handling configuration, initialization, and dependency injection.",
     "languages": {
       "Go": 4
     },
@@ -32,7 +32,7 @@
       },
       "cmd/consumer/main.go": {
         "language": "Go",
-        "purpose": "This file initializes and starts a consumer application with configuration and logging.",
+        "purpose": "Main entry point for the consumer application, initializing configuration, logging, and starting the app.",
         "key_types": [
           "main"
         ],

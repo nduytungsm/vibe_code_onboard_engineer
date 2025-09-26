@@ -1,0 +1,16 @@
+{
+  "content_hash": "58a8f059a6162fcf669a9ba24eb05660",
+  "timestamp": "2025-09-26T17:09:16.506406+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines caching interfaces and JSON codec for serialization in a cache system.",
+    "key_types": [
+      "Codec",
+      "Instance",
+      "CodecJson"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

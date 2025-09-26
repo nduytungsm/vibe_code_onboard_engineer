@@ -1,0 +1,16 @@
+{
+  "content_hash": "db6f8fb39b4a694eef56292c3aecd85f",
+  "timestamp": "2025-09-26T17:36:37.736486+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a repository for managing roles in a database using GORM.",
+    "key_types": [
+      "RoleRepository",
+      "roleRepository",
+      "NewRoleRepository"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

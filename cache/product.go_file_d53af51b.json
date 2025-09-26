@@ -1,0 +1,16 @@
+{
+  "content_hash": "95363ed8125d728f8a05bfd73fa4c854",
+  "timestamp": "2025-09-26T17:08:25.965856+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles product-related operations in the discovery module.",
+    "key_types": [
+      "Product interface",
+      "product struct",
+      "NewProductHandler function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

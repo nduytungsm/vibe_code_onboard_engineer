@@ -1,9 +1,9 @@
 {
-  "content_hash": "1519e086f1df323b3789b02acfc0099a",
-  "timestamp": "2025-09-26T15:07:51.248579+07:00",
+  "content_hash": "02d98e92f1c9de03bda0deff75f6056d",
+  "timestamp": "2025-09-26T17:43:51.310716+07:00",
   "result": {
     "path": "internal/domains/notification/models",
-    "purpose": "Responsible for defining models and constants related to notification types and handling in the notification domain.",
+    "purpose": "Responsible for defining models and types related to notification services, including push notifications and constants used in the domain.",
     "languages": {
       "Go": 4
     },
@@ -14,11 +14,11 @@
       "push.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating related functionalities and models for notifications in a dedicated directory.",
+    "architecture": "The folder follows a modular architecture pattern, organizing related models and constants for the notification domain in a cohesive manner.",
     "file_summaries": {
       "internal/domains/notification/models/apn.go": {
         "language": "Go",
-        "purpose": "Defines push notification types for APNs (Apple Push Notification service).",
+        "purpose": "Defines push notification types for Apple Push Notification service (APNs).",
         "key_types": [
           "EPushType",
           "PushTypeAlert",
@@ -29,7 +29,7 @@
         "complexity": "low"
       },
       "internal/domains/notification/models/const.go": {
-        "language": "go",
+        "language": "Go",
         "purpose": "Defines constants used in the notification domain.",
         "key_types": [],
         "functions": null,
@@ -40,7 +40,9 @@
         "language": "Go",
         "purpose": "Defines a message model for post notifications with methods for timestamp and idempotency key generation.",
         "key_types": [
-          "PostNotificationMessage"
+          "PostNotificationMessage",
+          "CreatedTime",
+          "GetIdempotencyKey"
         ],
         "functions": null,
         "imports": null,
@@ -48,7 +50,7 @@
       },
       "internal/domains/notification/models/push.go": {
         "language": "Go",
-        "purpose": "Defines models for push notification handling including recipients, payloads, and request structures.",
+        "purpose": "Defines models for push notification handling including recipient filters and payload structures.",
         "key_types": [
           "Recipient",
           "Payload",

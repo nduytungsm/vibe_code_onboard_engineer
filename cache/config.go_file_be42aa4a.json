@@ -1,0 +1,14 @@
+{
+  "content_hash": "843107e4bfb55e34a20f99af7eeea403",
+  "timestamp": "2025-09-26T17:07:24.141691+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the configuration structure for cron jobs in the application.",
+    "key_types": [
+      "cronJobConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

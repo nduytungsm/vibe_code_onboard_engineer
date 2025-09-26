@@ -1,0 +1,16 @@
+{
+  "content_hash": "b293ffdedd39f2eb1eb09b56fcd2a19f",
+  "timestamp": "2025-09-26T17:37:19.287135+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to update database schema and permissions related to audit roles and participant rewards.",
+    "key_types": [
+      "ALTER TYPE",
+      "UPDATE",
+      "ALTER TABLE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

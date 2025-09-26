@@ -1,6 +1,6 @@
 {
-  "content_hash": "5e7f482cb9b3e782a38c36ff649dff9e",
-  "timestamp": "2025-09-26T15:06:40.827677+07:00",
+  "content_hash": "690519ca0debbb0d7fe858dfdb44f82d",
+  "timestamp": "2025-09-26T17:41:08.004537+07:00",
   "result": {
     "path": "pkg/id-generator",
     "purpose": "Generates unique IDs using the Sonyflake algorithm.",
@@ -11,7 +11,7 @@
       "sonyflake.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the ID generation logic in a single file that implements the Sonyflake algorithm.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the ID generation logic within a single file that defines the necessary types and functions.",
     "file_summaries": {
       "pkg/id-generator/sonyflake.go": {
         "language": "Go",
@@ -19,7 +19,7 @@
         "key_types": [
           "IDGeneratorConfig",
           "IDGenerator",
-          "sonyflakeIDGenerator"
+          "NewIDGenerator"
         ],
         "functions": null,
         "imports": null,

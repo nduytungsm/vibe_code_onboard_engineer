@@ -1,0 +1,16 @@
+{
+  "content_hash": "9812c7778da3b85bfe468737e30017f6",
+  "timestamp": "2025-09-26T17:08:23.881801+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles event-related operations for discovery services.",
+    "key_types": [
+      "Event interface",
+      "event struct",
+      "NewEventHandler function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

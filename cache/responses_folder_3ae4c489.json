@@ -1,9 +1,9 @@
 {
-  "content_hash": "5a8529cff9566e4375f7e9cb2de96bf9",
-  "timestamp": "2025-09-26T15:07:34.922025+07:00",
+  "content_hash": "a988c467b33c2e1e83d04c37f7391b88",
+  "timestamp": "2025-09-26T17:11:43.857806+07:00",
   "result": {
     "path": "internal/domains/devicemanager/handlers/dtos/responses",
-    "purpose": "Defines data transfer objects for device management responses.",
+    "purpose": "Defines data transfer objects for device management responses including pagination.",
     "languages": {
       "Go": 1
     },
@@ -15,7 +15,7 @@
     "file_summaries": {
       "internal/domains/devicemanager/handlers/dtos/responses/device.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects for device management responses.",
+        "purpose": "Defines data transfer objects for device management responses including pagination.",
         "key_types": [
           "SliceResult",
           "Pagination"

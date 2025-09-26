@@ -1,0 +1,14 @@
+{
+  "content_hash": "40aa211865ffcf05fe4caac62c6c57fc",
+  "timestamp": "2025-09-26T17:35:38.235828+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the VersionEntity model for application version management.",
+    "key_types": [
+      "VersionEntity"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "7b168039896b950c6350479b9ab2bd12",
+  "timestamp": "2025-09-26T17:36:55.582483+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles sending alerts to Slack based on quest events.",
+    "key_types": [
+      "SlackAlertConfig",
+      "QuestAlertService",
+      "SendSlackAlert"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

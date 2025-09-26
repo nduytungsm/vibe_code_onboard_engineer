@@ -1,0 +1,41 @@
+{
+  "content_hash": "8effaf386f63b78db05d4e2a86e7bee1",
+  "timestamp": "2025-09-26T17:26:19.233872+07:00",
+  "result": {
+    "path": "pkg/moonpay",
+    "purpose": "Responsible for integrating with Moonpay services, including configuration and URL signing.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "config.go",
+      "service.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic related to Moonpay integration.",
+    "file_summaries": {
+      "pkg/moonpay/config.go": {
+        "language": "Go",
+        "purpose": "Defines the configuration structure for Moonpay integration.",
+        "key_types": [
+          "Config"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "pkg/moonpay/service.go": {
+        "language": "go",
+        "purpose": "Provides a service for signing URLs using a configuration.",
+        "key_types": [
+          "Service interface",
+          "service struct",
+          "SignURL method"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

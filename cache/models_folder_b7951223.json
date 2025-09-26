@@ -1,9 +1,9 @@
 {
-  "content_hash": "69ad7113b0238fabcfcb9f22240db0df",
-  "timestamp": "2025-09-26T15:02:16.886169+07:00",
+  "content_hash": "87c7d7d9b2ecdcf7a10ed88cd0af3101",
+  "timestamp": "2025-09-26T17:43:31.47264+07:00",
   "result": {
     "path": "internal/domains/antenna/models",
-    "purpose": "Defines data models related to blockchain events, notifications, tokens, and transfers.",
+    "purpose": "Defines data models related to blockchain events, notifications, and token management.",
     "languages": {
       "Go": 4
     },
@@ -39,8 +39,8 @@
         "complexity": "low"
       },
       "internal/domains/antenna/models/token.go": {
-        "language": "go",
-        "purpose": "Defines the RoninToken model with relevant attributes for a token.",
+        "language": "Go",
+        "purpose": "Defines the RoninToken model with attributes for a cryptocurrency token.",
         "key_types": [
           "RoninToken"
         ],

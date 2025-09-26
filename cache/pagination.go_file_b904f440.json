@@ -1,0 +1,16 @@
+{
+  "content_hash": "44a6b1194f92a11484aa35b8d94b7e14",
+  "timestamp": "2025-09-26T17:37:07.499619+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides pagination helper functions for calculating offsets and limits.",
+    "key_types": [
+      "CalOffsetLimit",
+      "FallbackPage",
+      "FallbackPageSize"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

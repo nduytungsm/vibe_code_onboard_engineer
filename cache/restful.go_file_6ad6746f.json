@@ -1,0 +1,16 @@
+{
+  "content_hash": "fe050ed63f2e1540e5e99325a6d9fa82",
+  "timestamp": "2025-09-26T17:09:10.246783+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a RESTful service with HTTP and metrics server integration.",
+    "key_types": [
+      "RestfulService",
+      "restfulService",
+      "RestfulConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

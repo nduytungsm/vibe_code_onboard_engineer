@@ -1,0 +1,14 @@
+{
+  "content_hash": "91f214b38c72ae9e73cbfbfa3b0dcf6b",
+  "timestamp": "2025-09-26T17:09:20.40159+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Extracts user addresses from a 2D slice of strings based on a minimum row count.",
+    "key_types": [
+      "ExtractUserAddresses"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}
