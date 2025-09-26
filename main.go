@@ -11,6 +11,7 @@ import (
 	"repo-explanation/cli"
 	"repo-explanation/controllers"
 	"repo-explanation/internal/database"
+	"repo-explanation/internal/detector"
 	"repo-explanation/internal/secrets"
 	"repo-explanation/routes"
 
@@ -32,6 +33,8 @@ func main() {
 		runSecretsExtraction(*path)
 	case "debug-db":
 		runDebugDB()
+	case "test-detection":
+		runDetectionTest(*path)
 	default:
 		fmt.Printf("Unknown mode: %s\n", *mode)
 		fmt.Println("Available modes: server, cli, debug-db")
@@ -412,4 +415,132 @@ func findMigrationDirectories(sqlFiles map[string]string) []string {
 	}
 	
 	return dirs
+}
+
+func runDetectionTest(projectPath string) {
+	if projectPath == "" {
+		fmt.Println("Please provide -path for detection testing")
+		return
+	}
+	
+	fmt.Printf("🧪 Testing project type detection for: %s\n", projectPath)
+	
+	// Use the project detector directly without full pipeline
+	// We'll mimic what the crawler does - discover files and read key ones
+	files, fileContents, err := discoverFilesForDetection(projectPath)
+	if err != nil {
+		fmt.Printf("❌ Error discovering files: %v\n", err)
+		return
+	}
+	
+	fmt.Printf("📁 Found %d files\n", len(files))
+	
+	// Use the detector directly
+	detector := detector.NewProjectDetector()
+	result := detector.DetectProjectType(files, fileContents)
+	
+	// Print detection results
+	fmt.Printf("\n📊 PROJECT TYPE DETECTION RESULTS:\n")
+	fmt.Printf("├── Primary Type: %s\n", result.PrimaryType)
+	fmt.Printf("├── Secondary Type: %s\n", result.SecondaryType)
+	fmt.Printf("├── Confidence: %.1f/10.0\n", result.Confidence)
+	
+	fmt.Printf("\n🎯 CONFIDENCE SCORES:\n")
+	for projectType, score := range result.Scores {
+		fmt.Printf("├── %s: %.2f\n", projectType, score)
+	}
+	
+	fmt.Printf("\n🔍 DETECTION EVIDENCE:\n")
+	for category, evidence := range result.Evidence {
+		fmt.Printf("├── %s:\n", category)
+		for _, item := range evidence {
+			fmt.Printf("│   • %s\n", item)
+		}
+	}
+	
+	// Show critical diagnosis
+	if result.PrimaryType == "Backend" && result.Confidence > 5.0 {
+		fmt.Printf("\n⚠️  POTENTIAL ISSUE: High confidence Backend detection - verify this is correct!\n")
+	}
+	if result.PrimaryType == "Frontend" {
+		fmt.Printf("\n✅ LOOKS GOOD: Correctly detected as Frontend project\n")
+	}
+}
+
+// discoverFilesForDetection discovers files and reads important ones for detection testing
+func discoverFilesForDetection(projectPath string) ([]detector.FileInfo, map[string]string, error) {
+	var files []detector.FileInfo
+	fileContents := make(map[string]string)
+	
+	err := filepath.WalkDir(projectPath, func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		
+		// Skip common ignore patterns
+		if shouldIgnoreForDetection(path) {
+			if d.IsDir() {
+				return filepath.SkipDir
+			}
+			return nil
+		}
+		
+		if !d.IsDir() {
+			relPath, _ := filepath.Rel(projectPath, path)
+			info, _ := d.Info()
+			
+			fileInfo := detector.FileInfo{
+				Path:         path,
+				RelativePath: relPath,
+				Size:         info.Size(),
+				Extension:    strings.ToLower(filepath.Ext(path)),
+				IsDir:        false,
+			}
+			files = append(files, fileInfo)
+			
+			// Read important files for detection
+			if isImportantForDetection(relPath) {
+				content, err := os.ReadFile(path)
+				if err == nil && len(content) < 100*1024 { // Only read files < 100KB
+					fileContents[path] = string(content)
+				}
+			}
+		}
+		
+		return nil
+	})
+	
+	return files, fileContents, err
+}
+
+func shouldIgnoreForDetection(path string) bool {
+	ignorePatterns := []string{
+		"node_modules", "vendor", "target", "build", "dist", ".git", 
+		".next", ".nuxt", "coverage", "__pycache__", ".pytest_cache",
+	}
+	
+	for _, pattern := range ignorePatterns {
+		if strings.Contains(path, pattern) {
+			return true
+		}
+	}
+	return false
+}
+
+func isImportantForDetection(relPath string) bool {
+	importantFiles := []string{
+		"package.json", "package-lock.json", "yarn.lock",
+		"go.mod", "go.sum", "Cargo.toml", "requirements.txt",
+		"pom.xml", "build.gradle", "composer.json",
+		"angular.json", "next.config.js", "nuxt.config.js",
+		"vite.config.js", "webpack.config.js",
+	}
+	
+	fileName := strings.ToLower(filepath.Base(relPath))
+	for _, important := range importantFiles {
+		if fileName == important {
+			return true
+		}
+	}
+	return false
 }

@@ -1,9 +1,9 @@
 {
-  "content_hash": "cc52ac66a24dbcd760ff367d03f87373",
-  "timestamp": "2025-09-26T11:11:21.543629+07:00",
+  "content_hash": "f29dcdf84fefc1c96109d45c354d230c",
+  "timestamp": "2025-09-26T11:55:26.718195+07:00",
   "result": {
     "path": "pkg/moonpay",
-    "purpose": "Handles configuration and services related to Moonpay, including URL signing.",
+    "purpose": "Responsible for handling configuration and service functionalities related to Moonpay, including signing URLs.",
     "languages": {
       "Go": 2
     },
@@ -26,9 +26,6 @@
         ],
         "functions": [],
         "imports": [],
-        "risks": [
-          "Exposure of sensitive information if the secret is not handled properly"
-        ],
         "complexity": "low"
       },
       "pkg/moonpay/service.go": {

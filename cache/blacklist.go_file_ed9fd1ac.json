@@ -1,0 +1,16 @@
+{
+  "content_hash": "9e0b734fb6340ab9f0cc54b8ab5e29f2",
+  "timestamp": "2025-09-26T11:49:57.467629+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a request structure for getting blacklist sites.",
+    "key_types": [
+      "GetBlacklistSitesReq",
+      "Paging",
+      "AgentInfo"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

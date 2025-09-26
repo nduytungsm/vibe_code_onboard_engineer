@@ -1,0 +1,34 @@
+{
+  "content_hash": "53255cc8db1c4624bd9f7341c960464c",
+  "timestamp": "2025-09-26T11:45:26.774017+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a Footer component for a React application that displays copyright information and social media links.",
+    "key_types": [
+      "Footer",
+      "Container",
+      "Row",
+      "Col"
+    ],
+    "functions": [
+      "Footer"
+    ],
+    "imports": [
+      "React",
+      "Container",
+      "Row",
+      "Col",
+      "AiFillGithub",
+      "AiOutlineTwitter",
+      "AiFillInstagram",
+      "FaLinkedinIn"
+    ],
+    "side_effects": [
+      "Renders social media links that open in new tabs"
+    ],
+    "risks": [
+      "Potential exposure to external links"
+    ],
+    "complexity": "low"
+  }
+}

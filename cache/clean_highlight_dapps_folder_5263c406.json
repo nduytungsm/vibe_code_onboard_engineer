@@ -1,9 +1,9 @@
 {
-  "content_hash": "09330de7f11429ebacb4935f1d4be680",
-  "timestamp": "2025-09-26T11:10:41.033556+07:00",
+  "content_hash": "a0e431efe65285d9adeb2ea66145ff2c",
+  "timestamp": "2025-09-26T11:53:46.940347+07:00",
   "result": {
     "path": "cmd/clean_highlight_dapps",
-    "purpose": "This folder/module is responsible for cleaning expired highlights from a database through a command-line application.",
+    "purpose": "This folder/module is responsible for providing a command-line application that cleans expired highlights from a database.",
     "languages": {
       "Go": 1
     },
@@ -21,11 +21,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a command-line application architecture, utilizing a main function to orchestrate the cleaning process, with dependencies on various services for database interactions and error tracking.",
+    "architecture": "The folder follows a command-line application architecture, utilizing a main entry point that initializes necessary services and connects to databases to perform its operations.",
     "file_summaries": {
       "cmd/clean_highlight_dapps/main.go": {
         "language": "Go",
-        "purpose": "This file contains the main function for a command-line application that cleans expired highlights from a database.",
+        "purpose": "This file is the main entry point for a command-line application that cleans expired highlights from a database.",
         "key_types": [
           "context.Context",
           "time.Time",
@@ -62,11 +62,12 @@
           "Initializes Sentry for error tracking",
           "Connects to PostgreSQL database",
           "Connects to Redis database",
-          "Logs information about the cleaning process"
+          "Cleans expired highlights from the database"
         ],
         "risks": [
-          "Potential exposure of sensitive information in logs",
-          "Error handling may not cover all edge cases"
+          "Potential failure in Sentry initialization",
+          "Database connection failures",
+          "Error handling for cleaning highlights may not be comprehensive"
         ],
         "complexity": "medium"
       }

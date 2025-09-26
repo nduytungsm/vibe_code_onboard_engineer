@@ -1,8 +1,8 @@
 {
-  "content_hash": "3dcd753017f6699267c81058d09eb269",
-  "timestamp": "2025-09-26T11:11:45.112489+07:00",
+  "content_hash": "d76a36c08daab281f04f107efecf1acb",
+  "timestamp": "2025-09-26T11:56:01.703911+07:00",
   "result": {
-    "repo_summary_line": "A mobile wallet management application that facilitates various cryptocurrency wallet operations and supports decentralized applications.",
+    "repo_summary_line": "A wallet manager project for handling user accounts, announcements, device interactions, and decentralized applications.",
     "architecture": "microservices",
     "repo_layout": "monorepo",
     "main_stacks": [
@@ -25,13 +25,13 @@
         "name": "clean_highlight_dapps",
         "path": "cmd/clean_highlight_dapps",
         "language": "Go",
-        "short_purpose": "Cleans expired highlights from a database."
+        "short_purpose": "Provides a command-line application that cleans expired highlights from a database."
       },
       {
         "name": "clean_old_special_offers",
         "path": "cmd/clean_old_special_offers",
         "language": "Go",
-        "short_purpose": "Cleans old special offers from a database based on a configured time period."
+        "short_purpose": "Cleans old special offers from an announcement repository based on a specified time period."
       },
       {
         "name": "ip_location",
@@ -43,7 +43,7 @@
         "name": "trigger_announcement",
         "path": "cmd/trigger_announcement",
         "language": "Go",
-        "short_purpose": "Triggers announcements in the application."
+        "short_purpose": "Responsible for triggering announcements in the application."
       }
     ],
     "evidence_paths": [

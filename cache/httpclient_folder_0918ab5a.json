@@ -1,9 +1,9 @@
 {
-  "content_hash": "8645368be52440a52e0b4d6bad8d1d94",
-  "timestamp": "2025-09-26T11:08:51.897133+07:00",
+  "content_hash": "768e1c73ee095469b7d7c9b3fe0daebe",
+  "timestamp": "2025-09-26T11:55:05.590054+07:00",
   "result": {
     "path": "httpclient",
-    "purpose": "This folder/module is responsible for defining various HTTP clients for interacting with different services such as Athena, Mercury, and device management.",
+    "purpose": "This folder/module is responsible for defining various HTTP clients for interacting with different services, including Athena, device management, notifications, and tracking.",
     "languages": {
       "Go": 5
     },
@@ -20,11 +20,11 @@
       "github.com/rs/zerolog/log",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
     ],
-    "architecture": "The folder follows a modular architecture pattern, with each file representing a specific client interface and its implementation, encapsulating related functionalities and dependencies.",
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates the functionality of a specific client, promoting separation of concerns and reusability.",
     "file_summaries": {
       "httpclient/athena.go": {
         "language": "Go",
-        "purpose": "This file defines an HTTP client for linking accounts to the Athena service.",
+        "purpose": "This file defines an HTTP client for interacting with an Athena service, specifically for linking accounts.",
         "key_types": [
           "AthenaClientCfg",
           "Athena",
@@ -41,6 +41,13 @@
           "fmt",
           "net/http",
           "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Makes HTTP requests to an external service"
+        ],
+        "risks": [
+          "Potential exposure of sensitive data in HTTP requests",
+          "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"
       },
@@ -74,16 +81,16 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Logs a warning if a device is not registered during address synchronization."
+          "Logs warnings for not registered devices during address synchronization."
         ],
         "risks": [
-          "Potential exposure of sensitive information if the SecretKey is not handled securely."
+          "Potential exposure of sensitive information if SecretKey is not handled securely."
         ],
         "complexity": "medium"
       },
       "httpclient/internal_client.go": {
         "language": "Go",
-        "purpose": "This file implements an internal HTTP client with HMAC authentication for making requests.",
+        "purpose": "This file implements an internal HTTP client with HMAC authentication for making requests to a specified URL.",
         "key_types": [
           "InternalClientConfig",
           "InternalClient"
@@ -106,12 +113,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
         ],
         "side_effects": [
-          "Logs request details and errors",
+          "Logs request details and errors using zerolog",
           "Modifies HTTP request headers"
         ],
         "risks": [
-          "Potential exposure of SecretKey if not handled securely",
-          "Improper error handling may lead to information leakage"
+          "Potential exposure of sensitive information if SecretKey is logged or mishandled",
+          "Improper error handling could lead to information leakage"
         ],
         "complexity": "medium"
       },
@@ -148,7 +155,7 @@
       },
       "httpclient/tracking.go": {
         "language": "Go",
-        "purpose": "Provides a client for tracking events with asynchronous and synchronous methods.",
+        "purpose": "This file implements a tracking client for sending tracking requests to a specified URL.",
         "key_types": [
           "TrackingClient",
           "trackingClient",
@@ -169,10 +176,10 @@
           "net/http"
         ],
         "side_effects": [
-          "Asynchronous tracking may lead to race conditions if not handled properly."
+          "Sends HTTP requests to a tracking endpoint"
         ],
         "risks": [
-          "Exposing API key in logs or error messages if not handled securely."
+          "Potential exposure of API key in logs or error messages"
         ],
         "complexity": "medium"
       }

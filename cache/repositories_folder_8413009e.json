@@ -1,9 +1,9 @@
 {
-  "content_hash": "725557930efbec74f5be20bc5fbb466b",
-  "timestamp": "2025-09-26T11:11:07.392903+07:00",
+  "content_hash": "a4822e6391a7cc8898c7b1201bd5818a",
+  "timestamp": "2025-09-26T11:53:26.741456+07:00",
   "result": {
     "path": "repositories",
-    "purpose": "This folder contains repository definitions for managing various entities in a database, including announcements, code versions, contracts, DApps, highlights, networks, user preferences, quick access DApps, and trusted domains, utilizing CRUD operations and GORM for database interactions.",
+    "purpose": "This folder contains repository definitions for managing various entities in a database, including announcements, code versions, contracts, decentralized applications (DApps), highlights, networks, user preferences, and trusted domains.",
     "languages": {
       "Go": 12
     },
@@ -27,7 +27,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
       "github.com/axieinfinity/ecosystem-go-common/errors"
     ],
-    "architecture": "The folder follows a repository pattern, encapsulating data access logic for different entities and providing a clean interface for CRUD operations while managing database interactions through GORM.",
+    "architecture": "The folder follows a repository pattern, encapsulating data access logic and providing a clean API for interacting with the database, while ensuring separation of concerns.",
     "file_summaries": {
       "repositories/announcement.go": {
         "language": "Go",
@@ -62,16 +62,13 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
         ],
         "side_effects": [
-          "Database transactions are performed for CRUD operations."
-        ],
-        "risks": [
-          "Potential SQL injection if user inputs are not properly sanitized."
+          "Database transactions for creating, updating, and deleting announcements and special offers."
         ],
         "complexity": "medium"
       },
       "repositories/code_version.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing code versions, including retrieving and saving versions to a database.",
+        "purpose": "This file defines a repository interface and its implementation for managing code versions in a database.",
         "key_types": [
           "CodeVersionRepo",
           "codeVersionRepo",
@@ -94,16 +91,18 @@
         ],
         "risks": [
           "Potential SQL injection if inputs are not properly sanitized.",
-          "Error handling may expose sensitive information if not managed correctly."
+          "Error handling may expose sensitive information."
         ],
         "complexity": "medium"
       },
       "repositories/common.go": {
         "language": "Go",
-        "purpose": "This file defines a repository interface and its implementation for managing common entities in a database using GORM.",
+        "purpose": "This file defines a repository interface and its implementation for managing common entities in a database.",
         "key_types": [
           "CommonRepo",
-          "commonRepo"
+          "commonRepo",
+          "gorm.DB",
+          "context.Context"
         ],
         "functions": [
           "GetAllCommons",
@@ -118,11 +117,11 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Database transactions are initiated and may modify the database state."
+          "Database transactions are performed which may modify the state of the database."
         ],
         "risks": [
           "Potential SQL injection if inputs are not properly sanitized.",
-          "Data loss if 'overwriteOnConflict' is misused."
+          "Data loss if overwriteOnConflict is true and not handled correctly."
         ],
         "complexity": "medium"
       },
@@ -161,13 +160,13 @@
         ],
         "risks": [
           "Potential SQL injection if filter conditions are not properly sanitized.",
-          "Panic calls in unimplemented methods may lead to application crashes."
+          "Panic calls in unimplemented methods could lead to application crashes."
         ],
         "complexity": "medium"
       },
       "repositories/dapp.go": {
         "language": "Go",
-        "purpose": "This file defines a repository interface and its implementation for managing decentralized application (DApp) data in a database.",
+        "purpose": "This file defines a repository interface and its implementation for managing decentralized applications (DApps) in a database.",
         "key_types": [
           "DAppRepo",
           "dAppRepo",
@@ -196,17 +195,17 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Database transactions are initiated and modified."
+          "Database operations such as create, update, delete on DApps."
         ],
         "risks": [
           "Potential SQL injection if filter conditions are not properly sanitized.",
-          "Panic calls in unimplemented methods may lead to application crashes."
+          "Error handling may expose internal error messages."
         ],
         "complexity": "medium"
       },
       "repositories/highlight.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing highlights in a database, including CRUD operations and handling of expired highlights.",
+        "purpose": "This file defines a repository for managing highlights in a database using GORM.",
         "key_types": [
           "HighlightRepo",
           "highlightRepo",
@@ -238,8 +237,8 @@
           "Database transactions are performed which may modify the state of the database."
         ],
         "risks": [
-          "Potential SQL injection if user input is not properly sanitized.",
-          "Concurrency issues if multiple transactions are not handled correctly."
+          "Potential SQL injection if inputs are not properly sanitized.",
+          "Data integrity issues if concurrent updates are not handled correctly."
         ],
         "complexity": "medium"
       },
@@ -263,7 +262,7 @@
       },
       "repositories/network.go": {
         "language": "Go",
-        "purpose": "This file defines a repository interface and its implementation for managing network entities in a database using GORM.",
+        "purpose": "This file defines a repository interface and its implementation for managing network entities in a database.",
         "key_types": [
           "NetworkRepo",
           "networkRepo",
@@ -294,10 +293,11 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Database operations such as create, read, update, and delete on network entities."
+          "Database transactions are initiated and may modify the database state."
         ],
         "risks": [
-          "Potential SQL injection if filter conditions are not properly sanitized."
+          "Potential SQL injection if filter conditions are not properly sanitized.",
+          "Panic in SaveNetwork, UpdateNetworks, and SaveNetworks if not implemented."
         ],
         "complexity": "medium"
       },
@@ -312,8 +312,8 @@
         ],
         "functions": [
           "GetByAddress",
-          "UpdateForAddress",
           "GetList",
+          "UpdateForAddress",
           "UpsertBatch",
           "UpdateForDevice",
           "DeleteByDevice",
@@ -335,19 +335,17 @@
           "Database operations that modify user preferences."
         ],
         "risks": [
-          "Potential SQL injection if user input is not properly sanitized.",
-          "Error handling may expose sensitive information."
+          "Potential SQL injection if user input is not properly sanitized."
         ],
         "complexity": "medium"
       },
       "repositories/quickaccess.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing Quick Access DApps, including CRUD operations and searching functionalities.",
+        "purpose": "This file defines a repository for managing quick access decentralized applications (DApps) using GORM for database interactions.",
         "key_types": [
           "QuickAccessDAppRepo",
           "quickAccessDAppRepo",
-          "md.QuickAccessDApp",
-          "md.Paging"
+          "QuickAccessDApp"
         ],
         "functions": [
           "GetList",
@@ -369,16 +367,16 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Database transactions are performed which may affect the state of the database."
+          "Database transactions are performed which may modify the state of the database."
         ],
         "risks": [
-          "Potential SQL injection if user input is not properly sanitized in search queries."
+          "Potential SQL injection if user input is not properly sanitized in queries."
         ],
         "complexity": "medium"
       },
       "repositories/trusted_domain.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing trusted domains in a database, providing methods to retrieve, save, and delete trusted domain records.",
+        "purpose": "This file defines a repository for managing trusted domains in a database, providing methods for CRUD operations.",
         "key_types": [
           "TrustedDomainRepo",
           "trustedDomainsRepo",

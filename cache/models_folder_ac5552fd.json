@@ -1,29 +1,33 @@
 {
-  "content_hash": "59c867d515cac3118158ea8f8276d60d",
-  "timestamp": "2025-09-26T11:09:17.319759+07:00",
+  "content_hash": "d71376801f0dc05b7d093e194e2a9a5c",
+  "timestamp": "2025-09-26T11:53:11.331178+07:00",
   "result": {
     "path": "models",
-    "purpose": "Defines data structures and methods for various components of the application, including user management, notifications, blockchain interactions, and more.",
+    "purpose": "Defines various data structures and models used throughout the application for handling requests, responses, and configurations related to user accounts, announcements, devices, networks, and more.",
     "languages": {
       "Go": 30
     },
     "key_modules": [
       "account.go",
       "announcement.go",
+      "app.go",
       "contract.go",
+      "device.go",
+      "network.go",
       "notification.go",
-      "useragent.go"
+      "ref_code.go",
+      "trusted_domain.go"
     ],
     "dependencies": [
       "github.com/ethereum/go-ethereum/common",
       "github.com/mitchellh/mapstructure",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each file represents a specific domain model or functionality, promoting separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, where each file defines specific data models and structures related to different functionalities of the application, promoting separation of concerns and reusability.",
     "file_summaries": {
       "models/account.go": {
         "language": "Go",
-        "purpose": "Defines data structures and methods for handling user information and token management in an authentication context.",
+        "purpose": "Defines request and response structures for user authentication and account linking.",
         "key_types": [
           "GetSMUserInfoRequest",
           "GetSMUserInfoResponse",
@@ -58,7 +62,7 @@
           "ToPublicListItem",
           "ToPublicFullContent",
           "ToAnnouncement",
-          "ToAnnouncement (ScheduleNewSpecialOfferRequest)"
+          "ToAnnouncement"
         ],
         "imports": [
           "database/sql/driver",
@@ -73,13 +77,13 @@
           "github.com/rs/zerolog/log"
         ],
         "side_effects": [
-          "Logs an error if buttons_json_str is not a valid JSON string."
+          "Logs errors when JSON unmarshalling fails in ToAnnouncement methods."
         ],
         "complexity": "medium"
       },
       "models/app.go": {
         "language": "Go",
-        "purpose": "Defines data structures for managing code versioning and updates.",
+        "purpose": "Defines data structures for managing code versioning and update requests.",
         "key_types": [
           "CodeVersion",
           "UpdateCodeVersionRequest",
@@ -89,11 +93,11 @@
           "ToCodeVersion"
         ],
         "imports": [],
-        "complexity": "low"
+        "complexity": "medium"
       },
       "models/binance.go": {
         "language": "Go",
-        "purpose": "Defines data structures for signing requests and responses in a Binance API context.",
+        "purpose": "Defines data structures for signing requests and responses for Binance.",
         "key_types": [
           "BinanceSignRequest",
           "BinanceSignResponse"
@@ -130,7 +134,7 @@
       },
       "models/common.go": {
         "language": "Go",
-        "purpose": "Defines data structures for common models used in the application.",
+        "purpose": "Defines data models for common structures used in the application.",
         "key_types": [
           "Common",
           "SupportURL",
@@ -207,7 +211,7 @@
       },
       "models/device.go": {
         "language": "Go",
-        "purpose": "Defines data structures for device management and requests related to devices.",
+        "purpose": "Defines data structures for device management and related requests.",
         "key_types": [
           "Device",
           "GetDeviceByIDRequest",
@@ -225,7 +229,7 @@
       },
       "models/external_auth.go": {
         "language": "Go",
-        "purpose": "Defines data structures for handling OAuth authentication requests and responses.",
+        "purpose": "Defines data structures for handling external authentication requests and responses.",
         "key_types": [
           "XExchangeAuthCodeReq",
           "XRefreshAccessTokenReq",
@@ -235,7 +239,7 @@
         ],
         "functions": [],
         "imports": [],
-        "complexity": "medium"
+        "complexity": "low"
       },
       "models/highlight.go": {
         "language": "Go",
@@ -264,7 +268,7 @@
       },
       "models/ip_locations.go": {
         "language": "Go",
-        "purpose": "Defines data models for IP location information and a request structure for fetching location data based on an IP address.",
+        "purpose": "Defines data structures for IP location information and a request type for retrieving location based on IP.",
         "key_types": [
           "IPLocation",
           "GetLocationRequest"
@@ -372,9 +376,7 @@
         "functions": [
           "ToInternalResponse",
           "ToDApp",
-          "ToUpdateMap",
-          "ToUpdateMap (UpdateQuickAccessDAppRequest)",
-          "ToUpdateMap (UpdateQuickAccessDAppBatchRequest)"
+          "ToUpdateMap"
         ],
         "imports": [
           "time",
@@ -384,7 +386,7 @@
       },
       "models/ref_code.go": {
         "language": "Go",
-        "purpose": "Defines models and structures for managing referral codes and wallets in a referral system.",
+        "purpose": "Defines data models and filters for managing referral codes and wallets.",
         "key_types": [
           "ReferralCode",
           "ReferralCodeFilter",
@@ -416,7 +418,7 @@
       },
       "models/releasecandidate.go": {
         "language": "Go",
-        "purpose": "Defines request structures for feature management in a device context.",
+        "purpose": "Defines request structures for feature configuration and validation.",
         "key_types": [
           "CheckAllowFeatureRequest",
           "PostFeatureConfigRequest",
@@ -430,7 +432,7 @@
       },
       "models/trusted_domain.go": {
         "language": "Go",
-        "purpose": "Defines data structures and request types for managing trusted domains.",
+        "purpose": "Defines data structures and methods for managing trusted domains in an application.",
         "key_types": [
           "TrustedDomain",
           "GetTDMByDomainRequest",
@@ -450,7 +452,7 @@
       },
       "models/useragent.go": {
         "language": "Go",
-        "purpose": "Defines a structure for user agent information and provides a method to check if the agent info is empty.",
+        "purpose": "Defines a structure for user agent information and provides a method to check if the agent information is empty.",
         "key_types": [
           "AgentInfo"
         ],

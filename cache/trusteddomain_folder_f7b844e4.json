@@ -1,9 +1,9 @@
 {
-  "content_hash": "f9ff8f9759223075dc54c1afbcf882da",
-  "timestamp": "2025-09-26T11:11:12.055905+07:00",
+  "content_hash": "8d53e71e023461d93435ba514d13598a",
+  "timestamp": "2025-09-26T11:54:55.641039+07:00",
   "result": {
     "path": "pkg/trusteddomain",
-    "purpose": "Responsible for managing trusted domains, including caching and database interactions.",
+    "purpose": "Responsible for managing trusted domains, including caching and database operations.",
     "languages": {
       "Go": 2
     },
@@ -19,11 +19,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/models",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating domain management logic and utility functions.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating domain management functionalities and utility functions.",
     "file_summaries": {
       "pkg/trusteddomain/trusted_domain_svc.go": {
         "language": "Go",
-        "purpose": "Provides a service for managing trusted domains, including caching and database interactions.",
+        "purpose": "Provides a service for managing trusted domains, including caching and database operations.",
         "key_types": [
           "Service",
           "svc",
@@ -56,7 +56,7 @@
           "Subscribes to a Redis channel for cache invalidation"
         ],
         "risks": [
-          "Potential race conditions in cache access",
+          "Potential race conditions due to concurrent access to cache",
           "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"

@@ -1,6 +1,6 @@
 {
-  "content_hash": "10578fcee8c2d0a2e842cef74e8ba242",
-  "timestamp": "2025-09-26T11:26:02.050548+07:00",
+  "content_hash": "dc89d790b0a4653abdea72c46c9ce297",
+  "timestamp": "2025-09-26T11:45:58.175143+07:00",
   "result": {
     "path": "src/components/Resume",
     "purpose": "This folder/module is responsible for displaying a resume and providing functionality to download it as a PDF.",
@@ -11,38 +11,42 @@
       "ResumeNew.js"
     ],
     "dependencies": [
-      "React",
-      "pdfjs"
+      "react",
+      "react-bootstrap",
+      "Particle",
+      "react-icons/ai",
+      "react-pdf"
     ],
-    "architecture": "The folder follows a component-based architecture typical of React applications, encapsulating the resume display and download functionality within a single component.",
+    "architecture": "The folder follows a component-based architecture typical of React applications, encapsulating the resume display functionality within a single component.",
     "file_summaries": {
       "src/components/Resume/ResumeNew.js": {
         "language": "JavaScript",
         "purpose": "A React component that displays a resume and allows users to download it as a PDF.",
         "key_types": [
-          "React.Component",
-          "useState",
-          "useEffect"
-        ],
-        "functions": [
-          "ResumeNew"
-        ],
-        "imports": [
-          "React",
-          "useState",
-          "useEffect",
+          "ResumeNew",
           "Container",
           "Row",
           "Button",
-          "Particle",
-          "pdf",
-          "AiOutlineDownload",
           "Document",
-          "Page",
-          "pdfjs"
+          "Page"
+        ],
+        "functions": [
+          "ResumeNew",
+          "useState",
+          "useEffect"
+        ],
+        "imports": [
+          "React",
+          "react-bootstrap",
+          "Particle",
+          "react-icons/ai",
+          "react-pdf"
         ],
         "side_effects": [
-          "Sets the width of the window on component mount"
+          "Sets the width of the component based on the window size."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if the PDF contains personal data."
         ],
         "complexity": "medium"
       }

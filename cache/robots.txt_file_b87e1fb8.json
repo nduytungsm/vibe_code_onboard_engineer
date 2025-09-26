@@ -1,0 +1,12 @@
+{
+  "content_hash": "fa1ded1ed7c11438a9b0385b1e112850",
+  "timestamp": "2025-09-26T11:45:10.415681+07:00",
+  "result": {
+    "language": "plaintext",
+    "purpose": "This file is used to instruct web crawlers and robots about which pages they are allowed to access on the website.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

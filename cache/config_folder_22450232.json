@@ -1,9 +1,9 @@
 {
-  "content_hash": "37e784537bb200cc2f9a2d3241b17a60",
-  "timestamp": "2025-09-26T11:09:44.457997+07:00",
+  "content_hash": "5409ca82a6c5ec0e6b66aeced6cd3346",
+  "timestamp": "2025-09-26T11:54:47.628507+07:00",
   "result": {
     "path": "config",
-    "purpose": "This folder/module is responsible for managing application configuration settings and structures.",
+    "purpose": "Configuration management for a service, including loading and parsing configuration files.",
     "languages": {
       "Go": 3,
       "YAML": 1
@@ -34,11 +34,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
     ],
-    "architecture": "The folder follows a modular architecture pattern, separating configuration logic into distinct files for initialization, data hiding, and testing.",
+    "architecture": "The folder follows a modular architecture pattern, organizing configuration management into separate files for configuration loading, data hiding, and testing.",
     "file_summaries": {
       "config/config.go": {
         "language": "Go",
-        "purpose": "This file defines configuration structures and initializes application settings using viper for a service.",
+        "purpose": "Configuration management for a service, including loading and parsing configuration files.",
         "key_types": [
           "Schema",
           "Server",
@@ -79,18 +79,17 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
         ],
         "side_effects": [
-          "Panic if the configuration file cannot be read",
-          "Sets global logging level based on configuration"
+          "Panic on configuration file read errors",
+          "Sets global logging level"
         ],
         "risks": [
-          "Potential exposure of sensitive configuration data if not properly secured",
-          "Panic on configuration read errors could lead to application crashes"
+          "Potential exposure of sensitive configuration data if not handled properly"
         ],
         "complexity": "medium"
       },
       "config/config.yml": {
         "language": "YAML",
-        "purpose": "Configuration file for a mobile wallet manager application, detailing various service settings and parameters.",
+        "purpose": "Configuration file for a mobile wallet manager service, detailing various settings for services, authentication, logging, and other operational parameters.",
         "key_types": [
           "profiler",
           "server",
@@ -101,6 +100,7 @@
           "hmac_internal",
           "logging",
           "redis",
+          "device_service",
           "postgres",
           "api_version",
           "ref_code",
@@ -121,8 +121,8 @@
         "functions": [],
         "imports": [],
         "risks": [
-          "Exposure of sensitive information due to redacted keys and URLs.",
-          "Potential misconfiguration leading to security vulnerabilities."
+          "Exposure of sensitive information due to redacted keys and URLs",
+          "Potential for misconfiguration leading to service downtime or security vulnerabilities"
         ],
         "complexity": "medium"
       },
@@ -149,10 +149,10 @@
           "github.com/spf13/viper"
         ],
         "side_effects": [
-          "Modifies the input data to hide sensitive information."
+          "Modifies the input data structures to hide sensitive information."
         ],
         "risks": [
-          "Potential exposure of sensitive data if the hiding functions are not correctly implemented."
+          "Potential exposure of sensitive data if the hiding logic is bypassed or fails."
         ],
         "complexity": "medium"
       },
@@ -162,7 +162,8 @@
         "key_types": [
           "struct",
           "map",
-          "slice"
+          "slice",
+          "interface"
         ],
         "functions": [
           "TestHideSecretInMap",
@@ -176,7 +177,7 @@
           "Prints test data to the console"
         ],
         "risks": [
-          "Potential exposure of sensitive data if not handled properly"
+          "Potential exposure of sensitive data if not properly handled"
         ],
         "complexity": "medium"
       }

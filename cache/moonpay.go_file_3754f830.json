@@ -1,0 +1,32 @@
+{
+  "content_hash": "718ee7790efbaf1229415251f39e8d64",
+  "timestamp": "2025-09-26T11:48:57.494545+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles Moonpay URL signing requests",
+    "key_types": [
+      "MoonpayHandler",
+      "moonpayHandler",
+      "models.MoonpaySigningRequest",
+      "models.MoonpaySigningResponse"
+    ],
+    "functions": [
+      "SignURL",
+      "NewMoonpayHandler"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay"
+    ],
+    "side_effects": [
+      "Modifies HTTP response based on request validation and signing result"
+    ],
+    "risks": [
+      "Potential for improper error handling leading to information leakage"
+    ],
+    "complexity": "medium"
+  }
+}

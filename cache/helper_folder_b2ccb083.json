@@ -1,9 +1,9 @@
 {
-  "content_hash": "e2da24c29799f59fafe110983571c7fb",
-  "timestamp": "2025-09-26T11:09:36.162404+07:00",
+  "content_hash": "b17bca388380051588ee74eb0f88cbf8",
+  "timestamp": "2025-09-26T11:53:40.417308+07:00",
   "result": {
     "path": "pkg/helper",
-    "purpose": "Provides various helper functions for encryption, file handling, token generation, and utility operations.",
+    "purpose": "This folder/module provides various helper functions and utilities for encryption, file handling, token generation, and data manipulation in a Go application.",
     "languages": {
       "Go": 8
     },
@@ -37,15 +37,16 @@
       "crypto/tls",
       "crypto/x509"
     ],
-    "architecture": "The folder follows a modular architecture pattern, with each file providing specific utility functions related to encryption, file handling, and data manipulation.",
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to helper operations, promoting code reusability and separation of concerns.",
     "file_summaries": {
       "pkg/helper/aes.go": {
         "language": "Go",
-        "purpose": "Provides helper functions for AES encryption.",
+        "purpose": "Provides functions for AES encryption of messages using a hashed key.",
         "key_types": [
           "string",
           "[]byte",
-          "interface{}"
+          "interface{}",
+          "error"
         ],
         "functions": [
           "hashKey",
@@ -70,11 +71,10 @@
       },
       "pkg/helper/binder.go": {
         "language": "Go",
-        "purpose": "Provides helper functions for binding multipart file uploads in an Echo web framework context.",
+        "purpose": "This file provides helper functions for binding multipart file uploads in an Echo web framework context.",
         "key_types": [
           "BindFunc",
-          "multipart.FileHeader",
-          "echo.Context"
+          "multipart.FileHeader"
         ],
         "functions": [
           "BindFunc.Bind",
@@ -91,10 +91,7 @@
           "github.com/labstack/echo/v4"
         ],
         "side_effects": [
-          "Modifies the provided struct by binding uploaded files to its fields."
-        ],
-        "risks": [
-          "Potential for reflection-based vulnerabilities if untrusted input is processed."
+          "Modifies the input struct by binding uploaded files to its fields."
         ],
         "complexity": "medium"
       },
@@ -112,9 +109,6 @@
           "fmt",
           "strings",
           "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
-        ],
-        "risks": [
-          "Potential exposure of secret if not handled properly"
         ],
         "complexity": "medium"
       },
@@ -166,13 +160,13 @@
           "github.com/ethereum/go-ethereum/crypto"
         ],
         "risks": [
-          "Potential for signature forgery if not properly validated"
+          "Potential for signature forgery if not properly validated."
         ],
         "complexity": "medium"
       },
       "pkg/helper/slice.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for manipulating slices, including filtering, finding indices, converting slices to maps, and mapping elements.",
+        "purpose": "Provides utility functions for manipulating slices, including filtering, finding index, converting slices to maps, and mapping elements.",
         "key_types": [
           "T",
           "T1",
@@ -189,7 +183,7 @@
       },
       "pkg/helper/tls.go": {
         "language": "Go",
-        "purpose": "This file provides a function to convert given certificate and key data into a TLS configuration.",
+        "purpose": "This file provides a function to convert certificate and key data into a TLS configuration.",
         "key_types": [
           "tls.Config",
           "tls.Certificate",

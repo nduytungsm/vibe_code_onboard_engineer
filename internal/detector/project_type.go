@@ -113,6 +113,9 @@ func (pd *ProjectDetector) DetectProjectType(files []FileInfo, fileContents map[
 	pd.applyRules(pd.devopsRules, DevOps, extensions, directories, filenames, scores, evidence)
 	pd.applyRules(pd.dataScienceRules, DataScience, extensions, directories, filenames, scores, evidence)
 	
+	// Apply intelligent package.json-based detection to override generic scoring
+	pd.applyPackageJsonIntelligence(fileContents, scores, evidence)
+	
 	// Determine primary and secondary types
 	primary, secondary, confidence := pd.determineTypes(scores)
 	
@@ -236,22 +239,22 @@ func getFrontendRules() []DetectionRule {
 	return []DetectionRule{
 		{
 			Name: "React Framework",
-			Score: 4.0,
+			Score: 5.0, // Increased score - strong frontend indicator
 			Extensions: []string{".jsx", ".tsx"},
-			Keywords: []string{"react", "jsx"},
+			Keywords: []string{"react", "jsx", "\"react\":", "create-react-app", "next.js", "gatsby"},
 		},
 		{
 			Name: "Vue.js Framework",
-			Score: 4.0,
+			Score: 5.0, // Increased score - strong frontend indicator
 			Extensions: []string{".vue"},
-			Keywords: []string{"vue", "nuxt"},
+			Keywords: []string{"vue", "nuxt", "\"vue\":", "@vue/cli", "vite"},
 		},
 		{
 			Name: "Angular Framework",
-			Score: 4.0,
+			Score: 5.0, // Increased score - strong frontend indicator
 			Extensions: []string{".ts"},
 			Directories: []string{"src/app"},
-			Keywords: []string{"angular", "ng-"},
+			Keywords: []string{"angular", "ng-", "\"@angular/core\":", "angular.json", "@angular/cli"},
 		},
 		{
 			Name: "JavaScript/TypeScript",
@@ -283,6 +286,22 @@ func getFrontendRules() []DetectionRule {
 			Score: 2.0,
 			Directories: []string{"public", "src", "assets", "components"},
 		},
+		{
+			Name: "Frontend Dependencies",
+			Score: 4.0, // High score for strong frontend indicators
+			Keywords: []string{
+				"\"react-dom\":", "\"@types/react\":", "\"react-scripts\":",
+				"\"vue-router\":", "\"vuex\":", "\"@vue/compiler\":",
+				"\"@angular/router\":", "\"@angular/forms\":", "\"@angular/common\":",
+				"\"webpack\":", "\"vite\":", "\"create-react-app\":", "\"next\":",
+				"\"tailwindcss\":", "\"bootstrap\":", "\"styled-components\":",
+			},
+		},
+		{
+			Name: "Frontend Build Config",
+			Score: 3.0,
+			Keywords: []string{"webpack.config", "vite.config", "next.config", "nuxt.config", "angular.json"},
+		},
 	}
 }
 
@@ -308,8 +327,8 @@ func getBackendRules() []DetectionRule {
 		{
 			Name: "Node.js Backend",
 			Score: 3.0,
-			Extensions: []string{".js", ".ts"},
-			Keywords: []string{"express", "fastify", "koa", "server.js"},
+			Keywords: []string{"express", "fastify", "koa", "server.js", "app.js"},
+			// Removed generic .js/.ts extensions - too broad for backend detection
 		},
 		{
 			Name: "Python Backend",
@@ -874,4 +893,123 @@ func (pd *ProjectDetector) hasPythonBackendCode(content string) bool {
 	}
 	
 	return false
+}
+
+// applyPackageJsonIntelligence analyzes package.json to intelligently adjust scores
+func (pd *ProjectDetector) applyPackageJsonIntelligence(fileContents map[string]string, scores map[ProjectType]float64, evidence map[string][]string) {
+	packageJsonContent := ""
+	
+	// Find package.json content
+	for filePath, content := range fileContents {
+		if strings.HasSuffix(strings.ToLower(filePath), "package.json") {
+			packageJsonContent = strings.ToLower(content)
+			break
+		}
+	}
+	
+	if packageJsonContent == "" {
+		return // No package.json found
+	}
+	
+	// Strong frontend indicators - if found, boost frontend score significantly
+	frontendDependencies := []string{
+		"\"react\":", "\"react-dom\":", "\"@types/react\":", "\"react-scripts\":",
+		"\"vue\":", "\"vue-router\":", "\"vuex\":", "@vue/cli", "\"nuxt\":",
+		"\"@angular/core\":", "\"@angular/cli\":", "\"angular\":",
+		"\"next\":", "\"gatsby\":", "\"create-react-app\":",
+		"\"vite\":", "\"webpack\":", "\"parcel\":",
+		"\"tailwindcss\":", "\"styled-components\":", "\"@emotion/react\":",
+		"\"@mui/material\":", "\"antd\":", "\"chakra-ui\":",
+	}
+	
+	frontendFound := false
+	matchedDeps := []string{}
+	
+	for _, dep := range frontendDependencies {
+		if strings.Contains(packageJsonContent, strings.ToLower(dep)) {
+			frontendFound = true
+			matchedDeps = append(matchedDeps, dep)
+		}
+	}
+	
+	// Strong backend indicators in package.json
+	backendDependencies := []string{
+		"\"express\":", "\"fastify\":", "\"koa\":", "\"hapi\":",
+		"\"@nestjs/core\":", "\"apollo-server\":", "\"graphql-yoga\":",
+		"\"mongoose\":", "\"sequelize\":", "\"prisma\":", "\"typeorm\":",
+		"\"knex\":", "\"pg\":", "\"mysql2\":", "\"mongodb\":",
+	}
+	
+	backendFound := false
+	matchedBackendDeps := []string{}
+	
+	for _, dep := range backendDependencies {
+		if strings.Contains(packageJsonContent, strings.ToLower(dep)) {
+			backendFound = true
+			matchedBackendDeps = append(matchedBackendDeps, dep)
+		}
+	}
+	
+	// Frontend script indicators
+	frontendScripts := []string{
+		"\"start\": \"react-scripts start\"", "\"build\": \"react-scripts build\"",
+		"\"start\": \"next start\"", "\"dev\": \"next dev\"",
+		"\"serve\": \"vue-cli-service serve\"", "\"build\": \"vue-cli-service build\"",
+		"\"ng serve\"", "\"ng build\"",
+		"\"vite\"", "\"webpack-dev-server\"",
+	}
+	
+	frontendScriptFound := false
+	for _, script := range frontendScripts {
+		if strings.Contains(packageJsonContent, strings.ToLower(script)) {
+			frontendScriptFound = true
+			break
+		}
+	}
+	
+	// Apply intelligent scoring adjustments
+	if frontendFound || frontendScriptFound {
+		// This is clearly a frontend project - boost frontend score significantly
+		scores[Frontend] += 6.0 // Large boost for frontend
+		
+		// Reduce backend score if it's not actually a fullstack project
+		if !backendFound {
+			scores[Backend] *= 0.3 // Significantly reduce backend score
+		}
+		
+		// Add evidence
+		if evidence["Frontend Intelligence"] == nil {
+			evidence["Frontend Intelligence"] = []string{}
+		}
+		if frontendFound {
+			evidence["Frontend Intelligence"] = append(evidence["Frontend Intelligence"], 
+				fmt.Sprintf("Strong frontend dependencies detected: %v", matchedDeps))
+		}
+		if frontendScriptFound {
+			evidence["Frontend Intelligence"] = append(evidence["Frontend Intelligence"], 
+				"Frontend build/dev scripts detected in package.json")
+		}
+	}
+	
+	// Only boost backend if we have strong backend indicators AND no frontend indicators
+	if backendFound && !frontendFound && !frontendScriptFound {
+		scores[Backend] += 3.0 // Boost backend score
+		
+		// Add evidence
+		if evidence["Backend Intelligence"] == nil {
+			evidence["Backend Intelligence"] = []string{}
+		}
+		evidence["Backend Intelligence"] = append(evidence["Backend Intelligence"], 
+			fmt.Sprintf("Backend dependencies detected: %v", matchedBackendDeps))
+	}
+	
+	// Check for monorepo indicators (both frontend and backend)
+	if frontendFound && backendFound {
+		scores[Fullstack] += 4.0
+		if evidence["Fullstack Intelligence"] == nil {
+			evidence["Fullstack Intelligence"] = []string{}
+		}
+		evidence["Fullstack Intelligence"] = append(evidence["Fullstack Intelligence"], 
+			"Both frontend and backend dependencies detected - likely fullstack/monorepo")
+	}
 }

@@ -1,6 +1,6 @@
 {
-  "content_hash": "b369351dc83ba9db3a199314b0cede0c",
-  "timestamp": "2025-09-26T11:11:01.979795+07:00",
+  "content_hash": "586c8eeffeaff737ee581369bc1a440e",
+  "timestamp": "2025-09-26T11:54:10.136901+07:00",
   "result": {
     "path": "cmd/clean_cronjob",
     "purpose": "This folder/module is responsible for implementing a cron job that cleans old announcements from a database.",
@@ -21,7 +21,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the cron job functionality and its dependencies, promoting separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the cron job functionality and its dependencies in a single Go file, promoting separation of concerns and maintainability.",
     "file_summaries": {
       "cmd/clean_cronjob/main.go": {
         "language": "Go",
@@ -34,8 +34,8 @@
           "mRd.RedisClient",
           "repositories.AnnouncementRepo",
           "repositories.PreferencesRepo",
-          "announcement.Service",
-          "tracking.Service"
+          "tracking.Service",
+          "announcement.Service"
         ],
         "functions": [
           "main",

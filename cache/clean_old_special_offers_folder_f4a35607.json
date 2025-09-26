@@ -1,9 +1,9 @@
 {
-  "content_hash": "509fb624e040b6dbcb04130b72fede88",
-  "timestamp": "2025-09-26T11:10:24.191358+07:00",
+  "content_hash": "563c33fc572b3afa71feda4be5b40b43",
+  "timestamp": "2025-09-26T11:53:03.832416+07:00",
   "result": {
     "path": "cmd/clean_old_special_offers",
-    "purpose": "Cleans old special offers from a database based on a configured time period.",
+    "purpose": "This folder/module is responsible for cleaning old special offers from an announcement repository based on a specified time period.",
     "languages": {
       "Go": 1
     },
@@ -18,11 +18,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/config",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a command-line application architecture, where the main entry point is responsible for initializing necessary services and executing the cleaning operation.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality related to cleaning old special offers within a single executable Go application.",
     "file_summaries": {
       "cmd/clean_old_special_offers/main.go": {
         "language": "Go",
-        "purpose": "Cleans old special offers from a database based on a configured time period.",
+        "purpose": "This file contains a main function that initializes Sentry for error tracking, connects to a PostgreSQL database, and cleans old special offers from an announcement repository based on a specified time period.",
         "key_types": [
           "context.Context",
           "time.Time",
@@ -50,12 +50,12 @@
         "side_effects": [
           "Initializes Sentry for error tracking",
           "Connects to a PostgreSQL database",
-          "Clears records from the database"
+          "Modifies the database by clearing old special offers"
         ],
         "risks": [
-          "Potential database connection failure",
+          "Potential database connection failures",
           "Error handling may not cover all edge cases",
-          "Sentry initialization failure may lead to untracked errors"
+          "Sentry initialization failure could lead to untracked errors"
         ],
         "complexity": "medium"
       }
