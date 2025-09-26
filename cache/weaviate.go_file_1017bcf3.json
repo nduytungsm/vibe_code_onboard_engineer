@@ -1,0 +1,32 @@
+{
+  "content_hash": "02cd84e5be32c3e40f8c441c2fc19562",
+  "timestamp": "2025-09-25T18:56:54.764811+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Utilities for working with Weaviate, including client initialization and error handling.",
+    "key_types": [
+      "weaviate.Client",
+      "models.Class",
+      "models.GraphQLResponse"
+    ],
+    "functions": [
+      "initWeaviate",
+      "combinedWeaviateError"
+    ],
+    "imports": [
+      "cmp",
+      "context",
+      "fmt",
+      "os",
+      "github.com/weaviate/weaviate-go-client/v4/weaviate",
+      "github.com/weaviate/weaviate/entities/models"
+    ],
+    "side_effects": [
+      "Creates a new class in Weaviate if it doesn't exist."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information through environment variables."
+    ],
+    "complexity": "medium"
+  }
+}

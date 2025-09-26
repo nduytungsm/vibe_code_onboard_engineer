@@ -1,0 +1,24 @@
+{
+  "content_hash": "291ee63c7ca1093bc1df4357b8f4dc17",
+  "timestamp": "2025-09-25T18:56:35.360915+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "A simple App Engine application that replies to requests on /hello with a welcoming message.",
+    "key_types": [
+      "http.ResponseWriter",
+      "http.Request"
+    ],
+    "functions": [
+      "init",
+      "helloHandler"
+    ],
+    "imports": [
+      "fmt",
+      "net/http"
+    ],
+    "side_effects": [
+      "Registers a handler for the /hello route"
+    ],
+    "complexity": "low"
+  }
+}

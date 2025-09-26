@@ -1,0 +1,51 @@
+{
+  "content_hash": "60864a31c51824110b1f1c4a3ec41499",
+  "timestamp": "2025-09-25T18:58:03.126762+07:00",
+  "result": {
+    "path": "template",
+    "purpose": "A trivial web server that serves an image gallery using templates.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "template/main.go"
+    ],
+    "dependencies": [
+      "html/template",
+      "log",
+      "net/http",
+      "strings"
+    ],
+    "architecture": "The folder follows a simple web server architecture using the Go programming language, leveraging templates for rendering HTML content.",
+    "file_summaries": {
+      "template/main.go": {
+        "language": "Go",
+        "purpose": "A trivial web server that serves an image gallery using templates.",
+        "key_types": [
+          "Index",
+          "Link",
+          "Image"
+        ],
+        "functions": [
+          "main",
+          "indexHandler",
+          "imageHandler"
+        ],
+        "imports": [
+          "html/template",
+          "log",
+          "net/http",
+          "strings"
+        ],
+        "side_effects": [
+          "Logs errors if template execution fails",
+          "Serves HTTP responses"
+        ],
+        "risks": [
+          "Potential exposure of sensitive data if templates are not properly sanitized"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

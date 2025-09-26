@@ -1,0 +1,12 @@
+{
+  "content_hash": "c417e0c993ae86041658825bf7739739",
+  "timestamp": "2025-09-25T18:23:03.284407+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Guide for contributing to the Ruby on Rails project",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

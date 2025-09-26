@@ -1,0 +1,16 @@
+{
+  "content_hash": "4f5252e549ca91150f7e3f39fdc020e3",
+  "timestamp": "2025-09-25T18:23:52.386+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration structures for blacklist management.",
+    "key_types": [
+      "BlacklistConfig",
+      "Versions",
+      "FeatureFlagConfig"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

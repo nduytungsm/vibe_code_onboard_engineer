@@ -1,0 +1,12 @@
+{
+  "content_hash": "eb2a81ac4bdb6d55680f848efb00d842",
+  "timestamp": "2025-09-25T18:22:47.653841+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Document the changelog for HCL (HashiCorp Configuration Language) versions.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "content_hash": "b653c9f0ff937516e6d2ee2d206eef9c",
+  "timestamp": "2025-09-26T07:36:46.469068+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a set of constant error codes for use in the application.",
+    "key_types": [
+      "const"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

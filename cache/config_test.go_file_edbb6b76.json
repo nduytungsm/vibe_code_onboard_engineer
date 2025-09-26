@@ -1,0 +1,20 @@
+{
+  "content_hash": "e8f9b1cd0672374ae442adb3afed789c",
+  "timestamp": "2025-09-26T07:36:44.571314+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the ClientConstraints functionality in the providers package.",
+    "key_types": [
+      "ClientConstraints",
+      "helper.UserAgent"
+    ],
+    "functions": [
+      "TestClientConstraint_EnabledOn"
+    ],
+    "imports": [
+      "testing",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+    ],
+    "complexity": "medium"
+  }
+}

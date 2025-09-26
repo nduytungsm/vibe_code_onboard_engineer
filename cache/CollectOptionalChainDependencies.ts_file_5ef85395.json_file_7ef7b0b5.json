@@ -1,0 +1,50 @@
+{
+  "content_hash": "cf145d86d219bbe4ed2c491b9f0aa4fe",
+  "timestamp": "2025-09-25T18:23:14.836316+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines functions and types for collecting optional chain dependencies in a high-level intermediate representation (HIR) of code.",
+    "key_types": [
+      "OptionalChainSidemap",
+      "OptionalTraversalContext",
+      "HIRFunction",
+      "BasicBlock",
+      "Instruction",
+      "Terminal",
+      "PropertyLoad",
+      "StoreLocal",
+      "BranchTerminal"
+    ],
+    "functions": [
+      "collectOptionalChainSidemap",
+      "traverseFunction",
+      "matchOptionalTestBlock",
+      "traverseOptionalBlock"
+    ],
+    "imports": [
+      "CompilerError",
+      "assertNonNull",
+      "BlockId",
+      "BasicBlock",
+      "IdentifierId",
+      "ReactiveScopeDependency",
+      "BranchTerminal",
+      "TInstruction",
+      "PropertyLoad",
+      "StoreLocal",
+      "GotoVariant",
+      "TBasicBlock",
+      "OptionalTerminal",
+      "HIRFunction",
+      "DependencyPathEntry",
+      "Instruction",
+      "Terminal",
+      "PropertyLiteral",
+      "printIdentifier"
+    ],
+    "side_effects": [
+      "Modifies the context object during traversal of functions and blocks."
+    ],
+    "complexity": "medium"
+  }
+}

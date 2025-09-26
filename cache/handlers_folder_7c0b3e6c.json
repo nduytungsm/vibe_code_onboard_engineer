@@ -1,544 +1,156 @@
 {
-  "content_hash": "6757cd552624c606aa572aa5d0445ecd",
-  "timestamp": "2025-09-25T17:21:12.392865+07:00",
+  "content_hash": "07979e287f29e4163627bd7ecf670f9e",
+  "timestamp": "2025-09-26T07:40:17.081839+07:00",
   "result": {
     "path": "handlers",
-    "purpose": "Responsible for handling various operations related to accounts, announcements, devices, external authentication, and other web application functionalities.",
+    "purpose": "Responsible for handling various requests and responses related to blockchain, Coinbase, NFT mappings, and token information for a web service.",
     "languages": {
-      "Go": 20
+      "Go": 4
     },
     "key_modules": [
-      "account.go",
-      "announcement.go",
-      "binance.go",
-      "blacklist.go",
-      "common.go",
-      "dapp.go",
-      "device.go",
-      "external_auth.go",
-      "locationhandler.go",
-      "moonpay.go",
-      "network.go",
-      "releasecandidate.go",
-      "trusted_domain.go"
+      "blockchain_handler.go",
+      "coinbase_handler.go",
+      "nft_mapping_handler.go",
+      "token_info_handler.go"
     ],
     "dependencies": [
       "github.com/labstack/echo/v4",
       "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-      "github.com/axieinfinity/ronin-wallet-manager/models",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/releasecandidate",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/trusteddomain",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay"
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/axieinfinity/ronin-wallet-proxy/models",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/nft_mapping"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each file corresponds to a specific handler for different functionalities, promoting separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern where each handler file is responsible for a specific domain of the application, promoting separation of concerns and maintainability.",
     "file_summaries": {
-      "handlers/account.go": {
+      "handlers/blockchain_handler.go": {
         "language": "Go",
-        "purpose": "Handles account-related operations such as getting account info, linking accounts, refreshing tokens, and revoking tokens.",
+        "purpose": "Handles blockchain-related requests and responses for a web service.",
         "key_types": [
-          "AccountHandler",
-          "accountHandler",
-          "sso.Config",
-          "sso.Client",
-          "httpclient.Athena",
-          "md.GetSMUserInfoResponse",
-          "md.LinkAccountRequest",
-          "md.OkResponse"
+          "BlockchainHandler",
+          "blockchainHandler"
         ],
         "functions": [
-          "GetAccountInfo",
-          "LinkAccount",
-          "RefreshToken",
-          "RevokeToken",
-          "NewAccountHandler"
+          "GetConfig",
+          "GetTokenBalances",
+          "GetTransactionsHistory",
+          "GetTransactionsByHash",
+          "GetNFTCollections",
+          "GetNFTItems",
+          "GetNFTItem",
+          "GetTokenInfo",
+          "GetPriceChart",
+          "GetGasSuggestion",
+          "SendRPC",
+          "SearchToken",
+          "PostSearchToken",
+          "GetTransactionsHistoryV2",
+          "NewBlockchainHandler"
         ],
         "imports": [
-          "net/http",
-          "strconv",
-          "strings",
-          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-          "github.com/axieinfinity/ecosystem-go-common/sso",
-          "github.com/labstack/echo/v4",
-          "github.com/rs/zerolog/log",
-          "github.com/axieinfinity/ronin-wallet-manager/httpclient",
-          "github.com/axieinfinity/ronin-wallet-manager/models"
-        ],
-        "side_effects": [
-          "Modifies the state of user accounts through linking, refreshing, and revoking tokens."
-        ],
-        "risks": [
-          "Potential exposure of sensitive user information if error handling is not properly managed.",
-          "Security risks associated with token management and authentication processes."
-        ],
-        "complexity": "medium"
-      },
-      "handlers/announcement.go": {
-        "language": "Go",
-        "purpose": "This file defines an announcement handler for managing announcements and user preferences in a web application.",
-        "key_types": [
-          "AnnouncementHandler",
-          "announcementHandler",
-          "md.ScheduleNewAnnouncementRequest",
-          "md.ScheduleNewSpecialOfferRequest",
-          "md.GetAnnouncementByID",
-          "md.GetAnnouncementsListRequest",
-          "md.InternalGetWalletPreferencesRequest",
-          "md.InternalGetWalletPreferenceResponse",
-          "md.PublicAnnouncementListItem",
-          "md.ListResponse",
-          "md.GetCountNewAnnouncementsRequest",
-          "md.GetCountNewAnnouncementsResponse"
-        ],
-        "functions": [
-          "InternalScheduleNewAnnouncement",
-          "InternalScheduleNewSpecialOffer",
-          "InternalGetAnnouncementByID",
-          "InternalGetAnnouncementsList",
-          "InternalMarkPublished",
-          "InternalManualCleanPublishedJobs",
-          "InternalDeleteAnnouncement",
-          "InternalGetWalletPreferences",
-          "PublicGetAnnouncementByID",
-          "PublicGetAnnouncementsList",
-          "PublicCountNewAnnouncements",
-          "PrivateGetPreferences",
-          "PrivateUpdatePreferences",
-          "PrivateGetDevicePreference",
-          "PrivateUpdateDevicePreference",
-          "NewAnnouncementHandler"
-        ],
-        "imports": [
-          "errors",
+          "cmp",
           "net/http",
           "slices",
+          "time",
+          "github.com/labstack/echo/v4",
           "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
           "github.com/axieinfinity/ecosystem-go-common/errors",
-          "github.com/labstack/echo/v4",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/preference"
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo"
         ],
         "complexity": "medium"
       },
-      "handlers/binance.go": {
+      "handlers/coinbase_handler.go": {
         "language": "Go",
-        "purpose": "This file defines a handler for signing requests using the Binance service.",
+        "purpose": "Handles requests related to Coinbase buy options.",
         "key_types": [
-          "BinanceHandler",
-          "binanceHandler",
-          "binance.Service",
-          "md.BinanceSignRequest",
-          "md.BinanceSignResponse"
+          "CoinbaseHandler",
+          "coinbaseHandler",
+          "coinbase.Service",
+          "coinbase.GetBuyOptionsRequest"
         ],
         "functions": [
-          "Sign",
-          "NewBinanceHandler"
-        ],
-        "imports": [
-          "net/http",
-          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-          "github.com/labstack/echo/v4",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/binance"
-        ],
-        "complexity": "medium"
-      },
-      "handlers/blacklist.go": {
-        "language": "Go",
-        "purpose": "This file defines a handler for managing blacklist sites in a web application.",
-        "key_types": [
-          "BlacklistHandler",
-          "blacklistHandler",
-          "blacklist.Service"
-        ],
-        "functions": [
-          "NewBlacklistHandler",
-          "GetBlacklistSites"
-        ],
-        "imports": [
-          "net/http",
-          "github.com/labstack/echo/v4",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist"
-        ],
-        "side_effects": [
-          "Interacts with external services to retrieve blacklist sites.",
-          "Returns JSON response to the client."
-        ],
-        "risks": [
-          "Potential exposure of sensitive data if blacklist items are not properly managed."
-        ],
-        "complexity": "medium"
-      },
-      "handlers/common.go": {
-        "language": "Go",
-        "purpose": "This file defines a common handler for managing configurations and code versions in a web application.",
-        "key_types": [
-          "CommonHandler",
-          "commonHandler",
-          "repositories.CommonRepo",
-          "repositories.CodeVersionRepo",
-          "redis.Client",
-          "blacklist.Service",
-          "xauth.Config"
-        ],
-        "functions": [
-          "GetCodePushVersion",
-          "GetCommonConfig",
-          "GetEncodedCommonConfig",
-          "RefreshKnownContracts",
-          "UpdateCommonConfig",
-          "UpdateCodeVersion",
-          "initCacheCodeVersion",
-          "initCacheCommon",
-          "fireCacheChangedEvent",
-          "refreshCache",
-          "ExternalAuthConfig"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "net/http",
-          "strings",
-          "sync",
-          "github.com/labstack/echo/v4",
-          "github.com/redis/go-redis/v9",
-          "github.com/rs/zerolog/log",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
-          "github.com/axieinfinity/ronin-wallet-manager/repositories"
-        ],
-        "side_effects": [
-          "Modifies cache for common configurations and code versions.",
-          "Publishes events to Redis channels."
-        ],
-        "risks": [
-          "Potential for race conditions due to concurrent access to shared resources.",
-          "Improper error handling may expose sensitive information."
-        ],
-        "complexity": "medium"
-      },
-      "handlers/dapp.go": {
-        "language": "Go",
-        "purpose": "This file defines a handler for managing decentralized application (DApp) operations, including CRUD operations and public access to DApp data.",
-        "key_types": [
-          "DAppHandler",
-          "dAppHandler",
-          "md.SaveQuickAccessDAppRequest",
-          "md.QuickAccessDApp",
-          "md.InternalQuickAccessDAppResponse",
-          "md.SaveHighlightRequest",
-          "md.Highlight",
-          "md.InternalHighlightResponse"
-        ],
-        "functions": [
-          "InternalSave",
-          "InternalSaveBatch",
-          "InternalUpdate",
-          "InternalUpdateOrder",
-          "InternalGetByID",
-          "InternalDeleteByID",
-          "InternalGetAll",
-          "InternalSaveHighlight",
-          "InternalSaveBatchHighlight",
-          "InternalUpdateHighlight",
-          "InternalGetHighlightByID",
-          "InternalDeleteHighlightByID",
-          "InternalGetAllHighlight",
-          "InternalRefreshCacheHighlight",
-          "PublicGetList",
-          "PublicGetHighlight",
-          "NewDAppHandler"
-        ],
-        "imports": [
-          "errors",
-          "net/http",
-          "strings",
-          "github.com/labstack/echo/v4",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-          "github.com/axieinfinity/ecosystem-go-common/errors",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
-        ],
-        "side_effects": [
-          "Modifies the state of DApp data in the database",
-          "Interacts with external services for blacklist checks"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data through improper error handling",
-          "Risk of denial of service through excessive requests"
-        ],
-        "complexity": "medium"
-      },
-      "handlers/default.go": {
-        "language": "Go",
-        "purpose": "This file defines a handler function to retrieve agent information from the context.",
-        "key_types": [
-          "echo.Context",
-          "models.AgentInfo"
-        ],
-        "functions": [
-          "getAgentInfo"
-        ],
-        "imports": [
-          "github.com/labstack/echo/v4",
-          "github.com/axieinfinity/ronin-wallet-manager/middleware",
-          "github.com/axieinfinity/ronin-wallet-manager/models"
-        ],
-        "complexity": "low"
-      },
-      "handlers/device.go": {
-        "language": "Go",
-        "purpose": "Handles device-related operations such as resetting devices, registering devices, updating push tokens, syncing addresses, and importing wallets.",
-        "key_types": [
-          "DeviceHandler",
-          "deviceHandler",
-          "md.GetDeviceByIDRequest",
-          "md.PostDeviceRegistrationRequest",
-          "md.PutDeviceAddressesReq",
-          "md.PostImportWalletReq"
-        ],
-        "functions": [
-          "ResetDeviceByID",
-          "Registration",
-          "UpdatePushToken",
-          "SyncAddresses",
-          "ImportWallet",
-          "NewDeviceHandler"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "net/http",
-          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-          "github.com/axieinfinity/ecosystem-go-common/errors",
-          "github.com/labstack/echo/v4",
-          "github.com/rs/zerolog/log",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/preference"
-        ],
-        "side_effects": [
-          "Logs information about device resets",
-          "Asynchronously initializes device registration if not ignoring existing devices"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data in logs",
-          "Improper error handling could lead to unhandled exceptions"
-        ],
-        "complexity": "medium"
-      },
-      "handlers/external_auth.go": {
-        "language": "Go",
-        "purpose": "Handles external authentication processes such as exchanging auth codes and revoking tokens.",
-        "key_types": [
-          "ExternalAuthHandler",
-          "externalAuthHandler",
-          "xauth.Service"
-        ],
-        "functions": [
-          "ExchangeAuthCode",
-          "RevokeToken",
-          "NewTwitterHandler"
+          "GetBuyOptions",
+          "NewCoinbaseHandler"
         ],
         "imports": [
           "net/http",
           "github.com/labstack/echo/v4",
           "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase"
         ],
         "side_effects": [
-          "Sends HTTP responses based on authentication actions."
-        ],
-        "complexity": "medium"
-      },
-      "handlers/locationhandler.go": {
-        "language": "Go",
-        "purpose": "Handles location-related requests and responses in a web application.",
-        "key_types": [
-          "LocationHandler",
-          "locationHandler",
-          "models.GetLocationRequest"
-        ],
-        "functions": [
-          "PublicGetLocation",
-          "InternalGetLocation",
-          "InternalDownloadDB",
-          "lookupLocation",
-          "NewLocationHandler"
-        ],
-        "imports": [
-          "errors",
-          "net/http",
-          "github.com/labstack/echo/v4",
-          "github.com/rs/zerolog/log",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/location"
-        ],
-        "side_effects": [
-          "Logs debug information when looking up location."
+          "Interacts with external services to fetch buy options",
+          "Returns JSON response to the client"
         ],
         "risks": [
-          "Potential exposure of sensitive information through error messages."
+          "Potential for handling sensitive financial data",
+          "Error handling may expose internal service errors"
         ],
         "complexity": "medium"
       },
-      "handlers/moonpay.go": {
+      "handlers/nft_mapping_handler.go": {
         "language": "Go",
-        "purpose": "Handles Moonpay URL signing requests",
+        "purpose": "Handles NFT mapping operations including saving and retrieving mappings.",
         "key_types": [
-          "MoonpayHandler",
-          "moonpayHandler",
-          "models.MoonpaySigningRequest",
-          "models.MoonpaySigningResponse"
+          "NFTMappingHandler",
+          "nftMappingHandler",
+          "Service",
+          "SaveNFTMappingRequest",
+          "SaveBatchNFTMappingRequest",
+          "GetNFTMappingsListRequest",
+          "GetOneNFTMappingRequest",
+          "ListResponse",
+          "NFTMapping"
         ],
         "functions": [
-          "SignURL",
-          "NewMoonpayHandler"
-        ],
-        "imports": [
-          "net/http",
-          "github.com/axieinfinity/ecosystem-go-common/errors",
-          "github.com/labstack/echo/v4",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay"
-        ],
-        "risks": [
-          "Potential for improper error handling",
-          "Dependency on external services (moonpay.Service)"
-        ],
-        "complexity": "medium"
-      },
-      "handlers/network.go": {
-        "language": "Go",
-        "purpose": "This file defines a network handler for managing network-related operations in a web application.",
-        "key_types": [
-          "NetworkHandler",
-          "networkHandler",
-          "models.Network",
-          "models.DApp",
-          "models.Contract"
-        ],
-        "functions": [
-          "GetDApps",
-          "GetNetworkConfig",
-          "getDAppsPublic",
-          "getContractsPublic",
-          "GetContracts",
-          "GetAllConfigs"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "fmt",
-          "net/http",
-          "slices",
-          "sort",
-          "sync",
-          "github.com/axieinfinity/ecosystem-go-common/errors",
-          "github.com/hashicorp/go-version",
-          "github.com/labstack/echo/v4",
-          "github.com/mitchellh/mapstructure",
-          "github.com/redis/go-redis/v9",
-          "github.com/rs/zerolog/log",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-manager/repositories"
-        ],
-        "side_effects": [
-          "Modifies cache for DApps and contracts based on user agent and filters."
-        ],
-        "complexity": "medium"
-      },
-      "handlers/releasecandidate.go": {
-        "language": "Go",
-        "purpose": "Handles release candidate features and configurations for a web service.",
-        "key_types": [
-          "ReleaseCandidateHandler",
-          "releaseCandidateHandler",
-          "models.CheckAllowFeatureRequest",
-          "models.PostFeatureConfigRequest",
-          "models.PostWhitelistFeaturesRequest",
-          "models.PostSetConfigForDeviceRequest",
-          "models.GetCountWhitelistDevices",
-          "models.OkResponse"
-        ],
-        "functions": [
-          "CheckAllowFeature",
-          "SetFeatureConfig",
-          "SetWhitelistFeatures",
-          "SetConfigForDevice",
-          "CountWhitelistDevices",
-          "NewReleaseCandidateHandler"
-        ],
-        "imports": [
-          "fmt",
-          "net/http",
-          "strconv",
-          "github.com/labstack/echo/v4",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/releasecandidate"
-        ],
-        "complexity": "medium"
-      },
-      "handlers/trusted_domain.go": {
-        "language": "Go",
-        "purpose": "Handles trusted domain operations including retrieval, saving, and deletion of trusted domains.",
-        "key_types": [
-          "TrustedDomainHandler",
-          "trustedDomainHandler",
-          "GetTDMByDomainRequest",
-          "TrustedDomain",
-          "SaveTrustedDomainBatchRequest",
-          "ListResponse"
-        ],
-        "functions": [
-          "PublicGetByDomain",
-          "PublicGetAll",
-          "InternalGetByDomain",
-          "InternalSave",
-          "InternalSaveBatch",
-          "InternalDeleteByDomain",
+          "InternalSaveMapping",
+          "InternalSaveBatchMapping",
           "InternalGetList",
-          "validateAndNormalizeDomain",
-          "normalizeDomain"
+          "PublicGetOne",
+          "PublicGetList",
+          "NewNFTMappingHandler"
         ],
         "imports": [
-          "errors",
           "net/http",
-          "net/url",
-          "regexp",
-          "strings",
           "github.com/labstack/echo/v4",
-          "gorm.io/gorm",
           "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-          "github.com/axieinfinity/ecosystem-go-common/errors",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/trusteddomain"
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/nft_mapping"
         ],
         "side_effects": [
-          "Modifies the state of trusted domains in the database.",
-          "Interacts with external services for domain validation."
+          "Interacts with external services to save and retrieve NFT mappings."
         ],
         "risks": [
-          "Potential exposure of sensitive domain information if not properly secured.",
-          "Improper handling of user input could lead to injection attacks."
+          "Potential for panic in PublicGetList if not implemented."
+        ],
+        "complexity": "medium"
+      },
+      "handlers/token_info_handler.go": {
+        "language": "Go",
+        "purpose": "Handles token information requests and responses in a web server context.",
+        "key_types": [
+          "TokenInfoHandler",
+          "tokenInfoHandler",
+          "tokeninfo.Service"
+        ],
+        "functions": [
+          "GetTokenInfosList",
+          "SaveTokenInfo",
+          "InternalCrawlMetadata",
+          "NewTokenInfoHandler"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ronin-wallet-proxy/models",
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo"
         ],
         "complexity": "medium"
       }

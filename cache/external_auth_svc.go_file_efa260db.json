@@ -1,0 +1,36 @@
+{
+  "content_hash": "8c7589343fb841eb0b1a8c7b3b95071b",
+  "timestamp": "2025-09-25T18:24:23.48623+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements an external authentication service that exchanges authorization codes for access tokens.",
+    "key_types": [
+      "Service",
+      "service",
+      "Config",
+      "md.XExchangeAuthCodeReq",
+      "md.XAccessTokenRes"
+    ],
+    "functions": [
+      "ExchangeAuthCode",
+      "NewService"
+    ],
+    "imports": [
+      "context",
+      "net/http",
+      "strings",
+      "github.com/rs/zerolog/log",
+      "golang.org/x/oauth2",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "side_effects": [
+      "Logs errors when unable to exchange auth code."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information due to redacted fields.",
+      "Improper handling of OAuth tokens may lead to security vulnerabilities."
+    ],
+    "complexity": "medium"
+  }
+}

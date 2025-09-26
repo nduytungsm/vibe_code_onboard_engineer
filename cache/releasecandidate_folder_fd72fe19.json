@@ -1,6 +1,6 @@
 {
-  "content_hash": "eb82e0638c79933c23d6d9788d75c82c",
-  "timestamp": "2025-09-25T17:21:05.778182+07:00",
+  "content_hash": "7d60d0c7f3c1c70dbb02d98d22121713",
+  "timestamp": "2025-09-25T18:26:08.504587+07:00",
   "result": {
     "path": "pkg/releasecandidate",
     "purpose": "Responsible for managing feature configurations and whitelist devices for mobile wallet candidates.",
@@ -17,14 +17,9 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
       "github.com/go-redsync/redsync/v4",
       "github.com/go-redsync/redsync/v4/redis/goredis/v9",
-      "github.com/rs/zerolog/log",
-      "context",
-      "errors",
-      "fmt",
-      "strings",
-      "time"
+      "github.com/rs/zerolog/log"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, utilizing Redis for state management and providing a clear interface for feature access control.",
+    "architecture": "The folder follows a service-oriented architecture pattern, utilizing Redis for state management and providing a service interface for feature access control.",
     "file_summaries": {
       "pkg/releasecandidate/init.go": {
         "language": "Go",
@@ -38,13 +33,7 @@
           "GetCountWhitelistDevices"
         ],
         "functions": [
-          "NewService",
-          "CheckAllowFeature",
-          "SetFeatureConfig",
-          "SetWhitelistFeatures",
-          "SetConfigForDevice",
-          "CountWhitelistDevices",
-          "VerifyWhitelistFeature"
+          "NewService"
         ],
         "imports": [
           "github.com/redis/go-redis/v9",
@@ -55,7 +44,7 @@
       },
       "pkg/releasecandidate/service.go": {
         "language": "Go",
-        "purpose": "Manages feature access for mobile wallet candidates using Redis for state management.",
+        "purpose": "Manages feature access for mobile wallet candidates using a whitelist and Redis for state management.",
         "key_types": [
           "service",
           "models.CheckAllowFeatureRequest",
@@ -89,12 +78,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/device"
         ],
         "side_effects": [
-          "Modifies Redis database state",
-          "Logs information and errors"
+          "Modifies Redis state for allowed devices and feature configurations.",
+          "Logs information and errors during execution."
         ],
         "risks": [
-          "Potential race conditions with concurrent access to Redis",
-          "Improper handling of Redis errors could lead to incorrect feature access"
+          "Potential race conditions when accessing shared resources in Redis.",
+          "Improper handling of Redis errors may lead to incorrect feature access decisions."
         ],
         "complexity": "medium"
       }

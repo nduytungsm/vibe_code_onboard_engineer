@@ -1,0 +1,19 @@
+{
+  "content_hash": "b33b70be922cdc6b65f3f2e6fd40446c",
+  "timestamp": "2025-09-25T18:56:57.519636+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "This script interacts with a running ragserver to add some example documents.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "side_effects": [
+      "Interacts with a running server",
+      "Sends HTTP POST request"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if the server is not secured"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "content_hash": "f40aa1db23d852176ac1b70f8fcf6a2c",
+  "timestamp": "2025-09-25T18:24:08.188706+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines a function that analyzes the effects of a given function to determine mutable ranges of identifiers and their externally-visible effects.",
+    "key_types": [
+      "HIRFunction",
+      "AliasingEffect",
+      "CompilerError",
+      "Place",
+      "BlockId",
+      "InstructionId"
+    ],
+    "functions": [
+      "inferMutationAliasingRanges"
+    ],
+    "imports": [
+      "CompilerError",
+      "SourceLocation",
+      "BlockId",
+      "Effect",
+      "HIRFunction",
+      "Identifier",
+      "IdentifierId",
+      "InstructionId",
+      "isJsxType",
+      "makeInstructionId",
+      "ValueKind",
+      "ValueReason",
+      "Place",
+      "isPrimitiveType",
+      "eachInstructionLValue",
+      "eachInstructionValueOperand",
+      "eachTerminalOperand",
+      "assertExhaustive",
+      "getOrInsertWith",
+      "Err",
+      "Ok",
+      "Result",
+      "AliasingEffect",
+      "MutationReason"
+    ],
+    "side_effects": [
+      "Modifies the state of the AliasingState instance",
+      "Generates CompilerError diagnostics for invalid effects"
+    ],
+    "complexity": "high"
+  }
+}

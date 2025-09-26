@@ -1,0 +1,33 @@
+{
+  "content_hash": "945c29545c9abcabb9115d5b73c6c49a",
+  "timestamp": "2025-09-25T18:21:27.52419+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains migration scripts to modify the database schema, including creating extensions, altering tables, and creating new tables and indexes.",
+    "key_types": [
+      "VARCHAR",
+      "TEXT",
+      "INTEGER",
+      "TIMESTAMP",
+      "JSONB"
+    ],
+    "functions": [
+      "CREATE EXTENSION",
+      "CREATE COLLATION",
+      "ALTER TABLE",
+      "CREATE INDEX",
+      "CREATE TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the database schema",
+      "Creates new indexes",
+      "Alters existing tables"
+    ],
+    "risks": [
+      "Potential data loss if not properly backed up before migration",
+      "Schema changes may affect application functionality"
+    ],
+    "complexity": "medium"
+  }
+}

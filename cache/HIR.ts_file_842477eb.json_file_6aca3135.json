@@ -1,0 +1,37 @@
+{
+  "content_hash": "7787aea792fb6d89c4073deebfa10a51",
+  "timestamp": "2025-09-25T18:23:55.551213+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines the High Intermediate Representation (HIR) data model for React functions and their reactive scopes.",
+    "key_types": [
+      "SourceLocation",
+      "ReactiveFunction",
+      "ReactiveScopeBlock",
+      "PrunedReactiveScopeBlock",
+      "ReactiveBlock",
+      "ReactiveStatement",
+      "ReactiveInstruction",
+      "ReactiveValue",
+      "ReactiveTerminal"
+    ],
+    "functions": [
+      "_staticInvariantReactiveTerminalHasLocation",
+      "_staticInvariantReactiveTerminalHasInstructionId"
+    ],
+    "imports": [
+      "@babel/traverse",
+      "@babel/types",
+      "../CompilerError",
+      "../Utils/utils",
+      "./Environment",
+      "./ObjectShape",
+      "./Types",
+      "zod",
+      "../Inference/AliasingEffects",
+      "../Utils/Keyword",
+      "../Utils/Result"
+    ],
+    "complexity": "high"
+  }
+}

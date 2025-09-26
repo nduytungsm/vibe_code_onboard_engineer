@@ -1,0 +1,12 @@
+{
+  "content_hash": "f6736c15e788d5cb666dd0a67a89c3c6",
+  "timestamp": "2025-09-25T18:21:46.451967+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Document the contributors to the Gin web framework.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

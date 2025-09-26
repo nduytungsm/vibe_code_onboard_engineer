@@ -1,9 +1,9 @@
 {
-  "content_hash": "876f30b8233d23b1d3c6c029c7cf80bb",
-  "timestamp": "2025-09-25T17:20:09.116177+07:00",
+  "content_hash": "0f391214496c6ca761ee0a1190556729",
+  "timestamp": "2025-09-26T07:41:53.87674+07:00",
   "result": {
     "path": "pkg/worker",
-    "purpose": "Responsible for managing a pool of worker goroutines to process jobs concurrently.",
+    "purpose": "This folder/module is responsible for managing a pool of worker goroutines to process jobs concurrently.",
     "languages": {
       "Go": 4
     },
@@ -15,9 +15,10 @@
     ],
     "dependencies": [
       "sync",
+      "time",
       "github.com/rs/zerolog/log"
     ],
-    "architecture": "The folder follows a concurrent processing architecture using goroutines, with a dispatcher managing worker pools to handle jobs.",
+    "architecture": "The folder follows a concurrent architecture pattern using goroutines and channels to manage job processing.",
     "file_summaries": {
       "pkg/worker/config.go": {
         "language": "Go",
@@ -26,7 +27,9 @@
           "Config"
         ],
         "functions": [],
-        "imports": [],
+        "imports": [
+          "time"
+        ],
         "complexity": "low"
       },
       "pkg/worker/dispatcher.go": {
@@ -50,17 +53,16 @@
         ],
         "side_effects": [
           "Starts goroutines for workers",
-          "Blocks until a worker is available for a job"
+          "Blocks on worker channels until available"
         ],
         "risks": [
-          "Potential deadlock if jobQueue is not managed properly",
-          "Resource exhaustion if too many jobs are added without available workers"
+          "Potential deadlocks if job queue is not managed properly"
         ],
         "complexity": "medium"
       },
       "pkg/worker/job.go": {
         "language": "Go",
-        "purpose": "Defines a Job type with an executable function.",
+        "purpose": "Defines a Job struct with an executable function.",
         "key_types": [
           "Job"
         ],
@@ -86,7 +88,7 @@
         ],
         "side_effects": [
           "Starts a goroutine for job processing",
-          "Logs errors during job execution"
+          "Modifies the WaitGroup state"
         ],
         "risks": [
           "Potential deadlock if not managed properly with WaitGroup"

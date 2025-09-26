@@ -1,0 +1,27 @@
+{
+  "content_hash": "17c8435c5b6addc2add814bfedae2690",
+  "timestamp": "2025-09-26T07:33:37.359537+07:00",
+  "result": {
+    "language": "HTML/JavaScript",
+    "purpose": "Handles OAuth2 redirection and authorization code retrieval.",
+    "key_types": [
+      "oauth2",
+      "window",
+      "location",
+      "JSON"
+    ],
+    "functions": [
+      "run"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies window state",
+      "Closes the window after execution"
+    ],
+    "risks": [
+      "Potential for open redirect vulnerabilities",
+      "State parameter manipulation"
+    ],
+    "complexity": "medium"
+  }
+}

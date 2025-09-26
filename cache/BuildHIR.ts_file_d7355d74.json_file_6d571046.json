@@ -1,0 +1,41 @@
+{
+  "content_hash": "356a1931c0ed5678c0cc92d3b90d0f22",
+  "timestamp": "2025-09-25T18:22:39.542467+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Converts a function into a high-level intermediate representation (HIR) for control-flow graph modeling.",
+    "key_types": [
+      "NodePath",
+      "Scope",
+      "HIRFunction",
+      "Place",
+      "Bindings",
+      "Result"
+    ],
+    "functions": [
+      "lower",
+      "lowerStatement"
+    ],
+    "imports": [
+      "@babel/traverse",
+      "@babel/types",
+      "invariant",
+      "../CompilerError",
+      "../Utils/Result",
+      "../Utils/utils",
+      "./Environment",
+      "./HIR",
+      "./HIRBuilder",
+      "./ObjectShape"
+    ],
+    "side_effects": [
+      "Modifies the state of the builder with errors and diagnostics.",
+      "Generates intermediate representation for functions."
+    ],
+    "risks": [
+      "Potential for unhandled exceptions in control flow.",
+      "Errors in parameter handling may lead to incorrect HIR generation."
+    ],
+    "complexity": "high"
+  }
+}

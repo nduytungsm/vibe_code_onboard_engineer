@@ -1,0 +1,12 @@
+{
+  "content_hash": "aabc3bfe7d991506635e0dfbea044937",
+  "timestamp": "2025-09-25T18:23:41.950971+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for funding models on GitHub and other platforms",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

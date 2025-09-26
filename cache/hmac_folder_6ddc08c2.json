@@ -1,21 +1,21 @@
 {
-  "content_hash": "7fa4f08cc3b5dd89359e7f7b1b43f605",
-  "timestamp": "2025-09-25T17:20:05.915157+07:00",
+  "content_hash": "b18373109a4aa240d17e967849fd9fc9",
+  "timestamp": "2025-09-26T07:41:50.925165+07:00",
   "result": {
     "path": "pkg/crypto/hmac",
-    "purpose": "Responsible for HMAC signing and validation functionalities, including configuration and unit testing.",
+    "purpose": "This folder/module is responsible for providing HMAC signing and validation functionalities, including configuration management and unit testing.",
     "languages": {
-      "Go": 6
+      "Go": 5
     },
     "key_modules": [
       "config.go",
       "funcs.go",
       "funcs_test.go",
       "hmac.go",
-      "hmac_test.go",
       "init.go"
     ],
     "dependencies": [
+      "github.com/axieinfinity/ecosystem-go-common/hmac",
       "crypto/hmac",
       "crypto/sha256",
       "crypto/sha512",
@@ -26,23 +26,21 @@
       "strings",
       "testing",
       "time",
-      "sync",
+      "math",
       "net/http",
-      "math"
+      "sync"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating HMAC-related functionalities and tests within dedicated files.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating HMAC-related functionalities and configurations in separate files, promoting maintainability and testability.",
     "file_summaries": {
       "pkg/crypto/hmac/config.go": {
         "language": "Go",
-        "purpose": "Defines a configuration structure for HMAC with normalization of whitelist addresses.",
+        "purpose": "Defines a configuration structure for HMAC with a whitelist of addresses.",
         "key_types": [
           "Config"
         ],
-        "functions": [
-          "NormalizeWhitelistAddresses"
-        ],
+        "functions": [],
         "imports": [
-          "strings"
+          "github.com/axieinfinity/ecosystem-go-common/hmac"
         ],
         "complexity": "low"
       },
@@ -68,8 +66,12 @@
           "sort",
           "strings"
         ],
+        "side_effects": [
+          "Generates HMAC signatures",
+          "Encodes signatures in base64"
+        ],
         "risks": [
-          "Potential for cryptographic vulnerabilities if used improperly."
+          "Potential for key leakage if not handled securely"
         ],
         "complexity": "medium"
       },
@@ -93,7 +95,7 @@
       },
       "pkg/crypto/hmac/hmac.go": {
         "language": "Go",
-        "purpose": "Provides functionality for HMAC signature validation with clock skew allowance.",
+        "purpose": "Provides HMAC validation functionality including signature verification and clock skew validation.",
         "key_types": [
           "HMAC",
           "Config"
@@ -113,33 +115,10 @@
           "time"
         ],
         "side_effects": [
-          "Prints error messages to console"
+          "Prints error messages to console if parsing time fails"
         ],
         "risks": [
           "Potential for time manipulation attacks if clock skew is not properly validated"
-        ],
-        "complexity": "medium"
-      },
-      "pkg/crypto/hmac/hmac_test.go": {
-        "language": "Go",
-        "purpose": "Unit tests for HMAC validation functions, checking clock skew and signature validation.",
-        "key_types": [
-          "Config",
-          "HMAC"
-        ],
-        "functions": [
-          "TestHMAC_validateClockSkew",
-          "TestHMAC_ValidateSignature"
-        ],
-        "imports": [
-          "testing",
-          "time"
-        ],
-        "side_effects": [
-          "None"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data if not handled properly"
         ],
         "complexity": "medium"
       },
@@ -158,7 +137,11 @@
           "sync"
         ],
         "side_effects": [
-          "Initializes a global instance of HMAC if not already initialized."
+          "Initializes a global instance of HMAC",
+          "Sets global configuration"
+        ],
+        "risks": [
+          "Potential race conditions if InitInstance is called concurrently without proper synchronization"
         ],
         "complexity": "medium"
       }

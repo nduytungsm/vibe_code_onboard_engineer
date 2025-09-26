@@ -1,0 +1,61 @@
+{
+  "content_hash": "2be41eecd4beb051bd3d71ab42bbe4d0",
+  "timestamp": "2025-09-25T18:58:24.438509+07:00",
+  "result": {
+    "path": "appengine-hello",
+    "purpose": "A Google App Engine application that responds to HTTP requests with a welcoming message.",
+    "languages": {
+      "Go": 1,
+      "Markdown": 1,
+      "YAML": 1
+    },
+    "key_modules": [
+      "README.md",
+      "app.go",
+      "app.yaml"
+    ],
+    "dependencies": [
+      "fmt",
+      "net/http"
+    ],
+    "architecture": "The folder follows a simple structure with a main application file (app.go), a configuration file (app.yaml), and documentation (README.md).",
+    "file_summaries": {
+      "appengine-hello/README.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for a Google App Engine application in Go.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "appengine-hello/app.go": {
+        "language": "Go",
+        "purpose": "A simple App Engine application that replies to requests on /hello with a welcoming message.",
+        "key_types": [
+          "http.ResponseWriter",
+          "http.Request"
+        ],
+        "functions": [
+          "init",
+          "helloHandler"
+        ],
+        "imports": [
+          "fmt",
+          "net/http"
+        ],
+        "side_effects": [
+          "Registers a handler for the /hello route"
+        ],
+        "complexity": "low"
+      },
+      "appengine-hello/app.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for a Google App Engine application",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

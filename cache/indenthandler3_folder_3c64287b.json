@@ -1,0 +1,92 @@
+{
+  "content_hash": "065b349f3cf11bcfabc3b286d31b78e9",
+  "timestamp": "2025-09-25T18:58:12.375164+07:00",
+  "result": {
+    "path": "slog-handler-guide/indenthandler3",
+    "purpose": "This folder/module is responsible for implementing an IndentHandler for structured logging with indentation support and providing unit tests for its functionality.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "indent_handler.go",
+      "indent_handler_test.go"
+    ],
+    "dependencies": [
+      "context",
+      "fmt",
+      "io",
+      "log/slog",
+      "runtime",
+      "slices",
+      "sync",
+      "time",
+      "bytes",
+      "reflect",
+      "regexp",
+      "testing",
+      "testing/slogtest",
+      "gopkg.in/yaml.v3"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, separating the implementation of the IndentHandler and its associated tests into distinct files, promoting maintainability and testability.",
+    "file_summaries": {
+      "slog-handler-guide/indenthandler3/indent_handler.go": {
+        "language": "Go",
+        "purpose": "This file implements an IndentHandler for structured logging with indentation support.",
+        "key_types": [
+          "IndentHandler",
+          "Options"
+        ],
+        "functions": [
+          "New",
+          "Enabled",
+          "WithGroup",
+          "WithAttrs",
+          "Handle",
+          "appendUnopenedGroups",
+          "appendAttr"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "io",
+          "log/slog",
+          "runtime",
+          "slices",
+          "sync",
+          "time"
+        ],
+        "side_effects": [
+          "Writes formatted log output to the provided io.Writer."
+        ],
+        "complexity": "medium"
+      },
+      "slog-handler-guide/indenthandler3/indent_handler_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the indenthandler package, specifically testing logging functionality and YAML parsing.",
+        "key_types": [
+          "bytes.Buffer",
+          "map[string]any"
+        ],
+        "functions": [
+          "TestSlogtest",
+          "Test",
+          "parseLogEntries",
+          "TestParseLogEntries"
+        ],
+        "imports": [
+          "bytes",
+          "log/slog",
+          "reflect",
+          "regexp",
+          "testing",
+          "testing/slogtest",
+          "gopkg.in/yaml.v3"
+        ],
+        "side_effects": [
+          "Logs are written to a buffer for testing purposes."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

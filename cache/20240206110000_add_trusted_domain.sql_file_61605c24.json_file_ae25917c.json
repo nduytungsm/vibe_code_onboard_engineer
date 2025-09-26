@@ -1,0 +1,30 @@
+{
+  "content_hash": "610754e29482b7dfa847f587cc2e4c7a",
+  "timestamp": "2025-09-25T18:21:20.318191+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines database schema for trusted domains and quick access D apps.",
+    "key_types": [
+      "TABLE",
+      "VARCHAR",
+      "BOOLEAN",
+      "INTEGER",
+      "TIMESTAMP",
+      "JSONB"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "CREATE INDEX",
+      "DROP TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates tables in the database",
+      "Creates an index on a table"
+    ],
+    "risks": [
+      "Potential SQL injection if user input is not properly sanitized"
+    ],
+    "complexity": "medium"
+  }
+}

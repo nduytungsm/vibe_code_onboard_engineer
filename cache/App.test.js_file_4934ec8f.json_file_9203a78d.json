@@ -1,0 +1,26 @@
+{
+  "content_hash": "94e2867647df3cec9f920cc26f1f6f50",
+  "timestamp": "2025-09-25T18:22:08.292683+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file contains tests for the App component using React Testing Library.",
+    "key_types": [
+      "App"
+    ],
+    "functions": [
+      "test",
+      "render",
+      "screen.getByText",
+      "expect"
+    ],
+    "imports": [
+      "@testing-library/react",
+      "./App"
+    ],
+    "side_effects": [
+      "renders the App component",
+      "interacts with the DOM"
+    ],
+    "complexity": "low"
+  }
+}

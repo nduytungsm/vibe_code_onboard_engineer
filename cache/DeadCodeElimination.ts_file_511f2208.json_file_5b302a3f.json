@@ -1,0 +1,34 @@
+{
+  "content_hash": "632c0d79e92e89be21e6f1aba4c78050",
+  "timestamp": "2025-09-25T18:23:19.058028+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Implements dead-code elimination, eliminating instructions whose values are unused.",
+    "key_types": [
+      "BlockId",
+      "HIRFunction",
+      "Identifier",
+      "IdentifierId",
+      "Instruction",
+      "InstructionKind",
+      "InstructionValue",
+      "ObjectPattern",
+      "State"
+    ],
+    "functions": [
+      "deadCodeElimination",
+      "findReferencedIdentifiers",
+      "rewriteInstruction",
+      "pruneableValue"
+    ],
+    "imports": [
+      "../HIR",
+      "../HIR/visitors",
+      "../Utils/utils"
+    ],
+    "side_effects": [
+      "Modifies the state of instructions and identifiers during dead code elimination."
+    ],
+    "complexity": "medium"
+  }
+}

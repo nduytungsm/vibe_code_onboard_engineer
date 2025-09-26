@@ -1,0 +1,27 @@
+{
+  "content_hash": "bf1dd20ca37b72e11929eedcd22644d6",
+  "timestamp": "2025-09-26T07:34:39.926493+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides functions for parsing and converting identifier names between various naming conventions.",
+    "key_types": [
+      "Name"
+    ],
+    "functions": [
+      "ParseMixedCaps",
+      "ParseLowerCamelCase",
+      "ParseScreamingSnakeCase",
+      "ToMixedCaps",
+      "ToLowerCamelCase",
+      "isInitialism",
+      "isTwoInitialisms",
+      "isBrand"
+    ],
+    "imports": [
+      "strings",
+      "unicode",
+      "unicode/utf8"
+    ],
+    "complexity": "medium"
+  }
+}

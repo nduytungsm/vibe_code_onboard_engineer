@@ -1,0 +1,33 @@
+{
+  "content_hash": "67d8c89f47630a367e6eaeff1dd31993",
+  "timestamp": "2025-09-25T18:23:14.273901+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Collects unique global identifiers referenced within a reactive function.",
+    "key_types": [
+      "Set\u003cstring\u003e",
+      "ReactiveFunction",
+      "InstructionId",
+      "Place",
+      "ReactiveValue",
+      "Visitor"
+    ],
+    "functions": [
+      "collectReferencedGlobals",
+      "visitValue",
+      "visitReactiveFunctionValue"
+    ],
+    "imports": [
+      "visitReactiveFunction",
+      "InstructionId",
+      "Place",
+      "ReactiveFunction",
+      "ReactiveValue",
+      "ReactiveFunctionVisitor"
+    ],
+    "side_effects": [
+      "Modifies the state set by adding referenced global names."
+    ],
+    "complexity": "medium"
+  }
+}

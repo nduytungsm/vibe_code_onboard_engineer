@@ -1,0 +1,12 @@
+{
+  "content_hash": "b279d0aa0152c8a39cd72d9d405d59af",
+  "timestamp": "2025-09-25T18:20:05.041675+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for GolangCI-Lint, specifying linter settings and exclusions.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "content_hash": "47b13bbed6285e11d26092432ef8179b",
+  "timestamp": "2025-09-25T18:23:30.914353+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the events and functions for an ERC20 staking pool contract.",
+    "key_types": [
+      "event",
+      "function"
+    ],
+    "functions": [
+      "admin",
+      "changeAdmin",
+      "claimPendingRewards",
+      "emergencyUnstake",
+      "getPendingRewards",
+      "getStakingAmount",
+      "getStakingTotal",
+      "methodPaused",
+      "pause",
+      "pauseAll",
+      "paused",
+      "removeAdmin",
+      "restakeRewards",
+      "stake",
+      "unpause",
+      "unpauseAll",
+      "unstake",
+      "unstakeAll"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

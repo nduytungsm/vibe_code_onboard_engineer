@@ -1,0 +1,24 @@
+{
+  "content_hash": "cace3d9c82d6e0f92eafa84f7ff1d4c3",
+  "timestamp": "2025-09-26T07:35:23.743212+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for Axie characters in a game, including their attributes and statistics.",
+    "key_types": [
+      "Axie",
+      "Stat",
+      "Type",
+      "PartSkinCounter",
+      "IAxieMetadata"
+    ],
+    "functions": [
+      "GetClass",
+      "GetType",
+      "GetParts",
+      "GetPartSkinCounter",
+      "GetContribution"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "content_hash": "950bb819b3f500448087d7ea1c6e2b97",
+  "timestamp": "2025-09-26T07:35:23.151831+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a struct for Axie accessory instances used in a gaming context.",
+    "key_types": [
+      "AxieAccessoryInstances"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

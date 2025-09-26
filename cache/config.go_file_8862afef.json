@@ -1,0 +1,17 @@
+{
+  "content_hash": "580e259b27e3a90ee5f730cdb874545c",
+  "timestamp": "2025-09-25T18:24:10.248467+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for Moonpay with a secret field.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Exposure of sensitive information if the secret is not properly managed"
+    ],
+    "complexity": "low"
+  }
+}

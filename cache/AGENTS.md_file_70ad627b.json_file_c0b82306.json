@@ -1,0 +1,20 @@
+{
+  "content_hash": "66d8da3cddb744eec61bf3c7c8c33879",
+  "timestamp": "2025-09-25T18:21:45.65169+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for agent instructions and startup script for a Go project.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "gotest.tools/gotestsum",
+      "golang.org/x/vuln/cmd/govulncheck",
+      "mvdan.cc/gofumpt",
+      "github.com/tinylib/msgp",
+      "github.com/vburenin/ifacemaker",
+      "github.com/dkorunic/betteralign",
+      "golang.org/x/tools/gopls/internal/analysis/modernize"
+    ],
+    "complexity": "low"
+  }
+}

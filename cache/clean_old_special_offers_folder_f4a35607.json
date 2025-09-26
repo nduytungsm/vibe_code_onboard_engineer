@@ -1,9 +1,9 @@
 {
-  "content_hash": "d2f33cdd6828fc5ce773ffecc8bf0941",
-  "timestamp": "2025-09-25T17:21:15.976305+07:00",
+  "content_hash": "fc6df1c1caf1c96e23d64b5cffdbd9e8",
+  "timestamp": "2025-09-25T18:25:18.284111+07:00",
   "result": {
     "path": "cmd/clean_old_special_offers",
-    "purpose": "This folder/module is responsible for cleaning old special offers from an announcement repository based on a specified time period.",
+    "purpose": "Cleans old special offers from a database based on a specified time period.",
     "languages": {
       "Go": 1
     },
@@ -18,11 +18,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/config",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality for cleaning old special offers within a single main file that initializes necessary services and manages database interactions.",
+    "architecture": "The folder follows a command-line application architecture, where the main function orchestrates the cleaning process by initializing necessary components and executing the logic to clear old special offers.",
     "file_summaries": {
       "cmd/clean_old_special_offers/main.go": {
         "language": "Go",
-        "purpose": "This file contains a main function that initializes Sentry for error tracking, connects to a PostgreSQL database, and cleans old special offers from an announcement repository based on a specified time period.",
+        "purpose": "Cleans old special offers from a database based on a specified time period.",
         "key_types": [
           "context.Context",
           "time.Time",

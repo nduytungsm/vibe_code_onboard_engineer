@@ -12,7 +12,7 @@ openai:
 rate_limiting:
   requests_per_minute: 500     # Adjust based on your tier
   requests_per_day: 10000      # Daily limit
-  concurrent_workers: 5        # Number of concurrent workers
+  concurrent_workers: 2        # Number of concurrent workers (reduced to avoid timeouts)
 
 # File Processing Configuration
 file_processing:

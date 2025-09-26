@@ -1,0 +1,47 @@
+{
+  "content_hash": "e19bb2ff116d0760d8333747f3bafc2a",
+  "timestamp": "2025-09-25T18:24:05.696847+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This folder contains React components that make up the home section of a web application, including a main home component, an introduction component, and a typewriter effect component.",
+    "key_types": [
+      "React.Component",
+      "Container",
+      "Row",
+      "Col",
+      "Tilt",
+      "Typewriter"
+    ],
+    "functions": [
+      "Home",
+      "Home2",
+      "Type"
+    ],
+    "imports": [
+      "React",
+      "Container",
+      "Row",
+      "Col",
+      "homeLogo",
+      "Particle",
+      "Home2",
+      "Type",
+      "myImg",
+      "Tilt",
+      "AiFillGithub",
+      "AiOutlineTwitter",
+      "AiFillInstagram",
+      "FaLinkedinIn",
+      "typewriter-effect"
+    ],
+    "side_effects": [
+      "Renders a visual component on the web page",
+      "Renders a UI component",
+      "Manipulates DOM elements"
+    ],
+    "risks": [
+      "Potential XSS if user input is not sanitized in social media links"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "content_hash": "e200f22e66137c8f1c1a23d699de49f7",
+  "timestamp": "2025-09-25T18:20:12.579731+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for golangci-lint, a Go linters aggregator.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

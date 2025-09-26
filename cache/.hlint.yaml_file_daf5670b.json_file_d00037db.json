@@ -1,0 +1,40 @@
+{
+  "content_hash": "302ad99905d8947d40c94a23f20426b4",
+  "timestamp": "2025-09-25T18:20:23.262168+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for HLint, a Haskell linting tool.",
+    "key_types": [
+      "arguments",
+      "functions",
+      "rules",
+      "groups"
+    ],
+    "functions": [
+      "focus",
+      "fit",
+      "fspecify",
+      "fdescribe",
+      "fcontext",
+      "testLogHarness",
+      "LogHarness",
+      "logTrace",
+      "undefined",
+      "ltrace",
+      "ltraceM",
+      "traceToFile",
+      "traceToFileM"
+    ],
+    "imports": [
+      "package base"
+    ],
+    "side_effects": [
+      "Warnings for using certain functions during development",
+      "Suggestions for code improvements"
+    ],
+    "risks": [
+      "Potential misuse of functions intended for development in production code"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "content_hash": "1479953af947352e27d286564269458c",
-  "timestamp": "2025-09-23T16:59:04.956439+07:00",
+  "content_hash": "38b63874c2080c0a27432fff0c9e6ee6",
+  "timestamp": "2025-09-26T07:41:08.181685+07:00",
   "result": {
     "path": "_api_specs/_token_balances",
-    "purpose": "Defines the request and response structures for querying token balances, specifically for the Ronin network.",
+    "purpose": "Defines the request and response structures for token balances in the API, specifically for native tokens and specified token standards.",
     "languages": {
       "JSON": 3
     },
@@ -19,7 +19,8 @@
         "language": "JSON",
         "purpose": "Defines a request structure for token balances including native tokens and specified token standards.",
         "key_types": [
-          "object"
+          "boolean",
+          "array"
         ],
         "functions": [],
         "imports": [],
@@ -27,17 +28,10 @@
       },
       "_api_specs/_token_balances/_TokenBalancesRoninResponse.json": {
         "language": "JSON",
-        "purpose": "This file contains the response structure for token balances in the Ronin network.",
+        "purpose": "This file contains the response structure for token balances in a specific API.",
         "key_types": [
-          "result",
-          "items",
-          "owner_address",
-          "contract_address",
-          "decimals",
-          "balance",
-          "name",
-          "symbol",
-          "token_standard"
+          "object",
+          "array"
         ],
         "functions": [],
         "imports": [],
@@ -45,7 +39,7 @@
       },
       "_api_specs/_token_balances/_TokenBalancesRoninWithRONResponse.json": {
         "language": "JSON",
-        "purpose": "This file contains the response structure for token balances in the Ronin network.",
+        "purpose": "This file contains the response structure for token balances associated with a specific owner address in the Ronin blockchain.",
         "key_types": [
           "object",
           "array"

@@ -1,0 +1,17 @@
+{
+  "content_hash": "0736019eb4d3f33afdae1168b473c22f",
+  "timestamp": "2025-09-25T18:56:47.71512+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a function to reverse strings.",
+    "key_types": [
+      "string",
+      "rune"
+    ],
+    "functions": [
+      "String"
+    ],
+    "imports": [],
+    "complexity": "low"
+  }
+}

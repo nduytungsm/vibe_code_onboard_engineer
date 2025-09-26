@@ -1,0 +1,12 @@
+{
+  "content_hash": "8526f380693a5bda6ba959f9d7376883",
+  "timestamp": "2025-09-25T18:20:35.223373+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Template for submitting feature requests for Hasura version 2.x",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

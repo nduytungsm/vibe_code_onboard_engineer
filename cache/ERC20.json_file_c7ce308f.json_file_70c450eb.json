@@ -1,0 +1,22 @@
+{
+  "content_hash": "0e8c330b4266121339e6ee5a3d5234b0",
+  "timestamp": "2025-09-25T18:23:28.231028+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "[REDACTED]",
+    "key_types": [
+      "event",
+      "function"
+    ],
+    "functions": [
+      "allowance",
+      "approve",
+      "balanceOf",
+      "totalSupply",
+      "transfer",
+      "transferFrom"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

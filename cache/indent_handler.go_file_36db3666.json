@@ -1,0 +1,38 @@
+{
+  "content_hash": "d9167bd75c1b1807eed2f506503659c5",
+  "timestamp": "2025-09-25T18:57:07.709038+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements an IndentHandler for structured logging with indentation support.",
+    "key_types": [
+      "IndentHandler",
+      "Options"
+    ],
+    "functions": [
+      "New",
+      "Enabled",
+      "WithGroup",
+      "WithAttrs",
+      "Handle",
+      "appendUnopenedGroups",
+      "appendAttr",
+      "allocBuf",
+      "freeBuf"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "io",
+      "log/slog",
+      "runtime",
+      "slices",
+      "strconv",
+      "sync",
+      "time"
+    ],
+    "side_effects": [
+      "Writes log output to the provided io.Writer."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "content_hash": "9085a00b18aab1ee8afb380c2a38f21a",
+  "timestamp": "2025-09-25T18:20:18.715733+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for Hound to manage linting settings.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

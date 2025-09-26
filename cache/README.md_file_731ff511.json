@@ -1,0 +1,17 @@
+{
+  "content_hash": "8d2f7bda1928a14aa1de3c3038d0c62e",
+  "timestamp": "2025-09-25T18:56:51.390254+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for a RAG Server implementation in Go, detailing its functionality and usage.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "Google AI",
+      "Weaviate",
+      "LangChain for Go",
+      "Genkit Go"
+    ],
+    "complexity": "low"
+  }
+}

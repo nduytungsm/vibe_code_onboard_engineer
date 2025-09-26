@@ -1,0 +1,22 @@
+{
+  "content_hash": "808701c40fb521d7a60aac016597d322",
+  "timestamp": "2025-09-25T18:23:54.776959+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for HMAC signing functionality",
+    "key_types": [
+      "struct",
+      "map",
+      "string",
+      "byte"
+    ],
+    "functions": [
+      "TestSign"
+    ],
+    "imports": [
+      "testing",
+      "time"
+    ],
+    "complexity": "medium"
+  }
+}

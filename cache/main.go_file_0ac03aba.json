@@ -1,0 +1,34 @@
+{
+  "content_hash": "a45fc841c3e07519446601707ff5006d",
+  "timestamp": "2025-09-25T18:56:45.487709+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file parses and type-checks a Go source code string and prints information about the resulting package.",
+    "key_types": [
+      "*ast.File",
+      "*types.Package",
+      "types.Config"
+    ],
+    "functions": [
+      "main",
+      "parser.ParseFile",
+      "conf.Check"
+    ],
+    "imports": [
+      "fmt",
+      "go/ast",
+      "go/importer",
+      "go/parser",
+      "go/token",
+      "go/types",
+      "log"
+    ],
+    "side_effects": [
+      "Logs fatal errors if parsing or type-checking fails."
+    ],
+    "risks": [
+      "Potential for code injection if the input string is not controlled."
+    ],
+    "complexity": "medium"
+  }
+}

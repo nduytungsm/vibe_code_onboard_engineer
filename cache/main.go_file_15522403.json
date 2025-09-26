@@ -1,0 +1,51 @@
+{
+  "content_hash": "c6f06e70a5ed42f0dfd4b1376b1c8c04",
+  "timestamp": "2025-09-26T07:33:56.463295+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file sets up an HTTP server and a metrics server, handling graceful shutdown and logging.",
+    "key_types": [
+      "context.Context",
+      "sync.WaitGroup",
+      "echo.Echo",
+      "config.Schema"
+    ],
+    "functions": [
+      "main",
+      "startHTTPServer",
+      "startMetricsServer",
+      "shutdown"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "os",
+      "os/signal",
+      "strings",
+      "sync",
+      "time",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ecosystem-go-common/echo/profiling",
+      "github.com/axieinfinity/ecosystem-go-common/validation",
+      "github.com/getsentry/sentry-go",
+      "github.com/getsentry/sentry-go/echo",
+      "github.com/labstack/echo-contrib/echoprometheus",
+      "github.com/labstack/echo/v4",
+      "github.com/labstack/echo/v4/middleware",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-proxy/config",
+      "github.com/axieinfinity/ronin-wallet-proxy/middleware",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-proxy/routes"
+    ],
+    "side_effects": [
+      "Starts HTTP server and metrics server",
+      "Handles OS interrupt signals for graceful shutdown"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information in logs if not properly configured",
+      "Improper handling of shutdown could lead to data loss"
+    ],
+    "complexity": "medium"
+  }
+}

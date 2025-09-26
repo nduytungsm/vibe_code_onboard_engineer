@@ -1,0 +1,37 @@
+{
+  "content_hash": "b36f9702c7be0b31efc916e6ff565d5a",
+  "timestamp": "2025-09-25T18:56:53.431031+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Outyet is a web server that announces whether or not a particular Go version has been tagged.",
+    "key_types": [
+      "Server"
+    ],
+    "functions": [
+      "main",
+      "NewServer",
+      "poll",
+      "isTagged",
+      "ServeHTTP"
+    ],
+    "imports": [
+      "expvar",
+      "flag",
+      "fmt",
+      "html/template",
+      "log",
+      "net/http",
+      "sync",
+      "time"
+    ],
+    "side_effects": [
+      "Starts an HTTP server",
+      "Polls a remote repository for changes"
+    ],
+    "risks": [
+      "Potential for denial of service if the polling period is too short",
+      "HTTP requests may expose sensitive information if not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

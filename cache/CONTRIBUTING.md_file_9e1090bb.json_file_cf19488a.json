@@ -1,0 +1,12 @@
+{
+  "content_hash": "0f3dc7dcd027ff0e05bf7ac127644665",
+  "timestamp": "2025-09-25T18:23:03.050731+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Guidelines for contributing to the Fiber project",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

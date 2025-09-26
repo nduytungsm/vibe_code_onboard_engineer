@@ -1,108 +1,92 @@
 {
-  "content_hash": "9a44e3e8c42c96f6971c912a4f9e59c1",
-  "timestamp": "2025-09-25T17:21:29.111001+07:00",
+  "content_hash": "15b52680b5f4fce10631c9b2d7f83839",
+  "timestamp": "2025-09-26T07:41:02.092195+07:00",
   "result": {
     "path": "pkg/helper",
-    "purpose": "Provides various helper functions for encryption, file handling, token generation, and utility operations.",
+    "purpose": "Provides various utility functions and helpers for handling data types, bindings, and operations in a Go application.",
     "languages": {
-      "Go": 8
+      "Go": 12
     },
     "key_modules": [
-      "aes.go",
+      "big.go",
       "binder.go",
+      "convert_json_key_to_snake_case.go",
       "hmac_token.go",
+      "mapstruct_hook.go",
+      "par.go",
       "pointer.go",
-      "random.go",
       "ronin.go",
       "slice.go",
-      "tls.go"
+      "strings.go",
+      "tls.go",
+      "user_agent.go"
     ],
     "dependencies": [
-      "crypto/aes",
-      "crypto/cipher",
-      "crypto/rand",
-      "crypto/sha256",
-      "encoding/base64",
-      "encoding/json",
-      "io",
-      "fmt",
-      "mime/multipart",
-      "reflect",
-      "strings",
       "github.com/labstack/echo/v4",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
+      "github.com/Masterminds/semver",
+      "github.com/inhies/go-bytesize",
+      "github.com/mitchellh/mapstructure",
       "github.com/ethereum/go-ethereum/common",
       "github.com/ethereum/go-ethereum/common/hexutil",
-      "github.com/ethereum/go-ethereum/crypto",
-      "crypto/tls",
-      "crypto/x509"
+      "github.com/ethereum/go-ethereum/crypto"
     ],
-    "architecture": "The folder follows a modular architecture pattern, with each file encapsulating specific functionalities related to helper operations, promoting reusability and separation of concerns.",
+    "architecture": "The folder follows a modular architecture pattern, organizing utility functions and types into separate files for better maintainability and reusability.",
     "file_summaries": {
-      "pkg/helper/aes.go": {
+      "pkg/helper/big.go": {
         "language": "Go",
-        "purpose": "Provides helper functions for AES encryption.",
+        "purpose": "Provides a function to determine the maximum of two big integers.",
         "key_types": [
-          "string",
-          "[]byte",
-          "interface{}",
-          "error"
+          "*big.Int"
         ],
         "functions": [
-          "hashKey",
-          "EncryptEAS"
+          "Max"
         ],
         "imports": [
-          "crypto/aes",
-          "crypto/cipher",
-          "crypto/rand",
-          "crypto/sha256",
-          "encoding/base64",
-          "encoding/json",
-          "io"
+          "math/big"
         ],
-        "side_effects": [
-          "Generates random initialization vector (IV)",
-          "Encodes data to base64"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data if key is weak",
-          "Improper handling of errors may lead to information leakage"
-        ],
-        "complexity": "medium"
+        "complexity": "low"
       },
       "pkg/helper/binder.go": {
         "language": "Go",
-        "purpose": "This file provides helper functions for binding multipart file uploads in an Echo web framework context.",
+        "purpose": "Provides binding functionality for Echo framework with support for headers.",
         "key_types": [
           "BindFunc",
-          "multipart.FileHeader"
+          "echo.Context",
+          "echo.Binder"
         ],
         "functions": [
-          "BindFunc.Bind",
-          "NewBindWithHeaders",
-          "NewBindFile",
-          "echoBindFile",
-          "getFiles"
+          "Bind",
+          "NewBindWithHeaders"
         ],
         "imports": [
-          "fmt",
-          "mime/multipart",
-          "reflect",
-          "strings",
           "github.com/labstack/echo/v4"
         ],
-        "side_effects": [
-          "Modifies the provided struct by binding uploaded files to its fields."
+        "complexity": "medium"
+      },
+      "pkg/helper/convert_json_key_to_snake_case.go": {
+        "language": "Go",
+        "purpose": "Converts JSON keys from camelCase to snake_case.",
+        "key_types": [
+          "json.RawMessage",
+          "map[string]json.RawMessage",
+          "[]json.RawMessage"
         ],
-        "risks": [
-          "Potential for reflection-based errors if the input struct does not meet expected types."
+        "functions": [
+          "ConvertKeysToSnakeCase",
+          "_convertKeysForObject",
+          "_convertKeysForArray",
+          "_fixKey"
+        ],
+        "imports": [
+          "encoding/json",
+          "strings"
         ],
         "complexity": "medium"
       },
       "pkg/helper/hmac_token.go": {
         "language": "Go",
-        "purpose": "Generates an HMAC access token for authentication purposes.",
+        "purpose": "This file provides a function to generate an HMAC access token for authentication purposes.",
         "key_types": [
           "string",
           "error"
@@ -113,10 +97,53 @@
         "imports": [
           "fmt",
           "strings",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
+          "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/mapstruct_hook.go": {
+        "language": "Go",
+        "purpose": "Provides decode hook functions for converting string representations to specific types.",
+        "key_types": [
+          "mapstructure.DecodeHookFunc",
+          "reflect.Type",
+          "bytesize.ByteSize",
+          "semver.Constraints"
+        ],
+        "functions": [
+          "StringToByteSizeHookFunc",
+          "StringToSemverConditionHookFunc"
+        ],
+        "imports": [
+          "reflect",
+          "github.com/Masterminds/semver",
+          "github.com/inhies/go-bytesize",
+          "github.com/mitchellh/mapstructure"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/par.go": {
+        "language": "Go",
+        "purpose": "This file provides a helper for handling results of functions that may return an error, including parallel execution of such functions.",
+        "key_types": [
+          "Result[T]"
+        ],
+        "functions": [
+          "IsOk",
+          "IsError",
+          "Error",
+          "MustGet",
+          "TupleToResult",
+          "ParDo"
+        ],
+        "imports": [
+          "sync"
+        ],
+        "side_effects": [
+          "Panic if MustGet is called on an error result"
         ],
         "risks": [
-          "Potential exposure of secret if not handled properly"
+          "Concurrent access to shared resources if not handled properly"
         ],
         "complexity": "medium"
       },
@@ -131,22 +158,6 @@
         ],
         "imports": [],
         "complexity": "low"
-      },
-      "pkg/helper/random.go": {
-        "language": "Go",
-        "purpose": "Generates a random string of specified length using alphanumeric characters.",
-        "key_types": [
-          "rune",
-          "big.Int"
-        ],
-        "functions": [
-          "RandStr"
-        ],
-        "imports": [
-          "crypto/rand",
-          "math/big"
-        ],
-        "complexity": "medium"
       },
       "pkg/helper/ronin.go": {
         "language": "Go",
@@ -168,13 +179,13 @@
           "github.com/ethereum/go-ethereum/crypto"
         ],
         "risks": [
-          "Potential for signature forgery if inputs are not properly validated."
+          "Potential for signature forgery if input is not properly validated."
         ],
         "complexity": "medium"
       },
       "pkg/helper/slice.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for manipulating slices, including filtering, finding index, converting slices to maps, and mapping elements.",
+        "purpose": "Provides utility functions for manipulating slices, including filtering, finding indices, converting slices to maps, and mapping elements.",
         "key_types": [
           "T",
           "T1",
@@ -184,14 +195,29 @@
           "Filter",
           "IndexOf",
           "SliceToMap",
-          "Map"
+          "Map",
+          "ItemInSlice"
         ],
         "imports": [],
         "complexity": "medium"
       },
+      "pkg/helper/strings.go": {
+        "language": "Go",
+        "purpose": "Truncates a string to a specified maximum length, ensuring it does not cut off words in the middle.",
+        "key_types": [
+          "string"
+        ],
+        "functions": [
+          "EllipticalTruncate"
+        ],
+        "imports": [
+          "unicode"
+        ],
+        "complexity": "low"
+      },
       "pkg/helper/tls.go": {
         "language": "Go",
-        "purpose": "This file provides a function to convert provided certificate and key data into a TLS configuration.",
+        "purpose": "This file provides a function to convert certificate and key data into a TLS configuration.",
         "key_types": [
           "tls.Config",
           "tls.Certificate",
@@ -204,11 +230,27 @@
           "crypto/tls",
           "crypto/x509"
         ],
+        "complexity": "medium"
+      },
+      "pkg/helper/user_agent.go": {
+        "language": "Go",
+        "purpose": "This file provides functionality to parse and handle user agent strings in the context of a web application.",
+        "key_types": [
+          "UserAgent"
+        ],
+        "functions": [
+          "UserAgentFromContext"
+        ],
+        "imports": [
+          "fmt",
+          "strings",
+          "github.com/labstack/echo/v4"
+        ],
         "side_effects": [
-          "Modifies the TLS configuration based on provided certificates."
+          "Modifies the user agent string based on query parameters."
         ],
         "risks": [
-          "Improper handling of certificates may lead to security vulnerabilities."
+          "Potential for malformed user agent strings leading to errors."
         ],
         "complexity": "medium"
       }

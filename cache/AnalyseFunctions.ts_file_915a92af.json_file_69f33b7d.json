@@ -1,0 +1,38 @@
+{
+  "content_hash": "413c66a22ad781b14b498759b3b337ca",
+  "timestamp": "2025-09-25T18:22:04.456161+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Analyzes functions for mutation aliasing effects and manages their scopes.",
+    "key_types": [
+      "HIRFunction",
+      "IdentifierId",
+      "Effect"
+    ],
+    "functions": [
+      "analyseFunctions",
+      "lowerWithMutationAliasing"
+    ],
+    "imports": [
+      "CompilerError",
+      "Effect",
+      "HIRFunction",
+      "IdentifierId",
+      "makeInstructionId",
+      "deadCodeElimination",
+      "inferReactiveScopeVariables",
+      "rewriteInstructionKindsBasedOnReassignment",
+      "assertExhaustive",
+      "inferMutationAliasingEffects",
+      "inferMutationAliasingRanges"
+    ],
+    "side_effects": [
+      "Modifies the mutable range of identifiers",
+      "Logs debug information"
+    ],
+    "risks": [
+      "Potential for incorrect mutation aliasing inference leading to unexpected behavior"
+    ],
+    "complexity": "high"
+  }
+}

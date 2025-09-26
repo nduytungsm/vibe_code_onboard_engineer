@@ -1,9 +1,9 @@
 {
-  "content_hash": "c8f8c5ce3cbf0260e610f0a0adc0a334",
-  "timestamp": "2025-09-23T16:58:57.484124+07:00",
+  "content_hash": "23bbfdfe91dc499beb2b241d38eec413",
+  "timestamp": "2025-09-26T07:42:42.714415+07:00",
   "result": {
     "path": "pkg/roninabi",
-    "purpose": "Responsible for defining and managing Ethereum contract ABIs and related constants for token swaps and liquidity management.",
+    "purpose": "Responsible for defining and managing ABI (Application Binary Interface) for Ethereum contracts, specifically for token swaps and liquidity management.",
     "languages": {
       "Go": 2
     },
@@ -14,11 +14,11 @@
     "dependencies": [
       "github.com/ethereum/go-ethereum/accounts/abi"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to Ethereum contract ABIs and token management in separate Go files.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to Ethereum contract ABIs and method definitions in separate Go files.",
     "file_summaries": {
       "pkg/roninabi/abi.go": {
         "language": "Go",
-        "purpose": "Defines constants and embeds ABI JSON files for various Ethereum contracts, and initializes a map of contract names to their respective ABIs.",
+        "purpose": "Defines constants and embeds ABI JSON files for various Ethereum contracts, and initializes a map of contract names to their corresponding ABI.",
         "key_types": [
           "string",
           "map[string]string",
@@ -34,19 +34,17 @@
           "github.com/ethereum/go-ethereum/accounts/abi"
         ],
         "side_effects": [
-          "Panic if there is an error parsing the ABI JSON."
+          "Panic if there is an error parsing ABI JSON during initialization."
         ],
         "risks": [
-          "Potential panic due to malformed ABI JSON."
+          "Potential panic if ABI JSON is malformed."
         ],
         "complexity": "medium"
       },
       "pkg/roninabi/katana_method.go": {
         "language": "Go",
         "purpose": "Defines constants for various Katana method types related to token swaps and liquidity management.",
-        "key_types": [
-          "string"
-        ],
+        "key_types": [],
         "functions": [],
         "imports": [],
         "complexity": "low"

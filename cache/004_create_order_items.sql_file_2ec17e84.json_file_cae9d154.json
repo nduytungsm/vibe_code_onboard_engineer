@@ -1,0 +1,28 @@
+{
+  "content_hash": "82ad4383106b3b23b258927f2ed0d336",
+  "timestamp": "2025-09-25T18:20:33.864951+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines the schema for the order_items table and its constraints in a database.",
+    "key_types": [
+      "BIGINT",
+      "INTEGER",
+      "DECIMAL",
+      "TIMESTAMP"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "ALTER TABLE",
+      "CREATE INDEX"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates a new table in the database",
+      "Adds constraints and indexes to improve performance"
+    ],
+    "risks": [
+      "Potential for SQL injection if user input is not properly sanitized when inserting data"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "content_hash": "64d37ba434cae8690ab11f58f888a0f0",
+  "timestamp": "2025-09-26T07:33:18.38736+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a GitHub Actions workflow for Dockerizing a mobile wallet manager.",
+    "key_types": [
+      "workflow",
+      "job",
+      "permissions"
+    ],
+    "functions": [
+      "on",
+      "jobs",
+      "uses",
+      "with",
+      "secrets"
+    ],
+    "imports": [
+      "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml"
+    ],
+    "side_effects": [
+      "Triggers on push and pull request events",
+      "Uses external workflow for Docker build"
+    ],
+    "risks": [
+      "Exposing sensitive information in secrets",
+      "Dependency on external workflow"
+    ],
+    "complexity": "medium"
+  }
+}

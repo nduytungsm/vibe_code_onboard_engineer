@@ -2,39 +2,50 @@ package pipeline
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"os"
 	"path/filepath"
 	"strings"
 	"sync"
+	"time"
 
+	"github.com/sashabaranov/go-openai"
 	"repo-explanation/cache"
 	"repo-explanation/config"
 	"repo-explanation/internal/chunker"
 	"repo-explanation/internal/database"
 	"repo-explanation/internal/detector"
 	"repo-explanation/internal/microservices"
-	"repo-explanation/internal/openai"
+	internalOpenai "repo-explanation/internal/openai"
 	"repo-explanation/internal/relationships"
 )
 
 // Analyzer orchestrates the map-reduce analysis pipeline
 type Analyzer struct {
 	config     *config.Config
-	openaiClient *openai.Client
+	openaiClient *internalOpenai.Client
 	cache      *cache.Cache
 	crawler    *Crawler
 }
 
+// HelpfulQuestion represents a project-specific question and answer pair
+type HelpfulQuestion struct {
+	Question string `json:"question"`
+	Answer   string `json:"answer"`
+}
+
 // AnalysisResult contains the complete analysis result
 type AnalysisResult struct {
-	ProjectSummary      *openai.ProjectSummary               `json:"project_summary"`
-	FolderSummaries     map[string]*openai.FolderSummary     `json:"folder_summaries"`
-	FileSummaries       map[string]*openai.FileSummary       `json:"file_summaries"`
+	ProjectSummary      *internalOpenai.ProjectSummary               `json:"project_summary"`
+	FolderSummaries     map[string]*internalOpenai.FolderSummary     `json:"folder_summaries"`
+	FileSummaries       map[string]*internalOpenai.FileSummary       `json:"file_summaries"`
 	ProjectType         *detector.DetectionResult            `json:"project_type"`
 	Stats               map[string]interface{}               `json:"stats"`
 	Services            []microservices.DiscoveredService    `json:"services,omitempty"`
 	ServiceRelationships []relationships.ServiceRelationship `json:"relationships,omitempty"`
 	DatabaseSchema      *database.DatabaseSchema             `json:"database_schema,omitempty"`
+	HelpfulQuestions    []HelpfulQuestion                    `json:"helpful_questions,omitempty"`
 }
 
 // NewAnalyzer creates a new analyzer
@@ -46,7 +57,7 @@ func NewAnalyzer(cfg *config.Config, basePath string) (*Analyzer, error) {
 	
 	return &Analyzer{
 		config:       cfg,
-		openaiClient: openai.NewClient(cfg),
+		openaiClient: internalOpenai.NewClient(cfg),
 		cache:        cache.NewCache(cfg),
 		crawler:      crawler,
 	}, nil
@@ -145,14 +156,14 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 	importantFiles := a.extractImportantFiles(files)
 	
 	// Convert pointer maps to value maps for the detailed analysis (with nil checks)
-	fileSummariesForAnalysis := make(map[string]openai.FileSummary)
+	fileSummariesForAnalysis := make(map[string]internalOpenai.FileSummary)
 	for k, v := range fileSummaries {
 		if v != nil {
 			fileSummariesForAnalysis[k] = *v
 		}
 	}
 	
-	folderSummariesForAnalysis := make(map[string]openai.FolderSummary)
+	folderSummariesForAnalysis := make(map[string]internalOpenai.FolderSummary)
 	for k, v := range folderSummaries {
 		if v != nil {
 			folderSummariesForAnalysis[k] = *v
@@ -160,7 +171,7 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 	}
 	
 	// Perform detailed analysis with error recovery
-	var detailedAnalysis *openai.RepositoryAnalysis
+	var detailedAnalysis *internalOpenai.RepositoryAnalysis
 	var detailedErr error
 	
 	func() {
@@ -238,8 +249,31 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 		}
 	}
 	
+	// Phase 9: Generate helpful questions
+	callback("progress", "🤔 Generating helpful questions...", "Creating project-specific Q&A to accelerate development", 94, nil)
+	
+	helpfulQuestions := a.generateHelpfulQuestions(ctx, projectSummary, projectType, discoveredServices, databaseSchema, fileSummaries)
+	
+	if len(helpfulQuestions) > 0 {
+		callback("data", "Helpful questions generated", fmt.Sprintf("Generated %d project-specific questions", len(helpfulQuestions)), 96, map[string]interface{}{
+			"helpful_questions": helpfulQuestions,
+		})
+		fmt.Printf("✅ [DEBUG] Successfully generated %d helpful questions\n", len(helpfulQuestions))
+	} else {
+		fmt.Printf("⚠️ [DEBUG] No helpful questions generated - this may indicate an API timeout or parsing issue\n")
+		// Generate fallback questions based on project type
+		fallbackQuestions := a.generateFallbackQuestions(projectType, projectSummary)
+		if len(fallbackQuestions) > 0 {
+			callback("data", "Fallback questions generated", fmt.Sprintf("Generated %d fallback questions", len(fallbackQuestions)), 96, map[string]interface{}{
+				"helpful_questions": fallbackQuestions,
+			})
+			helpfulQuestions = fallbackQuestions
+			fmt.Printf("✅ [DEBUG] Generated %d fallback questions as backup\n", len(fallbackQuestions))
+		}
+	}
+	
 	// Final result compilation
-	callback("progress", "📊 Generating comprehensive analysis...", "Compiling final analysis results", 95, nil)
+	callback("progress", "📊 Generating comprehensive analysis...", "Compiling final analysis results", 98, nil)
 	
 	result := &AnalysisResult{
 		ProjectSummary:       projectSummary,
@@ -250,6 +284,7 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 		Services:             discoveredServices,
 		ServiceRelationships: serviceRelationships,
 		DatabaseSchema:       databaseSchema,
+		HelpfulQuestions:     helpfulQuestions,
 	}
 	
 	return result, nil
@@ -328,14 +363,14 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 	importantFiles := a.extractImportantFiles(files)
 	
 	// Convert pointer maps to value maps for the detailed analysis (with nil checks)
-	fileSummariesForAnalysis := make(map[string]openai.FileSummary)
+	fileSummariesForAnalysis := make(map[string]internalOpenai.FileSummary)
 	for k, v := range fileSummaries {
 		if v != nil {
 			fileSummariesForAnalysis[k] = *v
 		}
 	}
 	
-	folderSummariesForAnalysis := make(map[string]openai.FolderSummary)
+	folderSummariesForAnalysis := make(map[string]internalOpenai.FolderSummary)
 	for k, v := range folderSummaries {
 		if v != nil {
 			folderSummariesForAnalysis[k] = *v
@@ -343,7 +378,7 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 	}
 	
 	// Perform detailed analysis with error recovery
-	var detailedAnalysis *openai.RepositoryAnalysis
+	var detailedAnalysis *internalOpenai.RepositoryAnalysis
 	var detailedErr error
 	
 	func() {
@@ -420,8 +455,8 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 }
 
 // mapPhaseWithProgress analyzes individual files with progress callbacks
-func (a *Analyzer) mapPhaseWithProgress(ctx context.Context, files []FileInfo, callback ProgressCallback) (map[string]*openai.FileSummary, error) {
-	fileSummaries := make(map[string]*openai.FileSummary)
+func (a *Analyzer) mapPhaseWithProgress(ctx context.Context, files []FileInfo, callback ProgressCallback) (map[string]*internalOpenai.FileSummary, error) {
+	fileSummaries := make(map[string]*internalOpenai.FileSummary)
 	totalFiles := len(files)
 	processedCount := 0
 	
@@ -471,8 +506,8 @@ func (a *Analyzer) mapPhaseWithProgress(ctx context.Context, files []FileInfo, c
 }
 
 // mapPhase analyzes individual files (legacy method for backward compatibility)
-func (a *Analyzer) mapPhase(ctx context.Context, files []FileInfo) (map[string]*openai.FileSummary, error) {
-	fileSummaries := make(map[string]*openai.FileSummary)
+func (a *Analyzer) mapPhase(ctx context.Context, files []FileInfo) (map[string]*internalOpenai.FileSummary, error) {
+	fileSummaries := make(map[string]*internalOpenai.FileSummary)
 	
 	// Create worker pool
 	workerCount := a.config.RateLimiting.ConcurrentWorkers
@@ -528,7 +563,7 @@ func (a *Analyzer) mapPhase(ctx context.Context, files []FileInfo) (map[string]*
 
 type fileResult struct {
 	file    FileInfo
-	summary *openai.FileSummary
+	summary *internalOpenai.FileSummary
 	err     error
 }
 
@@ -551,7 +586,7 @@ func (a *Analyzer) fileWorker(ctx context.Context, jobs <-chan FileInfo, results
 }
 
 // analyzeFile analyzes a single file
-func (a *Analyzer) analyzeFile(ctx context.Context, file FileInfo) (*openai.FileSummary, error) {
+func (a *Analyzer) analyzeFile(ctx context.Context, file FileInfo) (*internalOpenai.FileSummary, error) {
 	// Read file content
 	content, err := a.crawler.ReadFile(file)
 	if err != nil {
@@ -593,11 +628,11 @@ func (a *Analyzer) analyzeFile(ctx context.Context, file FileInfo) (*openai.File
 }
 
 // reducePhaseFolder analyzes folders based on their files
-func (a *Analyzer) reducePhaseFolder(ctx context.Context, fileSummaries map[string]*openai.FileSummary) (map[string]*openai.FolderSummary, error) {
-	folderSummaries := make(map[string]*openai.FolderSummary)
+func (a *Analyzer) reducePhaseFolder(ctx context.Context, fileSummaries map[string]*internalOpenai.FileSummary) (map[string]*internalOpenai.FolderSummary, error) {
+	folderSummaries := make(map[string]*internalOpenai.FolderSummary)
 	
 	// Group files by directory
-	folderFiles := make(map[string]map[string]*openai.FileSummary)
+	folderFiles := make(map[string]map[string]*internalOpenai.FileSummary)
 	
 	for filePath, summary := range fileSummaries {
 		dir := filepath.Dir(filePath)
@@ -606,7 +641,7 @@ func (a *Analyzer) reducePhaseFolder(ctx context.Context, fileSummaries map[stri
 		}
 		
 		if folderFiles[dir] == nil {
-			folderFiles[dir] = make(map[string]*openai.FileSummary)
+			folderFiles[dir] = make(map[string]*internalOpenai.FileSummary)
 		}
 		folderFiles[dir][filePath] = summary
 	}
@@ -614,7 +649,7 @@ func (a *Analyzer) reducePhaseFolder(ctx context.Context, fileSummaries map[stri
 	// Analyze each folder
 	for folderPath, files := range folderFiles {
 		// Convert pointer map to value map for cache and API calls
-		filesForAPI := make(map[string]openai.FileSummary)
+		filesForAPI := make(map[string]internalOpenai.FileSummary)
 		for k, v := range files {
 			filesForAPI[k] = *v
 		}
@@ -644,11 +679,11 @@ func (a *Analyzer) reducePhaseFolder(ctx context.Context, fileSummaries map[stri
 }
 
 // reducePhaseProject creates final project summary
-func (a *Analyzer) reducePhaseProject(ctx context.Context, folderSummaries map[string]*openai.FolderSummary) (*openai.ProjectSummary, error) {
+func (a *Analyzer) reducePhaseProject(ctx context.Context, folderSummaries map[string]*internalOpenai.FolderSummary) (*internalOpenai.ProjectSummary, error) {
 	projectPath := a.crawler.basePath
 	
 	// Convert pointer map to value map for cache and API calls (with nil checks)
-	foldersForAPI := make(map[string]openai.FolderSummary)
+	foldersForAPI := make(map[string]internalOpenai.FolderSummary)
 	for k, v := range folderSummaries {
 		if v != nil {
 			foldersForAPI[k] = *v
@@ -712,7 +747,7 @@ func (a *Analyzer) extractImportantFiles(files []FileInfo) map[string]string {
 }
 
 // enhanceWithMicroserviceDiscovery enhances the analysis with intelligent microservice discovery
-func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files []FileInfo, projectType *detector.DetectionResult, projectSummary *openai.ProjectSummary) []microservices.DiscoveredService {
+func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files []FileInfo, projectType *detector.DetectionResult, projectSummary *internalOpenai.ProjectSummary) []microservices.DiscoveredService {
 	if projectSummary.DetailedAnalysis == nil {
 		return nil
 	}
@@ -769,9 +804,9 @@ func (a *Analyzer) enhanceWithMicroserviceDiscovery(ctx context.Context, files [
 	}
 
 	// Convert discovered services to MonorepoService format
-	var enhancedServices []openai.MonorepoService
+	var enhancedServices []internalOpenai.MonorepoService
 	for _, service := range discoveredServices {
-		enhancedService := openai.MonorepoService{
+		enhancedService := internalOpenai.MonorepoService{
 			Name:         service.Name,
 			Path:         service.Path,
 			Language:     a.getLanguageFromProjectType(projectTypeStr),
@@ -888,7 +923,7 @@ func (a *Analyzer) generateServicePurpose(serviceName string, apiType microservi
 }
 
 // discoverServiceRelationships discovers relationships between microservices
-func (a *Analyzer) discoverServiceRelationships(files []FileInfo, discoveredServices []microservices.DiscoveredService, projectSummary *openai.ProjectSummary) []relationships.ServiceRelationship {
+func (a *Analyzer) discoverServiceRelationships(files []FileInfo, discoveredServices []microservices.DiscoveredService, projectSummary *internalOpenai.ProjectSummary) []relationships.ServiceRelationship {
 	projectPath := a.crawler.basePath
 	cacheDir := "./relationships_cache"
 	
@@ -1026,4 +1061,314 @@ func (a *Analyzer) extractDatabaseSchema(files []FileInfo) *database.DatabaseSch
 	}
 	
 	return schema
+}
+
+// generateHelpfulQuestions creates project-specific Q&A using LLM
+func (a *Analyzer) generateHelpfulQuestions(ctx context.Context, projectSummary *internalOpenai.ProjectSummary, projectType *detector.DetectionResult, services []microservices.DiscoveredService, databaseSchema *database.DatabaseSchema, fileSummaries map[string]*internalOpenai.FileSummary) []HelpfulQuestion {
+	fmt.Printf("🤔 [DEBUG] Starting helpful questions generation\n")
+	
+	// Skip if we don't have enough data for meaningful questions
+	if projectSummary == nil || projectType == nil {
+		fmt.Printf("❌ [DEBUG] Insufficient data for question generation (projectSummary: %v, projectType: %v)\n", projectSummary != nil, projectType != nil)
+		return []HelpfulQuestion{}
+	}
+	
+	// Build context for LLM prompt
+	prompt := a.buildQuestionsPrompt(projectSummary, projectType, services, databaseSchema, fileSummaries)
+	
+	fmt.Printf("✅ [DEBUG] Question prompt created (%d characters)\n", len(prompt))
+	
+	// Call LLM to generate questions
+	questions, err := a.callLLMForQuestions(ctx, prompt)
+	if err != nil {
+		fmt.Printf("❌ [DEBUG] LLM question generation failed: %v\n", err)
+		return []HelpfulQuestion{}
+	}
+	
+	fmt.Printf("✅ [DEBUG] Generated %d helpful questions\n", len(questions))
+	return questions
+}
+
+// buildQuestionsPrompt creates a comprehensive prompt for LLM question generation
+func (a *Analyzer) buildQuestionsPrompt(projectSummary *internalOpenai.ProjectSummary, projectType *detector.DetectionResult, services []microservices.DiscoveredService, databaseSchema *database.DatabaseSchema, fileSummaries map[string]*internalOpenai.FileSummary) string {
+	prompt := `You are a senior software engineer helping developers understand and work with a codebase. Based on the project analysis below, generate 5-7 helpful questions with detailed answers that would help developers:
+
+1. Understand the project structure and architecture quickly
+2. Get started with development faster  
+3. Avoid common pitfalls and mistakes
+4. Know the most important files and entry points
+5. Understand deployment and setup processes
+
+Make the questions SPECIFIC to this project - not generic programming questions. Focus on practical, actionable information.
+
+Return your response as a JSON array with this exact format:
+[
+  {
+    "question": "How do I set up the development environment for this project?",
+    "answer": "Detailed step-by-step answer specific to this project..."
+  }
+]
+
+PROJECT ANALYSIS:
+`
+
+	// Add project type and confidence
+	if projectType != nil {
+		prompt += fmt.Sprintf("\nProject Type: %s (%s confidence: %.1f/10)\n", projectType.PrimaryType, projectType.SecondaryType, projectType.Confidence)
+	}
+	
+	// Add project summary
+	if projectSummary != nil {
+		if projectSummary.Purpose != "" {
+			prompt += fmt.Sprintf("\nProject Purpose: %s\n", projectSummary.Purpose)
+		}
+		if projectSummary.Architecture != "" {
+			prompt += fmt.Sprintf("Architecture: %s\n", projectSummary.Architecture)
+		}
+		if len(projectSummary.Languages) > 0 {
+			prompt += "\nPrimary Languages:\n"
+			for lang, count := range projectSummary.Languages {
+				prompt += fmt.Sprintf("- %s (%d files)\n", lang, count)
+			}
+		}
+		if len(projectSummary.DataModels) > 0 {
+			prompt += fmt.Sprintf("\nData Models: %v\n", projectSummary.DataModels)
+		}
+		if len(projectSummary.ExternalServices) > 0 {
+			prompt += fmt.Sprintf("External Services: %v\n", projectSummary.ExternalServices)
+		}
+	}
+	
+	// Add services information
+	if len(services) > 0 {
+		prompt += "\nServices/Components:\n"
+		for _, service := range services {
+			prompt += fmt.Sprintf("- %s (%s): %s\n", service.Name, service.APIType, service.EntryPoint)
+		}
+	}
+	
+	// Add database information
+	if databaseSchema != nil && len(databaseSchema.Tables) > 0 {
+		prompt += fmt.Sprintf("\nDatabase: %d tables detected\n", len(databaseSchema.Tables))
+		tableNames := make([]string, 0, len(databaseSchema.Tables))
+		for tableName := range databaseSchema.Tables {
+			tableNames = append(tableNames, tableName)
+		}
+		if len(tableNames) <= 5 {
+			prompt += fmt.Sprintf("Tables: %v\n", tableNames)
+		} else {
+			prompt += fmt.Sprintf("Main tables: %v... (%d total)\n", tableNames[:5], len(tableNames))
+		}
+	}
+	
+	// Add key files information
+	keyFiles := a.extractKeyFiles(fileSummaries)
+	if len(keyFiles) > 0 {
+		prompt += "\nKey Files:\n"
+		for _, file := range keyFiles {
+			prompt += fmt.Sprintf("- %s\n", file)
+		}
+	}
+	
+	prompt += `
+
+IMPORTANT GUIDELINES:
+- Questions must be specific to THIS project, not generic
+- Focus on practical development needs (setup, architecture, deployment)
+- Include specific file names, commands, and project details in answers
+- Make answers actionable and detailed
+- Avoid questions about general programming concepts
+- Generate exactly 5-7 questions
+- Return ONLY the JSON array, no other text`
+
+	return prompt
+}
+
+// extractKeyFiles identifies the most important files for developers
+func (a *Analyzer) extractKeyFiles(fileSummaries map[string]*internalOpenai.FileSummary) []string {
+	keyFiles := []string{}
+	
+	// Look for common important files
+	importantPatterns := []string{
+		"package.json", "go.mod", "requirements.txt", "Cargo.toml", "pom.xml",
+		"Dockerfile", "docker-compose.yml", "Makefile",
+		"README.md", "CONTRIBUTING.md", "SETUP.md",
+		"main.go", "app.js", "index.js", "server.js", "main.py", "app.py",
+		".env.example", "config.yaml", "config.json",
+	}
+	
+	for filePath := range fileSummaries {
+		for _, pattern := range importantPatterns {
+			if strings.Contains(strings.ToLower(filePath), strings.ToLower(pattern)) {
+				keyFiles = append(keyFiles, filePath)
+				break
+			}
+		}
+	}
+	
+	// Limit to most important ones
+	if len(keyFiles) > 8 {
+		keyFiles = keyFiles[:8]
+	}
+	
+	return keyFiles
+}
+
+// callLLMForQuestions makes the LLM API call for question generation
+func (a *Analyzer) callLLMForQuestions(ctx context.Context, prompt string) ([]HelpfulQuestion, error) {
+	fmt.Printf("🤖 [DEBUG] Starting LLM call for question generation\n")
+	fmt.Printf("📝 [DEBUG] Prompt length: %d characters\n", len(prompt))
+	
+	// Get OpenAI API key from environment
+	apiKey := os.Getenv("OPENAI_API_KEY")
+	if apiKey == "" {
+		// Try loading from config file as fallback
+		cfg, err := config.LoadConfig("config.yaml")
+		if err == nil && cfg.OpenAI.APIKey != "" {
+			apiKey = cfg.OpenAI.APIKey
+		} else {
+			return nil, fmt.Errorf("OpenAI API key not found for question generation")
+		}
+	}
+	
+	// Create OpenAI client
+	openaiCfg := openai.DefaultConfig(apiKey)
+	client := openai.NewClientWithConfig(openaiCfg)
+	
+	// Create context with extended timeout for question generation (5 minutes)
+	reqCtx, cancel := context.WithTimeout(ctx, 5*time.Minute)
+	defer cancel()
+	
+	// Make the API call
+	resp, err := client.CreateChatCompletion(reqCtx, openai.ChatCompletionRequest{
+		Model:       "gpt-3.5-turbo",
+		Temperature: 0.3, // Slightly creative but still focused
+		MaxTokens:   3000, // Enough for detailed Q&A
+		Messages: []openai.ChatCompletionMessage{
+			{
+				Role:    openai.ChatMessageRoleSystem,
+				Content: "You are a helpful senior software engineer creating project-specific onboarding questions. Always return valid JSON arrays with question/answer objects. Be specific to the project details provided.",
+			},
+			{
+				Role:    openai.ChatMessageRoleUser,
+				Content: prompt,
+			},
+		},
+		ResponseFormat: &openai.ChatCompletionResponseFormat{
+			Type: openai.ChatCompletionResponseFormatTypeJSONObject,
+		},
+	})
+	
+	if err != nil {
+		fmt.Printf("❌ [DEBUG] OpenAI API call failed: %v\n", err)
+		return nil, fmt.Errorf("OpenAI API error: %v", err)
+	}
+	
+	if len(resp.Choices) == 0 {
+		return nil, fmt.Errorf("no response from OpenAI")
+	}
+	
+	responseContent := strings.TrimSpace(resp.Choices[0].Message.Content)
+	fmt.Printf("📝 [DEBUG] LLM response length: %d characters\n", len(responseContent))
+	
+	// Parse JSON response
+	var questions []HelpfulQuestion
+	if err := json.Unmarshal([]byte(responseContent), &questions); err != nil {
+		fmt.Printf("❌ [DEBUG] Failed to parse JSON response: %v\n", err)
+		fmt.Printf("📝 [DEBUG] Response content: %s\n", responseContent[:minInt(500, len(responseContent))])
+		return nil, fmt.Errorf("failed to parse LLM response: %v", err)
+	}
+	
+	// Validate and filter questions
+	validQuestions := []HelpfulQuestion{}
+	for _, q := range questions {
+		if strings.TrimSpace(q.Question) != "" && strings.TrimSpace(q.Answer) != "" {
+			validQuestions = append(validQuestions, HelpfulQuestion{
+				Question: strings.TrimSpace(q.Question),
+				Answer:   strings.TrimSpace(q.Answer),
+			})
+		}
+	}
+	
+	// Limit to 7 questions max
+	if len(validQuestions) > 7 {
+		validQuestions = validQuestions[:7]
+	}
+	
+	fmt.Printf("✅ [DEBUG] Successfully parsed %d valid questions\n", len(validQuestions))
+	return validQuestions, nil
+}
+
+// generateFallbackQuestions creates basic questions when LLM generation fails
+func (a *Analyzer) generateFallbackQuestions(projectType *detector.DetectionResult, projectSummary *internalOpenai.ProjectSummary) []HelpfulQuestion {
+	fmt.Printf("🔧 [DEBUG] Generating fallback questions for project type: %s\n", projectType.PrimaryType)
+	
+	fallbackQuestions := []HelpfulQuestion{}
+	
+	// Generic questions applicable to all project types
+	fallbackQuestions = append(fallbackQuestions, HelpfulQuestion{
+		Question: "How do I set up the development environment for this project?",
+		Answer:   "Check for setup files like package.json (Node.js), go.mod (Go), requirements.txt (Python), or README.md for installation instructions. Look for Docker files for containerized setup.",
+	})
+	
+	fallbackQuestions = append(fallbackQuestions, HelpfulQuestion{
+		Question: "What is the main entry point of this application?",
+		Answer:   "Look for files like main.go (Go), index.js (Node.js), app.py (Python), or server.js. Check the package.json scripts section for the start command.",
+	})
+	
+	// Project type specific questions
+	switch projectType.PrimaryType {
+	case "Backend", "Fullstack":
+		fallbackQuestions = append(fallbackQuestions, HelpfulQuestion{
+			Question: "How do I configure the database connection?",
+			Answer:   "Look for configuration files like .env, config.yaml, or database connection strings in the main application files. Check for migration files in folders like migrations/ or db/.",
+		})
+		
+		fallbackQuestions = append(fallbackQuestions, HelpfulQuestion{
+			Question: "What API endpoints are available?",
+			Answer:   "Check route definition files, usually in folders like routes/, handlers/, or controllers/. Look for API documentation files or OpenAPI/Swagger specifications.",
+		})
+		
+	case "Frontend":
+		fallbackQuestions = append(fallbackQuestions, HelpfulQuestion{
+			Question: "How do I start the development server?",
+			Answer:   "Run 'npm start' or 'yarn start' for React/Vue projects. Check package.json scripts for the exact command. For static sites, look for build tools like Vite or Webpack.",
+		})
+		
+		fallbackQuestions = append(fallbackQuestions, HelpfulQuestion{
+			Question: "What UI framework or library is being used?",
+			Answer:   "Check package.json dependencies for frameworks like React, Vue, Angular, or UI libraries like Material-UI, Bootstrap, or Tailwind CSS.",
+		})
+		
+	case "Mobile":
+		fallbackQuestions = append(fallbackQuestions, HelpfulQuestion{
+			Question: "How do I run this mobile app?",
+			Answer:   "For React Native, use 'npx react-native run-ios' or 'npx react-native run-android'. For Flutter, use 'flutter run'. Check README.md for platform-specific setup instructions.",
+		})
+		
+	case "DevOps/Infrastructure":
+		fallbackQuestions = append(fallbackQuestions, HelpfulQuestion{
+			Question: "How do I deploy this infrastructure?",
+			Answer:   "Look for Terraform files (*.tf), Kubernetes manifests (*.yaml in k8s folders), Docker Compose files, or CI/CD pipeline configurations in .github/workflows or .gitlab-ci.yml.",
+		})
+	}
+	
+	// Add project-specific questions based on summary if available
+	if projectSummary != nil && projectSummary.Purpose != "" {
+		fallbackQuestions = append(fallbackQuestions, HelpfulQuestion{
+			Question: "What is the main purpose of this project?",
+			Answer:   projectSummary.Purpose,
+		})
+	}
+	
+	fmt.Printf("✅ [DEBUG] Generated %d fallback questions\n", len(fallbackQuestions))
+	return fallbackQuestions
+}
+
+// minInt returns the minimum of two integers
+func minInt(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
 }

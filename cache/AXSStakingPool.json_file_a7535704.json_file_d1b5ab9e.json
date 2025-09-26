@@ -1,0 +1,33 @@
+{
+  "content_hash": "47041625ff69352e94b45b2aa8f768d6",
+  "timestamp": "2025-09-25T18:21:51.895883+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines events and functions for an AXS Staking Pool contract.",
+    "key_types": [
+      "event",
+      "function"
+    ],
+    "functions": [
+      "admin",
+      "changeAdmin",
+      "claimPendingRewards",
+      "emergencyUnstake",
+      "getPendingRewards",
+      "getStakingAmount",
+      "getStakingTotal",
+      "methodPaused",
+      "pause",
+      "pauseAll",
+      "paused",
+      "removeAdmin",
+      "restakeRewards",
+      "stake",
+      "unpause",
+      "unpauseAll",
+      "unstake"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "content_hash": "ac6bf91bd489c7b334d85fd2cd07e7c5",
+  "timestamp": "2025-09-26T07:39:08.858845+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines constants and embeds ABI JSON files for various Ethereum contracts, and initializes a map of contract names to their corresponding ABI.",
+    "key_types": [
+      "string",
+      "map[string]string",
+      "map[string]*abi.ABI"
+    ],
+    "functions": [
+      "parseABI",
+      "init"
+    ],
+    "imports": [
+      "embed",
+      "strings",
+      "github.com/ethereum/go-ethereum/accounts/abi"
+    ],
+    "side_effects": [
+      "Panic if there is an error parsing ABI JSON during initialization."
+    ],
+    "risks": [
+      "Potential panic if ABI JSON is malformed."
+    ],
+    "complexity": "medium"
+  }
+}

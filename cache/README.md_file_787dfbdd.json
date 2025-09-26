@@ -1,0 +1,30 @@
+{
+  "content_hash": "f111d61e6bce9c890bc76e70a4b39111",
+  "timestamp": "2025-09-25T18:56:37.611148+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the Go Type Checker package, explaining its features and usage.",
+    "key_types": [
+      "Package",
+      "Config",
+      "FileSet"
+    ],
+    "functions": [
+      "ParseFile",
+      "Check"
+    ],
+    "imports": [
+      "fmt",
+      "go/ast",
+      "go/importer",
+      "go/parser",
+      "go/token",
+      "go/types",
+      "log"
+    ],
+    "side_effects": [
+      "Logs errors if parsing or type checking fails."
+    ],
+    "complexity": "medium"
+  }
+}

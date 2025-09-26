@@ -1,9 +1,9 @@
 {
-  "content_hash": "748fe5ef4b937307bb17473a6b4ce17e",
-  "timestamp": "2025-09-25T16:32:47.38612+07:00",
+  "content_hash": "66d8aa8bf79cfa80eb84827a241e7ac7",
+  "timestamp": "2025-09-25T18:25:59.31164+07:00",
   "result": {
     "path": "pkg/tracking",
-    "purpose": "Responsible for tracking events and requests, providing services to manage and process tracking data.",
+    "purpose": "Responsible for tracking events and requests through a configurable service.",
     "languages": {
       "Go": 3
     },
@@ -15,7 +15,7 @@
     "dependencies": [
       "github.com/axieinfinity/ronin-wallet-manager/httpclient"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration, data models, and service logic related to tracking functionalities.",
+    "architecture": "The folder follows a service-oriented architecture, encapsulating configuration, data models, and service logic for tracking functionalities.",
     "file_summaries": {
       "pkg/tracking/config.go": {
         "language": "Go",
@@ -44,7 +44,7 @@
       },
       "pkg/tracking/tracking_svc.go": {
         "language": "Go",
-        "purpose": "Provides tracking services for events using a tracking client.",
+        "purpose": "Provides tracking services for events using a configurable client.",
         "key_types": [
           "Service",
           "service",
@@ -61,12 +61,11 @@
           "github.com/axieinfinity/ronin-wallet-manager/httpclient"
         ],
         "side_effects": [
-          "Modifies event data if certain conditions are met.",
-          "Makes network calls to track events."
+          "Modifies event data if certain conditions are met",
+          "Makes HTTP requests to track events"
         ],
         "risks": [
-          "Potential exposure of API keys if not handled securely.",
-          "Network call failures may not be handled explicitly."
+          "Potential exposure of API keys if not handled securely"
         ],
         "complexity": "medium"
       }

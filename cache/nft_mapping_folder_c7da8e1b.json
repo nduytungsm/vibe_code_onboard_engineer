@@ -1,9 +1,9 @@
 {
-  "content_hash": "dcb62769ca1c6b0f034a9d4acfd21ce4",
-  "timestamp": "2025-09-23T16:59:35.619588+07:00",
+  "content_hash": "57f6ef3d68503f0b374938984b4bd6f9",
+  "timestamp": "2025-09-26T07:43:13.55119+07:00",
   "result": {
     "path": "pkg/nft_mapping",
-    "purpose": "Provides a service for managing NFT mappings with caching and Redis integration.",
+    "purpose": "Provides a service for managing NFT mappings, including saving, searching, and caching.",
     "languages": {
       "Go": 1
     },
@@ -17,11 +17,11 @@
       "github.com/axieinfinity/ronin-wallet-proxy/models",
       "github.com/axieinfinity/ronin-wallet-proxy/repositories"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, focusing on managing NFT mappings with an emphasis on caching and external Redis integration.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating NFT mapping functionalities within a dedicated service module.",
     "file_summaries": {
       "pkg/nft_mapping/nft_mapping_svc.go": {
         "language": "Go",
-        "purpose": "Provides a service for managing NFT mappings with caching and Redis integration.",
+        "purpose": "Provides a service for managing NFT mappings, including saving, searching, and caching.",
         "key_types": [
           "Service",
           "svc",
@@ -53,8 +53,8 @@
           "Subscribes to a Redis channel for cache invalidation"
         ],
         "risks": [
-          "Potential race conditions in cache invalidation",
-          "Error handling for Redis operations may not be sufficient"
+          "Potential race conditions in cache management",
+          "Error handling for Redis operations may not cover all cases"
         ],
         "complexity": "medium"
       }

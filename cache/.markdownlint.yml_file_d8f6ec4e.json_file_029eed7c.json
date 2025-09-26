@@ -1,0 +1,16 @@
+{
+  "content_hash": "98a999ce4a7768c2cd6d951b284253c3",
+  "timestamp": "2025-09-25T18:20:22.912935+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for markdownlint to enforce markdown style rules.",
+    "key_types": [
+      "boolean",
+      "string",
+      "object"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

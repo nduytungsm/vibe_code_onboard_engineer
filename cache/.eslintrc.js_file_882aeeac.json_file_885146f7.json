@@ -1,0 +1,26 @@
+{
+  "content_hash": "a35308d2bdfaff8f0fd6214f261236e2",
+  "timestamp": "2025-09-25T18:19:55.86222+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Configuration file for ESLint, specifying rules and settings for linting JavaScript code.",
+    "key_types": [
+      "Object",
+      "Array"
+    ],
+    "functions": [
+      "module.exports"
+    ],
+    "imports": [
+      "./scripts/shared/pathsByLanguageVersion",
+      "confusing-browser-globals"
+    ],
+    "side_effects": [
+      "Modifies ESLint configuration and rules"
+    ],
+    "risks": [
+      "Potential misconfiguration leading to inadequate linting"
+    ],
+    "complexity": "medium"
+  }
+}

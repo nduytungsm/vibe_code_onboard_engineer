@@ -1,0 +1,91 @@
+{
+  "content_hash": "7fb1537f5cbb338c10e0b5822e345ef2",
+  "timestamp": "2025-09-25T18:57:50.566439+07:00",
+  "result": {
+    "path": "outyet",
+    "purpose": "Outyet is a web server that announces whether or not a particular Go version has been tagged.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "main.go",
+      "main_test.go"
+    ],
+    "dependencies": [
+      "expvar",
+      "flag",
+      "fmt",
+      "html/template",
+      "log",
+      "net/http",
+      "sync",
+      "time",
+      "net/http/httptest",
+      "strings",
+      "testing"
+    ],
+    "architecture": "The folder follows a typical Go web server architecture with a main server file and a corresponding test file, utilizing standard libraries for HTTP handling and testing.",
+    "file_summaries": {
+      "outyet/main.go": {
+        "language": "Go",
+        "purpose": "Outyet is a web server that announces whether or not a particular Go version has been tagged.",
+        "key_types": [
+          "Server"
+        ],
+        "functions": [
+          "main",
+          "NewServer",
+          "poll",
+          "isTagged",
+          "ServeHTTP"
+        ],
+        "imports": [
+          "expvar",
+          "flag",
+          "fmt",
+          "html/template",
+          "log",
+          "net/http",
+          "sync",
+          "time"
+        ],
+        "side_effects": [
+          "Starts an HTTP server",
+          "Polls a remote repository for changes"
+        ],
+        "risks": [
+          "Potential for denial of service if the polling period is too short",
+          "HTTP requests may expose sensitive information if not handled properly"
+        ],
+        "complexity": "medium"
+      },
+      "outyet/main_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for an HTTP server that checks the status of a service.",
+        "key_types": [
+          "statusHandler",
+          "http.ResponseWriter",
+          "http.Request",
+          "httptest.Server"
+        ],
+        "functions": [
+          "ServeHTTP",
+          "TestIsTagged",
+          "TestIntegration"
+        ],
+        "imports": [
+          "net/http",
+          "net/http/httptest",
+          "strings",
+          "testing",
+          "time"
+        ],
+        "side_effects": [
+          "Creates a test HTTP server",
+          "Modifies global sleep and done functions for testing"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

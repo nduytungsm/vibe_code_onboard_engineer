@@ -1,0 +1,19 @@
+{
+  "content_hash": "83caa86e5b2ecf2fb6942c3995146d81",
+  "timestamp": "2025-09-25T18:56:42.002931+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains a simple program that prints 'Hello, 世界' to the console.",
+    "key_types": [],
+    "functions": [
+      "main"
+    ],
+    "imports": [
+      "fmt"
+    ],
+    "side_effects": [
+      "Prints output to the console"
+    ],
+    "complexity": "low"
+  }
+}

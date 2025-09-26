@@ -1,0 +1,31 @@
+{
+  "content_hash": "8e2ccb74eceece18825db77cf9b15453",
+  "timestamp": "2025-09-25T18:23:45.153335+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines a function that processes scopes in a compiler to handle hooks and use operators correctly, ensuring they are not called conditionally.",
+    "key_types": [
+      "HIRFunction",
+      "BlockId",
+      "LabelTerminal",
+      "PrunedScopeTerminal"
+    ],
+    "functions": [
+      "flattenScopesWithHooksOrUseHIR"
+    ],
+    "imports": [
+      "CompilerError",
+      "BlockId",
+      "HIRFunction",
+      "LabelTerminal",
+      "PrunedScopeTerminal",
+      "getHookKind",
+      "isUseOperator",
+      "retainWhere"
+    ],
+    "side_effects": [
+      "Modifies the structure of blocks in the function body by pruning scopes."
+    ],
+    "complexity": "medium"
+  }
+}

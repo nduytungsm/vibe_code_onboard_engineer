@@ -1,0 +1,25 @@
+{
+  "content_hash": "0b21db603a1ffea055aa1213d748f54e",
+  "timestamp": "2025-09-26T07:33:38.786603+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Initializes Swagger UI with a specified configuration when the window loads.",
+    "key_types": [
+      "SwaggerUIBundle"
+    ],
+    "functions": [
+      "window.onload"
+    ],
+    "imports": [
+      "SwaggerUIBundle",
+      "SwaggerUIStandalonePreset"
+    ],
+    "side_effects": [
+      "Modifies the DOM to display Swagger UI"
+    ],
+    "risks": [
+      "Potential exposure of API documentation if not secured properly"
+    ],
+    "complexity": "low"
+  }
+}

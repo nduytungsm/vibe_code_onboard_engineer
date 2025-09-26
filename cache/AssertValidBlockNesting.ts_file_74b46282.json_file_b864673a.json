@@ -1,0 +1,43 @@
+{
+  "content_hash": "5900f23f104a39430f54ebb59784b098",
+  "timestamp": "2025-09-25T18:22:16.267387+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file asserts that program blocks and scopes properly form a tree hierarchy with respect to block and scope ranges.",
+    "key_types": [
+      "Block",
+      "HIRFunction",
+      "ReactiveScope",
+      "MutableRange",
+      "Place"
+    ],
+    "functions": [
+      "getScopes",
+      "rangePreOrderComparator",
+      "recursivelyTraverseItems",
+      "assertValidBlockNesting"
+    ],
+    "imports": [
+      "CompilerError",
+      "BlockId",
+      "GeneratedSource",
+      "HIRFunction",
+      "MutableRange",
+      "Place",
+      "ReactiveScope",
+      "ScopeId",
+      "eachInstructionLValue",
+      "eachInstructionOperand",
+      "eachTerminalOperand",
+      "terminalFallthrough"
+    ],
+    "side_effects": [
+      "Modifies the state of the scopes set",
+      "Throws errors if nesting is invalid"
+    ],
+    "risks": [
+      "Potential for runtime errors if invalid nesting is not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

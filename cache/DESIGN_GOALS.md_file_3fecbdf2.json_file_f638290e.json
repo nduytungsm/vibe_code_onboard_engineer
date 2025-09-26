@@ -1,0 +1,12 @@
+{
+  "content_hash": "7d7eeb22fd1fa653eba3deafb180e072",
+  "timestamp": "2025-09-25T18:23:16.502383+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Document outlining the goals, design principles, and architecture of the React Compiler.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

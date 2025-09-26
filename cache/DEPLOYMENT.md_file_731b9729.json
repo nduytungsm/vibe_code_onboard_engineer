@@ -1,0 +1,16 @@
+{
+  "content_hash": "b07ef85646169fd5acb8b315b3941d7c",
+  "timestamp": "2025-09-25T18:19:52.477768+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Deployment guide for the repository analyzer application",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Exposing sensitive API keys",
+      "Potential for misconfiguration leading to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

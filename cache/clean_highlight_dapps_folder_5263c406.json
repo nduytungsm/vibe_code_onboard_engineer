@@ -1,9 +1,9 @@
 {
-  "content_hash": "047ab46d41b6e59b86d1fe44684760b2",
-  "timestamp": "2025-09-25T16:33:12.874584+07:00",
+  "content_hash": "c0bb0b70d4e6b60ed7c874e0d10e81b8",
+  "timestamp": "2025-09-25T18:25:45.645811+07:00",
   "result": {
     "path": "cmd/clean_highlight_dapps",
-    "purpose": "This folder/module is responsible for cleaning expired highlights from a database and logging the process.",
+    "purpose": "This folder/module is responsible for a command-line application that cleans expired highlights from a database.",
     "languages": {
       "Go": 1
     },
@@ -21,19 +21,17 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where the main entry point initializes necessary services and manages dependencies for cleaning expired highlights.",
+    "architecture": "The folder follows a command-line application architecture pattern, utilizing a main function to initialize services and handle database operations.",
     "file_summaries": {
       "cmd/clean_highlight_dapps/main.go": {
         "language": "Go",
-        "purpose": "This file is the main entry point for a program that cleans expired highlights from a database and logs the process.",
+        "purpose": "This file contains the main function for a command-line application that cleans expired highlights from a database.",
         "key_types": [
           "context.Context",
           "time.Time",
           "gorm.DB",
           "config.Config",
-          "repositories.QuickAccessDAppRepo",
-          "repositories.HighlightRepo",
-          "redis.RedisClient",
+          "redis.Client",
           "dapp.CleanService",
           "md.Highlight"
         ],

@@ -1,0 +1,18 @@
+{
+  "content_hash": "5c8c944eec54e0d35321a355e19dc551",
+  "timestamp": "2025-09-25T18:19:57.171637+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Contains configuration files and templates for GitHub workflows and dependency management.",
+    "key_types": [
+      "updates",
+      "package-ecosystem",
+      "schedule",
+      "groups",
+      "patterns"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

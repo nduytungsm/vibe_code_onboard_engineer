@@ -1,0 +1,26 @@
+{
+  "content_hash": "c606d854505c346c20888effccadf4bd",
+  "timestamp": "2025-09-25T18:57:07.143526+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the indenthandler package, specifically testing memory allocation during logging operations.",
+    "key_types": [
+      "slog.String",
+      "testing.T"
+    ],
+    "functions": [
+      "TestAlloc"
+    ],
+    "imports": [
+      "fmt",
+      "io",
+      "log/slog",
+      "strconv",
+      "testing"
+    ],
+    "side_effects": [
+      "Allocations during logging operations"
+    ],
+    "complexity": "medium"
+  }
+}

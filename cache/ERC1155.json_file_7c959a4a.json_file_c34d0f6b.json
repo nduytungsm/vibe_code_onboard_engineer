@@ -1,0 +1,23 @@
+{
+  "content_hash": "1be891c7dfb7f214e0ab5d1a7375d3a4",
+  "timestamp": "2025-09-25T18:23:27.290197+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "[REDACTED]",
+    "key_types": [
+      "event",
+      "function"
+    ],
+    "functions": [
+      "balanceOf",
+      "balanceOfBatch",
+      "isApprovedForAll",
+      "safeBatchTransferFrom",
+      "safeTransferFrom",
+      "setApprovalForAll",
+      "supportsInterface"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

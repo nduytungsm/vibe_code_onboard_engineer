@@ -1,0 +1,22 @@
+{
+  "content_hash": "5522d9704c3623e430d136e174755588",
+  "timestamp": "2025-09-25T18:56:37.044036+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Fetches a message from the server and displays it in the HTML element with id 'message'.",
+    "key_types": [
+      "XMLHttpRequest"
+    ],
+    "functions": [
+      "fetchMessage"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the innerHTML of the element with id 'message'."
+    ],
+    "risks": [
+      "Potential for cross-site scripting (XSS) if the response is not properly sanitized."
+    ],
+    "complexity": "low"
+  }
+}

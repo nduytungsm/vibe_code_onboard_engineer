@@ -1,0 +1,12 @@
+{
+  "content_hash": "cd0b547c3474708eed50924e1b3ce341",
+  "timestamp": "2025-09-25T18:23:16.66454+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the React Compiler development process and contribution guidelines.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "content_hash": "d804fdb407d4b58d96de96c32ae7fcc3",
+  "timestamp": "2025-09-25T18:23:38.879174+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines schemas and types for the environment configuration in a React compiler.",
+    "key_types": [
+      "ExternalFunction",
+      "Hook",
+      "Macro",
+      "MacroMethod",
+      "EnvironmentConfig"
+    ],
+    "functions": [
+      "getReanimatedModuleType",
+      "installTypeConfig",
+      "addHook"
+    ],
+    "imports": [
+      "@babel/types",
+      "zod",
+      "zod-validation-error",
+      "../CompilerError",
+      "../Entrypoint",
+      "../Utils/Result",
+      "./Globals",
+      "./HIR",
+      "./ObjectShape",
+      "@babel/traverse",
+      "./TypeSchema",
+      "../Flood/Types",
+      "./DefaultModuleTypeProvider"
+    ],
+    "side_effects": [
+      "Defines global types and schemas that may affect the compiler's behavior."
+    ],
+    "complexity": "medium"
+  }
+}

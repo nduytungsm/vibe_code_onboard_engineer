@@ -1,6 +1,6 @@
 {
-  "content_hash": "31014465d6e4a58218155ac300733b93",
-  "timestamp": "2025-09-23T17:00:52.583222+07:00",
+  "content_hash": "99aff49b351bf00098b4a902220d6303",
+  "timestamp": "2025-09-26T07:42:20.107461+07:00",
   "result": {
     "path": "cmd/token_id_mapping",
     "purpose": "This folder/module is responsible for mapping CoinGecko token IDs to contract addresses and decimals, handling token metadata and caching.",
@@ -24,18 +24,15 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker",
       "github.com/axieinfinity/ronin-wallet-proxy/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to token ID mapping and utilizing external services for data retrieval and storage.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to token ID mapping and utilizing external libraries for database interactions and error tracking.",
     "file_summaries": {
       "cmd/token_id_mapping/main.go": {
         "language": "Go",
         "purpose": "This file maps CoinGecko token IDs to contract addresses and decimals, handling token metadata and caching.",
         "key_types": [
-          "context.Context",
-          "sync.WaitGroup",
-          "time.Time",
-          "repositories.TokenInfoRepositories",
-          "coingecko.Service",
-          "md.TokenInfo"
+          "TokenInfo",
+          "ContractAddress",
+          "ChainConfig"
         ],
         "functions": [
           "main",
@@ -64,11 +61,10 @@
         "side_effects": [
           "Initializes Sentry for error tracking",
           "Logs errors and process time",
-          "Interacts with a PostgreSQL database",
           "Publishes events to Redis"
         ],
         "risks": [
-          "Potential exposure of sensitive information in logs",
+          "Potential exposure of sensitive configuration data",
           "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"

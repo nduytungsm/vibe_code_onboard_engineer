@@ -1,0 +1,21 @@
+{
+  "content_hash": "a6ad632cd8f27f183f33d9584daa409f",
+  "timestamp": "2025-09-26T07:35:57.173168+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration settings for interacting with the CoinGecko API.",
+    "key_types": [
+      "Config",
+      "time.Duration",
+      "map[string]string",
+      "worker.Config",
+      "ContractPlatformDetail"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker"
+    ],
+    "complexity": "low"
+  }
+}

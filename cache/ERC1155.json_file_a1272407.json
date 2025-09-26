@@ -1,0 +1,23 @@
+{
+  "content_hash": "26eba2fb9fbe0ed22bbdfcdc44bae618",
+  "timestamp": "2025-09-26T07:38:41.971606+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the ERC1155 token standard events and functions for a smart contract.",
+    "key_types": [
+      "event",
+      "function"
+    ],
+    "functions": [
+      "balanceOf",
+      "balanceOfBatch",
+      "isApprovedForAll",
+      "safeBatchTransferFrom",
+      "safeTransferFrom",
+      "setApprovalForAll",
+      "supportsInterface"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

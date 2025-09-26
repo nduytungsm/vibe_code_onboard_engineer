@@ -1,0 +1,27 @@
+{
+  "content_hash": "b1717c79916a06d4a62e94193fdda89a",
+  "timestamp": "2025-09-25T18:21:16.178691+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file defines a migration for creating and dropping a table for NFT mappings.",
+    "key_types": [
+      "table",
+      "index",
+      "jsonb"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "CREATE INDEX",
+      "DROP TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates a new table in the database",
+      "Creates indexes on the table"
+    ],
+    "risks": [
+      "Potential for SQL injection if user input is not properly sanitized"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "980790db29015cd91ffc3dd027376acf",
+  "timestamp": "2025-09-26T07:36:48.230577+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for interacting with the Covalent API.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "content_hash": "01154784a940bc94264d8a5265082d5a",
+  "timestamp": "2025-09-26T07:37:07.406235+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a gas collector for Ethereum transactions, calculating average fees and gas usage based on historical data.",
+    "key_types": [
+      "AvgBlock",
+      "EIP1559GasCollector",
+      "ethereum.FeeHistory"
+    ],
+    "functions": [
+      "safeDivCeil",
+      "getFeeHistory",
+      "getExactBaseFee",
+      "emptyFeeHistory",
+      "safeMulFloatCeil",
+      "avgBaseFee",
+      "avgMinerTip",
+      "avgGasUsedRatio"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "math/big",
+      "github.com/ethereum/go-ethereum",
+      "github.com/ethereum/go-ethereum/rpc"
+    ],
+    "risks": [
+      "Potential division by zero in safeDivCeil function"
+    ],
+    "complexity": "medium"
+  }
+}

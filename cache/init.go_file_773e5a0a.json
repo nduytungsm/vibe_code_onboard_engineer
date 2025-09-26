@@ -1,0 +1,52 @@
+{
+  "content_hash": "cc34c2b410bc4f1233ad5665963cb33e",
+  "timestamp": "2025-09-26T07:39:40.263295+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Sets up routes for an Echo web server and initializes various services and handlers.",
+    "key_types": [
+      "echo.Echo",
+      "config.Schema",
+      "postgresql.Client",
+      "redis.Client",
+      "coinbase.Service",
+      "coingecko.Service",
+      "exchangerate.ServiceV2",
+      "nftmapping.Service"
+    ],
+    "functions": [
+      "SetupRoutes",
+      "NewClient",
+      "NewRedisClient",
+      "NewService",
+      "NewServiceV2",
+      "NewNFTMappingRepo",
+      "NewNFTMappingHandler",
+      "NewCoinbaseHandler"
+    ],
+    "imports": [
+      "github.com/labstack/echo/v4",
+      "github.com/rs/zerolog/log",
+      "gorm.io/plugin/prometheus",
+      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
+      "github.com/axieinfinity/ronin-wallet-proxy/config",
+      "github.com/axieinfinity/ronin-wallet-proxy/handlers",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/exchangerate",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/nft_mapping",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo",
+      "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+    ],
+    "side_effects": [
+      "Logs fatal errors if database or service initialization fails."
+    ],
+    "risks": [
+      "Potential exposure of sensitive configuration data if not handled properly.",
+      "Dependency on external services which may fail or be unavailable."
+    ],
+    "complexity": "medium"
+  }
+}

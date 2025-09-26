@@ -1,0 +1,42 @@
+{
+  "content_hash": "b248e5080cf71ed0ae6a4cb35e630d5a",
+  "timestamp": "2025-09-25T18:23:39.997748+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file implements a Static Single Assignment (SSA) builder for a compiler, managing variable definitions and their scopes within basic blocks.",
+    "key_types": [
+      "IncompletePhi",
+      "State",
+      "SSABuilder"
+    ],
+    "functions": [
+      "constructor",
+      "get nextSsaId",
+      "defineFunction",
+      "enter",
+      "state",
+      "makeId",
+      "defineContext",
+      "definePlace",
+      "getPlace",
+      "getIdAt",
+      "addPhi",
+      "fixIncompletePhis",
+      "startBlock",
+      "print",
+      "enterSSA",
+      "enterSSAImpl"
+    ],
+    "imports": [
+      "../CompilerError",
+      "../HIR/Environment",
+      "../HIR/HIR",
+      "../HIR/PrintHIR",
+      "../HIR/visitors"
+    ],
+    "side_effects": [
+      "Modifies the state of the SSA builder and the basic blocks during the SSA construction process."
+    ],
+    "complexity": "high"
+  }
+}

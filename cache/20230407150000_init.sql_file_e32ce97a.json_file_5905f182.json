@@ -1,0 +1,35 @@
+{
+  "content_hash": "7ffe1883dcd1e02d8bcb066495411db3",
+  "timestamp": "2025-09-25T18:20:48.993056+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to set up database tables and types for a blockchain-related application.",
+    "key_types": [
+      "networks",
+      "contracts",
+      "d_apps",
+      "commons",
+      "code_versions",
+      "contract_type",
+      "dapp_url"
+    ],
+    "functions": [
+      "CREATE EXTENSION",
+      "CREATE TABLE",
+      "DROP TYPE",
+      "CREATE TYPE",
+      "INSERT INTO",
+      "CREATE INDEX"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the database schema by creating tables and types.",
+      "Inserts initial data into the tables."
+    ],
+    "risks": [
+      "Potential SQL injection if user inputs are not properly sanitized.",
+      "Data integrity risks if foreign key constraints are not enforced."
+    ],
+    "complexity": "medium"
+  }
+}

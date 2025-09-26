@@ -1,0 +1,19 @@
+{
+  "content_hash": "161ced54769703c9c792a82acd35ed4c",
+  "timestamp": "2025-09-25T18:21:19.53315+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines database schema for trusted domains and quick access D apps.",
+    "key_types": [
+      "trusted_domains",
+      "quick_access_d_apps"
+    ],
+    "functions": [],
+    "imports": [],
+    "side_effects": [
+      "Creates tables in the database",
+      "Creates an index on quick_access_d_apps"
+    ],
+    "complexity": "medium"
+  }
+}

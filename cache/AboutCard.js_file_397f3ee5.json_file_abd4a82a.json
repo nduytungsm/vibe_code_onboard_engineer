@@ -1,0 +1,21 @@
+{
+  "content_hash": "8d59ced54e66bd524d2e8c290e6e489b",
+  "timestamp": "2025-09-25T18:21:57.338559+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "A React component that displays a personal introduction and activities of an individual.",
+    "key_types": [
+      "React.Component",
+      "Card"
+    ],
+    "functions": [
+      "AboutCard"
+    ],
+    "imports": [
+      "React",
+      "react-bootstrap/Card",
+      "react-icons/im"
+    ],
+    "complexity": "low"
+  }
+}

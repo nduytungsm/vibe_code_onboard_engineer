@@ -1,0 +1,20 @@
+{
+  "content_hash": "8894b5cb8481d2c928091348362d1d3a",
+  "timestamp": "2025-09-26T07:33:47.64675+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file is part of the Swagger UI library, which is used to generate interactive API documentation.",
+    "key_types": [
+      "Object",
+      "Function"
+    ],
+    "functions": [
+      "module.exports"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Exports the Swagger UI functionality for use in other modules."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "content_hash": "a06b418a16cdd47506c7d7f7784e5002",
+  "timestamp": "2025-09-25T18:56:38.795278+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file analyzes Go source code to print definitions and usages of identifiers.",
+    "key_types": [
+      "token.FileSet",
+      "ast.File",
+      "types.Config",
+      "types.Info"
+    ],
+    "functions": [
+      "PrintDefsUses",
+      "main"
+    ],
+    "imports": [
+      "fmt",
+      "go/ast",
+      "go/importer",
+      "go/parser",
+      "go/token",
+      "go/types",
+      "log"
+    ],
+    "side_effects": [
+      "Logs errors if parsing or type checking fails",
+      "Prints output to the console"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "content_hash": "b79ccdad3cba1995d4ca9e4647f2f831",
+  "timestamp": "2025-09-25T18:22:29.589592+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the ABI (Application Binary Interface) for a smart contract, including events and functions.",
+    "key_types": [
+      "constructor",
+      "event",
+      "function"
+    ],
+    "functions": [
+      "DEFAULT_ADMIN_ROLE",
+      "MINTER_ROLE",
+      "PAUSER_ROLE",
+      "balanceOf",
+      "balanceOfBatch",
+      "burn",
+      "burnBatch",
+      "getRoleAdmin"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

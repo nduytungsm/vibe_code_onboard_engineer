@@ -1,0 +1,49 @@
+{
+  "content_hash": "32b6927589e6ac41f6d027d5b236c15d",
+  "timestamp": "2025-09-25T18:24:17.722294+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Manages feature access for mobile wallet candidates using a whitelist and Redis for state management.",
+    "key_types": [
+      "service",
+      "models.CheckAllowFeatureRequest",
+      "models.PostFeatureConfigRequest",
+      "models.PostWhitelistFeaturesRequest",
+      "models.PostSetConfigForDeviceRequest",
+      "models.GetCountWhitelistDevices"
+    ],
+    "functions": [
+      "newService",
+      "refreshWhitelist",
+      "CheckAllowFeature",
+      "SetFeatureConfig",
+      "SetWhitelistFeatures",
+      "SetConfigForDevice",
+      "CountWhitelistDevices",
+      "VerifyWhitelistFeature",
+      "convertKey"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "strings",
+      "time",
+      "github.com/go-redsync/redsync/v4",
+      "github.com/go-redsync/redsync/v4/redis/goredis/v9",
+      "github.com/redis/go-redis/v9",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/device"
+    ],
+    "side_effects": [
+      "Modifies Redis state for allowed devices and feature configurations.",
+      "Logs information and errors during execution."
+    ],
+    "risks": [
+      "Potential race conditions when accessing shared resources in Redis.",
+      "Improper handling of Redis errors may lead to incorrect feature access decisions."
+    ],
+    "complexity": "medium"
+  }
+}

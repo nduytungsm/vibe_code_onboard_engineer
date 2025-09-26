@@ -1,0 +1,30 @@
+{
+  "content_hash": "bdefc89a7fe996dad3df2cf798acd99d",
+  "timestamp": "2025-09-26T07:35:06.188451+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a middleware function to log requests that exceed a specified latency threshold.",
+    "key_types": [
+      "time.Duration",
+      "echo.MiddlewareFunc",
+      "echo.HandlerFunc",
+      "echo.Context"
+    ],
+    "functions": [
+      "NewLatencyAlert"
+    ],
+    "imports": [
+      "strconv",
+      "time",
+      "github.com/labstack/echo/v4",
+      "github.com/rs/zerolog/log"
+    ],
+    "side_effects": [
+      "Logs a warning message if the request latency exceeds the threshold."
+    ],
+    "risks": [
+      "Potential information leakage through logged request details."
+    ],
+    "complexity": "medium"
+  }
+}

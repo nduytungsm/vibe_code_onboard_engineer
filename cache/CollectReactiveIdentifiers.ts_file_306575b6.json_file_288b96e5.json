@@ -1,0 +1,39 @@
+{
+  "content_hash": "49b65f5b30f41a4fb29891318fc15a76",
+  "timestamp": "2025-09-25T18:23:14.726625+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines a visitor pattern to collect reactive identifiers from reactive functions.",
+    "key_types": [
+      "Visitor",
+      "ReactiveFunction",
+      "Set\u003cIdentifierId\u003e",
+      "PrunedReactiveScopeBlock",
+      "Place",
+      "Identifier"
+    ],
+    "functions": [
+      "visitLValue",
+      "visitPlace",
+      "visitPrunedScope",
+      "isStableRefType",
+      "collectReactiveIdentifiers"
+    ],
+    "imports": [
+      "IdentifierId",
+      "InstructionId",
+      "Place",
+      "PrunedReactiveScopeBlock",
+      "ReactiveFunction",
+      "isPrimitiveType",
+      "isUseRefType",
+      "Identifier",
+      "ReactiveFunctionVisitor",
+      "visitReactiveFunction"
+    ],
+    "side_effects": [
+      "Modifies the state set by adding reactive identifiers."
+    ],
+    "complexity": "medium"
+  }
+}

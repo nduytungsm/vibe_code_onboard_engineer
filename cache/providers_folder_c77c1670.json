@@ -1,38 +1,34 @@
 {
-  "content_hash": "c9eba5785209bbd998fedbfac1b21f95",
-  "timestamp": "2025-09-23T16:58:54.933243+07:00",
+  "content_hash": "8d62fa7ccca8e30eac0d26ab8861dce3",
+  "timestamp": "2025-09-26T07:42:48.692538+07:00",
   "result": {
     "path": "pkg/providers",
-    "purpose": "Responsible for providing interfaces and functionalities to interact with various blockchain services for retrieving token balances, transactions, and NFT collections.",
+    "purpose": "Responsible for providing interfaces and implementations to interact with various blockchain services for retrieving token balances, transactions, and NFT collections.",
     "languages": {
       "Go": 10
     },
     "key_modules": [
       "ankr.go",
+      "config.go",
       "covalent.go",
       "getblock.go",
       "moralis.go",
+      "provider.go",
       "skynet.go",
       "skynetv2.go",
-      "provider.go",
-      "svc.go",
-      "config.go",
-      "const.go"
+      "svc.go"
     ],
     "dependencies": [
       "github.com/rs/zerolog/log",
       "github.com/axieinfinity/ecosystem-go-common/errors",
-      "github.com/axieinfinity/ronin-wallet-proxy/models",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
-      "github.com/mitchellh/mapstructure",
-      "github.com/getsentry/sentry-go",
+      "github.com/ethereum/go-ethereum/common",
       "github.com/labstack/echo/v4",
       "github.com/redis/go-redis/v9",
-      "github.com/samber/lo",
-      "golang.org/x/exp/maps",
-      "golang.org/x/exp/slices"
+      "github.com/getsentry/sentry-go",
+      "github.com/Masterminds/semver",
+      "github.com/mitchellh/mapstructure"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each file represents a specific provider or service, encapsulating related functionalities and configurations.",
+    "architecture": "The folder follows a modular architecture pattern, where each file represents a specific provider or configuration related to blockchain interactions, encapsulating related functionalities and types.",
     "file_summaries": {
       "pkg/providers/ankr.go": {
         "language": "Go",
@@ -79,10 +75,12 @@
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
         ],
         "side_effects": [
-          "Logs errors when service calls fail"
+          "Logs errors when service calls fail",
+          "May terminate the program on configuration errors"
         ],
         "risks": [
-          "Potential for logging sensitive information in errors"
+          "Potential exposure of sensitive information in logs",
+          "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"
       },
@@ -109,6 +107,9 @@
         ],
         "side_effects": [
           "Panic on error in mustNewClientConstraints"
+        ],
+        "risks": [
+          "Potential panic if version constraint is invalid"
         ],
         "complexity": "medium"
       },
@@ -144,17 +145,7 @@
         "key_types": [
           "CovalentProvider",
           "ProviderConfig",
-          "ChainConfig",
-          "GetTokenBalancesReq",
-          "GetTokenBalancesRes",
-          "GetTransactionsReq",
-          "GetTransactionsRes",
-          "GetNFTCollectionsReq",
-          "GetNFTItemsReq",
-          "GetNFTItemReq",
-          "GetTxnByHashReq",
-          "GetGasSuggestionReq",
-          "GetGasSuggestionRes"
+          "ChainConfig"
         ],
         "functions": [
           "GetID",
@@ -181,11 +172,18 @@
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers/covalent",
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
         ],
+        "side_effects": [
+          "Logs fatal errors when parsing provider configuration."
+        ],
+        "risks": [
+          "Potential for unhandled errors when interacting with external services.",
+          "Panic in unimplemented methods could lead to application crashes."
+        ],
         "complexity": "medium"
       },
       "pkg/providers/getblock.go": {
         "language": "Go",
-        "purpose": "Provides an interface for interacting with blockchain data, specifically for getting token balances, transactions, and NFT collections.",
+        "purpose": "Provides methods to interact with blockchain data, specifically for getting token balances, transactions, and NFT collections.",
         "key_types": [
           "GetBlockProvider",
           "ProviderConfig",
@@ -198,8 +196,8 @@
           "md.GetTxnByHashReq",
           "md.GetGasSuggestionReq",
           "md.GetGasSuggestionRes",
-          "md.Transaction",
-          "md.NFTItem"
+          "md.NFTItem",
+          "md.Transaction"
         ],
         "functions": [
           "GetID",
@@ -226,13 +224,13 @@
         ],
         "risks": [
           "Potential for unhandled errors in RPC calls",
-          "Returning nil values for unsupported functions may lead to nil pointer dereferences"
+          "Returning nil responses for unsupported functions may lead to confusion"
         ],
         "complexity": "medium"
       },
       "pkg/providers/moralis.go": {
         "language": "Go",
-        "purpose": "Provides functionality to interact with the Moralis API for retrieving token balances, transactions, NFT collections, and items.",
+        "purpose": "This file defines the MoralisProvider struct and its methods for interacting with the Moralis API to retrieve token balances, transactions, NFT collections, and NFT items.",
         "key_types": [
           "MoralisProvider",
           "ProviderConfig",
@@ -276,17 +274,17 @@
         ],
         "side_effects": [
           "Logs errors when API calls fail",
-          "May modify the state of the application based on API responses"
+          "May modify the state of the MoralisProvider instance"
         ],
         "risks": [
-          "Potential exposure of sensitive data in logs",
+          "Potential exposure of sensitive information in logs",
           "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"
       },
       "pkg/providers/provider.go": {
         "language": "Go",
-        "purpose": "Defines a Provider interface for interacting with token balances, transactions, and NFTs, and provides a function to parse provider configuration.",
+        "purpose": "Defines a Provider interface for handling token balances, transactions, and NFT collections, along with a function to parse provider configuration.",
         "key_types": [
           "Provider",
           "GetTokenBalancesReq",
@@ -294,7 +292,8 @@
           "GetTransactionsReq",
           "GetTransactionsRes",
           "GetNFTCollectionsReq",
-          "GetNFTItemsReq",
+          "GetNFIItemsRes",
+          "GetNFTItemReq",
           "NFTItem",
           "GetTxnByHashReq",
           "Transaction",
@@ -324,7 +323,7 @@
       },
       "pkg/providers/skynet.go": {
         "language": "Go",
-        "purpose": "Provides functionality for interacting with the Skynet service, including retrieving token balances, transactions, NFT collections, and items.",
+        "purpose": "This file defines the SkynetProvider struct and its methods for interacting with a Skynet service, including fetching token balances, transactions, NFT collections, and items.",
         "key_types": [
           "SkynetProvider",
           "ProviderConfig",
@@ -366,12 +365,12 @@
           "github.com/axieinfinity/ronin-wallet-proxy/pkg/share"
         ],
         "side_effects": [
-          "Logs errors when operations fail",
-          "May modify the state of external services through API calls"
+          "Logs errors when service calls fail",
+          "May return internal server error responses"
         ],
         "risks": [
-          "Potential exposure of sensitive information through error logs",
-          "Dependency on external services may lead to failures if those services are down"
+          "Potential exposure of sensitive information in error logs",
+          "Handling of context cancellation may lead to unhandled errors"
         ],
         "complexity": "medium"
       },
@@ -417,7 +416,7 @@
         ],
         "side_effects": [
           "Logs errors when operations fail",
-          "May terminate the application on configuration errors"
+          "May terminate the program on configuration errors"
         ],
         "risks": [
           "Potential exposure of sensitive information in logs",
@@ -433,9 +432,7 @@
           "service",
           "ChainConfig",
           "ProviderConfig",
-          "CacheConfig",
-          "TokenPrices",
-          "TokenInfo"
+          "CacheConfig"
         ],
         "functions": [
           "humanoidTokenBalance",
@@ -477,11 +474,11 @@
         ],
         "side_effects": [
           "Interacts with Redis for caching token balances",
-          "Logs warnings and errors during execution"
+          "Logs warnings and errors"
         ],
         "risks": [
           "Potential exposure of sensitive data in logs",
-          "Cache-related issues if data is stale or corrupted"
+          "Caching may lead to stale data if not managed properly"
         ],
         "complexity": "medium"
       }

@@ -1,94 +1,90 @@
 {
-  "content_hash": "5ae37262f919996b298f278db5473f53",
-  "timestamp": "2025-09-25T17:45:22.016294+07:00",
+  "content_hash": "1c43133e846f3b4b5955152d31b6ab7a",
+  "timestamp": "2025-09-26T07:43:04.529566+07:00",
   "result": {
     "path": ".github/workflows",
-    "purpose": "This folder contains GitHub Actions workflows for automating various tasks such as code analysis, testing, and release processes.",
+    "purpose": "This folder is responsible for defining GitHub Actions workflows for various automation tasks related to the project.",
     "languages": {
-      "YAML": 3
+      "YAML": 4
     },
     "key_modules": [
-      "codeql.yml",
-      "gin.yml",
-      "goreleaser.yml"
+      "check.yml",
+      "dockerize.yml",
+      "golangci-lint.yml",
+      "sentry.yml"
     ],
     "dependencies": [
-      "actions/checkout@v5",
-      "actions/setup-go@v6",
-      "github/codeql-action/init@v3",
-      "github/codeql-action/analyze@v3",
-      "golangci/golangci-lint-action@v8",
-      "actions/cache@v4",
-      "codecov/codecov-action@v5",
-      "aquasecurity/trivy-action@0.33.1",
-      "goreleaser/goreleaser-action@v6"
+      "axieinfinity/workflows-samples/.github/workflows/security-basic-scan.yml",
+      "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml",
+      "axieinfinity/workflows-samples/.github/workflows/sentry-release.yml"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each YAML file defines a specific workflow for different tasks, promoting separation of concerns and reusability.",
+    "architecture": "The folder follows a modular architecture pattern, where each YAML file defines a specific workflow that can be triggered by various events in the GitHub repository.",
     "file_summaries": {
-      ".github/workflows/codeql.yml": {
+      ".github/workflows/check.yml": {
         "language": "YAML",
-        "purpose": "Defines a GitHub Actions workflow for CodeQL analysis on a repository.",
+        "purpose": "Defines a GitHub Actions workflow for checking security and building on pull requests to the main branch.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "axieinfinity/workflows-samples/.github/workflows/security-basic-scan.yml"
+        ],
+        "complexity": "low"
+      },
+      ".github/workflows/dockerize.yml": {
+        "language": "YAML",
+        "purpose": "Defines a GitHub Actions workflow for Dockerizing a mobile wallet manager.",
         "key_types": [
+          "workflow",
           "job",
-          "step",
-          "permission",
-          "strategy"
+          "permissions"
         ],
         "functions": [
           "on",
           "jobs",
-          "steps"
+          "uses",
+          "with",
+          "secrets"
         ],
         "imports": [
-          "actions/checkout@v5",
-          "github/codeql-action/init@v3",
-          "github/codeql-action/analyze@v3"
+          "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml"
         ],
         "side_effects": [
-          "Triggers analysis on code changes and pull requests"
+          "Triggers on push and pull request events",
+          "Uses external workflow for Docker build"
         ],
         "risks": [
-          "Potential exposure of sensitive data in repository during analysis"
+          "Exposing sensitive information in secrets",
+          "Dependency on external workflow"
         ],
         "complexity": "medium"
       },
-      ".github/workflows/gin.yml": {
+      ".github/workflows/golangci-lint.yml": {
         "language": "YAML",
-        "purpose": "Defines a GitHub Actions workflow for running tests and performing vulnerability scanning on a Go project.",
+        "purpose": "Configuration file for GitHub Actions to run golangci-lint on push and pull request events.",
         "key_types": [],
         "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      ".github/workflows/sentry.yml": {
+        "language": "YAML",
+        "purpose": "Defines a GitHub Actions workflow for Sentry release management.",
+        "key_types": [
+          "job",
+          "workflow"
+        ],
+        "functions": [
+          "on",
+          "jobs"
+        ],
         "imports": [
-          "actions/checkout@v5",
-          "actions/setup-go@v6",
-          "golangci/golangci-lint-action@v8",
-          "actions/cache@v4",
-          "codecov/codecov-action@v5",
-          "aquasecurity/trivy-action@0.33.1"
+          "axieinfinity/workflows-samples/.github/workflows/sentry-release.yml"
         ],
         "side_effects": [
-          "Checks out code from the repository",
-          "Sets up Go environment",
-          "Runs linting and tests",
-          "Performs vulnerability scanning"
+          "Triggers on release events"
         ],
         "risks": [
-          "Potential exposure of sensitive data in logs",
-          "Dependency on external actions which may have vulnerabilities"
-        ],
-        "complexity": "medium"
-      },
-      ".github/workflows/goreleaser.yml": {
-        "language": "YAML",
-        "purpose": "Defines a GitHub Actions workflow for automating the release process using GoReleaser.",
-        "key_types": [],
-        "functions": [],
-        "imports": [
-          "actions/checkout@v5",
-          "actions/setup-go@v6",
-          "goreleaser/goreleaser-action@v6"
-        ],
-        "side_effects": [
-          "Triggers a Go module reindex at proxy.golang.org"
+          "Exposure of secrets if not properly managed"
         ],
         "complexity": "low"
       }

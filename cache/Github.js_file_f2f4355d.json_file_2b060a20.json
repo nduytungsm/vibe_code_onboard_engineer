@@ -1,0 +1,21 @@
+{
+  "content_hash": "feb0f493ce526ba8bb529911bae50579",
+  "timestamp": "2025-09-25T18:23:53.563322+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Displays a GitHub contribution calendar for a specific user.",
+    "key_types": [
+      "React Component",
+      "Row"
+    ],
+    "functions": [
+      "Github"
+    ],
+    "imports": [
+      "React",
+      "react-github-calendar",
+      "react-bootstrap"
+    ],
+    "complexity": "low"
+  }
+}

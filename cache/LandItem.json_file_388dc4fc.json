@@ -1,0 +1,25 @@
+{
+  "content_hash": "5f362b6ca4f24520a7827e6d4f00dd31",
+  "timestamp": "2025-09-26T07:38:53.634147+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines a smart contract for managing land items with events and functions for administration and minting.",
+    "key_types": [
+      "constructor",
+      "event",
+      "function"
+    ],
+    "functions": [
+      "addMinters",
+      "changeAdmin",
+      "approve",
+      "balanceOf",
+      "batchMint",
+      "deconstructItemId",
+      "getApproved",
+      "isApprovedForAll"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

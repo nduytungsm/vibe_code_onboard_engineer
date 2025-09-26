@@ -1,0 +1,35 @@
+{
+  "content_hash": "c0e382dee5d55ba9264d0bba458f500e",
+  "timestamp": "2025-09-25T18:22:19.533751+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Assert that all break/continue targets reference existent labels.",
+    "key_types": [
+      "CompilerError",
+      "BlockId",
+      "ReactiveFunction",
+      "ReactiveTerminalStatement",
+      "Visitor"
+    ],
+    "functions": [
+      "assertWellFormedBreakTargets",
+      "visitTerminal"
+    ],
+    "imports": [
+      "CompilerError",
+      "BlockId",
+      "ReactiveFunction",
+      "ReactiveTerminalStatement",
+      "ReactiveFunctionVisitor",
+      "visitReactiveFunction"
+    ],
+    "side_effects": [
+      "Modifies the state of seenLabels",
+      "Throws an error if break/continue targets are invalid"
+    ],
+    "risks": [
+      "Potential for runtime errors if labels are not well-formed"
+    ],
+    "complexity": "medium"
+  }
+}

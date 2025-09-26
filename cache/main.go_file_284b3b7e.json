@@ -1,0 +1,35 @@
+{
+  "content_hash": "502461f42d1ee25ab3f497deb78003a6",
+  "timestamp": "2025-09-25T18:56:45.7022+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Analyzes Go code to detect unintended comparisons of functions against nil.",
+    "key_types": [
+      "ast.Node",
+      "types.Info",
+      "types.Object"
+    ],
+    "functions": [
+      "main",
+      "CheckNilFuncComparison"
+    ],
+    "imports": [
+      "fmt",
+      "go/ast",
+      "go/importer",
+      "go/parser",
+      "go/token",
+      "go/types",
+      "log"
+    ],
+    "side_effects": [
+      "Logs errors if parsing or type checking fails.",
+      "Prints warnings for unintended nil comparisons."
+    ],
+    "risks": [
+      "Potential for false positives in nil comparisons.",
+      "Log output may expose internal logic."
+    ],
+    "complexity": "medium"
+  }
+}

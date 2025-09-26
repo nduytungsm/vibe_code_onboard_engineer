@@ -1,9 +1,9 @@
 {
-  "content_hash": "67c12f896cef6b967756cef37b83420e",
-  "timestamp": "2025-09-23T17:00:22.052758+07:00",
+  "content_hash": "b9681072111c5b7c3b07b9eb6435c6ea",
+  "timestamp": "2025-09-26T07:40:29.699929+07:00",
   "result": {
     "path": "pkg/coingecko",
-    "purpose": "This folder/module is responsible for interacting with the CoinGecko API to retrieve token information, price charts, and market data.",
+    "purpose": "This folder/module is responsible for interacting with the CoinGecko API to retrieve cryptocurrency data such as token prices and price charts.",
     "languages": {
       "Go": 4
     },
@@ -22,17 +22,18 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/worker",
       "github.com/shopspring/decimal"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating API interactions, configuration, metrics, and data models in separate files for modularity and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, organizing files by their responsibilities related to the CoinGecko API, including service definitions, configuration, metrics tracking, and data models.",
     "file_summaries": {
       "pkg/coingecko/cgk_svc.go": {
         "language": "Go",
-        "purpose": "This file defines a service for interacting with the CoinGecko API to retrieve token information, price charts, and market data.",
+        "purpose": "This file defines a service for interacting with the CoinGecko API to retrieve cryptocurrency data such as token prices and price charts.",
         "key_types": [
           "Service",
           "service",
           "Token",
           "models.PriceChart",
           "models.TokenPrices",
+          "models.TokenPrice",
           "models.DexToken"
         ],
         "functions": [
@@ -40,6 +41,7 @@
           "GetPriceChart",
           "GetTokensPrice",
           "GetTokenPrice",
+          "GetTokenPriceByID",
           "GetDexToken",
           "GetDexPriceChart"
         ],
@@ -58,14 +60,6 @@
           "github.com/axieinfinity/ronin-wallet-proxy/httpclient",
           "github.com/axieinfinity/ronin-wallet-proxy/models"
         ],
-        "side_effects": [
-          "Makes HTTP requests to external APIs",
-          "Modifies state based on API responses"
-        ],
-        "risks": [
-          "Potential exposure of API keys if not handled securely",
-          "Dependency on external API availability"
-        ],
         "complexity": "medium"
       },
       "pkg/coingecko/config.go": {
@@ -74,9 +68,9 @@
         "key_types": [
           "Config",
           "time.Duration",
-          "worker.Config",
           "map[string]string",
-          "map[string]ContractPlatformDetail"
+          "worker.Config",
+          "ContractPlatformDetail"
         ],
         "functions": [],
         "imports": [
@@ -87,7 +81,7 @@
       },
       "pkg/coingecko/metrics.go": {
         "language": "Go",
-        "purpose": "Defines metrics for request duration using Prometheus.",
+        "purpose": "Defines metrics for tracking request duration using Prometheus.",
         "key_types": [
           "HistogramVec",
           "HistogramOpts"
@@ -100,7 +94,7 @@
       },
       "pkg/coingecko/models.go": {
         "language": "Go",
-        "purpose": "Defines data structures and methods for handling cryptocurrency token information and market data.",
+        "purpose": "Defines data models and methods for handling cryptocurrency token information and price charts.",
         "key_types": [
           "ContractPlatformDetail",
           "Token",

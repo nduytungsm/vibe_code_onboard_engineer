@@ -1,0 +1,91 @@
+{
+  "content_hash": "b775cf5e32ab725ce0f32c87ce39930a",
+  "timestamp": "2025-09-25T18:57:14.761887+07:00",
+  "result": {
+    "path": "ragserver/ragserver-langchaingo",
+    "purpose": "This folder/module is responsible for implementing an HTTP server that utilizes Retrieval Augmented Generation (RAG) with the Gemini model and Weaviate.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "json.go",
+      "main.go"
+    ],
+    "dependencies": [
+      "github.com/tmc/langchaingo/embeddings",
+      "github.com/tmc/langchaingo/llms",
+      "github.com/tmc/langchaingo/llms/googleai",
+      "github.com/tmc/langchaingo/schema",
+      "github.com/tmc/langchaingo/vectorstores/weaviate"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, separating concerns between JSON handling and the main server logic.",
+    "file_summaries": {
+      "ragserver/ragserver-langchaingo/json.go": {
+        "language": "Go",
+        "purpose": "This file provides functions to read JSON from HTTP requests and render JSON responses.",
+        "key_types": [
+          "http.Request",
+          "http.ResponseWriter",
+          "any"
+        ],
+        "functions": [
+          "readRequestJSON",
+          "renderJSON"
+        ],
+        "imports": [
+          "encoding/json",
+          "fmt",
+          "mime",
+          "net/http"
+        ],
+        "side_effects": [
+          "Modifies the HTTP response header and body"
+        ],
+        "risks": [
+          "Potential for denial of service if large JSON payloads are sent",
+          "Improper handling of content types may lead to unexpected behavior"
+        ],
+        "complexity": "medium"
+      },
+      "ragserver/ragserver-langchaingo/main.go": {
+        "language": "Go",
+        "purpose": "An HTTP server that implements Retrieval Augmented Generation (RAG) using the Gemini model and Weaviate.",
+        "key_types": [
+          "ragServer",
+          "context.Context",
+          "weaviate.Store",
+          "googleai.GoogleAI",
+          "schema.Document"
+        ],
+        "functions": [
+          "main",
+          "addDocumentsHandler",
+          "queryHandler"
+        ],
+        "imports": [
+          "cmp",
+          "context",
+          "fmt",
+          "log",
+          "net/http",
+          "os",
+          "strings",
+          "github.com/tmc/langchaingo/embeddings",
+          "github.com/tmc/langchaingo/llms",
+          "github.com/tmc/langchaingo/llms/googleai",
+          "github.com/tmc/langchaingo/schema",
+          "github.com/tmc/langchaingo/vectorstores/weaviate"
+        ],
+        "side_effects": [
+          "Logs errors and server status",
+          "Modifies server state with document embeddings"
+        ],
+        "risks": [
+          "Potential exposure of API keys",
+          "Improper handling of HTTP requests could lead to vulnerabilities"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

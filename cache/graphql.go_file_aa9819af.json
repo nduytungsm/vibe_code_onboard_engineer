@@ -1,0 +1,39 @@
+{
+  "content_hash": "2efa290ac102b7f8b3fa8ed877f394f9",
+  "timestamp": "2025-09-26T07:34:39.479991+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a GraphQL client for executing queries and mutations against a GraphQL server.",
+    "key_types": [
+      "Client",
+      "errors",
+      "operationType"
+    ],
+    "functions": [
+      "NewClient",
+      "Query",
+      "QueryJSON",
+      "Mutate",
+      "do",
+      "Error"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "encoding/json",
+      "fmt",
+      "io",
+      "net/http",
+      "github.com/axieinfinity/ronin-wallet-proxy/httpclient/graphql/internal/jsonutil"
+    ],
+    "side_effects": [
+      "Makes HTTP requests to a GraphQL server",
+      "Modifies the state of the HTTP client"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data in error messages",
+      "Improper handling of HTTP responses could lead to unhandled errors"
+    ],
+    "complexity": "medium"
+  }
+}

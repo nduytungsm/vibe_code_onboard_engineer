@@ -1,0 +1,35 @@
+{
+  "content_hash": "c4e3988805399ce099573ad12ecd01d9",
+  "timestamp": "2025-09-25T18:22:14.460273+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validates mutable ranges in a function's intermediate representation to ensure they are well-formed.",
+    "key_types": [
+      "HIRFunction",
+      "MutableRange",
+      "Place"
+    ],
+    "functions": [
+      "assertValidMutableRanges",
+      "visit",
+      "validateMutableRange"
+    ],
+    "imports": [
+      "HIRFunction",
+      "MutableRange",
+      "Place",
+      "eachInstructionLValue",
+      "eachInstructionOperand",
+      "eachTerminalOperand",
+      "CompilerError",
+      "printPlace"
+    ],
+    "side_effects": [
+      "Throws CompilerError if mutable ranges are invalid."
+    ],
+    "risks": [
+      "Potential for runtime errors if mutable ranges are not properly validated."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "content_hash": "7cc1adec201627e580b4cab6fbc789ab",
+  "timestamp": "2025-09-25T18:56:56.750257+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "An HTTP server that implements Retrieval Augmented Generation (RAG) using the Gemini model and Weaviate.",
+    "key_types": [
+      "ragServer",
+      "context.Context",
+      "weaviate.Client",
+      "genai.GenerativeModel",
+      "genai.EmbeddingModel",
+      "models.Object"
+    ],
+    "functions": [
+      "main",
+      "addDocumentsHandler",
+      "queryHandler",
+      "decodeGetResults"
+    ],
+    "imports": [
+      "cmp",
+      "context",
+      "fmt",
+      "log",
+      "net/http",
+      "os",
+      "strings",
+      "github.com/google/generative-ai-go/genai",
+      "github.com/weaviate/weaviate-go-client/v4/weaviate",
+      "github.com/weaviate/weaviate-go-client/v4/weaviate/graphql",
+      "github.com/weaviate/weaviate/entities/models",
+      "google.golang.org/api/option"
+    ],
+    "side_effects": [
+      "Logs errors and server status",
+      "Interacts with external services (Weaviate and Google AI)"
+    ],
+    "risks": [
+      "Potential exposure of API key",
+      "Error handling may expose internal error messages"
+    ],
+    "complexity": "medium"
+  }
+}

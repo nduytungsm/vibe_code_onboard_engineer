@@ -1,0 +1,54 @@
+{
+  "content_hash": "e9d8dc6daae818acd33db245888abdb0",
+  "timestamp": "2025-09-25T18:57:32.487781+07:00",
+  "result": {
+    "path": "gotypes/implements",
+    "purpose": "This folder/module is responsible for parsing Go code to analyze type implementations and check assignability between types and interfaces.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [
+      "fmt",
+      "go/ast",
+      "go/importer",
+      "go/parser",
+      "go/token",
+      "go/types",
+      "log"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, focusing on parsing and analyzing Go types and interfaces.",
+    "file_summaries": {
+      "gotypes/implements/main.go": {
+        "language": "Go",
+        "purpose": "This file parses Go code to analyze type implementations and check assignability between types and interfaces.",
+        "key_types": [
+          "struct",
+          "interface",
+          "Named"
+        ],
+        "functions": [
+          "main"
+        ],
+        "imports": [
+          "fmt",
+          "go/ast",
+          "go/importer",
+          "go/parser",
+          "go/token",
+          "go/types",
+          "log"
+        ],
+        "side_effects": [
+          "Logs errors if parsing or type checking fails."
+        ],
+        "risks": [
+          "Potential for runtime errors if input code is malformed."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

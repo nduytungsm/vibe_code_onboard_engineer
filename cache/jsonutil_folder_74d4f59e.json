@@ -1,6 +1,6 @@
 {
   "content_hash": "3d296b79af8e6334b831cb556ef7cc9c",
-  "timestamp": "2025-09-23T16:10:05.804884+07:00",
+  "timestamp": "2025-09-26T07:41:46.915773+07:00",
   "result": {
     "path": "httpclient/graphql/internal/jsonutil",
     "purpose": "Provides functions for decoding JSON into a GraphQL query data structure.",
@@ -19,7 +19,7 @@
       "reflect",
       "strings"
     ],
-    "architecture": "The folder follows a modular architecture pattern, focusing on JSON decoding specific to GraphQL, encapsulating related functionalities within a single file.",
+    "architecture": "The folder follows a modular architecture pattern, focusing on the separation of concerns by encapsulating JSON decoding functionalities specific to GraphQL queries.",
     "file_summaries": {
       "httpclient/graphql/internal/jsonutil/graphql.go": {
         "language": "Go",

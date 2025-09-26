@@ -1,0 +1,20 @@
+{
+  "content_hash": "333032d836d6fdf8fdc3837d68483eef",
+  "timestamp": "2025-09-25T18:56:59.950878+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "This script deletes a Document schema from a Weaviate instance.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "curl"
+    ],
+    "side_effects": [
+      "Modifies the Weaviate schema by deleting the Document type."
+    ],
+    "risks": [
+      "Potential data loss if the Document schema is deleted unintentionally."
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "content_hash": "3d952da69db4b4d0bf739000dde6cee1",
+  "timestamp": "2025-09-25T18:58:06.531979+07:00",
+  "result": {
+    "path": "gotypes/lookup",
+    "purpose": "This folder/module is responsible for parsing a Go source file and looking up identifiers in the innermost scope of comments.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "lookup.go"
+    ],
+    "dependencies": [
+      "fmt",
+      "go/ast",
+      "go/importer",
+      "go/parser",
+      "go/token",
+      "go/types",
+      "log",
+      "strings"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, focusing on parsing and type checking within the Go programming language.",
+    "file_summaries": {
+      "gotypes/lookup/lookup.go": {
+        "language": "Go",
+        "purpose": "This file parses a Go source file and looks up identifiers in the innermost scope of comments.",
+        "key_types": [
+          "ast.File",
+          "types.Config",
+          "types.Package"
+        ],
+        "functions": [
+          "main"
+        ],
+        "imports": [
+          "fmt",
+          "go/ast",
+          "go/importer",
+          "go/parser",
+          "go/token",
+          "go/types",
+          "log",
+          "strings"
+        ],
+        "side_effects": [
+          "Logs errors if parsing or type checking fails."
+        ],
+        "risks": [
+          "Potential for code injection if input is not sanitized."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

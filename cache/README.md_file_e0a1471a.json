@@ -1,0 +1,12 @@
+{
+  "content_hash": "2e7fe9d78a3e52dd7695473ad6deea4e",
+  "timestamp": "2025-09-25T18:56:34.369988+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for Go example projects and libraries",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

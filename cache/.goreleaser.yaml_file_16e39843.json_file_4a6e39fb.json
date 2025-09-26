@@ -1,0 +1,12 @@
+{
+  "content_hash": "ed81467c2b236d329d2263cc46aac80c",
+  "timestamp": "2025-09-25T18:20:14.524372+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for GoReleaser to manage project builds and changelog generation.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

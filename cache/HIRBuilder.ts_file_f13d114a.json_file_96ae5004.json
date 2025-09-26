@@ -1,0 +1,42 @@
+{
+  "content_hash": "9fc319ea0d2755d49fb841cb96423bc7",
+  "timestamp": "2025-09-25T18:23:57.560652+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines a HIRBuilder class for constructing a High Intermediate Representation (HIR) during the compilation process.",
+    "key_types": [
+      "WipBlock",
+      "Scope",
+      "LoopScope",
+      "SwitchScope",
+      "LabelScope",
+      "Bindings",
+      "ExceptionsMode",
+      "HIRBuilder"
+    ],
+    "functions": [
+      "newBlock",
+      "currentBlockKind",
+      "push",
+      "enterTryCatch",
+      "resolveThrowHandler",
+      "makeTemporary",
+      "resolveIdentifier",
+      "isContextIdentifier",
+      "resolveBinding"
+    ],
+    "imports": [
+      "@babel/traverse",
+      "@babel/types",
+      "../CompilerError",
+      "./Environment",
+      "./HIR",
+      "./PrintHIR",
+      "./visitors"
+    ],
+    "side_effects": [
+      "Modifies internal state of HIRBuilder during method calls."
+    ],
+    "complexity": "high"
+  }
+}

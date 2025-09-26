@@ -1,0 +1,40 @@
+{
+  "content_hash": "0ce570a66a5b252ca9773b133223b3d6",
+  "timestamp": "2025-09-25T18:57:03.907233+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the indenthandler package, specifically testing logging functionality and parsing log entries.",
+    "key_types": [
+      "bytes.Buffer",
+      "map[string]any",
+      "bufio.Scanner"
+    ],
+    "functions": [
+      "TestSlogtest",
+      "Test",
+      "parseLogEntries",
+      "parseGroup",
+      "TestParseLogEntries"
+    ],
+    "imports": [
+      "bufio",
+      "bytes",
+      "fmt",
+      "reflect",
+      "regexp",
+      "strconv",
+      "strings",
+      "testing",
+      "log/slog",
+      "testing/slogtest"
+    ],
+    "side_effects": [
+      "Writes log output to a buffer",
+      "Panic on parsing errors"
+    ],
+    "risks": [
+      "Potential panic due to malformed log entries"
+    ],
+    "complexity": "medium"
+  }
+}

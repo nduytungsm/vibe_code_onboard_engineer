@@ -7,12 +7,4 @@ High performance, minimalist Go web framework
 https://echo.labstack.com
 ____________________________________O/_______
                                     O\
-⇨ http server started on [::]:8080
-{"time":"2025-09-24T14:38:14.040256+07:00","id":"","remote_ip":"::1","host":"localhost:8080","method":"GET","uri":"/health","user_agent":"curl/8.7.1","status":200,"error":"","latency":64958,"latency_human":"64.958µs","bytes_in":0,"bytes_out":80}
-DEBUG: Original URL: https://github.com/invalid/test, Clone URL: https://github.com/invalid/test.git (token: false)
-{"time":"2025-09-24T14:38:23.507341+07:00","id":"","remote_ip":"::1","host":"localhost:8080","method":"POST","uri":"/api/analyze/stream","user_agent":"curl/8.7.1","status":200,"error":"","latency":753785416,"latency_human":"753.785416ms","bytes_in":64,"bytes_out":775}
-DEBUG: Original URL: https://github.com/invalid/test, Clone URL: https://github.com/invalid/test.git (token: false)
-{"time":"2025-09-24T14:38:41.934419+07:00","id":"","remote_ip":"::1","host":"localhost:8080","method":"POST","uri":"/api/analyze/stream","user_agent":"curl/8.7.1","status":200,"error":"","latency":811751292,"latency_human":"811.751292ms","bytes_in":64,"bytes_out":776}
-DEBUG: Original URL: https://github.com/invalid/test, Clone URL: https://github.com/invalid/test.git (token: false)
-{"time":"2025-09-24T14:38:59.02862+07:00","id":"","remote_ip":"::1","host":"localhost:8080","method":"POST","uri":"/api/analyze","user_agent":"curl/8.7.1","status":401,"error":"","latency":736140042,"latency_human":"736.140042ms","bytes_in":64,"bytes_out":307}
-signal: killed
+{"time":"2025-09-25T18:56:15.296302+07:00","level":"FATAL","prefix":"echo","file":"main.go","line":"54","message":"listen tcp :8080: bind: address already in use"}

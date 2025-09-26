@@ -1,0 +1,17 @@
+{
+  "content_hash": "2d508c42346a053bf14a9b3bf8e99153",
+  "timestamp": "2025-09-26T07:37:22.506934+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration structures for interacting with the Moralis API.",
+    "key_types": [
+      "Config",
+      "APIKeyShare"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

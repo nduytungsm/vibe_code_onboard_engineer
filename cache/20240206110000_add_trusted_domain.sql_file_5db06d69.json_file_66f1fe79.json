@@ -1,0 +1,27 @@
+{
+  "content_hash": "f74e713e80974060df6fb90677de0be0",
+  "timestamp": "2025-09-25T18:21:19.279878+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains database migration scripts to create and drop tables related to trusted domains and quick access D apps.",
+    "key_types": [
+      "TABLE",
+      "VARCHAR",
+      "BOOLEAN",
+      "INTEGER",
+      "TIMESTAMP",
+      "JSONB"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "DROP TABLE",
+      "CREATE INDEX"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates tables in the database",
+      "Indexes the quick_access_d_apps table"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "content_hash": "c4739ee2bc9225626458955d8c7d8805",
+  "timestamp": "2025-09-25T18:22:32.424904+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the structure of an Ethereum smart contract ABI for AxieRune, including events and functions.",
+    "key_types": [
+      "constructor",
+      "event",
+      "function"
+    ],
+    "functions": [
+      "DEFAULT_ADMIN_ROLE",
+      "MINTER_ROLE",
+      "PAUSER_ROLE",
+      "balanceOf",
+      "balanceOfBatch",
+      "burn",
+      "burnBatch",
+      "getRoleAdmin"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

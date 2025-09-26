@@ -1,0 +1,23 @@
+{
+  "content_hash": "9f0f0e74841cfa4cc77014a8e0b813c8",
+  "timestamp": "2025-09-25T18:23:21.959426+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Unit tests for the DisjointSet data structure implementation.",
+    "key_types": [
+      "TestIdentifier",
+      "DisjointSet"
+    ],
+    "functions": [
+      "makeIdentifier",
+      "makeIdentifiers"
+    ],
+    "imports": [
+      "../Utils/DisjointSet"
+    ],
+    "side_effects": [
+      "Modifies identifierId before each test"
+    ],
+    "complexity": "medium"
+  }
+}

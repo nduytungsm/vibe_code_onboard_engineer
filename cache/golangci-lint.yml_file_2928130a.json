@@ -1,0 +1,12 @@
+{
+  "content_hash": "718b7ae416f2181ba31973d833e527e1",
+  "timestamp": "2025-09-25T18:22:38.346712+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for the golangci-lint GitHub Action workflow",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

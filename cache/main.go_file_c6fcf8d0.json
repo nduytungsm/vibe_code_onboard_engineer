@@ -1,0 +1,32 @@
+{
+  "content_hash": "1c294a48f20d0badfca2b96e9c929c5a",
+  "timestamp": "2025-09-25T18:56:41.696501+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file parses Go code to analyze type implementations and check assignability between types and interfaces.",
+    "key_types": [
+      "struct",
+      "interface",
+      "Named"
+    ],
+    "functions": [
+      "main"
+    ],
+    "imports": [
+      "fmt",
+      "go/ast",
+      "go/importer",
+      "go/parser",
+      "go/token",
+      "go/types",
+      "log"
+    ],
+    "side_effects": [
+      "Logs errors if parsing or type checking fails."
+    ],
+    "risks": [
+      "Potential for runtime errors if input code is malformed."
+    ],
+    "complexity": "medium"
+  }
+}

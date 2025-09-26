@@ -55,6 +55,7 @@ function App() {
     { id: "services", name: "Services", icon: Server },
     { id: "relationships", name: "Dependencies", icon: GitBranch },
     { id: "database", name: "Database", icon: Database },
+    { id: "questions", name: "Helpful Questions", icon: Eye },
     { id: "files", name: "Files", icon: FileText },
   ];
 
@@ -184,12 +185,14 @@ function App() {
       services: results.services || [],
       relationships: results.relationships || [],
       databaseSchema: results.database_schema || null,
+      helpfulQuestions: results.helpful_questions || [],
       fileSummaries: results.file_summaries || {},
       folderSummaries: results.folder_summaries || {},
       stats: results.stats || {}
     };
     
     console.log("🗄️ DatabaseSchema from getAnalysisData:", mappedData.databaseSchema);
+    console.log("📊 ProjectType confidence from getAnalysisData:", mappedData.projectType?.confidence);
     return mappedData;
   };
 
@@ -666,6 +669,9 @@ function App() {
                 <TabsContent value="database" className="space-y-6">
                   <DatabaseTab getAnalysisData={getAnalysisData} />
                 </TabsContent>
+                <TabsContent value="questions" className="space-y-6">
+                  <QuestionsTab getAnalysisData={getAnalysisData} />
+                </TabsContent>
                 <TabsContent value="relationships" className="space-y-6">
                   <RelationshipsTab getAnalysisData={getAnalysisData} />
                 </TabsContent>
@@ -708,7 +714,7 @@ function OverviewTab({ getAnalysisData }) {
             <div className="text-center">
               <div className="p-4 rounded-2xl mb-3" style={{ backgroundColor: "hsl(var(--slate-100))" }}>
                 <div className="text-3xl font-bold" style={{ color: "hsl(var(--slate-700))" }}>
-                  {data?.projectType?.confidence || 0}%
+                  {Math.round((data?.projectType?.confidence || 0) * 10)}%
                 </div>
               </div>
               <div className="text-sm font-medium" style={{ color: "hsl(var(--slate-600))" }}>Confidence</div>
@@ -1380,6 +1386,120 @@ function DatabaseTab({ getAnalysisData }) {
               </div>
             </div>
           )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+// Questions Tab Component  
+function QuestionsTab({ getAnalysisData }) {
+  const data = getAnalysisData();
+  const questions = data?.helpfulQuestions || [];
+  
+  if (!data) {
+    return (
+      <div className="text-center py-12">
+        <AlertCircle className="h-12 w-12 mx-auto mb-4 opacity-50" />
+        <p style={{ color: "hsl(var(--slate-500))" }}>No data available</p>
+      </div>
+    );
+  }
+
+  if (!questions || questions.length === 0) {
+    return (
+      <div className="space-y-6">
+        <Card className="border-0 shadow-sm" style={{ backgroundColor: "white" }}>
+          <CardContent className="pt-6">
+            <div className="text-center py-12">
+              <Eye className="h-16 w-16 mx-auto mb-4" style={{ color: "hsl(var(--slate-400))" }} />
+              <CardTitle className="text-xl mb-2" style={{ color: "hsl(var(--slate-700))" }}>
+                No Helpful Questions Available
+              </CardTitle>
+              <p className="max-w-md mx-auto text-sm" style={{ color: "hsl(var(--slate-500))" }}>
+                Questions specific to this project could not be generated. This might happen if the analysis is incomplete or the project structure is too minimal.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <Card className="border-0 shadow-sm" style={{ backgroundColor: "white" }}>
+        <CardHeader style={{ backgroundColor: "hsl(var(--slate-50))" }}>
+          <CardTitle className="flex items-center gap-3" style={{ color: "hsl(var(--slate-800))" }}>
+            <div className="p-2 rounded-lg" style={{ backgroundColor: "hsl(var(--slate-100))" }}>
+              <Eye className="h-6 w-6" style={{ color: "hsl(var(--slate-700))" }} />
+            </div>
+            Helpful Questions & Answers
+          </CardTitle>
+          <CardDescription>
+            Project-specific questions to help you understand and develop this application faster
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="pt-6">
+          <div className="text-center mb-6">
+            <div className="text-2xl font-bold" style={{ color: "hsl(var(--slate-800))" }}>
+              {questions.length} Questions
+            </div>
+            <div className="text-sm" style={{ color: "hsl(var(--slate-500))" }}>
+              Generated based on your project analysis
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* FAQ Cards */}
+      <div className="space-y-4">
+        {questions.map((qa, index) => (
+          <details key={index} className="group border rounded-lg" style={{ borderColor: "hsl(var(--slate-200))" }}>
+            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-slate-50 transition-colors">
+              <div className="flex items-start gap-4 flex-1">
+                <div className="p-2 rounded-lg mt-1" style={{ backgroundColor: "hsl(var(--slate-100))" }}>
+                  <span className="text-sm font-bold" style={{ color: "hsl(var(--slate-700))" }}>
+                    Q{index + 1}
+                  </span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: "hsl(var(--slate-800))" }}>
+                    {qa.question}
+                  </h3>
+                  <div className="text-sm" style={{ color: "hsl(var(--slate-500))" }}>
+                    Click to see the answer
+                  </div>
+                </div>
+              </div>
+              <ChevronDown className="h-5 w-5 transition-transform group-open:rotate-180" style={{ color: "hsl(var(--slate-500))" }} />
+            </summary>
+            <div className="px-6 pb-6">
+              <Separator className="mb-4" />
+              <div className="pl-12">
+                <div className="p-4 rounded-lg" style={{ backgroundColor: "hsl(var(--slate-50))" }}>
+                  <div className="text-sm font-medium mb-2" style={{ color: "hsl(var(--slate-700))" }}>
+                    Answer:
+                  </div>
+                  <div className="text-sm leading-relaxed whitespace-pre-wrap" style={{ color: "hsl(var(--slate-600))" }}>
+                    {qa.answer}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      {/* Footer */}
+      <Card className="border-0 shadow-sm" style={{ backgroundColor: "hsl(var(--slate-50))" }}>
+        <CardContent className="pt-6 pb-6">
+          <div className="text-center">
+            <div className="text-sm" style={{ color: "hsl(var(--slate-600))" }}>
+              💡 These questions are AI-generated based on your project's specific structure, dependencies, and patterns to help accelerate your development process.
+            </div>
+          </div>
         </CardContent>
       </Card>
     </div>

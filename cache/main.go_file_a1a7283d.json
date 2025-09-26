@@ -1,0 +1,36 @@
+{
+  "content_hash": "7a818672d88418d03f67c5d5798dad44",
+  "timestamp": "2025-09-25T18:56:42.690449+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Identifies by-value parameters that are larger than a specified number of bytes.",
+    "key_types": [
+      "flag.Flag",
+      "token.FileSet",
+      "types.Info",
+      "types.Sizes",
+      "ast.File",
+      "types.Tuple",
+      "types.Signature"
+    ],
+    "functions": [
+      "PrintHugeParams",
+      "main"
+    ],
+    "imports": [
+      "flag",
+      "fmt",
+      "go/ast",
+      "go/token",
+      "go/types",
+      "log",
+      "os",
+      "golang.org/x/tools/go/packages"
+    ],
+    "side_effects": [
+      "Logs fatal errors if package loading fails.",
+      "Exits with status 1 if any packages contain errors."
+    ],
+    "complexity": "medium"
+  }
+}

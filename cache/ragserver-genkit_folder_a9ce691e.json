@@ -1,0 +1,86 @@
+{
+  "content_hash": "fa0bf954f6d68e7f28a7dca53f4f1c6d",
+  "timestamp": "2025-09-25T18:58:32.728706+07:00",
+  "result": {
+    "path": "ragserver/ragserver-genkit",
+    "purpose": "This folder/module is responsible for implementing an HTTP server for Retrieval Augmented Generation (RAG) using the Gemini model and Weaviate, along with handling JSON requests and responses.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "json.go",
+      "main.go"
+    ],
+    "dependencies": [
+      "github.com/firebase/genkit/go/ai",
+      "github.com/firebase/genkit/go/plugins/googleai",
+      "github.com/firebase/genkit/go/plugins/weaviate"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, separating concerns between JSON handling and the main server logic, facilitating maintainability and scalability.",
+    "file_summaries": {
+      "ragserver/ragserver-genkit/json.go": {
+        "language": "Go",
+        "purpose": "This file provides functions to read JSON from HTTP requests and render JSON responses.",
+        "key_types": [
+          "http.Request",
+          "http.ResponseWriter",
+          "any"
+        ],
+        "functions": [
+          "readRequestJSON",
+          "renderJSON"
+        ],
+        "imports": [
+          "encoding/json",
+          "fmt",
+          "mime",
+          "net/http"
+        ],
+        "side_effects": [
+          "Modifies the HTTP response header and body"
+        ],
+        "risks": [
+          "Potential for denial of service if large JSON payloads are processed",
+          "Improper handling of content types may lead to unexpected behavior"
+        ],
+        "complexity": "medium"
+      },
+      "ragserver/ragserver-genkit/main.go": {
+        "language": "Go",
+        "purpose": "Implements an HTTP server for Retrieval Augmented Generation (RAG) using the Gemini model and Weaviate.",
+        "key_types": [
+          "ragServer",
+          "document",
+          "addRequest",
+          "queryRequest"
+        ],
+        "functions": [
+          "main",
+          "addDocumentsHandler",
+          "queryHandler"
+        ],
+        "imports": [
+          "cmp",
+          "context",
+          "fmt",
+          "log",
+          "net/http",
+          "os",
+          "strings",
+          "github.com/firebase/genkit/go/ai",
+          "github.com/firebase/genkit/go/plugins/googleai",
+          "github.com/firebase/genkit/go/plugins/weaviate"
+        ],
+        "side_effects": [
+          "Initializes connections to Weaviate and Google AI services.",
+          "Starts an HTTP server that listens for requests."
+        ],
+        "risks": [
+          "Potential exposure of API keys if not properly secured.",
+          "Improper error handling may lead to information leakage."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

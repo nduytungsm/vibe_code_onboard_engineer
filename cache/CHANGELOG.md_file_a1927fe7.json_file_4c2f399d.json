@@ -1,0 +1,12 @@
+{
+  "content_hash": "d393fb314a85e9ce6ecb385de0a4cfe9",
+  "timestamp": "2025-09-25T18:22:47.761644+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Document the changes and updates made in the Rails 8.1.0.beta1 release.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

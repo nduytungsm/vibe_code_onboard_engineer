@@ -1,9 +1,9 @@
 {
-  "content_hash": "b4ee18f9d8114610d862bf13132e6f00",
-  "timestamp": "2025-09-23T17:00:49.482919+07:00",
+  "content_hash": "c630aa1015c9bd43ba236a846ad36286",
+  "timestamp": "2025-09-26T07:42:31.130802+07:00",
   "result": {
     "path": "pkg/share",
-    "purpose": "This folder/module is responsible for providing shared functionalities and types related to blockchain interactions, including custom data types, constants, error handling, and response structures.",
+    "purpose": "This folder/module is responsible for providing shared types, constants, and error handling for blockchain-related functionalities.",
     "languages": {
       "Go": 6
     },
@@ -20,14 +20,13 @@
       "github.com/axieinfinity/ecosystem-go-common/errors",
       "github.com/axieinfinity/ronin-wallet-proxy/models"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating related functionalities into distinct files, promoting reusability and separation of concerns.",
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for clarity and maintainability.",
     "file_summaries": {
       "pkg/share/big_int.go": {
         "language": "Go",
         "purpose": "Defines a custom big integer type with JSON marshaling and unmarshaling capabilities.",
         "key_types": [
-          "MyBigInt",
-          "big.Int"
+          "MyBigInt"
         ],
         "functions": [
           "Marshal",

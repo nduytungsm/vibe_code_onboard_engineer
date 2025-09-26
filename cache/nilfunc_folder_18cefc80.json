@@ -1,0 +1,57 @@
+{
+  "content_hash": "2ed9b14e45753e6216d31b8f7f13147c",
+  "timestamp": "2025-09-25T18:57:29.440178+07:00",
+  "result": {
+    "path": "gotypes/nilfunc",
+    "purpose": "Analyzes Go code to detect unintended comparisons of functions against nil.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [
+      "fmt",
+      "go/ast",
+      "go/importer",
+      "go/parser",
+      "go/token",
+      "go/types",
+      "log"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, focusing on analyzing and processing Go code using abstract syntax trees and type information.",
+    "file_summaries": {
+      "gotypes/nilfunc/main.go": {
+        "language": "Go",
+        "purpose": "Analyzes Go code to detect unintended comparisons of functions against nil.",
+        "key_types": [
+          "ast.Node",
+          "types.Info",
+          "types.Object"
+        ],
+        "functions": [
+          "main",
+          "CheckNilFuncComparison"
+        ],
+        "imports": [
+          "fmt",
+          "go/ast",
+          "go/importer",
+          "go/parser",
+          "go/token",
+          "go/types",
+          "log"
+        ],
+        "side_effects": [
+          "Logs errors if parsing or type checking fails.",
+          "Prints warnings for unintended nil comparisons."
+        ],
+        "risks": [
+          "Potential for false positives in nil comparisons.",
+          "Log output may expose internal logic."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "content_hash": "bcc40092908a7837439e36c044c0a355",
+  "timestamp": "2025-09-25T18:58:35.932418+07:00",
+  "result": {
+    "path": "internal/cmd/weave",
+    "purpose": "The weave command is a preprocessor for markdown files that builds a table of contents and processes %include directives.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "weave.go"
+    ],
+    "dependencies": [
+      "bufio",
+      "bytes",
+      "flag",
+      "fmt",
+      "io",
+      "log",
+      "os",
+      "path/filepath",
+      "regexp",
+      "strings"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality of markdown preprocessing within a single command file.",
+    "file_summaries": {
+      "internal/cmd/weave/weave.go": {
+        "language": "Go",
+        "purpose": "The weave command is a preprocessor for markdown files that builds a table of contents and processes %include directives.",
+        "key_types": [
+          "tocEntry"
+        ],
+        "functions": [
+          "main",
+          "include",
+          "cleanListing",
+          "leadingTabs"
+        ],
+        "imports": [
+          "bufio",
+          "bytes",
+          "flag",
+          "fmt",
+          "io",
+          "log",
+          "os",
+          "path/filepath",
+          "regexp",
+          "strings"
+        ],
+        "side_effects": [
+          "Reads from input markdown file",
+          "Writes to output file or stdout",
+          "Logs errors to standard output"
+        ],
+        "risks": [
+          "File handling errors may lead to data loss",
+          "Improper input may cause unexpected behavior"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

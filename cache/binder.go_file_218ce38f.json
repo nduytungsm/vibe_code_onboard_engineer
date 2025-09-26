@@ -1,0 +1,21 @@
+{
+  "content_hash": "c27325644682dd306d916b38d9a49e90",
+  "timestamp": "2025-09-26T07:36:14.929722+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides binding functionality for Echo framework with support for headers.",
+    "key_types": [
+      "BindFunc",
+      "echo.Context",
+      "echo.Binder"
+    ],
+    "functions": [
+      "Bind",
+      "NewBindWithHeaders"
+    ],
+    "imports": [
+      "github.com/labstack/echo/v4"
+    ],
+    "complexity": "medium"
+  }
+}

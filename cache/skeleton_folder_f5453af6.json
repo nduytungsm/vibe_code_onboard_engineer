@@ -1,0 +1,59 @@
+{
+  "content_hash": "251534b016592e77d1a45e1121b1978d",
+  "timestamp": "2025-09-25T18:58:08.858405+07:00",
+  "result": {
+    "path": "gotypes/skeleton",
+    "purpose": "Generates boilerplate code for a concrete type that implements a specified interface.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "main.go"
+    ],
+    "dependencies": [
+      "fmt",
+      "go/types",
+      "log",
+      "os",
+      "strings",
+      "unicode",
+      "unicode/utf8",
+      "golang.org/x/tools/go/packages"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, focusing on generating code dynamically based on specified interfaces.",
+    "file_summaries": {
+      "gotypes/skeleton/main.go": {
+        "language": "Go",
+        "purpose": "Generates boilerplate code for a concrete type that implements a specified interface.",
+        "key_types": [
+          "types.Package",
+          "types.Interface"
+        ],
+        "functions": [
+          "PrintSkeleton",
+          "isValidIdentifier",
+          "main"
+        ],
+        "imports": [
+          "fmt",
+          "go/types",
+          "log",
+          "os",
+          "strings",
+          "unicode",
+          "unicode/utf8",
+          "golang.org/x/tools/go/packages"
+        ],
+        "side_effects": [
+          "Prints generated code to standard output",
+          "Logs fatal errors to standard output"
+        ],
+        "risks": [
+          "Potential for panics if unimplemented methods are called",
+          "Error handling may expose sensitive information if not managed properly"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

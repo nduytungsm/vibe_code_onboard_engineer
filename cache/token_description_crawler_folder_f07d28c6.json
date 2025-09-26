@@ -1,6 +1,6 @@
 {
-  "content_hash": "5bd16920f58d603754d38c577e7307de",
-  "timestamp": "2025-09-23T16:59:32.277302+07:00",
+  "content_hash": "ac7f3aa0c815293fe37dcee9ff0d6cb9",
+  "timestamp": "2025-09-26T07:43:31.721337+07:00",
   "result": {
     "path": "cmd/token_description_crawler",
     "purpose": "Crawl token descriptions from coinmarketcap.com and refresh cache if needed.",
@@ -21,7 +21,7 @@
       "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
       "github.com/axieinfinity/ronin-wallet-proxy/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality for crawling and caching token descriptions, with clear separation of concerns through the use of services and database connections.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the crawling functionality and its dependencies, while managing external interactions through well-defined interfaces.",
     "file_summaries": {
       "cmd/token_description_crawler/main.go": {
         "language": "Go",
@@ -29,7 +29,7 @@
         "key_types": [
           "context.Context",
           "error",
-          "time.Duration",
+          "time.Time",
           "gorm.DB",
           "sentry.ClientOptions"
         ],
@@ -57,10 +57,12 @@
         "side_effects": [
           "Initializes Sentry for error tracking",
           "Connects to PostgreSQL database",
-          "Publishes event to Redis if cache needs refreshing"
+          "Sleeps to prevent rate limiting",
+          "Publishes a message to Redis if cache needs refreshing"
         ],
         "risks": [
-          "Potential exposure of sensitive configuration data",
+          "Potential exposure of sensitive information in logs",
+          "Rate limiting issues with external API",
           "Error handling may not cover all edge cases"
         ],
         "complexity": "medium"

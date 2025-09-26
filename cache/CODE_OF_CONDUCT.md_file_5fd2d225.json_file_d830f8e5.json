@@ -1,0 +1,12 @@
+{
+  "content_hash": "a8f109194bf38c39b3aefd502fc739ef",
+  "timestamp": "2025-09-25T18:22:54.758611+07:00",
+  "result": {
+    "language": "markdown",
+    "purpose": "This file outlines the Code of Conduct for contributors and maintainers of the project, promoting a welcoming and harassment-free environment.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "content_hash": "0e74fb478542da66a512fe407c4ab51c",
+  "timestamp": "2025-09-25T18:57:00.818975+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "A guide to writing handlers for the slog logging package in Go.",
+    "key_types": [
+      "Logger",
+      "Handler",
+      "Record"
+    ],
+    "functions": [
+      "Enabled",
+      "Handle",
+      "With",
+      "WithGroup"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}
