@@ -82,7 +82,7 @@ export const repositoryAPI = {
     }, 35 * 60 * 1000); // 35 minute timeout
 
     // Use fetch with streaming response for SSE
-    fetch(`${API_BASE_URL}/api/analyze/stream`, {
+    fetch(`${API_BASE_URL}/analyze/stream`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -255,49 +255,49 @@ export const repositoryAPI = {
       payload.token = token;
     }
 
-    const response = await api.post("/api/analyze", payload);
+    const response = await api.post("/analyze", payload);
     return response.data;
   },
 
   // Get project analysis results
   getProjectAnalysis: async (analysisId) => {
-    const response = await api.get(`/api/analysis/${analysisId}`);
+    const response = await api.get(`/analysis/${analysisId}`);
     return response.data;
   },
 
   // Get discovered services
   getServices: async (analysisId) => {
-    const response = await api.get(`/api/analysis/${analysisId}/services`);
+    const response = await api.get(`/analysis/${analysisId}/services`);
     return response.data;
   },
 
   // Get service relationships
   getRelationships: async (analysisId) => {
-    const response = await api.get(`/api/analysis/${analysisId}/relationships`);
+    const response = await api.get(`/analysis/${analysisId}/relationships`);
     return response.data;
   },
 
   // Get database schema
   getDatabaseSchema: async (analysisId) => {
-    const response = await api.get(`/api/analysis/${analysisId}/database`);
+    const response = await api.get(`/analysis/${analysisId}/database`);
     return response.data;
   },
 
   // Get file analysis
   getFileAnalysis: async (analysisId) => {
-    const response = await api.get(`/api/analysis/${analysisId}/files`);
+    const response = await api.get(`/analysis/${analysisId}/files`);
     return response.data;
   },
 
   // Get Mermaid graph data
   getMermaidGraph: async (analysisId) => {
-    const response = await api.get(`/api/analysis/${analysisId}/mermaid`);
+    const response = await api.get(`/analysis/${analysisId}/mermaid`);
     return response.data;
   },
 
   // Get PlantUML ERD
   getPlantUMLERD: async (analysisId) => {
-    const response = await api.get(`/api/analysis/${analysisId}/plantuml`);
+    const response = await api.get(`/analysis/${analysisId}/plantuml`);
     return response.data;
   },
 };
