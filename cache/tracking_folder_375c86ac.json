@@ -1,9 +1,9 @@
 {
-  "content_hash": "91fe8b88ee38598da27c8e791e931ed1",
-  "timestamp": "2025-09-26T13:19:31.977885+07:00",
+  "content_hash": "03c4c1828722d83253e28f8add3f00d4",
+  "timestamp": "2025-09-26T14:17:16.398949+07:00",
   "result": {
     "path": "pkg/tracking",
-    "purpose": "Responsible for tracking events and requests, providing services to manage and process tracking data.",
+    "purpose": "Responsible for handling tracking functionality, including configuration, data structures, and service operations for tracking events and requests.",
     "languages": {
       "Go": 3
     },
@@ -12,23 +12,18 @@
       "models.go",
       "tracking_svc.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-manager/httpclient"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration, data models, and service logic related to tracking functionality.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for configuration, data models, and service logic.",
     "file_summaries": {
       "pkg/tracking/config.go": {
         "language": "Go",
-        "purpose": "Defines a configuration structure for tracking with associated methods.",
+        "purpose": "Defines configuration settings for tracking functionality.",
         "key_types": [
-          "Config"
+          "Config struct",
+          "SetUserAgent function"
         ],
-        "functions": [
-          "SetUserAgent"
-        ],
-        "imports": [
-          "time"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "pkg/tracking/models.go": {
@@ -38,36 +33,20 @@
           "Event",
           "TrackingRequest"
         ],
-        "functions": [],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "pkg/tracking/tracking_svc.go": {
         "language": "Go",
-        "purpose": "Provides tracking services for events using a configurable client.",
+        "purpose": "Provides a tracking service for handling tracking requests and events.",
         "key_types": [
-          "Service",
-          "service",
-          "Config",
-          "TrackingRequest"
+          "Service interface",
+          "service struct",
+          "Track method"
         ],
-        "functions": [
-          "Track",
-          "TrackAsync",
-          "NewService"
-        ],
-        "imports": [
-          "context",
-          "github.com/axieinfinity/ronin-wallet-manager/httpclient"
-        ],
-        "side_effects": [
-          "Modifies event data if certain conditions are met.",
-          "Makes HTTP requests to track events."
-        ],
-        "risks": [
-          "Potential for nil pointer dereference if cfg is not properly initialized.",
-          "Improper handling of event data could lead to incorrect tracking."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

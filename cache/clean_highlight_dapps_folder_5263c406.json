@@ -1,76 +1,26 @@
 {
-  "content_hash": "047ab46d41b6e59b86d1fe44684760b2",
-  "timestamp": "2025-09-26T13:19:38.431251+07:00",
+  "content_hash": "ad04382367d6ca7fb85ec0b7c03f8557",
+  "timestamp": "2025-09-26T14:16:32.176257+07:00",
   "result": {
     "path": "cmd/clean_highlight_dapps",
-    "purpose": "This folder/module is responsible for cleaning expired highlights from a database and logging the process.",
+    "purpose": "Cleans expired highlights from a database and logs the process.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "main.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
-      "github.com/getsentry/sentry-go",
-      "github.com/rs/zerolog/log",
-      "gorm.io/gorm",
-      "github.com/axieinfinity/ronin-wallet-manager/config",
-      "github.com/axieinfinity/ronin-wallet-manager/database/redis",
-      "github.com/axieinfinity/ronin-wallet-manager/models",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
-      "github.com/axieinfinity/ronin-wallet-manager/repositories"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, where the main entry point initializes necessary services and dependencies to perform the cleaning operation.",
+    "dependencies": [],
+    "architecture": "The folder follows a simple command-line application architecture, focusing on a single responsibility of cleaning and logging.",
     "file_summaries": {
       "cmd/clean_highlight_dapps/main.go": {
         "language": "Go",
-        "purpose": "This file is the main entry point for a program that cleans expired highlights from a database and logs the process.",
+        "purpose": "Cleans expired highlights from a database and logs the process.",
         "key_types": [
-          "context.Context",
-          "time.Time",
-          "gorm.DB",
-          "config.Config",
-          "repositories.QuickAccessDAppRepo",
-          "repositories.HighlightRepo",
-          "redis.RedisClient",
-          "dapp.CleanService",
-          "md.Highlight"
+          "main"
         ],
-        "functions": [
-          "main",
-          "sentry.Init",
-          "postgresql.NewClient",
-          "repositories.NewQuickAccessDAppRepo",
-          "repositories.NewHighlightRepo",
-          "redis.NewRedisClient",
-          "dapp.NewCleanService",
-          "dAppSvc.CleanExpireHighlights"
-        ],
-        "imports": [
-          "context",
-          "time",
-          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
-          "github.com/getsentry/sentry-go",
-          "github.com/rs/zerolog/log",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-manager/config",
-          "github.com/axieinfinity/ronin-wallet-manager/database/redis",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
-          "github.com/axieinfinity/ronin-wallet-manager/repositories"
-        ],
-        "side_effects": [
-          "Initializes Sentry for error tracking",
-          "Connects to PostgreSQL database",
-          "Connects to Redis database",
-          "Cleans expired highlights from the database"
-        ],
-        "risks": [
-          "Potential failure in Sentry initialization",
-          "Database connection failures",
-          "Error handling for cleaning highlights may not be robust"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

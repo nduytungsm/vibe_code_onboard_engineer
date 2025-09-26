@@ -1,102 +1,43 @@
 {
-  "content_hash": "902ef8dcc39ed33c03f4ddaff3918a06",
-  "timestamp": "2025-09-26T14:04:53.67712+07:00",
+  "content_hash": "82a00fbba7f4e11e2147d20006e7c3fc",
+  "timestamp": "2025-09-26T14:16:36.393493+07:00",
   "result": {
     "path": "pkg/helper",
-    "purpose": "Provides various utility functions and configurations to assist with common tasks in a Go application, including data manipulation, token generation, and handling of different data types.",
+    "purpose": "This folder/module is responsible for providing various utility functions and helpers for encryption, file handling, token generation, and data manipulation.",
     "languages": {
-      "Go": 30
+      "Go": 8
     },
     "key_modules": [
-      "asyncq.go",
-      "big.go",
+      "aes.go",
       "binder.go",
-      "bytes.go",
-      "copy.go",
-      "file.go",
       "hmac_token.go",
-      "map.go",
-      "mapstruct.go",
-      "mapstruct_hook.go",
-      "number.go",
-      "operations.go",
-      "pagination.go",
       "pointer.go",
-      "push_token.go",
+      "random.go",
       "ronin.go",
       "slice.go",
-      "strings.go",
-      "sync.go",
-      "time.go",
-      "tls.go",
-      "type.go"
+      "tls.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to data handling, utility functions, and configurations, promoting separation of concerns and reusability.",
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for better maintainability and reusability.",
     "file_summaries": {
-      "pkg/helper/asyncq.go": {
+      "pkg/helper/aes.go": {
         "language": "Go",
-        "purpose": "Configures and returns Redis connection options for the asynq library.",
+        "purpose": "This file provides functions for AES encryption of messages using a hashed key.",
         "key_types": [
-          "NewAsyncQConnectConfig"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "low"
-      },
-      "pkg/helper/big.go": {
-        "language": "Go",
-        "purpose": "Provides utility functions for handling big integers and numeric types in PostgreSQL.",
-        "key_types": [
-          "strToBig",
-          "BigToNumeric",
-          "PlusNumeric"
+          "hashKey",
+          "EncryptEAS"
         ],
         "functions": null,
         "imports": null,
         "complexity": "medium"
       },
       "pkg/helper/binder.go": {
-        "language": "go",
-        "purpose": "Provides custom binding functionality for Echo framework with header support.",
+        "language": "Go",
+        "purpose": "Provides custom binding functions for handling multipart file uploads in Echo framework.",
         "key_types": [
           "BindFunc",
-          "Bind",
-          "NewBindWithHeaders"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "pkg/helper/bytes.go": {
-        "language": "Go",
-        "purpose": "This file provides helper functions for handling file uploads and processing CSV data in an Echo web framework context.",
-        "key_types": [
-          "OpenRequestFile",
-          "ParseFileToRecords",
-          "EmbedBytesToResponse"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "pkg/helper/copy.go": {
-        "language": "Go",
-        "purpose": "This file provides type converters for various data types using the copier library.",
-        "key_types": [
-          "BigIntToStrCvt",
-          "NumToStrCvt",
-          "StringToPgTextCvt"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "pkg/helper/file.go": {
-        "language": "Go",
-        "purpose": "Extracts user addresses from a 2D slice of records with validation.",
-        "key_types": [
-          "ExtractUserAddresses"
+          "NewBindWithHeaders",
+          "NewBindFile"
         ],
         "functions": null,
         "imports": null,
@@ -104,7 +45,7 @@
       },
       "pkg/helper/hmac_token.go": {
         "language": "Go",
-        "purpose": "Generates HMAC access tokens for HTTP requests.",
+        "purpose": "Generates an HMAC access token for API authentication.",
         "key_types": [
           "GenerateHMACAccessToken"
         ],
@@ -112,101 +53,21 @@
         "imports": null,
         "complexity": "medium"
       },
-      "pkg/helper/map.go": {
-        "language": "Go",
-        "purpose": "Provides utility functions for manipulating maps and extracting values.",
-        "key_types": [
-          "MapToKeys",
-          "MapValOrNil",
-          "MergeMap"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "pkg/helper/mapstruct.go": {
-        "language": "Go",
-        "purpose": "Decodes a map into a struct and validates it using the validator package.",
-        "key_types": [
-          "DecodeStructAndValidate"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "pkg/helper/mapstruct_hook.go": {
-        "language": "Go",
-        "purpose": "Provides helper functions for binding struct fields to environment variables and converting string representations of byte sizes.",
-        "key_types": [
-          "StringToByteSizeHookFunc",
-          "BindStructPathsToEnvs",
-          "extractMapstructurePaths"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "pkg/helper/mapstruct_test.go": {
-        "language": "go",
-        "purpose": "Unit tests for decoding a struct and validating its fields using mapstructure.",
-        "key_types": [
-          "TestDecodeStructAndValidate"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "low"
-      },
-      "pkg/helper/number.go": {
-        "language": "Go",
-        "purpose": "Provides utility functions for parsing numbers and converting hexadecimal strings to big integers.",
-        "key_types": [
-          "ParseInt64",
-          "ParseFloat64",
-          "HexToBig"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "low"
-      },
-      "pkg/helper/operations.go": {
-        "language": "Go",
-        "purpose": "Provides a generic ternary function for conditional value selection.",
-        "key_types": [
-          "Ternary"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "low"
-      },
-      "pkg/helper/pagination.go": {
-        "language": "Go",
-        "purpose": "Provides pagination utilities for calculating offsets and limits for paginated data.",
-        "key_types": [
-          "CalOffsetLimit",
-          "FallbackPage",
-          "FallbackPageSize"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
       "pkg/helper/pointer.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for working with pointers in a generic way.",
+        "purpose": "Provides a generic function to create a pointer to a value of any type.",
         "key_types": [
-          "NewPointer",
-          "UnwrapOrDefault"
+          "NewPointer"
         ],
         "functions": null,
         "imports": null,
         "complexity": "low"
       },
-      "pkg/helper/push_token.go": {
+      "pkg/helper/random.go": {
         "language": "Go",
-        "purpose": "This file provides functions to hide sensitive tokens by obscuring their representation.",
+        "purpose": "Generates a random string of specified length using alphanumeric characters.",
         "key_types": [
-          "HideToken",
-          "HideTokens"
+          "RandStr"
         ],
         "functions": null,
         "imports": null,
@@ -214,7 +75,7 @@
       },
       "pkg/helper/ronin.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for Ethereum address normalization and signature verification.",
+        "purpose": "Provides utility functions for normalizing Ethereum addresses and validating signatures.",
         "key_types": [
           "NormalizeAddress",
           "HashMessage",
@@ -226,7 +87,7 @@
       },
       "pkg/helper/slice.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for manipulating slices and collections.",
+        "purpose": "Provides utility functions for filtering, indexing, mapping, and converting slices.",
         "key_types": [
           "Filter",
           "IndexOf",
@@ -236,73 +97,11 @@
         "imports": null,
         "complexity": "medium"
       },
-      "pkg/helper/slice_test.go": {
-        "language": "Go",
-        "purpose": "Unit tests for the SliceChunk function to validate chunking behavior of slices.",
-        "key_types": [
-          "TestSliceChunk",
-          "args",
-          "testCase"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "pkg/helper/strings.go": {
-        "language": "Go",
-        "purpose": "Provides utility functions for string manipulation and fallback value handling.",
-        "key_types": [
-          "EllipticalTruncate",
-          "FallbackNilString",
-          "Capitalize"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "pkg/helper/sync.go": {
-        "language": "Go",
-        "purpose": "Provides utility functions for concurrent processing and aggregation of slices.",
-        "key_types": [
-          "SliceRoutine",
-          "Routine",
-          "AggResult"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "pkg/helper/time.go": {
-        "language": "Go",
-        "purpose": "Provides utility functions for handling time-related operations.",
-        "key_types": [
-          "NewCurrentTime",
-          "NewCurrentEpoch",
-          "NewZeroTime"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "low"
-      },
       "pkg/helper/tls.go": {
         "language": "Go",
-        "purpose": "This file provides a function to create a TLS configuration from provided certificate, key, and CA certificate.",
+        "purpose": "This file provides a function to convert certificate and key data into a TLS configuration.",
         "key_types": [
           "ConvertToTLSConfig"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "pkg/helper/type.go": {
-        "language": "Go",
-        "purpose": "Defines a generic Set data structure for managing unique items.",
-        "key_types": [
-          "Set[T]",
-          "NewSet[T]",
-          "Add",
-          "Remove",
-          "Items"
         ],
         "functions": null,
         "imports": null,

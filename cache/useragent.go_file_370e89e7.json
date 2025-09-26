@@ -1,0 +1,15 @@
+{
+  "content_hash": "a562a2f12c0766636e951ceb31d4e343",
+  "timestamp": "2025-09-26T14:15:41.236365+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the AgentInfo struct and a method to check if its fields are empty.",
+    "key_types": [
+      "AgentInfo",
+      "IsEmpty"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

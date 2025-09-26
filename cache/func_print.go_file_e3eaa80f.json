@@ -1,0 +1,16 @@
+{
+  "content_hash": "aac44ada0b99e181f9202d9891733d7d",
+  "timestamp": "2025-09-26T14:15:13.39342+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains functions for hiding sensitive data in configurations.",
+    "key_types": [
+      "isSecretField",
+      "hideSecret",
+      "hideSensitiveDataInSlice"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

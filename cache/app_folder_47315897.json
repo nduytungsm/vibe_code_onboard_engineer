@@ -1,78 +1,28 @@
 {
-  "content_hash": "26e2b3e4228d77d018d10f0f950d414c",
-  "timestamp": "2025-09-26T13:19:01.088356+07:00",
+  "content_hash": "a0ffd50e1b97d173aed838f0ca1c0da9",
+  "timestamp": "2025-09-26T14:16:54.702667+07:00",
   "result": {
     "path": "cmd/app",
-    "purpose": "This folder/module is responsible for setting up and running the main application, including an HTTP server and a metrics server.",
+    "purpose": "This folder/module is responsible for setting up the main application, including an HTTP server with middleware for handling requests and graceful shutdown.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "main.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-      "github.com/axieinfinity/ecosystem-go-common/echo/profiling",
-      "github.com/axieinfinity/ecosystem-go-common/validation",
-      "github.com/getsentry/sentry-go",
-      "github.com/getsentry/sentry-go/echo",
-      "github.com/labstack/echo-contrib/echoprometheus",
-      "github.com/labstack/echo/v4",
-      "github.com/labstack/echo/v4/middleware",
-      "github.com/rs/zerolog/log",
-      "github.com/axieinfinity/ronin-wallet-manager/config",
-      "github.com/axieinfinity/ronin-wallet-manager/middleware",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
-      "github.com/axieinfinity/ronin-wallet-manager/routes"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, where the main application logic is encapsulated in a single entry point (main.go) that initializes and manages various components like HTTP and metrics servers.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on the main application entry point and server setup.",
     "file_summaries": {
       "cmd/app/main.go": {
         "language": "Go",
-        "purpose": "This file sets up an HTTP server and a metrics server, handling graceful shutdown and logging.",
+        "purpose": "This file sets up an HTTP server with middleware for handling requests and graceful shutdown.",
         "key_types": [
-          "context.Context",
-          "sync.WaitGroup",
-          "echo.Echo",
-          "config.Schema"
-        ],
-        "functions": [
           "main",
           "startHTTPServer",
-          "startMetricsServer",
           "shutdown"
         ],
-        "imports": [
-          "context",
-          "fmt",
-          "os",
-          "os/signal",
-          "strings",
-          "sync",
-          "time",
-          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-          "github.com/axieinfinity/ecosystem-go-common/echo/profiling",
-          "github.com/axieinfinity/ecosystem-go-common/validation",
-          "github.com/getsentry/sentry-go",
-          "github.com/getsentry/sentry-go/echo",
-          "github.com/labstack/echo-contrib/echoprometheus",
-          "github.com/labstack/echo/v4",
-          "github.com/labstack/echo/v4/middleware",
-          "github.com/rs/zerolog/log",
-          "github.com/axieinfinity/ronin-wallet-manager/config",
-          "github.com/axieinfinity/ronin-wallet-manager/middleware",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-manager/routes"
-        ],
-        "side_effects": [
-          "Initializes Sentry for error tracking if enabled",
-          "Starts HTTP and metrics servers",
-          "Handles OS interrupt signals for graceful shutdown"
-        ],
-        "risks": [
-          "Potential exposure of sensitive information in logs if not properly configured",
-          "Improper handling of shutdown could lead to data loss"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

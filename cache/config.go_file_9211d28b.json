@@ -1,0 +1,16 @@
+{
+  "content_hash": "2c2b16b6e43effe1d0ce5066a11b897e",
+  "timestamp": "2025-09-26T14:15:45.330448+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Configuration structures for the announcement service.",
+    "key_types": [
+      "CommunicationServiceCfg",
+      "StorageConfig",
+      "K8sConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "content_hash": "fc98982d645c1ad7581df8ae5e2d21d7",
-  "timestamp": "2025-09-26T13:19:28.954291+07:00",
+  "content_hash": "0f4dc9f4a64ab9c9f5125c7468322e8b",
+  "timestamp": "2025-09-26T14:17:11.61171+07:00",
   "result": {
     "path": "migrations",
-    "purpose": "Responsible for managing database schema changes and data migrations for a blockchain-related application.",
+    "purpose": "Responsible for managing database schema changes and migrations.",
     "languages": {
       "SQL": 6
     },
@@ -16,153 +16,76 @@
       "20240808130000_alter_preferences.sql"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a version-controlled migration pattern, where each migration file is timestamped and contains SQL scripts for modifying the database schema.",
+    "architecture": "The folder follows a sequential migration pattern where each file represents a specific change to the database schema, allowing for version control and rollback capabilities.",
     "file_summaries": {
       "migrations/20230407150000_init.sql": {
         "language": "SQL",
-        "purpose": "Database migration script to set up initial tables and data for a blockchain-related application.",
+        "purpose": "Initializes database schema for networks and contracts with UUID support.",
         "key_types": [
-          "networks",
-          "contracts",
-          "d_apps",
-          "commons",
-          "code_versions",
-          "contract_type",
-          "dapp_url"
+          "networks table",
+          "contracts table",
+          "contract_type enum"
         ],
-        "functions": [
-          "CREATE EXTENSION",
-          "CREATE TABLE",
-          "DROP TYPE",
-          "CREATE TYPE",
-          "INSERT INTO",
-          "CREATE INDEX"
-        ],
-        "imports": [],
-        "side_effects": [
-          "Modifies the database schema by creating tables and types.",
-          "Inserts initial data into the tables."
-        ],
-        "risks": [
-          "Potential SQL injection if user input is not properly sanitized.",
-          "Data integrity risks if foreign key constraints are not enforced."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "migrations/20231005150000_add_announcement.sql": {
         "language": "SQL",
-        "purpose": "This file contains database migration scripts to create and drop tables related to announcements, special offers, and user preferences.",
+        "purpose": "Creates tables for announcements and special offers with associated indexes.",
         "key_types": [
-          "UUID",
-          "VARCHAR",
-          "TEXT",
-          "JSONB",
-          "TIMESTAMP"
+          "announcements",
+          "special_offers"
         ],
-        "functions": [
-          "CREATE TABLE",
-          "CREATE INDEX",
-          "DROP TABLE"
-        ],
-        "imports": [],
-        "side_effects": [
-          "Creates tables and indexes in the database",
-          "Modifies the database schema"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "migrations/20240111120000_alter_preferences.sql": {
         "language": "SQL",
-        "purpose": "This file contains migration scripts to alter the preferences table in a database.",
+        "purpose": "Alters the preferences table structure and constraints in a database migration.",
         "key_types": [
-          "TABLE",
-          "COLUMN",
-          "INDEX"
-        ],
-        "functions": [
           "ALTER TABLE",
           "CREATE INDEX",
           "DELETE"
         ],
-        "imports": [],
-        "side_effects": [
-          "Modifies the database schema",
-          "Changes default values",
-          "Creates and drops constraints"
-        ],
-        "risks": [
-          "Potential data loss during deletion",
-          "Integrity issues if constraints are not properly managed"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "migrations/20240206110000_add_trusted_domain.sql": {
         "language": "SQL",
-        "purpose": "Defines database schema for trusted domains and quick access D apps.",
+        "purpose": "Creates tables for trusted domains and quick access applications in the database.",
         "key_types": [
-          "TABLE",
-          "VARCHAR",
-          "BOOLEAN",
-          "INTEGER",
-          "TIMESTAMP",
-          "JSONB"
+          "CREATE TABLE trusted_domains",
+          "CREATE TABLE quick_access_d_apps",
+          "CREATE INDEX idx_quick_access_d_apps_position"
         ],
-        "functions": [
-          "CREATE TABLE",
-          "CREATE INDEX",
-          "DROP TABLE"
-        ],
-        "imports": [],
-        "side_effects": [
-          "Creates tables in the database",
-          "Creates an index on a table"
-        ],
-        "complexity": "medium"
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
       },
       "migrations/20240410140000_add_dapp_highlight.sql": {
         "language": "SQL",
-        "purpose": "This file contains database migration scripts to modify the schema of a PostgreSQL database.",
+        "purpose": "This file adds a new highlights table and modifies the quick_access_d_apps table for enhanced data handling.",
         "key_types": [
-          "TABLE",
-          "INDEX",
-          "COLLATION",
-          "EXTENSION"
+          "CREATE TABLE highlights",
+          "ALTER TABLE quick_access_d_apps",
+          "CREATE INDEX"
         ],
-        "functions": [
-          "CREATE EXTENSION",
-          "CREATE COLLATION",
-          "ALTER TABLE",
-          "CREATE INDEX",
-          "CREATE TABLE"
-        ],
-        "imports": [],
-        "side_effects": [
-          "Modifies the database schema",
-          "Creates new tables and indexes"
-        ],
-        "risks": [
-          "Potential data loss if not properly backed up before migration"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "migrations/20240808130000_alter_preferences.sql": {
         "language": "SQL",
-        "purpose": "This file contains migration scripts to create and drop an index on the preferences table.",
+        "purpose": "This file alters the preferences table by creating and dropping an index for the receive_news column.",
         "key_types": [
-          "INDEX",
-          "TABLE"
-        ],
-        "functions": [
           "CREATE INDEX",
           "DROP INDEX"
         ],
-        "imports": [],
-        "side_effects": [
-          "Modifies the database schema by adding or removing an index."
-        ],
-        "risks": [
-          "Potential performance impact on queries related to the preferences table."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       }
     }

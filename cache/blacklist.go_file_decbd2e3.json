@@ -1,0 +1,16 @@
+{
+  "content_hash": "5f2aebc40f01498ce534dcbecdd76f82",
+  "timestamp": "2025-09-26T14:15:20.20701+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles requests related to retrieving blacklist sites.",
+    "key_types": [
+      "BlacklistHandler",
+      "blacklistHandler",
+      "GetBlacklistSites"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "content_hash": "5e54a5b96056be96488242ff9bea0cc4",
+  "timestamp": "2025-09-26T14:15:28.897839+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Middleware for parsing user agent strings in an Echo web framework application.",
+    "key_types": [
+      "getAgentInfo",
+      "NewUserAgentParsing"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "content_hash": "22215bc17374bbc5c2e191f6105d3602",
+  "timestamp": "2025-09-26T14:15:35.358609+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the configuration structure for a blockchain network including contracts and decentralized applications.",
+    "key_types": [
+      "ChainConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

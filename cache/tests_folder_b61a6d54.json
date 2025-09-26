@@ -1,106 +1,29 @@
 {
-  "content_hash": "3c9cd58b2846e8c65813063e3e499a92",
-  "timestamp": "2025-09-26T14:07:18.728859+07:00",
+  "content_hash": "437db7078c11fabc4ca49a6ab05c184d",
+  "timestamp": "2025-09-26T14:16:48.218308+07:00",
   "result": {
     "path": "tests",
-    "purpose": "This folder contains unit tests for various functionalities of the application, ensuring that individual components work as expected.",
+    "purpose": "This folder is responsible for testing the HTTP server that signs messages using Ethereum ECDSA private keys.",
     "languages": {
-      "go": 8
+      "Go": 1
     },
     "key_modules": [
-      "batch_sig_test.go",
-      "hash_to_addres_test.go",
-      "http_parse_test.go",
-      "http_template_test.go",
-      "quest_test.go",
-      "siwe_test.go",
-      "slack_alert_test.go",
-      "utils.go"
+      "main.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, where each test file corresponds to a specific functionality or component of the application, promoting separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, focusing on testing the functionality of the HTTP server implementation.",
     "file_summaries": {
-      "tests/batch_sig_test.go": {
-        "language": "go",
-        "purpose": "Unit test for the GetClaimRewardSig function in the RewardHandler.",
-        "key_types": [
-          "Test_GetBatchSig"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "tests/hash_to_addres_test.go": {
-        "language": "go",
-        "purpose": "Unit test for converting a hash to an Ethereum address.",
-        "key_types": [
-          "TestHashToAddress"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "low"
-      },
-      "tests/http_parse_test.go": {
-        "language": "go",
-        "purpose": "This file contains unit tests for parsing URLs and verifying their hostnames.",
-        "key_types": [
-          "Test_Parse_URL"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "low"
-      },
-      "tests/http_template_test.go": {
-        "language": "go",
-        "purpose": "Tests the parsing and execution of an HTML template for HTTP responses.",
-        "key_types": [
-          "Test_HttpTemplateParseText_NoError"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "low"
-      },
-      "tests/quest_test.go": {
-        "language": "go",
-        "purpose": "Unit tests for streak calculation in wallet check-in logs.",
-        "key_types": [
-          "TestFindStreak_ShouldNot_BreakStreak",
-          "TestFindStreak_Should_BreakStreak"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "tests/siwe_test.go": {
-        "language": "go",
-        "purpose": "Unit tests for verifying the signature and recovery of Ethereum messages.",
-        "key_types": [
-          "Test_Siwe",
-          "Test_Siwe2"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "tests/slack_alert_test.go": {
+      "tests/main.go": {
         "language": "Go",
-        "purpose": "Unit tests for the Slack alert service functionality.",
+        "purpose": "This file implements an HTTP server that signs messages using Ethereum ECDSA private keys.",
         "key_types": [
-          "Test_SendAlertSlack"
+          "SignRequest",
+          "signHash",
+          "signMessage"
         ],
         "functions": null,
         "imports": null,
         "complexity": "medium"
-      },
-      "tests/utils.go": {
-        "language": "Go",
-        "purpose": "Defines a no-operation logger for testing purposes.",
-        "key_types": [
-          "SugaredLogger"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "low"
       }
     }
   }

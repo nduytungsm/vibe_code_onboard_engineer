@@ -1,9 +1,9 @@
 {
-  "content_hash": "93d0d6f0d58d27f4856c942d631d3bd8",
-  "timestamp": "2025-09-26T13:18:14.767351+07:00",
+  "content_hash": "ac7c22afb2f447bf52e4d9e76d176597",
+  "timestamp": "2025-09-26T14:17:42.348309+07:00",
   "result": {
     "path": "pkg/moonpay",
-    "purpose": "Handles configuration and services related to Moonpay, including URL signing.",
+    "purpose": "Responsible for integrating with Moonpay services, including configuration and URL signing.",
     "languages": {
       "Go": 2
     },
@@ -11,41 +11,29 @@
       "config.go",
       "service.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic related to Moonpay.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic related to Moonpay integration.",
     "file_summaries": {
       "pkg/moonpay/config.go": {
         "language": "Go",
-        "purpose": "Defines a configuration structure for Moonpay with a secret field.",
+        "purpose": "Defines configuration structure for Moonpay integration.",
         "key_types": [
           "Config"
         ],
-        "functions": [],
-        "imports": [],
-        "risks": [
-          "Exposure of sensitive information if the secret is not properly managed"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "pkg/moonpay/service.go": {
-        "language": "Go",
-        "purpose": "Provides a service for signing URLs using a configuration.",
+        "language": "go",
+        "purpose": "Provides a service for signing URLs using HMAC and base64 encoding.",
         "key_types": [
-          "Service",
-          "service",
-          "Config"
+          "Service interface",
+          "service struct",
+          "SignURL method"
         ],
-        "functions": [
-          "SignURL",
-          "NewService"
-        ],
-        "imports": [
-          "context",
-          "encoding/base64",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

@@ -1,0 +1,16 @@
+{
+  "content_hash": "bed86ea1197646a2863b63c9b5caea8c",
+  "timestamp": "2025-09-26T14:15:31.776275+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Initializes database schema for networks and contracts with UUID support.",
+    "key_types": [
+      "networks table",
+      "contracts table",
+      "contract_type enum"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "content_hash": "eff783871d1a50dab1c1abb0031cf065",
+  "timestamp": "2025-09-26T14:15:27.749469+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Middleware to check if the API version is v1 and set a context key accordingly.",
+    "key_types": [
+      "NetworkAPIV1CheckingMiddleware"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

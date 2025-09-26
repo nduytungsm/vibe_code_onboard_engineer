@@ -1,0 +1,16 @@
+{
+  "content_hash": "8119ae0d37e6a82750132e862aec667d",
+  "timestamp": "2025-09-26T14:16:04.538436+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing user preferences in a database using GORM.",
+    "key_types": [
+      "PreferenceRepo interface",
+      "prefRepo struct",
+      "GetByAddress function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

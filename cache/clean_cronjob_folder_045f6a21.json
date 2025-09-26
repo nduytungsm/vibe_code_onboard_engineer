@@ -1,77 +1,28 @@
 {
-  "content_hash": "586c8eeffeaff737ee581369bc1a440e",
-  "timestamp": "2025-09-26T11:54:10.136901+07:00",
+  "content_hash": "55a5fd38bb5d7cdc6cba1af5007b5be9",
+  "timestamp": "2025-09-26T14:16:41.037036+07:00",
   "result": {
     "path": "cmd/clean_cronjob",
-    "purpose": "This folder/module is responsible for implementing a cron job that cleans old announcements from a database.",
+    "purpose": "Cleans old cron jobs related to announcements in a scheduled task.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "main.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
-      "github.com/getsentry/sentry-go",
-      "github.com/rs/zerolog/log",
-      "gorm.io/gorm",
-      "github.com/axieinfinity/ronin-wallet-manager/config",
-      "github.com/axieinfinity/ronin-wallet-manager/database/redis",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
-      "github.com/axieinfinity/ronin-wallet-manager/repositories"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the cron job functionality and its dependencies in a single Go file, promoting separation of concerns and maintainability.",
+    "dependencies": [],
+    "architecture": "The folder follows a simple command-line application architecture, focusing on a single responsibility of cleaning old cron jobs.",
     "file_summaries": {
       "cmd/clean_cronjob/main.go": {
         "language": "Go",
-        "purpose": "This file implements a cron job that cleans old announcements from a database.",
+        "purpose": "Cleans old cron jobs related to announcements in a scheduled task.",
         "key_types": [
-          "context.Context",
-          "time.Time",
-          "gorm.DB",
-          "config.Config",
-          "mRd.RedisClient",
-          "repositories.AnnouncementRepo",
-          "repositories.PreferencesRepo",
-          "tracking.Service",
-          "announcement.Service"
-        ],
-        "functions": [
           "main",
-          "sentry.Init",
-          "postgresql.NewClient",
-          "mRd.NewRedisClient",
-          "repositories.NewAnnouncementRepo",
-          "repositories.NewPreferencesRepo",
-          "tracking.NewService",
-          "announcement.NewService",
-          "svc.CleanOldCronJobs"
+          "NewClient",
+          "CleanOldCronJobs"
         ],
-        "imports": [
-          "context",
-          "time",
-          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
-          "github.com/getsentry/sentry-go",
-          "github.com/rs/zerolog/log",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-manager/config",
-          "github.com/axieinfinity/ronin-wallet-manager/database/redis",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
-          "github.com/axieinfinity/ronin-wallet-manager/repositories"
-        ],
-        "side_effects": [
-          "Initializes Sentry for error tracking",
-          "Connects to PostgreSQL database",
-          "Connects to Redis database",
-          "Cleans old cron jobs from the database"
-        ],
-        "risks": [
-          "Potential failure in Sentry initialization",
-          "Database connection failures",
-          "Error handling may not cover all edge cases"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

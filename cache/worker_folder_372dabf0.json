@@ -1,9 +1,9 @@
 {
-  "content_hash": "5006ef4184ba7994fee44875edee3dda",
-  "timestamp": "2025-09-26T14:02:48.668783+07:00",
+  "content_hash": "0c22ba29f4963f0d9348544eaabd095e",
+  "timestamp": "2025-09-26T14:16:15.173408+07:00",
   "result": {
     "path": "pkg/worker",
-    "purpose": "Responsible for managing a pool of workers to process jobs concurrently.",
+    "purpose": "Responsible for managing worker goroutines and job execution in a concurrent environment.",
     "languages": {
       "Go": 4
     },
@@ -14,7 +14,7 @@
       "worker.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating worker management and job execution functionalities.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating worker-related functionalities and configurations.",
     "file_summaries": {
       "pkg/worker/config.go": {
         "language": "Go",
@@ -28,7 +28,7 @@
       },
       "pkg/worker/dispatcher.go": {
         "language": "Go",
-        "purpose": "Manages a pool of workers to process jobs concurrently.",
+        "purpose": "Implements a dispatcher for managing worker goroutines and job queues.",
         "key_types": [
           "Dispatcher",
           "NewDispatcher",

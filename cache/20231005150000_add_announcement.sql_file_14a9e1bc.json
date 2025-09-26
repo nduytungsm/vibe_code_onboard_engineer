@@ -1,0 +1,15 @@
+{
+  "content_hash": "db5310ed344dd88f8ace6391716333e2",
+  "timestamp": "2025-09-26T14:15:30.978952+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Creates tables for announcements and special offers with associated indexes.",
+    "key_types": [
+      "announcements",
+      "special_offers"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

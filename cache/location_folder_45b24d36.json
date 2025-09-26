@@ -1,9 +1,9 @@
 {
-  "content_hash": "76ac430088ba601c5714efeb5dc3c3bf",
-  "timestamp": "2025-09-26T13:17:46.719165+07:00",
+  "content_hash": "f39ad42faaae7aca35f0d017ed912d4f",
+  "timestamp": "2025-09-26T14:17:34.676041+07:00",
   "result": {
     "path": "pkg/location",
-    "purpose": "Responsible for managing location information based on IP addresses and handling related configurations.",
+    "purpose": "Responsible for IP location lookup and database management.",
     "languages": {
       "Go": 2
     },
@@ -11,87 +11,29 @@
       "config.go",
       "location_svc.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs",
-      "compress/gzip",
-      "context",
-      "encoding/json",
-      "errors",
-      "fmt",
-      "io",
-      "net",
-      "net/http",
-      "os",
-      "sync",
-      "time",
-      "github.com/oschwald/maxminddb-golang",
-      "github.com/redis/go-redis/v9",
-      "github.com/rs/zerolog/log",
-      "github.com/axieinfinity/ronin-wallet-manager/models"
-    ],
-    "architecture": "The folder follows a service-oriented architecture, encapsulating configuration and service logic for location data retrieval.",
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture, encapsulating configuration and service logic for location functionalities.",
     "file_summaries": {
       "pkg/location/config.go": {
         "language": "Go",
-        "purpose": "Defines a configuration structure for the application, including database URLs and file names.",
+        "purpose": "Defines configuration settings for the location package.",
         "key_types": [
           "Config"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "pkg/location/location_svc.go": {
         "language": "Go",
-        "purpose": "Provides a service for retrieving location information based on IP addresses and managing a database of IP location data.",
+        "purpose": "Provides a service for IP location lookup and database management.",
         "key_types": [
-          "Service",
-          "service",
-          "Config",
-          "md.IPLocation"
-        ],
-        "functions": [
+          "Service interface",
           "GetLocationByIP",
-          "DownloadNewDB",
-          "decompressGzip",
-          "setupFromStorage",
-          "setupFromLocalDB",
-          "setupLocationDB",
-          "subscribeToAutoRefresh",
-          "loadMapCountryCode",
-          "loadMapCurrencyCode",
-          "loadAndParseDefaultData",
-          "NewService"
+          "DownloadNewDB"
         ],
-        "imports": [
-          "compress/gzip",
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "io",
-          "net",
-          "net/http",
-          "os",
-          "sync",
-          "time",
-          "github.com/oschwald/maxminddb-golang",
-          "github.com/redis/go-redis/v9",
-          "github.com/rs/zerolog/log",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs"
-        ],
-        "side_effects": [
-          "Creates and modifies files on the filesystem",
-          "Makes HTTP requests to download data",
-          "Interacts with Redis for publishing messages"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data through logs",
-          "Improper handling of invalid IP addresses leading to errors"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

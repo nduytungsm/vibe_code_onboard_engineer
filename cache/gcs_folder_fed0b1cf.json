@@ -1,9 +1,9 @@
 {
-  "content_hash": "e355b1d11bd56049197e7f744e087044",
-  "timestamp": "2025-09-26T13:18:06.474499+07:00",
+  "content_hash": "f2b4a266ed8b79333c6ef7d22c46f2ee",
+  "timestamp": "2025-09-26T14:17:19.824153+07:00",
   "result": {
     "path": "pkg/gcs",
-    "purpose": "Responsible for interacting with Google Cloud Storage, including file upload, deletion, and retrieval.",
+    "purpose": "Responsible for interacting with Google Cloud Storage, including configuration and file operations.",
     "languages": {
       "Go": 2
     },
@@ -11,54 +11,29 @@
       "config.go",
       "service.go"
     ],
-    "dependencies": [
-      "cloud.google.com/go/storage",
-      "github.com/rs/zerolog/log"
-    ],
-    "architecture": "The folder follows a service-oriented architecture, encapsulating configuration and service logic for Google Cloud Storage operations.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic for Google Cloud Storage operations.",
     "file_summaries": {
       "pkg/gcs/config.go": {
         "language": "Go",
-        "purpose": "Defines a configuration structure for Google Cloud Storage.",
+        "purpose": "Defines a configuration structure for Google Cloud Storage settings.",
         "key_types": [
           "Config"
         ],
-        "functions": [],
-        "imports": [
-          "time"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "pkg/gcs/service.go": {
         "language": "Go",
-        "purpose": "Provides a service for uploading, deleting, and downloading files to and from Google Cloud Storage.",
+        "purpose": "Provides a service for uploading, deleting, and downloading files from Google Cloud Storage.",
         "key_types": [
-          "Service",
-          "service",
-          "Config"
+          "Service interface",
+          "service struct",
+          "NewService function"
         ],
-        "functions": [
-          "UploadFile",
-          "DeleteFile",
-          "DownloadFile",
-          "NewService"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "io",
-          "time",
-          "cloud.google.com/go/storage",
-          "github.com/rs/zerolog/log"
-        ],
-        "side_effects": [
-          "Interacts with Google Cloud Storage",
-          "Logs errors using zerolog"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data if file URLs are not properly secured",
-          "Error handling may lead to unhandled exceptions"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

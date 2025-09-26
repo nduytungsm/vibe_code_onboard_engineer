@@ -1,0 +1,16 @@
+{
+  "content_hash": "664a59791fb07eedd6650940b61c5b17",
+  "timestamp": "2025-09-26T14:15:35.920479+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models and types for handling blockchain contract information.",
+    "key_types": [
+      "ContractType",
+      "Metadata",
+      "Contract"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

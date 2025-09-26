@@ -1,0 +1,16 @@
+{
+  "content_hash": "5ab5362c55858ddbf5e6665435a57c30",
+  "timestamp": "2025-09-26T14:15:18.261707+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles DApp-related operations including saving, updating, and retrieving DApps.",
+    "key_types": [
+      "DAppHandler",
+      "dAppHandler",
+      "InternalSave"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

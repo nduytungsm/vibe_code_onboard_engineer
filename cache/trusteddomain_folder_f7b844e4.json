@@ -1,9 +1,9 @@
 {
-  "content_hash": "7067af4a188a776a092a49e68f23d902",
-  "timestamp": "2025-09-26T13:19:45.452747+07:00",
+  "content_hash": "983a64af216f5c93ea77a4e898d32f79",
+  "timestamp": "2025-09-26T14:17:51.196012+07:00",
   "result": {
     "path": "pkg/trusteddomain",
-    "purpose": "Responsible for managing trusted domains, including caching and database operations.",
+    "purpose": "Responsible for managing trusted domains with caching and database interactions.",
     "languages": {
       "Go": 2
     },
@@ -11,70 +11,29 @@
       "trusted_domain_svc.go",
       "utils.go"
     ],
-    "dependencies": [
-      "github.com/jellydator/ttlcache/v3",
-      "github.com/redis/go-redis/v9",
-      "github.com/rs/zerolog/log",
-      "gorm.io/gorm",
-      "github.com/axieinfinity/ronin-wallet-manager/models",
-      "github.com/axieinfinity/ronin-wallet-manager/repositories"
-    ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating domain management functionalities and utilities.",
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture, encapsulating domain management functionalities within service and utility files.",
     "file_summaries": {
       "pkg/trusteddomain/trusted_domain_svc.go": {
         "language": "Go",
-        "purpose": "Provides a service for managing trusted domains, including caching and database operations.",
+        "purpose": "Provides a service for managing trusted domains with caching and database interactions.",
         "key_types": [
-          "Service",
-          "svc",
-          "TrustedDomain",
-          "TrustedDomainRepo",
-          "ttlcache.Cache"
+          "Service interface",
+          "svc struct",
+          "GetByDomain function"
         ],
-        "functions": [
-          "GetByDomain",
-          "Save",
-          "SaveBatch",
-          "GetAll",
-          "DeleteByDomain",
-          "GetList",
-          "NewService"
-        ],
-        "imports": [
-          "context",
-          "math",
-          "time",
-          "github.com/jellydator/ttlcache/v3",
-          "github.com/redis/go-redis/v9",
-          "github.com/rs/zerolog/log",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-manager/models",
-          "github.com/axieinfinity/ronin-wallet-manager/repositories"
-        ],
-        "side_effects": [
-          "Caches data in memory",
-          "Subscribes to a Redis channel for cache invalidation"
-        ],
-        "risks": [
-          "Potential race conditions in cache access",
-          "Error handling may not cover all edge cases"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/trusteddomain/utils.go": {
         "language": "Go",
-        "purpose": "Generates wildcard domains from a given domain string.",
+        "purpose": "Generates wildcard domain variations from a given domain string.",
         "key_types": [
-          "string",
-          "[]string"
-        ],
-        "functions": [
           "generateWildcardDomains"
         ],
-        "imports": [
-          "slices",
-          "strings"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

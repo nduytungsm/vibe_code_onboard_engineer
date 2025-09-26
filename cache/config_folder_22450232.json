@@ -1,181 +1,64 @@
 {
-  "content_hash": "77c413cdceb2ada312d566d5adcd0547",
-  "timestamp": "2025-09-26T14:04:17.891944+07:00",
+  "content_hash": "b0351244369773e2a96dc49ba54cdcae",
+  "timestamp": "2025-09-26T14:17:28.571081+07:00",
   "result": {
     "path": "config",
-    "purpose": "This folder contains configuration files for various applications and services within the system, defining settings for servers, databases, logging, and other parameters.",
+    "purpose": "Configuration management for the application, defining various settings and parameters.",
     "languages": {
-      "YAML": 12
+      "Go": 3,
+      "YAML": 1
     },
     "key_modules": [
-      "config.antenna.yaml",
-      "config.cms.yaml",
-      "config.consumer.yaml",
-      "config.cron_job.yaml",
-      "config.device-manager.yml",
-      "config.discovery.yml",
-      "config.proxy.yaml",
-      "config.push-notification.yml",
-      "config.quest.center.yml",
-      "config.reward.distributor.yaml",
-      "config.task-scheduler.yaml",
-      "config.task-server.yaml",
-      "config.wallet.manager.yml"
+      "config.go",
+      "config.yml",
+      "func_print.go",
+      "func_print_test.go"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a modular architecture pattern, where each configuration file is dedicated to a specific application or service, allowing for clear separation of concerns and easier management of settings.",
+    "architecture": "The folder follows a modular architecture pattern, organizing configuration management and utility functions into separate files for clarity and maintainability.",
     "file_summaries": {
-      "config/config.antenna.yaml": {
-        "language": "YAML",
-        "purpose": "Configuration file for the Antenna application, defining server settings, logging, Redis, HTTP clients, and Kafka consumers.",
+      "config/config.go": {
+        "language": "Go",
+        "purpose": "Configuration management for the application, defining various settings and parameters.",
         "key_types": [
-          "application",
-          "server",
-          "logging"
+          "Schema",
+          "Server",
+          "Sentry"
         ],
         "functions": null,
         "imports": null,
         "complexity": "medium"
       },
-      "config/config.cms.yaml": {
+      "config/config.yml": {
         "language": "YAML",
-        "purpose": "Configuration file for the wallet CMS system, defining application settings, database connection, and logging parameters.",
-        "key_types": [
-          "application",
-          "restful",
-          "postgres"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "config/config.consumer.yaml": {
-        "language": "YAML",
-        "purpose": "Configuration file for the wallet Ronin log consumer service.",
-        "key_types": [
-          "logger",
-          "metrics",
-          "log_tracking_service"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "config/config.cron_job.yaml": {
-        "language": "YAML",
-        "purpose": "Configuration file for a cron job system managing scheduled tasks and application settings.",
-        "key_types": [
-          "cron_service",
-          "data_providers",
-          "logger"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "config/config.device-manager.yml": {
-        "language": "YAML",
-        "purpose": "Configuration file for the wallet device manager application.",
-        "key_types": [
-          "application",
-          "http_server",
-          "postgres"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "config/config.discovery.yml": {
-        "language": "YAML",
-        "purpose": "Configuration file for server, database, logging, and external services settings.",
-        "key_types": [
-          "server",
-          "postgres",
-          "redis"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "config/config.proxy.yaml": {
-        "language": "YAML",
-        "purpose": "Configuration file for the wallet-proxy application, defining server, database, caching, and logging settings.",
-        "key_types": [
-          "application",
-          "server",
-          "databases"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "config/config.push-notification.yml": {
-        "language": "YAML",
-        "purpose": "Configuration file for push notification service settings and parameters.",
-        "key_types": [
-          "application",
-          "server",
-          "notification_consumer"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "config/config.quest.center.yml": {
-        "language": "YAML",
-        "purpose": "Configuration file for the quest center service, defining various service settings and parameters.",
+        "purpose": "Configuration file for mobile wallet manager service settings.",
         "key_types": [
           "profiler",
           "server",
-          "database configurations"
+          "auth_server"
         ],
         "functions": null,
         "imports": null,
         "complexity": "medium"
       },
-      "config/config.reward.distributor.yaml": {
-        "language": "YAML",
-        "purpose": "Configuration file for the wallet quest reward distributor service.",
+      "config/func_print.go": {
+        "language": "Go",
+        "purpose": "This file contains functions for hiding sensitive data in configurations.",
         "key_types": [
-          "processor",
-          "async_queue_server",
-          "logger"
+          "isSecretField",
+          "hideSecret",
+          "hideSensitiveDataInSlice"
         ],
         "functions": null,
         "imports": null,
         "complexity": "medium"
       },
-      "config/config.task-scheduler.yaml": {
-        "language": "YAML",
-        "purpose": "Configuration file for the wallet task scheduler application.",
+      "config/func_print_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for hiding sensitive data in maps and slices.",
         "key_types": [
-          "application",
-          "scheduled_tasks",
-          "redis"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "config/config.task-server.yaml": {
-        "language": "YAML",
-        "purpose": "Configuration file for the wallet task server, defining application settings, database connections, and task parameters.",
-        "key_types": [
-          "application",
-          "databases",
-          "tasks"
-        ],
-        "functions": null,
-        "imports": null,
-        "complexity": "medium"
-      },
-      "config/config.wallet.manager.yml": {
-        "language": "YAML",
-        "purpose": "Configuration file for the wallet proxy application managing server, database, logging, authentication, and external API settings.",
-        "key_types": [
-          "application",
-          "server",
-          "postgres"
+          "TestHideSecretInMap",
+          "TestHideSecretInSlice"
         ],
         "functions": null,
         "imports": null,
