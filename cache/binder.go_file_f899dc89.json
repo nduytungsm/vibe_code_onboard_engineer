@@ -1,0 +1,34 @@
+{
+  "content_hash": "b108240f897c3cdef55d112360678fe0",
+  "timestamp": "2025-09-26T11:07:13.762065+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides helper functions for binding multipart file uploads in an Echo web framework context.",
+    "key_types": [
+      "BindFunc",
+      "multipart.FileHeader",
+      "echo.Context"
+    ],
+    "functions": [
+      "BindFunc.Bind",
+      "NewBindWithHeaders",
+      "NewBindFile",
+      "echoBindFile",
+      "getFiles"
+    ],
+    "imports": [
+      "fmt",
+      "mime/multipart",
+      "reflect",
+      "strings",
+      "github.com/labstack/echo/v4"
+    ],
+    "side_effects": [
+      "Modifies the provided struct by binding uploaded files to its fields."
+    ],
+    "risks": [
+      "Potential for reflection-based vulnerabilities if untrusted input is processed."
+    ],
+    "complexity": "medium"
+  }
+}

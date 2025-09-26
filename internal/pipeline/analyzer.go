@@ -678,6 +678,11 @@ func (a *Analyzer) analyzeFile(ctx context.Context, file FileInfo) (*internalOpe
 		return nil, err
 	}
 	
+	// Handle empty or missing chunks
+	if len(chunks) == 0 {
+		return nil, fmt.Errorf("no content chunks generated for file %s", file.RelativePath)
+	}
+	
 	// For now, analyze the first chunk (or combine chunks for small files)
 	var analysisContent string
 	if len(chunks) == 1 {

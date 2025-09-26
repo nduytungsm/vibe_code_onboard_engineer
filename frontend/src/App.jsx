@@ -264,12 +264,13 @@ function App() {
         }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 md:grid-cols-8 lg:w-fit lg:grid-cols-none" style={{ backgroundColor: "hsl(var(--slate-200))" }}>
+              <div className="overflow-x-auto">
+                <TabsList className="flex min-w-fit w-max mx-auto" style={{ backgroundColor: "hsl(var(--slate-200))" }}>
                 {tabs.map((tab) => (
                   <TabsTrigger
                     key={tab.id}
                     value={tab.id}
-                    className="flex items-center gap-2 data-[state=active]:text-white text-xs sm:text-sm px-2 sm:px-3 py-2 min-w-0 flex-shrink"
+                    className="flex items-center gap-1 sm:gap-2 data-[state=active]:text-white text-xs sm:text-sm px-2 sm:px-3 py-2 flex-shrink-0 whitespace-nowrap min-w-max"
                     style={{
                       color: activeTab === tab.id ? "white" : "hsl(var(--slate-600))",
                       backgroundColor: activeTab === tab.id ? "hsl(var(--slate-800))" : "transparent"
@@ -280,7 +281,8 @@ function App() {
                     <span className="sm:hidden truncate text-xs">{tab.name.split(' ')[0]}</span>
                   </TabsTrigger>
                 ))}
-              </TabsList>
+                </TabsList>
+              </div>
             </Tabs>
           </div>
         </nav>

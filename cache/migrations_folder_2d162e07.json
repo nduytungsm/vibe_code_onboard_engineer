@@ -1,9 +1,9 @@
 {
-  "content_hash": "0c8b696a56105eba0b7a93aa0a8689d7",
-  "timestamp": "2025-09-26T08:39:26.438035+07:00",
+  "content_hash": "5d827c1668e4bbdaef1acf45f7a535e1",
+  "timestamp": "2025-09-26T11:10:10.08934+07:00",
   "result": {
     "path": "migrations",
-    "purpose": "Responsible for managing database schema changes and data migrations for a blockchain application.",
+    "purpose": "This folder contains SQL migration scripts responsible for setting up and modifying the database schema for a blockchain-related application.",
     "languages": {
       "SQL": 6
     },
@@ -16,11 +16,11 @@
       "20240808130000_alter_preferences.sql"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a version-controlled migration pattern, where each migration file is timestamped and contains SQL scripts to modify the database schema.",
+    "architecture": "The folder follows a version-controlled migration pattern, where each SQL file represents a specific change to the database schema, allowing for incremental updates and rollbacks.",
     "file_summaries": {
       "migrations/20230407150000_init.sql": {
         "language": "SQL",
-        "purpose": "Database migration script to create and initialize tables and types for a blockchain application.",
+        "purpose": "This file contains SQL commands to set up database schema and initial data for a blockchain-related application.",
         "key_types": [
           "networks",
           "contracts",
@@ -51,7 +51,7 @@
       },
       "migrations/20231005150000_add_announcement.sql": {
         "language": "SQL",
-        "purpose": "This file contains database migration scripts to create and drop tables related to announcements, special offers, and user preferences.",
+        "purpose": "This file defines database migrations for creating and dropping tables related to announcements, special offers, and user preferences.",
         "key_types": [
           "UUID",
           "VARCHAR",
@@ -68,10 +68,6 @@
         "side_effects": [
           "Creates tables and indexes in the database",
           "Modifies the database schema"
-        ],
-        "risks": [
-          "Potential data loss when dropping tables",
-          "Foreign key constraints may lead to errors if referenced data exists"
         ],
         "complexity": "medium"
       },
@@ -102,15 +98,19 @@
       },
       "migrations/20240206110000_add_trusted_domain.sql": {
         "language": "SQL",
-        "purpose": "This file contains database migration scripts to create and drop tables related to trusted domains and quick access D apps.",
+        "purpose": "Defines database schema for trusted domains and quick access D apps.",
         "key_types": [
-          "trusted_domains",
-          "quick_access_d_apps"
+          "TABLE",
+          "VARCHAR",
+          "BOOLEAN",
+          "INTEGER",
+          "TIMESTAMP",
+          "JSONB"
         ],
         "functions": [
           "CREATE TABLE",
-          "DROP TABLE",
-          "CREATE INDEX"
+          "CREATE INDEX",
+          "DROP TABLE"
         ],
         "imports": [],
         "side_effects": [
@@ -121,13 +121,12 @@
       },
       "migrations/20240410140000_add_dapp_highlight.sql": {
         "language": "SQL",
-        "purpose": "This file contains database migration scripts to modify the schema of a PostgreSQL database, including creating extensions, altering tables, and creating indexes.",
+        "purpose": "This file contains database migration scripts to modify the schema of a PostgreSQL database.",
         "key_types": [
-          "VARCHAR",
-          "TEXT",
-          "INTEGER",
-          "TIMESTAMP",
-          "JSONB"
+          "TABLE",
+          "INDEX",
+          "COLLATION",
+          "EXTENSION"
         ],
         "functions": [
           "CREATE EXTENSION",
@@ -139,17 +138,16 @@
         "imports": [],
         "side_effects": [
           "Modifies the database schema",
-          "Creates new database objects"
+          "Creates new tables and indexes"
         ],
         "risks": [
-          "Potential data loss if not properly backed up before migration",
-          "Schema changes may affect existing application functionality"
+          "Potential data loss if not properly backed up before migration"
         ],
         "complexity": "medium"
       },
       "migrations/20240808130000_alter_preferences.sql": {
         "language": "SQL",
-        "purpose": "This file contains a migration script to create and drop an index on the preferences table.",
+        "purpose": "This file contains migration scripts to create and drop an index on the preferences table.",
         "key_types": [
           "index"
         ],

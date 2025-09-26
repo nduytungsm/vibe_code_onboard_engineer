@@ -1,0 +1,61 @@
+{
+  "content_hash": "3dcd753017f6699267c81058d09eb269",
+  "timestamp": "2025-09-26T11:11:45.112489+07:00",
+  "result": {
+    "repo_summary_line": "A mobile wallet management application that facilitates various cryptocurrency wallet operations and supports decentralized applications.",
+    "architecture": "microservices",
+    "repo_layout": "monorepo",
+    "main_stacks": [
+      "Go"
+    ],
+    "monorepo_services": [
+      {
+        "name": "app",
+        "path": "cmd/app",
+        "language": "Go",
+        "short_purpose": "Sets up and runs the main application, including an HTTP server and a metrics server."
+      },
+      {
+        "name": "clean_cronjob",
+        "path": "cmd/clean_cronjob",
+        "language": "Go",
+        "short_purpose": "Implements a cron job that cleans old announcements from a database."
+      },
+      {
+        "name": "clean_highlight_dapps",
+        "path": "cmd/clean_highlight_dapps",
+        "language": "Go",
+        "short_purpose": "Cleans expired highlights from a database."
+      },
+      {
+        "name": "clean_old_special_offers",
+        "path": "cmd/clean_old_special_offers",
+        "language": "Go",
+        "short_purpose": "Cleans old special offers from a database based on a configured time period."
+      },
+      {
+        "name": "ip_location",
+        "path": "cmd/ip_location",
+        "language": "Go",
+        "short_purpose": "Initializes a Sentry client for error tracking and downloads a new IP location database using Redis."
+      },
+      {
+        "name": "trigger_announcement",
+        "path": "cmd/trigger_announcement",
+        "language": "Go",
+        "short_purpose": "Triggers announcements in the application."
+      }
+    ],
+    "evidence_paths": [
+      "README.md",
+      "docker-compose.yml",
+      "cmd/app/main.go",
+      "cmd/clean_cronjob/main.go",
+      "cmd/clean_highlight_dapps/main.go",
+      "cmd/clean_old_special_offers/main.go",
+      "cmd/ip_location/main.go",
+      "cmd/trigger_announcement/main.go"
+    ],
+    "confidence": 0.9
+  }
+}

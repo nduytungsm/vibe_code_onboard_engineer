@@ -1,9 +1,9 @@
 {
-  "content_hash": "36a50e36dd06b7b43659d20ea45e9e1b",
-  "timestamp": "2025-09-26T08:39:52.386395+07:00",
+  "content_hash": "725557930efbec74f5be20bc5fbb466b",
+  "timestamp": "2025-09-26T11:11:07.392903+07:00",
   "result": {
     "path": "repositories",
-    "purpose": "This folder contains repository interfaces and their implementations for managing various entities in a database, including announcements, code versions, contracts, DApps, highlights, networks, user preferences, and trusted domains.",
+    "purpose": "This folder contains repository definitions for managing various entities in a database, including announcements, code versions, contracts, DApps, highlights, networks, user preferences, quick access DApps, and trusted domains, utilizing CRUD operations and GORM for database interactions.",
     "languages": {
       "Go": 12
     },
@@ -27,11 +27,11 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
       "github.com/axieinfinity/ecosystem-go-common/errors"
     ],
-    "architecture": "The folder follows a repository pattern, encapsulating data access logic for different entities and providing a clean interface for CRUD operations.",
+    "architecture": "The folder follows a repository pattern, encapsulating data access logic for different entities and providing a clean interface for CRUD operations while managing database interactions through GORM.",
     "file_summaries": {
       "repositories/announcement.go": {
         "language": "Go",
-        "purpose": "This file defines a repository interface and its implementation for managing announcements in a database.",
+        "purpose": "This file defines a repository for managing announcements, including CRUD operations and special offer logs.",
         "key_types": [
           "AnnouncementRepo",
           "announcementRepo",
@@ -62,7 +62,10 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
         ],
         "side_effects": [
-          "Database transactions for creating, updating, and deleting announcements and special offers."
+          "Database transactions are performed for CRUD operations."
+        ],
+        "risks": [
+          "Potential SQL injection if user inputs are not properly sanitized."
         ],
         "complexity": "medium"
       },
@@ -97,11 +100,10 @@
       },
       "repositories/common.go": {
         "language": "Go",
-        "purpose": "This file defines a repository interface and its implementation for managing common entities in a database.",
+        "purpose": "This file defines a repository interface and its implementation for managing common entities in a database using GORM.",
         "key_types": [
           "CommonRepo",
-          "commonRepo",
-          "gorm.DB"
+          "commonRepo"
         ],
         "functions": [
           "GetAllCommons",
@@ -116,10 +118,11 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Database transactions are performed which may modify the state of the database."
+          "Database transactions are initiated and may modify the database state."
         ],
         "risks": [
-          "Potential SQL injection if inputs are not properly sanitized."
+          "Potential SQL injection if inputs are not properly sanitized.",
+          "Data loss if 'overwriteOnConflict' is misused."
         ],
         "complexity": "medium"
       },
@@ -154,11 +157,11 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Database transactions are initiated and executed."
+          "Database transactions are initiated and may modify the database state."
         ],
         "risks": [
           "Potential SQL injection if filter conditions are not properly sanitized.",
-          "Panic calls in unimplemented methods could lead to application crashes."
+          "Panic calls in unimplemented methods may lead to application crashes."
         ],
         "complexity": "medium"
       },
@@ -193,17 +196,17 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Database operations such as create, delete, and update are performed."
+          "Database transactions are initiated and modified."
         ],
         "risks": [
           "Potential SQL injection if filter conditions are not properly sanitized.",
-          "Panic calls in unimplemented methods could lead to application crashes."
+          "Panic calls in unimplemented methods may lead to application crashes."
         ],
         "complexity": "medium"
       },
       "repositories/highlight.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing highlights in a database using GORM.",
+        "purpose": "This file defines a repository for managing highlights in a database, including CRUD operations and handling of expired highlights.",
         "key_types": [
           "HighlightRepo",
           "highlightRepo",
@@ -236,13 +239,13 @@
         ],
         "risks": [
           "Potential SQL injection if user input is not properly sanitized.",
-          "Data integrity issues if concurrent updates are not handled correctly."
+          "Concurrency issues if multiple transactions are not handled correctly."
         ],
         "complexity": "medium"
       },
       "repositories/init.go": {
         "language": "Go",
-        "purpose": "Provides a pagination function for database queries using GORM.",
+        "purpose": "Provides pagination functionality for database queries using GORM.",
         "key_types": [
           "int",
           "gorm.DB"
@@ -254,13 +257,13 @@
           "gorm.io/gorm"
         ],
         "side_effects": [
-          "Modifies the database query with offset and limit based on pagination parameters."
+          "Modifies database query parameters based on pagination logic."
         ],
-        "complexity": "low"
+        "complexity": "medium"
       },
       "repositories/network.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing network entities, including CRUD operations and querying capabilities.",
+        "purpose": "This file defines a repository interface and its implementation for managing network entities in a database using GORM.",
         "key_types": [
           "NetworkRepo",
           "networkRepo",
@@ -291,11 +294,10 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Database transactions are initiated and may modify the database state."
+          "Database operations such as create, read, update, and delete on network entities."
         ],
         "risks": [
-          "Potential SQL injection if filter conditions are not properly sanitized.",
-          "Panic in SaveNetwork, UpdateNetworks, and SaveNetworks if not implemented."
+          "Potential SQL injection if filter conditions are not properly sanitized."
         ],
         "complexity": "medium"
       },
@@ -333,7 +335,8 @@
           "Database operations that modify user preferences."
         ],
         "risks": [
-          "Potential SQL injection if user input is not properly sanitized."
+          "Potential SQL injection if user input is not properly sanitized.",
+          "Error handling may expose sensitive information."
         ],
         "complexity": "medium"
       },
@@ -343,7 +346,8 @@
         "key_types": [
           "QuickAccessDAppRepo",
           "quickAccessDAppRepo",
-          "QuickAccessDApp"
+          "md.QuickAccessDApp",
+          "md.Paging"
         ],
         "functions": [
           "GetList",
@@ -365,7 +369,7 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Database transactions are performed which may modify the state of the database."
+          "Database transactions are performed which may affect the state of the database."
         ],
         "risks": [
           "Potential SQL injection if user input is not properly sanitized in search queries."

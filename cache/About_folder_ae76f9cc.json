@@ -1,9 +1,9 @@
 {
-  "content_hash": "9c76d657394c57fddeca718c4b00057d",
-  "timestamp": "2025-09-24T17:37:55.290451+07:00",
+  "content_hash": "0925d377a61c016807534ba1ccf4b486",
+  "timestamp": "2025-09-26T11:25:52.380072+07:00",
   "result": {
     "path": "src/components/About",
-    "purpose": "This folder contains React components that display information about the author, including skills, tools, and personal introduction.",
+    "purpose": "This folder contains React components that collectively display information about the author, including personal introduction, skills, tools, and GitHub contributions.",
     "languages": {
       "JavaScript": 5
     },
@@ -20,7 +20,7 @@
       "react-icons",
       "react-github-calendar"
     ],
-    "architecture": "The folder follows a component-based architecture typical in React applications, where each file represents a distinct UI component.",
+    "architecture": "The folder follows a component-based architecture typical of React applications, where each file represents a distinct UI component responsible for a specific part of the About section.",
     "file_summaries": {
       "src/components/About/About.js": {
         "language": "JavaScript",
@@ -51,7 +51,7 @@
       },
       "src/components/About/AboutCard.js": {
         "language": "JavaScript",
-        "purpose": "This file defines a React component that displays a personal introduction and activities of an individual.",
+        "purpose": "This file defines a React component that displays a personal introduction card.",
         "key_types": [
           "React.Component"
         ],
@@ -67,9 +67,9 @@
       },
       "src/components/About/Github.js": {
         "language": "JavaScript",
-        "purpose": "Displays a GitHub contribution calendar for a specific user.",
+        "purpose": "This file defines a React component that displays a GitHub contribution calendar.",
         "key_types": [
-          "React Component",
+          "React.Component",
           "Row"
         ],
         "functions": [
@@ -116,7 +116,9 @@
         "language": "JavaScript",
         "purpose": "This file defines a React component that displays a toolstack using icons.",
         "key_types": [
-          "Toolstack"
+          "Toolstack",
+          "Row",
+          "Col"
         ],
         "functions": [
           "Toolstack"

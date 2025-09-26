@@ -1,0 +1,41 @@
+{
+  "content_hash": "fd8ec650dceb93c2549010014a2dd615",
+  "timestamp": "2025-09-26T10:02:20.311022+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for validation functions using the Go validator package, ensuring that various data structures are validated correctly.",
+    "key_types": [
+      "testInterface",
+      "substructNoValidation",
+      "mapNoValidationSub",
+      "structNoValidationValues",
+      "structNoValidationPointer",
+      "Object",
+      "structModifyValidation",
+      "structCustomValidation"
+    ],
+    "functions": [
+      "createNoValidationValues",
+      "TestValidateNoValidationValues",
+      "TestValidateNoValidationPointers",
+      "TestValidatePrimitives",
+      "toZero",
+      "TestValidateAndModifyStruct",
+      "notOne",
+      "TestValidatorEngine"
+    ],
+    "imports": [
+      "bytes",
+      "testing",
+      "time",
+      "github.com/go-playground/validator/v10",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies struct fields during validation in TestValidateAndModifyStruct",
+      "Registers custom validation functions in TestValidatorEngine"
+    ],
+    "complexity": "medium"
+  }
+}

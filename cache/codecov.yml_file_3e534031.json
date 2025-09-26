@@ -1,0 +1,12 @@
+{
+  "content_hash": "01c8ee740df1bc9de950be7f91b8c821",
+  "timestamp": "2025-09-26T10:02:32.822643+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for Codecov to manage code coverage requirements.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "content_hash": "6a383afd87ec5031dc18d84998a0c40b",
+  "timestamp": "2025-09-26T11:24:45.966267+07:00",
+  "result": {
+    "language": "HTML",
+    "purpose": "Defines the structure and metadata for a React.js portfolio website.",
+    "key_types": [
+      "HTML",
+      "meta",
+      "link"
+    ],
+    "functions": [],
+    "imports": [
+      "%PUBLIC_URL%/favicon.png",
+      "%PUBLIC_URL%/manifest.json"
+    ],
+    "side_effects": [
+      "Requires JavaScript to be enabled for the app to function."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if URLs are not properly secured."
+    ],
+    "complexity": "low"
+  }
+}

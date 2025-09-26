@@ -1,6 +1,6 @@
 {
-  "content_hash": "379c439f833b1d7615b181199a6ee6f7",
-  "timestamp": "2025-09-26T08:36:34.135463+07:00",
+  "content_hash": "b4a84ea8344d9774d881d4e6049e496a",
+  "timestamp": "2025-09-26T11:09:07.389443+07:00",
   "result": {
     "path": "routes",
     "purpose": "Responsible for setting up and managing routes for an Echo web server, including public, private, and internal API endpoints for a wallet manager application.",
@@ -37,7 +37,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing routes into separate files for public, private, and internal APIs, facilitating maintainability and scalability.",
+    "architecture": "The folder follows a modular architecture pattern, organizing routes into separate files for public, private, and internal APIs, each handling specific functionalities and utilizing Echo's middleware for routing and request handling.",
     "file_summaries": {
       "routes/init.go": {
         "language": "Go",
@@ -47,13 +47,18 @@
           "config.Schema",
           "postgresql.Client",
           "redis.Client",
-          "handlers.Handler"
+          "handlers.ReleaseCandidateHandler",
+          "handlers.NetworkHandler",
+          "handlers.CommonHandler"
         ],
         "functions": [
           "SetupRoutes",
           "NewClient",
           "NewService",
-          "NewHandler"
+          "NewHandler",
+          "registerPublic",
+          "registerPrivate",
+          "registerInternal"
         ],
         "imports": [
           "github.com/labstack/echo/v4",
@@ -80,10 +85,13 @@
           "github.com/axieinfinity/ronin-wallet-manager/repositories"
         ],
         "side_effects": [
-          "Logs fatal errors if database client creation or metrics setup fails."
+          "Establishes database connections",
+          "Initializes various services and repositories",
+          "Registers routes with the Echo server"
         ],
         "risks": [
-          "Potential exposure of sensitive configuration data if not handled properly."
+          "Potential for database connection errors",
+          "Improper handling of configuration values may lead to runtime errors"
         ],
         "complexity": "medium"
       },
@@ -115,17 +123,13 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking"
         ],
         "side_effects": [
-          "Modifies the state of the application by registering routes and middleware."
-        ],
-        "risks": [
-          "Potential exposure of sensitive data through improperly secured routes.",
-          "Risk of denial of service through excessive route registrations."
+          "Modifies the state of the wallet manager by registering various routes and their handlers."
         ],
         "complexity": "medium"
       },
       "routes/private.go": {
         "language": "Go",
-        "purpose": "Defines private routes for wallet management, including preferences and device operations.",
+        "purpose": "Defines private routes for wallet management, including preferences and device management.",
         "key_types": [
           "echo.Echo",
           "handlers.AnnouncementHandler",
@@ -142,7 +146,10 @@
           "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Modifies the routing configuration of the Echo web framework."
+          "Modifies the routing behavior of the Echo web framework."
+        ],
+        "risks": [
+          "Potential exposure of sensitive data through improperly secured routes."
         ],
         "complexity": "medium"
       },
@@ -182,7 +189,8 @@
           "Modifies the state of the application by registering routes and handlers."
         ],
         "risks": [
-          "Potential exposure of sensitive information through API endpoints if not properly secured."
+          "Potential exposure of sensitive information through API endpoints.",
+          "Improper handling of user input could lead to security vulnerabilities."
         ],
         "complexity": "medium"
       }

@@ -1,0 +1,12 @@
+{
+  "content_hash": "fa1ded1ed7c11438a9b0385b1e112850",
+  "timestamp": "2025-09-26T11:24:48.140267+07:00",
+  "result": {
+    "language": "plaintext",
+    "purpose": "specifies rules for web crawlers and bots regarding which parts of the site should not be accessed",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "content_hash": "11568edc5d2ff024cc0ee948cf4b6f1d",
+  "timestamp": "2025-09-26T10:02:29.920013+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides an implementation for JSON encoding and decoding using the json-iterator library.",
+    "key_types": [
+      "jsoniterApi",
+      "Encoder",
+      "Decoder"
+    ],
+    "functions": [
+      "init",
+      "Marshal",
+      "Unmarshal",
+      "MarshalIndent",
+      "NewEncoder",
+      "NewDecoder"
+    ],
+    "imports": [
+      "io",
+      "github.com/json-iterator/go"
+    ],
+    "complexity": "medium"
+  }
+}

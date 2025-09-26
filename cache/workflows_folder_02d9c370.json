@@ -1,9 +1,9 @@
 {
-  "content_hash": "9239d96705a24ccc8211d16badbcd006",
-  "timestamp": "2025-09-26T08:36:10.609813+07:00",
+  "content_hash": "2cc964890bacfeb161f1e71f2aba5ca7",
+  "timestamp": "2025-09-26T11:10:50.159309+07:00",
   "result": {
     "path": ".github/workflows",
-    "purpose": "This folder is responsible for defining GitHub Actions workflows for various automation tasks related to the project.",
+    "purpose": "This folder is responsible for defining GitHub Actions workflows for various automation tasks related to CI/CD processes.",
     "languages": {
       "YAML": 4
     },
@@ -16,11 +16,11 @@
     "dependencies": [
       "axieinfinity/workflows-samples"
     ],
-    "architecture": "The folder follows a modular architecture pattern where each YAML file defines a specific workflow for automation tasks, allowing for separation of concerns and reusability.",
+    "architecture": "The folder follows a modular architecture pattern, where each YAML file defines a specific workflow for automation tasks, allowing for easy maintenance and scalability.",
     "file_summaries": {
       ".github/workflows/check.yml": {
         "language": "YAML",
-        "purpose": "Defines a GitHub Actions workflow for security checks on pull requests to the develop branch.",
+        "purpose": "Defines a GitHub Actions workflow for security scanning on pull requests to the develop branch.",
         "key_types": [],
         "functions": [],
         "imports": [
@@ -47,10 +47,11 @@
           "axieinfinity/workflows-samples/.github/workflows/docker-build-submodule.yml"
         ],
         "side_effects": [
-          "Triggers Docker build process on specified events"
+          "Triggers on push and pull request events",
+          "Uses secrets for secure operations"
         ],
         "risks": [
-          "Exposure of sensitive information in secrets"
+          "Exposure of sensitive information if secrets are not managed properly"
         ],
         "complexity": "medium"
       },
@@ -65,23 +66,9 @@
       ".github/workflows/sentry.yml": {
         "language": "YAML",
         "purpose": "Defines a GitHub Actions workflow for Sentry release management.",
-        "key_types": [
-          "job",
-          "workflow"
-        ],
-        "functions": [
-          "on",
-          "jobs"
-        ],
-        "imports": [
-          "axieinfinity/workflows-samples/.github/workflows/sentry-release.yml"
-        ],
-        "side_effects": [
-          "Triggers on release published events"
-        ],
-        "risks": [
-          "Exposure of secrets if not properly managed"
-        ],
+        "key_types": [],
+        "functions": [],
+        "imports": [],
         "complexity": "low"
       }
     }

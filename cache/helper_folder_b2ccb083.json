@@ -1,6 +1,6 @@
 {
-  "content_hash": "5e0c8fc119f32e1bd06b073f26a955ac",
-  "timestamp": "2025-09-26T08:35:59.379733+07:00",
+  "content_hash": "e2da24c29799f59fafe110983571c7fb",
+  "timestamp": "2025-09-26T11:09:36.162404+07:00",
   "result": {
     "path": "pkg/helper",
     "purpose": "Provides various helper functions for encryption, file handling, token generation, and utility operations.",
@@ -37,7 +37,7 @@
       "crypto/tls",
       "crypto/x509"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for better maintainability and reusability.",
+    "architecture": "The folder follows a modular architecture pattern, with each file providing specific utility functions related to encryption, file handling, and data manipulation.",
     "file_summaries": {
       "pkg/helper/aes.go": {
         "language": "Go",
@@ -45,8 +45,7 @@
         "key_types": [
           "string",
           "[]byte",
-          "interface{}",
-          "error"
+          "interface{}"
         ],
         "functions": [
           "hashKey",
@@ -62,21 +61,20 @@
           "io"
         ],
         "side_effects": [
-          "Generates random initialization vector (IV)",
-          "Encodes data to base64"
+          "Generates random initialization vector (IV) for encryption."
         ],
         "risks": [
-          "Potential exposure of sensitive data if key is weak",
-          "Improper handling of errors may lead to security vulnerabilities"
+          "Potential exposure of sensitive data if the key is weak or compromised."
         ],
         "complexity": "medium"
       },
       "pkg/helper/binder.go": {
         "language": "Go",
-        "purpose": "Provides functionality to bind multipart file uploads to struct fields in an Echo web framework context.",
+        "purpose": "Provides helper functions for binding multipart file uploads in an Echo web framework context.",
         "key_types": [
           "BindFunc",
-          "multipart.FileHeader"
+          "multipart.FileHeader",
+          "echo.Context"
         ],
         "functions": [
           "BindFunc.Bind",
@@ -93,11 +91,10 @@
           "github.com/labstack/echo/v4"
         ],
         "side_effects": [
-          "Modifies struct fields based on multipart file uploads."
+          "Modifies the provided struct by binding uploaded files to its fields."
         ],
         "risks": [
-          "Potential for reflection misuse leading to runtime errors.",
-          "Improper handling of file uploads may lead to security vulnerabilities."
+          "Potential for reflection-based vulnerabilities if untrusted input is processed."
         ],
         "complexity": "medium"
       },
@@ -117,7 +114,7 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
         ],
         "risks": [
-          "Potential exposure of secret key if not handled properly"
+          "Potential exposure of secret if not handled properly"
         ],
         "complexity": "medium"
       },
@@ -138,7 +135,6 @@
         "purpose": "Generates a random string of specified length using alphanumeric characters.",
         "key_types": [
           "rune",
-          "int",
           "big.Int"
         ],
         "functions": [
@@ -147,9 +143,6 @@
         "imports": [
           "crypto/rand",
           "math/big"
-        ],
-        "risks": [
-          "Potential for cryptographic weaknesses if not used properly."
         ],
         "complexity": "medium"
       },
@@ -173,7 +166,7 @@
           "github.com/ethereum/go-ethereum/crypto"
         ],
         "risks": [
-          "Potential for signature forgery if input is not properly validated."
+          "Potential for signature forgery if not properly validated"
         ],
         "complexity": "medium"
       },
@@ -196,7 +189,7 @@
       },
       "pkg/helper/tls.go": {
         "language": "Go",
-        "purpose": "This file provides a function to convert given certificate, key, and CA certificate into a TLS configuration.",
+        "purpose": "This file provides a function to convert given certificate and key data into a TLS configuration.",
         "key_types": [
           "tls.Config",
           "tls.Certificate",

@@ -1,6 +1,6 @@
 {
-  "content_hash": "f0b82bf4c3c87dd613274d9efc8b9f00",
-  "timestamp": "2025-09-26T08:39:05.846717+07:00",
+  "content_hash": "62c17121564ed02707497cb0100b3712",
+  "timestamp": "2025-09-26T11:08:56.715254+07:00",
   "result": {
     "path": "pkg/worker",
     "purpose": "Responsible for managing a pool of worker goroutines to process jobs concurrently.",
@@ -17,7 +17,7 @@
       "sync",
       "github.com/rs/zerolog/log"
     ],
-    "architecture": "The folder follows a concurrent processing architecture using goroutines to handle job execution in a worker pool.",
+    "architecture": "The folder follows a concurrent processing architecture using goroutines, with a dispatcher managing worker pools and job execution.",
     "file_summaries": {
       "pkg/worker/config.go": {
         "language": "Go",
@@ -50,11 +50,10 @@
         ],
         "side_effects": [
           "Starts goroutines for workers",
-          "Blocks on worker job channel until a worker is available"
+          "Blocks on worker availability"
         ],
         "risks": [
-          "Potential deadlock if jobQueue is not managed properly",
-          "Resource exhaustion if too many jobs are added without available workers"
+          "Potential deadlock if jobQueue is not managed properly"
         ],
         "complexity": "medium"
       },
@@ -86,10 +85,10 @@
         ],
         "side_effects": [
           "Starts a goroutine for job processing",
-          "Modifies WaitGroup state"
+          "Modifies the wait group on stop"
         ],
         "risks": [
-          "Potential for goroutine leaks if not properly stopped"
+          "Potential deadlock if not managed properly with wait groups"
         ],
         "complexity": "medium"
       }

@@ -1,0 +1,67 @@
+{
+  "content_hash": "bf6423fa135e941a04d9223ce11b77b0",
+  "timestamp": "2025-09-26T10:02:39.223241+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the Context structure and methods for managing request context in a web framework.",
+    "key_types": [
+      "Context",
+      "Params",
+      "HandlersChain",
+      "ResponseWriter",
+      "Error"
+    ],
+    "functions": [
+      "reset",
+      "Copy",
+      "HandlerName",
+      "HandlerNames",
+      "Handler",
+      "FullPath",
+      "Next",
+      "IsAborted",
+      "Abort",
+      "AbortWithStatus",
+      "AbortWithStatusPureJSON",
+      "AbortWithStatusJSON",
+      "AbortWithError",
+      "Error",
+      "Set",
+      "Get",
+      "MustGet",
+      "GetString",
+      "GetBool",
+      "GetInt"
+    ],
+    "imports": [
+      "errors",
+      "fmt",
+      "io",
+      "io/fs",
+      "log",
+      "maps",
+      "math",
+      "mime/multipart",
+      "net",
+      "net/http",
+      "net/url",
+      "os",
+      "path/filepath",
+      "strings",
+      "sync",
+      "time",
+      "github.com/gin-contrib/sse",
+      "github.com/gin-gonic/gin/binding",
+      "github.com/gin-gonic/gin/render"
+    ],
+    "side_effects": [
+      "Modifies the context state during request handling",
+      "Logs errors if any occur"
+    ],
+    "risks": [
+      "Potential for panic if nil errors are passed to Error method",
+      "Concurrency issues if context is accessed from multiple goroutines without proper synchronization"
+    ],
+    "complexity": "medium"
+  }
+}

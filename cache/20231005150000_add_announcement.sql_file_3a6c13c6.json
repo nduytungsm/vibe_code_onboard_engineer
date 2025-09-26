@@ -1,0 +1,26 @@
+{
+  "content_hash": "db5310ed344dd88f8ace6391716333e2",
+  "timestamp": "2025-09-26T11:05:55.704198+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file defines database migrations for creating and dropping tables related to announcements, special offers, and user preferences.",
+    "key_types": [
+      "UUID",
+      "VARCHAR",
+      "TEXT",
+      "JSONB",
+      "TIMESTAMP"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "CREATE INDEX",
+      "DROP TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates tables and indexes in the database",
+      "Modifies the database schema"
+    ],
+    "complexity": "medium"
+  }
+}

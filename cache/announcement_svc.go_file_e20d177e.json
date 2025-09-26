@@ -1,0 +1,69 @@
+{
+  "content_hash": "89b3e05946c5ecbbde43a4d6e6f6c4dc",
+  "timestamp": "2025-09-26T11:06:49.059135+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a service for managing announcements, including scheduling, retrieving, and deleting announcements.",
+    "key_types": [
+      "Service",
+      "service",
+      "Config",
+      "Announcement"
+    ],
+    "functions": [
+      "GetByID",
+      "GetListAsAdmin",
+      "GetListAsUser",
+      "ScheduleNewAnnouncement",
+      "ScheduleNewSpecialOffer",
+      "processImage",
+      "processTargetAddresses"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "encoding/csv",
+      "errors",
+      "flag",
+      "fmt",
+      "image",
+      "mime/multipart",
+      "path/filepath",
+      "slices",
+      "strings",
+      "sync",
+      "time",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/getsentry/sentry-go",
+      "github.com/h2non/filetype",
+      "github.com/labstack/echo/v4",
+      "github.com/redis/go-redis/v9",
+      "github.com/rs/zerolog/log",
+      "gorm.io/gorm",
+      "k8s.io/api/batch/v1",
+      "k8s.io/api/core/v1",
+      "k8s.io/apimachinery/pkg/api/resource",
+      "k8s.io/apimachinery/pkg/apis/meta/v1",
+      "k8s.io/client-go/kubernetes",
+      "k8s.io/client-go/rest",
+      "k8s.io/client-go/tools/clientcmd",
+      "k8s.io/client-go/util/homedir",
+      "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/worker",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
+    ],
+    "side_effects": [
+      "Uploads images to GCS",
+      "Deletes images from GCS on error"
+    ],
+    "risks": [
+      "Potential for file size exceed errors",
+      "Potential for unsupported media type errors"
+    ],
+    "complexity": "medium"
+  }
+}

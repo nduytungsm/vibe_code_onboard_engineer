@@ -1,0 +1,27 @@
+{
+  "content_hash": "a0fe101b5e8353315fc3264cf3f5c311",
+  "timestamp": "2025-09-26T11:04:46.915255+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a handler for signing requests using the Binance service.",
+    "key_types": [
+      "BinanceHandler",
+      "binanceHandler",
+      "binance.Service",
+      "md.BinanceSignRequest",
+      "md.BinanceSignResponse"
+    ],
+    "functions": [
+      "Sign",
+      "NewBinanceHandler"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/binance"
+    ],
+    "complexity": "medium"
+  }
+}

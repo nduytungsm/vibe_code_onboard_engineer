@@ -1,9 +1,9 @@
 {
-  "content_hash": "6f75164e765da08d96ea130772f6aeee",
-  "timestamp": "2025-09-26T08:40:02.483591+07:00",
+  "content_hash": "9f9e8e71819f18b2a4f3fff69f565960",
+  "timestamp": "2025-09-26T11:10:35.513681+07:00",
   "result": {
     "path": "pkg/crypto/hmac",
-    "purpose": "Responsible for HMAC (Hash-based Message Authentication Code) functionalities including signing, validation, and configuration.",
+    "purpose": "Responsible for HMAC (Hash-based Message Authentication Code) functionality including signing, validation, and configuration.",
     "languages": {
       "Go": 6
     },
@@ -22,15 +22,15 @@
       "encoding/base64",
       "errors",
       "fmt",
-      "math",
-      "net/http",
       "sort",
       "strings",
-      "sync",
       "testing",
-      "time"
+      "time",
+      "sync",
+      "net/http",
+      "math"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating HMAC-related functionalities and tests in separate files for maintainability and clarity.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating HMAC-related functionalities into distinct files for configuration, signing, validation, and testing, promoting separation of concerns.",
     "file_summaries": {
       "pkg/crypto/hmac/config.go": {
         "language": "Go",
@@ -73,13 +73,13 @@
           "strings"
         ],
         "risks": [
-          "Potential for cryptographic vulnerabilities if used improperly."
+          "Potential for misuse of cryptographic functions if not used correctly."
         ],
         "complexity": "medium"
       },
       "pkg/crypto/hmac/funcs_test.go": {
         "language": "Go",
-        "purpose": "Unit tests for HMAC signing functionality",
+        "purpose": "Unit tests for the HMAC signing functionality.",
         "key_types": [
           "struct",
           "map",
@@ -117,10 +117,10 @@
           "time"
         ],
         "side_effects": [
-          "Prints error messages to console"
+          "Prints error messages to console if parsing time fails."
         ],
         "risks": [
-          "Potential for time-based attacks if clock skew is not properly managed"
+          "Potential for time manipulation attacks if clock skew is not properly validated."
         ],
         "complexity": "medium"
       },
@@ -162,7 +162,11 @@
           "sync"
         ],
         "side_effects": [
-          "Initializes a global instance of HMAC if not already initialized."
+          "Initializes a global instance of HMAC",
+          "Sets global configuration"
+        ],
+        "risks": [
+          "Potential race conditions if InitInstance is called concurrently without proper synchronization"
         ],
         "complexity": "medium"
       }

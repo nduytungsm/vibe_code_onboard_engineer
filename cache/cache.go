@@ -136,16 +136,38 @@ func (c *Cache) GetProjectSummary(projectPath string, folderSummaries map[string
 		return nil, false
 	}
 
-	hash := c.hashFolderSummaries(folderSummaries)
-	cacheFile := c.getFileCachePath(projectPath, "project")
+	// Use URL-based cache path if projectPath looks like a URL, otherwise use traditional path-based
+	var cacheFile string
+	var hash string
+	
+	if strings.HasPrefix(projectPath, "http") {
+		// URL-based caching - use only URL as cache key for stability
+		hash = c.hashContent(projectPath + "_stable") // Add stable suffix for cache versioning
+		safeFilename := c.getSafeFilenameFromURL(projectPath)
+		urlHash := c.hashContent(projectPath)
+		filename := fmt.Sprintf("%s_project_%s.json", safeFilename, urlHash[:8])
+		cacheFile = filepath.Join(c.config.Cache.Directory, filename)
+	} else {
+		// Traditional path-based caching - use content hash
+		hash = c.hashFolderSummaries(folderSummaries)
+		cacheFile = c.getFileCachePath(projectPath, "project")
+	}
 	
 	entry, err := c.loadCacheEntry(cacheFile)
 	if err != nil {
 		return nil, false
 	}
 
-	if entry.ContentHash != hash || c.isExpired(entry.Timestamp) {
-		return nil, false
+	// For URL-based caching, only check expiration (ignore content hash variations)
+	// For path-based caching, check both hash and expiration
+	if strings.HasPrefix(projectPath, "http") {
+		if c.isExpired(entry.Timestamp) {
+			return nil, false
+		}
+	} else {
+		if entry.ContentHash != hash || c.isExpired(entry.Timestamp) {
+			return nil, false
+		}
 	}
 
 	resultBytes, err := json.Marshal(entry.Result)
@@ -167,8 +189,22 @@ func (c *Cache) SetProjectSummary(projectPath string, folderSummaries map[string
 		return nil
 	}
 
-	hash := c.hashFolderSummaries(folderSummaries)
-	cacheFile := c.getFileCachePath(projectPath, "project")
+	// Use URL-based cache path if projectPath looks like a URL, otherwise use traditional path-based
+	var cacheFile string
+	var hash string
+	
+	if strings.HasPrefix(projectPath, "http") {
+		// URL-based caching - use only URL as cache key for stability
+		hash = c.hashContent(projectPath + "_stable") // Add stable suffix for cache versioning
+		safeFilename := c.getSafeFilenameFromURL(projectPath)
+		urlHash := c.hashContent(projectPath)
+		filename := fmt.Sprintf("%s_project_%s.json", safeFilename, urlHash[:8])
+		cacheFile = filepath.Join(c.config.Cache.Directory, filename)
+	} else {
+		// Traditional path-based caching - use content hash
+		hash = c.hashFolderSummaries(folderSummaries)
+		cacheFile = c.getFileCachePath(projectPath, "project")
+	}
 	
 	entry := CacheEntry{
 		ContentHash: hash,

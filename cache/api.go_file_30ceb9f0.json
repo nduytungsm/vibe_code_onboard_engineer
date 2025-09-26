@@ -1,0 +1,35 @@
+{
+  "content_hash": "e0479bdee3e4db0a80f899f11291d641",
+  "timestamp": "2025-09-26T10:02:26.88434+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines interfaces and types for JSON encoding and decoding.",
+    "key_types": [
+      "Core",
+      "Encoder",
+      "Decoder"
+    ],
+    "functions": [
+      "Marshal",
+      "Unmarshal",
+      "MarshalIndent",
+      "NewEncoder",
+      "NewDecoder",
+      "SetEscapeHTML",
+      "Encode",
+      "UseNumber",
+      "DisallowUnknownFields",
+      "Decode"
+    ],
+    "imports": [
+      "io"
+    ],
+    "side_effects": [
+      "None"
+    ],
+    "risks": [
+      "Potential security issues with JSON encoding in HTML contexts if not properly escaped."
+    ],
+    "complexity": "medium"
+  }
+}

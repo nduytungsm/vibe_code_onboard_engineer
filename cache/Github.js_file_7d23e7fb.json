@@ -1,0 +1,21 @@
+{
+  "content_hash": "d008b4043e57880f466903bee9459cce",
+  "timestamp": "2025-09-26T11:24:56.794775+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file defines a React component that displays a GitHub contribution calendar.",
+    "key_types": [
+      "React.Component",
+      "Row"
+    ],
+    "functions": [
+      "Github"
+    ],
+    "imports": [
+      "React",
+      "react-github-calendar",
+      "react-bootstrap"
+    ],
+    "complexity": "low"
+  }
+}

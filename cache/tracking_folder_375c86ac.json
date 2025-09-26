@@ -1,6 +1,6 @@
 {
-  "content_hash": "8904ceeacf51031232907c179298320d",
-  "timestamp": "2025-09-26T08:36:24.088759+07:00",
+  "content_hash": "eaa72e5d0701a36b6c7c75b28084a6c3",
+  "timestamp": "2025-09-26T11:10:29.117229+07:00",
   "result": {
     "path": "pkg/tracking",
     "purpose": "Responsible for tracking events and requests, providing services to manage and process tracking data.",
@@ -15,7 +15,7 @@
     "dependencies": [
       "github.com/axieinfinity/ronin-wallet-manager/httpclient"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration, data models, and service logic related to tracking functionality.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration, data models, and service logic related to tracking functionalities.",
     "file_summaries": {
       "pkg/tracking/config.go": {
         "language": "Go",
@@ -48,8 +48,8 @@
         "key_types": [
           "Service",
           "service",
-          "TrackingRequest",
-          "Config"
+          "Config",
+          "TrackingRequest"
         ],
         "functions": [
           "Track",
@@ -62,11 +62,11 @@
         ],
         "side_effects": [
           "Modifies event data if certain conditions are met",
-          "Makes HTTP requests to track events"
+          "Makes network calls to track events"
         ],
         "risks": [
-          "Potential exposure of API key if not handled securely",
-          "Dependency on external HTTP client may introduce vulnerabilities"
+          "Potential for data leakage if event data is not properly sanitized",
+          "Network call failures may not be handled"
         ],
         "complexity": "medium"
       }
