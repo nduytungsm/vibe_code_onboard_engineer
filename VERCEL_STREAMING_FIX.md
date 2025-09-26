@@ -66,9 +66,17 @@ const checkHeartbeat = () => {
 
 ### 3. Vercel Configuration (`frontend/vercel.json`)
 
-#### Proxy Headers
+#### Enhanced Proxy Configuration
 ```json
 {
+  "version": 2,
+  "regions": ["sin1"],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "http://13.239.135.39:8080/api/:path*"
+    }
+  ],
   "headers": [
     {
       "source": "/api/analyze/stream",
@@ -84,12 +92,29 @@ const checkHeartbeat = () => {
         {
           "key": "Content-Type",
           "value": "text/event-stream"
+        },
+        {
+          "key": "X-Accel-Buffering",
+          "value": "no"
+        },
+        {
+          "key": "Pragma",
+          "value": "no-cache"
+        },
+        {
+          "key": "Expires",
+          "value": "0"
         }
       ]
     }
   ]
 }
 ```
+
+**Key Configuration Elements:**
+- **`regions: ["sin1"]`**: Deploy to Singapore region for lower latency to your AWS backend
+- **`X-Accel-Buffering: no`**: Explicitly disable proxy buffering for SSE
+- **Comprehensive cache headers**: Prevent any form of caching/buffering
 
 ## How This Fixes the Issue
 
