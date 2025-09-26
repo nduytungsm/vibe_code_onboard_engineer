@@ -1,0 +1,88 @@
+{
+  "content_hash": "9834bf9227012ae01ee8b488d8d0ac4e",
+  "timestamp": "2025-09-26T15:07:48.838537+07:00",
+  "result": {
+    "path": "internal/domains/manager/handlers/dtos/responses",
+    "purpose": "This folder/module is responsible for defining data transfer objects (DTOs) for various response structures used in the application, including version, authentication, notifications, and pagination.",
+    "languages": {
+      "Go": 6
+    },
+    "key_modules": [
+      "app_version.go",
+      "auth.go",
+      "coinbase.go",
+      "generics.go",
+      "noti.go",
+      "operator.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing response DTOs into separate files for clarity and maintainability, allowing for easy extension and modification.",
+    "file_summaries": {
+      "internal/domains/manager/handlers/dtos/responses/app_version.go": {
+        "language": "Go",
+        "purpose": "Defines the Version response structure for app version information.",
+        "key_types": [
+          "Version"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/responses/auth.go": {
+        "language": "Go",
+        "purpose": "Defines the Auth response structure for authentication-related data.",
+        "key_types": [
+          "Auth"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/responses/coinbase.go": {
+        "language": "go",
+        "purpose": "Defines response data structures for Coinbase session and asset selection.",
+        "key_types": [
+          "CbSessionToken",
+          "CbSelectAssets"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/responses/generics.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects for server responses and pagination handling.",
+        "key_types": [
+          "Paging",
+          "Paginated[T]",
+          "ServerResponseDTO[T]"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/manager/handlers/dtos/responses/noti.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects for notification responses in the application.",
+        "key_types": [
+          "UpsertNoti",
+          "NotiButton",
+          "NotiListingItem"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/manager/handlers/dtos/responses/operator.go": {
+        "language": "Go",
+        "purpose": "Defines the Operator response data structure for API responses.",
+        "key_types": [
+          "Operator"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

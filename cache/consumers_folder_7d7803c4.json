@@ -1,0 +1,44 @@
+{
+  "content_hash": "a00f0a14a7f2190416b08cf7441c1e87",
+  "timestamp": "2025-09-26T15:06:35.747068+07:00",
+  "result": {
+    "path": "internal/domains/quest/consumers",
+    "purpose": "Responsible for handling consumer check-in events and tracking metrics in a wallet quest application.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "metrics.go",
+      "ronincheckin.go"
+    ],
+    "dependencies": [
+      "Kafka"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, focusing on handling specific functionalities related to consumer events and metrics tracking.",
+    "file_summaries": {
+      "internal/domains/quest/consumers/metrics.go": {
+        "language": "Go",
+        "purpose": "Defines and initializes metrics for tracking consumer check-ins in a wallet quest application.",
+        "key_types": [
+          "metricCollectors",
+          "initMetrics"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/quest/consumers/ronincheckin.go": {
+        "language": "Go",
+        "purpose": "Handles check-in events for Ronin contracts using Kafka consumer messages.",
+        "key_types": [
+          "RoninCheckInHandler",
+          "contractsTrackingMap",
+          "createContractsTrackingMap"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

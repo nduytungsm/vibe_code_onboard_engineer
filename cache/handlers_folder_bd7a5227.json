@@ -1,0 +1,70 @@
+{
+  "content_hash": "28050ee978625b8a5efbeda7254f46bb",
+  "timestamp": "2025-09-26T15:00:11.398124+07:00",
+  "result": {
+    "path": "internal/domains/manager/handlers",
+    "purpose": "Responsible for handling various HTTP requests and services related to application version management, Coinbase API interactions, notifications, and operator management within the manager domain.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "app_version.go",
+      "coinbase.go",
+      "noti.go",
+      "operators.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, where each file corresponds to a specific handler for different functionalities within the manager domain, promoting separation of concerns.",
+    "file_summaries": {
+      "internal/domains/manager/handlers/app_version.go": {
+        "language": "Go",
+        "purpose": "Handles application version management and mandatory updates for the service.",
+        "key_types": [
+          "AppInternalVersionHandler",
+          "AppVersionHandler",
+          "NewInternalAppVersionHandler"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/manager/handlers/coinbase.go": {
+        "language": "Go",
+        "purpose": "Handles Coinbase-related API requests for onramping and asset selection.",
+        "key_types": [
+          "CoinbaseHandler",
+          "NewCoinbaseHandler",
+          "createOnrampToken",
+          "selectAssets"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/manager/handlers/noti.go": {
+        "language": "Go",
+        "purpose": "Handles notification-related HTTP routes and services for a manager domain.",
+        "key_types": [
+          "InternalNotiHandler",
+          "NotiHandler",
+          "NewInternalNotiHandler"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/manager/handlers/operators.go": {
+        "language": "Go",
+        "purpose": "Handles operator-related HTTP requests and responses for the manager domain.",
+        "key_types": [
+          "InternalOperatorHandler",
+          "OperatorHandler",
+          "Setup"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

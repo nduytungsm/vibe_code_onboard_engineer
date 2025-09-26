@@ -1,0 +1,43 @@
+{
+  "content_hash": "5197bddb81683412cad0d0e2fde129ec",
+  "timestamp": "2025-09-26T15:03:14.896113+07:00",
+  "result": {
+    "path": "internal/infras/moralis_solana",
+    "purpose": "This folder/module is responsible for providing client implementations and data models for interacting with Solana blockchain services via the Moralis API.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "client.go",
+      "models.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating client logic and data models in separate files for better maintainability and separation of concerns.",
+    "file_summaries": {
+      "internal/infras/moralis_solana/client.go": {
+        "language": "Go",
+        "purpose": "Client implementation for interacting with Solana blockchain services.",
+        "key_types": [
+          "Client",
+          "Config",
+          "client"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/infras/moralis_solana/models.go": {
+        "language": "Go",
+        "purpose": "Defines data models for interacting with the Moralis Solana API.",
+        "key_types": [
+          "ErrorMessage",
+          "GetAllTokenBalance",
+          "GetFungibleBalance"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

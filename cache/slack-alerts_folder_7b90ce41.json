@@ -1,0 +1,30 @@
+{
+  "content_hash": "0bac0564000815b5077a1c1dcad3db09",
+  "timestamp": "2025-09-26T15:02:26.299437+07:00",
+  "result": {
+    "path": "internal/services/slack-alerts",
+    "purpose": "Handles sending alerts to Slack based on quest events.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "quest.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture, focusing on alerting functionalities related to quest events.",
+    "file_summaries": {
+      "internal/services/slack-alerts/quest.go": {
+        "language": "Go",
+        "purpose": "Handles sending alerts to Slack based on quest events.",
+        "key_types": [
+          "SlackAlertConfig",
+          "QuestAlertService",
+          "questAlertService"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

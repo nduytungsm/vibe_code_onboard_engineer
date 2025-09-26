@@ -1,0 +1,69 @@
+{
+  "content_hash": "47a207413daf245e1e5dcae16ee5f30d",
+  "timestamp": "2025-09-26T15:07:07.928935+07:00",
+  "result": {
+    "path": "internal/domains/dex/services/provider",
+    "purpose": "Responsible for providing services related to decentralized exchange operations, including token handling, routing, and cross-chain swaps.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "katana.go",
+      "kyberswap.go",
+      "provider.go",
+      "relay.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, where each file represents a specific service or functionality related to decentralized exchange operations.",
+    "file_summaries": {
+      "internal/domains/dex/services/provider/katana.go": {
+        "language": "Go",
+        "purpose": "Defines the Katana service for handling token operations in a decentralized exchange context.",
+        "key_types": [
+          "Katana",
+          "NewKatana",
+          "KatanaExtraConfig"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/dex/services/provider/kyberswap.go": {
+        "language": "Go",
+        "purpose": "Implements the KyberSwap provider for decentralized exchange operations.",
+        "key_types": [
+          "KyberSwap",
+          "NewKyberSwap",
+          "GetRoutes"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/dex/services/provider/provider.go": {
+        "language": "Go",
+        "purpose": "Provides services for decentralized exchange (DEX) routing and fee calculations.",
+        "key_types": [
+          "Config",
+          "ExtraFee",
+          "DexRouter"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/dex/services/provider/relay.go": {
+        "language": "Go",
+        "purpose": "Implements a relay service for cross-chain swaps in a decentralized exchange.",
+        "key_types": [
+          "RelaySwap",
+          "NewRelaySwap",
+          "CrossChainSupported"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

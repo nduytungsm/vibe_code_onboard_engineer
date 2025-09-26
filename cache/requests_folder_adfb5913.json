@@ -1,0 +1,30 @@
+{
+  "content_hash": "0c51b1b9c3e8a90f3c0fea20f633cd45",
+  "timestamp": "2025-09-26T15:01:30.584385+07:00",
+  "result": {
+    "path": "internal/domains/devicemanager/handlers/dtos/requests",
+    "purpose": "Defines data transfer objects for device management requests.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "device.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on data transfer objects (DTOs) that facilitate communication between different layers of the application.",
+    "file_summaries": {
+      "internal/domains/devicemanager/handlers/dtos/requests/device.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects for device management requests.",
+        "key_types": [
+          "DeviceRegistration",
+          "DeviceReset",
+          "UpdatePushToken"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "content_hash": "4a0a1d05ab187f71317b5b581adc3078",
+  "timestamp": "2025-09-26T14:56:24.042241+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "This script checks for required environment variables and executes a binary with a specified configuration.",
+    "key_types": [
+      "environment variable check",
+      "binary execution"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

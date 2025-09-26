@@ -1,0 +1,67 @@
+{
+  "content_hash": "a66d084eaacb94ea9413efd927357e91",
+  "timestamp": "2025-09-26T15:07:54.557928+07:00",
+  "result": {
+    "path": "internal/domains/proxy/handlers/dtos/responses",
+    "purpose": "Defines data transfer objects (DTOs) for various types of responses in a proxy service.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "ai.go",
+      "config.go",
+      "responses.go",
+      "rpc.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing DTOs for different response types to promote separation of concerns and maintainability.",
+    "file_summaries": {
+      "internal/domains/proxy/handlers/dtos/responses/ai.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects for AI chat completion responses.",
+        "key_types": [
+          "ChatCompletionResponse",
+          "Choice",
+          "Message"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/dtos/responses/config.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for chain configuration responses in a proxy service.",
+        "key_types": [
+          "SimulationChainConfig",
+          "ChainConfig",
+          "TokenCfg"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/dtos/responses/responses.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects for server responses and pagination handling.",
+        "key_types": [
+          "Paging",
+          "Paginated[T]",
+          "ServerResponseDTO[T]"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/dtos/responses/rpc.go": {
+        "language": "Go",
+        "purpose": "Defines the RpcResponse structure for handling RPC responses.",
+        "key_types": [
+          "RpcResponse"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

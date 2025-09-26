@@ -1,0 +1,16 @@
+{
+  "content_hash": "b758ed6a17daeebaa56e4472ffcd7386",
+  "timestamp": "2025-09-26T14:58:05.331624+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an HTTP server with middleware support and health check functionality.",
+    "key_types": [
+      "ServerConfig",
+      "Server",
+      "NewServer"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

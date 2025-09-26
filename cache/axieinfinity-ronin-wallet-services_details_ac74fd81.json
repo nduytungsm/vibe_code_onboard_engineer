@@ -1,0 +1,91 @@
+{
+  "content_hash": "b6784563b9b3d5c02311491c5e72a4c3",
+  "timestamp": "2025-09-26T15:08:28.954309+07:00",
+  "result": {
+    "repo_summary_line": "A microservices ecosystem for the Ronin Wallet, providing services for quest management, reward distribution, and device handling.",
+    "architecture": "microservices",
+    "repo_layout": "monorepo",
+    "main_stacks": [
+      "Go"
+    ],
+    "monorepo_services": [
+      {
+        "name": "Antenna",
+        "path": "cmd/antenna",
+        "language": "Go",
+        "short_purpose": "Responsible for the Antenna service in the application, including configuration, routing, and dependency injection."
+      },
+      {
+        "name": "CMS",
+        "path": "cmd/cms",
+        "language": "Go",
+        "short_purpose": "Responsible for the configuration, initialization, and dependency injection of the CMS application."
+      },
+      {
+        "name": "Consumer",
+        "path": "cmd/consumer",
+        "language": "Go",
+        "short_purpose": "Responsible for initializing and managing the consumer service in a wallet application."
+      },
+      {
+        "name": "Cron Job",
+        "path": "cmd/cron_job",
+        "language": "Go",
+        "short_purpose": "Responsible for managing and executing scheduled tasks within the application."
+      },
+      {
+        "name": "Device Manager",
+        "path": "cmd/device_manager",
+        "language": "Go",
+        "short_purpose": "Responsible for managing devices within the application."
+      },
+      {
+        "name": "Discovery",
+        "path": "cmd/discovery",
+        "language": "Go",
+        "short_purpose": "Responsible for the configuration, initialization, and dependency injection of the discovery service."
+      },
+      {
+        "name": "Proxy",
+        "path": "cmd/proxy",
+        "language": "Go",
+        "short_purpose": "Responsible for managing the proxy service in the Ronin wallet application."
+      },
+      {
+        "name": "Push Notification",
+        "path": "cmd/push_notification",
+        "language": "Go",
+        "short_purpose": "Responsible for managing push notification services within the application."
+      },
+      {
+        "name": "Quest Center",
+        "path": "cmd/quest_center",
+        "language": "Go",
+        "short_purpose": "Responsible for the quest center service in the Ronin wallet application."
+      },
+      {
+        "name": "Task Scheduler",
+        "path": "cmd/task_scheduler",
+        "language": "Go",
+        "short_purpose": "Responsible for managing and executing scheduled tasks within an application."
+      },
+      {
+        "name": "Task Server",
+        "path": "cmd/task_server",
+        "language": "Go",
+        "short_purpose": "Responsible for managing the task server application."
+      },
+      {
+        "name": "Wallet Manager",
+        "path": "cmd/wallet_manager",
+        "language": "Go",
+        "short_purpose": "Responsible for managing wallet operations and providing API endpoints."
+      }
+    ],
+    "evidence_paths": [
+      "README.md",
+      "docker-compose.yml"
+    ],
+    "confidence": 1
+  }
+}

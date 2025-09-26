@@ -1,0 +1,147 @@
+{
+  "content_hash": "1b0b8c2a9f2ace75eb7c67889c932e86",
+  "timestamp": "2025-09-26T15:01:07.399263+07:00",
+  "result": {
+    "path": "internal/repositories/discovery",
+    "purpose": "Responsible for managing various repositories related to discovery services, including announcements, collections, contacts, events, feature banners, home banners, layouts, products, and service items.",
+    "languages": {
+      "Go": 10
+    },
+    "key_modules": [
+      "announcement.go",
+      "collection.go",
+      "contact.go",
+      "event.go",
+      "feature_banner.go",
+      "generic.go",
+      "home_banner.go",
+      "layout.go",
+      "product.go",
+      "service_item.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a repository pattern, encapsulating data access logic for different entities related to the discovery module.",
+    "file_summaries": {
+      "internal/repositories/discovery/announcement.go": {
+        "language": "Go",
+        "purpose": "Defines the Announcement repository for managing announcements in the discovery module.",
+        "key_types": [
+          "Announcement interface",
+          "announcement struct",
+          "NewAnnouncementRepo function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/collection.go": {
+        "language": "Go",
+        "purpose": "Defines a repository for managing collection data in a discovery service.",
+        "key_types": [
+          "Collection interface",
+          "collection struct",
+          "NewCollection function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/contact.go": {
+        "language": "Go",
+        "purpose": "Defines a repository for managing contact-related data in a discovery service.",
+        "key_types": [
+          "Contact interface",
+          "contact struct",
+          "NewContactRepo function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/event.go": {
+        "language": "Go",
+        "purpose": "Defines an interface and implementation for managing event-related database operations.",
+        "key_types": [
+          "Event interface",
+          "event struct",
+          "NewEventRepo function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/feature_banner.go": {
+        "language": "Go",
+        "purpose": "Defines the FeatureBanner repository interface and its implementation for managing feature banners and headlines in a database.",
+        "key_types": [
+          "FeatureBanner interface",
+          "featureBanner struct",
+          "NewFeatureBanner function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/generic.go": {
+        "language": "Go",
+        "purpose": "Defines a generic repository interface and its implementation for managing discovery-related entities.",
+        "key_types": [
+          "Generic",
+          "generic",
+          "NewGenericRepo"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/home_banner.go": {
+        "language": "Go",
+        "purpose": "Defines the HomeBanner repository interface and its implementation for managing home banners in a database.",
+        "key_types": [
+          "HomeBanner interface",
+          "homeBanner struct",
+          "NewHomeBanner function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/layout.go": {
+        "language": "Go",
+        "purpose": "Defines a repository for managing layout entities and their associated widgets in a database.",
+        "key_types": [
+          "Layout interface",
+          "layout struct",
+          "NewLayoutRepo function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/product.go": {
+        "language": "Go",
+        "purpose": "Defines a product repository interface and its implementation for managing product data in a database.",
+        "key_types": [
+          "Product interface",
+          "product struct",
+          "NewProductRepo function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/service_item.go": {
+        "language": "Go",
+        "purpose": "Defines a repository for managing service items in a discovery context using GORM.",
+        "key_types": [
+          "ServiceItem interface",
+          "serviceItem struct",
+          "NewServiceItem function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

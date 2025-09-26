@@ -1,0 +1,43 @@
+{
+  "content_hash": "d547ec5936269a9998198608c3210358",
+  "timestamp": "2025-09-26T15:02:01.682644+07:00",
+  "result": {
+    "path": "internal/infras/alchemy",
+    "purpose": "This folder/module is responsible for implementing a client for the Alchemy API and defining data structures for managing blockchain-related data.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "client.go",
+      "models.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating API client functionality and data models related to blockchain operations.",
+    "file_summaries": {
+      "internal/infras/alchemy/client.go": {
+        "language": "Go",
+        "purpose": "This file implements a client for interacting with the Alchemy API to retrieve token balances and NFT collections.",
+        "key_types": [
+          "Config",
+          "Client",
+          "clientHTTP"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/infras/alchemy/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures and types for managing token prices, balances, and metadata in a blockchain context.",
+        "key_types": [
+          "TokenPrice",
+          "TokenBalance",
+          "TokenMetadata"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

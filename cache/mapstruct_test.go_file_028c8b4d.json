@@ -1,0 +1,14 @@
+{
+  "content_hash": "30cbbb87884c882165e4494d53473ed4",
+  "timestamp": "2025-09-26T14:58:01.423595+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Unit tests for decoding and validating a struct using mapstructure.",
+    "key_types": [
+      "TestDecodeStructAndValidate"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

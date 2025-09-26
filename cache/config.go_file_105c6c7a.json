@@ -1,0 +1,16 @@
+{
+  "content_hash": "da0f9b467fd05f22fef22f77179e7e9f",
+  "timestamp": "2025-09-26T14:56:15.881911+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Configuration setup for the quest center service in the Ronin wallet application.",
+    "key_types": [
+      "configSchema",
+      "apiInfo",
+      "LoggerConfig"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

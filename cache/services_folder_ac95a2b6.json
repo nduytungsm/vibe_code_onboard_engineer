@@ -1,0 +1,30 @@
+{
+  "content_hash": "41e9f48ccaf6ef12d5750309bfc0e726",
+  "timestamp": "2025-09-26T15:06:38.407509+07:00",
+  "result": {
+    "path": "internal/domains/bridge/services",
+    "purpose": "Defines the BridgeService interface and its implementation for handling bridge-related operations.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "bridge.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the bridge-related business logic within a dedicated service interface and its implementation.",
+    "file_summaries": {
+      "internal/domains/bridge/services/bridge.go": {
+        "language": "Go",
+        "purpose": "Defines the BridgeService interface and its implementation for handling bridge-related operations.",
+        "key_types": [
+          "BridgeService",
+          "bridgeService",
+          "NewBridgeService"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

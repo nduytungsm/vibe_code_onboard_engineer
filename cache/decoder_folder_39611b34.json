@@ -1,0 +1,63 @@
+{
+  "content_hash": "0ec0210e3b4ef682736a7a6a147582a9",
+  "timestamp": "2025-09-26T15:00:42.174336+07:00",
+  "result": {
+    "path": "internal/domains/proxy/services/testdata/decoder",
+    "purpose": "This folder/module is responsible for defining and decoding representations of smart contract function calls and their associated signatures in a blockchain context.",
+    "languages": {
+      "JSON": 4
+    },
+    "key_modules": [
+      "decode_call_01_decoded.json",
+      "decode_call_01_signature.json",
+      "decode_call_02_decoded.json",
+      "decode_call_02_signature.json"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing files by functionality related to decoding smart contract interactions and their signatures.",
+    "file_summaries": {
+      "internal/domains/proxy/services/testdata/decoder/decode_call_01_decoded.json": {
+        "language": "JSON",
+        "purpose": "Defines a decoded representation of a smart contract function call for a token transfer.",
+        "key_types": [
+          "function",
+          "params",
+          "signature"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/proxy/services/testdata/decoder/decode_call_01_signature.json": {
+        "language": "JSON",
+        "purpose": "Defines the ABI and signatures for the Ethereum 'transfer' function.",
+        "key_types": [
+          "transfer"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/proxy/services/testdata/decoder/decode_call_02_decoded.json": {
+        "language": "JSON",
+        "purpose": "Contains decoded data for a proposal vote function in a blockchain context.",
+        "key_types": [
+          "castProposalVoteForCurrentNetwork"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/testdata/decoder/decode_call_02_signature.json": {
+        "language": "JSON",
+        "purpose": "Defines the ABI and signature for the function to cast a proposal vote in a blockchain context.",
+        "key_types": [
+          "castProposalVoteForCurrentNetwork"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

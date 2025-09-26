@@ -1,0 +1,41 @@
+{
+  "content_hash": "05d2511f779645ed85d2ee0f74a1c4fc",
+  "timestamp": "2025-09-26T15:04:47.927235+07:00",
+  "result": {
+    "path": "pkg/crypto/encrypt",
+    "purpose": "This folder/module is responsible for providing functions for AES encryption and decryption using CBC mode.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "encrypt.go",
+      "encrypt_test.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating encryption functionality and its corresponding tests.",
+    "file_summaries": {
+      "pkg/crypto/encrypt/encrypt.go": {
+        "language": "Go",
+        "purpose": "This file provides functions for AES encryption and decryption using CBC mode.",
+        "key_types": [
+          "Encrypt",
+          "Decrypt",
+          "PKCS5Padding"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/crypto/encrypt/encrypt_test.go": {
+        "language": "Go",
+        "purpose": "This file contains unit tests for the encryption and decryption functionality.",
+        "key_types": [
+          "Test"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

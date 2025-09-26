@@ -11,4 +11,30 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    // Optimize bundle size for production
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split large vendor packages
+          'react-vendor': ['react', 'react-dom'],
+          'mermaid-vendor': ['mermaid'],
+          'ui-vendor': ['lucide-react']
+        }
+      }
+    },
+    // Increase chunk size warning limit for large apps
+    chunkSizeWarningLimit: 1000,
+    // Source maps for debugging (optional in production)
+    sourcemap: false,
+  },
+  server: {
+    // Development proxy to backend
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      }
+    }
+  }
 })

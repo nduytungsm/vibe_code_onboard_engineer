@@ -1,0 +1,103 @@
+{
+  "content_hash": "5a654424f425d3ac04fb993598844f14",
+  "timestamp": "2025-09-26T15:01:17.736504+07:00",
+  "result": {
+    "path": "internal/domains/web3/categorize",
+    "purpose": "Responsible for categorizing various types of transactions in a web3 context, including approvals, deposits, swaps, and NFT transactions.",
+    "languages": {
+      "Go": 7
+    },
+    "key_modules": [
+      "approval.go",
+      "categorize.go",
+      "deposit.go",
+      "helper.go",
+      "mkp.go",
+      "swap.go",
+      "transfer.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, where each file handles specific transaction categorization logic, promoting separation of concerns and maintainability.",
+    "file_summaries": {
+      "internal/domains/web3/categorize/approval.go": {
+        "language": "Go",
+        "purpose": "Categorizes transaction approvals in a web3 context.",
+        "key_types": [
+          "Approval",
+          "Categorize"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/categorize/categorize.go": {
+        "language": "Go",
+        "purpose": "Categorizes transactions based on user input and transaction details.",
+        "key_types": [
+          "Input",
+          "TransactionCategorize",
+          "Categorize"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/categorize/deposit.go": {
+        "language": "Go",
+        "purpose": "Categorizes deposit transactions based on input signatures and transfer details.",
+        "key_types": [
+          "Deposit.Categorize"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/categorize/helper.go": {
+        "language": "Go",
+        "purpose": "This file provides helper functions for categorizing and managing balances of tokens and NFTs in a web3 context.",
+        "key_types": [
+          "balance",
+          "countTokens",
+          "computeBalance"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/categorize/mkp.go": {
+        "language": "Go",
+        "purpose": "Categorizes NFT transactions based on user balance and transfers.",
+        "key_types": [
+          "Marketplace",
+          "Categorize"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/categorize/swap.go": {
+        "language": "Go",
+        "purpose": "Categorizes swap transactions based on user input and balance.",
+        "key_types": [
+          "Swap",
+          "Categorize"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/categorize/transfer.go": {
+        "language": "Go",
+        "purpose": "Categorizes cryptocurrency transfer transactions based on user actions and balances.",
+        "key_types": [
+          "Transfer",
+          "SelfTransfer",
+          "Categorize"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

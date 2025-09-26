@@ -1,0 +1,56 @@
+{
+  "content_hash": "72a9432d39791f99f9f89848ec416c42",
+  "timestamp": "2025-09-26T15:01:53.455782+07:00",
+  "result": {
+    "path": "mocks/repositories",
+    "purpose": "This folder contains mock implementations of various repository interfaces for testing purposes.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "activity_guidance_repository.go",
+      "check_in_log_repository.go",
+      "crawled_data_repository.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a mock-based architecture pattern, providing test doubles for repository interfaces to facilitate unit testing.",
+    "file_summaries": {
+      "mocks/repositories/activity_guidance_repository.go": {
+        "language": "Go",
+        "purpose": "This file provides a mock implementation of the ActivityGuidanceRepository for testing purposes.",
+        "key_types": [
+          "ActivityGuidanceRepository",
+          "Create",
+          "ActivityGuidanceRepository_Expecter"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "mocks/repositories/check_in_log_repository.go": {
+        "language": "Go",
+        "purpose": "This file provides a mock implementation of the CheckInLogRepository interface for testing purposes.",
+        "key_types": [
+          "CheckInLogRepository",
+          "CheckInLogRepository_Expecter",
+          "CheckIn"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "mocks/repositories/crawled_data_repository.go": {
+        "language": "Go",
+        "purpose": "This file provides a mock implementation of the CrawledDataRepository for testing purposes.",
+        "key_types": [
+          "CrawledDataRepository",
+          "BulkInsertCheckIn",
+          "CrawledDataRepository_Expecter"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

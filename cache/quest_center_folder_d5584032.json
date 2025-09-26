@@ -1,0 +1,158 @@
+{
+  "content_hash": "aa06afd29252a1c87aead4e26d034a51",
+  "timestamp": "2025-09-26T15:06:56.125925+07:00",
+  "result": {
+    "path": "internal/enums/quest_center",
+    "purpose": "Defines enumerations and types related to quests, events, rewards, and user interactions for a gaming application.",
+    "languages": {
+      "Go": 11
+    },
+    "key_modules": [
+      "action_v2.go",
+      "event.go",
+      "log_param.go",
+      "op_action_v2.go",
+      "quest_pool.go",
+      "quest_status_v2.go",
+      "reward.go",
+      "user.go",
+      "user_quest_v2.go",
+      "user_reward_v2.go",
+      "user_tier.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing related enumerations and types into separate files for clarity and maintainability.",
+    "file_summaries": {
+      "internal/enums/quest_center/action_v2.go": {
+        "language": "Go",
+        "purpose": "Defines quest-related actions as an enumeration for a gaming application.",
+        "key_types": [
+          "QuestAction",
+          "IsValid",
+          "QuestActionFromStr"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/enums/quest_center/event.go": {
+        "language": "Go",
+        "purpose": "Defines an enumeration for event statuses in the quest center.",
+        "key_types": [
+          "EventStatus"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/enums/quest_center/log_param.go": {
+        "language": "Go",
+        "purpose": "Defines and manages log parameter types for quest-related functionality.",
+        "key_types": [
+          "LogParamType",
+          "LogParamTypeFromStr",
+          "IsValid"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/enums/quest_center/op_action_v2.go": {
+        "language": "Go",
+        "purpose": "Defines operation actions for quest management in an enum-like structure.",
+        "key_types": [
+          "OpAction",
+          "ActionFromString",
+          "Scan"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/enums/quest_center/quest_pool.go": {
+        "language": "Go",
+        "purpose": "Defines quest pool tiers and provides utility functions for handling them.",
+        "key_types": [
+          "QuestPoolTier",
+          "QuestPoolTierFromString",
+          "IsValid"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/enums/quest_center/quest_status_v2.go": {
+        "language": "Go",
+        "purpose": "Defines quest status enums and a state machine for managing quest states.",
+        "key_types": [
+          "QuestStatusV2",
+          "QuestStateMachine",
+          "QuestStatusV2FromString"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/enums/quest_center/reward.go": {
+        "language": "Go",
+        "purpose": "Defines enums for reward distribution and resource types with associated methods.",
+        "key_types": [
+          "RewardDistribution",
+          "ResourceType",
+          "RewardDistributionFromStr"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/enums/quest_center/user.go": {
+        "language": "Go",
+        "purpose": "Defines user types for a quest center and provides utility functions for handling them.",
+        "key_types": [
+          "UserType",
+          "UserTypeFromString",
+          "IsValid"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/enums/quest_center/user_quest_v2.go": {
+        "language": "Go",
+        "purpose": "Defines user quest statuses and filters for a quest management system.",
+        "key_types": [
+          "UserQuestStatus",
+          "UserQuestFilter",
+          "UserQuestStatusFromStr"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/enums/quest_center/user_reward_v2.go": {
+        "language": "Go",
+        "purpose": "Defines user reward statuses and provides functionality for handling them.",
+        "key_types": [
+          "UserRewardStatus",
+          "UserRewardStatusFromStr",
+          "MarshalJSON"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/enums/quest_center/user_tier.go": {
+        "language": "Go",
+        "purpose": "Defines user tiers for a quest system and provides methods for handling them.",
+        "key_types": [
+          "UserTier",
+          "UserTierFromString",
+          "IsValid"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "content_hash": "99cc85695a2870f55fc84ebf0b8e0606",
+  "timestamp": "2025-09-26T15:07:18.473006+07:00",
+  "result": {
+    "path": "internal/infras/openai",
+    "purpose": "This folder/module is responsible for implementing a client to interact with the OpenAI API and defining data structures for API requests and responses.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "client.go",
+      "models.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the client implementation and data models related to the OpenAI API.",
+    "file_summaries": {
+      "internal/infras/openai/client.go": {
+        "language": "Go",
+        "purpose": "This file implements a client for interacting with the OpenAI API for chat completions.",
+        "key_types": [
+          "Client interface",
+          "Config struct",
+          "openAISvc struct"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/infras/openai/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures for handling OpenAI API requests and responses.",
+        "key_types": [
+          "RequestBody",
+          "ChatCompletionResponse",
+          "Tool"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

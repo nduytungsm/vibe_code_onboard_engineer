@@ -1,0 +1,112 @@
+{
+  "content_hash": "faa298138975d65ace2a909dff8f7ab3",
+  "timestamp": "2025-09-26T15:05:08.940429+07:00",
+  "result": {
+    "path": "pkg/http",
+    "purpose": "Responsible for handling HTTP client configurations, server setup, routing, middleware, and performance metrics for a web application.",
+    "languages": {
+      "Go": 7
+    },
+    "key_modules": [
+      "client.go",
+      "client_params.go",
+      "handler.go",
+      "metrics.go",
+      "middlewares.go",
+      "server.go",
+      "tracer.go"
+    ],
+    "dependencies": [
+      "Resty",
+      "Echo",
+      "Prometheus"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing files by functionality related to HTTP handling, including client, server, middleware, and metrics.",
+    "file_summaries": {
+      "pkg/http/client.go": {
+        "language": "Go",
+        "purpose": "Defines HTTP client configuration and error handling for making HTTP requests.",
+        "key_types": [
+          "RequestError",
+          "AuthConfig",
+          "ClientConfig"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/http/client_params.go": {
+        "language": "Go",
+        "purpose": "Defines parameters and authentication methods for HTTP requests using the Resty library.",
+        "key_types": [
+          "RequestParam",
+          "BasicAuth",
+          "ApiKeyAuth"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/http/handler.go": {
+        "language": "Go",
+        "purpose": "Defines HTTP handlers and routing setup for a web application using Echo framework.",
+        "key_types": [
+          "Handler",
+          "GroupHandlers",
+          "healthHandler"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/http/metrics.go": {
+        "language": "Go",
+        "purpose": "This file provides metrics for HTTP client performance using Prometheus.",
+        "key_types": [
+          "MetricsHistogramOpt",
+          "MetricsAfterNextOpt",
+          "gaugeVec"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/http/middlewares.go": {
+        "language": "Go",
+        "purpose": "Defines middleware for handling errors in HTTP requests using Echo framework.",
+        "key_types": [
+          "GlobalErrorHandler",
+          "ErrorHandler",
+          "GormRecordNotFoundHandler"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/http/server.go": {
+        "language": "Go",
+        "purpose": "Defines an HTTP server with middleware support and health check functionality.",
+        "key_types": [
+          "ServerConfig",
+          "Server",
+          "NewServer"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/http/tracer.go": {
+        "language": "Go",
+        "purpose": "This file implements tracing for HTTP connections to monitor their lifecycle and performance metrics.",
+        "key_types": [
+          "TracingConn",
+          "TracingDialer",
+          "TracingRoundTripper"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

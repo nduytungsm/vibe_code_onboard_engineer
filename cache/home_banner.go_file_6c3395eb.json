@@ -1,0 +1,15 @@
+{
+  "content_hash": "e2bfcc17e0f400332fbd722279ddda33",
+  "timestamp": "2025-09-26T14:57:27.648367+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for home banner widgets and entities in a discovery module.",
+    "key_types": [
+      "WidgetItemHomeBanner",
+      "HomeBannerEntity"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

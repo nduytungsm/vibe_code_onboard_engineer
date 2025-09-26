@@ -1,0 +1,16 @@
+{
+  "content_hash": "640753741cc219833df4deb394d87fbf",
+  "timestamp": "2025-09-26T14:57:38.780105+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines cron job tasks for crawling quest data in a gaming service.",
+    "key_types": [
+      "CronTask",
+      "CrawlTaskLogic",
+      "SwanlakeCrawlerTask"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

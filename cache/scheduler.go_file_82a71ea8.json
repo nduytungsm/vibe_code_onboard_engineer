@@ -1,0 +1,14 @@
+{
+  "content_hash": "1924f737a083d5a2fe455168cdcddf25",
+  "timestamp": "2025-09-26T14:56:57.365368+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Defines data transfer objects for scheduling tasks.",
+    "key_types": [
+      "SendTask"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

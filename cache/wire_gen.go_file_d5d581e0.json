@@ -1,0 +1,14 @@
+{
+  "content_hash": "fb2a2bfd613c632bf7f5851356c702b7",
+  "timestamp": "2025-09-26T14:56:21.383726+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates dependency injection code for the wallet manager application.",
+    "key_types": [
+      "wireWalletManager"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

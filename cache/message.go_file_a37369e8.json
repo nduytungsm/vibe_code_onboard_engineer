@@ -1,0 +1,14 @@
+{
+  "content_hash": "aef75dc288c23e142d637ec2daea740e",
+  "timestamp": "2025-09-26T14:56:40.984671+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a message model for post notifications with methods for timestamp and idempotency key generation.",
+    "key_types": [
+      "PostNotificationMessage"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

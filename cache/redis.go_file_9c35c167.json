@@ -1,0 +1,16 @@
+{
+  "content_hash": "ac84edd840f9ecdb99790a21f7f0afb1",
+  "timestamp": "2025-09-26T14:57:57.175601+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements a Redis cache instance with methods for resolving and storing values.",
+    "key_types": [
+      "redisInstance",
+      "NewRedisInstance",
+      "Resolve"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

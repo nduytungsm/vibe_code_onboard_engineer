@@ -1,0 +1,63 @@
+{
+  "content_hash": "69ad7113b0238fabcfcb9f22240db0df",
+  "timestamp": "2025-09-26T15:02:16.886169+07:00",
+  "result": {
+    "path": "internal/domains/antenna/models",
+    "purpose": "Defines data models related to blockchain events, notifications, tokens, and transfers.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "message.go",
+      "noti.go",
+      "token.go",
+      "transfer.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing related data models into separate files for clarity and maintainability.",
+    "file_summaries": {
+      "internal/domains/antenna/models/message.go": {
+        "language": "Go",
+        "purpose": "Defines data models for handling block full events in a blockchain context.",
+        "key_types": [
+          "BlockFullEvent",
+          "Block",
+          "IdempotencyMessage"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/antenna/models/noti.go": {
+        "language": "Go",
+        "purpose": "Defines the NotificationPayload struct for handling notification data in the application.",
+        "key_types": [
+          "NotificationPayload"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/antenna/models/token.go": {
+        "language": "go",
+        "purpose": "Defines the RoninToken model with relevant attributes for a token.",
+        "key_types": [
+          "RoninToken"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/antenna/models/transfer.go": {
+        "language": "Go",
+        "purpose": "Defines the TokenTransfer model for handling token transfer data in a blockchain context.",
+        "key_types": [
+          "TokenTransfer"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

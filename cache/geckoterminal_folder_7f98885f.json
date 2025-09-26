@@ -1,0 +1,43 @@
+{
+  "content_hash": "c3c16000467ef09d10caabb8beb15e30",
+  "timestamp": "2025-09-26T14:59:59.999993+07:00",
+  "result": {
+    "path": "internal/infras/geckoterminal",
+    "purpose": "This folder/module is responsible for interacting with the GeckoTerminal API and defining data models for the application.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "client.go",
+      "models.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating API client functionality and data models in separate files.",
+    "file_summaries": {
+      "internal/infras/geckoterminal/client.go": {
+        "language": "Go",
+        "purpose": "This file defines a client for interacting with a GeckoTerminal API to retrieve pool and token data.",
+        "key_types": [
+          "Config",
+          "Client",
+          "clientHTTP"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/infras/geckoterminal/models.go": {
+        "language": "Go",
+        "purpose": "Defines data models and types for the Gecko terminal application.",
+        "key_types": [
+          "TimeRange",
+          "TrendingDimension",
+          "PoolResp"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

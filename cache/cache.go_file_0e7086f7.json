@@ -1,0 +1,16 @@
+{
+  "content_hash": "3bf7e0979b57826ed3244b61677ce4b7",
+  "timestamp": "2025-09-26T14:56:53.159496+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a cached implementation of a multi-chain provider for portfolio and token information.",
+    "key_types": [
+      "CachedProvider",
+      "GetPortfolioBalance",
+      "GetTokenFiatInfo"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

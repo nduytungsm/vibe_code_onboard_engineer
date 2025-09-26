@@ -1,0 +1,134 @@
+{
+  "content_hash": "6744a788d130361cb7fe56acff143d37",
+  "timestamp": "2025-09-26T15:02:23.666908+07:00",
+  "result": {
+    "path": "internal/services/cron-jobs",
+    "purpose": "Responsible for managing and scheduling cron jobs, including task definitions and monitoring.",
+    "languages": {
+      "Go": 10
+    },
+    "key_modules": [
+      "config.go",
+      "job.go",
+      "metrics.go",
+      "scheduler.go",
+      "task.go",
+      "task_collections.go",
+      "task_games.go",
+      "task_mkp.go",
+      "task_mvh.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing files by functionality related to cron job management and scheduling.",
+    "file_summaries": {
+      "internal/services/cron-jobs/config.go": {
+        "language": "Go",
+        "purpose": "Configuration structures for cron jobs and related services.",
+        "key_types": [
+          "CronServiceConfig",
+          "JobConfig",
+          "DataProvidersConfig"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/services/cron-jobs/job.go": {
+        "language": "Go",
+        "purpose": "Manages and registers scheduled tasks for cron jobs.",
+        "key_types": [
+          "TaskRegistry",
+          "NewTaskRegistry",
+          "RegisterTask"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/cron-jobs/metrics.go": {
+        "language": "Go",
+        "purpose": "Defines and registers Prometheus metrics for cron job monitoring.",
+        "key_types": [
+          "registerMetrics",
+          "cronJobHistogramVec",
+          "cronJobCounterVec"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/cron-jobs/scheduler.go": {
+        "language": "Go",
+        "purpose": "This file implements a cron job scheduler service with logging and monitoring capabilities.",
+        "key_types": [
+          "ProvideScheduler",
+          "NewCronJobService",
+          "cronJobService"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/cron-jobs/task.go": {
+        "language": "Go",
+        "purpose": "Defines cron job tasks for crawling quest data in a gaming service.",
+        "key_types": [
+          "CronTask",
+          "CrawlTaskLogic",
+          "SwanlakeCrawlerTask"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/cron-jobs/task_collections.go": {
+        "language": "Go",
+        "purpose": "Defines data structures and functions for handling marketplace collection data in cron jobs.",
+        "key_types": [
+          "MarketplaceCollectionResult",
+          "MarketplaceCollectionsRanking",
+          "MarketplaceCollectionItem"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/cron-jobs/task_games.go": {
+        "language": "Go",
+        "purpose": "Defines a cron job task for tracking classic game played activities.",
+        "key_types": [
+          "ClassicGamePlayedCrawlerTaskLogic",
+          "NewClassicGamePlayedCrawlerTaskLogic",
+          "EligibleQuestActivities"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/cron-jobs/task_mkp.go": {
+        "language": "Go",
+        "purpose": "Defines a task for crawling purchase history of Axie NFTs from a marketplace.",
+        "key_types": [
+          "PurchaseAxieCrawlerTaskLogic",
+          "NewPurchaseAxieCrawlerTaskLogic",
+          "GetSwanlakeQuery"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/cron-jobs/task_mvh.go": {
+        "language": "Go",
+        "purpose": "Defines a task for crawling console games and managing related data.",
+        "key_types": [
+          "ConsoleGamesCrawlerTask",
+          "NewConsoleGamesCrawlerTask",
+          "Run"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

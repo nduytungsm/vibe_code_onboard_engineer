@@ -1,0 +1,16 @@
+{
+  "content_hash": "7f67911776d1341e5ddfce9b12ab5552",
+  "timestamp": "2025-09-26T14:57:55.560101+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements rate limiting for task handling in an asynchronous queue.",
+    "key_types": [
+      "RateLimitError",
+      "IsRateLimitError",
+      "HandlerWithLimit"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

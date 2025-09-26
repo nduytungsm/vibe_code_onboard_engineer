@@ -1,0 +1,243 @@
+{
+  "content_hash": "aa7dbc58b37ba4952a7b2bc09e5cd635",
+  "timestamp": "2025-09-26T15:04:57.052784+07:00",
+  "result": {
+    "path": "internal/services/quest-center",
+    "purpose": "Responsible for managing quests, user profiles, events, rewards, and shop services in a gaming context.",
+    "languages": {
+      "Go": 20
+    },
+    "key_modules": [
+      "actions.go",
+      "event.go",
+      "point_tracker.go",
+      "pools.go",
+      "profile.go",
+      "quest_helper.go",
+      "quests.go",
+      "rewards.go",
+      "shop.go",
+      "shop_helper.go",
+      "sponsor.go",
+      "user.go",
+      "user_event.go",
+      "user_quest.go",
+      "user_reward.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing services related to quests and user interactions into separate files for maintainability and scalability.",
+    "file_summaries": {
+      "internal/services/quest-center/actions.go": {
+        "language": "Go",
+        "purpose": "Provides services for retrieving quest actions from a repository.",
+        "key_types": [
+          "ActionV2 interface",
+          "actionSvcV2 struct",
+          "GetQuestActions function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/event.go": {
+        "language": "Go",
+        "purpose": "Provides services for managing events in a quest center, including caching and retrieval.",
+        "key_types": [
+          "EventSvc interface",
+          "eventSvc struct",
+          "GetEventByID function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/generics.go": {
+        "language": "Go",
+        "purpose": "Provides error handling utilities for the quest center services.",
+        "key_types": [
+          "wrapError"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/services/quest-center/point_tracker.go": {
+        "language": "Go",
+        "purpose": "Implements a service for tracking and creating point activities for users in a quest system.",
+        "key_types": [
+          "PointTrackerService",
+          "pointTrackerService",
+          "CreatePoints"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/pools.go": {
+        "language": "Go",
+        "purpose": "Provides services for managing quest pools in a gaming context.",
+        "key_types": [
+          "PoolSvc interface",
+          "poolSvc struct",
+          "NewPoolSvc function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/profile.go": {
+        "language": "Go",
+        "purpose": "Defines a service for managing user profiles in a quest center application.",
+        "key_types": [
+          "ProfileService",
+          "PublicProfile",
+          "Wallet"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/quest_helper.go": {
+        "language": "Go",
+        "purpose": "Provides helper functions for managing quests, including finding sponsors, counting players, and retrieving rewards.",
+        "key_types": [
+          "findQuestSponsors",
+          "countQuestPlayers",
+          "findQuestRewards"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/quests.go": {
+        "language": "Go",
+        "purpose": "Defines services and data structures for managing quests in a quest center.",
+        "key_types": [
+          "QuestSvcV2 interface",
+          "QuestRelatedInfo struct",
+          "questSvcV2 struct"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/rewards.go": {
+        "language": "Go",
+        "purpose": "Provides services for managing quest rewards in a gaming application.",
+        "key_types": [
+          "RewardSvcV2 interface",
+          "rewardSvcV2 struct",
+          "GetQuestRewards function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/shop.go": {
+        "language": "Go",
+        "purpose": "This file implements the shop service for managing categories, tiers, and items in a quest center.",
+        "key_types": [
+          "ShopSvc interface",
+          "CreateCategory",
+          "CreateItem"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/shop_helper.go": {
+        "language": "Go",
+        "purpose": "Provides helper functions for managing shop-related operations, including caching and purchase validation.",
+        "key_types": [
+          "shopSvc",
+          "validatePurchaseRequest",
+          "validateTierAccess"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/shop_monitoring.go": {
+        "language": "Go",
+        "purpose": "Defines a structure for handling failed purchase completions in a shop monitoring service.",
+        "key_types": [
+          "FailedPurchaseCompletion"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/services/quest-center/sponsor.go": {
+        "language": "Go",
+        "purpose": "Provides services for managing sponsors in the quest center.",
+        "key_types": [
+          "SponsorSvcV2 interface",
+          "sponsorSvc struct",
+          "NewSponsorSvcV2 function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/user.go": {
+        "language": "Go",
+        "purpose": "Provides user management services for the quest center, including user creation and retrieval.",
+        "key_types": [
+          "User",
+          "UserSvc",
+          "userSvc"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/user_event.go": {
+        "language": "Go",
+        "purpose": "Provides services related to user events in the quest center, including premium user management.",
+        "key_types": [
+          "UserEventSvc",
+          "userEventSvc",
+          "UserOwnPremiumNFTByGeth"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/user_quest.go": {
+        "language": "Go",
+        "purpose": "Provides services for managing user quests in a quest center system.",
+        "key_types": [
+          "UserQuestSvc",
+          "userQuestSvc",
+          "NewUserQuestSvc"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/user_quest_helper.go": {
+        "language": "Go",
+        "purpose": "Handles user quest operations including verification and creation of user quests.",
+        "key_types": [
+          "verifyTakeQuestStatus",
+          "createUserQuest"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/quest-center/user_reward.go": {
+        "language": "Go",
+        "purpose": "Manages the distribution of user rewards in the quest center service.",
+        "key_types": [
+          "UserRewardSvc",
+          "userRewardSvc",
+          "NewUserRewardSvc"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

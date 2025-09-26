@@ -1,0 +1,43 @@
+{
+  "content_hash": "42b4b18a6b2d1ed27309bcba855b6c70",
+  "timestamp": "2025-09-26T15:07:59.315606+07:00",
+  "result": {
+    "path": "internal/domains/web3/handlers",
+    "purpose": "Handles HTTP requests related to Ethereum transactions and signatures in a web3 context.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "decode.go",
+      "signature.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on handling specific web3 functionalities through separate files for decoding transactions and managing signatures.",
+    "file_summaries": {
+      "internal/domains/web3/handlers/decode.go": {
+        "language": "Go",
+        "purpose": "Handles decoding of Ethereum transactions, calls, and logs via HTTP endpoints.",
+        "key_types": [
+          "decodeHandler",
+          "NewDecodeHandler",
+          "decodeTx"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/handlers/signature.go": {
+        "language": "Go",
+        "purpose": "Handles HTTP requests related to signatures in a web3 context.",
+        "key_types": [
+          "signatureHandler",
+          "getSignatures",
+          "upsertSignatures"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

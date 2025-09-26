@@ -1,0 +1,16 @@
+{
+  "content_hash": "cdebf9226f3b3a07a8e560d41ba39ae5",
+  "timestamp": "2025-09-26T14:58:29.666752+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit test for the ConsoleGamesCrawlerTask in the cron_jobs package.",
+    "key_types": [
+      "TestConsoleGamesCrawlerTask",
+      "idGen",
+      "NewConsoleGamesCrawlerTask"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

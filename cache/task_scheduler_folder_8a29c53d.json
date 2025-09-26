@@ -1,0 +1,71 @@
+{
+  "content_hash": "19993911834c202cc05a0d129675e878",
+  "timestamp": "2025-09-26T15:00:16.102973+07:00",
+  "result": {
+    "path": "cmd/task_scheduler",
+    "purpose": "Responsible for managing and executing scheduled tasks within an application.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "config.go",
+      "main.go",
+      "wire.go",
+      "wire_gen.go"
+    ],
+    "dependencies": [
+      "Google Wire"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for managing components and configurations.",
+    "file_summaries": {
+      "cmd/task_scheduler/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration structures for task scheduling and application settings.",
+        "key_types": [
+          "AsyncQueueSchedulerConfig",
+          "ScheduledTaskConfig",
+          "Config"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "cmd/task_scheduler/main.go": {
+        "language": "Go",
+        "purpose": "Initializes and starts a task scheduler application with configuration and logging.",
+        "key_types": [
+          "main",
+          "NewConfig",
+          "Start"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "cmd/task_scheduler/wire.go": {
+        "language": "Go",
+        "purpose": "This file sets up dependency injection for the task scheduler application using Google Wire.",
+        "key_types": [
+          "wireTaskScheduler",
+          "provideScheduler",
+          "provideAsyncQueueClient"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "cmd/task_scheduler/wire_gen.go": {
+        "language": "Go",
+        "purpose": "Generates dependency injection code for a task scheduler application.",
+        "key_types": [
+          "wireTaskScheduler",
+          "provideScheduler",
+          "provideHttpServer"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

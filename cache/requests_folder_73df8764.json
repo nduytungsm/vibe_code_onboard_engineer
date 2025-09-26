@@ -1,0 +1,28 @@
+{
+  "content_hash": "0752c7ca80d2970c54853299a771a235",
+  "timestamp": "2025-09-26T15:06:45.571636+07:00",
+  "result": {
+    "path": "internal/domains/dex/handlers/dtos/requests",
+    "purpose": "Responsible for defining data transfer objects related to request handling in the dex domain.",
+    "languages": {
+      "go": 1
+    },
+    "key_modules": [
+      "route.go"
+    ],
+    "dependencies": [],
+    "architecture": "Follows a modular architecture pattern, focusing on data transfer objects to facilitate communication between different layers of the application.",
+    "file_summaries": {
+      "internal/domains/dex/handlers/dtos/requests/route.go": {
+        "language": "go",
+        "purpose": "Defines a data transfer object for routing requests by ID.",
+        "key_types": [
+          "RouteByID"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

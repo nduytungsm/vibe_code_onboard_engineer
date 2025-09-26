@@ -1,0 +1,16 @@
+{
+  "content_hash": "d413e6f201fab8f0b4b9a26f612dcdd5",
+  "timestamp": "2025-09-26T14:57:32.172068+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the Preference model and its associated filter for managing user preferences.",
+    "key_types": [
+      "Preference",
+      "PreferenceFilter",
+      "ToMap"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

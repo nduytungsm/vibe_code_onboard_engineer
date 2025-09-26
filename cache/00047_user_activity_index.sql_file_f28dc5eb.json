@@ -1,0 +1,14 @@
+{
+  "content_hash": "8dc0adff6c7488e5e1ee7313d9397112",
+  "timestamp": "2025-09-26T14:58:19.396954+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file defines SQL migrations to create indexes for optimizing queries on participant_quests and participant_actions tables.",
+    "key_types": [
+      "CREATE INDEX"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

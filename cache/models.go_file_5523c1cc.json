@@ -1,0 +1,16 @@
+{
+  "content_hash": "bf52f3aca62e58588d3fa1eda3e9aeb9",
+  "timestamp": "2025-09-26T14:57:22.651137+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models and request/response structures for transaction searching in a blockchain context.",
+    "key_types": [
+      "SortItem",
+      "AddressRequest",
+      "SearchTransactionsRequest"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

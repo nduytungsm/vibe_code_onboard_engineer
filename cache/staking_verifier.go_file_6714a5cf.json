@@ -1,0 +1,16 @@
+{
+  "content_hash": "b2173b29f6bd85997772ab6a4d067491",
+  "timestamp": "2025-09-26T14:57:47.844122+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Verifies staking actions for user quests in a blockchain context.",
+    "key_types": [
+      "unmarshalRonStackedCondition",
+      "verifyRonStakedProxy",
+      "verifyRonStaked"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

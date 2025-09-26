@@ -1,0 +1,88 @@
+{
+  "content_hash": "816e522848bf6ee632a97e5934dd943f",
+  "timestamp": "2025-09-26T14:59:55.167596+07:00",
+  "result": {
+    "path": "sql_migrations/proxy",
+    "purpose": "Responsible for managing database migrations related to tokens, contract signatures, and decentralized application sites.",
+    "languages": {
+      "SQL": 6
+    },
+    "key_modules": [
+      "00001_tokens.sql",
+      "00002_contract_abi.sql",
+      "00003_signature_category.sql",
+      "00004_dapp_sites.sql",
+      "00005_signature_category_txkind.sql",
+      "00006_refactor_signature_category.sql"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a migration-based architecture pattern, where each SQL file represents a specific migration step for database schema changes.",
+    "file_summaries": {
+      "sql_migrations/proxy/00001_tokens.sql": {
+        "language": "SQL",
+        "purpose": "Defines database schema for tokens and their platforms with migration support.",
+        "key_types": [
+          "CREATE TABLE tokens",
+          "CREATE TABLE token_platforms",
+          "DROP TABLE"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "sql_migrations/proxy/00002_contract_abi.sql": {
+        "language": "SQL",
+        "purpose": "Defines a migration for creating and dropping a table for storing Solidity contract signatures.",
+        "key_types": [
+          "CREATE TABLE",
+          "DROP TABLE"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "sql_migrations/proxy/00003_signature_category.sql": {
+        "language": "SQL",
+        "purpose": "Defines a migration for creating and dropping the signature_categories table.",
+        "key_types": [
+          "CREATE TABLE",
+          "DROP TABLE"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "sql_migrations/proxy/00004_dapp_sites.sql": {
+        "language": "SQL",
+        "purpose": "Creates and drops the dapp_sites table for storing information about decentralized application sites.",
+        "key_types": [
+          "CREATE TABLE",
+          "DROP TABLE"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "sql_migrations/proxy/00005_signature_category_txkind.sql": {
+        "language": "SQL",
+        "purpose": "This file contains migration scripts to add and remove columns in the signature_categories table.",
+        "key_types": [
+          "ALTER TABLE"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "sql_migrations/proxy/00006_refactor_signature_category.sql": {
+        "language": "SQL",
+        "purpose": "This file contains migration scripts to add and remove a 'category' column in the 'solidity_signatures' table.",
+        "key_types": [
+          "ALTER TABLE"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

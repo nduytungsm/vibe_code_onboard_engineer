@@ -1,0 +1,16 @@
+{
+  "content_hash": "56210e51e8ce7e077d40a5ae1e5e7cc2",
+  "timestamp": "2025-09-26T14:57:20.487753+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a Kafka producer for publishing push notifications.",
+    "key_types": [
+      "ProducerConfig",
+      "Producer",
+      "PublishNotification"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

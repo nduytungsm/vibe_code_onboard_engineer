@@ -1,0 +1,16 @@
+{
+  "content_hash": "073123ba4d69e446479bdd6e0b5451bd",
+  "timestamp": "2025-09-26T14:57:06.134278+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines user quest statuses and filters for a quest management system.",
+    "key_types": [
+      "UserQuestStatus",
+      "UserQuestFilter",
+      "UserQuestStatusFromStr"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

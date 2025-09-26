@@ -1,0 +1,112 @@
+{
+  "content_hash": "576c02d2027ec9233db091aa874f933b",
+  "timestamp": "2025-09-26T15:02:12.82427+07:00",
+  "result": {
+    "path": "root",
+    "purpose": "This folder/module is responsible for the configuration, documentation, and setup of the Ronin Wallet microservices ecosystem.",
+    "languages": {
+      "Go": 1,
+      "Markdown": 2,
+      "YAML": 4,
+      "bash": 1
+    },
+    "key_modules": [
+      ".golangci.yaml",
+      ".mockery.yaml",
+      "README.md",
+      "SECURITY.md",
+      "config.go",
+      "docker-compose.yml",
+      "entrypoint.sh"
+    ],
+    "dependencies": [
+      "GolangCI-Lint",
+      "Mockery",
+      "Docker",
+      "PostgreSQL",
+      "Redis",
+      "Kafka"
+    ],
+    "architecture": "The folder follows a microservices architecture pattern, utilizing Docker for containerization and configuration files for managing services and dependencies.",
+    "file_summaries": {
+      ".golangci.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for GolangCI-Lint to manage linting rules and settings.",
+        "key_types": [
+          "linters-settings",
+          "rules",
+          "checks"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      ".mockery.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for Mockery, a mocking framework for PHP.",
+        "key_types": [
+          "with-expecter",
+          "case"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "README.md": {
+        "language": "Markdown",
+        "purpose": "Documentation for the Ronin Wallet microservices ecosystem.",
+        "key_types": [
+          "User Layer",
+          "Admin Layer",
+          "Core Services Layer"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "SECURITY.md": {
+        "language": "Markdown",
+        "purpose": "Document outlining the security policy and vulnerability reporting process for the project.",
+        "key_types": [],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "config.go": {
+        "language": "Go",
+        "purpose": "Defines the main configuration structure for the application.",
+        "key_types": [
+          "Config",
+          "ApplicationConfig",
+          "ServerConfig"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "docker-compose.yml": {
+        "language": "YAML",
+        "purpose": "Defines a multi-container Docker application with PostgreSQL, Redis, Kafka, and a Kafka console.",
+        "key_types": [
+          "services",
+          "environment variables",
+          "ports"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "entrypoint.sh": {
+        "language": "bash",
+        "purpose": "This script checks for required environment variables and executes a binary with a specified configuration.",
+        "key_types": [
+          "environment variable check",
+          "binary execution"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "content_hash": "333f2d93eb32fe054f730d089b2cad5e",
+  "timestamp": "2025-09-26T15:07:38.865208+07:00",
+  "result": {
+    "path": "internal/domains/antenna/consumers",
+    "purpose": "Responsible for handling events related to block processing, ensuring idempotency in message processing, and monitoring consumer routines.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "block_full_event.go",
+      "idempotency.go",
+      "metrics.go"
+    ],
+    "dependencies": [
+      "Kafka",
+      "Redis",
+      "Prometheus"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each file is responsible for a specific aspect of event handling and monitoring, promoting separation of concerns.",
+    "file_summaries": {
+      "internal/domains/antenna/consumers/block_full_event.go": {
+        "language": "Go",
+        "purpose": "Handles full block events and processes notifications related to token transfers.",
+        "key_types": [
+          "BlockFullEventHandler",
+          "NewBlockFullEventHandler",
+          "NotificationFilterConfig"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/antenna/consumers/idempotency.go": {
+        "language": "Go",
+        "purpose": "Handles idempotency for processing messages using Kafka and Redis.",
+        "key_types": [
+          "IdempotencyMessageHandler",
+          "NewIdempotencyHandler",
+          "Process"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/antenna/consumers/metrics.go": {
+        "language": "Go",
+        "purpose": "Defines and initializes Prometheus metrics for monitoring consumer routines in the antenna service.",
+        "key_types": [
+          "metricCollectors",
+          "initMetrics"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

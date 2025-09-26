@@ -1,0 +1,70 @@
+{
+  "content_hash": "2ce608b4030bacf58449497938d5e1f2",
+  "timestamp": "2025-09-26T15:04:08.955296+07:00",
+  "result": {
+    "path": "pkg/docker",
+    "purpose": "This folder is responsible for managing various containerized services (Kafka, PostgreSQL, Redis) for testing purposes using Testcontainers.",
+    "languages": {
+      "go": 4
+    },
+    "key_modules": [
+      "helper.go",
+      "kafka.go",
+      "postgres.go",
+      "redis.go"
+    ],
+    "dependencies": [
+      "Testcontainers"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates the logic for managing a specific type of container, promoting separation of concerns and reusability.",
+    "file_summaries": {
+      "pkg/docker/helper.go": {
+        "language": "go",
+        "purpose": "Provides a function to find an available TCP port on localhost.",
+        "key_types": [
+          "getFreePort"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "pkg/docker/kafka.go": {
+        "language": "Go",
+        "purpose": "This file provides functionality to create and manage a Kafka container using Testcontainers.",
+        "key_types": [
+          "Kafka",
+          "NewKafka",
+          "Start",
+          "Stop"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/docker/postgres.go": {
+        "language": "Go",
+        "purpose": "Manages a PostgreSQL database container for testing purposes using Testcontainers.",
+        "key_types": [
+          "Postgres",
+          "NewPostgres",
+          "Start"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/docker/redis.go": {
+        "language": "Go",
+        "purpose": "This file manages a Redis container using Testcontainers for integration testing.",
+        "key_types": [
+          "Redis",
+          "NewRedis",
+          "Start"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "content_hash": "4fe987fb40ed17b798a5e98ff7ff48f5",
+  "timestamp": "2025-09-26T15:04:25.523964+07:00",
+  "result": {
+    "path": "pkg/sarama-kafka",
+    "purpose": "This module is responsible for configuring and implementing Kafka client functionalities using the Sarama library, including producers and consumers.",
+    "languages": {
+      "Go": 6
+    },
+    "key_modules": [
+      "client.go",
+      "config.go",
+      "consumer.go",
+      "consumer_test.go",
+      "metrics.go",
+      "producer.go"
+    ],
+    "dependencies": [
+      "Sarama",
+      "Prometheus"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating Kafka client functionalities into distinct files for configuration, production, consumption, and testing.",
+    "file_summaries": {
+      "pkg/sarama-kafka/client.go": {
+        "language": "Go",
+        "purpose": "Configures Sarama Kafka client settings based on provided configuration.",
+        "key_types": [
+          "saramaConfig",
+          "setBrokerConfig",
+          "setConsumerConfig"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/sarama-kafka/config.go": {
+        "language": "Go",
+        "purpose": "Configuration management for Kafka producer and consumer settings.",
+        "key_types": [
+          "Config",
+          "Offset",
+          "Producer"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/sarama-kafka/consumer.go": {
+        "language": "Go",
+        "purpose": "Implements a Kafka consumer using the Sarama library for message processing.",
+        "key_types": [
+          "Consumer",
+          "MessageHandler",
+          "NewConsumer"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/sarama-kafka/consumer_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for Kafka consumer functionality using Sarama.",
+        "key_types": [
+          "testMsg",
+          "testHandler",
+          "TestProduceAndConsume"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/sarama-kafka/metrics.go": {
+        "language": "Go",
+        "purpose": "Defines metrics for Kafka consumer performance monitoring using Prometheus.",
+        "key_types": [
+          "consumerMetrics",
+          "initConsumerMetrics"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/sarama-kafka/producer.go": {
+        "language": "Go",
+        "purpose": "Creates a new synchronous Kafka producer using the Sarama library.",
+        "key_types": [
+          "NewKafkaProducer"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

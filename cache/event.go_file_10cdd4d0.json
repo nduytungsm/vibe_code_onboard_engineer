@@ -1,0 +1,16 @@
+{
+  "content_hash": "2d379b33b2f2d694b182cbbcdad01ddf",
+  "timestamp": "2025-09-26T14:57:09.511828+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles event-related operations such as creating, deleting, and listing events.",
+    "key_types": [
+      "EventCfg",
+      "Event interface",
+      "event struct"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "d667676604ddcab780fb122366614984",
+  "timestamp": "2025-09-26T14:56:52.018764+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the Moralis provider for handling Ethereum Virtual Machine (EVM) interactions.",
+    "key_types": [
+      "moralisProvider",
+      "MoralisProviderName",
+      "EvmMoralisProviderCreator"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

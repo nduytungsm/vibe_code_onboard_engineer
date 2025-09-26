@@ -1,0 +1,56 @@
+{
+  "content_hash": "9fe07476ad98fc9144635c3ae894f2c2",
+  "timestamp": "2025-09-26T15:01:42.751224+07:00",
+  "result": {
+    "path": "internal/domains/proxy/tasks",
+    "purpose": "Responsible for managing and processing token-related tasks for a proxy service, including crawling and task generation with rate limiting.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "skynet_tokens.go",
+      "token_tasks_generator.go",
+      "tokens.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, with separate files handling distinct aspects of token task management and processing.",
+    "file_summaries": {
+      "internal/domains/proxy/tasks/skynet_tokens.go": {
+        "language": "Go",
+        "purpose": "Handles the crawling of Skynet tokens with rate limiting and task processing.",
+        "key_types": [
+          "SkynetTokenCrawlerTaskHandler",
+          "NewSkynetTokenCrawlerTaskHandler",
+          "ProcessTask"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/tasks/token_tasks_generator.go": {
+        "language": "Go",
+        "purpose": "Generates and manages token tasks for processing in an asynchronous queue.",
+        "key_types": [
+          "TokenTaskGeneratorTaskHandler",
+          "NewTokenTaskGeneratorTaskHandler",
+          "tokenTaskGeneratorTaskConfig"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/tasks/tokens.go": {
+        "language": "Go",
+        "purpose": "Handles token crawling tasks for a proxy service, including rate limiting and interaction with external APIs.",
+        "key_types": [
+          "TokenCrawlerTask",
+          "TokenCrawlerTaskHandler",
+          "NewTokenCrawlerTaskHandler"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

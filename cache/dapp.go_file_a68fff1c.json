@@ -1,0 +1,16 @@
+{
+  "content_hash": "4db3ecb185a5f253a9b4970761ee99b5",
+  "timestamp": "2025-09-26T14:56:43.960614+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles DApp-related HTTP requests for scanning, retrieving, and deleting DApps.",
+    "key_types": [
+      "dappHandler",
+      "NewDAppHandler",
+      "privateDAppHandler"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

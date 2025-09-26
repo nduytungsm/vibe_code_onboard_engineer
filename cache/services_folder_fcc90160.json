@@ -1,0 +1,82 @@
+{
+  "content_hash": "5f04c1b6d38fe2b7ad6d555516aa350a",
+  "timestamp": "2025-09-26T15:07:45.399221+07:00",
+  "result": {
+    "path": "internal/domains/web3/services",
+    "purpose": "Responsible for providing services related to decoding Ethereum transactions and managing digital signatures.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "decoder.go",
+      "decoder_normalizer.go",
+      "decoder_test.go",
+      "metrics.go",
+      "signature.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating services related to Ethereum transaction decoding and signature management, with a focus on maintainability and testability.",
+    "file_summaries": {
+      "internal/domains/web3/services/decoder.go": {
+        "language": "Go",
+        "purpose": "Provides a service for decoding Ethereum transactions, calls, and events.",
+        "key_types": [
+          "DecoderService",
+          "decoderService",
+          "NewDecoderService"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/services/decoder_normalizer.go": {
+        "language": "Go",
+        "purpose": "Normalizes decoded parameters from Ethereum transactions.",
+        "key_types": [
+          "normalizeDecodedParams",
+          "normalizeValue",
+          "normalizeMap"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/services/decoder_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for decoding Ethereum call signatures and associated data.",
+        "key_types": [
+          "decoderSignature",
+          "decodeCallTestcase",
+          "loadDecodeCallTestCases"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/services/metrics.go": {
+        "language": "Go",
+        "purpose": "Defines metrics for monitoring service performance in a wallet proxy application using Prometheus.",
+        "key_types": [
+          "observeServiceFn",
+          "histogramVec",
+          "counterVec"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/services/signature.go": {
+        "language": "Go",
+        "purpose": "Provides a service for managing digital signatures in a web3 context.",
+        "key_types": [
+          "SignatureService",
+          "signatureService",
+          "Upsert"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

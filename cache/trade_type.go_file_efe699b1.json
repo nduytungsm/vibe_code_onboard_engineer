@@ -1,0 +1,16 @@
+{
+  "content_hash": "3a46a3ed09b29cc776253ee1d1c6c257",
+  "timestamp": "2025-09-26T14:57:03.579214+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an enumeration for trade types in a bridge context.",
+    "key_types": [
+      "TradeType",
+      "TradeTypeFromStr",
+      "IsValid"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

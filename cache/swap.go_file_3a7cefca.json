@@ -1,0 +1,15 @@
+{
+  "content_hash": "ae06625eeb47454eae3e33eac55047f1",
+  "timestamp": "2025-09-26T14:56:59.02335+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Categorizes swap transactions based on user input and balance.",
+    "key_types": [
+      "Swap",
+      "Categorize"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

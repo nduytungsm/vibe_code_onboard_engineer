@@ -1,0 +1,16 @@
+{
+  "content_hash": "ad97e713e5ac25fc146131d0c26e654b",
+  "timestamp": "2025-09-26T14:56:47.121406+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles profile-related HTTP requests, specifically checking profile existence by user address.",
+    "key_types": [
+      "profileHandler",
+      "NewProfileHandler",
+      "checkProfileExistence"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

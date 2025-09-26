@@ -1,0 +1,32 @@
+{
+  "content_hash": "b15ed99ac0e10edf074b968be5638add",
+  "timestamp": "2025-09-26T15:01:44.959947+07:00",
+  "result": {
+    "path": "internal/repositories/cms",
+    "purpose": "Responsible for managing CMS-related data repositories, specifically for banners.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "banner.go"
+    ],
+    "dependencies": [
+      "GORM"
+    ],
+    "architecture": "Repository pattern for data management in a CMS.",
+    "file_summaries": {
+      "internal/repositories/cms/banner.go": {
+        "language": "Go",
+        "purpose": "Defines a repository for managing banner data in a CMS using GORM.",
+        "key_types": [
+          "Banner",
+          "BannerRepository",
+          "bannerRepository"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

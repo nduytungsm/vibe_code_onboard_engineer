@@ -1,0 +1,16 @@
+{
+  "content_hash": "935612a14f53a77b2e21103d40d97eac",
+  "timestamp": "2025-09-26T14:57:22.82392+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a client for managing wallet preferences in a service.",
+    "key_types": [
+      "Config",
+      "Client",
+      "clientHTTP"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

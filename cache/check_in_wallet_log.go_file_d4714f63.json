@@ -1,0 +1,16 @@
+{
+  "content_hash": "9fe84bb8633fedcb95fbbfa87521d5e1",
+  "timestamp": "2025-09-26T14:57:25.800347+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a repository for managing user check-in logs and streaks in a wallet service.",
+    "key_types": [
+      "CheckInLogRepository",
+      "checkInLogRepo",
+      "NewCheckInLogRepository"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

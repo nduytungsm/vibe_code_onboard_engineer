@@ -1,0 +1,15 @@
+{
+  "content_hash": "75cf092950513819a187a3bc5e821fed",
+  "timestamp": "2025-09-26T14:58:14.306875+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file defines a database migration to add a unique constraint and modify enum types.",
+    "key_types": [
+      "ALTER TABLE",
+      "ALTER TYPE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

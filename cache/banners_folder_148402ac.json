@@ -1,0 +1,30 @@
+{
+  "content_hash": "aabb3f345c146b7d56a607ce508e542f",
+  "timestamp": "2025-09-26T15:04:39.147418+07:00",
+  "result": {
+    "path": "internal/services/banners",
+    "purpose": "Provides a service for managing banners including creation, editing, retrieval, and listing by status.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "banner.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture pattern, focusing on encapsulating banner management functionalities.",
+    "file_summaries": {
+      "internal/services/banners/banner.go": {
+        "language": "Go",
+        "purpose": "Provides a service for managing banners including creation, editing, retrieval, and listing by status.",
+        "key_types": [
+          "Banner",
+          "BannerService",
+          "bannerService"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

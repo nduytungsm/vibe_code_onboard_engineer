@@ -1,0 +1,14 @@
+{
+  "content_hash": "7e3bbabdedb9ae17e01fa32de763ad9e",
+  "timestamp": "2025-09-26T14:56:50.759961+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration structures for various services including token management and caching settings.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

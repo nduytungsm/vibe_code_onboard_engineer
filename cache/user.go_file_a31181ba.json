@@ -1,0 +1,16 @@
+{
+  "content_hash": "ede99509ed128fce90edf3bbfe76d26f",
+  "timestamp": "2025-09-26T14:57:06.050765+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines user types for a quest center and provides utility functions for handling them.",
+    "key_types": [
+      "UserType",
+      "UserTypeFromString",
+      "IsValid"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "348fc3ff28f128224078840ba42b9b91",
+  "timestamp": "2025-09-26T14:56:33.869239+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines models and types for trending tokens in a cryptocurrency context.",
+    "key_types": [
+      "SortDimension",
+      "TimeRange",
+      "TrendingToken"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "content_hash": "90be68610af1d8b9098b7214e0e9571a",
+  "timestamp": "2025-09-26T15:01:58.296981+07:00",
+  "result": {
+    "path": "internal/services/siwe",
+    "purpose": "Responsible for handling Sign-In with Ethereum (SIWE) messages, including their creation, validation, and associated error handling.",
+    "languages": {
+      "go": 5
+    },
+    "key_modules": [
+      "error.go",
+      "message.go",
+      "regex.go",
+      "siwe.go",
+      "utils.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to SIWE messages in separate files for error handling, message struct definition, regular expressions, message processing, and utility functions.",
+    "file_summaries": {
+      "internal/services/siwe/error.go": {
+        "language": "go",
+        "purpose": "Defines error types related to SIWE (Sign-In with Ethereum) messages.",
+        "key_types": [
+          "ExpiredMessage",
+          "InvalidMessage",
+          "InvalidSignature"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/services/siwe/message.go": {
+        "language": "Go",
+        "purpose": "Defines a Message struct for handling SIWE (Sign-In with Ethereum) messages.",
+        "key_types": [
+          "Message",
+          "GetStatement",
+          "GetDomain"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/siwe/regex.go": {
+        "language": "Go",
+        "purpose": "Defines regular expressions for parsing SIWE (Sign-In with Ethereum) messages.",
+        "key_types": [
+          "regexp.MustCompile"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/services/siwe/siwe.go": {
+        "language": "Go",
+        "purpose": "Handles the creation and validation of messages for Ethereum-based Sign-In with Ethereum (SIWE).",
+        "key_types": [
+          "InitMessage",
+          "validateDomain",
+          "validateURI"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/siwe/utils.go": {
+        "language": "Go",
+        "purpose": "Utility functions for handling timestamps, hashing, and nonce generation in the SIWE context.",
+        "key_types": [
+          "parseTimestamp",
+          "isEmpty",
+          "GenerateNonce"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

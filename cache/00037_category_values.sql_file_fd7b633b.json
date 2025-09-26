@@ -1,0 +1,16 @@
+{
+  "content_hash": "6d402a90f865440b87b3158fc56bd51b",
+  "timestamp": "2025-09-26T14:58:19.238951+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains a migration script to update the discovery_categories table by truncating it, adding a new column, and inserting category values.",
+    "key_types": [
+      "TRUNCATE",
+      "ALTER TABLE",
+      "INSERT INTO"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

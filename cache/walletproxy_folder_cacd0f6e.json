@@ -1,0 +1,43 @@
+{
+  "content_hash": "54222433d98981c99c094bf7bdf92e3a",
+  "timestamp": "2025-09-26T15:01:13.325271+07:00",
+  "result": {
+    "path": "internal/infras/walletproxy",
+    "purpose": "Responsible for providing a client interface to interact with wallet services, managing user balances, activities, and NFT items.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "client.go",
+      "models.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating wallet service interactions and data models within separate files for better organization and maintainability.",
+    "file_summaries": {
+      "internal/infras/walletproxy/client.go": {
+        "language": "Go",
+        "purpose": "Defines a client for interacting with wallet services, handling user balances, activities, and NFT items.",
+        "key_types": [
+          "Client interface",
+          "Config struct",
+          "NewClient function"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/infras/walletproxy/models.go": {
+        "language": "Go",
+        "purpose": "Defines data models for handling wallet proxy requests and responses related to fiat tokens and fungible balances.",
+        "key_types": [
+          "SingleFiatTokenReq",
+          "TokenPriceReq",
+          "FungibleBalance"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

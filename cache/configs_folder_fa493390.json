@@ -1,0 +1,53 @@
+{
+  "content_hash": "1f71b5a2bb752273a02ada791b65ce6c",
+  "timestamp": "2025-09-26T15:06:32.910594+07:00",
+  "result": {
+    "path": "pkg/configs",
+    "purpose": "This folder/module is responsible for managing configuration files and handling sensitive data within those configurations.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "configs.go",
+      "func_print.go",
+      "func_print_test.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on configuration management and data privacy through utility functions and unit tests.",
+    "file_summaries": {
+      "pkg/configs/configs.go": {
+        "language": "Go",
+        "purpose": "This file provides a function to load and parse configuration files into a specified struct type using Viper.",
+        "key_types": [
+          "NewConfig"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/configs/func_print.go": {
+        "language": "Go",
+        "purpose": "This file contains functions for hiding sensitive data in structs and slices.",
+        "key_types": [
+          "isSecretField",
+          "hideSecret",
+          "hideSensitiveDataInSlice"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/configs/func_print_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for hiding sensitive data in maps and slices.",
+        "key_types": [
+          "TestHideSecretInMap",
+          "TestHideSecretInSlice"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

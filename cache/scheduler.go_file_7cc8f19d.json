@@ -1,0 +1,16 @@
+{
+  "content_hash": "d6ba80f0493f59f73dc5c478eb8a23c7",
+  "timestamp": "2025-09-26T14:56:58.502865+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles scheduling tasks using an asynchronous queue.",
+    "key_types": [
+      "scheduler",
+      "NewSchedulerHandler",
+      "sendTask"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

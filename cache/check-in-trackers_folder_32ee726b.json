@@ -1,0 +1,43 @@
+{
+  "content_hash": "796102c5d436ffa5d2f7773aea002a4b",
+  "timestamp": "2025-09-26T15:03:57.271552+07:00",
+  "result": {
+    "path": "internal/services/check-in-trackers",
+    "purpose": "Provides services for tracking game check-in streaks and registration status.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "game_data.go",
+      "game_data_provider.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture, focusing on providing specific functionalities related to game check-ins and events.",
+    "file_summaries": {
+      "internal/services/check-in-trackers/game_data.go": {
+        "language": "Go",
+        "purpose": "Provides services for tracking game check-in streaks and registration status.",
+        "key_types": [
+          "CheckInStreak",
+          "GameDataService",
+          "gameDataService"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/check-in-trackers/game_data_povider.go": {
+        "language": "Go",
+        "purpose": "Provides functionality to check in game events and register game addresses for a specific project.",
+        "key_types": [
+          "CheckInEvent",
+          "GameDataProvider",
+          "gameDataProviderImpl"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

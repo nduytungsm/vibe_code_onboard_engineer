@@ -1,0 +1,43 @@
+{
+  "content_hash": "e2707f76fc3e2889c60f1ec257a59a54",
+  "timestamp": "2025-09-26T15:06:02.821884+07:00",
+  "result": {
+    "path": "internal/domains/web3/handlers/dtos/requests",
+    "purpose": "Responsible for defining data transfer objects (DTOs) for handling Ethereum-related requests and signature requests in a web3 context.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "decode.go",
+      "signature.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing related DTOs for different request types in separate files to enhance maintainability and clarity.",
+    "file_summaries": {
+      "internal/domains/web3/handlers/dtos/requests/decode.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects for decoding Ethereum-related requests.",
+        "key_types": [
+          "DecodeCall",
+          "DecodeLog",
+          "DecodeTx"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/web3/handlers/dtos/requests/signature.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for handling signature requests in a web3 context.",
+        "key_types": [
+          "GetSignatures",
+          "GetSignatureCategories",
+          "UpsertSignatures"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

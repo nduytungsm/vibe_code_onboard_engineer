@@ -1,0 +1,16 @@
+{
+  "content_hash": "a18d9db9b07de93f6ca05c8a310b2a7c",
+  "timestamp": "2025-09-26T14:57:27.623927+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for contact entities in the discovery module.",
+    "key_types": [
+      "ContactEntity",
+      "ContactWithExtraInfo",
+      "WidgetItemContact"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

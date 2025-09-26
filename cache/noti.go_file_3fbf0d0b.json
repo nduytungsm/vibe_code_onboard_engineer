@@ -1,0 +1,14 @@
+{
+  "content_hash": "e8d1862506a77de7915a505f5b28907c",
+  "timestamp": "2025-09-26T14:56:26.958219+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the NotificationPayload struct for handling notification data in the application.",
+    "key_types": [
+      "NotificationPayload"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "content_hash": "bdba7db6c03a42269386c9117ec2e611",
+  "timestamp": "2025-09-26T15:04:29.04875+07:00",
+  "result": {
+    "path": "internal/domains/dex/models",
+    "purpose": "Defines data models for handling routes and tokens in a blockchain context.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "route.go",
+      "tokens.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on data models that support the functionality of a decentralized exchange.",
+    "file_summaries": {
+      "internal/domains/dex/models/route.go": {
+        "language": "Go",
+        "purpose": "Defines data models for handling routes and token transactions in a blockchain context.",
+        "key_types": [
+          "CallData",
+          "Token",
+          "RoutePool"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/dex/models/tokens.go": {
+        "language": "go",
+        "purpose": "Defines data models for listing tokens with pagination support.",
+        "key_types": [
+          "ListTokenRequest",
+          "Pagination",
+          "ListTokenResponse"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

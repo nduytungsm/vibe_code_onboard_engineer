@@ -1,330 +1,315 @@
-# 🚀 Repository Analyzer Deployment Guide
+# 🚀 VPS Deployment Guide
 
-This guide provides multiple deployment options for your repository analyzer application.
+Complete step-by-step guide to deploy Repository Analyzer on a VPS with both backend and frontend.
 
 ## 📋 Prerequisites
 
-- Docker and Docker Compose installed
-- Git installed (for repository cloning functionality)
-- **OpenAI API Key** (required for analysis functionality)
-- At least 2GB RAM and 2 CPU cores recommended
-- Port 80 and 8080 available (or configure different ports)
+- **VPS**: Ubuntu 20.04+ with minimum 2GB RAM, 20GB disk
+- **Domain**: A domain name pointing to your VPS IP
+- **OpenAI API Key**: For repository analysis functionality
 
-## 🔑 Setup OpenAI API Key
+## 🔧 Step 1: Initial VPS Setup
 
-The application requires an OpenAI API key for repository analysis. Get your API key from [OpenAI's platform](https://platform.openai.com/api-keys).
-
-### Option 1: Environment Variable (Recommended)
+### 1.1 Connect to your VPS
 ```bash
-export OPENAI_API_KEY="your-api-key-here"
+ssh root@your-server-ip
 ```
 
-### Option 2: .env File
+### 1.2 Run the setup script
 ```bash
-# Copy the example file
-cp .env.example .env
+# Copy the deployment files to your VPS
+scp -r deployment/ root@your-server-ip:/tmp/
 
-# Edit .env file and add your API key
-# OPENAI_API_KEY=your-api-key-here
+# Run the setup script
+chmod +x /tmp/deployment/vps-setup.sh
+/tmp/deployment/vps-setup.sh
 ```
 
-## 🎯 Deployment Options
-
-### Option 1: Docker Compose (Recommended for Production)
-
-**Best for**: Production environments, scalability, service separation
-
+### 1.3 Log out and back in
 ```bash
-# Quick start
-./deploy.sh
-
-# Manual deployment
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-
-# Stop services
-docker-compose down
+exit
+ssh root@your-server-ip
 ```
 
-**Architecture:**
-- Backend: Go service on port 8080
-- Frontend: Nginx serving React app on port 80
-- Services communicate via Docker network
-- Automatic health checks and restarts
+## 📦 Step 2: Deploy Application Code
 
-**Access:**
-- Application: http://localhost
-- API: http://localhost:8080
-- Health Check: http://localhost:8080/health
-
-### Option 2: Single Container (Simple Deployment)
-
-**Best for**: Simple deployments, single-server setups
-
+### 2.1 Copy your application to VPS
 ```bash
-# Build combined image
-docker build -f Dockerfile.combined -t repo-analyzer .
+# On your local machine, copy the application
+scp -r . root@your-server-ip:/opt/repo-analyzer/
 
-# Run container
-docker run -d -p 8080:8080 --name repo-analyzer repo-analyzer
+# Or clone from git
+ssh root@your-server-ip
+cd /opt/repo-analyzer
+git clone https://github.com/your-username/repo-analyzer.git .
+```
+
+### 2.2 Set up environment variables
+```bash
+cd /opt/repo-analyzer
+cp deployment/.env.production .env
+
+# Edit the environment file
+nano .env
+```
+
+**Important**: Update these variables in `.env`:
+```bash
+OPENAI_API_KEY=your_actual_openai_api_key_here
+DOMAIN=your-domain.com
+```
+
+## 🌐 Step 3: Configure DNS
+
+Point your domain to your VPS:
+- Create an **A record** for `your-domain.com` → `your-vps-ip`
+- Wait for DNS propagation (5-30 minutes)
+
+## 🚀 Step 4: Deploy
+
+### 4.1 Run the deployment script
+```bash
+cd /opt/repo-analyzer
+chmod +x deployment/deploy.sh
+./deployment/deploy.sh your-domain.com admin@your-domain.com
+```
+
+This script will:
+- ✅ Build and start Docker containers
+- ✅ Configure Nginx with SSL
+- ✅ Obtain Let's Encrypt SSL certificate
+- ✅ Set up automatic SSL renewal
+- ✅ Configure systemd service for auto-start
+
+### 4.2 Verify deployment
+```bash
+# Check container status
+docker-compose -f docker-compose.prod.yml ps
 
 # Check logs
-docker logs repo-analyzer
+docker-compose -f docker-compose.prod.yml logs -f
+
+# Test endpoints
+curl http://your-domain.com/health
+curl https://your-domain.com/health
 ```
 
-**Architecture:**
-- Single container with backend serving static frontend
-- All traffic through port 8080
-- Backend serves React build files
+## 🔍 Step 5: Testing
 
-**Access:**
-- Application: http://localhost:8080
-- API: http://localhost:8080/api
-- Health Check: http://localhost:8080/health
+### 5.1 Access your application
+- **Frontend**: https://your-domain.com
+- **API**: https://your-domain.com/api/health
+- **Backend Health**: https://your-domain.com/health
 
-### Option 3: Cloud Platform Deployment
+### 5.2 Test repository analysis
+1. Open https://your-domain.com
+2. Enter a GitHub repository URL
+3. Click "Analyze Repository"
+4. Verify the analysis completes successfully
 
-#### Railway
+## 📊 Step 6: Monitoring & Maintenance
 
+### 6.1 Monitor your application
 ```bash
-# Install Railway CLI
-npm install -g @railway/cli
-
-# Login and deploy
-railway login
-railway up
-```
-
-#### Render
-
-1. Connect your GitHub repository to Render
-2. Create a new Web Service
-3. Use `Dockerfile.combined` as the Docker file
-4. Set environment variables as needed
-
-#### Heroku
-
-```bash
-# Install Heroku CLI and login
-heroku create your-app-name
-heroku container:push web --app your-app-name
-heroku container:release web --app your-app-name
-```
-
-## ⚙️ Configuration
-
-### Environment Variables
-
-**Backend:**
-- `GO_ENV`: Set to "production" for production deployment
-- `PORT`: Port for the backend service (default: 8080)
-
-**Frontend:**
-- `VITE_API_URL`: API base URL (auto-configured for each deployment)
-- `NODE_ENV`: Set to "production" for production builds
-
-### Custom Configuration
-
-1. **Custom Ports:**
-   ```yaml
-   # docker-compose.yml
-   services:
-     frontend:
-       ports:
-         - "3000:80"  # Change external port
-     backend:
-       ports:
-         - "8000:8080"  # Change external port
-   ```
-
-2. **Resource Limits:**
-   ```yaml
-   # docker-compose.yml
-   services:
-     backend:
-       deploy:
-         resources:
-           limits:
-             cpus: '2'
-             memory: 2G
-   ```
-
-3. **SSL/HTTPS:**
-   - Add SSL certificates to nginx configuration
-   - Use a reverse proxy like Traefik or Cloudflare
-
-## 🔧 Maintenance Commands
-
-```bash
-# View service status
-docker-compose ps
+# Run monitoring script
+/opt/repo-analyzer/deployment/monitor.sh
 
 # View logs
-docker-compose logs -f [service_name]
+docker-compose -f /opt/repo-analyzer/docker-compose.prod.yml logs -f
 
-# Update services
-docker-compose pull
-docker-compose up -d
-
-# Restart specific service
-docker-compose restart backend
-
-# Clean up unused images
-docker system prune
-
-# Backup analysis cache
-docker cp repo-analyzer-backend:/tmp/repo-analysis ./backup/
+# Check system resources
+htop
+df -h
 ```
 
-## 📊 Monitoring and Health Checks
-
-### Built-in Health Checks
-
-Both deployment options include health checks:
-
-- **Backend**: `GET /health`
-- **Frontend**: HTTP response check
-- **Docker**: Automatic container restart on failure
-
-### Log Monitoring
-
+### 6.2 Update your application
 ```bash
-# Real-time logs
-docker-compose logs -f
-
-# Backend logs only
-docker-compose logs -f backend
-
-# Frontend logs only
-docker-compose logs -f frontend
-
-# Export logs
-docker-compose logs > app-logs.txt
+# Run update script
+/opt/repo-analyzer/deployment/update.sh
 ```
 
-## 🛡️ Security Considerations
+### 6.3 Backup and restore
+```bash
+# Backups are automatically created during updates
+ls -la /opt/repo-analyzer-backups/
 
-### Production Security Checklist
+# Manual backup
+sudo cp -r /opt/repo-analyzer /opt/repo-analyzer-backups/manual-$(date +%Y%m%d)
+```
 
-- [ ] Use HTTPS in production
-- [ ] Set up proper firewall rules
-- [ ] Regularly update base images
-- [ ] Use secrets management for sensitive data
-- [ ] Enable access logging
-- [ ] Set up monitoring and alerting
+## 🔧 Configuration Details
 
-### Network Security
-
+### Backend Configuration (`config.yaml`)
 ```yaml
-# docker-compose.yml - Internal network only
-services:
-  backend:
-    expose:
-      - "8080"  # Don't expose externally
-    # Remove "ports" section for internal only
+openai:
+  api_key: "${OPENAI_API_KEY}"
+  model: "gpt-4o-mini"
+  max_tokens_per_request: 4000
+
+rate_limiting:
+  concurrent_workers: 6
+  requests_per_minute: 500
+
+cache:
+  enabled: true
+  ttl_hours: 24
 ```
 
-## 🚀 Performance Optimization
+### Frontend-Backend Communication
+The deployment sets up:
 
-### Resource Allocation
+1. **Frontend** (React) runs on port 80 inside container
+2. **Backend** (Go API) runs on port 8080 inside container  
+3. **Nginx** proxy handles:
+   - `https://domain.com/` → Frontend
+   - `https://domain.com/api/` → Backend
+   - `https://domain.com/health` → Backend health
 
-```yaml
-# docker-compose.yml
-services:
-  backend:
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 2G
-        reservations:
-          cpus: '0.5'
-          memory: 500M
-```
+### SSL & Security
+- **Let's Encrypt SSL** automatically obtained and renewed
+- **HTTPS redirect** for all traffic
+- **Security headers** (HSTS, XSS protection, etc.)
+- **Rate limiting** on API endpoints
+- **GZIP compression** for better performance
 
-### Caching
-
-- Frontend includes intelligent analysis caching
-- Consider Redis for distributed caching in multi-instance deployments
-- Use CDN for static assets in production
-
-## 🐛 Troubleshooting
+## 🚨 Troubleshooting
 
 ### Common Issues
 
-1. **Port Already in Use**
-   ```bash
-   # Check what's using the port
-   lsof -i :8080
-   
-   # Change ports in docker-compose.yml
-   ports:
-     - "8081:8080"
-   ```
-
-2. **Git Clone Failures**
-   ```bash
-   # Check if git is available in container
-   docker exec repo-analyzer-backend git --version
-   
-   # Check repository URL accessibility
-   docker exec repo-analyzer-backend git clone <test-repo-url> /tmp/test
-   ```
-
-3. **Out of Memory**
-   ```bash
-   # Increase memory limits
-   docker-compose down
-   # Edit docker-compose.yml to increase memory
-   docker-compose up -d
-   ```
-
-4. **Frontend Not Loading**
-   ```bash
-   # Check frontend build
-   docker-compose logs frontend
-   
-   # Verify nginx configuration
-   docker exec repo-analyzer-frontend cat /etc/nginx/nginx.conf
-   ```
-
-### Debug Mode
-
+#### 1. Containers not starting
 ```bash
-# Run with debug logging
-docker-compose -f docker-compose.yml -f docker-compose.debug.yml up -d
+# Check logs
+docker-compose -f docker-compose.prod.yml logs
+
+# Check system resources
+free -h
+df -h
+
+# Restart services
+docker-compose -f docker-compose.prod.yml restart
 ```
 
-## 📈 Scaling
+#### 2. SSL certificate issues
+```bash
+# Check certificate status
+sudo certbot certificates
 
-### Horizontal Scaling
+# Renew certificate manually
+sudo certbot renew
 
+# Restart nginx
+docker-compose -f docker-compose.prod.yml restart nginx
+```
+
+#### 3. API connection issues
+```bash
+# Check if backend is responsive
+curl http://localhost:8080/health
+
+# Check nginx configuration
+docker-compose -f docker-compose.prod.yml exec nginx nginx -t
+
+# Check firewall
+sudo ufw status
+```
+
+#### 4. Performance issues
+```bash
+# Check system resources
+htop
+docker stats
+
+# Clear cache
+rm -rf /opt/repo-analyzer/cache/*.json
+
+# Restart with fresh containers
+docker-compose -f docker-compose.prod.yml down
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+## 📈 Performance Optimization
+
+### For Large Repositories
+1. **Increase server resources** (4GB+ RAM recommended)
+2. **Adjust worker count** in `config.yaml`:
+   ```yaml
+   rate_limiting:
+     concurrent_workers: 8  # Increase for more powerful servers
+   ```
+3. **Enable cache persistence**:
+   ```bash
+   # Cache directory is persistent across restarts
+   docker volume create repo-analyzer-cache
+   ```
+
+### For High Traffic
+1. **Scale horizontally** with load balancer
+2. **Use CDN** for frontend assets
+3. **Implement rate limiting** per user
+4. **Monitor with tools** like Grafana/Prometheus
+
+## 🔄 Updates & Maintenance
+
+### Regular Maintenance Tasks
+1. **Weekly**: Run monitoring script and check logs
+2. **Monthly**: Update system packages and restart services  
+3. **Quarterly**: Review and clean old backups
+4. **As needed**: Update application code
+
+### Maintenance Commands
+```bash
+# System updates
+sudo apt update && sudo apt upgrade -y
+
+# Docker cleanup
+docker system prune -f
+
+# Log rotation
+sudo logrotate -f /etc/logrotate.d/repo-analyzer
+
+# SSL renewal (automatic, but can be manual)
+sudo certbot renew
+```
+
+## 💡 Advanced Configuration
+
+### Custom Domain Configuration
+```nginx
+# Add to nginx.prod.conf for custom subdomain
+server {
+    listen 443 ssl http2;
+    server_name api.your-domain.com;
+    
+    location / {
+        proxy_pass http://backend;
+        # ... other proxy settings
+    }
+}
+```
+
+### Database Integration (Optional)
 ```yaml
-# docker-compose.yml
+# Add to docker-compose.prod.yml
 services:
-  backend:
-    deploy:
-      replicas: 3
-  frontend:
-    deploy:
-      replicas: 2
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: repo_analyzer
+      POSTGRES_USER: analyzer
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
 ```
 
-### Load Balancing
+## 📞 Support
 
-Add a load balancer (nginx, HAProxy, or cloud LB) in front of multiple instances.
+If you encounter issues:
+1. Check the troubleshooting section above
+2. Review application logs: `docker-compose logs -f`
+3. Ensure all environment variables are set correctly
+4. Verify DNS and SSL certificate configuration
 
-## 🎉 Success!
-
-Your Repository Analyzer should now be deployed and accessible. The system provides:
-
-- ✅ **Complete repository analysis** with GitHub URL input
-- ✅ **Authentication support** for private repositories
-- ✅ **Intelligent caching** for performance
-- ✅ **Real-time progress** indicators
-- ✅ **Comprehensive visualizations** across all tabs
-- ✅ **Production-ready deployment** with health checks
-
-For support or issues, check the application logs and refer to this troubleshooting guide.
+**Your Repository Analyzer should now be running successfully on your VPS!** 🎉

@@ -1,0 +1,14 @@
+{
+  "content_hash": "51c2a9e22d21be64c0023ed1159ed30f",
+  "timestamp": "2025-09-26T14:58:23.239049+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains migration scripts to add and remove a 'category' column in the 'solidity_signatures' table.",
+    "key_types": [
+      "ALTER TABLE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

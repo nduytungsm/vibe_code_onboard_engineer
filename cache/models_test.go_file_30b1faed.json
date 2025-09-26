@@ -1,0 +1,14 @@
+{
+  "content_hash": "338f11ab9e67f026fdfe63c172bd1c23",
+  "timestamp": "2025-09-26T14:57:14.636204+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for JSON unmarshalling of TokenID type.",
+    "key_types": [
+      "TestTokenID_UnmarshalJSON"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

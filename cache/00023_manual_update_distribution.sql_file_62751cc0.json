@@ -1,0 +1,16 @@
+{
+  "content_hash": "091a4601f7a89718ab0d8a2df14e1f79",
+  "timestamp": "2025-09-26T14:58:15.565227+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file defines a database migration to add a new permission and update roles accordingly.",
+    "key_types": [
+      "ALTER TYPE",
+      "INSERT INTO",
+      "UPDATE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

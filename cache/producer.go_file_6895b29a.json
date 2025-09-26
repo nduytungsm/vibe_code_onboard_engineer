@@ -1,0 +1,14 @@
+{
+  "content_hash": "7b099e5cd701d187cb5d6678c9918bc6",
+  "timestamp": "2025-09-26T14:58:10.6757+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Creates a new synchronous Kafka producer using the Sarama library.",
+    "key_types": [
+      "NewKafkaProducer"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

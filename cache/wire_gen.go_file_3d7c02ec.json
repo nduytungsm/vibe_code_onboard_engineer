@@ -1,0 +1,16 @@
+{
+  "content_hash": "503263fc6dc3c4b843dba3531df12f9a",
+  "timestamp": "2025-09-26T14:56:25.437175+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates dependency injection code for the quest center service using Wire.",
+    "key_types": [
+      "main",
+      "services",
+      "handlers"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

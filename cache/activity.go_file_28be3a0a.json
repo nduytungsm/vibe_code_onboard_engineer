@@ -1,0 +1,16 @@
+{
+  "content_hash": "6a2b68091857979a6ce28a4f2d371314",
+  "timestamp": "2025-09-26T14:56:47.380527+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for handling proxy activity and transaction details.",
+    "key_types": [
+      "Gas",
+      "TxToken",
+      "TokenBalanceDiff"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

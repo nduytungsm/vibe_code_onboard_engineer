@@ -1,0 +1,43 @@
+{
+  "content_hash": "7572e908d78e61f170a99bba79f1a650",
+  "timestamp": "2025-09-26T15:04:02.451584+07:00",
+  "result": {
+    "path": "internal/applications",
+    "purpose": "Responsible for defining application structures, configuration, lifecycle management, and service interfaces.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "application.go",
+      "service.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating application and service definitions in separate files for better organization and maintainability.",
+    "file_summaries": {
+      "internal/applications/application.go": {
+        "language": "Go",
+        "purpose": "Defines an application structure with configuration and lifecycle management.",
+        "key_types": [
+          "ApplicationConfig",
+          "Application",
+          "NewApplication"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/applications/service.go": {
+        "language": "Go",
+        "purpose": "Defines service interfaces and a wrapper for daemon services.",
+        "key_types": [
+          "Service",
+          "DaemonService",
+          "daemonService"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

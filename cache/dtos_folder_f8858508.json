@@ -1,0 +1,43 @@
+{
+  "content_hash": "46c8318e485f2a0f54467fd0ff9d5c38",
+  "timestamp": "2025-09-26T15:00:22.346383+07:00",
+  "result": {
+    "path": "internal/domains/bridge/handlers/dtos",
+    "purpose": "Defines data transfer objects (DTOs) for handling bridge-related requests and responses.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "requests.go",
+      "responses.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing DTOs for requests and responses separately to enhance maintainability and clarity.",
+    "file_summaries": {
+      "internal/domains/bridge/handlers/dtos/requests.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for handling bridge-related requests.",
+        "key_types": [
+          "ListProviders",
+          "GetProviderTokens",
+          "FindBestQuote"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/bridge/handlers/dtos/responses.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for handling responses related to blockchain chains, providers, tokens, and quotes.",
+        "key_types": [
+          "Chain",
+          "Provider",
+          "Token"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

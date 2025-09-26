@@ -1,0 +1,78 @@
+{
+  "content_hash": "a8d1e89c1544eed5f54e5c86865c6ae7",
+  "timestamp": "2025-09-26T15:05:31.515504+07:00",
+  "result": {
+    "path": "cmd/wallet_manager",
+    "purpose": "Responsible for managing wallet operations and providing API endpoints for wallet services.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "config.go",
+      "main.go",
+      "routes.go",
+      "wire.go",
+      "wire_gen.go"
+    ],
+    "dependencies": [
+      "Google Wire"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for managing components and services.",
+    "file_summaries": {
+      "cmd/wallet_manager/config.go": {
+        "language": "Go",
+        "purpose": "Defines the configuration schema for the wallet manager application.",
+        "key_types": [
+          "configSchema"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "cmd/wallet_manager/main.go": {
+        "language": "Go",
+        "purpose": "Initializes and starts the wallet manager application.",
+        "key_types": [
+          "main"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "cmd/wallet_manager/routes.go": {
+        "language": "Go",
+        "purpose": "Defines route groups for public and private API endpoints in a wallet management service.",
+        "key_types": [
+          "NewPrivateGroup",
+          "NewPublicGroup",
+          "PublicGroup"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "cmd/wallet_manager/wire.go": {
+        "language": "Go",
+        "purpose": "This file sets up dependency injection for the wallet manager application using Google Wire.",
+        "key_types": [
+          "wireWalletManager",
+          "provideHttpServer",
+          "provideServices"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "cmd/wallet_manager/wire_gen.go": {
+        "language": "Go",
+        "purpose": "Generates dependency injection code for the wallet manager application.",
+        "key_types": [
+          "wireWalletManager"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

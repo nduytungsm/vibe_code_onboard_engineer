@@ -1,0 +1,43 @@
+{
+  "content_hash": "eae6c7736ee9a30ab100b1b2fec3016a",
+  "timestamp": "2025-09-26T15:05:49.385203+07:00",
+  "result": {
+    "path": "pkg/redis",
+    "purpose": "This folder/module is responsible for providing a Redis client and instance implementation for connecting to and interacting with a Redis database.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "client.go",
+      "instance.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating Redis client and instance functionalities in separate files for better organization and maintainability.",
+    "file_summaries": {
+      "pkg/redis/client.go": {
+        "language": "Go",
+        "purpose": "This file defines a Redis client configuration and creation logic for connecting to a Redis database.",
+        "key_types": [
+          "Redis",
+          "MakeRedisClient",
+          "createClient"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/redis/instance.go": {
+        "language": "Go",
+        "purpose": "This file provides a Redis instance implementation for getting and setting key-value pairs in a Redis database.",
+        "key_types": [
+          "RedisInstance",
+          "redisInstance",
+          "NewRedisInstance"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

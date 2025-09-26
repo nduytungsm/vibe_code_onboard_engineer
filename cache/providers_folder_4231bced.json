@@ -1,0 +1,43 @@
+{
+  "content_hash": "dcf07269135a8c1bd5d0a7fcf6ec1ee6",
+  "timestamp": "2025-09-26T15:04:45.392164+07:00",
+  "result": {
+    "path": "internal/domains/bridge/services/providers",
+    "purpose": "Responsible for defining provider interfaces and configurations for bridge services in a blockchain context.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "provider.go",
+      "relay.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating provider-related functionalities for bridge services.",
+    "file_summaries": {
+      "internal/domains/bridge/services/providers/provider.go": {
+        "language": "Go",
+        "purpose": "Defines the Provider interface and configuration for bridge services in a blockchain context.",
+        "key_types": [
+          "Provider interface",
+          "SupportedProviderCfg struct",
+          "Config struct"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/bridge/services/providers/relay.go": {
+        "language": "Go",
+        "purpose": "Defines a Relay provider for handling bridge operations in a wallet service.",
+        "key_types": [
+          "Relay",
+          "NewRelayProvider",
+          "wrapErr"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

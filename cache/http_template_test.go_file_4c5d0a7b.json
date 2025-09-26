@@ -1,0 +1,14 @@
+{
+  "content_hash": "13eec7ae4ddd0179c7ce69b6fe5daba9",
+  "timestamp": "2025-09-26T14:58:27.459583+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Unit tests for parsing and executing an HTML template.",
+    "key_types": [
+      "Test_HttpTemplateParseText"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

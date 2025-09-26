@@ -1,0 +1,16 @@
+{
+  "content_hash": "d4bb698aa66f12d02deb97fe863499de",
+  "timestamp": "2025-09-26T14:57:05.989254+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines operation actions for quest management in an enum-like structure.",
+    "key_types": [
+      "OpAction",
+      "ActionFromString",
+      "Scan"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

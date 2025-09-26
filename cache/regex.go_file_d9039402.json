@@ -1,0 +1,14 @@
+{
+  "content_hash": "c16083f31eb700c9f54330ac39116386",
+  "timestamp": "2025-09-26T14:57:50.521154+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines regular expressions for parsing SIWE (Sign-In with Ethereum) messages.",
+    "key_types": [
+      "regexp.MustCompile"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

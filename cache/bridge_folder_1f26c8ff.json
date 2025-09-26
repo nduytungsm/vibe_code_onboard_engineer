@@ -1,0 +1,41 @@
+{
+  "content_hash": "9a30051737ca5dcfead72a3a7750ba67",
+  "timestamp": "2025-09-26T15:02:07.396533+07:00",
+  "result": {
+    "path": "internal/enums/bridge",
+    "purpose": "Defines enumerations related to trade types in a bridge context and provides unit tests for them.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "trade_type.go",
+      "trade_type_test.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating related enumerations and their tests within a dedicated directory.",
+    "file_summaries": {
+      "internal/enums/bridge/trade_type.go": {
+        "language": "Go",
+        "purpose": "Defines an enumeration for trade types in a bridge context.",
+        "key_types": [
+          "TradeType",
+          "TradeTypeFromStr",
+          "IsValid"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/enums/bridge/trade_type_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for unmarshalling TradeType from JSON.",
+        "key_types": [
+          "TestTradeType_UnmarshalJSON"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "content_hash": "71a325a4eb80ac5848225c5167b6da4b",
+  "timestamp": "2025-09-26T14:57:55.82079+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements middleware for tracking task processing metrics using Prometheus.",
+    "key_types": [
+      "createMetricsMiddleware"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

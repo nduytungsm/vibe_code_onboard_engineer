@@ -1,0 +1,16 @@
+{
+  "content_hash": "3f77d5cb60ac732fa244e3d57c0da1f5",
+  "timestamp": "2025-09-26T14:58:25.106052+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines database schema for notifications and their whitelists in version 3.",
+    "key_types": [
+      "CREATE TABLE v3_notifications",
+      "CREATE TABLE v3_notification_whitelists",
+      "CREATE INDEX"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

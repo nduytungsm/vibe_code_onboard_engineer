@@ -1,0 +1,14 @@
+{
+  "content_hash": "73aa991f3aa4883c769fd05620d9115f",
+  "timestamp": "2025-09-26T14:56:33.58358+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a Paging struct for handling pagination parameters in requests.",
+    "key_types": [
+      "Paging"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

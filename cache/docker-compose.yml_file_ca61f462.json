@@ -1,0 +1,16 @@
+{
+  "content_hash": "70884ea3644b984b000a2a22854fec47",
+  "timestamp": "2025-09-26T14:56:24.042188+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines a multi-container Docker application with PostgreSQL, Redis, Kafka, and a Kafka console.",
+    "key_types": [
+      "services",
+      "environment variables",
+      "ports"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

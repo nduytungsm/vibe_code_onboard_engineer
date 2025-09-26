@@ -1,0 +1,16 @@
+{
+  "content_hash": "1f1f198fb57e701d2e8fa884c6c5cb51",
+  "timestamp": "2025-09-26T14:57:59.276996+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for Redis cache implementation.",
+    "key_types": [
+      "TestRedisCache",
+      "TestRedisCacheBatch",
+      "NewRedisInstance"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

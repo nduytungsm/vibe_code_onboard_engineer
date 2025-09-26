@@ -1,0 +1,43 @@
+{
+  "content_hash": "26f115169b43b6d16283848681ef59e6",
+  "timestamp": "2025-09-26T15:01:02.871966+07:00",
+  "result": {
+    "path": "internal/infras/x",
+    "purpose": "Responsible for defining data structures and services related to user functionalities on a social media platform.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "models.go",
+      "x_svc.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture pattern, focusing on modularity and separation of concerns.",
+    "file_summaries": {
+      "internal/infras/x/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures for API responses including listings, errors, and pagination.",
+        "key_types": [
+          "ListingResponse",
+          "LikedPost",
+          "APIError"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/infras/x/x_svc.go": {
+        "language": "Go",
+        "purpose": "Defines a service for interacting with user-related functionalities on a social media platform.",
+        "key_types": [
+          "XServiceConfig",
+          "UserSession",
+          "XService"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

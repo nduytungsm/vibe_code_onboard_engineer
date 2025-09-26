@@ -1,0 +1,16 @@
+{
+  "content_hash": "d1665cad88462a6d5261fea0412979a9",
+  "timestamp": "2025-09-26T14:57:40.988412+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a contact service for managing layout contacts and widget items.",
+    "key_types": [
+      "Contact interface",
+      "contact struct",
+      "NewContactService function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

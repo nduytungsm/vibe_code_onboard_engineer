@@ -1,0 +1,67 @@
+{
+  "content_hash": "913b8751e6ce0a548f81202012b04fa8",
+  "timestamp": "2025-09-26T14:58:47.454884+07:00",
+  "result": {
+    "path": "pkg/types",
+    "purpose": "This folder/module is responsible for defining various types used throughout the application, including string enumerations, wrapped addresses, large integers, and non-empty strings.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "string-enums.go",
+      "wrapped-address.go",
+      "wrapped-big.go",
+      "wrapped-string.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating type definitions and related functionalities in separate files for clarity and maintainability.",
+    "file_summaries": {
+      "pkg/types/string-enums.go": {
+        "language": "Go",
+        "purpose": "Defines a StringEnum interface for string enumeration types.",
+        "key_types": [
+          "StringEnum"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "pkg/types/wrapped-address.go": {
+        "language": "Go",
+        "purpose": "Defines a wrapped address type for Ethereum and Solana addresses with validation and serialization methods.",
+        "key_types": [
+          "WAddress",
+          "IsValidSolanaAddress",
+          "WAddressFromStr"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/types/wrapped-big.go": {
+        "language": "Go",
+        "purpose": "Defines a BigInt type for handling large integers with various base conversions.",
+        "key_types": [
+          "BigInt",
+          "BigIntFromStr",
+          "WrapBigInt"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "pkg/types/wrapped-string.go": {
+        "language": "Go",
+        "purpose": "Defines a NonEmptyStr type that ensures a string is non-empty and provides JSON marshaling/unmarshaling.",
+        "key_types": [
+          "NonEmptyStr",
+          "NewNonEmptyStr",
+          "Value"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}

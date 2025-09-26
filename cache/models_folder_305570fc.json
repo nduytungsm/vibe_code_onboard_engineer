@@ -1,0 +1,153 @@
+{
+  "content_hash": "c3e6d8677d98d2a71835c464cdee8cc0",
+  "timestamp": "2025-09-26T15:07:32.852823+07:00",
+  "result": {
+    "path": "internal/domains/proxy/models",
+    "purpose": "Defines data models and structures for handling various aspects of proxy services, including activity, balances, configurations, and decentralized applications.",
+    "languages": {
+      "Go": 10
+    },
+    "key_modules": [
+      "activity.go",
+      "balance.go",
+      "coingecko.go",
+      "common.go",
+      "config.go",
+      "dapp.go",
+      "fiat.go",
+      "nft.go",
+      "profile.go",
+      "simulate.go",
+      "token.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing related data models into separate files for clarity and maintainability.",
+    "file_summaries": {
+      "internal/domains/proxy/models/activity.go": {
+        "language": "Go",
+        "purpose": "Defines data models for handling proxy activity and transaction details.",
+        "key_types": [
+          "Gas",
+          "TxToken",
+          "TokenBalanceDiff"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/models/balance.go": {
+        "language": "Go",
+        "purpose": "Defines data models for managing ERC20 and NFT allocations in a proxy service.",
+        "key_types": [
+          "Erc20Allocation",
+          "NftAllocation",
+          "PortfolioTokenItem"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/models/coingecko.go": {
+        "language": "Go",
+        "purpose": "Defines a model for managing Coingecko platform mappings and native tokens.",
+        "key_types": [
+          "CoingeckoPlatforms",
+          "NewCoingeckoPlatforms",
+          "Add"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/models/common.go": {
+        "language": "Go",
+        "purpose": "Defines user cursor management for pagination in a proxy service.",
+        "key_types": [
+          "Entities",
+          "UserCursor",
+          "FindUserCursor"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/models/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration models for blockchain proxy settings.",
+        "key_types": [
+          "ChainCfg",
+          "TokenCfg",
+          "ChainProvider"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/models/dapp.go": {
+        "language": "Go",
+        "purpose": "Defines data models for decentralized application (DApp) scanning results.",
+        "key_types": [
+          "DAppScanResult",
+          "DAppSite",
+          "ScanStatus"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/proxy/models/fiat.go": {
+        "language": "Go",
+        "purpose": "Defines the TokenFiatInfo struct for handling fiat token information.",
+        "key_types": [
+          "TokenFiatInfo"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/proxy/models/nft.go": {
+        "language": "Go",
+        "purpose": "Defines the CollectionDetail struct for NFT collection data.",
+        "key_types": [
+          "CollectionDetail"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/proxy/models/profile.go": {
+        "language": "go",
+        "purpose": "Defines a model for checking the existence of a profile based on an address.",
+        "key_types": [
+          "ProfileExistence"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/domains/proxy/models/simulate.go": {
+        "language": "Go",
+        "purpose": "Defines simulation-related RPC methods and their statuses for Ethereum transactions.",
+        "key_types": [
+          "SimulateRPCMethod",
+          "SimulationStatus"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/models/token.go": {
+        "language": "Go",
+        "purpose": "Defines token models and related types for a proxy service.",
+        "key_types": [
+          "Token",
+          "InternalToken",
+          "TokenPlatformSource"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "content_hash": "c644208adc524a861db273706b7932ee",
+  "timestamp": "2025-09-26T14:59:31.485168+07:00",
+  "result": {
+    "path": "pkg/storages",
+    "purpose": "This folder/module is responsible for managing database connections and configurations, specifically for PostgreSQL.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "postgre_sql.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on database storage solutions with a clear separation of configuration and initialization logic.",
+    "file_summaries": {
+      "pkg/storages/postgre_sql.go": {
+        "language": "Go",
+        "purpose": "This file provides a configuration and initialization function for connecting to a PostgreSQL database using GORM.",
+        "key_types": [
+          "PostgresConfig",
+          "NewPostgreSQL"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

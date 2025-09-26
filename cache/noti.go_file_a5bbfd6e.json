@@ -1,0 +1,16 @@
+{
+  "content_hash": "a7dd2c76804ee613fb1825adbc103fec",
+  "timestamp": "2025-09-26T14:56:39.315947+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a repository interface and implementation for managing notifications and their associated data.",
+    "key_types": [
+      "NotiRepo",
+      "notiRepo",
+      "NewNotiRepo"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

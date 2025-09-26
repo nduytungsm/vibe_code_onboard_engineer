@@ -1,0 +1,109 @@
+{
+  "content_hash": "468b825e2987b84099f1d0cc48d69e20",
+  "timestamp": "2025-09-26T14:58:55.863788+07:00",
+  "result": {
+    "path": "internal/services",
+    "purpose": "Responsible for handling various services related to user wallets, quest management, game data operations, and reward distribution in a gaming context.",
+    "languages": {
+      "Go": 7
+    },
+    "key_modules": [
+      "check_in_wallet.go",
+      "definitions.go",
+      "game_data.go",
+      "restful.go",
+      "reward.go",
+      "reward_distributor.go",
+      "task_monitor.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture pattern, focusing on modular services that handle specific functionalities within the gaming ecosystem.",
+    "file_summaries": {
+      "internal/services/check_in_wallet.go": {
+        "language": "Go",
+        "purpose": "Handles check-in functionality for user wallets in a quest system.",
+        "key_types": [
+          "CheckInWallet",
+          "checkInWallet",
+          "CheckInWalletStreak"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/definitions.go": {
+        "language": "Go",
+        "purpose": "Defines error constants related to quest management in a service.",
+        "key_types": [
+          "ErrCannotFindQuests",
+          "ErrCannotFindQuestRewards",
+          "ErrUserHasNotTakenQuest"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "internal/services/game_data.go": {
+        "language": "Go",
+        "purpose": "Handles game data queries and operations for various projects in a gaming service.",
+        "key_types": [
+          "checkInQuery",
+          "registerQuery",
+          "findAtiaPrayQuery"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/restful.go": {
+        "language": "Go",
+        "purpose": "Defines a RESTful service with HTTP and metrics server integration.",
+        "key_types": [
+          "RestfulService",
+          "restfulService",
+          "RestfulConfig"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/reward.go": {
+        "language": "Go",
+        "purpose": "Provides a service for managing reward signatures in a blockchain context.",
+        "key_types": [
+          "RewardService",
+          "RewardConfig",
+          "rewardService"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/reward_distributor.go": {
+        "language": "Go",
+        "purpose": "Manages the reward distribution service using an asynchronous task server.",
+        "key_types": [
+          "rewardDistributorService",
+          "NewRewardDistributorService",
+          "Start",
+          "Stop"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      },
+      "internal/services/task_monitor.go": {
+        "language": "Go",
+        "purpose": "Implements a task monitoring service that manages an HTTP server.",
+        "key_types": [
+          "TaskMonitorService",
+          "taskMonitor",
+          "NewTaskMonitor"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
+      }
+    }
+  }
+}

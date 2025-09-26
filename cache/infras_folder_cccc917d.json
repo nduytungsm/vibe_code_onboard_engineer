@@ -1,0 +1,43 @@
+{
+  "content_hash": "9be177ab30af397ab20450cd99c91f7f",
+  "timestamp": "2025-09-26T15:03:42.189948+07:00",
+  "result": {
+    "path": "mocks/infras",
+    "purpose": "This folder contains mock implementations of various interfaces for testing purposes.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "kafka_batch_consumer.go",
+      "skynet_client.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on providing mock implementations for external services to facilitate testing.",
+    "file_summaries": {
+      "mocks/infras/kafka_batch_consumer.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock implementation of a Kafka batch consumer for testing purposes.",
+        "key_types": [
+          "KafkaBatchConsumer",
+          "Close",
+          "Commit"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      },
+      "mocks/infras/skynet_client.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock implementation of the SkynetClient interface for testing purposes.",
+        "key_types": [
+          "SkynetClient",
+          "GetAccountByAddress",
+          "SkynetClient_Expecter"
+        ],
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
+      }
+    }
+  }
+}
