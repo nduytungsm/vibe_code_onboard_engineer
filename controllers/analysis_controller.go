@@ -384,13 +384,18 @@ func (ac *AnalysisController) StreamAnalyzeRepository(c echo.Context) error {
 	
 	fmt.Println("✅ [STREAM] URL validation passed")
 
-	// Set up SSE headers
+	// Set up SSE headers with proxy-friendly configuration
 	fmt.Println("🔧 [STREAM] Setting up SSE headers")
 	c.Response().Header().Set("Content-Type", "text/event-stream")
-	c.Response().Header().Set("Cache-Control", "no-cache")
+	c.Response().Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
 	c.Response().Header().Set("Connection", "keep-alive")
 	c.Response().Header().Set("Access-Control-Allow-Origin", "*")
 	c.Response().Header().Set("Access-Control-Allow-Headers", "Cache-Control")
+	// Additional headers for proxy compatibility
+	c.Response().Header().Set("X-Accel-Buffering", "no") // Disable nginx buffering
+	c.Response().Header().Set("Transfer-Encoding", "chunked")
+	c.Response().Header().Set("Pragma", "no-cache")
+	c.Response().Header().Set("Expires", "0")
 	fmt.Println("✅ [STREAM] SSE headers configured")
 
 	// Create progress callback for streaming updates
@@ -414,7 +419,14 @@ func (ac *AnalysisController) StreamAnalyzeRepository(c echo.Context) error {
 		}
 		
 		fmt.Printf("📤 [STREAM] Sending event: %s\n", string(eventJSON))
+		
+		// Send the event with proper SSE format
 		fmt.Fprintf(c.Response(), "data: %s\n\n", string(eventJSON))
+		
+		// Force flush to ensure immediate delivery through proxies
+		if flusher, ok := c.Response().Writer.(http.Flusher); ok {
+			flusher.Flush()
+		}
 		c.Response().Flush()
 	})
 
@@ -521,6 +533,13 @@ func (ac *AnalysisController) StreamAnalyzeRepository(c echo.Context) error {
 	// Send completion event with full results
 	fmt.Println("🎉 [STREAM] Sending completion event")
 	progressCallback("complete", "🎉 Analysis complete!", "Repository analysis finished successfully", 100, results)
+	
+	// Send final stream termination message for proxy compatibility
+	fmt.Fprintf(c.Response(), "event: close\ndata: {\"type\":\"close\",\"message\":\"Stream completed\"}\n\n")
+	if flusher, ok := c.Response().Writer.(http.Flusher); ok {
+		flusher.Flush()
+	}
+	c.Response().Flush()
 	
 	fmt.Println("✅ [STREAM] StreamAnalyzeRepository completed")
 	return nil

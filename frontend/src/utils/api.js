@@ -81,8 +81,15 @@ export const repositoryAPI = {
       }
     }, 35 * 60 * 1000); // 35 minute timeout
 
+    // Check if we're on Vercel and may need direct backend connection
+    const isVercel = window.location.hostname.includes('vercel.app') || 
+                     window.location.hostname.includes('vercel.io');
+    const streamUrl = `${API_BASE_URL}/analyze/stream`; // Always try proxy first
+      
+    console.log(`🌐 Using streaming URL: ${streamUrl} (Vercel detected: ${isVercel})`);
+    
     // Use fetch with streaming response for SSE
-    fetch(`${API_BASE_URL}/analyze/stream`, {
+    fetch(streamUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -107,6 +114,25 @@ export const repositoryAPI = {
 
         const decoder = new TextDecoder();
         let buffer = "";
+        let lastDataTime = Date.now();
+        let heartbeatTimeout;
+
+        // Set up heartbeat detection for proxy buffering issues
+        const checkHeartbeat = () => {
+          const now = Date.now();
+          if (now - lastDataTime > 30000) { // 30 seconds without data
+            console.warn("⚠️ No data received for 30 seconds - possible proxy buffering");
+            clearTimeout(heartbeatTimeout);
+            if (!isCompleted) {
+              isCompleted = true;
+              onError?.("Stream timeout - possible proxy buffering issue");
+            }
+          } else {
+            heartbeatTimeout = setTimeout(checkHeartbeat, 5000);
+          }
+        };
+        
+        heartbeatTimeout = setTimeout(checkHeartbeat, 5000);
 
         const readStream = () => {
           reader
@@ -115,6 +141,7 @@ export const repositoryAPI = {
               if (done) {
                 console.log("📡 Stream completed by server");
                 clearTimeout(timeoutId);
+                clearTimeout(heartbeatTimeout);
 
                 // If we haven't received a completion event but have good data, use it
                 if (
@@ -136,6 +163,7 @@ export const repositoryAPI = {
 
               // Decode the chunk and add to buffer
               buffer += decoder.decode(value, { stream: true });
+              lastDataTime = Date.now(); // Reset timeout counter
 
               // Process complete messages
               const messages = buffer.split("\n\n");
@@ -187,6 +215,7 @@ export const repositoryAPI = {
                       case "complete":
                         console.log("🎉 Analysis completed successfully");
                         clearTimeout(timeoutId);
+                        clearTimeout(heartbeatTimeout);
                         isCompleted = true;
                         onComplete?.(data.data);
                         return; // Stop reading
@@ -196,6 +225,7 @@ export const repositoryAPI = {
                           data.error || data.message
                         );
                         clearTimeout(timeoutId);
+                        clearTimeout(heartbeatTimeout);
                         isCompleted = true;
                         onError?.(data.error || data.message);
                         return; // Stop reading
@@ -205,6 +235,7 @@ export const repositoryAPI = {
                   } catch (error) {
                     console.error("Error parsing SSE data:", error, eventData);
                     clearTimeout(timeoutId);
+                    clearTimeout(heartbeatTimeout);
                     isCompleted = true;
                     onError?.("Failed to parse server response");
                     return;
@@ -218,6 +249,7 @@ export const repositoryAPI = {
             .catch((error) => {
               console.error("Error reading stream:", error);
               clearTimeout(timeoutId);
+              clearTimeout(heartbeatTimeout);
               if (!isCompleted) {
                 isCompleted = true;
                 onError?.("Stream reading error: " + error.message);
@@ -236,6 +268,7 @@ export const repositoryAPI = {
       .catch((error) => {
         console.error("Failed to initiate streaming analysis:", error);
         clearTimeout(timeoutId);
+        clearTimeout(heartbeatTimeout);
         if (!isCompleted) {
           isCompleted = true;
           onError?.(error.message);
