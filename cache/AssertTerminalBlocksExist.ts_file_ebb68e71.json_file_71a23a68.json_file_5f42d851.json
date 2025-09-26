@@ -1,0 +1,32 @@
+{
+  "content_hash": "708f5b28dce09b2a6b2e2ba413e94e0e",
+  "timestamp": "2025-09-26T08:31:48.276565+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file contains functions to assert the existence of terminal successors and predecessors in a high-level intermediate representation (HIR) of a compiler.",
+    "key_types": [
+      "HIRFunction",
+      "CompilerError",
+      "GeneratedSource"
+    ],
+    "functions": [
+      "assertTerminalSuccessorsExist",
+      "assertTerminalPredsExist"
+    ],
+    "imports": [
+      "CompilerError",
+      "GeneratedSource",
+      "HIRFunction",
+      "printTerminal",
+      "eachTerminalSuccessor",
+      "mapTerminalSuccessors"
+    ],
+    "side_effects": [
+      "Throws CompilerError if terminal successors or predecessors do not exist."
+    ],
+    "risks": [
+      "Potential for runtime errors if the assumptions about block existence are violated."
+    ],
+    "complexity": "medium"
+  }
+}

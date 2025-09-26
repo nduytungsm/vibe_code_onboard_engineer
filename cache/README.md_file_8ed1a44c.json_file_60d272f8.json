@@ -1,0 +1,18 @@
+{
+  "content_hash": "30a18ae113c63225f6a3a22564927d28",
+  "timestamp": "2025-09-26T08:41:13.477824+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for Action Mailbox, which routes incoming emails to controller-like mailboxes for processing in Rails.",
+    "key_types": [
+      "InboundEmail"
+    ],
+    "functions": [],
+    "imports": [],
+    "side_effects": [
+      "Storage of original email on cloud storage",
+      "Lifecycle tracking of emails"
+    ],
+    "complexity": "low"
+  }
+}

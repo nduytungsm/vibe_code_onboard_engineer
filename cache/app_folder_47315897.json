@@ -1,6 +1,6 @@
 {
-  "content_hash": "bbae42a0926bae55ab4308281800f390",
-  "timestamp": "2025-09-26T07:41:29.40083+07:00",
+  "content_hash": "df8576a313248fc57a2e38cafd6855ea",
+  "timestamp": "2025-09-26T08:36:08.002787+07:00",
   "result": {
     "path": "cmd/app",
     "purpose": "This folder/module is responsible for setting up and running the main application, including an HTTP server and a metrics server.",
@@ -20,16 +20,16 @@
       "github.com/labstack/echo/v4",
       "github.com/labstack/echo/v4/middleware",
       "github.com/rs/zerolog/log",
-      "github.com/axieinfinity/ronin-wallet-proxy/config",
-      "github.com/axieinfinity/ronin-wallet-proxy/middleware",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
-      "github.com/axieinfinity/ronin-wallet-proxy/routes"
+      "github.com/axieinfinity/ronin-wallet-manager/config",
+      "github.com/axieinfinity/ronin-wallet-manager/middleware",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-manager/routes"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where the main application logic is encapsulated in a single entry point (main.go) that initializes and manages various components like HTTP and metrics servers.",
+    "architecture": "The folder follows a modular architecture pattern, focusing on separation of concerns with distinct responsibilities for handling HTTP requests, metrics, and middleware integration.",
     "file_summaries": {
       "cmd/app/main.go": {
         "language": "Go",
-        "purpose": "This file sets up an HTTP server and a metrics server, handling graceful shutdown and logging.",
+        "purpose": "This file sets up an HTTP server and a metrics server, handling graceful shutdown and middleware integration.",
         "key_types": [
           "context.Context",
           "sync.WaitGroup",
@@ -59,14 +59,14 @@
           "github.com/labstack/echo/v4",
           "github.com/labstack/echo/v4/middleware",
           "github.com/rs/zerolog/log",
-          "github.com/axieinfinity/ronin-wallet-proxy/config",
-          "github.com/axieinfinity/ronin-wallet-proxy/middleware",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-proxy/routes"
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/middleware",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-manager/routes"
         ],
         "side_effects": [
-          "Starts HTTP server and metrics server",
-          "Handles OS interrupt signals for graceful shutdown"
+          "Initializes Sentry for error tracking if enabled",
+          "Starts HTTP and metrics servers"
         ],
         "risks": [
           "Potential exposure of sensitive information in logs if not properly configured",

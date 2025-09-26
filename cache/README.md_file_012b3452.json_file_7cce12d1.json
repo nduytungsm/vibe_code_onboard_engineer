@@ -1,0 +1,12 @@
+{
+  "content_hash": "feff2d990ce0b89ddb4c9a3300bb547a",
+  "timestamp": "2025-09-26T08:39:36.007761+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for HCL extensions and their features",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

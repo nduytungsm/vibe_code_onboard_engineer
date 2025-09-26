@@ -1,0 +1,27 @@
+{
+  "content_hash": "74b346f39390477ed8146197ccaac7d8",
+  "timestamp": "2025-09-26T08:37:11.147365+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines a smart contract for managing land plots, including events for admin changes, approvals, and minting.",
+    "key_types": [
+      "constructor",
+      "event",
+      "function"
+    ],
+    "functions": [
+      "addMinters",
+      "admin",
+      "approve",
+      "balanceOf",
+      "batchMint",
+      "changeAdmin",
+      "getEstateData",
+      "isApprovedForAll",
+      "isMinter",
+      "landOfOwner"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

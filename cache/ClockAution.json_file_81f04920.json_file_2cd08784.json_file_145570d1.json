@@ -1,0 +1,32 @@
+{
+  "content_hash": "1059a26adde09e144f6e060e5b310b96",
+  "timestamp": "2025-09-26T08:33:47.2084+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines a smart contract for managing auctions with events for administrative actions and auction lifecycle.",
+    "key_types": [
+      "address",
+      "uint256",
+      "bytes"
+    ],
+    "functions": [
+      "addOperators",
+      "admin",
+      "auctions",
+      "batchCreateAuctions",
+      "cancelAuction",
+      "changeAdmin",
+      "completeInitilization",
+      "createAuction"
+    ],
+    "imports": [],
+    "side_effects": [
+      "State changes in the contract's storage",
+      "Emitting events for auction lifecycle"
+    ],
+    "risks": [
+      "Potential for unauthorized access if admin functions are not properly secured"
+    ],
+    "complexity": "medium"
+  }
+}

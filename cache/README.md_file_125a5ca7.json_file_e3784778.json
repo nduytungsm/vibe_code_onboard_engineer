@@ -1,0 +1,28 @@
+{
+  "content_hash": "6d93ea95f6870d31e32732e61608bbbf",
+  "timestamp": "2025-09-26T08:39:53.776815+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the Ronin Wallet proxy, detailing its functionality and usage.",
+    "key_types": [],
+    "functions": [
+      "Query account balance and erc20 token balances",
+      "Query owned NFT collections",
+      "Query owned NFT items belonging to a collection",
+      "Query NFT item detail with metadata",
+      "Query native token transfer transactions (for Ronin network only)",
+      "Query recent transactions made by a wallet",
+      "Query token transfer transactions relating to a wallet",
+      "Query transaction detail",
+      "Query gas fee suggestion",
+      "Submit RPC call"
+    ],
+    "imports": [
+      "Skynet API",
+      "Moralis",
+      "Getblock.io",
+      "Coingecko"
+    ],
+    "complexity": "low"
+  }
+}

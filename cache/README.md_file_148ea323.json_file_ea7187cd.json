@@ -1,0 +1,25 @@
+{
+  "content_hash": "a323a8914e2dc705d575e57671a752de",
+  "timestamp": "2025-09-26T08:39:52.730711+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "HCL is a toolkit for creating structured configuration languages for use with command-line tools, primarily targeted towards devops tools.",
+    "key_types": [
+      "Config",
+      "ServiceConfig",
+      "ProcessConfig"
+    ],
+    "functions": [
+      "main"
+    ],
+    "imports": [
+      "log",
+      "github.com/hashicorp/hcl/v2/hclsimple"
+    ],
+    "side_effects": [
+      "Logs an error message if configuration loading fails",
+      "Logs the loaded configuration"
+    ],
+    "complexity": "medium"
+  }
+}

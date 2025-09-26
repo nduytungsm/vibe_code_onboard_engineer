@@ -1,0 +1,31 @@
+{
+  "content_hash": "2c40ec2382a3b690e289280c338944af",
+  "timestamp": "2025-09-26T08:31:08.596032+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file defines a React component that displays information about the author, including skills and tools used.",
+    "key_types": [
+      "React.Component"
+    ],
+    "functions": [
+      "About"
+    ],
+    "imports": [
+      "React",
+      "Container",
+      "Row",
+      "Col",
+      "Particle",
+      "Github",
+      "Techstack",
+      "Aboutcard",
+      "laptopImg",
+      "Toolstack"
+    ],
+    "side_effects": [
+      "Renders UI components",
+      "Imports images and other components"
+    ],
+    "complexity": "medium"
+  }
+}

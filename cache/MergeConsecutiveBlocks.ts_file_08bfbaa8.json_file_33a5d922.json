@@ -1,0 +1,41 @@
+{
+  "content_hash": "c1e869e2826f40c665afc96be4f8a628",
+  "timestamp": "2025-09-26T08:37:40.148003+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Merges sequences of blocks in a high-level intermediate representation that will always execute consecutively.",
+    "key_types": [
+      "BlockId",
+      "Effect",
+      "GeneratedSource",
+      "HIRFunction",
+      "Instruction",
+      "Place",
+      "MergedBlocks"
+    ],
+    "functions": [
+      "mergeConsecutiveBlocks",
+      "merge",
+      "get"
+    ],
+    "imports": [
+      "CompilerError",
+      "BlockId",
+      "Effect",
+      "GeneratedSource",
+      "HIRFunction",
+      "Instruction",
+      "Place",
+      "markPredecessors",
+      "terminalFallthrough",
+      "terminalHasFallthrough"
+    ],
+    "side_effects": [
+      "Modifies the function's body by merging blocks and altering instructions."
+    ],
+    "risks": [
+      "Potential for incorrect merging of blocks if assumptions about predecessors are violated."
+    ],
+    "complexity": "high"
+  }
+}

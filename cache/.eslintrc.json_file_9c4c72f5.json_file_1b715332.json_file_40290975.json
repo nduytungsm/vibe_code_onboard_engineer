@@ -1,0 +1,14 @@
+{
+  "content_hash": "9d9ce3e93dbeb09b1ced675387d40008",
+  "timestamp": "2025-09-26T08:26:44.533764+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Configuration file for ESLint to extend Next.js core web vitals rules.",
+    "key_types": [],
+    "functions": [],
+    "imports": [
+      "next/core-web-vitals"
+    ],
+    "complexity": "low"
+  }
+}

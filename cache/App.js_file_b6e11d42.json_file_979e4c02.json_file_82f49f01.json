@@ -1,0 +1,45 @@
+{
+  "content_hash": "b7ae87c0bcbe84ce37cf18ca74f07d99",
+  "timestamp": "2025-09-26T08:31:34.566771+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file defines the main application component for a React application, handling routing and loading state.",
+    "key_types": [
+      "App",
+      "Router",
+      "Route",
+      "useState",
+      "useEffect"
+    ],
+    "functions": [
+      "App",
+      "useEffect",
+      "setTimeout",
+      "clearTimeout"
+    ],
+    "imports": [
+      "React",
+      "useState",
+      "useEffect",
+      "Preloader",
+      "Navbar",
+      "Home",
+      "About",
+      "Projects",
+      "Footer",
+      "Resume",
+      "BrowserRouter",
+      "Route",
+      "Routes",
+      "Navigate",
+      "ScrollToTop",
+      "style.css",
+      "App.css",
+      "bootstrap/dist/css/bootstrap.min.css"
+    ],
+    "side_effects": [
+      "Sets a timeout to update loading state after 1200ms"
+    ],
+    "complexity": "medium"
+  }
+}

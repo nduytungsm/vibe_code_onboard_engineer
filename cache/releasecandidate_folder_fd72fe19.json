@@ -1,6 +1,6 @@
 {
-  "content_hash": "7d60d0c7f3c1c70dbb02d98d22121713",
-  "timestamp": "2025-09-25T18:26:08.504587+07:00",
+  "content_hash": "994d4674c37dd3a619f28baf8fc6763b",
+  "timestamp": "2025-09-26T08:38:54.488706+07:00",
   "result": {
     "path": "pkg/releasecandidate",
     "purpose": "Responsible for managing feature configurations and whitelist devices for mobile wallet candidates.",
@@ -19,7 +19,7 @@
       "github.com/go-redsync/redsync/v4/redis/goredis/v9",
       "github.com/rs/zerolog/log"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, utilizing Redis for state management and providing a service interface for feature access control.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating feature management logic and state handling using Redis.",
     "file_summaries": {
       "pkg/releasecandidate/init.go": {
         "language": "Go",
@@ -44,7 +44,7 @@
       },
       "pkg/releasecandidate/service.go": {
         "language": "Go",
-        "purpose": "Manages feature access for mobile wallet candidates using a whitelist and Redis for state management.",
+        "purpose": "Manages feature access for mobile wallet candidates using Redis for state management.",
         "key_types": [
           "service",
           "models.CheckAllowFeatureRequest",
@@ -78,12 +78,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/device"
         ],
         "side_effects": [
-          "Modifies Redis state for allowed devices and feature configurations.",
+          "Modifies Redis state for feature access and whitelists.",
           "Logs information and errors during execution."
         ],
         "risks": [
-          "Potential race conditions when accessing shared resources in Redis.",
-          "Improper handling of Redis errors may lead to incorrect feature access decisions."
+          "Potential race conditions when accessing shared resources.",
+          "Improper handling of Redis errors could lead to incorrect feature access."
         ],
         "complexity": "medium"
       }

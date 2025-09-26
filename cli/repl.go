@@ -14,6 +14,7 @@ import (
 	"repo-explanation/internal/commands"
 	"repo-explanation/internal/openai"
 	"repo-explanation/internal/pipeline"
+	"repo-explanation/internal/secrets"
 )
 
 type REPL struct {
@@ -43,6 +44,7 @@ func (r *REPL) Start() {
 
 	// Then start command loop
 	fmt.Println("Type 'try me' to test, '/end' to exit")
+	fmt.Println("Secret extraction: 'secrets [path]' (path optional if already set)")
 	fmt.Println("Onboarding commands: 'list services', 'set config'")
 	fmt.Print("> ")
 
@@ -390,22 +392,38 @@ func (r *REPL) generateConfidenceBar(confidence float64) string {
 }
 
 func (r *REPL) processCommand(input string) {
-	switch input {
-	case "try me":
-		fmt.Println("i am here")
+	// Parse command and arguments
+	parts := strings.Fields(input)
+	if len(parts) == 0 {
+		return
+	}
+	
+	command := parts[0]
+	args := parts[1:]
+	
+	switch command {
+	case "try":
+		if len(parts) > 1 && parts[1] == "me" {
+			fmt.Println("i am here")
+		}
 	case "/end":
 		fmt.Println("Goodbye! 👋")
 		r.running = false
-	case "":
-		// Do nothing for empty input
-	case "list services", "services":
+	case "secrets":
+		r.handleSecretsCommand(args)
+	case "list":
+		if len(parts) > 1 && parts[1] == "services" {
+			r.handleOnboardingCommand(input)
+		}
+	case "services":
 		r.handleOnboardingCommand(input)
 	case "set config", "config":
 		r.handleOnboardingCommand(input)
 	default:
 		fmt.Println("unsupported function")
+		fmt.Println("Available commands: 'secrets [path]', 'try me', '/end'")
 		if r.analysisResult != nil {
-			fmt.Println("Available onboarding commands: 'list services', 'set config'")
+			fmt.Println("Additional onboarding commands: 'list services', 'set config'")
 		}
 	}
 }
@@ -424,4 +442,110 @@ func (r *REPL) handleOnboardingCommand(command string) {
 	if err := r.onboardingCmds.ExecuteCommand(command); err != nil {
 		fmt.Println(err)
 	}
+}
+
+func (r *REPL) handleSecretsCommand(args []string) {
+	var folderPath string
+	
+	if len(args) == 0 {
+		// No path provided, use current target path if set
+		if r.pathSet && r.targetPath != "" {
+			folderPath = r.targetPath
+		} else {
+			fmt.Println("❌ Please provide a folder path. Usage: secrets /path/to/project")
+			return
+		}
+	} else {
+		// Use provided path
+		folderPath = strings.Join(args, " ")
+	}
+	
+	fmt.Printf("🔍 Extracting secrets from: %s\n", folderPath)
+	
+	// Create secret extractor
+	extractor := secrets.NewSecretExtractor(folderPath)
+	
+	// Extract secrets from configuration files
+	projectSecrets, err := extractor.ExtractSecrets()
+	if err != nil {
+		fmt.Printf("❌ Secret extraction failed: %v\n", err)
+		return
+	}
+	
+	if projectSecrets == nil || projectSecrets.TotalVariables == 0 {
+		fmt.Println("✅ No configuration secrets found that need to be set.")
+		return
+	}
+	
+	// Format output
+	fmt.Println("\n" + strings.Repeat("=", 60))
+	fmt.Println("🔐 SECRET EXTRACTION RESULTS")
+	fmt.Println(strings.Repeat("=", 60))
+	
+	fmt.Printf("📂 Project Path: %s\n", folderPath)
+	fmt.Printf("📊 Project Type: %s\n", projectSecrets.ProjectType)
+	fmt.Printf("🔢 Total Variables: %d\n", projectSecrets.TotalVariables)
+	fmt.Printf("⚠️  Required Variables: %d\n", projectSecrets.RequiredCount)
+	fmt.Printf("📝 Summary: %s\n", projectSecrets.Summary)
+	fmt.Println()
+	
+	// Display Global Secrets
+	if len(projectSecrets.GlobalSecrets) > 0 {
+		fmt.Println("🌍 GLOBAL SECRETS")
+		fmt.Println(strings.Repeat("-", 40))
+		for i, secret := range projectSecrets.GlobalSecrets {
+			fmt.Printf("%d. %s\n", i+1, secret.Name)
+			fmt.Printf("   Type: %s\n", strings.ToUpper(secret.Type))
+			fmt.Printf("   Source: %s\n", secret.Source)
+			fmt.Printf("   Description: %s\n", secret.Description)
+			if secret.Example != "" {
+				fmt.Printf("   Example: %s=%s\n", secret.Name, secret.Example)
+			}
+			fmt.Println()
+		}
+	}
+	
+	// Display Service-Specific Secrets
+	if len(projectSecrets.Services) > 0 {
+		fmt.Println("⚙️  SERVICE SECRETS")
+		fmt.Println(strings.Repeat("-", 40))
+		for _, service := range projectSecrets.Services {
+			fmt.Printf("📦 Service: %s\n", service.ServiceName)
+			fmt.Printf("📁 Path: %s\n", service.ServicePath)
+			fmt.Printf("📋 Config Files: %s\n", strings.Join(service.ConfigFiles, ", "))
+			fmt.Println()
+			
+			if len(service.Variables) > 0 {
+				for i, secret := range service.Variables {
+					fmt.Printf("  %d. %s\n", i+1, secret.Name)
+					fmt.Printf("     Type: %s\n", strings.ToUpper(secret.Type))
+					fmt.Printf("     Source: %s\n", secret.Source)
+					fmt.Printf("     Description: %s\n", secret.Description)
+					if secret.Example != "" {
+						fmt.Printf("     Example: %s=%s\n", secret.Name, secret.Example)
+					}
+					fmt.Println()
+				}
+			} else {
+				fmt.Println("  ✅ No configuration variables needed for this service")
+				fmt.Println()
+			}
+		}
+	}
+	
+	// Setup Instructions
+	if projectSecrets.RequiredCount > 0 {
+		fmt.Println("🛠️  SETUP INSTRUCTIONS")
+		fmt.Println(strings.Repeat("-", 40))
+		fmt.Println("To configure this project:")
+		fmt.Println("1. Copy .env.example to .env (if available)")
+		fmt.Printf("2. Set values for the %d required environment variables shown above\n", projectSecrets.RequiredCount)
+		fmt.Println("3. Update any configuration files (config.yaml, application.properties, etc.) with your values")
+		fmt.Println("4. For API keys and secrets, refer to the respective service documentation")
+		fmt.Println("5. Ensure all services have access to their required environment variables")
+		fmt.Println()
+		fmt.Println("💡 Tip: Check each service's README or documentation for specific setup instructions.")
+	}
+	
+	fmt.Println(strings.Repeat("=", 60))
 }

@@ -17,6 +17,7 @@ import {
   ChevronDown,
   ChevronRight,
   Brain,
+  Shield,
 } from "lucide-react";
 import { repositoryAPI } from "./utils/api";
 import { Button } from "@/components/ui/button";
@@ -55,6 +56,7 @@ function App() {
     { id: "services", name: "Services", icon: Server },
     { id: "relationships", name: "Dependencies", icon: GitBranch },
     { id: "database", name: "Database", icon: Database },
+    { id: "secrets", name: "Secrets", icon: Shield },
     { id: "questions", name: "Helpful Questions", icon: Eye },
     { id: "files", name: "Files", icon: FileText },
   ];
@@ -185,6 +187,7 @@ function App() {
       services: results.services || [],
       relationships: results.relationships || [],
       databaseSchema: results.database_schema || null,
+      projectSecrets: results.project_secrets || null,
       helpfulQuestions: results.helpful_questions || [],
       fileSummaries: results.file_summaries || {},
       folderSummaries: results.folder_summaries || {},
@@ -261,19 +264,20 @@ function App() {
         }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-6 lg:w-fit" style={{ backgroundColor: "hsl(var(--slate-200))" }}>
+              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 md:grid-cols-8 lg:w-fit lg:grid-cols-none" style={{ backgroundColor: "hsl(var(--slate-200))" }}>
                 {tabs.map((tab) => (
                   <TabsTrigger
                     key={tab.id}
                     value={tab.id}
-                    className="flex items-center gap-2 data-[state=active]:text-white"
+                    className="flex items-center gap-2 data-[state=active]:text-white text-xs sm:text-sm px-2 sm:px-3 py-2 min-w-0 flex-shrink"
                     style={{
                       color: activeTab === tab.id ? "white" : "hsl(var(--slate-600))",
                       backgroundColor: activeTab === tab.id ? "hsl(var(--slate-800))" : "transparent"
                     }}
                   >
-                    <tab.icon className="h-4 w-4" />
-                    <span className="hidden sm:inline">{tab.name}</span>
+                    <tab.icon className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                    <span className="hidden sm:inline truncate">{tab.name}</span>
+                    <span className="sm:hidden truncate text-xs">{tab.name.split(' ')[0]}</span>
                   </TabsTrigger>
                 ))}
               </TabsList>
@@ -668,6 +672,9 @@ function App() {
                 </TabsContent>
                 <TabsContent value="database" className="space-y-6">
                   <DatabaseTab getAnalysisData={getAnalysisData} />
+                </TabsContent>
+                <TabsContent value="secrets" className="space-y-6">
+                  <SecretsTab getAnalysisData={getAnalysisData} />
                 </TabsContent>
                 <TabsContent value="questions" className="space-y-6">
                   <QuestionsTab getAnalysisData={getAnalysisData} />
@@ -1755,6 +1762,285 @@ function AnalysisTab({ getAnalysisData }) {
             </div>
           </CardContent>
         </Card>
+      )}
+    </div>
+  );
+}
+
+// Secrets Tab Component  
+function SecretsTab({ getAnalysisData }) {
+  const data = getAnalysisData();
+  const projectSecrets = data?.projectSecrets;
+
+  if (!projectSecrets) {
+    return (
+      <div className="space-y-6">
+        <Card className="border-0 shadow-sm" style={{ backgroundColor: "white" }}>
+          <CardContent className="pt-6">
+            <div className="text-center py-12">
+              <Shield className="h-16 w-16 mx-auto mb-4" style={{ color: "hsl(var(--slate-400))" }} />
+              <CardTitle className="text-xl mb-2" style={{ color: "hsl(var(--slate-700))" }}>
+                No Secret Variables Detected
+              </CardTitle>
+              <p className="max-w-md mx-auto text-sm" style={{ color: "hsl(var(--slate-500))" }}>
+                No environment variables or configuration secrets found. This project may not require additional configuration.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  const totalRequired = projectSecrets.required_count || 0;
+  const totalVariables = projectSecrets.total_variables || 0;
+
+  return (
+    <div className="space-y-8">
+      {/* Secrets Overview Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="border-0 shadow-sm" style={{ backgroundColor: "white" }}>
+          <CardContent className="pt-6 pb-6">
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl" style={{ backgroundColor: "hsl(var(--slate-100))" }}>
+                <Shield className="h-6 w-6" style={{ color: "hsl(var(--slate-700))" }} />
+              </div>
+              <div>
+                <div className="text-sm font-medium" style={{ color: "hsl(var(--slate-500))" }}>Total Variables</div>
+                <div className="text-2xl font-bold" style={{ color: "hsl(var(--slate-800))" }}>
+                  {totalVariables}
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-0 shadow-sm" style={{ backgroundColor: "white" }}>
+          <CardContent className="pt-6 pb-6">
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl" style={{ backgroundColor: "hsl(var(--red-100))" }}>
+                <AlertCircle className="h-6 w-6" style={{ color: "hsl(var(--red-600))" }} />
+              </div>
+              <div>
+                <div className="text-sm font-medium" style={{ color: "hsl(var(--slate-500))" }}>Required</div>
+                <div className="text-2xl font-bold" style={{ color: "hsl(var(--red-600))" }}>
+                  {totalRequired}
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-0 shadow-sm" style={{ backgroundColor: "white" }}>
+          <CardContent className="pt-6 pb-6">
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl" style={{ backgroundColor: "hsl(var(--slate-100))" }}>
+                <Server className="h-6 w-6" style={{ color: "hsl(var(--slate-700))" }} />
+              </div>
+              <div>
+                <div className="text-sm font-medium" style={{ color: "hsl(var(--slate-500))" }}>Project Type</div>
+                <div className="text-lg font-semibold" style={{ color: "hsl(var(--slate-800))" }}>
+                  {projectSecrets.project_type === "monorepo" ? "Monorepo" : "Single Service"}
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Summary */}
+      {projectSecrets.summary && (
+        <Card className="border-0 shadow-sm" style={{ backgroundColor: "white" }}>
+          <CardHeader style={{ backgroundColor: "hsl(var(--slate-50))" }}>
+            <CardTitle style={{ color: "hsl(var(--slate-800))" }}>Configuration Summary</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <p style={{ color: "hsl(var(--slate-600))" }}>{projectSecrets.summary}</p>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Global Secrets */}
+      {projectSecrets.global_secrets && projectSecrets.global_secrets.length > 0 && (
+        <Card className="border-0 shadow-sm" style={{ backgroundColor: "white" }}>
+          <CardHeader style={{ backgroundColor: "hsl(var(--slate-50))" }}>
+            <CardTitle className="flex items-center gap-3" style={{ color: "hsl(var(--slate-800))" }}>
+              <div className="p-2 rounded-lg" style={{ backgroundColor: "hsl(var(--slate-100))" }}>
+                <Shield className="h-6 w-6" style={{ color: "hsl(var(--slate-700))" }} />
+              </div>
+              Global Environment Variables
+            </CardTitle>
+            <CardDescription>
+              Project-wide configuration variables that need to be set
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <div className="space-y-4">
+              {projectSecrets.global_secrets.map((secret, index) => (
+                <SecretVariableCard key={index} secret={secret} />
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Service-specific Secrets */}
+      {projectSecrets.services && projectSecrets.services.length > 0 && (
+        <div className="space-y-6">
+          <h2 className="text-2xl font-bold" style={{ color: "hsl(var(--slate-800))" }}>Service Configuration</h2>
+          {projectSecrets.services.map((service, index) => (
+            <Card key={index} className="border-0 shadow-sm" style={{ backgroundColor: "white" }}>
+              <CardHeader style={{ backgroundColor: "hsl(var(--slate-50))" }}>
+                <CardTitle className="flex items-center gap-3" style={{ color: "hsl(var(--slate-800))" }}>
+                  <div className="p-2 rounded-lg" style={{ backgroundColor: "hsl(var(--slate-100))" }}>
+                    <Server className="h-6 w-6" style={{ color: "hsl(var(--slate-700))" }} />
+                  </div>
+                  {service.service_name}
+                </CardTitle>
+                <CardDescription>
+                  Path: {service.service_path} • Config files: {service.config_files?.join(", ") || "None"}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="pt-6">
+                {service.variables && service.variables.length > 0 ? (
+                  <div className="space-y-4">
+                    {service.variables.map((secret, secretIndex) => (
+                      <SecretVariableCard key={secretIndex} secret={secret} />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8" style={{ color: "hsl(var(--slate-500))" }}>
+                    <Shield className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                    <p>No configuration variables found for this service</p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
+
+      {/* Setup Instructions */}
+      {totalRequired > 0 && (
+        <Card className="border-0 shadow-sm" style={{ backgroundColor: "hsl(var(--blue-50))", borderColor: "hsl(var(--blue-200))" }}>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3" style={{ color: "hsl(var(--blue-800))" }}>
+              <div className="p-2 rounded-lg" style={{ backgroundColor: "hsl(var(--blue-100))" }}>
+                <Key className="h-6 w-6" style={{ color: "hsl(var(--blue-700))" }} />
+              </div>
+              Setup Instructions
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4" style={{ color: "hsl(var(--blue-800))" }}>
+              <p><strong>To run this project, you'll need to configure the following:</strong></p>
+              <ol className="list-decimal list-inside space-y-2 ml-4">
+                <li>Copy <code className="bg-blue-100 px-2 py-1 rounded">.env.example</code> to <code className="bg-blue-100 px-2 py-1 rounded">.env</code> (if available)</li>
+                <li>Set values for the {totalRequired} required environment variables shown above</li>
+                <li>Update any configuration files (config.yaml, application.properties, etc.) with your values</li>
+                <li>For API keys and secrets, refer to the respective service documentation</li>
+                <li>Ensure all services have access to their required environment variables</li>
+              </ol>
+              <p className="text-sm mt-4">
+                💡 <strong>Tip:</strong> Check each service's README or documentation for specific setup instructions and where to obtain API keys.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+    </div>
+  );
+}
+
+// Secret Variable Card Component
+function SecretVariableCard({ secret }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const getTypeColor = (type) => {
+    const colors = {
+      api_key: "hsl(var(--green-600))",
+      database_url: "hsl(var(--blue-600))",
+      secret: "hsl(var(--red-600))",
+      credential: "hsl(var(--orange-600))",
+      config: "hsl(var(--slate-600))",
+    };
+    return colors[type] || colors.config;
+  };
+
+  const getTypeBackground = (type) => {
+    const backgrounds = {
+      api_key: "hsl(var(--green-100))",
+      database_url: "hsl(var(--blue-100))",
+      secret: "hsl(var(--red-100))",
+      credential: "hsl(var(--orange-100))",
+      config: "hsl(var(--slate-100))",
+    };
+    return backgrounds[type] || backgrounds.config;
+  };
+
+  return (
+    <div className="border rounded-lg p-4" style={{ borderColor: "hsl(var(--slate-200))", backgroundColor: "hsl(var(--slate-50))" }}>
+      <div className="flex items-start justify-between">
+        <div className="flex items-start gap-3 flex-1">
+          <div className="p-2 rounded-lg" style={{ backgroundColor: getTypeBackground(secret.type) }}>
+            <Key className="h-4 w-4" style={{ color: getTypeColor(secret.type) }} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-3 mb-2">
+              <h4 className="font-mono text-lg font-semibold" style={{ color: "hsl(var(--slate-800))" }}>
+                {secret.name}
+              </h4>
+              <Badge 
+                variant="outline" 
+                style={{ 
+                  backgroundColor: getTypeBackground(secret.type),
+                  color: getTypeColor(secret.type),
+                  borderColor: getTypeColor(secret.type)
+                }}
+              >
+                {secret.type.replace('_', ' ')}
+              </Badge>
+              {secret.required && (
+                <Badge variant="destructive">Required</Badge>
+              )}
+            </div>
+            <p className="text-sm mb-2" style={{ color: "hsl(var(--slate-600))" }}>
+              {secret.description}
+            </p>
+            <div className="text-xs" style={{ color: "hsl(var(--slate-500))" }}>
+              Source: {secret.source}
+            </div>
+          </div>
+        </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="ml-2"
+        >
+          {isExpanded ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+        </Button>
+      </div>
+      
+      {isExpanded && secret.example && (
+        <div className="mt-4 pt-4 border-t" style={{ borderColor: "hsl(var(--slate-200))" }}>
+          <div className="space-y-2">
+            <div className="text-sm font-medium" style={{ color: "hsl(var(--slate-700))" }}>Example:</div>
+            <div 
+              className="font-mono text-sm p-3 rounded border"
+              style={{ 
+                backgroundColor: "hsl(var(--slate-100))",
+                borderColor: "hsl(var(--slate-300))",
+                color: "hsl(var(--slate-700))"
+              }}
+            >
+              {secret.name}={secret.example}
+            </div>
+            <div className="text-xs" style={{ color: "hsl(var(--slate-500))" }}>
+              Copy this to your .env file and replace with your actual value
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

@@ -11,6 +11,7 @@ import (
 	"repo-explanation/cli"
 	"repo-explanation/controllers"
 	"repo-explanation/internal/database"
+	"repo-explanation/internal/secrets"
 	"repo-explanation/routes"
 
 	"github.com/labstack/echo/v4"
@@ -18,7 +19,8 @@ import (
 )
 
 func main() {
-	mode := flag.String("mode", "server", "Mode to run: 'server', 'cli', or 'debug-db'")
+	mode := flag.String("mode", "server", "Mode to run: 'server', 'cli', 'secrets', or 'debug-db'")
+	path := flag.String("path", "", "Path to analyze (for secrets mode)")
 	flag.Parse()
 
 	switch *mode {
@@ -26,6 +28,8 @@ func main() {
 		runServer()
 	case "cli":
 		runCLI()
+	case "secrets":
+		runSecretsExtraction(*path)
 	case "debug-db":
 		runDebugDB()
 	default:
@@ -57,6 +61,109 @@ func runServer() {
 func runCLI() {
 	repl := cli.NewREPL()
 	repl.Start()
+}
+
+func runSecretsExtraction(projectPath string) {
+	if projectPath == "" {
+		args := flag.Args()
+		if len(args) == 0 {
+			fmt.Println("Usage: ./analyzer-api -mode=secrets -path=<folder-path>")
+			fmt.Println("   OR: ./analyzer-api -mode=secrets <folder-path>")
+			fmt.Println("Example: ./analyzer-api -mode=secrets -path=./my-project")
+			fmt.Println("Example: ./analyzer-api -mode=secrets ./my-project")
+			os.Exit(1)
+		}
+		projectPath = args[0]
+	}
+
+	fmt.Printf("🔍 Extracting secrets from: %s\n", projectPath)
+	
+	// Create secret extractor
+	extractor := secrets.NewSecretExtractor(projectPath)
+	
+	// Extract secrets from configuration files
+	projectSecrets, err := extractor.ExtractSecrets()
+	if err != nil {
+		fmt.Printf("❌ Secret extraction failed: %v\n", err)
+		os.Exit(1)
+	}
+	
+	if projectSecrets == nil || projectSecrets.TotalVariables == 0 {
+		fmt.Println("✅ No configuration secrets found that need to be set.")
+		return
+	}
+	
+	// Format output
+	fmt.Println("\n" + strings.Repeat("=", 60))
+	fmt.Println("🔐 SECRET EXTRACTION RESULTS")
+	fmt.Println(strings.Repeat("=", 60))
+	
+	fmt.Printf("📂 Project Path: %s\n", projectPath)
+	fmt.Printf("📊 Project Type: %s\n", projectSecrets.ProjectType)
+	fmt.Printf("🔢 Total Variables: %d\n", projectSecrets.TotalVariables)
+	fmt.Printf("⚠️  Required Variables: %d\n", projectSecrets.RequiredCount)
+	fmt.Printf("📝 Summary: %s\n", projectSecrets.Summary)
+	fmt.Println()
+	
+	// Display Global Secrets
+	if len(projectSecrets.GlobalSecrets) > 0 {
+		fmt.Println("🌍 GLOBAL SECRETS")
+		fmt.Println(strings.Repeat("-", 40))
+		for i, secret := range projectSecrets.GlobalSecrets {
+			fmt.Printf("%d. %s\n", i+1, secret.Name)
+			fmt.Printf("   Type: %s\n", strings.ToUpper(secret.Type))
+			fmt.Printf("   Source: %s\n", secret.Source)
+			fmt.Printf("   Description: %s\n", secret.Description)
+			if secret.Example != "" {
+				fmt.Printf("   Example: %s=%s\n", secret.Name, secret.Example)
+			}
+			fmt.Println()
+		}
+	}
+	
+	// Display Service-Specific Secrets
+	if len(projectSecrets.Services) > 0 {
+		fmt.Println("⚙️  SERVICE SECRETS")
+		fmt.Println(strings.Repeat("-", 40))
+		for _, service := range projectSecrets.Services {
+			fmt.Printf("📦 Service: %s\n", service.ServiceName)
+			fmt.Printf("📁 Path: %s\n", service.ServicePath)
+			fmt.Printf("📋 Config Files: %s\n", strings.Join(service.ConfigFiles, ", "))
+			fmt.Println()
+			
+			if len(service.Variables) > 0 {
+				for i, secret := range service.Variables {
+					fmt.Printf("  %d. %s\n", i+1, secret.Name)
+					fmt.Printf("     Type: %s\n", strings.ToUpper(secret.Type))
+					fmt.Printf("     Source: %s\n", secret.Source)
+					fmt.Printf("     Description: %s\n", secret.Description)
+					if secret.Example != "" {
+						fmt.Printf("     Example: %s=%s\n", secret.Name, secret.Example)
+					}
+					fmt.Println()
+				}
+			} else {
+				fmt.Println("  ✅ No configuration variables needed for this service")
+				fmt.Println()
+			}
+		}
+	}
+	
+	// Setup Instructions
+	if projectSecrets.RequiredCount > 0 {
+		fmt.Println("🛠️  SETUP INSTRUCTIONS")
+		fmt.Println(strings.Repeat("-", 40))
+		fmt.Println("To configure this project:")
+		fmt.Println("1. Copy .env.example to .env (if available)")
+		fmt.Printf("2. Set values for the %d required environment variables shown above\n", projectSecrets.RequiredCount)
+		fmt.Println("3. Update any configuration files (config.yaml, application.properties, etc.) with your values")
+		fmt.Println("4. For API keys and secrets, refer to the respective service documentation")
+		fmt.Println("5. Ensure all services have access to their required environment variables")
+		fmt.Println()
+		fmt.Println("💡 Tip: Check each service's README or documentation for specific setup instructions.")
+	}
+	
+	fmt.Println(strings.Repeat("=", 60))
 }
 
 func runDebugDB() {

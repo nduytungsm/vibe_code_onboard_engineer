@@ -1,0 +1,37 @@
+{
+  "content_hash": "700d82d0cda70ef4d6fbeaf577cd7c1f",
+  "timestamp": "2025-09-26T08:36:03.049183+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file defines a React component that displays a personal introduction and social media links.",
+    "key_types": [
+      "Container",
+      "Row",
+      "Col",
+      "Tilt"
+    ],
+    "functions": [
+      "Home2"
+    ],
+    "imports": [
+      "React",
+      "Container",
+      "Row",
+      "Col",
+      "myImg",
+      "Tilt",
+      "AiFillGithub",
+      "AiOutlineTwitter",
+      "AiFillInstagram",
+      "FaLinkedinIn"
+    ],
+    "side_effects": [
+      "Renders a UI component",
+      "Manipulates DOM elements"
+    ],
+    "risks": [
+      "Potential XSS if user input is not sanitized in social media links"
+    ],
+    "complexity": "medium"
+  }
+}

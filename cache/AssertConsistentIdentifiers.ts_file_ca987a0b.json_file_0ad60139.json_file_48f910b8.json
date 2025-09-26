@@ -1,0 +1,34 @@
+{
+  "content_hash": "3b43778f15f120806eff64cd7cd6f012",
+  "timestamp": "2025-09-26T08:31:44.075251+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validation pass to check that there is a 1:1 mapping between Identifier objects and IdentifierIds.",
+    "key_types": [
+      "Identifiers",
+      "Map\u003cIdentifierId, Identifier\u003e",
+      "Set\u003cIdentifierId\u003e",
+      "HIRFunction",
+      "Identifier",
+      "IdentifierId",
+      "SourceLocation"
+    ],
+    "functions": [
+      "assertConsistentIdentifiers",
+      "validate"
+    ],
+    "imports": [
+      "../CompilerError",
+      "./HIR",
+      "./PrintHIR",
+      "./visitors"
+    ],
+    "side_effects": [
+      "Throws CompilerError if invariants are violated"
+    ],
+    "risks": [
+      "Potential for runtime errors if identifiers are not consistent"
+    ],
+    "complexity": "medium"
+  }
+}

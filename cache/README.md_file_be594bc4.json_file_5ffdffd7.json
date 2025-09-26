@@ -1,0 +1,12 @@
+{
+  "content_hash": "c949deac3cb4dd719b8b388447862b96",
+  "timestamp": "2025-09-26T08:41:53.014619+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for a Golang application that analyzes code repositories.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

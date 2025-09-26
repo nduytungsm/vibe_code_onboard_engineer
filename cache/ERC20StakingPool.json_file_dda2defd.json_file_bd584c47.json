@@ -1,0 +1,35 @@
+{
+  "content_hash": "e0c2b1b07cb6c9b0bd58645ad3f04f9b",
+  "timestamp": "2025-09-26T08:34:49.552673+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines events and functions for an ERC20 staking pool contract.",
+    "key_types": [
+      "address",
+      "uint256",
+      "IERC20"
+    ],
+    "functions": [
+      "admin",
+      "changeAdmin",
+      "claimPendingRewards",
+      "emergencyUnstake",
+      "getPendingRewards",
+      "getStakingAmount",
+      "getStakingTotal",
+      "methodPaused",
+      "pause",
+      "pauseAll",
+      "paused",
+      "removeAdmin",
+      "restakeRewards",
+      "stake",
+      "unpause",
+      "unpauseAll",
+      "unstake",
+      "unstakeAll"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

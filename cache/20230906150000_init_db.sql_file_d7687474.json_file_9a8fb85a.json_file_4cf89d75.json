@@ -1,0 +1,24 @@
+{
+  "content_hash": "abfab7c650d8756155aa489589aa432d",
+  "timestamp": "2025-09-26T08:28:45.063842+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "[REDACTED]",
+    "key_types": [
+      "varchar",
+      "float8",
+      "bool",
+      "text",
+      "jsonb",
+      "timestamptz"
+    ],
+    "functions": [],
+    "imports": [],
+    "side_effects": [
+      "Creates database extensions and collation",
+      "Creates a table with various fields",
+      "Creates indexes on the table"
+    ],
+    "complexity": "medium"
+  }
+}

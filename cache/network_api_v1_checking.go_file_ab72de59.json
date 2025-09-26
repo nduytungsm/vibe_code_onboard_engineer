@@ -1,0 +1,25 @@
+{
+  "content_hash": "eff783871d1a50dab1c1abb0031cf065",
+  "timestamp": "2025-09-26T08:08:59.792021+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a middleware function to check if the API version is v1 and sets a context key accordingly.",
+    "key_types": [
+      "string",
+      "echo.Context",
+      "echo.MiddlewareFunc",
+      "echo.HandlerFunc"
+    ],
+    "functions": [
+      "NetworkAPIV1CheckingMiddleware"
+    ],
+    "imports": [
+      "strings",
+      "github.com/labstack/echo/v4"
+    ],
+    "side_effects": [
+      "Sets a context key in the echo.Context"
+    ],
+    "complexity": "medium"
+  }
+}

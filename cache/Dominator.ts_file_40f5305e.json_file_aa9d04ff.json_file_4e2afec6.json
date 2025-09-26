@@ -1,0 +1,36 @@
+{
+  "content_hash": "5e06fd348a6fed0658ed1b18cfdf6d7b",
+  "timestamp": "2025-09-26T08:34:25.125023+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Computes the dominator and post-dominator trees for a given function in a control flow graph.",
+    "key_types": [
+      "Dominator",
+      "PostDominator",
+      "Node",
+      "Graph",
+      "HIRFunction",
+      "BlockId"
+    ],
+    "functions": [
+      "computeDominatorTree",
+      "computePostDominatorTree",
+      "computeImmediateDominators",
+      "buildGraph",
+      "buildReverseGraph"
+    ],
+    "imports": [
+      "pretty-format",
+      "../CompilerError",
+      "./HIR",
+      "./visitors"
+    ],
+    "side_effects": [
+      "Modifies the state of the dominator and post-dominator trees based on the input function."
+    ],
+    "risks": [
+      "Potential for infinite loops if the control flow graph is malformed."
+    ],
+    "complexity": "high"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "content_hash": "f0d9c2f1b34210823520d0992c06abc2",
+  "timestamp": "2025-09-26T08:27:44.247267+07:00",
+  "result": {
+    "language": "Ruby",
+    "purpose": "Configuration file for Markdown linting rules",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "content_hash": "914e6ba80e228455c26b0d9682a17f79",
+  "timestamp": "2025-09-26T08:28:05.879077+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines a React component that conditionally renders a div element.",
+    "key_types": [
+      "function",
+      "Symbol"
+    ],
+    "functions": [
+      "MyApp"
+    ],
+    "imports": [
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Modifies the cache sentinel in the React memoization system."
+    ],
+    "complexity": "medium"
+  }
+}

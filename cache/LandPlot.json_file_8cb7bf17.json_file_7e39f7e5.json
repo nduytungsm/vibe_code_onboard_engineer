@@ -1,0 +1,25 @@
+{
+  "content_hash": "67dfd0ac679a04cb6d72c2c77edd7d65",
+  "timestamp": "2025-09-26T08:37:08.319902+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines a smart contract for managing land plots with administrative controls and event logging.",
+    "key_types": [
+      "constructor",
+      "event"
+    ],
+    "functions": [
+      "addMinters",
+      "admin",
+      "approve",
+      "balanceOf",
+      "batchMint",
+      "changeAdmin",
+      "getEstateData",
+      "isMinter",
+      "landOfOwner"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

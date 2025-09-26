@@ -1,0 +1,23 @@
+{
+  "content_hash": "d3803dd00357ba61c6f185cd584d6b15",
+  "timestamp": "2025-09-26T08:29:10.227224+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "[REDACTED]",
+    "key_types": [
+      "table",
+      "column"
+    ],
+    "functions": [
+      "ALTER TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the database schema by adding or dropping a column."
+    ],
+    "risks": [
+      "Potential data loss if the column is dropped without proper backups."
+    ],
+    "complexity": "low"
+  }
+}

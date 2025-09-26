@@ -1,0 +1,29 @@
+{
+  "content_hash": "73c8f112461a57c1d8adc9ce087cade1",
+  "timestamp": "2025-09-26T08:35:53.825728+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "This file defines a React component that serves as the home section of a web application.",
+    "key_types": [
+      "React.Component"
+    ],
+    "functions": [
+      "Home"
+    ],
+    "imports": [
+      "React",
+      "Container",
+      "Row",
+      "Col",
+      "homeLogo",
+      "Particle",
+      "Home2",
+      "Type"
+    ],
+    "side_effects": [
+      "Renders a UI component",
+      "Imports and displays images and other components"
+    ],
+    "complexity": "medium"
+  }
+}

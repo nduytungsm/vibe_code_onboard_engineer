@@ -1,6 +1,6 @@
 {
-  "content_hash": "ab04437c75a1a6cac7c894dab494c48f",
-  "timestamp": "2025-09-25T18:26:37.10074+07:00",
+  "content_hash": "a31290690ed88ca45ad836c8060409a8",
+  "timestamp": "2025-09-26T08:39:23.809246+07:00",
   "result": {
     "path": "pkg/announcement",
     "purpose": "This folder/module is responsible for managing announcements, including scheduling and retrieving announcements.",
@@ -24,7 +24,6 @@
       "k8s.io/apimachinery/pkg/api/resource",
       "k8s.io/apimachinery/pkg/apis/meta/v1",
       "k8s.io/client-go/kubernetes",
-      "k8s.io/client-go/plugin/pkg/client/auth/gcp",
       "k8s.io/client-go/rest",
       "k8s.io/client-go/tools/clientcmd",
       "k8s.io/client-go/util/homedir",
@@ -36,7 +35,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/worker",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the announcement management logic within dedicated service and configuration files.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the logic for announcements in dedicated service and configuration files.",
     "file_summaries": {
       "pkg/announcement/announcement_svc.go": {
         "language": "Go",
@@ -86,7 +85,6 @@
           "k8s.io/apimachinery/pkg/api/resource",
           "k8s.io/apimachinery/pkg/apis/meta/v1",
           "k8s.io/client-go/kubernetes",
-          "k8s.io/client-go/plugin/pkg/client/auth/gcp",
           "k8s.io/client-go/rest",
           "k8s.io/client-go/tools/clientcmd",
           "k8s.io/client-go/util/homedir",
@@ -103,8 +101,8 @@
           "Deletes images from GCS on error"
         ],
         "risks": [
-          "Potential for file upload vulnerabilities",
-          "Improper handling of image types may lead to security issues"
+          "Potential exposure of sensitive data through error messages",
+          "Improper handling of file uploads may lead to denial of service or file injection attacks"
         ],
         "complexity": "medium"
       },

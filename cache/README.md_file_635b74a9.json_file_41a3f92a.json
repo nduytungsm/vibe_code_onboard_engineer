@@ -1,0 +1,36 @@
+{
+  "content_hash": "300cb3bd5b258ee0406136081a8f336d",
+  "timestamp": "2025-09-26T08:40:56.988933+07:00",
+  "result": {
+    "language": "HCL",
+    "purpose": "This file describes an HCL extension for dynamic block generation, allowing for the creation of blocks based on collections.",
+    "key_types": [
+      "dynamic block",
+      "EvalContext",
+      "WalkVariablesNode",
+      "hcl.BodySchema",
+      "hcldec.Spec"
+    ],
+    "functions": [
+      "Expand",
+      "WalkForEachVariables",
+      "ForEachVariablesHCLDec",
+      "decodeBody",
+      "buildEvalContext"
+    ],
+    "imports": [
+      "hcl",
+      "hcldec",
+      "fmt"
+    ],
+    "side_effects": [
+      "Increased memory usage due to temporary data structures",
+      "Potential performance degradation due to wrapping objects"
+    ],
+    "risks": [
+      "Potential for runtime panics if unknown block types are encountered",
+      "Increased complexity may lead to misconfigurations"
+    ],
+    "complexity": "high"
+  }
+}

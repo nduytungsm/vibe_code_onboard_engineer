@@ -1,60 +1,62 @@
 {
-  "content_hash": "7f3a3aed721f14f51aaae856315a9b0a",
-  "timestamp": "2025-09-26T07:40:05.800316+07:00",
+  "content_hash": "de5e0af88323d7cbaf8e195c4a0a3234",
+  "timestamp": "2025-09-26T08:39:32.684778+07:00",
   "result": {
     "path": "middleware",
-    "purpose": "This folder/module is responsible for implementing various middleware functions for an Echo web server application, including error handling, authentication, request logging, and performance monitoring.",
+    "purpose": "This folder/module is responsible for implementing various middleware functions for an Echo web server application, including error handling, authentication, request tracking, and API version checking.",
     "languages": {
-      "Go": 6
+      "Go": 7
     },
     "key_modules": [
       "custom_requests_total_prometheus.go",
       "error_handler.go",
       "internal_auth.go",
-      "latency_alert.go",
-      "private_mode.go",
+      "network_api_v1_checking.go",
+      "tracking_internal_api.go",
+      "user_agent_parsing.go",
       "wallet_auth.go"
     ],
     "dependencies": [
-      "github.com/labstack/echo/v4",
       "github.com/labstack/echo-contrib/echoprometheus",
+      "github.com/labstack/echo/v4",
       "github.com/prometheus/client_golang/prometheus",
       "github.com/rs/zerolog/log",
-      "github.com/golang-jwt/jwt",
-      "github.com/jackc/pgconn",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
       "github.com/axieinfinity/ecosystem-go-common/errors",
       "github.com/axieinfinity/ecosystem-go-common/validation",
-      "github.com/axieinfinity/ecosystem-go-common/hmac",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+      "github.com/golang-jwt/jwt",
+      "github.com/jackc/pgconn",
+      "golang.org/x/oauth2",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each middleware file encapsulates specific functionality related to request processing, error handling, and authentication, promoting separation of concerns and reusability.",
+    "architecture": "The folder follows a modular architecture pattern, where each middleware file encapsulates specific functionality and can be independently used within the Echo web framework.",
     "file_summaries": {
       "middleware/custom_requests_total_prometheus.go": {
         "language": "Go",
-        "purpose": "This file defines middleware for tracking custom HTTP request metrics using Prometheus.",
+        "purpose": "This file defines a middleware for tracking custom HTTP requests using Prometheus metrics.",
         "key_types": [
           "echo.MiddlewareFunc",
           "prometheus.CounterVec",
-          "prometheus.CounterOpts"
+          "prometheus.CounterOpts",
+          "models.AgentInfo"
         ],
         "functions": [
           "NewCustomRequestsTotalPrometheus"
         ],
         "imports": [
-          "strconv",
           "github.com/labstack/echo-contrib/echoprometheus",
           "github.com/labstack/echo/v4",
           "github.com/prometheus/client_golang/prometheus",
-          "github.com/rs/zerolog/log"
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Registers a new Prometheus counter metric.",
-          "Logs fatal errors if metric registration fails."
+          "Registers a new Prometheus counter metric",
+          "Logs fatal errors if metric registration fails"
         ],
         "risks": [
-          "Potential for panic if type assertions fail.",
-          "Logging sensitive information if not handled properly."
+          "Potential for logging sensitive information if user agent data is not handled properly"
         ],
         "complexity": "medium"
       },
@@ -62,12 +64,12 @@
         "language": "Go",
         "purpose": "Handles errors globally for an Echo web server application.",
         "key_types": [
-          "error",
           "echo.Context",
-          "mErrs.HTTPError",
+          "mErrs.Error",
           "jwt.ValidationError",
           "pgconn.PgError",
-          "validation.Errors"
+          "validation.Errors",
+          "oauth2.RetrieveError"
         ],
         "functions": [
           "GlobalErrorHandler",
@@ -78,20 +80,17 @@
           "errors",
           "fmt",
           "net/http",
-          "net/url",
-          "slices",
-          "strings",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/axieinfinity/ecosystem-go-common/validation",
           "github.com/golang-jwt/jwt",
           "github.com/jackc/pgconn",
           "github.com/labstack/echo/v4",
           "github.com/labstack/echo/v4/middleware",
-          "github.com/axieinfinity/ecosystem-go-common/errors",
-          "github.com/axieinfinity/ecosystem-go-common/validation",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+          "golang.org/x/oauth2"
         ],
         "side_effects": [
-          "Logs error details to the context's logger",
-          "Sends JSON response with error details to the client"
+          "Logs error details to the context logger",
+          "Returns JSON response with error details to the client"
         ],
         "risks": [
           "Potential exposure of sensitive error details in logs",
@@ -103,9 +102,9 @@
         "language": "Go",
         "purpose": "This file implements HMAC authentication middleware for validating HMAC signatures in HTTP requests.",
         "key_types": [
-          "Config",
-          "MiddlewareFunc",
-          "Context"
+          "hmac.Config",
+          "echo.MiddlewareFunc",
+          "echo.Context"
         ],
         "functions": [
           "HmacAuthentication"
@@ -113,76 +112,95 @@
         "imports": [
           "fmt",
           "net/http",
+          "regexp",
           "strings",
           "github.com/labstack/echo/v4",
           "github.com/axieinfinity/ecosystem-go-common/errors",
-          "github.com/axieinfinity/ecosystem-go-common/hmac",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
         ],
         "side_effects": [
-          "Modifies the request context based on authentication results"
+          "Modifies HTTP request handling by adding authentication checks."
         ],
         "risks": [
-          "Potential exposure of sensitive information if error messages are not handled properly"
+          "Potential for unauthorized access if HMAC validation fails."
         ],
         "complexity": "medium"
       },
-      "middleware/latency_alert.go": {
+      "middleware/network_api_v1_checking.go": {
         "language": "Go",
-        "purpose": "Defines a middleware function to log requests that exceed a specified latency threshold.",
+        "purpose": "Defines a middleware function to check if the API version is v1 and sets a context key accordingly.",
         "key_types": [
-          "time.Duration",
+          "string",
+          "echo.Context",
           "echo.MiddlewareFunc",
-          "echo.HandlerFunc",
-          "echo.Context"
+          "echo.HandlerFunc"
         ],
         "functions": [
-          "NewLatencyAlert"
+          "NetworkAPIV1CheckingMiddleware"
         ],
         "imports": [
-          "strconv",
-          "time",
-          "github.com/labstack/echo/v4",
-          "github.com/rs/zerolog/log"
-        ],
-        "side_effects": [
-          "Logs a warning message if the request latency exceeds the threshold."
-        ],
-        "risks": [
-          "Potential information leakage through logged request details."
-        ],
-        "complexity": "medium"
-      },
-      "middleware/private_mode.go": {
-        "language": "Go",
-        "purpose": "Middleware function to enforce API key validation for certain routes.",
-        "key_types": [
-          "echo.MiddlewareFunc",
-          "echo.HandlerFunc",
-          "echo.Context"
-        ],
-        "functions": [
-          "PrivateMode"
-        ],
-        "imports": [
-          "net/http",
+          "strings",
           "github.com/labstack/echo/v4"
         ],
         "side_effects": [
-          "Returns HTTP 401 Unauthorized if API key is invalid."
+          "Sets a context key in the echo.Context"
+        ],
+        "complexity": "medium"
+      },
+      "middleware/tracking_internal_api.go": {
+        "language": "Go",
+        "purpose": "Defines a middleware for tracking API requests in an Echo web framework application.",
+        "key_types": [
+          "echo.MiddlewareFunc",
+          "tracking.Service",
+          "tracking.TrackingRequest",
+          "tracking.Event"
+        ],
+        "functions": [
+          "NewTrackingInternalAPIMiddleware"
+        ],
+        "imports": [
+          "context",
+          "time",
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking"
+        ],
+        "side_effects": [
+          "Asynchronously tracks API request data."
         ],
         "risks": [
-          "Potential exposure of API key if not handled securely."
+          "Potential exposure of sensitive request data in tracking logs."
+        ],
+        "complexity": "medium"
+      },
+      "middleware/user_agent_parsing.go": {
+        "language": "Go",
+        "purpose": "This file provides middleware for parsing user agent strings in a web application.",
+        "key_types": [
+          "echo.MiddlewareFunc",
+          "models.AgentInfo"
+        ],
+        "functions": [
+          "getAgentInfo",
+          "NewUserAgentParsing"
+        ],
+        "imports": [
+          "strings",
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Modifies the context with parsed user agent information"
         ],
         "complexity": "medium"
       },
       "middleware/wallet_auth.go": {
         "language": "Go",
-        "purpose": "This file implements middleware for verifying wallet signatures in HTTP requests.",
+        "purpose": "Middleware for verifying wallet signatures in HTTP requests.",
         "key_types": [
           "hmac.Config",
-          "echo.MiddlewareFunc",
+          "echo.Context",
           "error"
         ],
         "functions": [
@@ -199,14 +217,14 @@
           "github.com/labstack/echo/v4",
           "github.com/rs/zerolog/log",
           "github.com/axieinfinity/ecosystem-go-common/errors",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/crypto/hmac",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/helper"
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
         ],
         "side_effects": [
           "Logs request information"
         ],
         "risks": [
-          "Potential exposure of sensitive information through logs"
+          "Potential for replay attacks if signature validation is not robust"
         ],
         "complexity": "medium"
       }

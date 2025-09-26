@@ -1,0 +1,32 @@
+{
+  "content_hash": "d3438015da80fb4a1f42cf39b4b40ce9",
+  "timestamp": "2025-09-26T08:31:54.626981+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines a smart contract with various functions and events related to user streaks and role management.",
+    "key_types": [
+      "constructor",
+      "error",
+      "event",
+      "function"
+    ],
+    "functions": [
+      "activateStreak",
+      "getStreak",
+      "initialize",
+      "grantRole",
+      "revokeRole",
+      "hasRole",
+      "getRoleMember",
+      "getRoleMemberCount",
+      "getRoleAdmin",
+      "hasCurrentlyActivated",
+      "activeStreakLifeTime",
+      "DEFAULT_ADMIN_ROLE",
+      "startedAtBlock",
+      "supportsInterface"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

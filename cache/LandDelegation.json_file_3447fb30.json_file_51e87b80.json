@@ -1,0 +1,22 @@
+{
+  "content_hash": "908da63d0572f703f4b07cf43ebce313",
+  "timestamp": "2025-09-26T08:36:52.836179+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines the structure and errors for land delegation in a blockchain application.",
+    "key_types": [
+      "error",
+      "event",
+      "function"
+    ],
+    "functions": [
+      "delegateLand",
+      "delegateLandBatch",
+      "delegationAmountsMap",
+      "delegationMap",
+      "DEFAULT_ADMIN_ROLE"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

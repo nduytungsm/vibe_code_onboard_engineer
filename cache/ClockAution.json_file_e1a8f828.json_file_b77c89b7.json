@@ -1,0 +1,24 @@
+{
+  "content_hash": "f10089fbb8efb48e433dbd47538872c2",
+  "timestamp": "2025-09-26T08:33:50.321096+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines a smart contract for auction management with events for auction lifecycle.",
+    "key_types": [
+      "address",
+      "uint256"
+    ],
+    "functions": [
+      "addOperators",
+      "admin",
+      "auctions",
+      "batchCreateAuctions",
+      "cancelAuction",
+      "changeAdmin",
+      "completeInitilization",
+      "createAuction"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

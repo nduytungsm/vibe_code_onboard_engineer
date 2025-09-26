@@ -1,0 +1,21 @@
+{
+  "content_hash": "8457512fc55d33abfffe70cb3042a0ef",
+  "timestamp": "2025-09-26T08:27:56.393191+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines the schema for the orders table and creates necessary indexes.",
+    "key_types": [
+      "BIGINT",
+      "DECIMAL",
+      "VARCHAR",
+      "TIMESTAMP"
+    ],
+    "functions": [],
+    "imports": [],
+    "side_effects": [
+      "Creates a new table in the database",
+      "Creates indexes for performance optimization"
+    ],
+    "complexity": "low"
+  }
+}

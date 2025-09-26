@@ -1,0 +1,30 @@
+{
+  "content_hash": "6d0dd4045d635a13de1608b2779bbcdf",
+  "timestamp": "2025-09-26T08:39:28.386955+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines a function to null out lvalues for temporary variables that are never accessed later in a reactive function.",
+    "key_types": [
+      "DeclarationId",
+      "InstructionId",
+      "Place",
+      "ReactiveFunction",
+      "ReactiveInstruction",
+      "LValues",
+      "Visitor"
+    ],
+    "functions": [
+      "pruneUnusedLValues",
+      "visitPlace",
+      "visitInstruction"
+    ],
+    "imports": [
+      "../HIR/HIR",
+      "./visitors"
+    ],
+    "side_effects": [
+      "Modifies the lvalue of instructions to null for unused temporary variables."
+    ],
+    "complexity": "medium"
+  }
+}

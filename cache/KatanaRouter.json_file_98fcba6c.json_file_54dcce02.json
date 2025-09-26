@@ -1,0 +1,33 @@
+{
+  "content_hash": "8866a7cf630b53d211e5c80525124046",
+  "timestamp": "2025-09-26T08:36:44.025905+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines a smart contract for a liquidity router in a decentralized finance application.",
+    "key_types": [
+      "address",
+      "uint256"
+    ],
+    "functions": [
+      "constructor",
+      "fallback",
+      "WRON",
+      "addLiquidity",
+      "addLiquidityRON",
+      "factory",
+      "getAmountIn",
+      "getAmountOut",
+      "getAmountsIn",
+      "getAmountsOut",
+      "quote",
+      "removeLiquidity",
+      "removeLiquidityRON"
+    ],
+    "imports": [],
+    "risks": [
+      "Potential for reentrancy attacks if not properly handled.",
+      "Incorrect handling of liquidity could lead to loss of funds."
+    ],
+    "complexity": "medium"
+  }
+}

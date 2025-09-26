@@ -1,0 +1,34 @@
+{
+  "content_hash": "9b72732c29afee70288dd8a505126a49",
+  "timestamp": "2025-09-26T08:31:07.004633+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines the About component for a personal portfolio page, displaying information about the individual and their skills.",
+    "key_types": [
+      "Component",
+      "Container",
+      "Row",
+      "Col"
+    ],
+    "functions": [
+      "About"
+    ],
+    "imports": [
+      "React",
+      "Container",
+      "Row",
+      "Col from react-bootstrap",
+      "Particle",
+      "Github",
+      "Techstack",
+      "Aboutcard",
+      "laptopImg",
+      "Toolstack"
+    ],
+    "side_effects": [
+      "Renders UI components",
+      "Displays images and information"
+    ],
+    "complexity": "medium"
+  }
+}

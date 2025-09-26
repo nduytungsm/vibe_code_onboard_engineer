@@ -1,0 +1,12 @@
+{
+  "content_hash": "fda054d7919094988e53bd1f6e22d417",
+  "timestamp": "2025-09-26T08:41:06.625808+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the wallet-manager project",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

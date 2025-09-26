@@ -1,0 +1,51 @@
+{
+  "content_hash": "a27ddf559d092e60b492e8a804d85cd3",
+  "timestamp": "2025-09-26T08:34:08.311537+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for managing quick access decentralized applications (dApps) and highlights, including CRUD operations and caching mechanisms.",
+    "key_types": [
+      "Service",
+      "svc",
+      "Config"
+    ],
+    "functions": [
+      "Save",
+      "SaveBatch",
+      "Update",
+      "UpdateBatch",
+      "GetList",
+      "GetAll",
+      "GetByID",
+      "DeleteByID",
+      "UpdateOrder",
+      "SaveHighlight",
+      "SaveBatchHighlight",
+      "UpdateHighlight",
+      "UpdateBatchHighlight",
+      "GetAllHighlight",
+      "GetHighlightByID",
+      "DeleteHighlightByID",
+      "GetHighlights"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "slices",
+      "sync",
+      "time",
+      "github.com/getsentry/sentry-go",
+      "github.com/hashicorp/go-version",
+      "github.com/jellydator/ttlcache/v3",
+      "github.com/redis/go-redis/v9",
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
+    ],
+    "side_effects": [
+      "Publishing messages to refresh cache asynchronously"
+    ],
+    "complexity": "medium"
+  }
+}

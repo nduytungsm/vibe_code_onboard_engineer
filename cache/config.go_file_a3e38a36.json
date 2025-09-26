@@ -1,0 +1,16 @@
+{
+  "content_hash": "68691c00aafd1286eb1069589c5f1d15",
+  "timestamp": "2025-09-26T08:10:41.390985+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for managing database and IP settings.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/gcs"
+    ],
+    "complexity": "low"
+  }
+}

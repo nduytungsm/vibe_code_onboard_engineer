@@ -19,6 +19,7 @@ import (
 	"repo-explanation/internal/microservices"
 	internalOpenai "repo-explanation/internal/openai"
 	"repo-explanation/internal/relationships"
+	"repo-explanation/internal/secrets"
 )
 
 // Analyzer orchestrates the map-reduce analysis pipeline
@@ -45,6 +46,7 @@ type AnalysisResult struct {
 	Services            []microservices.DiscoveredService    `json:"services,omitempty"`
 	ServiceRelationships []relationships.ServiceRelationship `json:"relationships,omitempty"`
 	DatabaseSchema      *database.DatabaseSchema             `json:"database_schema,omitempty"`
+	ProjectSecrets      *secrets.ProjectSecrets              `json:"project_secrets,omitempty"`
 	HelpfulQuestions    []HelpfulQuestion                    `json:"helpful_questions,omitempty"`
 }
 
@@ -249,8 +251,19 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 		}
 	}
 	
+	// Phase 8.5: Extract secrets and configuration
+	callback("progress", "🔐 Analyzing secrets and configuration...", "Scanning for required environment variables and configuration secrets", 93, nil)
+	
+	projectSecrets := a.extractProjectSecrets(ctx, a.crawler.basePath)
+	
+	if projectSecrets != nil && projectSecrets.TotalVariables > 0 {
+		callback("data", "Project secrets extracted", fmt.Sprintf("Found %d environment variables (%d required)", projectSecrets.TotalVariables, projectSecrets.RequiredCount), 94, map[string]interface{}{
+			"project_secrets": projectSecrets,
+		})
+	}
+	
 	// Phase 9: Generate helpful questions
-	callback("progress", "🤔 Generating helpful questions...", "Creating project-specific Q&A to accelerate development", 94, nil)
+	callback("progress", "🤔 Generating helpful questions...", "Creating project-specific Q&A to accelerate development", 95, nil)
 	
 	helpfulQuestions := a.generateHelpfulQuestions(ctx, projectSummary, projectType, discoveredServices, databaseSchema, fileSummaries)
 	
@@ -284,6 +297,7 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 		Services:             discoveredServices,
 		ServiceRelationships: serviceRelationships,
 		DatabaseSchema:       databaseSchema,
+		ProjectSecrets:       projectSecrets,
 		HelpfulQuestions:     helpfulQuestions,
 	}
 	
@@ -1061,6 +1075,26 @@ func (a *Analyzer) extractDatabaseSchema(files []FileInfo) *database.DatabaseSch
 	}
 	
 	return schema
+}
+
+// extractProjectSecrets analyzes configuration files to extract required secrets
+func (a *Analyzer) extractProjectSecrets(ctx context.Context, projectPath string) *secrets.ProjectSecrets {
+	fmt.Printf("🔐 [DEBUG] Starting project secrets extraction\n")
+	
+	// Create secret extractor
+	extractor := secrets.NewSecretExtractor(projectPath)
+	
+	// Extract secrets from configuration files
+	projectSecrets, err := extractor.ExtractSecrets()
+	if err != nil {
+		fmt.Printf("⚠️ [DEBUG] Secret extraction failed: %v\n", err)
+		return nil
+	}
+	
+	fmt.Printf("✅ [DEBUG] Secret extraction completed: %d total variables, %d required\n", 
+		projectSecrets.TotalVariables, projectSecrets.RequiredCount)
+	
+	return projectSecrets
 }
 
 // generateHelpfulQuestions creates project-specific Q&A using LLM

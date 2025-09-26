@@ -1,0 +1,33 @@
+{
+  "content_hash": "efdf8c309627306295eb68f6017e084c",
+  "timestamp": "2025-09-26T08:31:05.116785+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines events and functions for an AXS Staking Pool contract in a blockchain environment.",
+    "key_types": [
+      "event",
+      "function"
+    ],
+    "functions": [
+      "admin",
+      "changeAdmin",
+      "claimPendingRewards",
+      "emergencyUnstake",
+      "getPendingRewards",
+      "getStakingAmount",
+      "getStakingTotal",
+      "methodPaused",
+      "pause",
+      "pauseAll",
+      "paused",
+      "removeAdmin",
+      "restakeRewards",
+      "stake",
+      "unpause",
+      "unpauseAll",
+      "unstake"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

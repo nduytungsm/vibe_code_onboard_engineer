@@ -1,0 +1,32 @@
+{
+  "content_hash": "0a68654f1a3ef4f4b1e9adc40eceae3e",
+  "timestamp": "2025-09-26T08:41:51.679506+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides documentation for a boilerplate application using the Fiber framework to create an API connected to a SQL Server database.",
+    "key_types": [
+      "Application",
+      "API",
+      "Database"
+    ],
+    "functions": [
+      "make build",
+      "make test",
+      "make clean",
+      "make release"
+    ],
+    "imports": [
+      "Fiber",
+      "Go MSSQL Driver",
+      "godotenv"
+    ],
+    "side_effects": [
+      "Creates a .env file for environment variables",
+      "Builds binaries in the ./build directory"
+    ],
+    "risks": [
+      "Exposure of sensitive database credentials if .env is not secured"
+    ],
+    "complexity": "medium"
+  }
+}

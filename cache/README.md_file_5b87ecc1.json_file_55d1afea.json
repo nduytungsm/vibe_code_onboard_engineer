@@ -1,0 +1,28 @@
+{
+  "content_hash": "64d59608edf2201dad6d729f92421db1",
+  "timestamp": "2025-09-26T08:40:48.096618+07:00",
+  "result": {
+    "language": "markdown",
+    "purpose": "Documentation for the Extractors package providing shared value extraction utilities for Fiber middleware.",
+    "key_types": [
+      "Extractor",
+      "Source",
+      "ErrNotFound"
+    ],
+    "functions": [
+      "FromAuthHeader",
+      "FromCookie",
+      "FromParam",
+      "FromForm",
+      "FromHeader",
+      "FromQuery",
+      "FromCustom",
+      "Chain"
+    ],
+    "imports": [],
+    "risks": [
+      "Potential security risks when using FromCustom due to inability to determine the source of extracted values."
+    ],
+    "complexity": "low"
+  }
+}

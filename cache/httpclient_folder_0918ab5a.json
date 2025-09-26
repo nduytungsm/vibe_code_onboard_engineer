@@ -1,53 +1,187 @@
 {
-  "content_hash": "c58765e5eb2eb45caefa2e57e9679703",
-  "timestamp": "2025-09-26T07:43:37.566316+07:00",
+  "content_hash": "df31c34b22b854182e708ed8ac6bee22",
+  "timestamp": "2025-09-26T08:39:02.810741+07:00",
   "result": {
     "path": "httpclient",
-    "purpose": "This folder/module is responsible for implementing an HTTP client with methods for GET and POST requests, handling responses and errors.",
+    "purpose": "This folder/module is responsible for defining various HTTP clients for interacting with external APIs and managing device-related operations.",
     "languages": {
-      "Go": 1
+      "Go": 5
     },
     "key_modules": [
-      "httpclient.go"
+      "athena.go",
+      "device.go",
+      "internal_client.go",
+      "mercury.go",
+      "tracking.go"
     ],
     "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-manager/models",
       "github.com/axieinfinity/ecosystem-go-common/errors",
-      "github.com/labstack/echo/v4",
-      "github.com/rs/zerolog/log"
+      "github.com/rs/zerolog/log",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating HTTP client functionality with a focus on separation of concerns and reusability.",
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates a specific client functionality, promoting separation of concerns and reusability.",
     "file_summaries": {
-      "httpclient/httpclient.go": {
+      "httpclient/athena.go": {
         "language": "Go",
-        "purpose": "This file implements an HTTP client with methods for GET and POST requests, handling responses and errors.",
+        "purpose": "This file defines an HTTP client for linking accounts using the Athena API.",
         "key_types": [
-          "Client",
-          "client"
+          "AthenaClientCfg",
+          "Athena",
+          "athenaClient"
         ],
         "functions": [
-          "NewClient",
-          "GetData",
-          "GetRawData",
-          "PostData",
-          "PostReturnRawData",
-          "processError"
+          "NewAthenaClient",
+          "LinkAccount"
         ],
         "imports": [
           "bytes",
           "context",
           "encoding/json",
-          "io",
+          "fmt",
           "net/http",
-          "time",
-          "github.com/axieinfinity/ecosystem-go-common/errors",
-          "github.com/labstack/echo/v4",
-          "github.com/rs/zerolog/log"
+          "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Logs the duration of HTTP requests"
+          "Makes HTTP requests to an external API"
         ],
         "risks": [
-          "Potential exposure of sensitive data in logs if headers or request data contain sensitive information"
+          "Potential exposure of sensitive data in HTTP requests",
+          "Error handling may not cover all edge cases"
+        ],
+        "complexity": "medium"
+      },
+      "httpclient/device.go": {
+        "language": "Go",
+        "purpose": "This file defines a DeviceClient interface and its implementation for managing device-related operations via HTTP requests.",
+        "key_types": [
+          "DeviceClient",
+          "deviceClient",
+          "InternalClient",
+          "InternalClientConfig"
+        ],
+        "functions": [
+          "GetDeviceByID",
+          "ResetDeviceByID",
+          "MigrateNotificationSettings",
+          "Registration",
+          "UpdatePushToken",
+          "CreateDevice",
+          "SyncDeviceAddresses",
+          "NewDeviceClient"
+        ],
+        "imports": [
+          "bytes",
+          "context",
+          "encoding/json",
+          "fmt",
+          "net/http",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Logs warnings for not registered devices during address synchronization."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if SecretKey is not handled securely."
+        ],
+        "complexity": "medium"
+      },
+      "httpclient/internal_client.go": {
+        "language": "Go",
+        "purpose": "This file implements an internal HTTP client with HMAC authentication for making requests to a specified URL.",
+        "key_types": [
+          "InternalClientConfig",
+          "InternalClient"
+        ],
+        "functions": [
+          "SetUserAgent",
+          "doRequestWithHMacAuth",
+          "doRequest",
+          "doRequestWithHMacAuthReturnRaw"
+        ],
+        "imports": [
+          "encoding/json",
+          "fmt",
+          "io",
+          "net/http",
+          "strings",
+          "time",
+          "github.com/axieinfinity/ecosystem-go-common/errors",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
+        ],
+        "side_effects": [
+          "Logs request details and errors",
+          "Modifies HTTP request headers"
+        ],
+        "risks": [
+          "Potential exposure of SecretKey if not handled properly",
+          "Error handling may expose sensitive information in logs"
+        ],
+        "complexity": "medium"
+      },
+      "httpclient/mercury.go": {
+        "language": "Go",
+        "purpose": "This file defines a MercuryClient interface and its implementation for sending notifications via HTTP.",
+        "key_types": [
+          "MercuryClient",
+          "mercuryClient",
+          "InternalClient",
+          "InternalClientConfig",
+          "PostPushNotificationRequest"
+        ],
+        "functions": [
+          "SendNotification",
+          "NewMercuryClient"
+        ],
+        "imports": [
+          "bytes",
+          "context",
+          "encoding/json",
+          "fmt",
+          "net/http",
+          "github.com/rs/zerolog/log",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
+        ],
+        "side_effects": [
+          "Logs errors when notification sending fails"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information in logs if errors occur"
+        ],
+        "complexity": "medium"
+      },
+      "httpclient/tracking.go": {
+        "language": "Go",
+        "purpose": "This file implements a tracking client for sending tracking requests asynchronously or synchronously.",
+        "key_types": [
+          "TrackingClient",
+          "trackingClient",
+          "InternalClient",
+          "InternalClientConfig"
+        ],
+        "functions": [
+          "NewTracingClient",
+          "Track",
+          "TrackAsync"
+        ],
+        "imports": [
+          "bytes",
+          "context",
+          "encoding/base64",
+          "encoding/json",
+          "fmt",
+          "net/http"
+        ],
+        "side_effects": [
+          "Sends HTTP requests to a specified URL",
+          "Executes tracking requests in a separate goroutine in TrackAsync"
+        ],
+        "risks": [
+          "Potential exposure of API key in logs or errors",
+          "Concurrency issues if not handled properly in TrackAsync"
         ],
         "complexity": "medium"
       }

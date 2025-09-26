@@ -1,0 +1,31 @@
+{
+  "content_hash": "28006946225978cf3aa1fd0a98edc1c6",
+  "timestamp": "2025-09-26T08:39:47.493611+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for a helper library that extracts metadata from Terraform modules.",
+    "key_types": [
+      "Module",
+      "Variable",
+      "Output",
+      "Provider",
+      "Resource"
+    ],
+    "functions": [
+      "LoadModule",
+      "terraform-config-inspect"
+    ],
+    "imports": [
+      "github.com/hashicorp/terraform-config-inspect/tfconfig"
+    ],
+    "side_effects": [
+      "Installation of CLI tool",
+      "Parsing of Terraform configurations"
+    ],
+    "risks": [
+      "Potential for outdated metadata extraction",
+      "Limited support for new Terraform features"
+    ],
+    "complexity": "medium"
+  }
+}

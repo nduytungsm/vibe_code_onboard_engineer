@@ -1,0 +1,20 @@
+{
+  "content_hash": "1e06b57a36735bc0b48578b02aab3405",
+  "timestamp": "2025-09-26T08:32:13.562612+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the structure and events for the AxieAccessoryCollection smart contract.",
+    "key_types": [
+      "constructor",
+      "event",
+      "tuple",
+      "struct"
+    ],
+    "functions": [
+      "DEFAULT_ADMIN_ROLE",
+      "MINTER_ROLE"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

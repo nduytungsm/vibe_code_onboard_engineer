@@ -1,0 +1,51 @@
+{
+  "content_hash": "b3ec6fabd9cac4776c44e316f5f74ef7",
+  "timestamp": "2025-09-26T08:36:27.086543+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Infers which 'Place's are reactive in a React component or hook based on various conditions.",
+    "key_types": [
+      "StableSidemap",
+      "HIRFunction",
+      "IdentifierId",
+      "Instruction",
+      "Environment"
+    ],
+    "functions": [
+      "inferReactivePlaces",
+      "handleInstruction",
+      "isStable",
+      "isReactiveControlledBlock"
+    ],
+    "imports": [
+      "CompilerError",
+      "BlockId",
+      "Effect",
+      "Environment",
+      "HIRFunction",
+      "Identifier",
+      "IdentifierId",
+      "Instruction",
+      "Place",
+      "computePostDominatorTree",
+      "evaluatesToStableTypeOrContainer",
+      "getHookKind",
+      "isStableType",
+      "isStableTypeContainer",
+      "isUseOperator",
+      "PostDominator",
+      "eachInstructionLValue",
+      "eachInstructionOperand",
+      "eachInstructionValueOperand",
+      "eachTerminalOperand",
+      "findDisjointMutableValues",
+      "isMutable",
+      "DisjointSet",
+      "assertExhaustive"
+    ],
+    "side_effects": [
+      "Modifies the stability map based on instructions processed."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "content_hash": "5302ecccdedc420f0e7e8df7063413a3",
+  "timestamp": "2025-09-26T08:36:35.666205+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Inlines immediately invoked function expressions (IIFEs) to allow more fine-grained memoization of the values they produce.",
+    "key_types": [
+      "BasicBlock",
+      "HIRFunction",
+      "FunctionExpression",
+      "IdentifierId",
+      "GotoTerminal",
+      "LabelTerminal"
+    ],
+    "functions": [
+      "inlineImmediatelyInvokedFunctionExpressions"
+    ],
+    "imports": [
+      "../HIR",
+      "../HIR/HIRBuilder",
+      "../HIR/visitors",
+      "../Utils/utils"
+    ],
+    "side_effects": [
+      "Modifies the function's control flow graph (CFG) by inlining IIFEs."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "content_hash": "b09016d5881f5ec1cc3acfb026ee82cd",
+  "timestamp": "2025-09-26T08:28:23.086651+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Database migration script to create and initialize tables and types for a blockchain application.",
+    "key_types": [
+      "networks",
+      "contracts",
+      "d_apps",
+      "commons",
+      "code_versions",
+      "contract_type",
+      "dapp_url"
+    ],
+    "functions": [
+      "CREATE EXTENSION",
+      "CREATE TABLE",
+      "CREATE TYPE",
+      "INSERT INTO",
+      "CREATE INDEX"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates database tables and types",
+      "Inserts initial data into tables"
+    ],
+    "complexity": "medium"
+  }
+}

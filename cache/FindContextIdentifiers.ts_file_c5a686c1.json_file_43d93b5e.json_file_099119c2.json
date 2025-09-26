@@ -1,0 +1,31 @@
+{
+  "content_hash": "ba644511cc7f24946efb7b2079a3377c",
+  "timestamp": "2025-09-26T08:35:23.270953+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines a Babel plugin that finds context identifiers in function scopes.",
+    "key_types": [
+      "IdentifierInfo",
+      "BabelFunction",
+      "FindContextIdentifierState"
+    ],
+    "functions": [
+      "findContextIdentifiers",
+      "handleIdentifier",
+      "handleAssignment",
+      "nonNull"
+    ],
+    "imports": [
+      "@babel/traverse",
+      "@babel/types",
+      "../CompilerError",
+      "../Utils/utils",
+      "./HIR"
+    ],
+    "side_effects": [
+      "Throws CompilerError for unsupported syntax",
+      "Modifies state during traversal"
+    ],
+    "complexity": "medium"
+  }
+}

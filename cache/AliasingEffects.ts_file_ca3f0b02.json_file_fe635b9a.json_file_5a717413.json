@@ -1,0 +1,40 @@
+{
+  "content_hash": "26117cd1edff1f564ec5c53f9d7f6cfd",
+  "timestamp": "2025-09-26T08:31:17.481416+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines types and functions related to aliasing effects in a compiler context.",
+    "key_types": [
+      "AliasingEffect",
+      "MutationReason",
+      "AliasingSignature"
+    ],
+    "functions": [
+      "hashEffect"
+    ],
+    "imports": [
+      "CompilerDiagnostic",
+      "FunctionExpression",
+      "GeneratedSource",
+      "Hole",
+      "IdentifierId",
+      "ObjectMethod",
+      "Place",
+      "SourceLocation",
+      "SpreadPattern",
+      "ValueKind",
+      "ValueReason",
+      "FunctionSignature",
+      "printSourceLocation"
+    ],
+    "side_effects": [
+      "Mutation of values",
+      "Tracking data flow between values"
+    ],
+    "risks": [
+      "Potential for unsafe mutations",
+      "Handling of frozen values"
+    ],
+    "complexity": "medium"
+  }
+}

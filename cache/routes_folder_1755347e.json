@@ -1,9 +1,9 @@
 {
-  "content_hash": "7c2484288e0a787f55af627e6f6fb60f",
-  "timestamp": "2025-09-26T07:41:59.924936+07:00",
+  "content_hash": "379c439f833b1d7615b181199a6ee6f7",
+  "timestamp": "2025-09-26T08:36:34.135463+07:00",
   "result": {
     "path": "routes",
-    "purpose": "Responsible for setting up and managing API routes for an Echo web server, including public, private, and internal routes.",
+    "purpose": "Responsible for setting up and managing routes for an Echo web server, including public, private, and internal API endpoints for a wallet manager application.",
     "languages": {
       "Go": 4
     },
@@ -18,118 +18,152 @@
       "github.com/rs/zerolog/log",
       "gorm.io/plugin/prometheus",
       "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
-      "github.com/axieinfinity/ronin-wallet-proxy/config",
-      "github.com/axieinfinity/ronin-wallet-proxy/handlers",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/exchangerate",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/nft_mapping",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
-      "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo",
-      "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ronin-wallet-manager/config",
+      "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+      "github.com/axieinfinity/ronin-wallet-manager/handlers",
+      "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/preference",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/releasecandidate",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/trusteddomain",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
+      "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing routes into public, private, and internal categories, each with specific handlers and middleware for managing requests.",
+    "architecture": "The folder follows a modular architecture pattern, organizing routes into separate files for public, private, and internal APIs, facilitating maintainability and scalability.",
     "file_summaries": {
       "routes/init.go": {
         "language": "Go",
-        "purpose": "Sets up routes for an Echo web server and initializes various services and handlers.",
+        "purpose": "Sets up routes for an Echo web server and initializes various services and repositories.",
         "key_types": [
           "echo.Echo",
           "config.Schema",
           "postgresql.Client",
           "redis.Client",
-          "coinbase.Service",
-          "coingecko.Service",
-          "exchangerate.ServiceV2",
-          "nftmapping.Service"
+          "handlers.Handler"
         ],
         "functions": [
           "SetupRoutes",
           "NewClient",
-          "NewRedisClient",
           "NewService",
-          "NewServiceV2",
-          "NewNFTMappingRepo",
-          "NewNFTMappingHandler",
-          "NewCoinbaseHandler"
+          "NewHandler"
         ],
         "imports": [
           "github.com/labstack/echo/v4",
           "github.com/rs/zerolog/log",
           "gorm.io/plugin/prometheus",
           "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
-          "github.com/axieinfinity/ronin-wallet-proxy/config",
-          "github.com/axieinfinity/ronin-wallet-proxy/handlers",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/coingecko",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/exchangerate",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/nft_mapping",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/providers",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/redis",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/tokeninfo",
-          "github.com/axieinfinity/ronin-wallet-proxy/repositories"
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/database/redis",
+          "github.com/axieinfinity/ronin-wallet-manager/handlers",
+          "github.com/axieinfinity/ronin-wallet-manager/httpclient",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/preference",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/releasecandidate",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/trusteddomain",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth",
+          "github.com/axieinfinity/ronin-wallet-manager/repositories"
         ],
         "side_effects": [
-          "Logs fatal errors if database or service initialization fails."
+          "Logs fatal errors if database client creation or metrics setup fails."
         ],
         "risks": [
-          "Potential exposure of sensitive configuration data if not handled properly.",
-          "Dependency on external services which may fail or be unavailable."
+          "Potential exposure of sensitive configuration data if not handled properly."
         ],
         "complexity": "medium"
       },
       "routes/internal.go": {
         "language": "Go",
-        "purpose": "Defines internal API routes for handling token information and NFT mappings.",
+        "purpose": "Defines internal routes for a wallet manager API, handling various network and announcement functionalities.",
         "key_types": [
           "echo.Echo",
           "config.Schema",
-          "handlers.TokenInfoHandler",
-          "handlers.NFTMappingHandler"
+          "handlers.ReleaseCandidateHandler",
+          "handlers.NetworkHandler",
+          "handlers.CommonHandler",
+          "handlers.LocationHandler",
+          "handlers.AnnouncementHandler",
+          "handlers.TrustedDomainHandler",
+          "handlers.DAppHandler",
+          "tracking.Service"
         ],
         "functions": [
           "registerInternal"
         ],
         "imports": [
-          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
           "github.com/labstack/echo/v4",
-          "github.com/axieinfinity/ronin-wallet-proxy/config",
-          "github.com/axieinfinity/ronin-wallet-proxy/handlers",
-          "github.com/axieinfinity/ronin-wallet-proxy/middleware",
-          "github.com/axieinfinity/ronin-wallet-proxy/models"
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/handlers",
+          "github.com/axieinfinity/ronin-wallet-manager/middleware",
+          "github.com/axieinfinity/ronin-wallet-manager/models",
+          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking"
         ],
         "side_effects": [
-          "Registers routes with middleware for authentication and request binding."
+          "Modifies the state of the application by registering routes and middleware."
         ],
         "risks": [
-          "Potential exposure of sensitive data if routes are not properly secured."
+          "Potential exposure of sensitive data through improperly secured routes.",
+          "Risk of denial of service through excessive route registrations."
         ],
         "complexity": "medium"
       },
       "routes/private.go": {
         "language": "Go",
-        "purpose": "Defines a route registration function for private routes using the Echo framework.",
+        "purpose": "Defines private routes for wallet management, including preferences and device operations.",
         "key_types": [
-          "echo.Echo"
+          "echo.Echo",
+          "handlers.AnnouncementHandler",
+          "handlers.DeviceHandler",
+          "echo.MiddlewareFunc"
         ],
         "functions": [
           "registerPrivate"
         ],
         "imports": [
-          "github.com/labstack/echo/v4"
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ronin-wallet-manager/handlers",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
-        "complexity": "low"
+        "side_effects": [
+          "Modifies the routing configuration of the Echo web framework."
+        ],
+        "complexity": "medium"
       },
       "routes/public.go": {
         "language": "Go",
-        "purpose": "Defines routes for a public API, including health checks and various blockchain-related endpoints.",
+        "purpose": "Defines public API routes for a wallet manager application, including health checks and various resource endpoints.",
         "key_types": [
           "APIVersion",
-          "echo.Echo",
           "config.Schema",
-          "handlers.BlockchainHandler",
-          "handlers.NFTMappingHandler",
-          "handlers.CoinbaseHandler"
+          "handlers.ReleaseCandidateHandler",
+          "handlers.NetworkHandler",
+          "handlers.CommonHandler",
+          "handlers.AccountHandler",
+          "handlers.MoonpayHandler",
+          "handlers.LocationHandler",
+          "handlers.AnnouncementHandler",
+          "handlers.BinanceHandler",
+          "handlers.TrustedDomainHandler",
+          "handlers.DAppHandler",
+          "handlers.ExternalAuthHandler",
+          "handlers.BlacklistHandler"
         ],
         "functions": [
           "HealthCheck",
@@ -137,21 +171,18 @@
         ],
         "imports": [
           "net/http",
-          "github.com/labstack/echo/v4",
-          "github.com/labstack/echo/v4/middleware",
           "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
-          "github.com/axieinfinity/ronin-wallet-proxy/config",
-          "github.com/axieinfinity/ronin-wallet-proxy/handlers",
-          "github.com/axieinfinity/ronin-wallet-proxy/models",
-          "github.com/axieinfinity/ronin-wallet-proxy/pkg/coinbase"
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ronin-wallet-manager/config",
+          "github.com/axieinfinity/ronin-wallet-manager/handlers",
+          "github.com/axieinfinity/ronin-wallet-manager/middleware",
+          "github.com/axieinfinity/ronin-wallet-manager/models"
         ],
         "side_effects": [
-          "Modifies HTTP response based on API requests",
-          "Handles CORS and static file serving"
+          "Modifies the state of the application by registering routes and handlers."
         ],
         "risks": [
-          "Potential exposure of sensitive API information if not properly secured",
-          "Improper handling of user input could lead to injection attacks"
+          "Potential exposure of sensitive information through API endpoints if not properly secured."
         ],
         "complexity": "medium"
       }

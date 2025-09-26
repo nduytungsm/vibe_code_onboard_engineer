@@ -1,0 +1,40 @@
+{
+  "content_hash": "949a5272d13a95e905e04af4e10c6413",
+  "timestamp": "2025-09-26T08:39:23.571293+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file implements an optimization pass that prunes 'maybe-throw' terminals for blocks that can provably never throw.",
+    "key_types": [
+      "HIRFunction",
+      "BlockId",
+      "GeneratedSource",
+      "Instruction"
+    ],
+    "functions": [
+      "pruneMaybeThrows",
+      "pruneMaybeThrowsImpl",
+      "instructionMayThrow"
+    ],
+    "imports": [
+      "CompilerError",
+      "BlockId",
+      "GeneratedSource",
+      "GotoVariant",
+      "HIRFunction",
+      "Instruction",
+      "assertConsistentIdentifiers",
+      "assertTerminalSuccessorsExist",
+      "mergeConsecutiveBlocks",
+      "reversePostorderBlocks",
+      "markInstructionIds",
+      "removeDeadDoWhileStatements",
+      "removeUnnecessaryTryCatch",
+      "removeUnreachableForUpdates",
+      "printPlace"
+    ],
+    "side_effects": [
+      "Modifies the function body by changing terminal types and removing unreachable blocks."
+    ],
+    "complexity": "medium"
+  }
+}

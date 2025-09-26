@@ -1,0 +1,19 @@
+{
+  "content_hash": "1fafab0d70ec3ef72a4cfc0e33db5e1d",
+  "timestamp": "2025-09-26T08:37:56.221873+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Optimizes method calls on props objects by converting them into regular calls.",
+    "key_types": [
+      "HIRFunction"
+    ],
+    "functions": [
+      "optimizePropsMethodCalls"
+    ],
+    "imports": [
+      "HIRFunction",
+      "isPropsType"
+    ],
+    "complexity": "medium"
+  }
+}

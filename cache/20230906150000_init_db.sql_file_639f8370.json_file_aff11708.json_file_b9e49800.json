@@ -1,0 +1,28 @@
+{
+  "content_hash": "07244ab92571aba84c68993cd524421b",
+  "timestamp": "2025-09-26T08:28:42.688742+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "[REDACTED]",
+    "key_types": [
+      "varchar",
+      "float8",
+      "bool",
+      "text",
+      "jsonb",
+      "timestamptz"
+    ],
+    "functions": [
+      "CREATE EXTENSION",
+      "CREATE TABLE",
+      "CREATE INDEX",
+      "DROP TABLE",
+      "DROP COLLATION"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the database schema by creating extensions, tables, and indexes."
+    ],
+    "complexity": "medium"
+  }
+}

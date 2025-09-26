@@ -1,0 +1,27 @@
+{
+  "content_hash": "a129b955a3a9e4a3548b9c4ec02070dd",
+  "timestamp": "2025-09-26T08:39:56.950014+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for HCL Type Expressions Extension",
+    "key_types": [
+      "hcl.Expression",
+      "cty.DynamicPseudoType",
+      "TypeConstraint",
+      "TypeConstraintType",
+      "TypeConstraintVal"
+    ],
+    "functions": [
+      "hcl.ExprAsKeyword",
+      "hcl.ExprCall",
+      "TypeConstraintVal",
+      "TypeConstraintFromVal",
+      "typeexpr.ConvertFunc"
+    ],
+    "imports": [
+      "github.com/hashicorp/hcl/v2",
+      "github.com/zclconf/go-cty"
+    ],
+    "complexity": "medium"
+  }
+}

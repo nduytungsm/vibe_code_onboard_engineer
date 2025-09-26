@@ -1,0 +1,32 @@
+{
+  "content_hash": "b630d76fc8704ba30c6cd44d793c30f1",
+  "timestamp": "2025-09-26T08:30:24.798628+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains database migration scripts to modify the schema of a PostgreSQL database, including creating extensions, altering tables, and creating new tables and indexes.",
+    "key_types": [
+      "TABLE",
+      "INDEX",
+      "COLLATION",
+      "EXTENSION"
+    ],
+    "functions": [
+      "CREATE EXTENSION",
+      "CREATE COLLATION",
+      "ALTER TABLE",
+      "CREATE INDEX",
+      "CREATE TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the database schema",
+      "Creates new indexes",
+      "Alters existing tables"
+    ],
+    "risks": [
+      "Potential data loss if not properly backed up before migration",
+      "Schema changes may affect existing queries and application logic"
+    ],
+    "complexity": "medium"
+  }
+}

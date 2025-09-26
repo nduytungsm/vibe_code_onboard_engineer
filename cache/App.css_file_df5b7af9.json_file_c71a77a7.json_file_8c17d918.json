@@ -1,0 +1,12 @@
+{
+  "content_hash": "7165541537a1f15c5f32b1ac60c9bfbe",
+  "timestamp": "2025-09-26T08:31:30.003703+07:00",
+  "result": {
+    "language": "CSS",
+    "purpose": "Styles for the App component, including layout and animations.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

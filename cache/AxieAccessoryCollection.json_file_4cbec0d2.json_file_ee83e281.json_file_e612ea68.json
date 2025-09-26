@@ -1,0 +1,20 @@
+{
+  "content_hash": "2f2cc1d488f61c2f9371d4ed190fe312",
+  "timestamp": "2025-09-26T08:32:09.810539+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the structure of an Axie accessory collection with events and roles.",
+    "key_types": [
+      "constructor",
+      "event",
+      "tuple",
+      "bytes32"
+    ],
+    "functions": [
+      "DEFAULT_ADMIN_ROLE",
+      "MINTER_ROLE"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

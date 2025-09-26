@@ -1,0 +1,22 @@
+{
+  "content_hash": "cba9ff3cefd7752223d3e6a7e3baf953",
+  "timestamp": "2025-09-26T08:34:37.465216+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "[REDACTED]",
+    "key_types": [
+      "event",
+      "function"
+    ],
+    "functions": [
+      "allowance",
+      "approve",
+      "balanceOf",
+      "totalSupply",
+      "transfer",
+      "transferFrom"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

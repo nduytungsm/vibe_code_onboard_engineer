@@ -1,0 +1,36 @@
+{
+  "content_hash": "73fad9e937ed7dbd012cafe46abd9a12",
+  "timestamp": "2025-09-26T08:32:44.260692+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Converts from HIR (lower-level CFG) to ReactiveFunction, a tree representation that is closer to an AST.",
+    "key_types": [
+      "HIRFunction",
+      "ReactiveFunction",
+      "BasicBlock",
+      "ReactiveBlock",
+      "Context",
+      "Driver"
+    ],
+    "functions": [
+      "buildReactiveFunction",
+      "traverseBlock",
+      "visitBlock"
+    ],
+    "imports": [
+      "../CompilerError",
+      "../HIR",
+      "../HIR/HIR",
+      "../Utils/utils"
+    ],
+    "side_effects": [
+      "Modifies the state of the context during traversal",
+      "Emits blocks and instructions based on control flow"
+    ],
+    "risks": [
+      "Potential for infinite loops if control flow is not managed correctly",
+      "Errors in block scheduling could lead to incorrect execution paths"
+    ],
+    "complexity": "high"
+  }
+}

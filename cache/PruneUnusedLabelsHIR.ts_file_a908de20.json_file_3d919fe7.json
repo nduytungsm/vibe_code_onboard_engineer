@@ -1,0 +1,29 @@
+{
+  "content_hash": "151ec7fd649145c30f38df5153b29935",
+  "timestamp": "2025-09-26T08:39:32.680309+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file defines a function to prune unused labels in a high-level intermediate representation (HIR) of a function, optimizing the control flow by merging certain blocks.",
+    "key_types": [
+      "HIRFunction",
+      "BlockId",
+      "GotoVariant"
+    ],
+    "functions": [
+      "pruneUnusedLabelsHIR"
+    ],
+    "imports": [
+      "CompilerError",
+      "BlockId",
+      "GotoVariant",
+      "HIRFunction"
+    ],
+    "side_effects": [
+      "Modifies the function's body by merging blocks and deleting unused labels."
+    ],
+    "risks": [
+      "Potential for runtime errors if assumptions about block structure are violated."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,10 +1,11 @@
 {
-  "content_hash": "51ca0e6f69ef46a50b4a5a8a00eaf0ed",
-  "timestamp": "2025-09-26T07:39:54.172478+07:00",
+  "content_hash": "f339c815c7ef7eade2d3cf19f6f17196",
+  "timestamp": "2025-09-26T08:40:05.622307+07:00",
   "result": {
     "path": "root",
-    "purpose": "This folder/module is responsible for the Ronin Wallet proxy, providing functionality to interact with various blockchain-related queries and services.",
+    "purpose": "This folder/module is responsible for the wallet-manager project, including configuration, documentation, and service definitions.",
     "languages": {
+      "JSON": 2,
       "Markdown": 2,
       "YAML": 2,
       "bash": 1
@@ -13,53 +14,31 @@
       ".golangci.yaml",
       "README.md",
       "SECURITY.md",
+      "country_iso2_to_currency.json",
+      "country_iso2_to_iso3.json",
       "docker-compose.yml",
       "entrypoint.sh"
     ],
     "dependencies": [
-      "Skynet API",
-      "Moralis",
-      "Getblock.io",
-      "Coingecko"
+      "postgres",
+      "redis"
     ],
-    "architecture": "The folder follows a microservices architecture, utilizing Docker for containerization and includes configuration files for linting and service management.",
+    "architecture": "The folder follows a modular architecture pattern, organizing configuration, documentation, and service definitions for a Dockerized application.",
     "file_summaries": {
       ".golangci.yaml": {
         "language": "YAML",
-        "purpose": "Configuration file for GolangCI-Lint, specifying linting rules and settings for Go code.",
-        "key_types": [
-          "linters-settings",
-          "rules",
-          "linters",
-          "issues",
-          "run"
-        ],
+        "purpose": "Configuration file for GolangCI-Lint, specifying linting rules and settings.",
+        "key_types": [],
         "functions": [],
         "imports": [],
         "complexity": "medium"
       },
       "README.md": {
         "language": "Markdown",
-        "purpose": "Documentation for the Ronin Wallet proxy, detailing its functionality and usage.",
+        "purpose": "Documentation for the wallet-manager project",
         "key_types": [],
-        "functions": [
-          "Query account balance and erc20 token balances",
-          "Query owned NFT collections",
-          "Query owned NFT items belonging to a collection",
-          "Query NFT item detail with metadata",
-          "Query native token transfer transactions (for Ronin network only)",
-          "Query recent transactions made by a wallet",
-          "Query token transfer transactions relating to a wallet",
-          "Query transaction detail",
-          "Query gas fee suggestion",
-          "Submit RPC call"
-        ],
-        "imports": [
-          "Skynet API",
-          "Moralis",
-          "Getblock.io",
-          "Coingecko"
-        ],
+        "functions": [],
+        "imports": [],
         "complexity": "low"
       },
       "SECURITY.md": {
@@ -70,15 +49,39 @@
         "imports": [],
         "complexity": "low"
       },
+      "country_iso2_to_currency.json": {
+        "language": "JSON",
+        "purpose": "This file maps country ISO2 codes to their respective currencies.",
+        "key_types": [
+          "string",
+          "string"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "country_iso2_to_iso3.json": {
+        "language": "JSON",
+        "purpose": "This file maps ISO 3166-1 alpha-2 country codes to their corresponding ISO 3166-1 alpha-3 country codes.",
+        "key_types": [
+          "string"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
       "docker-compose.yml": {
         "language": "YAML",
         "purpose": "Defines services for a Docker application including PostgreSQL and Redis.",
         "key_types": [
-          "services",
-          "environment"
+          "service",
+          "environment variable"
         ],
         "functions": [],
-        "imports": [],
+        "imports": [
+          "postgres",
+          "redis"
+        ],
         "side_effects": [
           "Creates Docker containers for PostgreSQL and Redis services."
         ],
@@ -98,7 +101,10 @@
           "./app"
         ],
         "side_effects": [
-          "Exits on error due to 'set -e'"
+          "Executes an external application"
+        ],
+        "risks": [
+          "Potential command injection if input is not sanitized"
         ],
         "complexity": "low"
       }

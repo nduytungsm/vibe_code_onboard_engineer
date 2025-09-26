@@ -1,0 +1,24 @@
+{
+  "content_hash": "1fa2c688cdba76e2373ad09b3e903cfa",
+  "timestamp": "2025-09-26T08:38:07.510692+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines the ABI for an order exchange contract, including events and functions related to order management.",
+    "key_types": [
+      "constructor",
+      "event",
+      "function"
+    ],
+    "functions": [
+      "cancelOrder",
+      "getRoleAdmin",
+      "getRoleMember",
+      "getRoleMemberCount",
+      "DEFAULT_ADMIN_ROLE",
+      "INTERFACE_NAME",
+      "MARKET_OPERATOR"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

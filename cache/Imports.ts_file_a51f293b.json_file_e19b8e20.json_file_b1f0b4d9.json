@@ -1,0 +1,47 @@
+{
+  "content_hash": "d4ad8333198e2c50055b353e12bab0be",
+  "timestamp": "2025-09-26T08:36:14.806936+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines a program context for managing imports and validating restricted imports in a Babel plugin.",
+    "key_types": [
+      "ProgramContext",
+      "CompilerError",
+      "EnvironmentConfig",
+      "NonLocalImportSpecifier",
+      "Result"
+    ],
+    "functions": [
+      "validateRestrictedImports",
+      "addImportsToProgram",
+      "getExistingImports",
+      "isHookName",
+      "hasReference",
+      "newUid",
+      "addImportSpecifier",
+      "assertGlobalBinding",
+      "logEvent"
+    ],
+    "imports": [
+      "@babel/core",
+      "@babel/types",
+      "@babel/traverse",
+      "../CompilerError",
+      "../HIR",
+      "../Utils/utils",
+      "../HIR/Environment",
+      "../Utils/Result",
+      "./Options",
+      "./Program",
+      "./Suppression"
+    ],
+    "side_effects": [
+      "Modifies the program's import declarations based on the context and validation rules."
+    ],
+    "risks": [
+      "Potential for conflicting import specifiers leading to runtime errors.",
+      "Improper handling of restricted imports may lead to security vulnerabilities."
+    ],
+    "complexity": "medium"
+  }
+}

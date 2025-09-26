@@ -1,0 +1,28 @@
+{
+  "content_hash": "9c9d15430d13c7b9a2883e3790c45d04",
+  "timestamp": "2025-09-26T08:39:30.124+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Flattens labeled terminals where the label is not reachable, and nulls out labels for other terminals where the label is unused.",
+    "key_types": [
+      "BlockId",
+      "ReactiveFunction",
+      "ReactiveStatement",
+      "ReactiveTerminalStatement",
+      "Labels",
+      "Transform"
+    ],
+    "functions": [
+      "pruneUnusedLabels",
+      "transformTerminal"
+    ],
+    "imports": [
+      "../HIR/HIR",
+      "./visitors"
+    ],
+    "side_effects": [
+      "Modifies the state of labels by adding reachable labels."
+    ],
+    "complexity": "medium"
+  }
+}

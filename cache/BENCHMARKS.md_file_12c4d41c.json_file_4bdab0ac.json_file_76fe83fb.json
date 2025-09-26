@@ -1,0 +1,12 @@
+{
+  "content_hash": "49c588f9ae2cfe9680155ceb6fba60d5",
+  "timestamp": "2025-09-26T08:32:30.993205+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation of benchmark results for various Go HTTP routers.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "content_hash": "99e737bdef8ff914089af5e033ddf273",
+  "timestamp": "2025-09-26T08:40:15.304402+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the hcldec command line tool that transforms HCL input into JSON output.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

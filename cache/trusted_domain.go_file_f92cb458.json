@@ -1,0 +1,41 @@
+{
+  "content_hash": "86fe732abd3e2e531ba8c9ad0a03f153",
+  "timestamp": "2025-09-26T08:11:50.215112+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing trusted domains in a database using GORM.",
+    "key_types": [
+      "TrustedDomainRepo",
+      "trustedDomainsRepo",
+      "TrustedDomain",
+      "Paging",
+      "TrustedDomainFilter",
+      "TrustedDomainOrderBy"
+    ],
+    "functions": [
+      "GetByDomain",
+      "GetList",
+      "Save",
+      "SaveBatch",
+      "GetAll",
+      "DeleteByDomain",
+      "NewTrustedDomainRepo"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "strings",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "side_effects": [
+      "Database transactions are initiated and managed."
+    ],
+    "risks": [
+      "Potential SQL injection if user input is not properly sanitized in queries."
+    ],
+    "complexity": "medium"
+  }
+}
