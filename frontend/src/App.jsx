@@ -245,7 +245,18 @@ function App() {
       }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center">
-            <div className="flex items-center gap-3">
+            <div 
+              className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={() => {
+                setAnalysisResults(null);
+                setAnalysisComplete(false);
+                setAnalysisRunning(false);
+                setAnalysisProgress(0);
+                setRepoUrl('');
+                setGithubToken('');
+                setActiveTab('overview');
+              }}
+            >
               <div className="p-2 rounded-xl" style={{ backgroundColor: "hsl(var(--slate-800))" }}>
                 <Github className="h-5 w-5 text-white" />
               </div>
@@ -842,7 +853,14 @@ function ServicesTab({ getAnalysisData }) {
             {services.length === 0 ? (
               <div className="text-center py-8 text-muted-foreground">
                 <Server className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                <p>No microservices detected in this repository</p>
+                <p className="mb-4">No microservices detected in this repository</p>
+                <div className="text-xs text-muted-foreground/80 bg-muted/30 rounded-lg p-4 max-w-md mx-auto">
+                  <div className="font-medium mb-2 text-muted-foreground">💡 Discovery Requirements:</div>
+                  <div className="text-left space-y-1">
+                    <div>• Services need a startup command in <code className="bg-background px-1 rounded">Makefile</code></div>
+                    <div>• Or explicit service definitions in configuration files</div>
+                  </div>
+                </div>
               </div>
             ) : (
               services.map((service) => (
@@ -952,10 +970,17 @@ function DatabaseTab({ getAnalysisData }) {
               <CardTitle className="text-xl mb-2" style={{ color: "hsl(var(--slate-700))" }}>
                 No Database Schema Detected
               </CardTitle>
-              <p className="max-w-md mx-auto text-sm" style={{ color: "hsl(var(--slate-500))" }}>
+              <p className="max-w-md mx-auto text-sm mb-4" style={{ color: "hsl(var(--slate-500))" }}>
                 No database migration files or schema definitions found in this repository. 
                 The analyzer looks for SQL files in migration directories.
               </p>
+              <div className="text-xs bg-slate-50 border rounded-lg p-4 max-w-md mx-auto" style={{ color: "hsl(var(--slate-600))" }}>
+                <div className="font-medium mb-2">💡 Detection Requirements:</div>
+                <div className="text-left space-y-1">
+                  <div>• Database tables need to be defined in the <code className="bg-white px-1 rounded border">migrations/</code> folder</div>
+                  <div>• Supported formats: SQL migration files, schema definitions</div>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -1672,9 +1697,17 @@ function SecretsTab({ getAnalysisData }) {
               <CardTitle className="text-xl mb-2" style={{ color: "hsl(var(--slate-700))" }}>
                 No Secret Variables Detected
               </CardTitle>
-              <p className="max-w-md mx-auto text-sm" style={{ color: "hsl(var(--slate-500))" }}>
+              <p className="max-w-md mx-auto text-sm mb-4" style={{ color: "hsl(var(--slate-500))" }}>
                 No environment variables or configuration secrets found. This project may not require additional configuration.
               </p>
+              <div className="text-xs bg-slate-50 border rounded-lg p-4 max-w-md mx-auto" style={{ color: "hsl(var(--slate-600))" }}>
+                <div className="font-medium mb-2">💡 Detection Requirements:</div>
+                <div className="text-left space-y-1">
+                  <div>• Secrets must be defined in <code className="bg-white px-1 rounded border">.env</code> files</div>
+                  <div>• Or in YAML configuration files</div>
+                  <div>• Variables like API keys, database URLs, tokens, etc.</div>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>

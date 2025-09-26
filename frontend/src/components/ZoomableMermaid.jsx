@@ -1,6 +1,105 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { ZoomIn, ZoomOut, RotateCcw, Maximize2, Download, Copy } from 'lucide-react';
 
+// CSS styles to fix Mermaid table name overlapping issues
+const mermaidFixStyles = `
+  /* CRITICAL: Force proper entity box sizing to prevent truncation */
+  .er .er-entity-name-box rect {
+    min-width: 200px !important;
+    width: auto !important;
+    height: 45px !important;
+    min-height: 45px !important;
+  }
+
+  /* Force entity boxes to be wide enough */
+  .er rect[class*="entity"] {
+    min-width: 200px !important;
+    width: auto !important;
+  }
+
+  /* Target all ER diagram rectangles */
+  .er rect {
+    min-width: 200px !important;
+    width: auto !important;
+  }
+
+  /* Make sure entity groups expand properly */
+  .er g[class*="entity"] {
+    min-width: 200px !important;
+  }
+
+  /* Critical fix for entity label containers */
+  .er g.er-entity-name-box rect,
+  .er g.er-entity-name-box {
+    min-width: 200px !important;
+    width: auto !important;
+    min-height: 45px !important;
+    height: 45px !important;
+  }
+
+  /* Ensure text doesn't get clipped */
+  .er text {
+    overflow: visible !important;
+    text-overflow: visible !important;
+    white-space: nowrap !important;
+    clip-path: none !important;
+  }
+
+  /* Make entity label text properly sized and positioned */
+  .er .entityLabel,
+  .er .er-entity-name-box text {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    fill: #1e293b !important;
+    text-anchor: middle !important;
+    dominant-baseline: central !important;
+    alignment-baseline: middle !important;
+  }
+
+  /* Attribute boxes should also be properly sized */
+  .er .attributeBoxEven rect,
+  .er .attributeBoxOdd rect {
+    min-width: 200px !important;
+    width: auto !important;
+    height: 25px !important;
+  }
+
+  /* Overall entity container sizing */
+  .er g.entityBox {
+    min-width: 200px !important;
+  }
+
+  /* Force minimum width on all ER elements */
+  .er > g > g {
+    min-width: 200px !important;
+  }
+
+  /* Entity box styling */
+  .er.entityBox,
+  .er rect.entityBox {
+    min-width: 200px !important;
+    width: auto !important;
+    rx: 6 !important;
+    ry: 6 !important;
+    stroke-width: 2 !important;
+    fill: #ffffff !important;
+    stroke: #3b82f6 !important;
+  }
+
+  /* Relationship labels */
+  .er .relationshipLabel {
+    font-size: 12px !important;
+    fill: #64748b !important;
+    font-weight: 500 !important;
+  }
+
+  /* Make sure no clipping occurs */
+  .er * {
+    clip: none !important;
+    clip-path: none !important;
+  }
+`;
+
 const ZoomableMermaid = ({ 
   mermaidCode, 
   title = "Diagram",
@@ -204,6 +303,17 @@ const ZoomableMermaid = ({
         if (!svg.getAttribute('width') || !svg.getAttribute('height')) {
           svg.setAttribute('width', '100%');
           svg.setAttribute('height', 'auto');
+        }
+
+        // Apply CSS fixes for table name overlapping
+        const existingStyle = svg.querySelector('style');
+        if (existingStyle) {
+          existingStyle.textContent += mermaidFixStyles;
+        } else {
+          const styleElement = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+          styleElement.setAttribute('type', 'text/css');
+          styleElement.textContent = mermaidFixStyles;
+          svg.insertBefore(styleElement, svg.firstChild);
         }
       }
 
