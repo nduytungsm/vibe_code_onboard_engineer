@@ -1,9 +1,9 @@
 {
-  "content_hash": "45f83276963d46e499d69982c49e334b",
-  "timestamp": "2025-09-26T13:35:21.379858+07:00",
+  "content_hash": "d10588a3e92f9d7f800ef6d639ce8308",
+  "timestamp": "2025-09-26T14:05:09.186935+07:00",
   "result": {
     "path": "pkg/redis",
-    "purpose": "This folder/module is responsible for providing a Redis client and instance implementation for interacting with a Redis database, including configuration, management, and key-value operations.",
+    "purpose": "This folder/module is responsible for providing a Redis client and instance implementation for connecting to and interacting with a Redis database.",
     "languages": {
       "Go": 2
     },
@@ -11,64 +11,31 @@
       "client.go",
       "instance.go"
     ],
-    "dependencies": [
-      "github.com/prometheus/client_golang/prometheus",
-      "github.com/redis/go-redis/extra/redisprometheus/v9",
-      "github.com/redis/go-redis/v9",
-      "github.com/google/wire"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating Redis client and instance functionalities in separate files, promoting separation of concerns and reusability.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating Redis client and instance functionalities in separate files for better organization and maintainability.",
     "file_summaries": {
       "pkg/redis/client.go": {
         "language": "Go",
-        "purpose": "This file defines a Redis client configuration and provides functions to create and manage a Redis client with optional TLS support and Prometheus metrics.",
+        "purpose": "Defines a Redis client configuration and creation logic for connecting to a Redis database.",
         "key_types": [
-          "Redis"
-        ],
-        "functions": [
+          "Redis",
           "MakeRedisClient",
-          "createClient",
-          "NewRedisClient"
+          "createClient"
         ],
-        "imports": [
-          "crypto/tls",
-          "crypto/x509",
-          "errors",
-          "fmt",
-          "os",
-          "reflect",
-          "time",
-          "github.com/prometheus/client_golang/prometheus",
-          "github.com/redis/go-redis/extra/redisprometheus/v9",
-          "github.com/redis/go-redis/v9"
-        ],
-        "side_effects": [
-          "Panic if client creation fails in MakeRedisClient"
-        ],
-        "risks": [
-          "Potential exposure of sensitive information if Password is not handled securely",
-          "Insecure TLS configuration if InsecureSkipVerify is true"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/redis/instance.go": {
         "language": "Go",
-        "purpose": "This file provides a Redis instance implementation for getting and setting key-value pairs in a Redis database.",
+        "purpose": "This file provides a Redis instance implementation for setting and getting key-value pairs.",
         "key_types": [
           "RedisInstance",
+          "NewRedisInstance",
           "redisInstance"
         ],
-        "functions": [
-          "NewRedisInstance",
-          "Get",
-          "Set"
-        ],
-        "imports": [
-          "context",
-          "time",
-          "github.com/google/wire",
-          "github.com/redis/go-redis/v9"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

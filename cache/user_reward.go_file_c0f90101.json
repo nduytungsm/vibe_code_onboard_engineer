@@ -1,0 +1,16 @@
+{
+  "content_hash": "e25ce6d200607c07355b7da9af2852cc",
+  "timestamp": "2025-09-26T13:58:42.528906+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for user rewards and reward pools in a quest system.",
+    "key_types": [
+      "UserRewardEntity",
+      "RewardPoolExtra",
+      "DistributeInfoV3"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

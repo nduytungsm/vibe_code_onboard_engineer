@@ -1,0 +1,16 @@
+{
+  "content_hash": "905ff69295b757dd632cee40c9748a25",
+  "timestamp": "2025-09-26T13:59:10.054927+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides helper functions for binding struct fields to environment variables and converting string representations of byte sizes.",
+    "key_types": [
+      "StringToByteSizeHookFunc",
+      "BindStructPathsToEnvs",
+      "extractMapstructurePaths"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

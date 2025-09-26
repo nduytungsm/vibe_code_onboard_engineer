@@ -1,9 +1,9 @@
 {
-  "content_hash": "d5f72d9be970f2ba2c770a5a67d72d9d",
-  "timestamp": "2025-09-26T13:35:24.257766+07:00",
+  "content_hash": "b9db3b1ef3105b924feedfb2714a98ba",
+  "timestamp": "2025-09-26T14:01:16.114284+07:00",
   "result": {
     "path": "internal/infras/waypoint",
-    "purpose": "This module is responsible for interacting with the Waypoint API, managing user profiles, wallet information, and point operations.",
+    "purpose": "Responsible for managing waypoint profiles and points, including client interactions and data models.",
     "languages": {
       "Go": 2
     },
@@ -11,78 +11,31 @@
       "client.go",
       "models.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/google/uuid",
-      "go.uber.org/zap"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating API client functionality and data models for waypoint-related operations.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating client interfaces and data models related to waypoint functionalities.",
     "file_summaries": {
       "internal/infras/waypoint/client.go": {
         "language": "Go",
-        "purpose": "This file defines a client for interacting with the Waypoint API, including methods for retrieving public profiles and managing points.",
+        "purpose": "Defines a client interface and its implementation for interacting with waypoint profiles and points management.",
         "key_types": [
-          "Client",
-          "Config",
-          "HMACAuth",
-          "cli"
+          "Client interface",
+          "Config struct",
+          "cli struct"
         ],
-        "functions": [
-          "NewClient",
-          "GetPublicProfile",
-          "GetPublicProfileByToken",
-          "AwardPoints",
-          "RedeemPoints",
-          "GetApplicationID",
-          "GetSeasonID",
-          "GetNamespaceUUID",
-          "GenerateDeterministicIdempotencyKey",
-          "IdemKeyV2",
-          "IdemKeyForRedeem"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "net/http",
-          "net/url",
-          "regexp",
-          "strings",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/google/uuid",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Logs errors and information during API requests"
-        ],
-        "risks": [
-          "Potential exposure of sensitive information in logs if not handled properly"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/infras/waypoint/models.go": {
         "language": "Go",
-        "purpose": "Defines data structures for handling waypoint-related operations, including user profiles, wallet information, and point redemption.",
+        "purpose": "Defines data models for waypoint-related functionalities including error handling, wallet management, and point system.",
         "key_types": [
           "WaypointErr",
           "Wallet",
-          "PublicProfile",
-          "WalletInfo",
-          "LinkedAccount",
-          "Metadata",
-          "RedeemMetadata",
-          "AwardPointsRequest",
-          "AwardPointsResponse",
-          "ProfileUser",
-          "OnchainItem",
-          "RedeemPointsRequest",
-          "RedeemPointsResponse"
+          "AwardPointsRequest"
         ],
-        "functions": [],
-        "imports": [
-          "math/big"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

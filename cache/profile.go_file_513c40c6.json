@@ -1,0 +1,16 @@
+{
+  "content_hash": "a8809a1c83cd7d26afad39a9382265cc",
+  "timestamp": "2025-09-26T13:58:00.639656+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service to check the existence of user profiles.",
+    "key_types": [
+      "ProfileService",
+      "profileService",
+      "CheckProfileExistence"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

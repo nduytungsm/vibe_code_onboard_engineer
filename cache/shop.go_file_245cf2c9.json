@@ -1,0 +1,16 @@
+{
+  "content_hash": "c3e3b86bf2440743b55643d045ba0112",
+  "timestamp": "2025-09-26T13:58:44.010611+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the ShopRepo interface for managing shop categories, items, tiers, and purchases.",
+    "key_types": [
+      "GetCategories",
+      "CreateItem",
+      "CreatePurchase"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "content_hash": "c7a48b9feeb5e8dcd3b6c02d312e1db9",
+  "timestamp": "2025-09-26T13:58:13.557345+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for unmarshalling TradeType from JSON.",
+    "key_types": [
+      "TestTradeType_UnmarshalJSON"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

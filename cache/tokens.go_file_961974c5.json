@@ -1,0 +1,16 @@
+{
+  "content_hash": "df4bc3078df5ac759a5c733708f1279c",
+  "timestamp": "2025-09-26T13:57:41.781119+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Defines data models for listing tokens with pagination support.",
+    "key_types": [
+      "ListTokenRequest",
+      "Pagination",
+      "ListTokenResponse"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

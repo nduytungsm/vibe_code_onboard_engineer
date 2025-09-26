@@ -1,9 +1,9 @@
 {
-  "content_hash": "8e12daa03eaef9225ee7301513513d7e",
-  "timestamp": "2025-09-26T13:41:51.690535+07:00",
+  "content_hash": "a2fb71bf798964135b54a991f72ee7fa",
+  "timestamp": "2025-09-26T14:00:53.690634+07:00",
   "result": {
     "path": "internal/domains/proxy/tasks",
-    "purpose": "Responsible for handling various token-related tasks, including processing, generating, and crawling token data, while managing interactions with external services.",
+    "purpose": "Responsible for managing and processing token-related tasks for a proxy service, including crawling and generating tokens with rate limiting.",
     "languages": {
       "Go": 3
     },
@@ -12,161 +12,43 @@
       "token_tasks_generator.go",
       "tokens.go"
     ],
-    "dependencies": [
-      "github.com/hibiken/asynq",
-      "github.com/samber/mo",
-      "go.uber.org/zap",
-      "golang.org/x/time/rate",
-      "gorm.io/gorm",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/coingecko"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific task handling logic, promoting separation of concerns and reusability.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to token management and processing.",
     "file_summaries": {
       "internal/domains/proxy/tasks/skynet_tokens.go": {
         "language": "Go",
-        "purpose": "Handles the processing of Skynet token crawler tasks, including rate limiting and logging.",
+        "purpose": "Handles the crawling of Skynet tokens with rate limiting and task processing.",
         "key_types": [
-          "skynetTokenCrawlerConfig",
-          "SkynetTokenCrawlerTaskHandler"
-        ],
-        "functions": [
+          "SkynetTokenCrawlerTaskHandler",
           "NewSkynetTokenCrawlerTaskHandler",
-          "TaskType",
-          "ProcessTask",
-          "processRoninOnlyToken",
-          "roninTokenLogoUrl"
+          "ProcessTask"
         ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "strings",
-          "time",
-          "github.com/hibiken/asynq",
-          "github.com/samber/mo",
-          "go.uber.org/zap",
-          "golang.org/x/time/rate",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "side_effects": [
-          "Logs warnings and errors during task processing",
-          "Interacts with external services (e.g., database, CDN)"
-        ],
-        "risks": [
-          "Potential for denial of service if rate limiting is not properly configured",
-          "Error handling may expose sensitive information in logs"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/tasks/token_tasks_generator.go": {
         "language": "Go",
-        "purpose": "This file defines a task handler for generating token tasks in a proxy service, interacting with various services and repositories to manage token data.",
+        "purpose": "Generates and manages token tasks for a proxy service using asynchronous processing.",
         "key_types": [
-          "tokenTaskGeneratorTaskConfig",
-          "TokenTaskGeneratorTaskHandler"
-        ],
-        "functions": [
+          "TokenTaskGeneratorTaskHandler",
           "NewTokenTaskGeneratorTaskHandler",
-          "TaskType",
-          "ProcessTask",
-          "processERC20",
-          "needToCreateTokenTask",
-          "sendTask",
-          "findSkynetToken"
+          "tokenTaskGeneratorTaskConfig"
         ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "time",
-          "github.com/hibiken/asynq",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/coingecko",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "side_effects": [
-          "Enqueues tasks to an asynchronous queue",
-          "Logs information about task processing"
-        ],
-        "risks": [
-          "Potential for duplicate task enqueuing",
-          "Error handling may expose sensitive information if not properly managed"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/tasks/tokens.go": {
         "language": "Go",
-        "purpose": "Handles token crawling tasks, processes token data, and interacts with external services for token information.",
+        "purpose": "Handles token crawling tasks for a proxy service, managing token data updates and rate limiting.",
         "key_types": [
           "TokenCrawlerTask",
-          "tokenCrawlerConfig",
-          "TokenCrawlerTaskHandler"
+          "TokenCrawlerTaskHandler",
+          "NewTokenCrawlerTaskHandler"
         ],
-        "functions": [
-          "NewTokenCrawlerTaskHandler",
-          "TaskType",
-          "ProcessTask",
-          "process",
-          "cleanupToken",
-          "mappingToken",
-          "mappingNativeToken",
-          "newToken",
-          "roninTokenLogoUrl"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "strings",
-          "time",
-          "github.com/hibiken/asynq",
-          "github.com/samber/lo",
-          "github.com/samber/mo",
-          "go.uber.org/zap",
-          "golang.org/x/time/rate",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/coingecko",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "side_effects": [
-          "Logs warnings and errors during task processing",
-          "Interacts with external APIs for token data"
-        ],
-        "risks": [
-          "Potential for API rate limiting if limits are exceeded",
-          "Error handling may not cover all edge cases"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

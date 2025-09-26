@@ -1,9 +1,9 @@
 {
-  "content_hash": "9e81828a7f1e5fe81626e21123784b92",
-  "timestamp": "2025-09-26T13:40:41.140203+07:00",
+  "content_hash": "f4ca966ed0205d2fcfc8a11514b8f002",
+  "timestamp": "2025-09-26T14:04:09.048561+07:00",
   "result": {
     "path": "internal/domains/notification/services/push",
-    "purpose": "This module is responsible for implementing clients to send push notifications via different services such as Apple Push Notification Service (APNS) and Firebase Cloud Messaging (FCM).",
+    "purpose": "Responsible for handling push notifications across different platforms, including Apple's APNs and Firebase Cloud Messaging.",
     "languages": {
       "Go": 5
     },
@@ -14,171 +14,66 @@
       "fcm.go",
       "interface.go"
     ],
-    "dependencies": [
-      "context",
-      "encoding/base64",
-      "errors",
-      "fmt",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "crypto/ecdsa",
-      "sync",
-      "time",
-      "github.com/go-resty/resty/v2",
-      "github.com/golang-jwt/jwt",
-      "firebase.google.com/go/v4",
-      "firebase.google.com/go/v4/messaging",
-      "github.com/samber/lo",
-      "google.golang.org/api/option",
-      "github.com/axieinfinity/ronin-wallet-services/internal/enums"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to push notifications into distinct files, each handling specific aspects such as client implementation, token management, and configuration.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to push notifications in separate files, each handling specific aspects of the service.",
     "file_summaries": {
       "internal/domains/notification/services/push/apns.go": {
         "language": "Go",
-        "purpose": "This file implements a client for sending push notifications to Apple Push Notification Service (APNS).",
+        "purpose": "Handles sending push notifications via Apple's APNs service.",
         "key_types": [
           "apnsPushClient",
-          "Config",
-          "PushRequest",
-          "PushResponse",
-          "APNSPushResponse"
-        ],
-        "functions": [
           "SendNotification",
-          "SendToTopic",
           "newAPNSPushClient"
         ],
-        "imports": [
-          "context",
-          "encoding/base64",
-          "errors",
-          "fmt",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/crypto",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "side_effects": [
-          "Sends HTTP requests to APNS",
-          "Logs errors using zap logger"
-        ],
-        "risks": [
-          "Potential exposure of sensitive certificate data",
-          "Improper error handling may lead to application crashes"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/notification/services/push/apns_token.go": {
         "language": "Go",
-        "purpose": "This file manages Apple Provider Authentication Tokens for push notifications.",
+        "purpose": "Manages Apple Provider Authentication Tokens for push notifications.",
         "key_types": [
-          "Token"
-        ],
-        "functions": [
+          "Token",
           "GetAccessToken",
-          "expired",
-          "refresh",
           "Apply"
         ],
-        "imports": [
-          "crypto/ecdsa",
-          "sync",
-          "time",
-          "github.com/go-resty/resty/v2",
-          "github.com/golang-jwt/jwt"
-        ],
-        "side_effects": [
-          "Modifies the state of the Token object by refreshing the token."
-        ],
-        "risks": [
-          "Potential exposure of sensitive information if tokens are not handled securely."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/notification/services/push/config.go": {
         "language": "Go",
-        "purpose": "Defines a configuration structure for push notifications and provides a method to return its string representation.",
+        "purpose": "Defines configuration settings for push notification services.",
         "key_types": [
           "Config",
-          "NotificationPushProvider"
-        ],
-        "functions": [
           "String"
         ],
-        "imports": [
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums"
-        ],
-        "risks": [
-          "Exposure of sensitive information due to redacted fields"
-        ],
-        "complexity": "medium"
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
       },
       "internal/domains/notification/services/push/fcm.go": {
         "language": "Go",
-        "purpose": "This file implements a client for sending push notifications using Firebase Cloud Messaging (FCM).",
+        "purpose": "Handles push notifications using Firebase Cloud Messaging (FCM) for Android and iOS.",
         "key_types": [
           "fcmPushClient",
-          "PushRequest",
-          "PushResponse",
-          "Config"
-        ],
-        "functions": [
           "buildAndroidNotificationConfig",
-          "buildIosNotificationConfig",
-          "buildPushMessage",
-          "SendNotification",
-          "SendToTopic",
-          "newFCMPushClient"
+          "buildIosNotificationConfig"
         ],
-        "imports": [
-          "context",
-          "encoding/base64",
-          "fmt",
-          "firebase.google.com/go/v4",
-          "firebase.google.com/go/v4/messaging",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "google.golang.org/api/option",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models"
-        ],
-        "side_effects": [
-          "Sends notifications to devices via FCM",
-          "Logs notification sending results"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data if error handling is not properly managed",
-          "Improper handling of user input could lead to injection attacks"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/notification/services/push/interface.go": {
         "language": "Go",
-        "purpose": "Defines an interface for sending push notifications and provides a factory function to create clients based on the notification provider.",
+        "purpose": "Defines an interface for push notification clients and a factory function to create them based on configuration.",
         "key_types": [
-          "Client",
-          "clientContractor",
-          "Config"
+          "Client interface",
+          "clientContractor type",
+          "NewClient function"
         ],
-        "functions": [
-          "SendNotification",
-          "SendToTopic",
-          "NewClient"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums"
-        ],
-        "risks": [
-          "Potential for nil pointer dereference if the configuration is not valid.",
-          "Error handling for unsupported notification providers."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

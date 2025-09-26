@@ -1,0 +1,16 @@
+{
+  "content_hash": "28e2bb24d5a5f49dadc692d288a42e50",
+  "timestamp": "2025-09-26T13:59:05.669243+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functions for AES encryption and decryption using CBC mode.",
+    "key_types": [
+      "Encrypt",
+      "Decrypt",
+      "PKCS5Padding"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

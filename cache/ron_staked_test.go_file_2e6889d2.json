@@ -1,0 +1,14 @@
+{
+  "content_hash": "351c6e4774e3569e03d3997388c16142",
+  "timestamp": "2025-09-26T13:59:34.666387+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the staking service related to quest completion in the Ronin wallet services.",
+    "key_types": [
+      "Test_StakedRon_ShouldReturnQuestComplete"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

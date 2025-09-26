@@ -1,9 +1,9 @@
 {
-  "content_hash": "bb51a1686e93f74a373bfc552c61dfa3",
-  "timestamp": "2025-09-26T13:42:45.079537+07:00",
+  "content_hash": "b764a21757b4c52afa56dd958089d192",
+  "timestamp": "2025-09-26T14:07:57.100943+07:00",
   "result": {
     "path": "pkg/types",
-    "purpose": "Defines various types and utilities for handling strings, addresses, and large integers with validation and JSON capabilities.",
+    "purpose": "Defines various types and utilities for handling specific data representations and validations.",
     "languages": {
       "Go": 4
     },
@@ -13,115 +13,54 @@
       "wrapped-big.go",
       "wrapped-string.go"
     ],
-    "dependencies": [
-      "encoding/json",
-      "fmt",
-      "strings",
-      "github.com/ethereum/go-ethereum/common",
-      "github.com/gagliardetto/solana-go",
-      "errors",
-      "math/big"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating related types and functions into separate files for better organization and maintainability.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating type definitions and related functionalities in separate files for clarity and maintainability.",
     "file_summaries": {
       "pkg/types/string-enums.go": {
         "language": "Go",
-        "purpose": "Defines a StringEnum interface for types that can provide a string value and a list of string values.",
+        "purpose": "Defines a StringEnum interface for types that represent string enumerations.",
         "key_types": [
           "StringEnum"
         ],
-        "functions": [
-          "Value",
-          "Values"
-        ],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "pkg/types/wrapped-address.go": {
         "language": "Go",
-        "purpose": "Defines a wrapped address type for Ethereum and Solana addresses with validation and JSON marshaling capabilities.",
+        "purpose": "Defines a wrapped address type for Ethereum and Solana with validation and serialization methods.",
         "key_types": [
-          "WAddress"
-        ],
-        "functions": [
+          "WAddress",
           "IsValidSolanaAddress",
-          "WAddressFromStr",
-          "MustNewAddressFromStr",
-          "WAddressFromVal",
-          "Value",
-          "LowerString",
-          "String",
-          "IsValid",
-          "Equals",
-          "IndexOf",
-          "MarshalJSON",
-          "MarshalText",
-          "UnmarshalJSON",
-          "UnmarshalText"
+          "WAddressFromStr"
         ],
-        "imports": [
-          "encoding/json",
-          "fmt",
-          "strings",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/gagliardetto/solana-go"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/types/wrapped-big.go": {
         "language": "Go",
-        "purpose": "Defines a BigInt type for handling large integers with various operations and conversions.",
+        "purpose": "Defines a BigInt type for handling large integers with various base conversions.",
         "key_types": [
-          "NumericalBase",
-          "BigInt"
-        ],
-        "functions": [
+          "BigInt",
           "BigIntFromStr",
-          "MustNewBigIntFromStr",
-          "BigIntFromInt",
-          "DeepCloneBigInt",
-          "WrapBigInt",
-          "BigFromHex",
-          "Value",
-          "IsValid",
-          "String",
-          "MarshalJSON",
-          "UnmarshalJSON",
-          "MarshalText",
-          "UnmarshalText",
-          "Sub",
-          "Add",
-          "Neg",
-          "Cmp",
-          "Abs"
+          "WrapBigInt"
         ],
-        "imports": [
-          "encoding/json",
-          "errors",
-          "fmt",
-          "math/big",
-          "strings"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/types/wrapped-string.go": {
         "language": "Go",
         "purpose": "Defines a NonEmptyStr type that ensures a string is non-empty and provides JSON marshaling/unmarshaling.",
         "key_types": [
-          "NonEmptyStr"
-        ],
-        "functions": [
+          "NonEmptyStr",
           "NewNonEmptyStr",
-          "Value",
-          "isValid",
-          "UnmarshalJSON",
-          "MarshalJSON"
+          "Value"
         ],
-        "imports": [
-          "encoding/json",
-          "strings"
-        ],
-        "complexity": "medium"
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
       }
     }
   }

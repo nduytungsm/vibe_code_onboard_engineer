@@ -1,9 +1,9 @@
 {
-  "content_hash": "93a80064371ab78add1fc8d28e41dbae",
-  "timestamp": "2025-09-26T13:42:04.369629+07:00",
+  "content_hash": "2e1a43ffb31278eec687d288f82dbaf3",
+  "timestamp": "2025-09-26T14:05:28.419976+07:00",
   "result": {
     "path": "internal/domains/deception/services",
-    "purpose": "Provides services for detecting deception in tokens.",
+    "purpose": "Responsible for providing services related to detecting deceptive tokens.",
     "languages": {
       "Go": 2
     },
@@ -11,62 +11,29 @@
       "token.go",
       "token_test.go"
     ],
-    "dependencies": [
-      "context",
-      "fmt",
-      "regexp",
-      "golang.org/x/text/unicode/norm",
-      "mvdan.cc/xurls/v2",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models"
-    ],
-    "architecture": "The folder follows a service-oriented architecture pattern, focusing on the implementation of services related to token deception detection.",
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture pattern, focusing on the implementation of services and their corresponding tests.",
     "file_summaries": {
       "internal/domains/deception/services/token.go": {
         "language": "Go",
-        "purpose": "Provides a service for detecting deception in tokens.",
+        "purpose": "Provides a service for detecting deceptive tokens.",
         "key_types": [
           "DeceptionTokenService",
-          "deceptionTokenServiceImpl",
-          "models.Token",
-          "models.DeceptionResult"
-        ],
-        "functions": [
           "NewDeceptionTokenService",
-          "DetectToken",
-          "normString"
+          "DetectToken"
         ],
-        "imports": [
-          "context",
-          "fmt",
-          "regexp",
-          "golang.org/x/text/unicode/norm",
-          "mvdan.cc/xurls/v2",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models"
-        ],
-        "risks": [
-          "Potential exposure of sensitive information through redacted values."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/deception/services/token_test.go": {
         "language": "Go",
-        "purpose": "This file contains unit tests for the DetectToken method of the deceptionTokenServiceImpl.",
+        "purpose": "Unit tests for the DetectToken function in the deception token service.",
         "key_types": [
-          "Token",
-          "DeceptionStatus"
-        ],
-        "functions": [
           "Test_deceptionTokenServiceImpl_DetectToken"
         ],
-        "imports": [
-          "context",
-          "reflect",
-          "testing",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models"
-        ],
-        "side_effects": [
-          "Prints the reason for the token detection result"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

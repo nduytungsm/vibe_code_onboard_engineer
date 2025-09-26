@@ -1,9 +1,9 @@
 {
-  "content_hash": "8b3e7365b4efbdbb327617b61f1bfe92",
-  "timestamp": "2025-09-26T13:28:39.090624+07:00",
+  "content_hash": "06b905dbba81deb00e6e44e4d8242e0c",
+  "timestamp": "2025-09-26T14:08:41.664543+07:00",
   "result": {
     "path": "pkg/sarama-kafka",
-    "purpose": "This folder/module is responsible for configuring and managing Kafka clients, producers, and consumers using the Sarama library.",
+    "purpose": "This folder/module is responsible for configuring and implementing Kafka client functionalities using the Sarama library, including producers and consumers.",
     "languages": {
       "Go": 6
     },
@@ -16,182 +16,79 @@
       "producer.go"
     ],
     "dependencies": [
-      "github.com/IBM/sarama",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/inhies/go-bytesize",
-      "github.com/iimos/saramaprom",
-      "github.com/prometheus/client_golang/prometheus",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
-      "github.com/test-go/testify/require",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/docker",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
+      "Sarama",
+      "Prometheus"
     ],
-    "architecture": "The folder follows a modular architecture pattern, separating concerns into distinct files for client configuration, producer and consumer implementations, metrics monitoring, and testing.",
+    "architecture": "The folder follows a modular architecture pattern, organizing files by functionality related to Kafka client operations, including configuration, production, consumption, and metrics.",
     "file_summaries": {
       "pkg/sarama-kafka/client.go": {
         "language": "Go",
-        "purpose": "Configuration and creation of a Kafka client using the Sarama library.",
+        "purpose": "Configures Sarama Kafka client settings based on provided configuration.",
         "key_types": [
-          "Config",
-          "sarama.Config",
-          "sarama.Client"
-        ],
-        "functions": [
           "saramaConfig",
           "setBrokerConfig",
-          "setConsumerConfig",
-          "setProducerConfig",
-          "newKafkaClient"
+          "setConsumerConfig"
         ],
-        "imports": [
-          "fmt",
-          "net/url",
-          "github.com/IBM/sarama",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
-        ],
-        "side_effects": [
-          "Modifies sarama.Config based on provided configuration",
-          "Establishes connection to Kafka brokers"
-        ],
-        "risks": [
-          "Potential exposure of sensitive information (e.g., passwords) if not handled properly"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/sarama-kafka/config.go": {
         "language": "Go",
-        "purpose": "Configuration structures for Kafka producer and consumer settings.",
+        "purpose": "Configuration management for Kafka producer and consumer settings.",
         "key_types": [
-          "Offset",
           "Config",
-          "TLSConfig",
-          "ConsumerConfig"
+          "Offset",
+          "Producer"
         ],
-        "functions": [],
-        "imports": [
-          "time",
-          "github.com/IBM/sarama",
-          "github.com/inhies/go-bytesize"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/sarama-kafka/consumer.go": {
         "language": "Go",
-        "purpose": "This file implements a Kafka consumer using the Sarama library, handling message consumption and processing.",
+        "purpose": "Implements a Kafka consumer using the Sarama library for message processing.",
         "key_types": [
-          "Message",
+          "Consumer",
           "MessageHandler",
-          "Consumer"
+          "NewConsumer"
         ],
-        "functions": [
-          "NewConsumer",
-          "SetMetricsNamespace",
-          "Setup",
-          "Cleanup",
-          "ConsumeClaim",
-          "processMessage",
-          "Start",
-          "Stop",
-          "AwaitReady",
-          "init"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "log",
-          "os",
-          "sync",
-          "time",
-          "github.com/IBM/sarama",
-          "github.com/iimos/saramaprom",
-          "github.com/prometheus/client_golang/prometheus",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
-        ],
-        "side_effects": [
-          "Logs messages to stderr",
-          "Creates and manages a Kafka consumer group"
-        ],
-        "risks": [
-          "Potential for message processing errors",
-          "Resource leaks if consumer is not properly stopped"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/sarama-kafka/consumer_test.go": {
         "language": "Go",
-        "purpose": "This file contains tests for producing and consuming messages using Kafka.",
+        "purpose": "Unit tests for Kafka consumer functionality using Sarama.",
         "key_types": [
           "testMsg",
           "testHandler",
-          "ConsumerConfig",
-          "Config"
-        ],
-        "functions": [
-          "CreatedTime",
-          "Parse",
-          "Process",
           "TestProduceAndConsume"
         ],
-        "imports": [
-          "context",
-          "strconv",
-          "testing",
-          "time",
-          "github.com/IBM/sarama",
-          "github.com/inhies/go-bytesize",
-          "github.com/test-go/testify/require",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/docker",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
-        ],
-        "side_effects": [
-          "Starts and stops a Kafka container for testing.",
-          "Prints processed message to the console."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/sarama-kafka/metrics.go": {
         "language": "Go",
-        "purpose": "Defines metrics for Kafka consumer performance monitoring using Prometheus.",
+        "purpose": "This file defines metrics for Kafka consumer performance using Prometheus.",
         "key_types": [
-          "consumerMetrics"
-        ],
-        "functions": [
+          "consumerMetrics",
           "initConsumerMetrics"
         ],
-        "imports": [
-          "github.com/prometheus/client_golang/prometheus",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
-        ],
-        "side_effects": [
-          "Registers metrics collectors with the provided namespace."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/sarama-kafka/producer.go": {
         "language": "Go",
-        "purpose": "This file defines a function to create a new synchronous Kafka producer using the Sarama library.",
+        "purpose": "Creates a new synchronous Kafka producer using the Sarama library.",
         "key_types": [
-          "Config",
-          "sarama.SyncProducer"
-        ],
-        "functions": [
           "NewKafkaProducer"
         ],
-        "imports": [
-          "fmt",
-          "github.com/IBM/sarama"
-        ],
-        "side_effects": [
-          "Establishes a connection to a Kafka client",
-          "Creates a synchronous producer"
-        ],
-        "risks": [
-          "Potential connection failure to Kafka",
-          "Error handling may expose internal error messages"
-        ],
-        "complexity": "medium"
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
       }
     }
   }

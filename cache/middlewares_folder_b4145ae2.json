@@ -1,51 +1,28 @@
 {
-  "content_hash": "b5eef09cea846ab1aaae53b1eed93720",
-  "timestamp": "2025-09-26T13:38:16.839278+07:00",
+  "content_hash": "f902403e566b9bc84456a45ed7a9e89b",
+  "timestamp": "2025-09-26T14:05:15.829748+07:00",
   "result": {
     "path": "internal/domains/manager/middlewares",
-    "purpose": "This folder/module is responsible for implementing middleware for authentication and authorization in a web application using the Echo framework.",
+    "purpose": "Provides middleware functionalities for authentication and authorization in the manager domain.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "auth.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-      "github.com/labstack/echo/v4"
-    ],
-    "architecture": "The folder follows a middleware architecture pattern, where specific functionalities such as authentication and authorization are encapsulated in separate modules to be reused across the application.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on middleware components that handle cross-cutting concerns like authentication and authorization.",
     "file_summaries": {
       "internal/domains/manager/middlewares/auth.go": {
         "language": "Go",
-        "purpose": "This file implements middleware for authentication and authorization in a web application using the Echo framework.",
+        "purpose": "Provides authentication and authorization middleware for managing operator access.",
         "key_types": [
-          "AuthorizeMdw",
-          "OperatorInfo"
-        ],
-        "functions": [
           "AuthenMdw",
           "ProvideOperatorAuth",
-          "SetCtxAuthInfo",
-          "GetCtxAuthInfo"
+          "SetCtxAuthInfo"
         ],
-        "imports": [
-          "errors",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/labstack/echo/v4"
-        ],
-        "side_effects": [
-          "Modifies the context of the Echo framework to include authentication information."
-        ],
-        "risks": [
-          "Potential for unauthorized access if the authentication service fails or is compromised."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

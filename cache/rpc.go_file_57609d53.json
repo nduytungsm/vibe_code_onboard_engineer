@@ -1,0 +1,16 @@
+{
+  "content_hash": "b52590230e5716df0adffff9321061d3",
+  "timestamp": "2025-09-26T13:57:54.763586+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an RPC request structure and custom JSON unmarshalling logic.",
+    "key_types": [
+      "RpcRequest",
+      "UnmarshalJSON",
+      "rawToMap"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "content_hash": "2407c2bdd59c8b23f1973e66649b0f40",
-  "timestamp": "2025-09-26T13:39:14.281704+07:00",
+  "content_hash": "cf11d73584aa4b4b13ababa5f0100da7",
+  "timestamp": "2025-09-26T14:01:05.005366+07:00",
   "result": {
     "path": "internal/domains/dex/services/provider",
-    "purpose": "This folder/module is responsible for providing services related to decentralized exchanges (DEX), including token management, cross-chain operations, and routing for token swaps.",
+    "purpose": "Responsible for providing services related to decentralized exchange operations, including token handling, route fetching, and cross-chain swaps.",
     "languages": {
       "Go": 4
     },
@@ -13,196 +13,55 @@
       "provider.go",
       "relay.go"
     ],
-    "dependencies": [
-      "github.com/redis/go-redis/v9",
-      "github.com/samber/lo",
-      "github.com/samber/mo",
-      "github.com/shopspring/decimal",
-      "go.uber.org/multierr",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/katana",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/kyberswap",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/relay",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, where each file represents a specific service provider for different decentralized exchanges, encapsulating related functionalities and configurations.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, where each file represents a specific service related to decentralized exchange functionalities.",
     "file_summaries": {
       "internal/domains/dex/services/provider/katana.go": {
         "language": "Go",
-        "purpose": "This file defines a service provider for interacting with the Katana decentralized exchange, handling token management and cross-chain operations.",
+        "purpose": "Defines the Katana service for handling token operations in a decentralized exchange context.",
         "key_types": [
-          "KatanaExtraConfig",
           "Katana",
-          "Config"
-        ],
-        "functions": [
           "NewKatana",
-          "ID",
-          "CrossChainSupported",
-          "SupportedChains",
-          "BuildCallData",
-          "Tokens",
-          "TokenByAddress",
-          "GetRoutes",
-          "getTokens",
-          "buildGetQuoteRequest"
+          "KatanaExtraConfig"
         ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "strings",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "github.com/samber/mo",
-          "github.com/shopspring/decimal",
-          "go.uber.org/multierr",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/katana",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "side_effects": [
-          "Interacts with external services (e.g., Redis, Katana client) for data retrieval and processing."
-        ],
-        "risks": [
-          "Potential for errors in external service calls leading to application crashes.",
-          "Improper handling of token addresses could lead to security vulnerabilities."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/dex/services/provider/kyberswap.go": {
         "language": "Go",
-        "purpose": "This file implements the KyberSwap service for a decentralized exchange, handling token swaps and route calculations.",
+        "purpose": "Implements the KyberSwap provider for a decentralized exchange service.",
         "key_types": [
           "KyberSwap",
-          "Config",
-          "RouteRequest",
-          "RouteResponse",
-          "ExtraFee",
-          "Token"
-        ],
-        "functions": [
           "NewKyberSwap",
-          "ID",
-          "CrossChainSupported",
-          "GetRoutes",
-          "calcKyberExtraFee",
-          "BuildCallData",
-          "Tokens",
-          "TokenByAddress",
-          "SupportedChains",
-          "tokensByAddressWithCache"
+          "GetRoutes"
         ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "github.com/samber/mo",
-          "github.com/shopspring/decimal",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/kyberswap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "side_effects": [
-          "Logs errors when token routes are not found or invalid extra fee amounts are encountered."
-        ],
-        "risks": [
-          "Potential for errors in token swaps if invalid addresses or amounts are provided.",
-          "Dependency on external services (KyberSwap) which may introduce latency or failure points."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/dex/services/provider/provider.go": {
         "language": "Go",
-        "purpose": "This file defines a provider for different decentralized exchanges (DEX) and their configurations, including functions to create DEX routers from configurations.",
+        "purpose": "Defines a provider service for decentralized exchange (DEX) operations including route fetching and fee calculations.",
         "key_types": [
           "ExtraFee",
           "Config",
-          "CalcExtraFeeFn",
-          "DexRouter",
-          "tokenKey"
+          "DexRouter"
         ],
-        "functions": [
-          "NewDexRoutersFromConfig"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "time",
-          "github.com/redis/go-redis/v9",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/dex/services/provider/relay.go": {
         "language": "Go",
-        "purpose": "Provides functionality for cross-chain token swaps and caching of quotes.",
+        "purpose": "Implements a relay service for cross-chain swaps in a decentralized exchange.",
         "key_types": [
           "RelaySwap",
-          "relay.Config",
-          "models.CallData",
-          "models.RouteRequest",
-          "models.RouteResponse"
-        ],
-        "functions": [
           "NewRelaySwap",
-          "CrossChainSupported",
-          "cacheQuote",
-          "GetRoutes",
-          "BuildCallData",
-          "Tokens",
-          "TokenByAddress",
-          "SupportedChains",
-          "ID",
-          "marshalQuoteConfig",
-          "wrapErr",
-          "marshalTokens"
+          "CrossChainSupported"
         ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "runtime",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/services/providers",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/relay",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types",
-          "github.com/ethereum/go-ethereum/common/hexutil",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "github.com/shopspring/decimal",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Caches relay quotes in Redis",
-          "Logs errors and debug information"
-        ],
-        "risks": [
-          "Potential for Redis cache poisoning if not properly validated",
-          "Error handling may expose sensitive information in logs"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

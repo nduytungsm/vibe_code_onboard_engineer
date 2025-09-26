@@ -1,0 +1,16 @@
+{
+  "content_hash": "d263c70d01fcb60303a2fc3c62fddae6",
+  "timestamp": "2025-09-26T13:58:38.214814+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an interface and implementation for event repository operations in a database.",
+    "key_types": [
+      "EventRepo",
+      "NewEventRepo",
+      "Upsert"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

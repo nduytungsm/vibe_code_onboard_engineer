@@ -1,60 +1,28 @@
 {
-  "content_hash": "8cc0505ee524cbcd79e443176941c344",
-  "timestamp": "2025-09-26T13:44:14.261524+07:00",
+  "content_hash": "678a70055f76834a345e2d4100aac139",
+  "timestamp": "2025-09-26T14:01:49.333167+07:00",
   "result": {
     "path": "internal/infras/coingecko",
-    "purpose": "This folder/module is responsible for defining a client for interacting with the CoinGecko API to retrieve information about cryptocurrencies and NFTs.",
+    "purpose": "Defines a client for interacting with the CoinGecko API to fetch cryptocurrency data.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "client.go"
     ],
-    "dependencies": [
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the functionality for API interaction within a dedicated client structure.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the CoinGecko API client functionality within a single file.",
     "file_summaries": {
       "internal/infras/coingecko/client.go": {
         "language": "Go",
-        "purpose": "This file defines a client for interacting with the CoinGecko API to retrieve information about cryptocurrencies and NFTs.",
+        "purpose": "Defines a client for interacting with the CoinGecko API to fetch cryptocurrency data.",
         "key_types": [
-          "Client",
-          "Config",
-          "clientHTTP",
-          "CoinPlatform",
-          "Coin",
-          "SimpleCoin",
-          "SimpleNFT",
-          "Platform",
-          "MarketChart",
-          "Error"
+          "Client interface",
+          "Config struct",
+          "NewClient function"
         ],
-        "functions": [
-          "NewClient",
-          "GetPlatforms",
-          "GetCoin",
-          "GetCoinByAddress",
-          "AllCoins",
-          "GetMarketChart",
-          "AllNFTs"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "time",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "side_effects": [
-          "Logs errors when API requests fail"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data through error logging"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

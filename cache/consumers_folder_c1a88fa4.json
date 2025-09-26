@@ -1,9 +1,9 @@
 {
-  "content_hash": "1e373df4291c332a0c7a69d54133e0ec",
-  "timestamp": "2025-09-26T13:40:03.599419+07:00",
+  "content_hash": "b95a50ae466342e76a9dbcdbb231007b",
+  "timestamp": "2025-09-26T14:05:38.800192+07:00",
   "result": {
     "path": "internal/domains/antenna/consumers",
-    "purpose": "Responsible for processing notifications related to block full events, managing idempotency for Kafka messages, and monitoring consumer-related activities.",
+    "purpose": "Responsible for handling events and processing notifications related to token transfers, ensuring idempotency in message processing, and monitoring consumer routines.",
     "languages": {
       "Go": 3
     },
@@ -13,120 +13,45 @@
       "metrics.go"
     ],
     "dependencies": [
-      "github.com/IBM/sarama",
-      "github.com/redis/go-redis/v9",
-      "github.com/prometheus/client_golang/prometheus",
-      "github.com/samber/lo",
-      "github.com/samber/mo",
-      "github.com/shopspring/decimal",
-      "go.uber.org/multierr",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/services",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/services",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/exchangerate",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka"
+      "Redis",
+      "Kafka",
+      "Prometheus"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to event processing, idempotency handling, and metrics collection, promoting separation of concerns.",
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for handling events, ensuring message processing idempotency, and monitoring metrics.",
     "file_summaries": {
       "internal/domains/antenna/consumers/block_full_event.go": {
         "language": "Go",
-        "purpose": "Handles block full events by processing notifications and managing token transfers.",
+        "purpose": "Handles block full events and processes notifications related to token transfers.",
         "key_types": [
-          "NotificationFilterConfig",
-          "BlockFullEventHandler"
-        ],
-        "functions": [
+          "BlockFullEventHandler",
           "NewBlockFullEventHandler",
-          "Parse",
-          "Process",
-          "ercNotifications",
-          "detectTokenSafety",
-          "getErc20TokensPrice",
-          "ronNotifications",
-          "notificationPayloadRon"
+          "NotificationFilterConfig"
         ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "strings",
-          "time",
-          "github.com/IBM/sarama",
-          "github.com/samber/lo",
-          "github.com/samber/mo",
-          "github.com/shopspring/decimal",
-          "go.uber.org/multierr",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/exchangerate",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "side_effects": [
-          "Logs errors and debug information",
-          "Processes notifications which may affect external systems"
-        ],
-        "risks": [
-          "Potential for invalid timestamp errors",
-          "Handling of external service responses may lead to unhandled errors"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/antenna/consumers/idempotency.go": {
         "language": "Go",
-        "purpose": "Handles idempotency for messages processed from a Kafka consumer using Redis for deduplication.",
+        "purpose": "Handles idempotency for processing messages using Redis and Kafka.",
         "key_types": [
           "IdempotencyMessageHandler",
-          "IdempotencyMessage"
-        ],
-        "functions": [
           "NewIdempotencyHandler",
-          "Parse",
           "Process"
         ],
-        "imports": [
-          "context",
-          "errors",
-          "time",
-          "github.com/IBM/sarama",
-          "github.com/redis/go-redis/v9",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka"
-        ],
-        "side_effects": [
-          "Interacts with Redis for storing and retrieving message states."
-        ],
-        "risks": [
-          "Potential for Redis errors that could affect message processing.",
-          "Improper handling of idempotency keys could lead to message duplication."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/antenna/consumers/metrics.go": {
         "language": "Go",
-        "purpose": "This file defines metrics for monitoring consumer-related activities in the antenna domain.",
+        "purpose": "Defines and initializes Prometheus metrics for monitoring consumer routines in the antenna service.",
         "key_types": [
-          "metricCollectors"
-        ],
-        "functions": [
+          "metricCollectors",
           "initMetrics"
         ],
-        "imports": [
-          "github.com/prometheus/client_golang/prometheus",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       }
     }

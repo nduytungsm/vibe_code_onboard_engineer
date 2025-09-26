@@ -1,9 +1,9 @@
 {
-  "content_hash": "93c98ed987acb286b0ac60b7260cba80",
-  "timestamp": "2025-09-26T13:37:54.958738+07:00",
+  "content_hash": "79d625a627a510d278de03854308f004",
+  "timestamp": "2025-09-26T14:00:19.817617+07:00",
   "result": {
     "path": "internal/domains/antenna/models",
-    "purpose": "Defines data structures and interfaces for handling blockchain messages, notifications, tokens, and transfers.",
+    "purpose": "Defines data models for handling blockchain-related events and notifications.",
     "languages": {
       "Go": 4
     },
@@ -13,80 +13,49 @@
       "token.go",
       "transfer.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
-      "github.com/shopspring/decimal",
-      "github.com/ethereum/go-ethereum/common",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating related data structures and functionalities for blockchain operations.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing data models related to blockchain events and notifications in separate files for clarity and maintainability.",
     "file_summaries": {
       "internal/domains/antenna/models/message.go": {
         "language": "Go",
-        "purpose": "Defines data structures and interfaces for handling blockchain messages and events.",
+        "purpose": "Defines data models for handling block full events in a blockchain context.",
         "key_types": [
-          "IdempotencyMessage",
           "BlockFullEvent",
           "Block",
-          "Transaction",
-          "Log",
-          "InternalTransaction",
-          "Account"
+          "IdempotencyMessage"
         ],
-        "functions": [
-          "GetIdempotencyKey",
-          "CreatedTime"
-        ],
-        "imports": [
-          "fmt",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/antenna/models/noti.go": {
         "language": "Go",
-        "purpose": "Defines a NotificationPayload struct for handling notification data related to transactions.",
+        "purpose": "Defines the NotificationPayload struct for handling notification data in the application.",
         "key_types": [
-          "NotificationPayload",
-          "decimal.Decimal",
-          "types.WAddress"
+          "NotificationPayload"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/shopspring/decimal",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/domains/antenna/models/token.go": {
-        "language": "Go",
-        "purpose": "Defines a structure for a Ronin token with its properties.",
+        "language": "go",
+        "purpose": "Defines the RoninToken model with attributes for a cryptocurrency token.",
         "key_types": [
           "RoninToken"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/domains/antenna/models/transfer.go": {
         "language": "Go",
-        "purpose": "Defines a TokenTransfer struct for handling token transfer data in a blockchain context.",
+        "purpose": "Defines the TokenTransfer model for handling token transfer data in a blockchain context.",
         "key_types": [
-          "TokenTransfer",
-          "proxy_enums.TokenStandards",
-          "types.WAddress",
-          "types.BigInt",
-          "common.Hash"
+          "TokenTransfer"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       }
     }

@@ -1,9 +1,9 @@
 {
-  "content_hash": "3cc83515c8962773e50aff9584da2813",
-  "timestamp": "2025-09-26T13:31:24.489517+07:00",
+  "content_hash": "f00f4e543c3c70855ca33a4157d4dc6b",
+  "timestamp": "2025-09-26T13:59:49.401709+07:00",
   "result": {
     "path": "internal/infras/alchemy",
-    "purpose": "This folder/module is responsible for interacting with an API to retrieve token balances and NFT collections, as well as defining data structures for handling blockchain-related information.",
+    "purpose": "This folder/module is responsible for interacting with the Alchemy API and managing blockchain-related data structures.",
     "languages": {
       "Go": 2
     },
@@ -11,71 +11,31 @@
       "client.go",
       "models.go"
     ],
-    "dependencies": [
-      "github.com/samber/mo",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/shopspring/decimal",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-    ],
+    "dependencies": [],
     "architecture": "The folder follows a modular architecture pattern, encapsulating API client functionality and data models related to blockchain interactions.",
     "file_summaries": {
       "internal/infras/alchemy/client.go": {
         "language": "Go",
-        "purpose": "This file defines a client for interacting with an API to retrieve token balances and NFT collections.",
+        "purpose": "This file implements a client for interacting with the Alchemy API to fetch token balances and NFT collections.",
         "key_types": [
           "Config",
           "Client",
           "clientHTTP"
         ],
-        "functions": [
-          "NewClient",
-          "GetTokenBalances",
-          "GetNFTCollections"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "net/url",
-          "github.com/samber/mo",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "side_effects": [
-          "Makes HTTP requests to external API endpoints."
-        ],
-        "risks": [
-          "Potential exposure of sensitive information if API keys are not handled securely."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/infras/alchemy/models.go": {
         "language": "Go",
-        "purpose": "Defines data structures and types for handling token and NFT-related information in a blockchain context.",
+        "purpose": "Defines data structures and types for managing token prices, balances, and metadata in a blockchain context.",
         "key_types": [
           "TokenPrice",
           "TokenMetadata",
-          "TokenBalanceMap",
-          "TokenBalance",
-          "NFTCollectionsReq",
-          "TokenBalancesReq",
-          "AddressReq",
-          "PagedResponse",
-          "ApiResponse",
-          "ApiError",
-          "OpenseaMetadata",
-          "NFTContract",
-          "NFTCollection"
+          "TokenBalance"
         ],
-        "functions": [],
-        "imports": [
-          "time",
-          "github.com/samber/mo",
-          "github.com/shopspring/decimal",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

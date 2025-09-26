@@ -1,9 +1,9 @@
 {
-  "content_hash": "fb20aa0c6f7475e40b479a78f2118d54",
-  "timestamp": "2025-09-26T13:30:27.561443+07:00",
+  "content_hash": "46c8318e485f2a0f54467fd0ff9d5c38",
+  "timestamp": "2025-09-26T14:02:16.673921+07:00",
   "result": {
     "path": "internal/domains/bridge/handlers/dtos",
-    "purpose": "Defines data transfer objects (DTOs) for handling requests and responses related to bridge operations and blockchain interactions.",
+    "purpose": "Defines data transfer objects (DTOs) for handling bridge-related requests and responses.",
     "languages": {
       "Go": 2
     },
@@ -11,76 +11,31 @@
       "requests.go",
       "responses.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/enums/bridge",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-      "github.com/shopspring/decimal",
-      "net/http",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-      "github.com/ethereum/go-ethereum/common/hexutil"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, organizing DTOs for requests and responses separately to facilitate clear data handling in bridge operations.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on data transfer objects to facilitate communication between different components of the bridge domain.",
     "file_summaries": {
       "internal/domains/bridge/handlers/dtos/requests.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects (DTOs) for handling requests related to bridge operations.",
+        "purpose": "Defines data transfer objects (DTOs) for handling bridge-related requests.",
         "key_types": [
           "ListProviders",
           "GetProviderTokens",
-          "Source",
-          "Destination",
-          "QuoteConfig",
-          "CrosschainTx",
-          "FindBestQuote",
-          "GetQuoteCallData",
-          "GetFeeBalance"
+          "FindBestQuote"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/bridge",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/shopspring/decimal"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/bridge/handlers/dtos/responses.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects (DTOs) for handling responses related to blockchain operations.",
+        "purpose": "Defines data transfer objects (DTOs) for handling responses related to blockchain chains, providers, tokens, and quotes.",
         "key_types": [
           "Chain",
           "Provider",
-          "Token",
-          "Quote",
-          "BestQuoteResponse",
-          "CallDataResponse",
-          "CallData",
-          "Response",
-          "Metadata",
-          "QuoteCurrency",
-          "QuoteCurrencyAmount",
-          "FeeBreakdown",
-          "Impact",
-          "SlippageDetail",
-          "SlippageTolerance",
-          "SwapDetails",
-          "TxData",
-          "Check",
-          "StepItem",
-          "Step",
-          "RelayQuoteResponse",
-          "FeeBalance",
-          "Balance",
-          "Currency",
-          "CurrencyMetadata"
+          "Token"
         ],
-        "functions": [
-          "NewResponse"
-        ],
-        "imports": [
-          "net/http",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/ethereum/go-ethereum/common/hexutil"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

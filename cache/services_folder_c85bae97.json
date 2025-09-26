@@ -1,9 +1,9 @@
 {
-  "content_hash": "56b56a2a90b94f9227409c7467738ace",
-  "timestamp": "2025-09-26T13:38:50.825669+07:00",
+  "content_hash": "b0c697b33edd36f06ac58b332ebf0ec5",
+  "timestamp": "2025-09-26T14:01:24.132809+07:00",
   "result": {
     "path": "internal/domains/antenna/services",
-    "purpose": "Responsible for providing various services related to wallet operations, including caching, notification processing, checkpoint management, and token retrieval.",
+    "purpose": "This folder/module is responsible for providing various services related to account management, notifications, token handling, and checkpoint management within the antenna domain.",
     "languages": {
       "Go": 5
     },
@@ -15,194 +15,66 @@
       "tranfer_decoder.go"
     ],
     "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
-      "github.com/redis/go-redis/v9",
-      "github.com/ethereum/go-ethereum/common",
-      "github.com/samber/lo",
-      "go.uber.org/zap",
-      "github.com/avast/retry-go/v4",
-      "github.com/metachris/eth-go-bindings/erc1155",
-      "github.com/metachris/eth-go-bindings/erc20",
-      "github.com/metachris/eth-go-bindings/erc721"
+      "Redis"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, where each file represents a distinct service handling specific functionalities related to wallet operations.",
+    "architecture": "The folder follows a service-oriented architecture pattern, where each file defines a specific service with its own responsibilities and interactions, primarily focused on handling data related to accounts, notifications, and transactions.",
     "file_summaries": {
       "internal/domains/antenna/services/cache_codec.go": {
         "language": "Go",
-        "purpose": "Defines cache codecs for accounts and tokens in a caching service.",
+        "purpose": "Defines cache codecs for account and token data in the antenna service.",
         "key_types": [
           "accountCacheCodec",
-          "tokenCacheCodec"
-        ],
-        "functions": [
-          "ID",
+          "tokenCacheCodec",
           "CacheKey"
         ],
-        "imports": [
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/antenna/services/checkpoint.go": {
         "language": "Go",
-        "purpose": "Provides a service for managing checkpoints in a wallet system, including checking and marking transactions as processed.",
+        "purpose": "Provides a service for managing checkpoints in a wallet system using Redis.",
         "key_types": [
-          "CheckpointServiceConfig",
           "CheckpointService",
+          "NewCheckpointService",
           "checkpointService"
         ],
-        "functions": [
-          "NewCheckpointService",
-          "CheckProcessed",
-          "MarkProcessed"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "time",
-          "github.com/avast/retry-go/v4",
-          "github.com/redis/go-redis/v9",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
-        ],
-        "side_effects": [
-          "Interacts with Redis database to store and retrieve checkpoint data."
-        ],
-        "risks": [
-          "Potential for Redis connection issues leading to errors in processing.",
-          "Improper handling of errors may lead to undetected failures in transaction processing."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/antenna/services/notification.go": {
         "language": "Go",
-        "purpose": "This file implements a notification service that processes on-chain notifications and sends notifications to user devices.",
+        "purpose": "Provides a notification service for processing on-chain notifications to user devices.",
         "key_types": [
           "NotificationService",
-          "notificationService",
-          "models.NotificationPayload",
-          "notiModels.Payload",
-          "notiModels.Recipient",
-          "notiModels.PostNotificationRequest"
-        ],
-        "functions": [
           "NewNotificationService",
-          "ProcessOnChainNotification",
-          "findUserDevices",
-          "sendNotification",
-          "isEOA",
-          "buildMessage",
-          "buildSingleAssetChangeMessage",
-          "formatAddress",
-          "formatValue"
+          "notificationService"
         ],
-        "imports": [
-          "context",
-          "fmt",
-          "strings",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "github.com/shopspring/decimal",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/pushnotification",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletmanager",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "side_effects": [
-          "Sends notifications to user devices",
-          "Logs errors when marking notifications as processed fails"
-        ],
-        "risks": [
-          "Potential for duplicate notifications if checkpointing is not handled correctly"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/antenna/services/skynet_token.go": {
         "language": "Go",
-        "purpose": "Provides a service for retrieving tokens from a Skynet client and caching them using Redis.",
+        "purpose": "Provides a service for retrieving tokens from Skynet and caching them using Redis.",
         "key_types": [
           "SkynetTokenService",
-          "skynetTokenService",
-          "context.Context",
-          "types.WAddress",
-          "skynet.Token"
-        ],
-        "functions": [
           "NewSkynetTokenService",
-          "GetToken",
-          "GetTokens"
+          "skynetTokenService"
         ],
-        "imports": [
-          "context",
-          "errors",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "side_effects": [
-          "Interacts with Redis for caching tokens",
-          "Makes network calls to retrieve tokens from Skynet"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data through caching",
-          "Network call failures may lead to unhandled errors"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/antenna/services/tranfer_decoder.go": {
         "language": "Go",
-        "purpose": "Decodes Ethereum token transfer logs into structured token transfer information.",
+        "purpose": "Decodes logs into token transfer information for Ethereum transactions.",
         "key_types": [
-          "TransferDecoder",
-          "transferDecoder",
-          "models.Log",
-          "models.TokenTransfer"
+          "TransferDecoder"
         ],
-        "functions": [
-          "NewTransferDecoder",
-          "Decode",
-          "erc20Target",
-          "erc721Target",
-          "erc1155SingleTarget",
-          "erc1155BatchTarget",
-          "logToERC20Transfer",
-          "logToERC721Transfer",
-          "logToERC1155SingleTransfer",
-          "logToERC1155BatchTransfer",
-          "ethLog",
-          "isAbleToIgnoreParsingErr"
-        ],
-        "imports": [
-          "math/big",
-          "strings",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/metachris/eth-go-bindings/erc1155",
-          "github.com/metachris/eth-go-bindings/erc20",
-          "github.com/metachris/eth-go-bindings/erc721",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "github.com/ethereum/go-ethereum/core/types",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

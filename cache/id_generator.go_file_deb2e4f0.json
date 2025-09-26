@@ -1,0 +1,16 @@
+{
+  "content_hash": "7143ce46fa24b060da536cfde5b8be67",
+  "timestamp": "2025-09-26T13:59:02.439362+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a mock implementation of the IDGenerator interface for testing purposes.",
+    "key_types": [
+      "IDGenerator",
+      "IDGenerator_Expecter",
+      "NextID"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

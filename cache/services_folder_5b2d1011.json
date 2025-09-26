@@ -1,69 +1,28 @@
 {
-  "content_hash": "693dcf06bfaf5f43b1ca1093ab89933e",
-  "timestamp": "2025-09-26T13:43:21.744669+07:00",
+  "content_hash": "1188a346602ced80bb8deb211a0ad236",
+  "timestamp": "2025-09-26T14:09:06.243078+07:00",
   "result": {
     "path": "internal/domains/devicemanager/services",
-    "purpose": "This folder/module is responsible for implementing device management services that handle device registration, updates, retrieval, and synchronization of device addresses.",
+    "purpose": "Responsible for managing device records through the DeviceService interface and its implementation.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "device.go"
     ],
-    "dependencies": [
-      "context",
-      "net/http",
-      "github.com/samber/lo",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/repos",
-      "github.com/axieinfinity/ronin-wallet-services/internal/enums",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-    ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating device management functionalities within a dedicated service file.",
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture, focusing on defining and implementing services related to device management.",
     "file_summaries": {
       "internal/domains/devicemanager/services/device.go": {
         "language": "Go",
-        "purpose": "This file implements a device management service that handles device registration, updates, retrieval, and synchronization of device addresses.",
+        "purpose": "Defines the DeviceService interface and its implementation for managing device records.",
         "key_types": [
           "DeviceService",
           "deviceService",
-          "models.Device",
-          "models.DeviceFilter",
-          "models.Paging",
-          "models.OrderBy",
-          "types.WAddress"
+          "RegisterDevice"
         ],
-        "functions": [
-          "NewDeviceService",
-          "RegisterDevice",
-          "UpdateDevices",
-          "GetDevices",
-          "SyncDeviceAddresses",
-          "getExistingDeviceMap"
-        ],
-        "imports": [
-          "context",
-          "net/http",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "side_effects": [
-          "Modifies device records in the repository",
-          "Logs information about device operations"
-        ],
-        "risks": [
-          "Potential exposure of sensitive information if error messages are not handled properly",
-          "Inadequate validation of device data could lead to inconsistent state"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

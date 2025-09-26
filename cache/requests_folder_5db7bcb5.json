@@ -1,9 +1,9 @@
 {
-  "content_hash": "7cbce69338f88217725704faf3af7868",
-  "timestamp": "2025-09-26T13:39:42.445034+07:00",
+  "content_hash": "d8b3e5746686f60c547925e4bf8b70e3",
+  "timestamp": "2025-09-26T13:59:54.611746+07:00",
   "result": {
     "path": "internal/domains/web3/handlers/dtos/requests",
-    "purpose": "Defines data transfer objects (DTOs) for handling Ethereum transactions, logs, and signature requests in a web3 context.",
+    "purpose": "Responsible for defining data transfer objects related to Ethereum request handling, including decoding requests and managing signatures.",
     "languages": {
       "Go": 2
     },
@@ -11,42 +11,31 @@
       "decode.go",
       "signature.go"
     ],
-    "dependencies": [
-      "github.com/ethereum/go-ethereum/common/hexutil",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, organizing DTOs related to requests in a web3 context, promoting separation of concerns and reusability.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing related data transfer objects into separate files for clarity and maintainability.",
     "file_summaries": {
       "internal/domains/web3/handlers/dtos/requests/decode.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects (DTOs) for decoding Ethereum transactions and logs.",
+        "purpose": "Defines data transfer objects for decoding Ethereum-related requests.",
         "key_types": [
           "DecodeCall",
           "DecodeLog",
           "DecodeTx"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/ethereum/go-ethereum/common/hexutil",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "complexity": "low"
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
       },
       "internal/domains/web3/handlers/dtos/requests/signature.go": {
-        "language": "Go",
-        "purpose": "Defines data transfer objects (DTOs) for handling signature requests in a web3 context.",
+        "language": "go",
+        "purpose": "Defines request data transfer objects for handling signatures in a web3 context.",
         "key_types": [
           "GetSignatures",
           "GetSignatureCategories",
           "UpsertSignatures"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       }
     }

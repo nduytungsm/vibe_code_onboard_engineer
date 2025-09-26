@@ -1,0 +1,16 @@
+{
+  "content_hash": "e41e9b93650476d57bab548d9f210dd0",
+  "timestamp": "2025-09-26T13:57:37.791261+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a Relay provider for handling bridge services in a wallet application.",
+    "key_types": [
+      "Relay",
+      "NewRelayProvider",
+      "wrapErr"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

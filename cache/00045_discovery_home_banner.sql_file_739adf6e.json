@@ -1,0 +1,16 @@
+{
+  "content_hash": "689301ef3471c9686fd1e3215ee8fd69",
+  "timestamp": "2025-09-26T13:59:24.901488+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file defines database migrations for creating tables related to discovery home banners and action logs.",
+    "key_types": [
+      "discovery_home_banner_items",
+      "discovery_action_logs",
+      "widget_item_type"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

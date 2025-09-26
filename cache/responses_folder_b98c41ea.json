@@ -1,35 +1,29 @@
 {
-  "content_hash": "098a2e484a5c13a13f13eadd4d93d5d3",
-  "timestamp": "2025-09-26T13:35:16.856757+07:00",
+  "content_hash": "85dc5ae48373cbe6d8688fe1fcde7407",
+  "timestamp": "2025-09-26T14:03:15.007056+07:00",
   "result": {
     "path": "internal/domains/dex/handlers/dtos/responses",
-    "purpose": "Defines data transfer objects for HTTP responses, including paginated responses.",
+    "purpose": "Defines response structures and utility functions for handling API responses.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "generic.go"
     ],
-    "dependencies": [
-      "net/http"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, focusing on data transfer objects (DTOs) that facilitate communication between different layers of the application.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on DTOs (Data Transfer Objects) for API responses, promoting separation of concerns and reusability.",
     "file_summaries": {
       "internal/domains/dex/handlers/dtos/responses/generic.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects for HTTP responses, including paginated responses.",
+        "purpose": "Defines response structures and utility functions for handling API responses.",
         "key_types": [
           "Response",
           "Paging",
           "Paginated"
         ],
-        "functions": [
-          "NewResponse"
-        ],
-        "imports": [
-          "net/http"
-        ],
-        "complexity": "medium"
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
       }
     }
   }

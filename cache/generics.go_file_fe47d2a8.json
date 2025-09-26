@@ -1,0 +1,16 @@
+{
+  "content_hash": "5ba378d006b9bc88701daa6c0bbe581b",
+  "timestamp": "2025-09-26T13:57:44.824988+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects for server responses and pagination handling.",
+    "key_types": [
+      "Paging",
+      "Paginated[T]",
+      "ServerResponseDTO[T]"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "0e85a5874791a0c424ad6846255bd49c",
+  "timestamp": "2025-09-26T13:59:32.757201+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Contains unit tests for the check-in game service functionality.",
+    "key_types": [
+      "TestCheckInGame",
+      "TestCheckInGameWithInvalidData",
+      "TestCheckInGameEdgeCases"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

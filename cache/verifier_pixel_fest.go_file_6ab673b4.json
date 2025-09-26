@@ -1,0 +1,15 @@
+{
+  "content_hash": "7149637bbd763fd67918adea08847d20",
+  "timestamp": "2025-09-26T13:58:57.848896+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Verifies user participation in the Pixel Fest quest and updates user action status accordingly.",
+    "key_types": [
+      "pixelFestVerifyResponse",
+      "verifyPixelFest"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

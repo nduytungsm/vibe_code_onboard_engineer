@@ -1,0 +1,16 @@
+{
+  "content_hash": "d438621d14b4a5530d1f190af789de16",
+  "timestamp": "2025-09-26T13:58:39.512601+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for events and user interactions in a quest system.",
+    "key_types": [
+      "Event",
+      "EventSponsor",
+      "UserEvent"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

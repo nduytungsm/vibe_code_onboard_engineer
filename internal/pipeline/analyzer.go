@@ -37,11 +37,11 @@ type HelpfulQuestion struct {
 	Answer   string `json:"answer"`
 }
 
-// AnalysisResult contains the complete analysis result
+// AnalysisResult contains the complete analysis result (file details removed for performance)
 type AnalysisResult struct {
 	ProjectSummary      *internalOpenai.ProjectSummary               `json:"project_summary"`
 	FolderSummaries     map[string]*internalOpenai.FolderSummary     `json:"folder_summaries"`
-	FileSummaries       map[string]*internalOpenai.FileSummary       `json:"file_summaries"`
+	// FileSummaries removed - not needed for architectural understanding and slows down API
 	ProjectType         *detector.DetectionResult            `json:"project_type"`
 	Stats               map[string]interface{}               `json:"stats"`
 	Services            []microservices.DiscoveredService    `json:"services,omitempty"`
@@ -142,9 +142,7 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 		return nil, fmt.Errorf("map phase failed: %v", err)
 	}
 	
-	callback("data", "File analysis complete", fmt.Sprintf("Analyzed %d files", len(fileSummaries)), 50, map[string]interface{}{
-		"file_summaries": fileSummaries,
-	})
+	callback("data", "File analysis complete", fmt.Sprintf("Processed %d files (lightweight analysis)", len(fileSummaries)), 50, nil)
 	
 	// Phase 3: Reduce - Analyze folders
 	callback("progress", "📂 Analyzing folder structure...", "Organizing file analysis into folder summaries", 55, nil)
@@ -330,7 +328,7 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 	result := &AnalysisResult{
 		ProjectSummary:       projectSummary,
 		FolderSummaries:      folderSummaries,
-		FileSummaries:        fileSummaries,
+		// FileSummaries:        fileSummaries, // Removed for performance - not needed in API response
 		ProjectType:          projectType,
 		Stats:                stats,
 		Services:             discoveredServices,
@@ -519,7 +517,7 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 	return &AnalysisResult{
 		ProjectSummary:       projectSummary,
 		FolderSummaries:      folderSummaries,
-		FileSummaries:        fileSummaries,
+		// FileSummaries:        fileSummaries, // Removed for performance - not needed in API response  
 		ProjectType:          projectType,
 		Stats:                stats,
 		Services:             discoveredServices,
@@ -730,8 +728,8 @@ func (a *Analyzer) analyzeFile(ctx context.Context, file FileInfo) (*internalOpe
 		analysisContent = chunks[0].Content + fmt.Sprintf("\n\n[NOTE: This file has %d chunks, analyzing first chunk only]", len(chunks))
 	}
 	
-	// Analyze with OpenAI
-	summary, err := a.openaiClient.AnalyzeFile(ctx, file.RelativePath, analysisContent)
+	// Use lightweight analysis for faster processing
+	summary, err := a.openaiClient.AnalyzeFileLightweight(ctx, file.RelativePath, analysisContent)
 	if err != nil {
 		return nil, err
 	}

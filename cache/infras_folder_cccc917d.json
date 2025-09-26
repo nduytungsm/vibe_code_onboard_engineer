@@ -1,9 +1,9 @@
 {
-  "content_hash": "f4ed2557cab0c66b7177f5c0750c7ec7",
-  "timestamp": "2025-09-26T13:40:14.355088+07:00",
+  "content_hash": "88ae76cd262b22dcd8302cc38e7f74ea",
+  "timestamp": "2025-09-26T14:09:09.010168+07:00",
   "result": {
     "path": "mocks/infras",
-    "purpose": "This folder contains mock implementations of various interfaces for testing purposes, specifically for Kafka consumers and Skynet clients.",
+    "purpose": "This folder contains mock implementations of various interfaces for testing purposes.",
     "languages": {
       "Go": 2
     },
@@ -11,39 +11,19 @@
       "kafka_batch_consumer.go",
       "skynet_client.go"
     ],
-    "dependencies": [
-      "github.com/segmentio/kafka-go",
-      "github.com/stretchr/testify/mock",
-      "github.com/ethereum/go-ethereum/common",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, focusing on providing mock implementations for external services to facilitate unit testing.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on providing mock implementations for testing without external dependencies.",
     "file_summaries": {
       "mocks/infras/kafka_batch_consumer.go": {
         "language": "Go",
         "purpose": "This file defines a mock implementation of a Kafka batch consumer for testing purposes.",
         "key_types": [
           "KafkaBatchConsumer",
-          "KafkaBatchConsumer_Expecter",
-          "KafkaBatchConsumer_Close_Call",
-          "KafkaBatchConsumer_Commit_Call",
-          "KafkaBatchConsumer_ConsumeBatch_Call"
-        ],
-        "functions": [
           "Close",
-          "Commit",
-          "ConsumeBatch",
-          "NewKafkaBatchConsumer"
+          "Commit"
         ],
-        "imports": [
-          "context",
-          "github.com/segmentio/kafka-go",
-          "github.com/stretchr/testify/mock",
-          "time"
-        ],
-        "side_effects": [
-          "Panic if no return value is specified for mocked methods."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "mocks/infras/skynet_client.go": {
@@ -51,26 +31,11 @@
         "purpose": "This file defines a mock implementation of the SkynetClient interface for testing purposes.",
         "key_types": [
           "SkynetClient",
-          "SkynetClient_Expecter",
-          "SkynetClient_GetAccountByAddress_Call",
-          "SkynetClient_GetAllLogs_Call",
-          "SkynetClient_GetNFTTokenMetadata_Call",
-          "SkynetClient_GetTokenByAddress_Call",
-          "SkynetClient_GetTokens_Call"
-        ],
-        "functions": [
           "GetAccountByAddress",
-          "GetAllLogs",
-          "GetNFTTokenMetadata",
-          "GetTokenByAddress",
-          "GetTokens"
+          "SkynetClient_Expecter"
         ],
-        "imports": [
-          "context",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/stretchr/testify/mock",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

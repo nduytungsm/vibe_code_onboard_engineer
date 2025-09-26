@@ -1,0 +1,14 @@
+{
+  "content_hash": "24e4247049b1081207234c688e1715a3",
+  "timestamp": "2025-09-26T13:57:46.733114+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the OperatorEntity model for database interactions.",
+    "key_types": [
+      "OperatorEntity"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

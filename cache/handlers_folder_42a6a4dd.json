@@ -1,6 +1,6 @@
 {
-  "content_hash": "20a3833dfe66340a37ed2a04f7719262",
-  "timestamp": "2025-09-26T13:36:18.122927+07:00",
+  "content_hash": "beeb6c6f391ab3c688263c4fa203fade",
+  "timestamp": "2025-09-26T13:59:40.206168+07:00",
   "result": {
     "path": "internal/domains/notification/handlers",
     "purpose": "Handles push notification requests and sends notifications asynchronously.",
@@ -10,47 +10,19 @@
     "key_modules": [
       "push.go"
     ],
-    "dependencies": [
-      "github.com/labstack/echo/v4",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/services",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, focusing on handling specific notification functionalities with clear separation of concerns.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on handling specific types of notifications through dedicated handler files.",
     "file_summaries": {
       "internal/domains/notification/handlers/push.go": {
         "language": "Go",
         "purpose": "Handles push notification requests and sends notifications asynchronously.",
         "key_types": [
-          "internalPushHandler",
-          "services.NotificationService",
-          "zap.SugaredLogger",
-          "models.PostNotificationRequest"
-        ],
-        "functions": [
           "NewInternalPushHandler",
-          "Setup",
+          "internalPushHandler",
           "push"
         ],
-        "imports": [
-          "context",
-          "net/http",
-          "github.com/labstack/echo/v4",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "side_effects": [
-          "Sends notifications asynchronously using goroutines."
-        ],
-        "risks": [
-          "Potential race conditions due to asynchronous execution.",
-          "Error handling may not be sufficient for all failure cases."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

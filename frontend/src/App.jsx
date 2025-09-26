@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import {
-  FileText,
+  FileText, // Still needed for DatabaseTab migration display
   GitBranch,
   Database,
   Server,
@@ -58,7 +58,7 @@ function App() {
     { id: "database", name: "Database", icon: Database },
     { id: "secrets", name: "Secrets", icon: Shield },
     { id: "questions", name: "Helpful Questions", icon: Eye },
-    { id: "files", name: "Files", icon: FileText },
+    // Files tab removed - not needed for architectural understanding and improves performance
   ];
 
   const handleAnalyzeRepository = async (useToken = false) => {
@@ -266,6 +266,7 @@ function App() {
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
               <div className="overflow-x-auto">
                 <TabsList className="flex min-w-fit w-max mx-auto" style={{ backgroundColor: "hsl(var(--slate-200))" }}>
+                  {/* Optimized for 7 tabs (Files tab removed for performance) */}
                 {tabs.map((tab) => (
                   <TabsTrigger
                     key={tab.id}
@@ -684,9 +685,7 @@ function App() {
                 <TabsContent value="relationships" className="space-y-6">
                   <RelationshipsTab getAnalysisData={getAnalysisData} />
                 </TabsContent>
-                <TabsContent value="files" className="space-y-6">
-                  <FilesTab getAnalysisData={getAnalysisData} />
-                </TabsContent>
+                {/* Files tab removed for better performance */}
                 <TabsContent value="analysis" className="space-y-6">
                   <AnalysisTab getAnalysisData={getAnalysisData} />
                 </TabsContent>
@@ -1570,103 +1569,6 @@ function RelationshipsTab({ getAnalysisData }) {
   );
 }
 
-// Files Tab Component
-function FilesTab({ getAnalysisData }) {
-  const data = getAnalysisData();
-  const fileSummaries = data?.fileSummaries || {};
-  const fileEntries = Object.entries(fileSummaries);
-  
-  if (!data) {
-    return (
-      <div className="text-center py-12">
-        <AlertCircle className="h-12 w-12 mx-auto mb-4 opacity-50" />
-        <p style={{ color: "hsl(var(--slate-500))" }}>No data available</p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
-            File Analysis
-          </CardTitle>
-          <CardDescription>
-            Detailed analysis of {fileEntries.length} files
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          {fileEntries.length > 0 ? (
-            <div className="space-y-4">
-              {fileEntries.map(([fileName, fileInfo]) => (
-                <Card key={fileName}>
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-sm font-medium">{fileName}</CardTitle>
-                      <Badge variant="secondary">{fileInfo.language}</Badge>
-                    </div>
-                    <CardDescription className="text-sm">
-                      {fileInfo.purpose}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <div className="space-y-3">
-                      {fileInfo.functions && fileInfo.functions.length > 0 && (
-                        <div>
-                          <div className="text-sm font-medium mb-2">Functions</div>
-                          <div className="flex flex-wrap gap-1">
-                            {fileInfo.functions.slice(0, 5).map((func, i) => (
-                              <Badge key={i} variant="outline" className="text-xs">
-                                {func}
-                              </Badge>
-                            ))}
-                            {fileInfo.functions.length > 5 && (
-                              <Badge variant="outline" className="text-xs">
-                                +{fileInfo.functions.length - 5} more
-                              </Badge>
-                            )}
-                          </div>
-                        </div>
-                      )}
-                      {fileInfo.imports && fileInfo.imports.length > 0 && (
-                        <div>
-                          <div className="text-sm font-medium mb-2">Imports</div>
-                          <div className="flex flex-wrap gap-1">
-                            {fileInfo.imports.slice(0, 3).map((imp, i) => (
-                              <Badge key={i} variant="outline" className="text-xs">
-                                {imp}
-                              </Badge>
-                            ))}
-                            {fileInfo.imports.length > 3 && (
-                              <Badge variant="outline" className="text-xs">
-                                +{fileInfo.imports.length - 3} more
-                              </Badge>
-                            )}
-                          </div>
-                        </div>
-                      )}
-                      <div className="flex justify-between text-xs text-muted-foreground">
-                        <span>Complexity: {fileInfo.complexity}</span>
-                        <span>Language: {fileInfo.language}</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-8 text-muted-foreground">
-              <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
-              <p>No file analysis available</p>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
 
 // Analysis Tab Component
 function AnalysisTab({ getAnalysisData }) {

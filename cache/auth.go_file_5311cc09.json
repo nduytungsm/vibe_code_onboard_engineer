@@ -1,0 +1,16 @@
+{
+  "content_hash": "9d7fdd3e2bcc675dd4b7ad5c5c848852",
+  "timestamp": "2025-09-26T13:57:48.139289+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides authentication and authorization services for the application.",
+    "key_types": [
+      "AuthSvc",
+      "AuthCfg",
+      "authSvc"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

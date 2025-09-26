@@ -1,9 +1,9 @@
 {
-  "content_hash": "124f2461ee5ee06f5deaeb486712b7a2",
-  "timestamp": "2025-09-26T13:35:41.303097+07:00",
+  "content_hash": "eade7cf83fb27e7f80f1965e27ff5620",
+  "timestamp": "2025-09-26T14:05:00.986468+07:00",
   "result": {
     "path": "internal/domains/proxy/handlers/dtos/responses",
-    "purpose": "Defines data transfer objects (DTOs) for various types of responses including chat completions, configuration responses, server responses, and RPC responses.",
+    "purpose": "Defines data transfer objects (DTOs) for various types of responses in a proxy service, including AI chat completions, chain configurations, server responses, and RPC responses.",
     "languages": {
       "Go": 4
     },
@@ -13,79 +13,53 @@
       "responses.go",
       "rpc.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
-      "net/http",
-      "github.com/samber/lo"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, organizing response-related DTOs into separate files for clarity and maintainability, with a focus on data structures and their associated functionalities.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing data transfer objects related to different response types in separate files for clarity and maintainability.",
     "file_summaries": {
       "internal/domains/proxy/handlers/dtos/responses/ai.go": {
         "language": "Go",
-        "purpose": "Defines data structures for responses related to chat completions and tool calls.",
+        "purpose": "Defines data transfer objects for AI chat completion responses.",
         "key_types": [
           "ChatCompletionResponse",
-          "ToolCall",
           "Choice",
-          "Message",
-          "Usage",
-          "PromptTokensDetails",
-          "CompletionTokensDetails"
+          "Message"
         ],
-        "functions": [],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/handlers/dtos/responses/config.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects (DTOs) for configuration responses related to blockchain simulations.",
+        "purpose": "Defines data transfer objects for chain configuration responses in a proxy service.",
         "key_types": [
           "SimulationChainConfig",
           "ChainConfig",
           "TokenCfg"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "complexity": "low"
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
       },
       "internal/domains/proxy/handlers/dtos/responses/responses.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects for server responses, including pagination and error handling.",
+        "purpose": "Defines data transfer objects for server responses and pagination handling.",
         "key_types": [
           "Paging",
           "Paginated[T]",
-          "ServerResponseDTO[T]",
-          "ServerSuccessResponseDTO",
-          "ChainErr"
+          "ServerResponseDTO[T]"
         ],
-        "functions": [
-          "Error()",
-          "NewChainErr(msg string, chainID int64, trippingErr bool) error",
-          "Paginate[T](items []*T, cursor string) *Paginated[T]",
-          "NewSliceResponse[T](resp *Paginated[T], errs []error) (statusCode int, httpResp *ServerResponseDTO[*Paginated[T]])",
-          "NewResponse[T](resp *T) (statusCode int, httpResp *ServerResponseDTO[*T])",
-          "NewSuccessResponse(msg string) (statusCode int, httpResp *ServerSuccessResponseDTO)"
-        ],
-        "imports": [
-          "net/http",
-          "github.com/samber/lo"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/handlers/dtos/responses/rpc.go": {
         "language": "Go",
-        "purpose": "Defines a data structure for RPC responses.",
+        "purpose": "Defines the RpcResponse structure for handling RPC responses.",
         "key_types": [
           "RpcResponse"
         ],
-        "functions": [],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       }
     }

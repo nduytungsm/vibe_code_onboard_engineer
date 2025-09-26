@@ -1,0 +1,16 @@
+{
+  "content_hash": "086f2eeb8d8909e4eebd062b704c3b7d",
+  "timestamp": "2025-09-26T13:57:28.360862+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Main entry point for the Ronin Wallet Quest API service.",
+    "key_types": [
+      "main",
+      "newCliApp",
+      "waitForShutdownSignal"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

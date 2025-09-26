@@ -1,9 +1,9 @@
 {
-  "content_hash": "db1d60c7fad56a2073960d243e07602e",
-  "timestamp": "2025-09-26T13:40:56.742996+07:00",
+  "content_hash": "f932f0b460731f4ec95ddfedcd8082fc",
+  "timestamp": "2025-09-26T14:06:47.720384+07:00",
   "result": {
     "path": "cmd/task_server",
-    "purpose": "Responsible for the task server application, including configuration, dependency injection, and application entry point.",
+    "purpose": "Responsible for the task server application, including configuration management, dependency injection, and application startup.",
     "languages": {
       "Go": 4
     },
@@ -14,217 +14,53 @@
       "wire_gen.go"
     ],
     "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/coingecko",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/explorer",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/pushnotification",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/tracking",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletmanager",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
-      "github.com/go-playground/validator/v10",
-      "github.com/google/wire",
-      "github.com/hibiken/asynq",
-      "github.com/redis/go-redis/v9",
-      "go.uber.org/zap",
-      "gorm.io/gorm"
+      "Google Wire"
     ],
-    "architecture": "The folder follows a modular architecture with a focus on dependency injection using Google Wire, separating configuration, application entry, and service dependencies.",
+    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for managing components and services.",
     "file_summaries": {
       "cmd/task_server/config.go": {
         "language": "Go",
-        "purpose": "Configuration definitions for a task server application, including various service and database configurations.",
+        "purpose": "Configuration management for task server components and services.",
         "key_types": [
           "ProvidersConfig",
           "DatabasesConfig",
-          "TaskConfig",
-          "TasksConfig",
           "Config"
         ],
-        "functions": [
-          "Get"
-        ],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/coingecko",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/explorer",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/pushnotification",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/tracking",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletmanager",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "cmd/task_server/main.go": {
         "language": "Go",
-        "purpose": "This file serves as the main entry point for a task server application, initializing configuration, logging, and starting the application.",
+        "purpose": "Main entry point for the task server application, handling configuration, logging, and application startup.",
         "key_types": [
-          "Config",
-          "context.Context",
-          "logger.Logger",
-          "IDGenerator",
-          "App"
+          "main()"
         ],
-        "functions": [
-          "main",
-          "NewConfig",
-          "Struct",
-          "MustNewLogger",
-          "NewIDGenerator",
-          "wireTaskServer",
-          "Start"
-        ],
-        "imports": [
-          "context",
-          "log",
-          "github.com/go-playground/validator/v10",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/configs",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
-        ],
-        "side_effects": [
-          "Logs errors and fatal messages",
-          "Creates and starts a server application"
-        ],
-        "risks": [
-          "Potential for configuration errors leading to application failure",
-          "Improper handling of context cancellation"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "cmd/task_server/wire.go": {
         "language": "Go",
-        "purpose": "This file sets up dependency injection for a task server using Google Wire.",
+        "purpose": "This file sets up dependency injection for the task server using Google Wire.",
         "key_types": [
-          "Config",
-          "TasksConfig",
-          "ProvidersConfig",
-          "proxyDB",
-          "managerDB",
-          "questDB"
+          "wireTaskServer"
         ],
-        "functions": [
-          "wireTaskServer",
-          "provideTokenCrawlerTask",
-          "provideSkynetTokenCrawlerTask",
-          "provideTokenTaskGeneratorTask",
-          "provideABICrawlTaskGeneratorTask",
-          "provideABICrawlerTaskHandler",
-          "provideShopRetryTaskHandler",
-          "provideTaskHandlers",
-          "provideAsyncQueueClient",
-          "provideAsyncQueueServer",
-          "provideServices",
-          "desugar",
-          "provideProxyDB",
-          "provideManagerDB",
-          "provideQuestDB",
-          "provideTokenRepo",
-          "provideSignatureRepo",
-          "provideShopRepo",
-          "provideNotiRepo"
-        ],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
-          "github.com/google/wire",
-          "github.com/hibiken/asynq",
-          "github.com/redis/go-redis/v9",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services/tasks",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/tasks",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/quest/tasks",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/tasks",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/coingecko",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/explorer",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "cmd/task_server/wire_gen.go": {
         "language": "Go",
-        "purpose": "This file is part of a dependency injection setup using Wire for a task server application.",
+        "purpose": "Generates dependency injection code for the task server using Wire.",
         "key_types": [
-          "Config",
-          "applications.Application",
-          "zap.SugaredLogger",
-          "generator.IDGenerator",
-          "async_queue.TaskHandler"
+          "main",
+          "services",
+          "repositories"
         ],
-        "functions": [
-          "wireTaskServer",
-          "provideTokenCrawlerTask",
-          "provideSkynetTokenCrawlerTask",
-          "provideTokenTaskGeneratorTask",
-          "provideABICrawlTaskGeneratorTask",
-          "provideABICrawlerTaskHandler",
-          "provideShopRetryTaskHandler",
-          "provideTaskHandlers",
-          "provideAsyncQueueClient",
-          "provideAsyncQueueServer",
-          "provideServices",
-          "desugar"
-        ],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services/tasks",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/tasks",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/quest/tasks",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/tasks",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/coingecko",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/explorer",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/pushnotification",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/tracking",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletmanager",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
-          "github.com/hibiken/asynq",
-          "github.com/redis/go-redis/v9",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
-        ],
-        "side_effects": [
-          "Establishes connections to various services and databases.",
-          "Registers task handlers with the async queue server."
-        ],
-        "complexity": "high"
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
       }
     }
   }

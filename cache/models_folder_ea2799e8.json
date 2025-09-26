@@ -1,11 +1,11 @@
 {
-  "content_hash": "ca4bcbbd990c20e4d9db362c3fe96457",
-  "timestamp": "2025-09-26T13:34:10.627142+07:00",
+  "content_hash": "023124819431dfcf458ea5c0ceba8513",
+  "timestamp": "2025-09-26T14:06:05.199356+07:00",
   "result": {
     "path": "internal/repositories/discovery/models",
-    "purpose": "Defines various data models for announcements, collections, contacts, events, feature banners, and other entities used in a discovery repository.",
+    "purpose": "Defines data models for various entities used in the discovery repository.",
     "languages": {
-      "Go": 12
+      "Go": 11
     },
     "key_modules": [
       "announcement.go",
@@ -20,14 +20,8 @@
       "product.go",
       "service_item.go"
     ],
-    "dependencies": [
-      "time",
-      "gorm.io/datatypes",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-      "github.com/lib/pq",
-      "github.com/shopspring/decimal"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, organizing data models related to discovery functionalities into separate files for clarity and maintainability.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing data models related to discovery functionality into separate files for clarity and maintainability.",
     "file_summaries": {
       "internal/repositories/discovery/models/announcement.go": {
         "language": "Go",
@@ -37,185 +31,122 @@
           "AnounceEntityWithStatus",
           "WidgetItemAnnouncement"
         ],
-        "functions": [],
-        "imports": [
-          "time"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/repositories/discovery/models/collections.go": {
         "language": "Go",
-        "purpose": "Defines data models for collections in a discovery system using GORM.",
+        "purpose": "Defines data models for collections in a discovery repository using GORM.",
         "key_types": [
           "CollectionEntity",
           "CollectionEntityWithExtraInfo"
         ],
-        "functions": [],
-        "imports": [
-          "time",
-          "gorm.io/datatypes"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/repositories/discovery/models/contact.go": {
         "language": "Go",
-        "purpose": "Defines data structures for contact entities and related information.",
+        "purpose": "Defines data models for contact entities in the discovery module.",
         "key_types": [
           "ContactEntity",
           "ContactWithExtraInfo",
           "WidgetItemContact"
         ],
-        "functions": [],
-        "imports": [
-          "time"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/repositories/discovery/models/event.go": {
         "language": "Go",
-        "purpose": "Defines data models for events in a discovery context.",
+        "purpose": "Defines event-related data models for discovery functionality.",
         "key_types": [
           "EventEntity",
           "WidgetItemEvent"
         ],
-        "functions": [],
-        "imports": [
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery"
-        ],
-        "complexity": "low"
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
       },
       "internal/repositories/discovery/models/feature_banner.go": {
         "language": "Go",
-        "purpose": "Defines data models for feature banners and headlines in a discovery module.",
+        "purpose": "Defines data models for feature banners and their headlines in a discovery module.",
         "key_types": [
           "FeatureBannerEntity",
           "FeatureHeadlineEntity"
         ],
-        "functions": [],
-        "imports": [
-          "time"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/repositories/discovery/models/generics.go": {
         "language": "Go",
-        "purpose": "Defines various data models/entities for a discovery repository.",
+        "purpose": "Defines data models for discovery-related entities in a repository.",
         "key_types": [
           "SocialPlatformEntity",
           "StudioEntity",
-          "CategoryEntity",
-          "CollectionTimemarkEntity",
-          "CollectionStatsItem",
-          "MavisMarketCollectionStats",
-          "CollectionStatsResponse",
-          "GamePlatformEntity",
-          "StatsItem",
-          "CollectionDataJson",
-          "ImageUploadMetadata",
-          "HistoryEntity"
+          "CollectionStatsItem"
         ],
-        "functions": [],
-        "imports": [
-          "time"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/discovery/models/graph.go": {
         "language": "Go",
-        "purpose": "Defines data structures for handling sales and game events related to a discovery model.",
+        "purpose": "Defines data models for Mavis sales responses in a discovery context.",
         "key_types": [
           "MavisSalesResponse",
           "MavisSale",
-          "LaunchpadStages",
-          "CollectionMetadata",
-          "MediaLink",
-          "GameResponse",
-          "GameList",
-          "GameInfo",
-          "ConsoleMetadata",
-          "FullThumbnailURL",
-          "MediaItem",
-          "Genre",
-          "Platform",
-          "SocialLink",
-          "CreatorInfo",
-          "GameCampaignList",
-          "GameCampaign",
-          "GameCampaignMeta"
+          "CollectionMetadata"
         ],
-        "functions": [],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/discovery/models/home_banner.go": {
         "language": "Go",
-        "purpose": "Defines data models for home banners in a discovery module.",
+        "purpose": "Defines data models for home banner widgets and entities in a discovery module.",
         "key_types": [
           "WidgetItemHomeBanner",
           "HomeBannerEntity"
         ],
-        "functions": [],
-        "imports": [
-          "time"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/repositories/discovery/models/layout.go": {
         "language": "Go",
-        "purpose": "Defines data models for layout and widget entities used in a discovery service.",
+        "purpose": "Defines data models for layout and widget entities in a discovery service.",
         "key_types": [
           "LayoutEntity",
           "LayoutWidgetEntity",
-          "WidgetEntity",
-          "WidgetItemEntity",
-          "LayoutWidgetExtraInfo",
-          "WidgetItemsFilter",
-          "CollectionStatItem",
-          "WidgetDataExtraInfo",
-          "WidgetItemWithExtraInfo",
-          "TrendingTokenExtraInfo",
-          "OHLCVChart",
-          "OHLCVItem"
+          "WidgetEntity"
         ],
-        "functions": [],
-        "imports": [
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/lib/pq",
-          "github.com/shopspring/decimal"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/discovery/models/product.go": {
         "language": "Go",
-        "purpose": "Defines data models for products and their associated information in a discovery repository.",
+        "purpose": "Defines data models for product entities in the discovery module.",
         "key_types": [
           "ProductEntity",
-          "ProductWithStudioInfo",
-          "ProductWithExtraInfo",
-          "ProductSocialEntity",
-          "ProductSocialPlatform",
-          "WidgetItemProduct"
+          "ProductWithStudioInfo"
         ],
-        "functions": [],
-        "imports": [
-          "time",
-          "github.com/lib/pq"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/discovery/models/service_item.go": {
         "language": "Go",
-        "purpose": "Defines data models for service items in a discovery context.",
+        "purpose": "Defines data models for service entities and widget service items in a discovery context.",
         "key_types": [
           "ServiceEntity",
           "WidgetServiceItem"
         ],
-        "functions": [],
-        "imports": [
-          "time"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       }
     }

@@ -1,80 +1,28 @@
 {
-  "content_hash": "8c3fe54b3d5fa5ccc2cf79b059fe542b",
-  "timestamp": "2025-09-26T13:35:03.993794+07:00",
+  "content_hash": "fe4377ece5f8cabfdd76cd8b74cab0bb",
+  "timestamp": "2025-09-26T14:08:12.867026+07:00",
   "result": {
     "path": "internal/domains/manager/services/tasks",
-    "purpose": "Responsible for handling notification tasks, processing notifications for users based on whitelists or broadcasts.",
+    "purpose": "Handles notification tasks for the manager domain.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "noti.go"
     ],
-    "dependencies": [
-      "context",
-      "encoding/json",
-      "errors",
-      "fmt",
-      "strings",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/pushnotification",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/tracking",
-      "github.com/axieinfinity/ronin-wallet-services/internal/enums",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletmanager",
-      "github.com/google/wire",
-      "github.com/hibiken/asynq",
-      "github.com/samber/lo",
-      "go.uber.org/zap",
-      "gorm.io/gorm"
-    ],
-    "architecture": "The folder follows a service-oriented architecture pattern, focusing on modularity and separation of concerns, specifically for notification handling.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on encapsulating notification-related tasks within the manager domain.",
     "file_summaries": {
       "internal/domains/manager/services/tasks/noti.go": {
         "language": "Go",
-        "purpose": "Handles notification tasks, processes notifications for users based on whitelists or broadcasts.",
+        "purpose": "Handles notification tasks for the manager domain.",
         "key_types": [
           "NotiTaskHandler",
           "NotiPayload",
           "notiTaskHandler"
         ],
-        "functions": [
-          "NewNotiTaskHandler",
-          "TaskType",
-          "processWhitelistNoti",
-          "processBroadcastNoti",
-          "ProcessTask",
-          "findUserDevices",
-          "isNotiInfoChanged"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "strings",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/pushnotification",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/tracking",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletmanager",
-          "github.com/google/wire",
-          "github.com/hibiken/asynq",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Sends notifications to users",
-          "Logs errors and warnings"
-        ],
-        "risks": [
-          "Potential for sending notifications to incorrect users if data is not validated properly",
-          "Error handling may expose sensitive information in logs"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

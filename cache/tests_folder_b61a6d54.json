@@ -1,11 +1,11 @@
 {
-  "content_hash": "22aff14eaf5a9d20ad14b9e53f25f915",
-  "timestamp": "2025-09-26T13:37:09.751076+07:00",
+  "content_hash": "3c9cd58b2846e8c65813063e3e499a92",
+  "timestamp": "2025-09-26T14:07:18.728859+07:00",
   "result": {
     "path": "tests",
-    "purpose": "This folder contains unit and integration tests for various functionalities of the application.",
+    "purpose": "This folder contains unit tests for various functionalities of the application, ensuring that individual components work as expected.",
     "languages": {
-      "Go": 10
+      "go": 8
     },
     "key_modules": [
       "batch_sig_test.go",
@@ -17,204 +17,89 @@
       "slack_alert_test.go",
       "utils.go"
     ],
-    "dependencies": [
-      "github.com/stretchr/testify/assert",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
-      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-      "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
-      "github.com/axieinfinity/ronin-wallet-services/internal/commons",
-      "github.com/axieinfinity/ronin-wallet-services/internal/services",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/ethereum/go-ethereum/common",
-      "github.com/ethereum/go-ethereum/common/hexutil",
-      "github.com/ethereum/go-ethereum/crypto",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, organizing tests by functionality and utilizing Go's testing framework.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, where each test file corresponds to a specific functionality or component of the application, promoting separation of concerns and maintainability.",
     "file_summaries": {
       "tests/batch_sig_test.go": {
-        "language": "Go",
-        "purpose": "This file contains tests for the batch signature functionality in the reward handler.",
+        "language": "go",
+        "purpose": "Unit test for the GetClaimRewardSig function in the RewardHandler.",
         "key_types": [
-          "context.Context",
-          "testing.T",
-          "time.Duration",
-          "handlers.RewardHandler",
-          "models.FundSourceEntity",
-          "models.RewardInfoEntity",
-          "requests.HandleClaimRewardDTO"
-        ],
-        "functions": [
           "Test_GetBatchSig"
         ],
-        "imports": [
-          "context",
-          "testing",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
-          "github.com/stretchr/testify/assert",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Mocks are set up for repository methods to simulate database interactions."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "tests/hash_to_addres_test.go": {
-        "language": "Go",
-        "purpose": "Unit test for the AddressFromTopic function in the commons package",
+        "language": "go",
+        "purpose": "Unit test for converting a hash to an Ethereum address.",
         "key_types": [
-          "string",
-          "testing.T"
-        ],
-        "functions": [
           "TestHashToAddress"
         ],
-        "imports": [
-          "testing",
-          "github.com/axieinfinity/ronin-wallet-services/internal/commons",
-          "github.com/stretchr/testify/assert"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "tests/http_parse_test.go": {
-        "language": "Go",
-        "purpose": "This file contains tests for parsing URLs and verifying their hostnames.",
+        "language": "go",
+        "purpose": "This file contains unit tests for parsing URLs and verifying their hostnames.",
         "key_types": [
-          "string",
-          "error",
-          "*url.URL"
-        ],
-        "functions": [
           "Test_Parse_URL"
         ],
-        "imports": [
-          "net/url",
-          "testing",
-          "github.com/stretchr/testify/assert"
-        ],
-        "side_effects": [
-          "Logs an error if URL parsing fails"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "tests/http_template_test.go": {
-        "language": "Go",
-        "purpose": "Unit test for parsing an HTTP template using Go's html/template package.",
+        "language": "go",
+        "purpose": "Tests the parsing and execution of an HTML template for HTTP responses.",
         "key_types": [
-          "struct"
-        ],
-        "functions": [
           "Test_HttpTemplateParseText_NoError"
         ],
-        "imports": [
-          "bytes",
-          "html/template",
-          "testing",
-          "github.com/stretchr/testify/assert"
-        ],
-        "side_effects": [
-          "None"
-        ],
-        "risks": [
-          "None"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "tests/quest_test.go": {
-        "language": "Go",
-        "purpose": "This file contains unit tests for the streak calculation functionality in the wallet services.",
+        "language": "go",
+        "purpose": "Unit tests for streak calculation in wallet check-in logs.",
         "key_types": [
-          "WalletCheckInLogEntity"
-        ],
-        "functions": [
           "TestFindStreak_ShouldNot_BreakStreak",
-          "TestFindStreak_Should_BreakStreak",
-          "TestFindStreak_Should_BreakStreak_2",
-          "TestFindStreak_Should_KeepStreak"
+          "TestFindStreak_Should_BreakStreak"
         ],
-        "imports": [
-          "testing",
-          "time",
-          "github.com/stretchr/testify/assert",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services"
-        ],
-        "side_effects": [
-          "Parsing time strings which may fail and cause the test to fail."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "tests/siwe_test.go": {
-        "language": "Go",
-        "purpose": "Unit tests for verifying the signature recovery process in the context of a specific message format.",
+        "language": "go",
+        "purpose": "Unit tests for verifying the signature and recovery of Ethereum messages.",
         "key_types": [
-          "testing.T",
-          "common.Address",
-          "hexutil.Bytes",
-          "crypto.PublicKey"
-        ],
-        "functions": [
           "Test_Siwe",
           "Test_Siwe2"
         ],
-        "imports": [
-          "testing",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/ethereum/go-ethereum/common/hexutil",
-          "github.com/ethereum/go-ethereum/crypto",
-          "github.com/stretchr/testify/assert"
-        ],
-        "side_effects": [
-          "Modifies the last byte of the signature to adjust for recovery ID.",
-          "Asserts conditions that may terminate the test if not met."
-        ],
-        "risks": [
-          "Potential for incorrect signature verification leading to unauthorized actions if not properly handled."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "tests/slack_alert_test.go": {
         "language": "Go",
-        "purpose": "This file contains tests for the Slack alert service functionality.",
+        "purpose": "Unit tests for the Slack alert service functionality.",
         "key_types": [
-          "SlackAlertConfig",
-          "ClientConfig",
-          "SlackTemplateParams"
-        ],
-        "functions": [
           "Test_SendAlertSlack"
         ],
-        "imports": [
-          "context",
-          "testing",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/slack-alerts",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/stretchr/testify/assert",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Sends alerts to Slack based on the provided templates."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "tests/utils.go": {
         "language": "Go",
-        "purpose": "Defines a package for testing with a no-operation logger.",
+        "purpose": "Defines a no-operation logger for testing purposes.",
         "key_types": [
           "SugaredLogger"
         ],
-        "functions": [],
-        "imports": [
-          "go.uber.org/zap"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       }
     }

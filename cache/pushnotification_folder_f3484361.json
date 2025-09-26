@@ -1,9 +1,9 @@
 {
-  "content_hash": "540d451eddd116012eae2331eab4ab33",
-  "timestamp": "2025-09-26T13:35:44.9967+07:00",
+  "content_hash": "8e940fc20952a11bf1a608189ec65f7f",
+  "timestamp": "2025-09-26T14:07:46.564822+07:00",
   "result": {
     "path": "internal/infras/pushnotification",
-    "purpose": "Responsible for handling push notification requests and sending them via Kafka.",
+    "purpose": "Responsible for handling push notifications, including defining models and producing notifications via Kafka.",
     "languages": {
       "Go": 2
     },
@@ -12,56 +12,32 @@
       "producer.go"
     ],
     "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/enums",
-      "github.com/IBM/sarama",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka"
+      "Kafka"
     ],
-    "architecture": "The folder follows a modular architecture pattern, separating data models and the notification producer functionality.",
+    "architecture": "The folder follows a modular architecture pattern, separating concerns between data models and notification production logic.",
     "file_summaries": {
       "internal/infras/pushnotification/models.go": {
         "language": "Go",
-        "purpose": "Defines data structures for push notification requests.",
+        "purpose": "Defines models for push notification requests and their components.",
         "key_types": [
           "PostNotificationRequest",
           "Payload",
           "Recipient"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums"
-        ],
-        "complexity": "low"
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
       },
       "internal/infras/pushnotification/producer.go": {
-        "language": "Go",
-        "purpose": "This file implements a producer for sending push notifications using Kafka.",
+        "language": "go",
+        "purpose": "This file implements a Kafka producer for publishing push notifications.",
         "key_types": [
           "ProducerConfig",
           "Producer",
-          "producer"
+          "PublishNotification"
         ],
-        "functions": [
-          "PublishNotification",
-          "NewProducer"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "time",
-          "github.com/IBM/sarama",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka"
-        ],
-        "side_effects": [
-          "Logs errors when marshalling JSON or publishing messages."
-        ],
-        "risks": [
-          "Potential for message loss if Kafka is not properly configured.",
-          "Error handling may expose sensitive information in logs."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

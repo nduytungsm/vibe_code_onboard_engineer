@@ -1,6 +1,6 @@
 {
-  "content_hash": "ff0783d9ce6b4e44b03c309cf855b7ba",
-  "timestamp": "2025-09-26T13:36:38.244366+07:00",
+  "content_hash": "9c6ae096c6a7d75a4c9ad53e37a4ead2",
+  "timestamp": "2025-09-26T14:06:31.615877+07:00",
   "result": {
     "path": "internal/repositories/preference",
     "purpose": "This folder/module is responsible for managing user preferences in a database using GORM.",
@@ -10,43 +10,19 @@
     "key_modules": [
       "preference.go"
     ],
-    "dependencies": [
-      "gorm.io/gorm",
-      "gorm.io/gorm/clause",
-      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
-    ],
-    "architecture": "The folder follows a repository pattern, encapsulating database access logic for user preferences.",
+    "dependencies": [],
+    "architecture": "The folder follows a repository pattern, encapsulating the logic required to access data sources.",
     "file_summaries": {
       "internal/repositories/preference/preference.go": {
         "language": "Go",
         "purpose": "This file defines a repository for managing user preferences in a database using GORM.",
         "key_types": [
-          "PreferenceRepo",
-          "prefRepo",
-          "Preference",
-          "PreferenceFilter"
+          "PreferenceRepo interface",
+          "prefRepo struct",
+          "GetList function"
         ],
-        "functions": [
-          "GetList",
-          "UpsertBatch",
-          "UpdateForDevice",
-          "DeleteByDevice",
-          "GetOneByDevice",
-          "CountAddressRegisReceiveNews",
-          "NewPreferenceRepo"
-        ],
-        "imports": [
-          "context",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
-        ],
-        "side_effects": [
-          "Database modifications through create, update, and delete operations."
-        ],
-        "risks": [
-          "Potential SQL injection if user input is not properly sanitized."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

@@ -402,3 +402,73 @@ Output schema:
   "confidence": 0.0
 }`, string(fileSummariesJSON), string(folderSummariesJSON), string(importantFilesJSON))
 }
+
+// AnalyzeFileLightweight provides brief file analysis optimized for speed
+func (c *Client) AnalyzeFileLightweight(ctx context.Context, filePath, content string) (*FileSummary, error) {
+	// Wait for rate limiter
+	if err := c.rateLimiter.Wait(ctx); err != nil {
+		return nil, fmt.Errorf("rate limit error: %v", err)
+	}
+
+	// Truncate content for faster analysis - just get the essence
+	truncatedContent := content
+	if len(content) > 2000 { // Much shorter than detailed analysis
+		truncatedContent = content[:2000] + "\n... [truncated for speed]"
+	}
+
+	prompt := c.buildLightweightFilePrompt(filePath, truncatedContent)
+	
+	resp, err := c.client.CreateChatCompletion(ctx, openai.ChatCompletionRequest{
+		Model:       c.config.OpenAI.Model,
+		Temperature: 0.1, // Lower temperature for faster, consistent responses
+		MaxTokens:   300,  // Much shorter response - just the essentials
+		Messages: []openai.ChatCompletionMessage{
+			{
+				Role:    openai.ChatMessageRoleSystem,
+				Content: "You are a code analyzer. Provide ONLY a brief JSON summary focused on file purpose and key elements. Be concise and fast.",
+			},
+			{
+				Role:    openai.ChatMessageRoleUser,
+				Content: prompt,
+			},
+		},
+		ResponseFormat: &openai.ChatCompletionResponseFormat{
+			Type: openai.ChatCompletionResponseFormatTypeJSONObject,
+		},
+	})
+
+	if err != nil {
+		return nil, fmt.Errorf("OpenAI API error: %v", err)
+	}
+
+	if len(resp.Choices) == 0 {
+		return nil, fmt.Errorf("no response from OpenAI")
+	}
+
+	var summary FileSummary
+	if err := json.Unmarshal([]byte(resp.Choices[0].Message.Content), &summary); err != nil {
+		return nil, fmt.Errorf("failed to parse response JSON: %v", err)
+	}
+
+	return &summary, nil
+}
+
+// buildLightweightFilePrompt creates a minimal prompt for fast file analysis
+func (c *Client) buildLightweightFilePrompt(filePath, content string) string {
+	return fmt.Sprintf(`Analyze this file quickly and return ONLY a brief JSON summary:
+
+File: %s
+Content (truncated):
+%s
+
+Return JSON with ONLY these fields:
+{
+  "language": "detected language",
+  "purpose": "one sentence describing what this file does",
+  "key_types": ["main classes/functions (max 3)"],
+  "dependencies": ["key imports (max 3)"],
+  "complexity": "low|medium|high"
+}
+
+Be fast and concise. Focus on architectural relevance only.`, filePath, content)
+}

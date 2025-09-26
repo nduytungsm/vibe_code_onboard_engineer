@@ -1,0 +1,16 @@
+{
+  "content_hash": "15e795c6128d416c89fe1e178ce033f7",
+  "timestamp": "2025-09-26T13:58:02.259467+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines metrics for monitoring provider and service performance in a wallet proxy.",
+    "key_types": [
+      "observeProviderFn",
+      "observeServiceFn",
+      "AllMetrics"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

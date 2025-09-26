@@ -1,0 +1,15 @@
+{
+  "content_hash": "df7b4875fd06e9531f0a056ed40add3f",
+  "timestamp": "2025-09-26T13:57:48.473526+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides error handling utilities for various services in the manager domain.",
+    "key_types": [
+      "wrapErr",
+      "wrapError"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

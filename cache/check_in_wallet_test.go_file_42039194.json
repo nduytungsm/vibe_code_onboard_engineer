@@ -1,0 +1,14 @@
+{
+  "content_hash": "37be7467c7a89a60392b05fe50cc4ad7",
+  "timestamp": "2025-09-26T13:59:33.534389+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit test for the CheckInWalletService's CheckInStreak method.",
+    "key_types": [
+      "Test_ChecKInStreak"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

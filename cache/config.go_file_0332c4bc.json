@@ -1,0 +1,14 @@
+{
+  "content_hash": "1c87817e1a5c46c39be6716594909ddd",
+  "timestamp": "2025-09-26T13:59:19.259733+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the configuration structure for the worker package.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

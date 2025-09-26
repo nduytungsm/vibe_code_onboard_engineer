@@ -1,0 +1,15 @@
+{
+  "content_hash": "042e1cde362981035afa74ad9c7a43af",
+  "timestamp": "2025-09-26T13:57:58.838686+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines simulation-related RPC methods and their constants for Ethereum transactions.",
+    "key_types": [
+      "SimulateRPCMethod",
+      "SimulationStatus"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

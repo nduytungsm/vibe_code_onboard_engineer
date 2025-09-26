@@ -1,0 +1,16 @@
+{
+  "content_hash": "44e00a6da0b7a18684d50ca87468b9d4",
+  "timestamp": "2025-09-26T13:58:34.709354+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the CrawledDataRepository interface for managing game registration and participant actions in a database.",
+    "key_types": [
+      "CrawledDataRepository",
+      "GameRegistrationEntity",
+      "GameMatchEntity"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

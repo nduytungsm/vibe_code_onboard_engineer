@@ -1,0 +1,16 @@
+{
+  "content_hash": "e9cbd2b83c5795007d419528ce682b77",
+  "timestamp": "2025-09-26T13:59:14.06477+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides metrics collection utilities using Prometheus for monitoring services.",
+    "key_types": [
+      "NewHistogram",
+      "NewCounter",
+      "New"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

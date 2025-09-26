@@ -1,0 +1,16 @@
+{
+  "content_hash": "aa21ac21cf0c496758463747f91948bc",
+  "timestamp": "2025-09-26T13:58:08.074569+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines HTTP handlers for managing rewards and quests in the application.",
+    "key_types": [
+      "InternalRewardHandler",
+      "QuestRewardHandler",
+      "NewInternalRewardHandler"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

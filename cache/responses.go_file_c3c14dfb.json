@@ -1,0 +1,16 @@
+{
+  "content_hash": "bab771be1f6cea58de6b4bc440c41fef",
+  "timestamp": "2025-09-26T13:57:38.211176+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for handling responses related to blockchain chains, providers, tokens, and quotes.",
+    "key_types": [
+      "Chain",
+      "Provider",
+      "Token"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

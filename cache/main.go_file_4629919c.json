@@ -1,0 +1,14 @@
+{
+  "content_hash": "6c5a0116e947d479c1eebaa9817e564c",
+  "timestamp": "2025-09-26T13:57:25.985985+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file initializes and starts a proxy application for wallet services.",
+    "key_types": [
+      "main"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

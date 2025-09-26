@@ -1,0 +1,14 @@
+{
+  "content_hash": "f1eb91e2963919b37986cb366ae6e6d6",
+  "timestamp": "2025-09-26T13:59:26.376747+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration commands to modify the quest_rewards and quest_pools tables.",
+    "key_types": [
+      "ALTER TABLE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

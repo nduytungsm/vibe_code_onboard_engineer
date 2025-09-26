@@ -1,0 +1,16 @@
+{
+  "content_hash": "0ed4452734501064de9fa3407e6257e0",
+  "timestamp": "2025-09-26T13:58:45.756147+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles check-in functionality for user wallets in a quest system.",
+    "key_types": [
+      "CheckInWallet",
+      "checkInWallet",
+      "CheckInWalletStreak"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "content_hash": "6bcd6ffaf45b431fa5abb35f2b8306c4",
+  "timestamp": "2025-09-26T13:58:15.481164+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines and manages log parameter types for quest-related functionality.",
+    "key_types": [
+      "LogParamType",
+      "LogParamTypeFromStr",
+      "IsValid"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

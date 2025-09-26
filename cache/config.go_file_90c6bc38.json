@@ -1,0 +1,14 @@
+{
+  "content_hash": "e81e58111948630d4f5b9e7a3b3b5ba2",
+  "timestamp": "2025-09-26T13:58:46.369341+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration settings for Discord service interactions.",
+    "key_types": [
+      "Config"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

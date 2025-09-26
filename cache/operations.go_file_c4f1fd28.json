@@ -1,0 +1,14 @@
+{
+  "content_hash": "075e7af32e7d37f497029479dac9f67a",
+  "timestamp": "2025-09-26T13:59:09.109854+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a generic ternary function for conditional value selection.",
+    "key_types": [
+      "Ternary"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

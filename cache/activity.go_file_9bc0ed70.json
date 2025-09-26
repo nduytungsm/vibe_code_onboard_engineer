@@ -1,0 +1,16 @@
+{
+  "content_hash": "a92a2e211befe75e73854fd164a069bc",
+  "timestamp": "2025-09-26T13:58:00.327748+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the ActivityService interface and its implementation for managing user activity and transfer history.",
+    "key_types": [
+      "ActivityService",
+      "activityService",
+      "NewActivityService"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

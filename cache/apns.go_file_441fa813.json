@@ -1,0 +1,16 @@
+{
+  "content_hash": "1f0ad056274ac8504d4842ec7bd4596a",
+  "timestamp": "2025-09-26T13:57:51.405407+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles sending push notifications via Apple's APNs service.",
+    "key_types": [
+      "apnsPushClient",
+      "SendNotification",
+      "newAPNSPushClient"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

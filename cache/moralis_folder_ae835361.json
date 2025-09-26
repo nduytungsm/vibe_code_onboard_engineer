@@ -1,9 +1,9 @@
 {
-  "content_hash": "f202b9d959849598524c9cdbfd572e70",
-  "timestamp": "2025-09-26T13:36:54.633215+07:00",
+  "content_hash": "2e51d73c84f656c41e71ce20fa071fcb",
+  "timestamp": "2025-09-26T14:08:10.267836+07:00",
   "result": {
     "path": "internal/infras/moralis",
-    "purpose": "This folder/module is responsible for interacting with the Moralis API to fetch blockchain-related data such as balances, NFT items, and transaction details.",
+    "purpose": "Responsible for defining the EVM client interface and data models for interacting with Moralis API endpoints and handling blockchain tokens.",
     "languages": {
       "Go": 2
     },
@@ -11,76 +11,31 @@
       "client.go",
       "models.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, separating concerns between client interactions and data models.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating client interactions and data models related to the Moralis API.",
     "file_summaries": {
       "internal/infras/moralis/client.go": {
         "language": "Go",
-        "purpose": "This file defines an EVM client for interacting with Moralis API to fetch blockchain-related data such as balances, NFT items, and transaction details.",
+        "purpose": "Defines the EVM client interface and configuration for interacting with Moralis API endpoints.",
         "key_types": [
           "evmPathConfig",
           "EvmCli",
-          "evmCli"
+          "GetFungibleBalance"
         ],
-        "functions": [
-          "NewEvmCli",
-          "hexChainID",
-          "GetFungibleBalance",
-          "GetNativeBalance",
-          "GetNftItems",
-          "GetNftCollections",
-          "GetTokensFiat",
-          "GetActivities",
-          "GetAccountCollectionBalance",
-          "GetCollectionDetail",
-          "GetTxDetail"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "net/http",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/infras/moralis/models.go": {
         "language": "Go",
-        "purpose": "Defines data structures for handling blockchain-related requests and responses, particularly for fungible and non-fungible tokens.",
+        "purpose": "Defines data models for handling fungible and NFT tokens in a blockchain context.",
         "key_types": [
           "RequestBase",
           "RequestPagination",
-          "FungibleToken",
-          "NftToken",
-          "NftCollection",
-          "Balance",
-          "NativeBalanceResp",
-          "ErrorMessage",
-          "GetFungibleBalance",
-          "GetNftItems",
-          "TokenFiatInfo",
-          "ActivityNftTransfer",
-          "ActivityErc20Transfer",
-          "ActivityNativeTransfer",
-          "ActivityContractItr",
-          "GetAccountCollection",
-          "GetAccountCollections",
-          "AccountCollection",
-          "CollectionDetail",
-          "ContractItr",
-          "Transaction"
+          "FungibleToken"
         ],
-        "functions": [],
-        "imports": [
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

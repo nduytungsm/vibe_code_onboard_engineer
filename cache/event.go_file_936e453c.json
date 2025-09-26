@@ -1,0 +1,14 @@
+{
+  "content_hash": "479948e038fcff1f5bd0c240bb97e499",
+  "timestamp": "2025-09-26T13:58:14.356149+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an enumeration for event statuses in the quest center.",
+    "key_types": [
+      "EventStatus"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

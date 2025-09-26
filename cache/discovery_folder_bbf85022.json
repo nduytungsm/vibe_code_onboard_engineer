@@ -1,11 +1,11 @@
 {
-  "content_hash": "a8cb2309d7430083083adebb62771d8b",
-  "timestamp": "2025-09-26T13:43:07.07723+07:00",
+  "content_hash": "280180cf61cbe7f31ab43a5d63d9ea6d",
+  "timestamp": "2025-09-26T14:08:23.610844+07:00",
   "result": {
     "path": "internal/services/discovery",
-    "purpose": "This folder/module is responsible for managing various discovery services, including announcements, collections, contacts, events, feature banners, layouts, products, and trending tokens.",
+    "purpose": "Responsible for managing various services related to discovery functionalities, including announcements, collections, contacts, events, and banners.",
     "languages": {
-      "Go": 14
+      "Go": 13
     },
     "key_modules": [
       "announcement.go",
@@ -22,590 +22,163 @@
       "service_item.go",
       "token.go"
     ],
-    "dependencies": [
-      "github.com/google/wire",
-      "go.uber.org/zap",
-      "gorm.io/gorm",
-      "github.com/samber/lo",
-      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares"
-    ],
-    "architecture": "The folder follows a service-oriented architecture pattern, where each file represents a distinct service responsible for specific functionalities related to discovery, utilizing a combination of repositories and models for data management.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, with each file defining a specific service or functionality related to the discovery module.",
     "file_summaries": {
       "internal/services/discovery/announcement.go": {
         "language": "Go",
-        "purpose": "This file implements the announcement service for managing banners and widget items.",
+        "purpose": "Defines the announcement service for managing banners and widget items.",
         "key_types": [
-          "Announcement",
-          "announcement",
-          "discovery_requests.CreateBanner",
-          "discovery_models.AnounceEntityWithStatus",
-          "discovery_models.WidgetItemWithExtraInfo"
+          "Announcement interface",
+          "ProvideAnnouncementService",
+          "error variables"
         ],
-        "functions": [
-          "NewAnnouncementService",
-          "CreateBanner",
-          "EditBanner",
-          "DeleteBanner",
-          "GetBannerByID",
-          "ListBanners",
-          "GetWidgetItems",
-          "FilterDimensions"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "github.com/google/wire",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
-        ],
-        "side_effects": [
-          "Logs errors when operations fail",
-          "Modifies the state of the database by creating, updating, or deleting banners"
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized",
-          "Error handling may expose internal error messages"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/collection.go": {
         "language": "Go",
-        "purpose": "This file implements a service for managing and retrieving collection statistics and related data.",
+        "purpose": "Defines the Collection service for managing and retrieving collection data.",
         "key_types": [
-          "Collection",
-          "collection",
-          "discovery_models.CollectionStatsItem",
-          "discovery_models.CollectionEntity",
-          "discovery_requests.WidgetItemParams",
-          "discovery_models.WidgetItemWithExtraInfo"
+          "Collection interface",
+          "collection struct",
+          "NewCollection function"
         ],
-        "functions": [
-          "NewCollection",
-          "GetRawCollectionsStats",
-          "GetCollectionStats",
-          "Search",
-          "GetWidgetItems",
-          "FilterDimensions"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "github.com/google/wire",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/redis"
-        ],
-        "side_effects": [
-          "Logs errors when collection stats cannot be retrieved or set.",
-          "Caches collection stats in Redis."
-        ],
-        "risks": [
-          "Potential exposure of sensitive data if error handling is not properly managed.",
-          "Dependency on external services for data retrieval may lead to failures."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/contact.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing contacts in a discovery service, including creating layout contacts and retrieving widget items.",
+        "purpose": "Provides a service for managing contact layouts and widget items in the discovery module.",
         "key_types": [
-          "Contact",
-          "contact",
-          "discovery_requests.HandlerLayoutContact",
-          "discovery_models.ContactWithExtraInfo",
-          "discovery_models.WidgetItemWithExtraInfo",
-          "discovery_enums.CustomItemOrder"
+          "Contact interface",
+          "contact struct",
+          "NewContactService function"
         ],
-        "functions": [
-          "NewContactService",
-          "CreateLayoutContact",
-          "GetWidgetItems",
-          "FilterDimensions"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "github.com/google/wire",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
-        ],
-        "side_effects": [
-          "Logs errors when creating layout contacts or retrieving widget items."
-        ],
-        "risks": [
-          "Potential for nil pointer dereference if the repository or services are not properly initialized."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/data.go": {
-        "language": "Go",
-        "purpose": "Provides a data service for fetching collection statistics from an API.",
+        "language": "go",
+        "purpose": "Provides a data service for fetching collection statistics from an external API.",
         "key_types": [
           "DataServiceCfg",
           "Data",
-          "data"
+          "NewDataSvc"
         ],
-        "functions": [
-          "NewDataSvc",
-          "GetCollectionFromData"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/google/wire",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Makes HTTP requests to an external API."
-        ],
-        "risks": [
-          "Potential for API failure or unavailability.",
-          "Error handling may expose internal error messages."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/event.go": {
         "language": "Go",
-        "purpose": "This file defines an event service for managing events in a discovery service, including creating, listing, and deleting events.",
+        "purpose": "Defines the Event service interface and its implementation for managing discovery events.",
         "key_types": [
-          "Event",
-          "RoninMarketCfg",
-          "event",
-          "discovery_requests.CreateEvItem",
-          "discovery_responses.Event",
-          "discovery_models.WidgetItemWithExtraInfo"
+          "Event interface",
+          "event struct",
+          "RoninMarketCfg struct"
         ],
-        "functions": [
-          "NewEventService",
-          "CreateEventItem",
-          "ListRMEvents",
-          "GetWidgetItems",
-          "DeleteEvItem",
-          "FilterDimensions"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "strconv",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/google/wire",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Logs errors when creating, deleting, or fetching events.",
-          "Interacts with a database to store and retrieve event data."
-        ],
-        "risks": [
-          "Potential for SQL injection if input is not properly sanitized.",
-          "Error handling may expose internal error messages."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/feature_banner.go": {
         "language": "Go",
-        "purpose": "This file implements a service for managing feature banners, including creating, retrieving, checking existence, and deleting banners.",
+        "purpose": "Defines the FeatureBanner service interface and its implementation for managing feature banners in the discovery service.",
         "key_types": [
-          "FeatureBanner",
-          "featureBanner",
-          "FeatureBannerEntity",
-          "FeatureHeadlineEntity"
+          "FeatureBanner interface",
+          "featureBanner struct",
+          "NewFeatureBanner function"
         ],
-        "functions": [
-          "NewFeatureBanner",
-          "CheckExistsOfVersion",
-          "Create",
-          "GetByVersionID",
-          "CheckExists",
-          "Delete"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/google/wire",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Database transactions for creating and deleting banners and headlines",
-          "Logging errors and actions"
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized",
-          "Error handling may expose internal error messages"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/generic.go": {
         "language": "Go",
-        "purpose": "This file defines a service for discovering and managing social platforms, studios, and categories, including functionalities for searching and uploading images.",
+        "purpose": "Provides generic services for discovery functionalities including image handling and social platform management.",
         "key_types": [
-          "Generic",
-          "ExternalServicesCfg",
-          "CloudflareCfg",
-          "GCSCfg",
-          "generic"
-        ],
-        "functions": [
           "NewGenericService",
-          "ListSocialPlatforms",
-          "ListStudios",
-          "ListCategories",
-          "Search",
-          "GetSocialPlatformByIDs",
-          "searchAllProducts",
-          "searchAllCollections"
+          "ProvideCollect",
+          "error handling"
         ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "image",
-          "image/gif",
-          "image/jpeg",
-          "image/png",
-          "io",
-          "mime/multipart",
-          "path/filepath",
-          "sort",
-          "strings",
-          "time",
-          "cloud.google.com/go/storage",
-          "github.com/samber/lo",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/google/uuid",
-          "github.com/google/wire",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Interacts with external storage services for image uploads",
-          "Logs errors when operations fail"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data in error messages",
-          "Improper handling of image uploads could lead to security vulnerabilities"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/helpers.go": {
         "language": "Go",
-        "purpose": "This file contains helper functions for managing discovery services, including extracting social platform IDs and fetching market events.",
+        "purpose": "Provides helper functions for managing social platform contacts in the discovery service.",
         "key_types": [
-          "HandlerLayoutContact",
-          "ContactWithExtraInfo",
-          "MavisSale",
-          "GameInfo",
-          "EventEntity"
-        ],
-        "functions": [
           "extractSocialPlatformID",
           "combineCreateLayoutContactInfo",
-          "getRMSaleEvents",
-          "getRMGameEvent",
-          "loopFetch",
-          "mapSaleEvents",
-          "mapGameEvents"
+          "getRMSaleEvents"
         ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "strconv",
-          "strings",
-          "time",
-          "github.com/labstack/gommon/log",
-          "github.com/machinebox/graphql",
-          "github.com/samber/lo",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
-        ],
-        "side_effects": [
-          "Logs errors when fetching events from the market"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/home_banner.go": {
         "language": "Go",
-        "purpose": "This file implements a service for managing home banners, including creating, finding, deleting, and listing banners.",
+        "purpose": "Defines the HomeBanner service interface and its implementation for managing home banners in the discovery module.",
         "key_types": [
-          "HomeBanner",
-          "homeBanner",
-          "HomeBannerEntity",
-          "WidgetItemWithExtraInfo",
-          "WidgetItemsFilter"
+          "HomeBanner interface",
+          "homeBanner struct",
+          "NewHomeBannerSvc function"
         ],
-        "functions": [
-          "CreateHomeBanner",
-          "FindActiveHomeBanner",
-          "DeleteBanner",
-          "ListHomeBanners",
-          "GetWidgetItems",
-          "FilterDimensions"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/google/wire",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Generates unique IDs for banners and history records.",
-          "Logs errors when operations fail."
-        ],
-        "risks": [
-          "Potential for ID generation failure leading to service errors.",
-          "Error handling may expose internal error messages."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/layout.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing layouts and widgets in a discovery service.",
+        "purpose": "Defines services for managing layouts and widgets in a discovery context.",
         "key_types": [
-          "Layout",
-          "layout",
-          "LayoutEntity",
-          "WidgetEntity",
-          "LayoutWidgetEntity",
-          "WidgetItemEntity"
+          "Layout interface",
+          "NewLayoutService function",
+          "Error variables"
         ],
-        "functions": [
-          "NewLayoutService",
-          "CreateLayout",
-          "GetActiveLayout",
-          "UpdateLayoutWidgets",
-          "GetLayoutWidgets",
-          "GetLayoutWidgetItems",
-          "GetWidgetByID",
-          "FindWidgetsByIDs",
-          "CreateFullpageWidget"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "github.com/google/wire",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Logs errors when operations fail",
-          "Generates new IDs for layouts and widgets"
-        ],
-        "risks": [
-          "Potential for unhandled errors when interacting with the database",
-          "Improper error handling could lead to information leakage"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/product.go": {
         "language": "Go",
-        "purpose": "This file defines a product service for managing products and dapps, including creation, updating, and retrieval of product information.",
+        "purpose": "Defines the product service for managing dapps and products in the discovery module.",
         "key_types": [
-          "Product",
-          "product",
-          "HandlerCreateProduct",
-          "HandlerUpdateProduct",
-          "ProductWithExtraInfo",
-          "ProductSocialPlatform",
-          "ProductEntity",
-          "WidgetItemWithExtraInfo",
-          "WidgetItemsFilter"
+          "Product interface",
+          "ProvideProductService",
+          "error variables"
         ],
-        "functions": [
-          "NewProductService",
-          "CreateProduct",
-          "UpdateProduct",
-          "ListProductsWithExtraInfo",
-          "ListProductSocials",
-          "UpdateDappStatus",
-          "GetProductByID",
-          "SearchAllProducts",
-          "GetWidgetItems",
-          "FilterDimensions"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "strings",
-          "github.com/google/wire",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
-        ],
-        "side_effects": [
-          "Logs errors when operations fail",
-          "Modifies the state of products in the database"
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized",
-          "Error handling may expose internal error messages"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/service_item.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing layout services and widget items in a discovery context.",
+        "purpose": "Defines the ServiceItem interface and its implementation for managing layout services and widget items.",
         "key_types": [
-          "ServiceItem",
-          "serviceItem",
-          "ServiceEntity",
-          "WidgetItemWithExtraInfo",
-          "WidgetItemsFilter",
-          "WidgetItemParams",
-          "CustomItemOrder"
+          "ServiceItem interface",
+          "serviceItem struct",
+          "NewServiceItem function"
         ],
-        "functions": [
-          "NewServiceItem",
-          "CreateLayoutServices",
-          "GetWidgetItems",
-          "FilterDimensions"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "github.com/google/wire",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
-        ],
-        "side_effects": [
-          "Logs errors when creating layout services or getting widget items fails."
-        ],
-        "risks": [
-          "Potential for ID generation failure leading to service creation errors.",
-          "Error handling may expose internal error messages."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/discovery/token.go": {
         "language": "Go",
-        "purpose": "Provides a service for trending tokens, including methods to get widget items and filter dimensions based on custom orders.",
+        "purpose": "Defines a service for managing trending tokens in a discovery context.",
         "key_types": [
-          "TrendingToken",
-          "trendingToken",
-          "WidgetItemWithExtraInfo",
-          "WidgetItemsFilter",
-          "CustomItemOrder"
+          "TrendingToken interface",
+          "trendingToken struct",
+          "NewTrendingToken function"
         ],
-        "functions": [
-          "NewTrendingToken",
-          "GetWidgetItems",
-          "FilterDimensions",
-          "dimensionFromCustomOrder",
-          "hashID"
-        ],
-        "imports": [
-          "context",
-          "hash/fnv",
-          "time",
-          "github.com/google/wire",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/discovery/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests"
-        ],
-        "side_effects": [
-          "Logs errors when fetching tokens fails"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

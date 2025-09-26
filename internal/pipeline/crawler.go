@@ -80,6 +80,16 @@ func (c *Crawler) CrawlFiles() ([]FileInfo, error) {
 			return nil // Skip file
 		}
 		
+		// Enhanced filtering: Skip unimportant directories entirely
+		if d.IsDir() && c.isUnimportantDirectory(normalizedPath) {
+			return fs.SkipDir
+		}
+		
+		// Enhanced filtering: Skip unimportant files
+		if !d.IsDir() && c.isUnimportantFile(normalizedPath) {
+			return nil
+		}
+		
 		// Get file info
 		info, err := d.Info()
 		if err != nil {
@@ -206,4 +216,106 @@ func (c *Crawler) GetFileStats(files []FileInfo) map[string]interface{} {
 	stats["extensions"] = extensionCounts
 	
 	return stats
+}
+
+// isUnimportantDirectory checks if a directory should be skipped for performance
+func (c *Crawler) isUnimportantDirectory(path string) bool {
+	// Convert to lowercase for case-insensitive matching
+	lowerPath := strings.ToLower(path)
+	
+	// Skip common unimportant directories that don't provide architectural value
+	unimportantDirs := []string{
+		// Build outputs and dependencies
+		"node_modules", "vendor", "target", "build", "dist", "out", "bin",
+		".next", ".nuxt", "__pycache__", ".pytest_cache", "coverage",
+		
+		// IDE and editor files  
+		".vscode", ".idea", ".eclipse", ".settings",
+		
+		// Version control and CI
+		".git", ".svn", ".hg", ".github/workflows", ".gitlab-ci",
+		
+		// Logs and temporary files
+		"logs", "tmp", "temp", ".tmp", ".cache",
+		
+		// Documentation that doesn't affect architecture (keep important docs)
+		"docs/api", "docs/generated", "documentation/auto",
+		
+		// Test artifacts and reports
+		"test-results", "coverage-reports", "jest-coverage", ".nyc_output",
+		
+		// Package manager artifacts
+		".pnpm-store", ".yarn/cache", ".npm",
+		
+		// Language-specific build artifacts
+		"cmake-build-debug", "cmake-build-release", "obj", "debug", "release",
+	}
+	
+	for _, skipDir := range unimportantDirs {
+		if strings.Contains(lowerPath, skipDir) {
+			return true
+		}
+	}
+	
+	// Skip deep nested paths (likely auto-generated)
+	if strings.Count(path, "/") > 8 {
+		return true
+	}
+	
+	return false
+}
+
+// isUnimportantFile checks if a file should be skipped for performance
+func (c *Crawler) isUnimportantFile(path string) bool {
+	lowerPath := strings.ToLower(path)
+	filename := strings.ToLower(filepath.Base(path))
+	
+	// Skip files that don't provide architectural insight
+	unimportantFiles := []string{
+		// Lock files and dependencies
+		"package-lock.json", "yarn.lock", "pnpm-lock.yaml", "composer.lock",
+		"pipfile.lock", "poetry.lock", "cargo.lock", "go.sum",
+		
+		// Build and compiled files
+		".map", ".min.js", ".min.css", "bundle.js", "bundle.css",
+		
+		// IDE and editor files
+		".ds_store", "thumbs.db", "desktop.ini", ".swp", ".swo",
+		
+		// Test files (keep main test files, skip detailed test data)
+		".test.json", ".spec.json", "__snapshots__", ".coverage",
+		
+		// Generated files
+		"generated.go", "auto_generated", ".pb.go", ".gen.go",
+		
+		// Documentation that doesn't affect code architecture
+		"changelog", "license", "authors", "contributors", "code_of_conduct",
+		
+		// Configuration files that are often repetitive
+		".env.example", ".env.template", ".env.sample",
+	}
+	
+	for _, skipFile := range unimportantFiles {
+		if strings.Contains(filename, skipFile) {
+			return true
+		}
+	}
+	
+	// Skip very large files that are likely data/assets
+	if strings.HasSuffix(lowerPath, ".sql") && strings.Contains(lowerPath, "seed") {
+		return true
+	}
+	if strings.HasSuffix(lowerPath, ".json") && strings.Contains(lowerPath, "fixture") {
+		return true
+	}
+	
+	// Skip binary-like files even if they have text extensions
+	binaryPatterns := []string{".woff", ".ttf", ".eot", ".ico", ".png", ".jpg", ".jpeg", ".gif", ".svg", ".pdf"}
+	for _, pattern := range binaryPatterns {
+		if strings.HasSuffix(lowerPath, pattern) {
+			return true
+		}
+	}
+	
+	return false
 }

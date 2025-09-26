@@ -1,0 +1,16 @@
+{
+  "content_hash": "4e0cb175f4f9db464058997628a38a82",
+  "timestamp": "2025-09-26T13:58:55.188057+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides helper functions for verifying quest-related activities and managing user check-in states.",
+    "key_types": [
+      "updateActivityState",
+      "findCheckInInternal",
+      "FindStreak"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "content_hash": "4ea43b25896fd035f54494801f8eb7b0",
-  "timestamp": "2025-09-26T13:43:55.286607+07:00",
+  "content_hash": "882e947ec8cabead6902ef136f779f1d",
+  "timestamp": "2025-09-26T14:03:38.693787+07:00",
   "result": {
     "path": "internal/infras/walletmanager",
-    "purpose": "This module is responsible for managing wallet preferences and providing a client interface to interact with external services.",
+    "purpose": "This folder/module is responsible for managing wallet preferences in a service.",
     "languages": {
       "Go": 2
     },
@@ -11,52 +11,31 @@
       "client.go",
       "models.go"
     ],
-    "dependencies": [
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating wallet management functionality with a clear separation of concerns between the client interface and data models.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating wallet management functionalities with clear separation of concerns between client interactions and data models.",
     "file_summaries": {
       "internal/infras/walletmanager/client.go": {
         "language": "Go",
-        "purpose": "This file defines a wallet manager client that retrieves user preferences from a specified base URL.",
+        "purpose": "This file implements a client for managing wallet preferences in a service.",
         "key_types": [
           "Config",
           "Client",
-          "clientHTTP",
-          "PreferencesResponse"
+          "clientHTTP"
         ],
-        "functions": [
-          "NewClient",
-          "GetPreferences"
-        ],
-        "imports": [
-          "context",
-          "net/url",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
-        "side_effects": [
-          "Makes HTTP requests to an external service."
-        ],
-        "risks": [
-          "Potential exposure of sensitive user data if not handled properly.",
-          "Error handling may not cover all edge cases."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/infras/walletmanager/models.go": {
-        "language": "Go",
-        "purpose": "Defines data structures for managing wallet preferences.",
+        "language": "go",
+        "purpose": "Defines data models for managing user wallet preferences.",
         "key_types": [
           "Preference",
           "PreferencesRequest",
           "PreferencesResponse"
         ],
-        "functions": [],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       }
     }

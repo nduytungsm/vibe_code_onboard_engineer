@@ -1,0 +1,16 @@
+{
+  "content_hash": "a4a21079395d91392adb01f0185b591c",
+  "timestamp": "2025-09-26T13:57:56.663772+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a model for managing Coingecko platform mappings and native tokens.",
+    "key_types": [
+      "CoingeckoPlatforms",
+      "NewCoingeckoPlatforms",
+      "Add"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "content_hash": "1afdeaf9afd792efed620bc489aa4bf5",
+  "timestamp": "2025-09-26T13:57:47.435155+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides helper functions for managing database transactions in a GORM context.",
+    "key_types": [
+      "bindTx",
+      "txFromContext"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

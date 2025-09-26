@@ -1,9 +1,9 @@
 {
-  "content_hash": "4db5fb128d948ea427e544c0385af0d5",
-  "timestamp": "2025-09-26T13:38:29.245227+07:00",
+  "content_hash": "371ad86221174e4b1c9a4df4bc61c92e",
+  "timestamp": "2025-09-26T14:06:41.138935+07:00",
   "result": {
     "path": "internal/services/cron-jobs",
-    "purpose": "Responsible for managing and executing scheduled tasks (cron jobs) related to various services, including monitoring, data processing, and integration with external services.",
+    "purpose": "Responsible for managing and scheduling cron jobs for various tasks related to gaming services, including data crawling and monitoring.",
     "languages": {
       "Go": 10
     },
@@ -19,314 +19,117 @@
       "task_mvh.go"
     ],
     "dependencies": [
-      "github.com/go-co-op/gocron/v2",
-      "go.uber.org/zap",
-      "gorm.io/gorm",
-      "github.com/prometheus/client_golang/prometheus",
-      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-      "github.com/axieinfinity/ronin-wallet-services/internal/services/swanlake",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/google/uuid",
-      "github.com/google/wire",
-      "_ \"k8s.io/client-go/plugin/pkg/client/auth/gcp\""
+      "gocron",
+      "Prometheus"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to cron jobs, such as configuration, task management, scheduling, and metrics monitoring, promoting separation of concerns and maintainability.",
+    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to cron job management, scheduling, and monitoring.",
     "file_summaries": {
       "internal/services/cron-jobs/config.go": {
         "language": "Go",
-        "purpose": "Defines configuration structures for cron jobs and related services.",
+        "purpose": "Configuration definitions for cron jobs and related services.",
         "key_types": [
           "CronServiceConfig",
           "JobConfig",
-          "PublicHttpServiceConfig",
           "DataProvidersConfig"
         ],
-        "functions": [],
-        "imports": [
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/swanlake",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "complexity": "medium"
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
       },
       "internal/services/cron-jobs/job.go": {
         "language": "Go",
-        "purpose": "This file defines a task registry for managing scheduled tasks using the gocron library.",
+        "purpose": "Manages and registers scheduled tasks using the gocron library.",
         "key_types": [
           "TaskRegistry",
-          "gocron.Task",
-          "JobConfig"
-        ],
-        "functions": [
           "NewTaskRegistry",
-          "RegisterTask",
-          "GetTask",
-          "ProvideTaskRegistry",
-          "ProvideJobs",
-          "newJob"
+          "RegisterTask"
         ],
-        "imports": [
-          "github.com/go-co-op/gocron/v2",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/swanlake",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
-        ],
-        "side_effects": [
-          "Registers tasks with the gocron scheduler",
-          "Logs warnings if a job is not found"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/cron-jobs/metrics.go": {
         "language": "Go",
-        "purpose": "This file defines and registers Prometheus metrics for cron job monitoring.",
+        "purpose": "Defines and registers Prometheus metrics for cron job monitoring.",
         "key_types": [
-          "prometheus.HistogramVec",
-          "prometheus.CounterVec",
-          "prometheus.SummaryVec"
-        ],
-        "functions": [
           "registerMetrics",
           "cronJobHistogramVec",
-          "cronJobCounterVec",
-          "cronJobSummaryVec"
+          "cronJobCounterVec"
         ],
-        "imports": [
-          "github.com/prometheus/client_golang/prometheus"
-        ],
-        "side_effects": [
-          "Registers metrics with Prometheus"
-        ],
-        "complexity": "medium"
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
       },
       "internal/services/cron-jobs/scheduler.go": {
         "language": "Go",
-        "purpose": "This file implements a cron job scheduler service using the gocron library.",
+        "purpose": "This file implements a cron job scheduler service with logging and monitoring capabilities.",
         "key_types": [
-          "loggingJobMonitor",
-          "cronJobService",
-          "gocron.Scheduler"
-        ],
-        "functions": [
-          "IncrementJob",
-          "RecordJobTiming",
           "ProvideScheduler",
           "NewCronJobService",
-          "Start",
-          "Stop"
+          "loggingJobMonitor"
         ],
-        "imports": [
-          "context",
-          "time",
-          "github.com/go-co-op/gocron/v2",
-          "github.com/google/uuid",
-          "github.com/google/wire",
-          "go.uber.org/zap",
-          "_ \"k8s.io/client-go/plugin/pkg/client/auth/gcp\"",
-          "github.com/axieinfinity/ronin-wallet-services/internal/applications"
-        ],
-        "side_effects": [
-          "Logs job completion and timing information",
-          "Starts and stops the scheduler"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/cron-jobs/task.go": {
         "language": "Go",
-        "purpose": "Defines a cron job task for crawling quests and processing results using the Swanlake service.",
+        "purpose": "Defines cron job tasks for crawling quest data in a gaming service.",
         "key_types": [
           "CronTask",
           "CrawlTaskLogic",
           "SwanlakeCrawlerTask"
         ],
-        "functions": [
-          "isQuestEligibleForCrawl",
-          "getEligibleQuests",
-          "Run",
-          "Name",
-          "NewSwanlakeCrawlerTask"
-        ],
-        "imports": [
-          "context",
-          "slices",
-          "time",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/swanlake",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
-        ],
-        "side_effects": [
-          "Logs errors and information during quest processing.",
-          "Modifies the database through upsert and cleanup operations."
-        ],
-        "risks": [
-          "Potential for SQL injection if queries are not properly sanitized.",
-          "Error handling may expose sensitive information in logs."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/cron-jobs/task_collections.go": {
         "language": "Go",
-        "purpose": "This file implements a cron job for managing and updating marketplace collections data.",
+        "purpose": "Defines data structures and functionality for handling marketplace collection data in cron jobs.",
         "key_types": [
           "MarketplaceCollectionResult",
           "MarketplaceCollectionsRanking",
-          "MarketplaceCollectionItem",
-          "StatsItem",
-          "CollectionDataJson",
-          "CollectionsMarketplaceTaskLogic"
+          "MarketplaceCollectionItem"
         ],
-        "functions": [
-          "NewCollectionsMarketplaceTaskLogic",
-          "Name",
-          "Run",
-          "getPayload",
-          "reqCollect",
-          "getCollectionsLimit",
-          "getCollectionsRange",
-          "getStatsItem",
-          "findStatsCollection"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "fmt",
-          "strconv",
-          "strings",
-          "go.uber.org/zap",
-          "gorm.io/datatypes",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "side_effects": [
-          "Database updates through UpsertCollection method",
-          "Logging errors and information"
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not sanitized",
-          "Error handling may not cover all edge cases"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/cron-jobs/task_games.go": {
         "language": "Go",
-        "purpose": "This file defines cron jobs for processing game played logs for different game platforms.",
+        "purpose": "Defines a cron job task for crawling classic game played logs.",
         "key_types": [
           "ClassicGamePlayedCrawlerTaskLogic",
-          "OriginsGamePlayedCrawlerTaskLogic",
-          "pvpBattlePlayed"
-        ],
-        "functions": [
           "NewClassicGamePlayedCrawlerTaskLogic",
-          "NewOriginsGamePlayedCrawlerTaskLogic",
-          "Name",
-          "EligibleQuestActivities",
-          "GetSwanlakeQuery",
-          "UpsertResultSet",
-          "CleanupStaled",
-          "transformBattles"
+          "EligibleQuestActivities"
         ],
-        "imports": [
-          "fmt",
-          "time",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
-        ],
-        "side_effects": [
-          "Database operations for upserting and cleaning up game played logs."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/cron-jobs/task_mkp.go": {
         "language": "Go",
-        "purpose": "This file defines logic for handling purchase history of Axies in a marketplace, including querying and upserting data.",
+        "purpose": "Defines a task for crawling purchase history of Axie NFTs from a marketplace.",
         "key_types": [
           "PurchaseAxieCrawlerTaskLogic",
-          "PurchaseSummerAxieCrawlerTaskLogic",
-          "purchaseAxie"
-        ],
-        "functions": [
           "NewPurchaseAxieCrawlerTaskLogic",
-          "Name",
-          "EligibleQuestActivities",
-          "GetSwanlakeQuery",
-          "UpsertResultSet",
-          "CleanupStaled",
-          "NewPurchaseSummerAxieCrawlerTaskLogic",
-          "GetSwanlakeQuery",
-          "UpsertResultSet",
-          "CleanupStaled",
-          "transformPurchases"
+          "GetSwanlakeQuery"
         ],
-        "imports": [
-          "fmt",
-          "time",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
-        ],
-        "side_effects": [
-          "Database operations for upserting and cleaning up purchase history logs."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/cron-jobs/task_mvh.go": {
         "language": "Go",
-        "purpose": "This file defines a task for crawling console games and updating their information in a database.",
+        "purpose": "Defines a task for crawling console games data from a specified API.",
         "key_types": [
           "ConsoleGamesCrawlerTask",
-          "xhttp.Client",
-          "generator.IDGenerator",
-          "discoveryRepos.Product",
-          "discoveryRepos.Generic",
-          "zap.SugaredLogger"
-        ],
-        "functions": [
           "NewConsoleGamesCrawlerTask",
-          "Name",
-          "Run",
-          "getAllGames",
-          "getGameDetail",
-          "getExistingGamesByName",
-          "insertStudioIfNeeded",
-          "upsertProduct",
-          "newProductEntity"
+          "Run"
         ],
-        "imports": [
-          "context",
-          "fmt",
-          "net/http",
-          "net/url",
-          "strings",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
-        ],
-        "side_effects": [
-          "Makes HTTP requests to external services to fetch game data.",
-          "Updates the database with new or modified game information."
-        ],
-        "risks": [
-          "Potential for HTTP request failures leading to incomplete data updates.",
-          "Handling of multiple games with the same name may lead to data inconsistencies."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

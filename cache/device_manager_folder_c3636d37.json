@@ -1,9 +1,9 @@
 {
-  "content_hash": "ff661fc45c67bcbc0f21b1885a7e3c48",
-  "timestamp": "2025-09-26T13:31:31.198632+07:00",
+  "content_hash": "9ccbb36269087501d3fae198ba462f9a",
+  "timestamp": "2025-09-26T14:04:03.525698+07:00",
   "result": {
     "path": "cmd/device_manager",
-    "purpose": "Responsible for managing device-related operations in a web application.",
+    "purpose": "Responsible for managing device-related operations and services within the application.",
     "languages": {
       "Go": 5
     },
@@ -15,167 +15,66 @@
       "wire_gen.go"
     ],
     "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/hmac",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
-      "github.com/go-playground/validator/v10",
-      "github.com/labstack/echo/v4",
-      "github.com/google/wire",
-      "github.com/prometheus/client_golang/prometheus",
-      "go.uber.org/zap"
+      "Google Wire"
     ],
-    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for managing components and the Echo framework for handling web routes.",
+    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for better management of components and services.",
     "file_summaries": {
       "cmd/device_manager/config.go": {
         "language": "Go",
         "purpose": "Defines the configuration structure for the device manager application.",
         "key_types": [
-          "deviceManagerConfig",
-          "applications.ApplicationConfig",
-          "xhttp.ServerConfig",
-          "hmac.Config",
-          "metrics.Config",
-          "loggers.LoggerConfig",
-          "storages.PostgresConfig"
+          "deviceManagerConfig"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/hmac",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
-        ],
-        "complexity": "low"
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
       },
       "cmd/device_manager/main.go": {
         "language": "Go",
-        "purpose": "This file is the entry point for a device manager application, handling configuration loading, logging setup, and application startup.",
+        "purpose": "Initializes and starts the device manager application.",
         "key_types": [
-          "deviceManagerConfig",
-          "context.Context"
-        ],
-        "functions": [
           "main",
           "NewConfig",
-          "MustNewLogger",
-          "PrintConfigSafety",
-          "Struct",
-          "WithCancel",
           "Start"
         ],
-        "imports": [
-          "context",
-          "log",
-          "github.com/go-playground/validator/v10",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/configs",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
-        ],
-        "side_effects": [
-          "Logs configuration loading and application startup",
-          "Flushes logger on exit"
-        ],
-        "risks": [
-          "Potential for configuration errors leading to application failure",
-          "Improper handling of context cancellation"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "cmd/device_manager/routes.go": {
         "language": "Go",
-        "purpose": "Defines routes for device management in a web application using Echo framework.",
+        "purpose": "Defines routes for device management services with public and private groups.",
         "key_types": [
           "PrivateGroup",
-          "PublicGroup"
+          "PublicGroup",
+          "NewPrivateGroup"
         ],
-        "functions": [
-          "NewPrivateGroup",
-          "NewPublicGroup"
-        ],
-        "imports": [
-          "github.com/labstack/echo/v4",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/handlers",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/hmac",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "cmd/device_manager/wire.go": {
         "language": "Go",
         "purpose": "This file sets up dependency injection for the device manager application using Google Wire.",
         "key_types": [
-          "applications.Application",
-          "zap.Logger",
-          "xhttp.Server",
-          "metrics.Service",
-          "deviceManagerConfig"
-        ],
-        "functions": [
           "wireDeviceManager",
           "provideSugarLogger",
-          "provideHttpServer",
-          "provideMetricsService",
-          "provideServices"
+          "provideHttpServer"
         ],
-        "imports": [
-          "github.com/google/wire",
-          "github.com/labstack/echo/v4/middleware",
-          "github.com/prometheus/client_golang/prometheus",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/services",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/validation"
-        ],
-        "side_effects": [
-          "Panic if dependency injection fails in wireDeviceManager"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "cmd/device_manager/wire_gen.go": {
         "language": "Go",
-        "purpose": "This file is part of a device manager application that sets up dependency injection using Wire.",
+        "purpose": "Generates dependency injection code for the device manager application.",
         "key_types": [
-          "applications.Application",
-          "deviceManagerConfig",
-          "repos.DeviceRepo",
-          "services.DeviceService",
-          "http.Server",
-          "metrics.Service"
-        ],
-        "functions": [
           "wireDeviceManager",
           "provideSugarLogger",
-          "provideHttpServer",
-          "provideMetricsService",
-          "provideServices"
+          "provideHttpServer"
         ],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/services",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/validation",
-          "github.com/labstack/echo/v4/middleware",
-          "github.com/prometheus/client_golang/prometheus",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Creates and configures a new HTTP server",
-          "Establishes a connection to a PostgreSQL database",
-          "Initializes metrics service"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

@@ -1,11 +1,11 @@
 {
-  "content_hash": "6588da3e4fc4e4c23facacecd99e068f",
-  "timestamp": "2025-09-26T13:30:13.108932+07:00",
+  "content_hash": "9b3ef770bf8f514105e0394771719a25",
+  "timestamp": "2025-09-26T14:04:21.375134+07:00",
   "result": {
     "path": "internal/domains/proxy/handlers/dtos/requests",
     "purpose": "Defines data transfer objects (DTOs) for various requests handled by the proxy service.",
     "languages": {
-      "Go": 10
+      "go": 10
     },
     "key_modules": [
       "activity.go",
@@ -19,166 +19,122 @@
       "token.go",
       "token_test.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-      "encoding/json",
-      "github.com/samber/lo",
-      "github.com/test-go/testify/require",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/validation"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, organizing DTOs for different functionalities within the proxy service, promoting separation of concerns and reusability.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing DTOs by their specific request types for clarity and maintainability.",
     "file_summaries": {
       "internal/domains/proxy/handlers/dtos/requests/activity.go": {
-        "language": "Go",
-        "purpose": "Defines data transfer objects (DTOs) for handling portfolio activities and transactions.",
+        "language": "go",
+        "purpose": "Defines data transfer objects (DTOs) for handling portfolio activities and transactions in a proxy service.",
         "key_types": [
           "PortfolioActivityDTO",
-          "PortfolioActivitySingleChain",
           "GetTxByHashDTO",
-          "GetTransfersDTO",
-          "GetTransfersSingle"
+          "GetTransfersDTO"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/handlers/dtos/requests/ai.go": {
-        "language": "Go",
+        "language": "go",
         "purpose": "Defines data transfer objects for AI tool choice requests.",
         "key_types": [
           "ToolChoiceRequest",
           "Message",
           "Function"
         ],
-        "functions": [],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/domains/proxy/handlers/dtos/requests/balance.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects (DTOs) for handling portfolio balance and NFT collections in a proxy service.",
+        "purpose": "Defines data transfer objects (DTOs) for handling portfolio balance and NFT collections/ items requests.",
         "key_types": [
           "PortfolioBalanceDTO",
-          "PortfolioBalanceSingleChain",
           "PortfolioCollectionsDTO",
-          "PortfolioCollectionsSingleChain",
-          "PortfolioNFTItemsDTO",
-          "PortfolioNFTItemsSingle",
-          "GetCollectionDetail"
+          "PortfolioNFTItemsDTO"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/handlers/dtos/requests/dapp.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects (DTOs) for DApp requests.",
+        "purpose": "Defines data transfer objects for DApp requests.",
         "key_types": [
           "DAppByURL",
           "DAppScan"
         ],
-        "functions": [],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/domains/proxy/handlers/dtos/requests/fiat.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects (DTOs) for handling fiat token information.",
+        "purpose": "Defines data transfer objects for handling fiat token information requests.",
         "key_types": [
           "TokenFiatInfoDTO",
           "GetTokenFiatInfoDTO"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/domains/proxy/handlers/dtos/requests/profile.go": {
         "language": "Go",
-        "purpose": "Defines a data structure for checking profile existence with an address parameter.",
+        "purpose": "Defines a request structure for checking profile existence.",
         "key_types": [
           "CheckProfileExistence"
         ],
-        "functions": [],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/domains/proxy/handlers/dtos/requests/rpc.go": {
         "language": "Go",
-        "purpose": "Defines a structure for RPC requests and provides methods to unmarshal JSON data into that structure.",
+        "purpose": "Defines an RPC request structure and custom JSON unmarshalling logic.",
         "key_types": [
-          "RpcRequest"
-        ],
-        "functions": [
+          "RpcRequest",
           "UnmarshalJSON",
           "rawToMap"
         ],
-        "imports": [
-          "encoding/json"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/handlers/dtos/requests/simulate.go": {
         "language": "Go",
-        "purpose": "Defines types and constants for simulating Ethereum transactions and provides a structure for JSON-RPC requests.",
+        "purpose": "Defines request types and methods for simulating Ethereum transactions.",
         "key_types": [
           "SimulateMethod",
-          "JsonRPCSimulate"
+          "JsonRPCSimulate",
+          "Value()"
         ],
-        "functions": [
-          "Value",
-          "Values"
-        ],
-        "imports": [
-          "github.com/samber/lo",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/handlers/dtos/requests/token.go": {
         "language": "Go",
-        "purpose": "Defines data transfer objects (DTOs) for token-related requests in a proxy service.",
+        "purpose": "Defines request data transfer objects (DTOs) for token-related operations in a proxy service.",
         "key_types": [
           "TokenByID",
           "GetToken",
-          "ListTokens",
-          "SearchToken",
-          "TokenPriceChart",
-          "GetTokenInternal"
+          "ListTokens"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests"
-        ],
-        "complexity": "low"
+        "functions": null,
+        "imports": null,
+        "complexity": "medium"
       },
       "internal/domains/proxy/handlers/dtos/requests/token_test.go": {
         "language": "Go",
-        "purpose": "This file contains test cases for validating token requests and time ranges in a proxy service.",
+        "purpose": "Unit tests for validating token request structures and time range inputs.",
         "key_types": [
-          "fields",
-          "tests"
-        ],
-        "functions": [
           "TestGetToken_Validate",
           "TestTokenPriceChart_ValidateTimeRange"
         ],
-        "imports": [
-          "testing",
-          "github.com/test-go/testify/require",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/validation"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

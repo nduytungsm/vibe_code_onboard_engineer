@@ -1,0 +1,16 @@
+{
+  "content_hash": "9180fc2a2396fd71b136dcd50ec69aff",
+  "timestamp": "2025-09-26T13:58:32.566514+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a service for interacting with user-related functionalities on a social media platform.",
+    "key_types": [
+      "XServiceConfig",
+      "UserSession",
+      "XService"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

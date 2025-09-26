@@ -1,0 +1,16 @@
+{
+  "content_hash": "57fc34704dde3fd22c00acc11bf73e5d",
+  "timestamp": "2025-09-26T13:57:52.631337+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an interface for push notification clients and a factory function to create them based on configuration.",
+    "key_types": [
+      "Client interface",
+      "clientContractor type",
+      "NewClient function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

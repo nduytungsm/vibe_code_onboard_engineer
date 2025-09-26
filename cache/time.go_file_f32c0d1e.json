@@ -1,0 +1,16 @@
+{
+  "content_hash": "acf574a98b780bfdb29668dc1327055d",
+  "timestamp": "2025-09-26T13:59:11.444057+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides utility functions for handling time-related operations.",
+    "key_types": [
+      "NewCurrentTime",
+      "NewCurrentEpoch",
+      "NewZeroTime"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

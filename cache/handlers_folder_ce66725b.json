@@ -1,6 +1,6 @@
 {
-  "content_hash": "55ed2b2eb263ded8f14c4d6898d7a9fa",
-  "timestamp": "2025-09-26T13:43:51.280164+07:00",
+  "content_hash": "7f19ae8735575d8303863bc5f6995083",
+  "timestamp": "2025-09-26T14:05:52.465397+07:00",
   "result": {
     "path": "internal/domains/bridge/handlers",
     "purpose": "Handles bridge-related HTTP requests and responses for a wallet service.",
@@ -10,50 +10,19 @@
     "key_modules": [
       "bridge.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/handlers/dtos",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/services",
-      "github.com/axieinfinity/ronin-wallet-services/internal/enums/bridge",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/ethereum/go-ethereum/common",
-      "github.com/labstack/echo/v4"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating bridge-related HTTP handling logic and separating concerns through the use of services and DTOs.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on handling specific domain-related HTTP interactions.",
     "file_summaries": {
       "internal/domains/bridge/handlers/bridge.go": {
         "language": "Go",
         "purpose": "Handles bridge-related HTTP requests and responses for a wallet service.",
         "key_types": [
           "BridgeHandler",
-          "services.BridgeService",
-          "dtos.Response"
-        ],
-        "functions": [
           "NewBridgeHandler",
-          "Setup",
-          "getProviders",
-          "getTokens",
-          "getQuotes",
-          "getFeeBalance"
+          "getProviders"
         ],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/handlers/dtos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/bridge",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/labstack/echo/v4"
-        ],
-        "side_effects": [
-          "Interacts with external services to fetch data.",
-          "Modifies request context."
-        ],
-        "risks": [
-          "Potential exposure of sensitive data through error responses.",
-          "Improper validation of user input could lead to security vulnerabilities."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

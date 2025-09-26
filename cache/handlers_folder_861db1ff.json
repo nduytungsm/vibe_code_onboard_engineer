@@ -1,845 +1,270 @@
 {
-  "content_hash": "3134f86b2b43bc801167c94627849718",
-  "timestamp": "2025-09-26T13:38:59.805047+07:00",
+  "content_hash": "155fe08266c18bdafc3da3dfd0bcf46f",
+  "timestamp": "2025-09-26T14:00:34.62976+07:00",
   "result": {
     "path": "internal/handlers",
-    "purpose": "This folder/module is responsible for handling various application operations related to quests, rewards, events, users, and shops, including their creation, modification, retrieval, and deletion.",
+    "purpose": "This folder is responsible for handling various operations related to quests, events, users, rewards, and sponsors within the application.",
     "languages": {
-      "Go": 30
+      "Go": 20
     },
     "key_modules": [
       "default.go",
       "errors.go",
       "event.go",
+      "history.go",
       "quest.go",
+      "quest_action.go",
+      "quest_helper.go",
+      "quest_pool.go",
+      "quest_reward.go",
       "reward.go",
+      "shop.go",
+      "sponsor.go",
       "user.go",
-      "shop.go"
+      "user_event.go",
+      "user_event_helper.go",
+      "user_quest.go",
+      "user_quest_helper.go",
+      "user_reward.go",
+      "user_reward_helper.go"
     ],
-    "dependencies": [
-      "github.com/labstack/echo/v4",
-      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/redis/go-redis/v9",
-      "gorm.io/gorm",
-      "go.uber.org/zap"
-    ],
-    "architecture": "The folder follows a modular architecture pattern where each file represents a specific handler for different functionalities, promoting separation of concerns and maintainability.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, where each file handles specific functionalities related to different aspects of the application, promoting separation of concerns and maintainability.",
     "file_summaries": {
       "internal/handlers/default.go": {
         "language": "Go",
-        "purpose": "Defines a health check handler that returns application configuration details in JSON format.",
+        "purpose": "Defines a health check handler for an application using Echo framework.",
         "key_types": [
-          "applications.ApplicationConfig",
-          "echo.Context"
-        ],
-        "functions": [
           "NewHealthCheck"
         ],
-        "imports": [
-          "net/http",
-          "github.com/labstack/echo/v4",
-          "github.com/axieinfinity/ronin-wallet-services/internal/applications"
-        ],
-        "side_effects": [
-          "Returns HTTP response with JSON data"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/handlers/errors.go": {
         "language": "Go",
-        "purpose": "Defines various error messages related to quest and reward operations.",
+        "purpose": "Defines error variables related to quest and participant operations in the application.",
         "key_types": [
-          "error"
+          "ErrCannotBulkInsert",
+          "ErrNoValidRecord",
+          "ErrInternalServer"
         ],
-        "functions": [],
-        "imports": [
-          "errors",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/handlers/event.go": {
         "language": "Go",
-        "purpose": "This file defines an event handler for managing events, including creating, deleting, and listing events, as well as retrieving pools associated with events.",
+        "purpose": "Handles event-related operations such as creating, deleting, and listing events.",
         "key_types": [
           "EventCfg",
-          "Event",
-          "event"
+          "Event interface",
+          "event struct"
         ],
-        "functions": [
-          "NewEventHandler",
-          "wrapErr",
-          "wrapNotFound",
-          "UpsertEvent",
-          "DeleteEvent",
-          "ListEvents",
-          "GetPoolsOfEvent",
-          "GetOngoingEvent"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "net/http",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Modifies the state of events in the database",
-          "Interacts with external services for sponsor management",
-          "Updates cache for events"
-        ],
-        "risks": [
-          "Potential for race conditions when modifying events",
-          "Improper error handling could lead to inconsistent state"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/helpers.go": {
         "language": "Go",
-        "purpose": "This file contains helper functions for error handling in the handlers package.",
+        "purpose": "Provides error handling utilities for logging and wrapping errors.",
         "key_types": [
-          "error",
-          "logger",
-          "SugaredLogger"
-        ],
-        "functions": [
           "wrapError"
         ],
-        "imports": [
-          "errors",
-          "fmt",
-          "runtime",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Logs errors using a logger",
-          "Wraps errors for internal server response"
-        ],
-        "risks": [
-          "Potential for logging sensitive information if errors contain sensitive data"
-        ],
-        "complexity": "medium"
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
       },
       "internal/handlers/history.go": {
         "language": "Go",
-        "purpose": "Handles the creation of history records for actions performed in the application.",
+        "purpose": "Handles creation of history records for actions performed in the application.",
         "key_types": [
-          "models.HistoryEntity",
+          "CreateHistoryRecord",
+          "createHistoryV2",
           "createHistoryParams"
         ],
-        "functions": [
-          "CreateHistoryRecord",
-          "createHistoryV2"
-        ],
-        "imports": [
-          "encoding/json",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/labstack/gommon/log"
-        ],
-        "side_effects": [
-          "Logs an error if JSON marshalling fails in createHistoryV2"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/quest.go": {
         "language": "Go",
-        "purpose": "This file defines a Quest interface and its implementation for managing quests, including operations like publishing, listing, and storing service credentials.",
+        "purpose": "Handles quest-related operations and interactions in the application.",
         "key_types": [
-          "Quest",
-          "quest",
-          "context.Context",
-          "req.UpsertQuestParams",
-          "res.QuestInfo",
-          "res.WhitelistUsersDTO",
-          "res.Paginated",
-          "models.QuestEntity"
+          "Quest interface",
+          "UpsertQuest",
+          "ListQuests"
         ],
-        "functions": [
-          "NewQuest",
-          "StoreServiceCredentials",
-          "PublishQuest",
-          "GetQuestPublicItem",
-          "GetQuestListingItem",
-          "ListQuests",
-          "UpsertQuest"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "slices",
-          "strconv",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-verifiers",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
-        ],
-        "side_effects": [
-          "Interacts with the database to store and retrieve quest information.",
-          "Logs operations using a logger."
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized.",
-          "Handling of sensitive tokens could lead to security vulnerabilities if not managed correctly."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/quest_action.go": {
         "language": "Go",
-        "purpose": "This file defines a handler for quest actions, including creating, updating, retrieving, and deleting activity guidance.",
+        "purpose": "Handles quest-related actions and activities in the application.",
         "key_types": [
-          "QuestAction",
-          "questAction",
-          "requests.ActivityGuidanceReq",
-          "responses.ActivityGuidance",
-          "responses.ActionItem",
-          "models.QuestActionEntity",
-          "models.ActivityGuidanceEntity"
-        ],
-        "functions": [
-          "NewQuestAction",
-          "wrapErr",
-          "Upsert",
+          "QuestAction interface",
           "CreateActivityGuidance",
-          "UpdateActivityGuidance",
-          "ActivityGuidanceByID",
-          "ActivityGuidances",
-          "DeleteGuidance",
-          "GetPreview"
+          "UpdateActivityGuidance"
         ],
-        "imports": [
-          "bytes",
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "net/http",
-          "strconv",
-          "time",
-          "github.com/PuerkitoBio/goquery",
-          "github.com/go-resty/resty/v2",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/discord",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
-        ],
-        "side_effects": [
-          "Interacts with external services via HTTP requests",
-          "Modifies database records"
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized",
-          "Error handling may expose sensitive information"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/quest_helper.go": {
         "language": "Go",
-        "purpose": "This file contains handlers for quest-related operations, including validation of quest actions and rewards.",
+        "purpose": "Handles quest-related operations and validations for the application.",
         "key_types": [
-          "quest",
-          "models.QuestEntity",
-          "quest_center_services.QuestRelatedInfo",
-          "responses.ListFilterDTO",
-          "responses.Paginated",
-          "models.QuestWhitelistEntity"
-        ],
-        "functions": [
           "wrapErr",
           "wrapNotFound",
-          "validateActions",
-          "validateRewards",
-          "validatePublishInfo",
-          "copySponsorFilter",
-          "copyRewardsFilter",
-          "createWhitelistObjects"
+          "validateActions"
         ],
-        "imports": [
-          "errors",
-          "fmt",
-          "net/http",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/samber/lo"
-        ],
-        "side_effects": [
-          "Error handling for various validation scenarios",
-          "Creation of whitelist objects from normalized addresses"
-        ],
-        "risks": [
-          "Potential for invalid data if input validation fails",
-          "Improper handling of URLs could lead to security vulnerabilities"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/quest_pool.go": {
         "language": "Go",
-        "purpose": "Handles quest pool operations such as upserting, deleting, and listing quest pools.",
+        "purpose": "Handles quest pool operations including upserting, deleting, and listing quest pools.",
         "key_types": [
-          "QuestPool",
-          "questPool",
-          "req.UpsertPool",
-          "req.DeletePool",
-          "res.Paginated[res.QuestPool]",
-          "models.QuestPool"
+          "QuestPool interface",
+          "questPool struct",
+          "NewQuestPoolHandler function"
         ],
-        "functions": [
-          "NewQuestPoolHandler",
-          "wrapErr",
-          "wrapNotFound",
-          "UpsertPool",
-          "DeletePool",
-          "ListPools"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "net/http",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Updates the database with new or modified quest pools.",
-          "Removes old event from Redis cache."
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized.",
-          "Error handling may expose sensitive information."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/quest_reward.go": {
         "language": "Go",
-        "purpose": "Handles quest rewards by fetching active rewards based on quest IDs.",
+        "purpose": "Handles quest reward retrieval and management.",
         "key_types": [
-          "QuestReward",
-          "questReward",
-          "repositories.RewardRepo",
-          "zap.SugaredLogger",
-          "responses.QuestRewardExtra",
-          "models.FilterQuestReward"
+          "QuestReward interface",
+          "questReward struct",
+          "GetActives function"
         ],
-        "functions": [
-          "NewQuestReward",
-          "wrapErr",
-          "GetActives"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/reward.go": {
         "language": "Go",
-        "purpose": "Handles reward-related operations such as claiming rewards, managing reward pools, and listing rewards information.",
+        "purpose": "Handles reward-related operations for a quest system.",
         "key_types": [
-          "Reward",
-          "reward",
-          "req.HandleClaimRewardDTO",
-          "res.RewardSignaturesDTO",
-          "res.Paginated",
-          "res.RewardPool",
-          "res.RewardInfo"
-        ],
-        "functions": [
+          "Reward interface",
           "GetClaimRewardSig",
-          "GetTxHashInfo",
-          "UpsertQuestRewards",
-          "ListRewardsInfo",
-          "ListFundSources",
-          "ListRewardPools",
-          "UpsertRewardInfo",
-          "UpsertRewardPool",
-          "DeleteRewardPool",
-          "DeleteRewardInfo"
+          "UpsertQuestRewards"
         ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "net/http",
-          "strconv",
-          "strings",
-          "github.com/samber/lo",
-          "github.com/shopspring/decimal",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
-        ],
-        "side_effects": [
-          "Database transactions for reward pool and reward info management",
-          "Logging errors and actions taken during operations"
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized",
-          "Error handling may expose sensitive information in logs"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/shop.go": {
         "language": "Go",
-        "purpose": "This file defines a Shop interface and its implementation for managing shop categories, tiers, items, and user inventory in a service.",
+        "purpose": "Defines the Shop interface and its methods for managing shop categories, tiers, items, and user inventory.",
         "key_types": [
-          "Shop",
-          "shop",
-          "requests.CreateShopCategory",
-          "responses.ShopCategory",
-          "responses.ShopTier",
-          "responses.ShopItem",
-          "responses.CreatePurchaseResponse",
-          "responses.ShopInventory",
-          "responses.UserItemQuantity"
+          "Shop interface",
+          "shop struct",
+          "NewShopHandler function"
         ],
-        "functions": [
-          "NewShopHandler",
-          "CreateCategory",
-          "UpdateCategory",
-          "DeleteCategory",
-          "GetCategory",
-          "ListCategories",
-          "CreateTier",
-          "UpdateTier",
-          "DeleteTier",
-          "GetTiersByCategoryID",
-          "CreateItem",
-          "UpdateItem",
-          "DeleteItem",
-          "GetItemsByTier",
-          "UpdateItemQuantity",
-          "CreatePurchase",
-          "GetUserInventory",
-          "GetUserItemQuantity",
-          "UpdateUserInventory"
-        ],
-        "imports": [
-          "context",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "go.uber.org/zap"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/sponsor.go": {
         "language": "Go",
-        "purpose": "Handles sponsor-related operations such as creating, listing, updating, and deleting sponsors.",
+        "purpose": "Handles sponsor-related operations such as upserting, listing, and deleting sponsors.",
         "key_types": [
-          "Sponsor",
-          "sponsor",
-          "requests.UpsertSponsorParam",
-          "responses.Sponsor",
-          "responses.Paginated",
-          "repositories.SponsorRepo"
+          "Sponsor interface",
+          "sponsor struct",
+          "NewSponsorHandler function"
         ],
-        "functions": [
-          "NewSponsorHandler",
-          "FindSponsors",
-          "ListSponsors",
-          "UpsertSponsor",
-          "DeleteSponsor"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Database operations for creating, updating, and deleting sponsors.",
-          "Logging errors and actions performed on sponsors."
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized.",
-          "Error handling may expose sensitive information through logs."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/user.go": {
         "language": "Go",
         "purpose": "Handles user-related operations, specifically finding users by their addresses.",
         "key_types": [
-          "User",
-          "user",
-          "responses.UserItem",
-          "repositories.UserRepo",
-          "models.UserEntity"
+          "User interface",
+          "user struct",
+          "FindUsers function"
         ],
-        "functions": [
-          "NewUserHandler",
-          "wrapErr",
-          "FindUsers"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "strings",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/user_event.go": {
         "language": "Go",
-        "purpose": "Handles user events including verifying premium status, joining events, and retrieving analytics.",
+        "purpose": "Handles user event-related operations such as verifying premium status and joining events.",
         "key_types": [
-          "UserEvent",
-          "userEvent",
-          "req.VerifyPremiumUser",
-          "res.VerifyPremiumUser",
-          "req.JoinEvent",
-          "res.GetUserEventAnalytics",
-          "models.UserEvent"
+          "UserEvent interface",
+          "userEvent struct",
+          "NewUserEventHandler function"
         ],
-        "functions": [
-          "NewUserEventHandler",
-          "wrapErr",
-          "VerifyPremiumStatus",
-          "JoinEvent",
-          "GetAnalytics"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Database updates when a user joins an event or verifies premium status."
-        ],
-        "risks": [
-          "Potential for errors in external service calls (e.g., waypoint client).",
-          "Improper handling of user data could lead to privacy issues."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/user_event_helper.go": {
         "language": "Go",
-        "purpose": "This file contains handlers for user event-related operations, including querying user events, analytics data, and handling premium user data.",
+        "purpose": "Handles user event data and interactions within the quest center service.",
         "key_types": [
           "userEvData",
           "analyticData",
-          "joinEvData",
-          "analytics"
+          "joinEvData"
         ],
-        "functions": [
-          "findJoinEvData",
-          "queryVerifyPremiumData",
-          "queryAnalyticsData",
-          "aggregateAnalytics",
-          "findUserEvFn",
-          "findTempPremiumUserFn",
-          "findEvFn",
-          "findPoolsAnalyticsFn"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/samber/lo",
-          "github.com/samber/mo"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/user_quest.go": {
         "language": "Go",
-        "purpose": "Handles user quests including taking quests, listing quests, and exporting audit results.",
+        "purpose": "Handles user quest operations including taking quests and exporting audit results.",
         "key_types": [
-          "UserQuest",
-          "userQuest",
-          "spawnQuestInfo"
+          "UserQuest interface",
+          "ExportAuditResult",
+          "TakeQuest"
         ],
-        "functions": [
-          "NewUserQuestHandler",
-          "wrapErr",
-          "findSpawnData",
-          "SpawnUserQuest",
-          "GetUserQuest"
-        ],
-        "imports": [
-          "bytes",
-          "context",
-          "encoding/csv",
-          "errors",
-          "net/http",
-          "sort",
-          "strconv",
-          "strings",
-          "time",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-verifiers",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/reward-randomize",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/samber/lo"
-        ],
-        "side_effects": [
-          "Modifies user quest state in the database",
-          "Generates audit results"
-        ],
-        "risks": [
-          "Potential for SQL injection if user input is not properly sanitized",
-          "Error handling may expose sensitive information"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/user_quest_helper.go": {
         "language": "Go",
-        "purpose": "This file contains functions for managing user quests, including distributing rewards, verifying quest eligibility, and selecting random quests.",
+        "purpose": "Handles user quest-related functionalities including reward distribution and action verification.",
         "key_types": [
-          "userQuest",
-          "User",
-          "UserQuestReward",
-          "UserQuestItem",
-          "UserAction",
-          "QuestPool",
-          "QuestWithRecurInfo",
-          "UserSkipQuestLog",
-          "QuestListingItem"
-        ],
-        "functions": [
           "distributePoint",
           "findTargetAction",
-          "isQuestAvailable",
-          "isQuestCompleted",
-          "verifyPremiumEligiblity",
-          "chooseRandomQuest",
-          "chooseRandomQuestID",
-          "listEventSocialQuests"
+          "isQuestAvailable"
         ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "math/rand/v2",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/samber/lo",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
-        ],
-        "side_effects": [
-          "Modifies user rewards based on quest completion",
-          "Interacts with external services to verify user premium status"
-        ],
-        "risks": [
-          "Potential for incorrect reward distribution if user data is not validated properly",
-          "Error handling may expose sensitive information if not managed correctly"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/user_reward.go": {
         "language": "Go",
-        "purpose": "Handles user rewards for quests, including distribution and rejection of rewards.",
+        "purpose": "Handles user reward functionalities including listing, rejecting, and distributing rewards.",
         "key_types": [
-          "UserReward",
-          "userReward",
-          "req.ListUserRewards",
-          "res.DistributeResult",
-          "res.ReviewReward",
-          "res.UserReward"
+          "UserReward interface",
+          "userReward struct",
+          "NewUserRewardHandler function"
         ],
-        "functions": [
-          "NewUserRewardHandler",
-          "wrapErr",
-          "DistributeRewardV4",
-          "distributeOffChainRewards",
-          "distributeOnChainRewards",
-          "RejectUserReward",
-          "ListParticipantRewards",
-          "getUserRewardAmount"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "sort",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/hibiken/asynq",
-          "github.com/samber/lo",
-          "github.com/shopspring/decimal",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
-        ],
-        "side_effects": [
-          "Logs errors when operations fail",
-          "Updates user reward statuses in the database"
-        ],
-        "risks": [
-          "Potential for incorrect reward distribution if quest status is not validated properly",
-          "Error handling may expose sensitive information in logs"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/handlers/user_reward_helper.go": {
         "language": "Go",
-        "purpose": "This file contains helper functions for managing user rewards in a quest system.",
+        "purpose": "Handles user reward distribution and eligibility for quests.",
         "key_types": [
-          "userReward",
-          "UserQuestReward",
-          "QuestListingItem",
-          "QuestRewardExtra",
-          "UserQuestItem",
-          "UserAction"
-        ],
-        "functions": [
           "findEligibleUserRewards",
           "queueDistributeOrderV4",
-          "getOnChainAmounts",
-          "getOffChainAmounts",
-          "createUserRewards",
-          "prepareUpdateFns",
-          "assureQuestInProgress",
-          "assureActionVerifiable",
-          "assureActionUpdated"
+          "getOnChainAmounts"
         ],
-        "imports": [
-          "context",
-          "errors",
-          "strings",
-          "time",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/samber/lo",
-          "github.com/shopspring/decimal",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/reward-distribution",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
-        ],
-        "side_effects": [
-          "Modifies user rewards in the database",
-          "Enqueues tasks for reward distribution"
-        ],
-        "risks": [
-          "Potential for incorrect reward distribution if business logic fails",
-          "Error handling may expose sensitive information if not managed properly"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

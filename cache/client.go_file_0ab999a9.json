@@ -1,0 +1,16 @@
+{
+  "content_hash": "630c4286a569d56b5a4f60c5016e1f81",
+  "timestamp": "2025-09-26T13:58:31.017838+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements a client for verifying turnstile challenges.",
+    "key_types": [
+      "Config",
+      "Client",
+      "clientHTTP"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

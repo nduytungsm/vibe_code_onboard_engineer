@@ -1,0 +1,14 @@
+{
+  "content_hash": "d2846157644da72bba458358c23be73e",
+  "timestamp": "2025-09-26T13:58:38.777836+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the ActivityGuidanceEntity model for database interactions.",
+    "key_types": [
+      "ActivityGuidanceEntity"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

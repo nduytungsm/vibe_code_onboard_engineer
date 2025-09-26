@@ -1,0 +1,15 @@
+{
+  "content_hash": "019e00f664a7b13ec8d48b4df46d45fc",
+  "timestamp": "2025-09-26T13:58:39.859929+07:00",
+  "result": {
+    "language": "go",
+    "purpose": "Defines data models for logging history entities and associated log information.",
+    "key_types": [
+      "HistoryEntity",
+      "LogInfo"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

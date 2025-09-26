@@ -1,0 +1,16 @@
+{
+  "content_hash": "1c9dd2c1cf4e2bf3f4db5fe04322aaf9",
+  "timestamp": "2025-09-26T13:58:50.449619+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a service for managing trending tokens in a discovery context.",
+    "key_types": [
+      "TrendingToken interface",
+      "trendingToken struct",
+      "NewTrendingToken function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

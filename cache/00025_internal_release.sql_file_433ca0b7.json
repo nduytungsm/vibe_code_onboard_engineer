@@ -1,0 +1,16 @@
+{
+  "content_hash": "182b3611d68a3656711e7e62cbf08386",
+  "timestamp": "2025-09-26T13:59:23.194331+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines a migration for creating and dropping the quest_whitelists table and updating quest_infos.",
+    "key_types": [
+      "CREATE TABLE",
+      "UPDATE",
+      "DROP TABLE"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

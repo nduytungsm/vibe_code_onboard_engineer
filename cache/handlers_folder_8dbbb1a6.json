@@ -1,9 +1,9 @@
 {
-  "content_hash": "1e4eca252814ee6956005fbe54028e21",
-  "timestamp": "2025-09-26T13:32:12.411672+07:00",
+  "content_hash": "da9e1f600a9f167c9764c3dc0518a422",
+  "timestamp": "2025-09-26T14:04:33.677767+07:00",
   "result": {
     "path": "internal/domains/devicemanager/handlers",
-    "purpose": "Handles HTTP requests and responses related to device and wallet management for a device management service.",
+    "purpose": "Handles HTTP requests related to devices and wallet operations for the device manager service.",
     "languages": {
       "Go": 2
     },
@@ -11,95 +11,31 @@
       "devices.go",
       "wallet.go"
     ],
-    "dependencies": [
-      "github.com/labstack/echo/v4",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/handlers/dtos/requests",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/handlers/dtos/responses",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/services",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, organizing handlers for device and wallet management into separate files, each responsible for specific functionalities and HTTP operations.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing handlers for different functionalities related to device management and wallet operations.",
     "file_summaries": {
       "internal/domains/devicemanager/handlers/devices.go": {
         "language": "Go",
-        "purpose": "Handles device-related HTTP requests and responses for a device management service.",
+        "purpose": "Handles device-related HTTP requests for the device manager service.",
         "key_types": [
           "DeviceHandler",
-          "DeviceService",
-          "DeviceFilter",
-          "Paging",
-          "OrderBy"
-        ],
-        "functions": [
           "NewDeviceHandler",
-          "Setup",
-          "GetDevicesByUser",
-          "GetDeviceByID",
-          "ListDevices",
-          "getDevices",
-          "CreateDevice",
-          "MigrateNotificationSetting"
+          "Setup"
         ],
-        "imports": [
-          "net/http",
-          "github.com/labstack/echo/v4",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/handlers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/handlers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "side_effects": [
-          "Interacts with the device service to retrieve and manipulate device data.",
-          "Returns JSON responses to HTTP requests."
-        ],
-        "risks": [
-          "Potential exposure of device information if not properly secured.",
-          "Deprecated functions may lead to unexpected behavior if used."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/devicemanager/handlers/wallet.go": {
         "language": "Go",
-        "purpose": "Handles wallet-related operations for device management, including registration, reset, and address synchronization.",
+        "purpose": "Handles wallet-related device operations such as registration, reset, and retrieval.",
         "key_types": [
           "WalletHandler",
-          "DeviceService",
-          "DeviceFilter",
-          "Device"
-        ],
-        "functions": [
-          "NewWalletHandler",
-          "Setup",
           "Registration",
-          "Reset",
-          "GetDeviceByID",
-          "UpdatePushToken",
-          "SyncDeviceAddresses",
-          "censorPushToken"
+          "Reset"
         ],
-        "imports": [
-          "fmt",
-          "net/http",
-          "github.com/labstack/echo/v4",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/handlers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/services",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "side_effects": [
-          "Modifies device push tokens by censoring them before returning responses."
-        ],
-        "risks": [
-          "Potential exposure of sensitive device information if push tokens are not properly censored."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

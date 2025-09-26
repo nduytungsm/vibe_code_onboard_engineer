@@ -1,9 +1,9 @@
 {
-  "content_hash": "9b41c4922783aa891f87989f918da7dc",
-  "timestamp": "2025-09-26T13:32:18.455814+07:00",
+  "content_hash": "60a72c1b7f5de8c6c044dfad2a68628d",
+  "timestamp": "2025-09-26T14:03:48.922377+07:00",
   "result": {
     "path": "internal/domains/proxy/models",
-    "purpose": "Defines data structures and methods for managing blockchain-related activities, token allocations, DApp results, and configurations within a proxy service.",
+    "purpose": "Defines data models for handling proxy activities, token transactions, and related configurations in a proxy service.",
     "languages": {
       "Go": 10
     },
@@ -20,269 +20,132 @@
       "simulate.go",
       "token.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/ethereum/go-ethereum/common/hexutil",
-      "github.com/samber/lo",
-      "github.com/samber/mo",
-      "github.com/shopspring/decimal"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, organizing related data structures and functionalities into separate files for clarity and maintainability.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing related data models into separate files for clarity and maintainability.",
     "file_summaries": {
       "internal/domains/proxy/models/activity.go": {
         "language": "Go",
-        "purpose": "Defines data structures and methods for handling blockchain activity related to transactions, token transfers, and contract approvals.",
+        "purpose": "Defines data models for handling proxy activity and token transactions.",
         "key_types": [
           "Gas",
           "TxToken",
-          "TokenBalanceDiff",
-          "ActivityGenericInfo",
-          "ContractApproval",
-          "ActivityItem",
-          "TxDetail",
-          "BlockInfo",
-          "Log",
-          "DecodedEvent",
-          "EventParam",
-          "DecodedCall"
+          "TokenBalanceDiff"
         ],
-        "functions": [
-          "NewActivityItem",
-          "AddGenericInfo",
-          "AddToken",
-          "AddApprovals"
-        ],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/models/balance.go": {
         "language": "Go",
-        "purpose": "Defines data structures for managing ERC20 and NFT allocations in a portfolio.",
+        "purpose": "Defines data models for managing token and NFT allocations in a proxy service.",
         "key_types": [
           "Erc20Allocation",
           "NftAllocation",
-          "PortfolioTokenExtraInfo",
-          "PortfolioNftExtraInfo",
-          "PortfolioTokenItem",
-          "NftAttribute",
-          "NftMetadata",
-          "PortfolioNftItem",
-          "PortfolioCollectionOverview"
+          "PortfolioTokenItem"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/models/coingecko.go": {
         "language": "Go",
-        "purpose": "Defines a model for managing Coingecko platform data including mappings between platform names, IDs, and native tokens.",
+        "purpose": "Defines a model for managing Coingecko platform mappings and native tokens.",
         "key_types": [
           "CoingeckoPlatforms",
-          "ChainID",
-          "TokenID"
-        ],
-        "functions": [
           "NewCoingeckoPlatforms",
-          "PlatformID2Name",
-          "PlatformName2ID",
-          "OfNativeToken",
           "Add"
         ],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/models/common.go": {
         "language": "Go",
-        "purpose": "Defines data structures and functions for managing user cursors in a proxy model.",
+        "purpose": "Defines user cursor management for pagination in a proxy model.",
         "key_types": [
           "Entities",
-          "UserCursorKey",
-          "UserCursor"
+          "UserCursor",
+          "FindUserCursor"
         ],
-        "functions": [
-          "NewUserCursor",
-          "FindUserCursor",
-          "Merge",
-          "AddCursor",
-          "InitializeCursor",
-          "NewKey",
-          "KeyFromStr"
-        ],
-        "imports": [
-          "errors",
-          "fmt",
-          "strconv",
-          "strings",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/models/config.go": {
         "language": "Go",
-        "purpose": "Defines configuration structures for proxy services including chain configurations, token configurations, and provider settings.",
+        "purpose": "Defines configuration models for blockchain proxy services.",
         "key_types": [
           "ChainCfg",
           "TokenCfg",
-          "ChainProvider",
-          "ChainSimulation",
-          "ProviderCacheCfg",
-          "ProviderCfg",
-          "InternalSvcCfg",
-          "LimitCfgs",
-          "CircuitBreakerCfg"
+          "ChainProvider"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/models/dapp.go": {
         "language": "Go",
-        "purpose": "Defines data structures for DApp scan results and statuses.",
+        "purpose": "Defines data models for DApp scanning results and site information.",
         "key_types": [
-          "ScanStatus",
           "DAppScanResult",
-          "DAppSite"
+          "DAppSite",
+          "ScanStatus"
         ],
-        "functions": [],
-        "imports": [
-          "time"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/domains/proxy/models/fiat.go": {
         "language": "Go",
-        "purpose": "Defines a struct for storing information about fiat tokens.",
+        "purpose": "Defines the TokenFiatInfo struct for representing fiat token information.",
         "key_types": [
           "TokenFiatInfo"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/domains/proxy/models/nft.go": {
         "language": "Go",
-        "purpose": "Defines a data structure for NFT collection details.",
+        "purpose": "Defines the CollectionDetail struct for NFT collection data.",
         "key_types": [
-          "CollectionDetail",
-          "PortfolioCollectionOverview",
-          "NonEmptyStr"
+          "CollectionDetail"
         ],
-        "functions": [],
-        "imports": [
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/domains/proxy/models/profile.go": {
-        "language": "Go",
-        "purpose": "Defines a data structure for profile existence with an address and a boolean flag.",
+        "language": "go",
+        "purpose": "Defines a model for checking the existence of a profile based on an address.",
         "key_types": [
           "ProfileExistence"
         ],
-        "functions": [],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/domains/proxy/models/simulate.go": {
         "language": "Go",
-        "purpose": "Defines models and types for simulating Ethereum RPC methods and handling simulation results.",
+        "purpose": "Defines simulation-related RPC methods and their constants for Ethereum transactions.",
         "key_types": [
           "SimulateRPCMethod",
-          "SimulationStatus",
-          "SimulationResultType",
-          "SimulateParams",
-          "SimulateJsonRPC",
-          "USDDiff",
-          "USDExposure",
-          "JsonRPCValidation",
-          "SimulationErrorDetails",
-          "DecodedMethod",
-          "JsonRPCSimulation",
-          "SimulatedJsonRPC",
-          "TransactionGasEstimation",
-          "TransactionFeature",
-          "Asset",
-          "AssetChange",
-          "Balance",
-          "BalanceChanges",
-          "AssetDiffs",
-          "AssetTrace",
-          "AssetExposure",
-          "AssetSpender"
+          "SimulationStatus"
         ],
-        "functions": [
-          "Value()",
-          "Values()",
-          "SimulationResultTypeFromString(s string) (SimulationResultType, error)"
-        ],
-        "imports": [
-          "fmt",
-          "strings",
-          "time",
-          "github.com/ethereum/go-ethereum/common/hexutil",
-          "github.com/samber/lo",
-          "github.com/samber/mo",
-          "github.com/shopspring/decimal",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/proxy/models/token.go": {
         "language": "Go",
-        "purpose": "Defines data structures and methods for handling tokens and their attributes in a cryptocurrency context.",
+        "purpose": "Defines token models and related types for a proxy service.",
         "key_types": [
-          "ChainID",
-          "TokenID",
-          "Currency",
-          "TokenPlatformSource",
           "Token",
           "InternalToken",
-          "TokenPlatform",
-          "InternalTokenPlatform",
-          "Quote",
-          "Quotes",
-          "TokenPlatformsBuilder",
-          "TimeRange",
-          "ChartItem",
-          "PriceChart"
+          "TokenPlatformSource"
         ],
-        "functions": [
-          "String()",
-          "AsToken()",
-          "AsTokenPlatform()",
-          "NewTokenPlatformsBuilder()",
-          "key()",
-          "Add()",
-          "Build()",
-          "Value()",
-          "Values()",
-          "NumberOfDays()"
-        ],
-        "imports": [
-          "fmt",
-          "strconv",
-          "strings",
-          "time",
-          "github.com/samber/lo",
-          "github.com/samber/mo",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

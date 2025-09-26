@@ -1,47 +1,28 @@
 {
-  "content_hash": "ef3e1eb530a7ed1f41937d0c7f54474a",
-  "timestamp": "2025-09-26T13:30:50.770537+07:00",
+  "content_hash": "e5188016ec4e35046a9c25218521ce1b",
+  "timestamp": "2025-09-26T14:09:27.352382+07:00",
   "result": {
     "path": "internal/services/reward-randomize",
-    "purpose": "This folder/module is responsible for implementing a reward point system that randomizes rewards based on defined probabilities and tiers.",
+    "purpose": "This folder/module is responsible for implementing a reward point system that randomizes rewards based on defined probabilities and quest tiers.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "reward_point.go"
     ],
-    "dependencies": [
-      "crypto/rand",
-      "encoding/binary",
-      "fmt",
-      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the reward randomization logic within a single file that handles both the data structures and the associated functions.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the reward point logic within a single Go file.",
     "file_summaries": {
       "internal/services/reward-randomize/reward_point.go": {
         "language": "Go",
-        "purpose": "This file implements a reward point system that randomizes rewards based on defined probabilities and tiers.",
+        "purpose": "This file implements a reward point system that randomizes rewards based on defined probabilities and quest tiers.",
         "key_types": [
           "RewardPoint",
-          "struct"
-        ],
-        "functions": [
           "NewRewardPoint",
-          "getCryptoRandomFloat64",
           "GetRandomReward"
         ],
-        "imports": [
-          "crypto/rand",
-          "encoding/binary",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
-        ],
-        "side_effects": [
-          "Generates random numbers using cryptographic functions"
-        ],
-        "risks": [
-          "Potential for incorrect reward assignment if the probability table is misconfigured"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

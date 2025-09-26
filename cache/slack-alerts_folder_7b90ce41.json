@@ -1,53 +1,28 @@
 {
-  "content_hash": "0814db4faa8008de8ae6338ab9dc12a6",
-  "timestamp": "2025-09-26T13:32:32.238109+07:00",
+  "content_hash": "0bac0564000815b5077a1c1dcad3db09",
+  "timestamp": "2025-09-26T14:02:29.618156+07:00",
   "result": {
     "path": "internal/services/slack-alerts",
-    "purpose": "This folder/module is responsible for sending alerts to Slack based on different event templates.",
+    "purpose": "Handles sending alerts to Slack based on quest events.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "quest.go"
     ],
-    "dependencies": [
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-    ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the logic for sending alerts to Slack within a dedicated service implementation.",
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture pattern, focusing on alerting functionalities related to quest events.",
     "file_summaries": {
       "internal/services/slack-alerts/quest.go": {
         "language": "Go",
-        "purpose": "This file implements a service for sending alerts to Slack based on different event templates.",
+        "purpose": "Handles sending alerts to Slack based on quest events.",
         "key_types": [
-          "SupportedEventTemplate",
           "SlackAlertConfig",
           "QuestAlertService",
-          "questAlertService",
-          "SlackTemplateParams"
+          "questAlertService"
         ],
-        "functions": [
-          "NewQuestAlertService",
-          "SendSlackAlert",
-          "buildContentFromTemplate",
-          "sendAlert"
-        ],
-        "imports": [
-          "bytes",
-          "context",
-          "errors",
-          "html/template",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "side_effects": [
-          "Sends HTTP requests to Slack API",
-          "Logs errors using zap logger"
-        ],
-        "risks": [
-          "Potential exposure of sensitive information in logs",
-          "Dependency on external Slack API availability"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

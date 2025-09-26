@@ -1,0 +1,15 @@
+{
+  "content_hash": "d2ad641e1a8bbd2fe9cf5e26f1bd7e1a",
+  "timestamp": "2025-09-26T13:58:06.157573+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines and initializes metrics for tracking consumer check-ins in a wallet quest application.",
+    "key_types": [
+      "metricCollectors",
+      "initMetrics"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

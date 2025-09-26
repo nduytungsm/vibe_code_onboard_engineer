@@ -1,670 +1,241 @@
 {
-  "content_hash": "d06329d772185291e0e00af94b702975",
-  "timestamp": "2025-09-26T13:28:13.098724+07:00",
+  "content_hash": "dbbcc9d4ec25a6856eb3d94e4e716067",
+  "timestamp": "2025-09-26T14:04:27.896132+07:00",
   "result": {
     "path": "internal/services/quest-center",
-    "purpose": "Responsible for managing quest-related services in a gaming context, including actions, events, user profiles, rewards, and shop functionalities.",
+    "purpose": "Responsible for managing quests, user profiles, rewards, events, and shop services within a gaming context.",
     "languages": {
-      "Go": 30
+      "Go": 20
     },
     "key_modules": [
       "actions.go",
       "event.go",
       "point_tracker.go",
+      "pools.go",
+      "profile.go",
+      "quest_helper.go",
       "quests.go",
       "rewards.go",
+      "shop.go",
+      "shop_helper.go",
+      "sponsor.go",
       "user.go",
       "user_event.go",
       "user_quest.go",
-      "shop.go"
+      "user_reward.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-      "github.com/redis/go-redis/v9",
-      "go.uber.org/zap",
-      "gorm.io/gorm"
-    ],
-    "architecture": "The folder follows a service-oriented architecture pattern, where each file represents a specific service handling different aspects of quest management, utilizing repositories for data access and Redis for caching.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing services related to quests and user interactions into separate files for maintainability and scalability.",
     "file_summaries": {
       "internal/services/quest-center/actions.go": {
         "language": "Go",
-        "purpose": "Provides services related to quest actions in a gaming context.",
+        "purpose": "Provides services for retrieving quest actions from a repository.",
         "key_types": [
-          "ActionV2",
-          "actionSvcV2",
-          "responses.QuestAction",
-          "models.QuestActionEntity"
+          "ActionV2 interface",
+          "actionSvcV2 struct",
+          "GetQuestActions function"
         ],
-        "functions": [
-          "NewActionSvcV2",
-          "wrapErr",
-          "GetQuestActions"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/event.go": {
         "language": "Go",
-        "purpose": "This file implements a service for managing events, including caching and retrieving events from a repository and Redis cache.",
+        "purpose": "Provides event management services including retrieval and caching of events.",
         "key_types": [
-          "EventSvc",
-          "eventSvc"
+          "EventSvc interface",
+          "eventSvc struct",
+          "NewEventSvc function"
         ],
-        "functions": [
-          "NewEventSvc",
-          "GetEventByID",
-          "CacheEventInOneWeek",
-          "RemoveEventFromCache",
-          "FindEventFromCache",
-          "FindEventByQuest"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/redis/go-redis/v9",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Interacts with Redis for caching events",
-          "Logs errors using zap logger"
-        ],
-        "risks": [
-          "Potential for cache inconsistency if Redis fails",
-          "Error handling may expose sensitive information if not managed properly"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/generics.go": {
         "language": "Go",
-        "purpose": "This file provides a function to wrap errors with logging and a fallback message.",
+        "purpose": "Provides error handling utilities for the quest center services.",
         "key_types": [
-          "error",
-          "logger",
-          "SugaredLogger"
-        ],
-        "functions": [
           "wrapError"
         ],
-        "imports": [
-          "errors",
-          "fmt",
-          "runtime",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Logs errors using the provided logger"
-        ],
-        "risks": [
-          "Potential for logging sensitive information if errors contain sensitive data"
-        ],
-        "complexity": "medium"
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
       },
       "internal/services/quest-center/point_tracker.go": {
         "language": "Go",
-        "purpose": "This file implements a service for tracking points related to quests in a gaming context.",
+        "purpose": "Implements a service for tracking and creating point activities for users in a quest system.",
         "key_types": [
           "PointTrackerService",
           "pointTrackerService",
-          "PointTrackerEntity"
-        ],
-        "functions": [
-          "NewPointTrackerService",
-          "wrapErr",
           "CreatePoints"
         ],
-        "imports": [
-          "context",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
-        ],
-        "side_effects": [
-          "Creates a point activity in the repository"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/pools.go": {
         "language": "Go",
-        "purpose": "This file implements a service for managing quest pools, including listing, finding, and caching pools and events.",
+        "purpose": "Provides services for managing quest pools in a gaming context.",
         "key_types": [
-          "PoolSvc",
-          "poolSvc",
-          "responses.QuestPool",
-          "models.QuestPool",
-          "models.Event"
+          "PoolSvc interface",
+          "poolSvc struct",
+          "NewPoolSvc function"
         ],
-        "functions": [
-          "NewPoolSvc",
-          "ListPoolsByEventID",
-          "FindPoolEvent",
-          "GetActivePool",
-          "RemovePoolFromCache",
-          "cachePoolInOneWeek",
-          "findPoolFromCache"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Caches quest pools and events in Redis",
-          "Logs errors when caching fails"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data if cache is not properly secured",
-          "Error handling may not cover all edge cases leading to unhandled exceptions"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/profile.go": {
         "language": "Go",
-        "purpose": "Provides a service for managing user profiles and wallets in a quest center application.",
+        "purpose": "Defines a service for managing user profiles and wallets in a quest center.",
         "key_types": [
-          "Wallet",
-          "PublicProfile",
           "ProfileService",
-          "profileService"
+          "PublicProfile",
+          "Wallet"
         ],
-        "functions": [
-          "NewProfileServive",
-          "FindPublicProfile",
-          "FindPublicProfileWithToken",
-          "GetWaypointClient",
-          "wrapErr",
-          "mappingWaypointProfileToPublicProfile"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/quest_helper.go": {
         "language": "Go",
-        "purpose": "Provides helper functions for managing quests, including finding sponsors, counting players, and retrieving rewards and actions associated with quests.",
+        "purpose": "Provides helper functions for managing quests, including finding sponsors, counting players, and retrieving rewards.",
         "key_types": [
-          "questSvcV2",
-          "models.QuestEntity",
-          "res.Sponsor",
-          "res.QuestRewardExtra",
-          "res.QuestAction",
-          "models.ListQuestParams",
-          "models.StatusFilter"
-        ],
-        "functions": [
           "findQuestSponsors",
           "countQuestPlayers",
-          "findQuestRewards",
-          "findQuestActions",
-          "listQuestParams"
+          "findQuestRewards"
         ],
-        "imports": [
-          "context",
-          "fmt",
-          "strings",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/samber/lo"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/quests.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing quests, including listing quests, retrieving quest details, and handling related information such as sponsors and rewards.",
+        "purpose": "Defines services and data structures for managing quests in a quest center.",
         "key_types": [
-          "QuestRelatedInfo",
-          "QuestRelatedInfoParams",
-          "QuestSvcV2",
-          "questSvcV2"
+          "QuestSvcV2 interface",
+          "QuestRelatedInfo struct",
+          "questSvcV2 struct"
         ],
-        "functions": [
-          "NewQuestSvcV2",
-          "wrapErr",
-          "ListQuests",
-          "ListQuestsByID",
-          "GetQuestListingItem",
-          "FindUserQuestID",
-          "ListUserQuestIDs"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "net/http",
-          "strings",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/rewards.go": {
         "language": "Go",
-        "purpose": "This file implements a service for managing quest rewards in a gaming context.",
+        "purpose": "Provides services for managing quest rewards in a gaming application.",
         "key_types": [
-          "RewardSvcV2",
-          "rewardSvcV2",
-          "res.QuestRewardExtra",
-          "req.ListRewardInfo",
-          "models.RewardPoolEntity",
-          "models.FilterQuestReward",
-          "models.RewardInfoEntity"
+          "RewardSvcV2 interface",
+          "rewardSvcV2 struct",
+          "GetQuestRewards function"
         ],
-        "functions": [
-          "NewRewardSvcV2",
-          "wrapErr",
-          "FindPoolRewardInfoID",
-          "GetQuestRewards",
-          "ListRewardsInfo"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/shop.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing a shop, including categories, tiers, and items.",
+        "purpose": "This file implements the shop service for managing categories, tiers, and items in a quest center.",
         "key_types": [
-          "ShopSvc",
-          "shopSvc",
-          "ShopCategoryEntity",
-          "ShopItemTierEntity"
-        ],
-        "functions": [
-          "NewShopSvc",
+          "ShopSvc interface",
           "CreateCategory",
-          "UpdateCategory",
-          "DeleteCategory",
-          "GetCategory",
-          "ListCategories",
-          "CreateTier",
-          "UpdateTier",
-          "DeleteTier",
-          "GetTierByID",
-          "GetTiersByCategoryID",
           "CreateItem"
         ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "fmt",
-          "math/big",
-          "strconv",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/shop_helper.go": {
         "language": "Go",
-        "purpose": "This file contains helper functions for managing shop purchases in a quest center service, including caching, validation, and response building.",
+        "purpose": "Provides helper functions for managing shop tier caching and validating purchase requests in a quest center service.",
         "key_types": [
           "shopSvc",
-          "User",
-          "models.ShopItemEntity",
-          "models.ShopItemPurchaseEntity",
-          "requests.CreateShopPurchase",
-          "responses.CreatePurchaseResponse"
-        ],
-        "functions": [
-          "isPremiumTierCacheKey",
-          "cacheIsPremiumTier",
-          "getIsPremiumTierCache",
-          "invalidateTierCache",
           "validatePurchaseRequest",
-          "validateTierAccess",
-          "createPendingPurchase",
-          "validatePremiumAccess",
-          "validateTimeBasedAvailability",
-          "buildPurchaseResponse",
-          "entityToItemResponse",
-          "entityToCategoryResponse",
-          "entityToTierResponse",
-          "entityToInventoryResponse"
+          "validateTierAccess"
         ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "math/big",
-          "strconv",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/shopspring/decimal"
-        ],
-        "side_effects": [
-          "Interacts with Redis for caching",
-          "Logs errors for failed operations"
-        ],
-        "risks": [
-          "Potential for cache poisoning if not properly managed",
-          "Error handling may expose sensitive information in logs"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/shop_monitoring.go": {
         "language": "Go",
-        "purpose": "Defines a struct for failed purchase completions and constants related to handling retries.",
+        "purpose": "Defines a structure for handling failed purchase completions in a shop monitoring system.",
         "key_types": [
           "FailedPurchaseCompletion"
         ],
-        "functions": [],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/services/quest-center/sponsor.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing sponsors in an event context, including finding, creating, and deleting sponsors.",
+        "purpose": "Provides services for managing sponsors in the quest center.",
         "key_types": [
-          "SponsorSvcV2",
-          "sponsorSvc",
-          "responses.Sponsor",
-          "models.EventSponsor"
+          "SponsorSvcV2 interface",
+          "sponsorSvc struct",
+          "NewSponsorSvcV2 function"
         ],
-        "functions": [
-          "NewSponsorSvcV2",
-          "FindSponsors",
-          "FindSponsorByEvent",
-          "CreateEventSponsors",
-          "DeleteEventSponsors"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/user.go": {
         "language": "Go",
-        "purpose": "This file defines a user service for managing user data, including finding or creating users and caching user information.",
+        "purpose": "Provides user management services for the quest center, including user creation and retrieval.",
         "key_types": [
           "User",
           "UserSvc",
           "userSvc"
         ],
-        "functions": [
-          "NewUserSvc",
-          "FindUserOrCreate",
-          "FindUserByID",
-          "findUserOrCreate",
-          "findUserFromCache",
-          "cacheUser",
-          "wrapErr",
-          "marshalUser"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "strings",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/redis/go-redis/v9",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Interacts with Redis for caching user data",
-          "Logs errors using zap logger"
-        ],
-        "risks": [
-          "Potential for cache inconsistency if Redis fails",
-          "Error handling may expose sensitive information in logs"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/user_event.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing user events, including premium user functionalities and interactions with events.",
+        "purpose": "Provides services related to user events in the quest center, including premium user management.",
         "key_types": [
           "UserEventSvc",
           "userEventSvc",
-          "models.UserEvent",
-          "models.TempPremiumUser"
+          "UserOwnPremiumNFTByGeth"
         ],
-        "functions": [
-          "NewUserEventSvc",
-          "UserOwnPremiumNFTByGeth",
-          "FindEventPremiumUser",
-          "ListUserJoinedEvents",
-          "FindEventUserByPool",
-          "UpgradeToPremium",
-          "FindEventUser",
-          "CountUserInEvent",
-          "FindTempPremiumUser",
-          "StoreTempPremiumStatus"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/redis/go-redis/v9",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/geth",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Interacts with external services to fetch user profiles and balances.",
-          "Caches premium user status in Redis."
-        ],
-        "risks": [
-          "Potential exposure of sensitive user data through external service calls.",
-          "Error handling may not cover all edge cases, leading to unhandled exceptions."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/user_quest.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing user quests, including taking quests, listing user quests, and caching quest completion times.",
+        "purpose": "Provides services for managing user quests in a quest center.",
         "key_types": [
           "UserQuestSvc",
           "userQuestSvc",
-          "User",
-          "responses.UserQuestItem",
-          "requests.ListUserQuests",
-          "models.UserQuestEntity"
+          "NewUserQuestSvc"
         ],
-        "functions": [
-          "NewUserQuestSvc",
-          "TakeQuestWithUserInfo",
-          "ListUserQuests",
-          "FindUserQuestByIDs",
-          "CacheLastCompletedQuest",
-          "GetLastCompletedQuestTimestamp"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "sort",
-          "strings",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Interacts with a Redis cache to store and retrieve quest completion times.",
-          "Logs errors and debug information using a logger."
-        ],
-        "risks": [
-          "Potential for race conditions when accessing shared resources like the Redis cache.",
-          "Error handling may expose sensitive information if not managed properly."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/user_quest_helper.go": {
         "language": "Go",
-        "purpose": "This file contains functions and types related to user quests in a quest center service, including verifying quest status, creating user quests, and retrieving user actions and rewards.",
+        "purpose": "Handles user quest functionalities including verification and creation of user quests.",
         "key_types": [
-          "userQuestSvc",
-          "userQuestInfo",
-          "userQuestRelatedInfo",
-          "userQuestInfoParam"
-        ],
-        "functions": [
           "verifyTakeQuestStatus",
-          "createUserQuest",
-          "statusFilterFromProgress",
-          "findUserQuestInfo",
-          "getUserActions",
-          "getUserRewards"
+          "createUserQuest"
         ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "sort",
-          "strings",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/samber/lo",
-          "github.com/samber/mo"
-        ],
-        "side_effects": [
-          "Database transactions for creating user quests and actions"
-        ],
-        "risks": [
-          "Potential for SQL injection if user input is not properly sanitized",
-          "Error handling may leak information about the existence of quests"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/quest-center/user_reward.go": {
         "language": "Go",
-        "purpose": "This file implements a service for distributing user rewards in a quest system.",
+        "purpose": "Manages the distribution of user rewards in the quest center service.",
         "key_types": [
           "UserRewardSvc",
           "userRewardSvc",
-          "responses.UserQuestReward",
-          "responses.UserQuestItem",
-          "quest_enums.RewardType"
+          "NewUserRewardSvc"
         ],
-        "functions": [
-          "NewUserRewardSvc",
-          "DistributeInstantReward",
-          "DistributeQueuedReward",
-          "distributePoint",
-          "distributeToken",
-          "distributeCustom",
-          "findIdempotency",
-          "storeIdempotency",
-          "updateDistributeStatus"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/redis/go-redis/v9",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Interacts with Redis for caching idempotency keys",
-          "Updates user reward distribution status in the repository"
-        ],
-        "risks": [
-          "Potential for race conditions when checking and storing idempotency keys",
-          "Error handling may expose sensitive information in logs"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

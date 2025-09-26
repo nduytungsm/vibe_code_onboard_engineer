@@ -1,0 +1,16 @@
+{
+  "content_hash": "224ce94940d3edd695cfaa44ac1c5848",
+  "timestamp": "2025-09-26T13:57:48.196091+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Manages application version data and operations in a database.",
+    "key_types": [
+      "appVersionRepo",
+      "NewAppVersionRepo",
+      "Create"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

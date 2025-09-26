@@ -1,50 +1,28 @@
 {
-  "content_hash": "7e9763cc25d4a1f6288cf053cbcb06c0",
-  "timestamp": "2025-09-26T13:41:08.618576+07:00",
+  "content_hash": "aabb3f345c146b7d56a607ce508e542f",
+  "timestamp": "2025-09-26T14:03:25.194532+07:00",
   "result": {
     "path": "internal/services/banners",
-    "purpose": "This folder/module is responsible for managing banners, including creating, editing, retrieving, and listing banners based on their status.",
+    "purpose": "Provides a service for managing banners including creation, editing, retrieval, and listing by status.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "banner.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/cms",
-      "github.com/google/uuid",
-      "github.com/samber/lo"
-    ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating business logic related to banners within a dedicated service.",
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating banner management functionalities within a dedicated service module.",
     "file_summaries": {
       "internal/services/banners/banner.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing banners, including creating, editing, retrieving, and listing banners based on their status.",
+        "purpose": "Provides a service for managing banners including creation, editing, retrieval, and listing by status.",
         "key_types": [
           "Banner",
           "BannerService",
           "bannerService"
         ],
-        "functions": [
-          "NewBannerService",
-          "CreateBanner",
-          "EditBanner",
-          "GetBannerByID",
-          "ListBannerByStatus",
-          "toBanner"
-        ],
-        "imports": [
-          "context",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/cms",
-          "github.com/google/uuid",
-          "github.com/samber/lo"
-        ],
-        "side_effects": [
-          "Interacts with the banner repository to persist changes to the database."
-        ],
-        "risks": [
-          "Potential for UUID collision, though unlikely; error handling may not cover all edge cases."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

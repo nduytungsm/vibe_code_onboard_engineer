@@ -1,9 +1,9 @@
 {
-  "content_hash": "7e0bb036d807d3f7db03ea5c2fe468c2",
-  "timestamp": "2025-09-26T13:29:28.978169+07:00",
+  "content_hash": "9aae5eafca2486f55f7654080746f81d",
+  "timestamp": "2025-09-26T14:01:40.70469+07:00",
   "result": {
     "path": "pkg/metrics",
-    "purpose": "This folder/module is responsible for defining and managing metrics-related functionalities for Prometheus monitoring, including creating metrics, observing operations, and pushing metrics to a Prometheus Push Gateway.",
+    "purpose": "This folder/module is responsible for collecting, managing, and pushing metrics for monitoring services using Prometheus.",
     "languages": {
       "Go": 5
     },
@@ -15,154 +15,68 @@
       "server.go"
     ],
     "dependencies": [
-      "github.com/prometheus/client_golang/prometheus",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
-      "github.com/labstack/echo-contrib/echoprometheus"
+      "Prometheus"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating metrics functionalities into distinct files that handle specific aspects of metrics management, such as creation, observation, and server implementation.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating different aspects of metrics handling such as collection, observation, pushing, and server management.",
     "file_summaries": {
       "pkg/metrics/metric.go": {
         "language": "Go",
-        "purpose": "This file defines metrics-related functionalities, including creating histograms and counters for Prometheus monitoring.",
+        "purpose": "This file provides metrics collection utilities using Prometheus for monitoring services.",
         "key_types": [
-          "Mode",
-          "Config",
-          "Service",
-          "NoOpService"
-        ],
-        "functions": [
           "NewHistogram",
           "NewCounter",
           "New"
         ],
-        "imports": [
-          "context",
-          "github.com/prometheus/client_golang/prometheus",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "side_effects": [
-          "Registers collectors with Prometheus, which may panic if registration fails."
-        ],
-        "risks": [
-          "Potential panic if the Prometheus registration fails."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/metrics/ops.go": {
         "language": "Go",
-        "purpose": "This file provides functions to observe and measure the duration of operations using Prometheus metrics.",
+        "purpose": "This file provides functions to observe and measure the execution time of operations using Prometheus metrics.",
         "key_types": [
-          "prometheus.Observer",
-          "models.UserCursor"
-        ],
-        "functions": [
           "ObserveT",
           "ObserveTE",
-          "ObserveTuple2",
-          "ObserveTCE",
-          "Observe"
+          "ObserveTuple2"
         ],
-        "imports": [
-          "time",
-          "github.com/prometheus/client_golang/prometheus",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models"
-        ],
-        "side_effects": [
-          "Records duration of observed functions to Prometheus metrics"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/metrics/pusher.go": {
         "language": "Go",
-        "purpose": "This file implements a Pusher that sends metrics to a Prometheus Push Gateway.",
+        "purpose": "Implements a metrics pusher that sends data to a Prometheus push gateway.",
         "key_types": [
           "PusherConfig",
-          "Pusher"
+          "Pusher",
+          "NewPusher"
         ],
-        "functions": [
-          "NewPusher",
-          "Start",
-          "Stop",
-          "Register",
-          "push"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "sync/atomic",
-          "time",
-          "github.com/prometheus/client_golang/prometheus",
-          "github.com/prometheus/client_golang/prometheus/push",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Starts a ticker that periodically pushes metrics to the Prometheus Push Gateway.",
-          "Logs messages for starting, stopping, and pushing metrics."
-        ],
-        "risks": [
-          "Potential for race conditions if Start and Stop are called concurrently.",
-          "Error handling for failed pushes may not be sufficient."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/metrics/registry.go": {
         "language": "Go",
-        "purpose": "This file provides a registry for Prometheus metrics collectors, allowing for the registration and retrieval of various types of metrics.",
+        "purpose": "Manages Prometheus metric collectors with caching and registration functionality.",
         "key_types": [
           "cachedRegistry",
+          "GetOrRegisterCollector",
           "CollectorCreator"
         ],
-        "functions": [
-          "GetOrRegisterCollector",
-          "CounterVec",
-          "GaugeVec",
-          "HistogramVec",
-          "Counter"
-        ],
-        "imports": [
-          "fmt",
-          "log",
-          "sync",
-          "github.com/prometheus/client_golang/prometheus"
-        ],
-        "side_effects": [
-          "Logs panic messages if collector registration fails or type assertion fails."
-        ],
-        "risks": [
-          "Potential for panic if type assertion fails in GetOrRegisterCollector."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "pkg/metrics/server.go": {
         "language": "Go",
-        "purpose": "This file implements a metrics server using Prometheus for monitoring.",
+        "purpose": "This file implements a metrics server using Prometheus for monitoring HTTP server metrics.",
         "key_types": [
           "Server",
-          "prometheusHandler"
+          "prometheusHandler",
+          "NewServer"
         ],
-        "functions": [
-          "NewServer",
-          "Addr",
-          "Start",
-          "Stop",
-          "Register"
-        ],
-        "imports": [
-          "context",
-          "github.com/labstack/echo-contrib/echoprometheus",
-          "github.com/prometheus/client_golang/prometheus",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "side_effects": [
-          "Registers Prometheus collectors",
-          "Starts and stops an HTTP server"
-        ],
-        "risks": [
-          "Potential exposure of metrics endpoint if not secured"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

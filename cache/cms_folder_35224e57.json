@@ -1,55 +1,28 @@
 {
-  "content_hash": "8c43435cd93a0e46a323a2dcd4414b2a",
-  "timestamp": "2025-09-26T13:29:57.442877+07:00",
+  "content_hash": "4269c905d890fd707a1af9d0e4e67cc6",
+  "timestamp": "2025-09-26T14:02:04.671966+07:00",
   "result": {
     "path": "internal/handlers/cms",
-    "purpose": "This folder/module is responsible for managing CMS-related handlers, specifically for operations related to banners.",
+    "purpose": "Handles banner-related operations for a CMS, including creation, editing, and retrieval of banners.",
     "languages": {
       "Go": 1
     },
     "key_modules": [
       "banner.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/cms",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/cms/requests",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/cms/responses",
-      "github.com/axieinfinity/ronin-wallet-services/internal/services/banners",
-      "github.com/google/wire",
-      "github.com/samber/lo",
-      "go.uber.org/zap"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the banner management logic within a dedicated handler file, promoting separation of concerns.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on specific functionalities related to the CMS, encapsulating related operations and types within dedicated files.",
     "file_summaries": {
       "internal/handlers/cms/banner.go": {
         "language": "Go",
-        "purpose": "This file defines a handler for managing banners, including creating, editing, retrieving, and listing banners.",
+        "purpose": "Handles banner-related operations for a CMS, including creation, editing, and retrieval of banners.",
         "key_types": [
           "BannerHandler",
           "bannerHandler",
-          "requests.BannerReq",
-          "requests.EditBannerReq",
-          "responses.Banner",
-          "banners.Banner"
+          "NewBannerHandler"
         ],
-        "functions": [
-          "NewBannerHandler",
-          "CreateBanner",
-          "EditBanner",
-          "GetBannerByID",
-          "ListBannerByStatus",
-          "toBanner"
-        ],
-        "imports": [
-          "context",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/cms",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/cms/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/cms/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/banners",
-          "github.com/google/wire",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

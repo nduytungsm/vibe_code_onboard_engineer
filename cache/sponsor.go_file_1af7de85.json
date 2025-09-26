@@ -1,0 +1,16 @@
+{
+  "content_hash": "59da992a4e7b79b3d9aab550bac64116",
+  "timestamp": "2025-09-26T13:58:44.277777+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the SponsorRepo interface and its implementation for managing sponsor entities in a database.",
+    "key_types": [
+      "SponsorRepo interface",
+      "sponsorRepo struct",
+      "NewSponsorRepo function"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

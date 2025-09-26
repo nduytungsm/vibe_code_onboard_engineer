@@ -1,0 +1,16 @@
+{
+  "content_hash": "d1fd30413012c582d30c92c4cd5936dd",
+  "timestamp": "2025-09-26T13:59:14.721797+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a Redis instance implementation for setting and getting key-value pairs.",
+    "key_types": [
+      "RedisInstance",
+      "NewRedisInstance",
+      "redisInstance"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

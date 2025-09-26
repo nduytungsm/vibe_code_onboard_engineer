@@ -1,11 +1,11 @@
 {
-  "content_hash": "ce61659e88d81231119df110d8fe4f92",
-  "timestamp": "2025-09-26T13:39:38.034045+07:00",
+  "content_hash": "90e70a72acb6de28c4063feb5612590b",
+  "timestamp": "2025-09-26T14:01:58.607965+07:00",
   "result": {
     "path": "internal/domains/manager/services",
-    "purpose": "This folder/module is responsible for providing various services related to application management, including version control, authentication, notifications, and operator management.",
+    "purpose": "Responsible for managing various services related to application versioning, authentication, notifications, and updates within the manager domain.",
     "languages": {
-      "Go": 10
+      "Go": 8
     },
     "key_modules": [
       "app_version.go",
@@ -17,346 +17,100 @@
       "noti_helper.go",
       "operators.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/google/uuid",
-      "github.com/google/wire",
-      "go.uber.org/zap",
-      "gorm.io/gorm"
-    ],
-    "architecture": "The folder follows a service-oriented architecture pattern, where each file represents a distinct service with its own responsibilities and dependencies, promoting modularity and separation of concerns.",
+    "dependencies": [],
+    "architecture": "The folder follows a service-oriented architecture pattern, where each file represents a distinct service responsible for specific functionalities within the application.",
     "file_summaries": {
       "internal/domains/manager/services/app_version.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing application versions, including creating, deleting, publishing, and retrieving version information.",
+        "purpose": "Defines the application version service interface and its implementation for managing app versions.",
         "key_types": [
           "AppVersionSvc",
           "appVersionSvc",
-          "requests.CreateVersion",
-          "requests.Delete",
-          "responses.Version",
-          "responses.Paginated",
-          "models.VersionEntity"
+          "NewAppVersionSvc"
         ],
-        "functions": [
-          "NewAppVersionSvc",
-          "CreateVersion",
-          "DeleteVersion",
-          "GetLatestPublicVersion",
-          "PublishVersion",
-          "GetVersionInfo",
-          "ListPlatformVersions"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/google/uuid",
-          "github.com/google/wire",
-          "github.com/samber/lo",
-          "go.uber.org/zap",
-          "golang.org/x/mod/semver",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Database transactions for creating and deleting versions",
-          "Logging actions performed on versions"
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized",
-          "Error handling may expose sensitive information"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/manager/services/auth.go": {
         "language": "Go",
-        "purpose": "This file implements authentication and authorization services for a manager domain, handling access tokens and signatures.",
+        "purpose": "Provides authentication and authorization services for the application.",
         "key_types": [
           "AuthSvc",
           "AuthCfg",
           "authSvc"
         ],
-        "functions": [
-          "NewAuthSvc",
-          "Authenticate",
-          "Authorize",
-          "validateAccessToken",
-          "validateSIWESignature",
-          "validateSignature"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "net/http",
-          "net/url",
-          "slices",
-          "strings",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
-          "github.com/axieinfinity/ronin-wallet-services/internal/services/siwe",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/ethereum/go-ethereum/common",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Logs warnings and errors during authentication and authorization processes."
-        ],
-        "risks": [
-          "Potential exposure of sensitive information if access tokens or secrets are not handled securely."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/manager/services/coinbase.go": {
         "language": "Go",
-        "purpose": "Provides services for interacting with Coinbase API, including session token creation and asset selection.",
+        "purpose": "Provides services for interacting with Coinbase API for session token creation and asset selection.",
         "key_types": [
           "CoinbaseSvc",
           "coinbaseSvc",
-          "requests.CbOnrampToken",
-          "responses.CbSessionToken",
-          "requests.CbSelectAssets",
-          "responses.CbSelectAssets"
+          "NewCoinbaseSvc"
         ],
-        "functions": [
-          "NewCoinbaseSvc",
-          "CreateCbSessionToken",
-          "SelectAssets"
-        ],
-        "imports": [
-          "context",
-          "net/url",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/coinbase",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/manager/services/helpers.go": {
         "language": "Go",
-        "purpose": "Provides helper functions for error handling and history creation in a service context.",
+        "purpose": "Provides error handling utilities for various services in the manager domain.",
         "key_types": [
-          "appVersionSvc",
-          "mandatoryUpdateSvc",
-          "operatorSvc",
-          "notiSvc",
-          "coinbaseSvc",
-          "createHistoryParams",
-          "models.HistoryEntity"
-        ],
-        "functions": [
           "wrapErr",
-          "createHistory",
-          "normalizeVersion"
+          "wrapError"
         ],
-        "imports": [
-          "encoding/json",
-          "errors",
-          "fmt",
-          "runtime",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/labstack/gommon/log",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Logs errors when marshalling objects fails."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/manager/services/mandatory_update.go": {
         "language": "Go",
-        "purpose": "This file implements a service for managing mandatory updates in an application.",
+        "purpose": "Manages mandatory updates for an application, including creation and removal of updates.",
         "key_types": [
           "MandatoryUpdateSvc",
           "mandatoryUpdateSvc",
-          "requests.SetMandatoryUpdate",
-          "models.MandatoryUpdateEntity",
-          "repos.MandatoryUpdateRepo",
-          "repos.AppVersionRepo"
+          "NewMandatoryUpdateSvc"
         ],
-        "functions": [
-          "NewMandatoryUpdateSvc",
-          "CreateMandatoryUpdate",
-          "IsForceUpdate",
-          "RemoveMandatoryUpdate"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "golang.org/x/mod/semver",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/google/uuid",
-          "github.com/google/wire",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Database transactions for creating and removing mandatory updates",
-          "Logging actions performed in the service"
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized",
-          "Error handling may expose sensitive information"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/manager/services/noti.go": {
         "language": "Go",
-        "purpose": "This file defines a notification service that handles operations related to notifications such as creating, retrieving, updating, and deleting notifications.",
+        "purpose": "This file defines a notification service interface and its implementation for managing notifications.",
         "key_types": [
           "NotiSvc",
           "notiSvc",
-          "requests.UpsertNewsNoti",
-          "responses.UpsertNoti",
-          "responses.WhitelistNoti",
-          "responses.NotiListingItem",
-          "responses.Paginated",
-          "models.NotificationEntity"
+          "NewNotiSvc"
         ],
-        "functions": [
-          "NewNotiSvc",
-          "WhitelistNoti",
-          "GetNotiByID",
-          "DeleteNoti",
-          "ListUserNoti",
-          "ListNoti",
-          "UpsertNewsNoti"
-        ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "strings",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services/tasks",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/hibiken/asynq",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/google/uuid",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Interacts with the database to create, update, and delete notifications.",
-          "Logs operations using a logger."
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized.",
-          "Error handling may expose sensitive information."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/manager/services/noti_helper.go": {
         "language": "Go",
-        "purpose": "This file contains a service function to process a whitelist of addresses for notifications, including deleting old entries and creating new ones.",
+        "purpose": "Handles the processing of notification whitelists in a service.",
         "key_types": [
-          "notiSvc",
-          "NotificationListingItem",
-          "NotiWhitelistEntity",
-          "HistoryEntity"
+          "processWhitelist"
         ],
-        "functions": [
-          "processWhitelist",
-          "hardDeleteOldWhitelists",
-          "whitelistNew",
-          "createHistory"
-        ],
-        "imports": [
-          "context",
-          "fmt",
-          "strings",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/google/uuid",
-          "github.com/samber/lo"
-        ],
-        "side_effects": [
-          "Modifies the database by deleting old whitelists and adding new ones.",
-          "Creates a history entry for the operation."
-        ],
-        "risks": [
-          "Potential for SQL injection if inputs are not properly sanitized.",
-          "Error handling may expose sensitive information if not managed correctly."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/manager/services/operators.go": {
         "language": "Go",
-        "purpose": "This file defines a service for managing operators, including creating, deleting, and listing operators.",
+        "purpose": "Defines the Operator service for managing operators in the system.",
         "key_types": [
           "OperatorSvc",
           "operatorSvc",
-          "requests.CreateOperator",
-          "responses.Operator",
-          "models.OperatorEntity"
-        ],
-        "functions": [
-          "FindActive",
-          "Create",
-          "Delete",
-          "List",
           "NewOperatorSvc"
         ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "strings",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
-          "github.com/samber/lo",
-          "github.com/google/uuid",
-          "github.com/google/wire",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Database transactions for creating and deleting operators",
-          "Logging operations"
-        ],
-        "risks": [
-          "Potential SQL injection if inputs are not properly sanitized",
-          "Error handling may expose sensitive information"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

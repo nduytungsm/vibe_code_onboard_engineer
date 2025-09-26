@@ -1,9 +1,9 @@
 {
-  "content_hash": "1b351ef4d0fef9be011636ad0c4b4b5e",
-  "timestamp": "2025-09-26T13:41:28.799498+07:00",
+  "content_hash": "214e01c21ecc952bd3e747dab46c7f1b",
+  "timestamp": "2025-09-26T14:07:32.645357+07:00",
   "result": {
     "path": "internal/domains/bridge/services/providers",
-    "purpose": "Responsible for defining provider interfaces and configurations for a bridge service, including handling token transactions and quotes.",
+    "purpose": "Responsible for defining provider interfaces and configurations for bridge services in a blockchain wallet application.",
     "languages": {
       "Go": 2
     },
@@ -11,101 +11,31 @@
       "provider.go",
       "relay.go"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/handlers/dtos",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/axieinfinity/ronin-wallet-services/internal/enums/bridge",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/relay",
-      "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/ethereum/go-ethereum/common",
-      "github.com/ethereum/go-ethereum/common/hexutil",
-      "github.com/redis/go-redis/v9",
-      "github.com/samber/lo",
-      "github.com/shopspring/decimal",
-      "go.uber.org/zap"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating provider-related functionalities and dependencies, promoting separation of concerns and reusability.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating provider-related functionalities for bridge services.",
     "file_summaries": {
       "internal/domains/bridge/services/providers/provider.go": {
         "language": "Go",
-        "purpose": "Defines provider interfaces and configurations for a bridge service.",
+        "purpose": "Defines the Provider interface and configuration for bridge services in a blockchain wallet application.",
         "key_types": [
           "Provider",
           "SupportedProviderCfg",
           "Config"
         ],
-        "functions": [
-          "ID",
-          "IsPrimary",
-          "IsCrosschainSupport",
-          "Info",
-          "GetTokens",
-          "GetQuote",
-          "GetFeeBalance"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "time",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/handlers/dtos",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/domains/bridge/services/providers/relay.go": {
         "language": "Go",
-        "purpose": "This file defines a Relay provider for handling token transactions and quotes in a bridge service.",
+        "purpose": "Defines a Relay provider for handling bridge services in a wallet application.",
         "key_types": [
           "Relay",
-          "Provider",
-          "Config",
-          "GetQuoteParams",
-          "QuoteResponse"
-        ],
-        "functions": [
           "NewRelayProvider",
-          "wrapErr",
-          "ID",
-          "IsPrimary",
-          "IsCrosschainSupport",
-          "cacheCalldataKey",
-          "Info",
-          "GetTokens",
-          "marshalQuoteConfig",
-          "marshalQuoteResponse",
-          "GetQuote"
+          "wrapErr"
         ],
-        "imports": [
-          "context",
-          "encoding/json",
-          "errors",
-          "fmt",
-          "runtime",
-          "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/handlers/dtos",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/bridge",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/relay",
-          "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/ethereum/go-ethereum/common/hexutil",
-          "github.com/redis/go-redis/v9",
-          "github.com/samber/lo",
-          "github.com/shopspring/decimal",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Logs errors when operations fail",
-          "Caches quotes for future use"
-        ],
-        "risks": [
-          "Potential for insufficient liquidity errors",
-          "Handling of external API responses may lead to unexpected behavior if not validated"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

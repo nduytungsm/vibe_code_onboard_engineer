@@ -1,0 +1,16 @@
+{
+  "content_hash": "cf52306a296f6f4e42931aff9711cf99",
+  "timestamp": "2025-09-26T13:58:57.934322+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a reward point system that randomizes rewards based on defined probabilities and quest tiers.",
+    "key_types": [
+      "RewardPoint",
+      "NewRewardPoint",
+      "GetRandomReward"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

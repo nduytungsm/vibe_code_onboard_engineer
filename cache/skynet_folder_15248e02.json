@@ -1,9 +1,9 @@
 {
-  "content_hash": "5a53f1a06258817211f03a9b38ba24f9",
-  "timestamp": "2025-09-26T13:37:59.790859+07:00",
+  "content_hash": "3c7952e48f66f21748026972014a4b7b",
+  "timestamp": "2025-09-26T14:06:24.321964+07:00",
   "result": {
     "path": "internal/infras/skynet",
-    "purpose": "This folder/module is responsible for providing a client interface and implementation for interacting with the Skynet service, handling blockchain transactions, logs, tokens, and accounts.",
+    "purpose": "Responsible for providing client interfaces and error handling for interacting with the Skynet service, particularly in the context of blockchain transactions.",
     "languages": {
       "Go": 4
     },
@@ -13,155 +13,54 @@
       "models.go",
       "proxy_skynet.go"
     ],
-    "dependencies": [
-      "github.com/ethereum/go-ethereum/common",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
-      "github.com/shopspring/decimal",
-      "github.com/samber/lo"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating functionalities related to Skynet interactions, error handling, and data modeling, promoting separation of concerns and reusability.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating client interfaces, error handling, and data models related to Skynet services.",
     "file_summaries": {
       "internal/infras/skynet/client.go": {
         "language": "Go",
-        "purpose": "This file defines a client interface and its implementation for interacting with a Skynet service, handling transactions, logs, tokens, and accounts.",
+        "purpose": "Defines a client interface and implementation for interacting with the Skynet service.",
         "key_types": [
-          "Client",
-          "Config",
-          "skynetSvc",
-          "TransactionItem",
-          "Log",
-          "TxTransferResult",
-          "Token",
-          "NftToken",
-          "Account",
-          "ServerResponse",
-          "ErrorMessage"
+          "Client interface",
+          "Config struct",
+          "skynetSvc struct"
         ],
-        "functions": [
-          "NewClient",
-          "GetAllLogs",
-          "GetTx",
-          "GetTxTransfer",
-          "GetTokens",
-          "GetAccountByAddress",
-          "GetTokenByAddress",
-          "GetNFTTokenMetadata",
-          "doGet"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "net/http",
-          "strings",
-          "github.com/ethereum/go-ethereum/common",
-          "go.uber.org/zap",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
-        ],
-        "side_effects": [
-          "Makes HTTP requests to external Skynet service",
-          "Logs errors and responses using zap logger"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data in error messages",
-          "Handling of external HTTP responses may lead to unexpected behavior if not properly validated"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/infras/skynet/errors.go": {
-        "language": "Go",
-        "purpose": "Defines custom error messages for the Skynet package.",
+        "language": "go",
+        "purpose": "Defines error variables for Skynet error handling.",
         "key_types": [
-          "error"
+          "ErrHashNotFound",
+          "ErrInternalServer",
+          "ErrForbidden"
         ],
-        "functions": [],
-        "imports": [
-          "errors"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/infras/skynet/models.go": {
         "language": "Go",
-        "purpose": "Defines data structures and types for handling blockchain transactions and requests in a wallet service.",
+        "purpose": "Defines data models and request/response structures for transaction searching in a blockchain context.",
         "key_types": [
-          "Order",
-          "EpochTimeSecond",
           "SortItem",
           "AddressRequest",
-          "BlockRequest",
-          "PagingRequest",
-          "PagingResponse",
-          "SearchTransactionsRequest",
-          "ErrorMessage",
-          "SearchTransactionsResponse",
-          "LogResponse",
-          "Log",
-          "TransactionItem",
-          "TxTransferItem",
-          "TxTransferResult",
-          "GetTransactionByHashResponse",
-          "TxTransferResponse",
-          "TxLogsResponse",
-          "FungibleBalance",
-          "Token",
-          "AccountContract",
-          "Account",
-          "ServerResponse",
-          "FungibleToken",
-          "NftToken",
-          "NftCollection"
+          "SearchTransactionsRequest"
         ],
-        "functions": [
-          "ErrorMsg",
-          "Error",
-          "Code"
-        ],
-        "imports": [
-          "time",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/ethereum/go-ethereum/common/hexutil",
-          "github.com/shopspring/decimal",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/infras/skynet/proxy_skynet.go": {
         "language": "Go",
-        "purpose": "This file defines a Skynet proxy client for interacting with various blockchain-related services, including fetching balances, NFT items, and transaction details.",
+        "purpose": "Defines a proxy client interface for interacting with Skynet services related to blockchain data.",
         "key_types": [
-          "pathConfig",
           "SkynetProxyClient",
-          "skynetProxyCli",
-          "ProxyCliConfig"
+          "pathConfig"
         ],
-        "functions": [
-          "NewSkynetProxyClient",
-          "GetBalance",
-          "GetNftItems",
-          "GetTokenFiatPrice",
-          "GetNftCollections",
-          "SearchTxsByHash",
-          "GetCollectionDetail",
-          "GetAccountCollection",
-          "GetTxDetail",
-          "GetTransfers",
-          "SearchUserTxs"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "net/http",
-          "strings",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
-          "go.uber.org/zap",
-          "github.com/samber/lo",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

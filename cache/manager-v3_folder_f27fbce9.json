@@ -1,9 +1,9 @@
 {
-  "content_hash": "919ec90944be56dcfec34a21fdc19a14",
-  "timestamp": "2025-09-26T13:34:52.708479+07:00",
+  "content_hash": "28bd9006e342cf2234d05635e1010311",
+  "timestamp": "2025-09-26T14:00:43.369325+07:00",
   "result": {
     "path": "sql_migrations/manager-v3",
-    "purpose": "This folder/module is responsible for managing SQL migrations related to version control and updates of the database schema.",
+    "purpose": "Responsible for managing SQL migrations for version 3 of the application, including initial setup and notification schema.",
     "languages": {
       "SQL": 2
     },
@@ -12,50 +12,30 @@
       "00002_noti.sql"
     ],
     "dependencies": [],
-    "architecture": "The folder follows a sequential migration pattern where each SQL file represents a specific migration step, ensuring that database changes are applied in a controlled manner.",
+    "architecture": "The folder follows a sequential migration pattern where each SQL file represents a specific migration step in the database schema evolution.",
     "file_summaries": {
       "sql_migrations/manager-v3/00001_init.sql": {
         "language": "SQL",
-        "purpose": "This file contains SQL migration scripts for initializing database tables and indices related to version management and updates.",
+        "purpose": "Initial database schema setup for version management and updates.",
         "key_types": [
           "v3_versions",
           "v3_mandatory_updates",
-          "v3_histories",
-          "v3_operators"
+          "v3_histories"
         ],
-        "functions": [
-          "CREATE TABLE",
-          "CREATE INDEX",
-          "DROP TABLE"
-        ],
-        "imports": [],
-        "side_effects": [
-          "Creates multiple tables and indices in the database",
-          "Drops tables when migrating down"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "sql_migrations/manager-v3/00002_noti.sql": {
         "language": "SQL",
-        "purpose": "Defines database schema for notifications and their whitelists, including creation and indexing of tables.",
+        "purpose": "Defines database schema for notifications and their whitelists in version 3.",
         "key_types": [
-          "TABLE v3_notifications",
-          "TABLE v3_notification_whitelists"
+          "v3_notifications",
+          "v3_notification_whitelists",
+          "indexes"
         ],
-        "functions": [
-          "CREATE TABLE",
-          "CREATE INDEX",
-          "DROP TABLE"
-        ],
-        "imports": [],
-        "side_effects": [
-          "Creates tables in the database",
-          "Creates indexes for performance optimization"
-        ],
-        "risks": [
-          "Potential SQL injection if user input is not properly sanitized",
-          "Data loss if DROP TABLE is executed without backups"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

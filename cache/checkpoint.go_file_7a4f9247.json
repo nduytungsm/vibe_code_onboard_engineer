@@ -1,0 +1,16 @@
+{
+  "content_hash": "28b5ed1a41923f8f22b68bef2ca17ebd",
+  "timestamp": "2025-09-26T13:57:36.662193+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service for managing checkpoints in a wallet system using Redis.",
+    "key_types": [
+      "CheckpointService",
+      "NewCheckpointService",
+      "checkpointService"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

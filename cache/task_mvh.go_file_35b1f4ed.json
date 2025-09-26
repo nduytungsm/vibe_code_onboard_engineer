@@ -1,0 +1,16 @@
+{
+  "content_hash": "99da720630db3e85b47b6726af1a3f89",
+  "timestamp": "2025-09-26T13:58:46.745349+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a task for crawling console games data from a specified API.",
+    "key_types": [
+      "ConsoleGamesCrawlerTask",
+      "NewConsoleGamesCrawlerTask",
+      "Run"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

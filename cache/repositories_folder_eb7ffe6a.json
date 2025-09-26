@@ -1,21 +1,22 @@
 {
-  "content_hash": "beedd3b2d2f61c8a197e633d94952039",
-  "timestamp": "2025-09-26T13:29:51.482558+07:00",
+  "content_hash": "b2692db32970881599455fc124e37bc0",
+  "timestamp": "2025-09-26T14:00:49.933265+07:00",
   "result": {
     "path": "internal/repositories",
-    "purpose": "This folder/module is responsible for managing various database repositories related to quests, user actions, events, and other game-related entities.",
+    "purpose": "This folder/module is responsible for defining repository interfaces and implementations for managing various entities and operations in a database.",
     "languages": {
-      "Go": 30
+      "Go": 20
     },
     "key_modules": [
       "action.go",
       "activity_guidance.go",
       "check_in_wallet_log.go",
       "crawled_data.go",
+      "definitions.go",
       "event.go",
       "game_played_logs.go",
+      "helper.go",
       "point_tracker.go",
-      "purchase_history_logs.go",
       "quest.go",
       "quest_pool.go",
       "reward.go",
@@ -27,686 +28,231 @@
       "user_quest.go",
       "user_reward.go"
     ],
-    "dependencies": [
-      "gorm.io/gorm",
-      "go.uber.org/zap",
-      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-      "github.com/ethereum/go-ethereum/common",
-      "github.com/shopspring/decimal"
-    ],
-    "architecture": "The folder follows a repository pattern, encapsulating database access logic for different entities, promoting separation of concerns and easier testing.",
+    "dependencies": [],
+    "architecture": "The folder follows a repository pattern architecture, encapsulating database access logic and providing a clean interface for data operations.",
     "file_summaries": {
       "internal/repositories/action.go": {
         "language": "Go",
-        "purpose": "This file defines an interface and implementation for managing quest actions in a database, including operations like finding, creating, and deleting actions.",
+        "purpose": "This file defines a repository interface and implementation for managing quest actions in a database.",
         "key_types": [
-          "Action",
-          "action",
-          "models.QuestActionEntity",
-          "models.HistoryEntity"
+          "Action interface",
+          "action struct",
+          "NewActionRepo function"
         ],
-        "functions": [
-          "NewActionRepo",
-          "NewTx",
-          "CreateHistory",
-          "FindActions",
-          "DeleteAll",
-          "BulkUpsert",
-          "Find"
-        ],
-        "imports": [
-          "context",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
-        ],
-        "side_effects": [
-          "Database transactions",
-          "Modifications to the database state"
-        ],
-        "risks": [
-          "Potential SQL injection if inputs are not properly sanitized",
-          "Error handling may not cover all edge cases"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/activity_guidance.go": {
         "language": "Go",
-        "purpose": "This file defines a repository interface and its implementation for managing activity guidance entities in a database.",
+        "purpose": "This file defines a repository interface and implementation for managing activity guidance entities in a database.",
         "key_types": [
           "ActivityGuidanceRepository",
           "activityGuidanceRepository",
-          "models.ActivityGuidanceEntity"
+          "NewActivityGuidanceRepository"
         ],
-        "functions": [
-          "NewActivityGuidanceRepository",
-          "Create",
-          "Update",
-          "FindByID",
-          "FindAll",
-          "Delete"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Logs errors when database operations fail"
-        ],
-        "risks": [
-          "Potential SQL injection if user input is not properly sanitized",
-          "Error handling may expose internal error messages"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/check_in_wallet_log.go": {
         "language": "Go",
-        "purpose": "This file implements a repository for managing user check-in logs, including functionalities to check in, retrieve streaks, and manage database transactions.",
+        "purpose": "This file implements a repository for managing user check-in logs in a wallet service.",
         "key_types": [
-          "UserCheckInStreak",
           "CheckInLogRepository",
-          "checkInLogRepo"
+          "checkInLogRepo",
+          "NewCheckInLogRepository"
         ],
-        "functions": [
-          "NewCheckInLogRepository",
-          "CheckIn",
-          "MaxStreakFromStartQuest",
-          "FindCheckInStreaks",
-          "FindCheckInStreaksWithAddress",
-          "CurrentCheckInStreak",
-          "recordCheckInLog",
-          "getCheckInLog",
-          "getLatestCheckInLog"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "time",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
-        ],
-        "side_effects": [
-          "Database transactions for check-in logs",
-          "Logging errors and warnings"
-        ],
-        "risks": [
-          "Potential SQL injection if user input is not properly sanitized",
-          "Error handling may expose sensitive information in logs"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/crawled_data.go": {
         "language": "Go",
-        "purpose": "Defines a repository interface and its implementation for managing crawled game data, including game registrations and participant actions.",
+        "purpose": "Defines the CrawledDataRepository interface for managing game registration and participant actions in a database.",
         "key_types": [
           "CrawledDataRepository",
-          "crawledDataRepository",
-          "models.GameRegistrationEntity",
-          "models.GameMatchEntity",
-          "models.WalletCheckInLogEntity",
-          "models.ParticipantDiscordActionEntity",
-          "models.ParticipantTwitterActionEntity",
-          "models.PurchaseHistoryLogsEntity"
+          "GameRegistrationEntity",
+          "GameMatchEntity"
         ],
-        "functions": [
-          "NewCrawledDataRepository",
-          "FindGameRegistration",
-          "FindGameRegistrationByAddress",
-          "UpdateGameRegister",
-          "ListCheckIn",
-          "BulkInsertCheckIn",
-          "SaveParticipantDiscordAction",
-          "FindParticipantDiscordAction",
-          "SaveParticipantTwitterAction",
-          "FindParticipantTwitterAction",
-          "DeleteTwitterAction",
-          "ListGameMatches",
-          "UpsertGameMatches",
-          "FindTotalPurchaseItem",
-          "FindTotalGameMatch"
-        ],
-        "imports": [
-          "context",
-          "time",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/definitions.go": {
         "language": "Go",
-        "purpose": "Defines constants and error variables related to database tables and operations for a repository.",
-        "key_types": [
-          "const",
-          "error"
-        ],
-        "functions": [],
-        "imports": [
-          "errors"
-        ],
+        "purpose": "Defines constants for database table names used in the repositories package.",
+        "key_types": [],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/repositories/event.go": {
         "language": "Go",
-        "purpose": "This file defines an interface and implementation for managing event-related database operations.",
+        "purpose": "Defines an interface and implementation for event repository operations in a database.",
         "key_types": [
           "EventRepo",
-          "evRepo",
-          "models.Event",
-          "models.HistoryEntity"
+          "NewEventRepo",
+          "Upsert"
         ],
-        "functions": [
-          "NewTx",
-          "Upsert",
-          "GetByID",
-          "GetOngoingEvent",
-          "ListEvents",
-          "CreateHistory",
-          "FindPoolEvent",
-          "FindEventByQuest",
-          "IncreaseEventUserCount"
-        ],
-        "imports": [
-          "context",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/game_played_logs.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing game played logs, including methods for upserting and cleaning up stale entries.",
+        "purpose": "This file defines a repository for managing game played logs in a database using GORM.",
         "key_types": [
           "GamePlayedLogsRepository",
           "gamePlayedLogsRepository",
-          "gorm.DB"
+          "NewGamePlayedLogsRepository"
         ],
-        "functions": [
-          "NewGamePlayedLogsRepository",
-          "UpsertBatch",
-          "CleanupStaled"
-        ],
-        "imports": [
-          "time",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
-        ],
-        "side_effects": [
-          "Database operations that modify the state of the database"
-        ],
-        "risks": [
-          "Potential SQL injection if inputs are not properly sanitized",
-          "Data integrity issues if concurrent writes are not handled correctly"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/helper.go": {
         "language": "Go",
-        "purpose": "This file provides helper functions for database operations using GORM, specifically for cleaning up stale records and managing transactions in context.",
+        "purpose": "Provides helper functions for database operations using GORM, including cleanup of stale records and transaction management.",
         "key_types": [
-          "TxKey",
-          "gorm.DB"
-        ],
-        "functions": [
           "cleanupStaledByKeys",
           "bindTx",
           "txFromContext"
         ],
-        "imports": [
-          "context",
-          "fmt",
-          "strings",
-          "time",
-          "gorm.io/gorm"
-        ],
-        "side_effects": [
-          "Modifies the database by deleting records based on specified conditions."
-        ],
-        "risks": [
-          "Potential SQL injection if keys are not properly sanitized."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/point_tracker.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for tracking point activities, including creating point activities and managing transactions.",
+        "purpose": "This file defines a repository for tracking point activities in a database using GORM.",
         "key_types": [
           "PointTrackerRepo",
           "pointTrackerRepo",
-          "context.Context",
-          "models.PointTrackerEntity"
+          "NewPointTrackerRepo"
         ],
-        "functions": [
-          "NewPointTrackerRepo",
-          "CreatePointActivity",
-          "NewTx",
-          "getTxFallback"
-        ],
-        "imports": [
-          "context",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
-        ],
-        "side_effects": [
-          "Database transactions may modify the state of the database."
-        ],
-        "risks": [
-          "Potential for SQL injection if input is not properly sanitized.",
-          "Error handling may not cover all edge cases."
-        ],
-        "complexity": "medium"
-      },
-      "internal/repositories/purchase_history_logs.go": {
-        "language": "Go",
-        "purpose": "This file defines a repository for managing purchase history logs, including methods for upserting and cleaning up stale records.",
-        "key_types": [
-          "PurchaseHistoryLogsRepository",
-          "purchaseHistoryLogsRepository",
-          "gorm.DB",
-          "models.PurchaseHistoryLogsEntity"
-        ],
-        "functions": [
-          "NewPurchaseHistoryLogsRepository",
-          "UpsertBatch",
-          "CleanupStaled"
-        ],
-        "imports": [
-          "time",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
-        ],
-        "side_effects": [
-          "Database modifications through upsert and cleanup operations"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/quest.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing quests, including operations for creating, updating, and retrieving quest data from a database.",
+        "purpose": "Repository implementation for managing quest-related data and operations.",
         "key_types": [
-          "Quest",
-          "quest",
-          "models.QuestEntity",
-          "models.HistoryEntity",
-          "models.QuestPlayers",
-          "models.ListQuestParams",
-          "models.QuestWhitelistEntity"
+          "Quest interface",
+          "quest struct",
+          "NewQuestRepo function"
         ],
-        "functions": [
-          "NewQuestRepo",
-          "NewTx",
-          "UpsertQuestInfo",
-          "UpdateQuest",
-          "CreateHistory",
-          "First",
-          "FindActives",
-          "FindByActivityTypes",
-          "WhitelistUsers",
-          "CountQuestPlayers",
-          "ListQuestsV2",
-          "filterQuestList"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "strings",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
-          "github.com/ethereum/go-ethereum/common"
-        ],
-        "side_effects": [
-          "Database transactions for quest operations",
-          "Modifications to the database state"
-        ],
-        "risks": [
-          "Potential SQL injection if user input is not properly sanitized",
-          "Data integrity issues if transactions fail or are not handled correctly"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/quest_pool.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing quest pools, including creating, updating, and retrieving quest pool data.",
+        "purpose": "This file defines a repository for managing quest pools in a database using GORM.",
         "key_types": [
-          "ListPoolFilter",
-          "QuestPoolRepo",
-          "poolRepo"
+          "QuestPoolRepo interface",
+          "poolRepo struct",
+          "NewQuestPoolRepo function"
         ],
-        "functions": [
-          "NewQuestPoolRepo",
-          "CreateHistory",
-          "NewTx",
-          "Upsert",
-          "GetByID",
-          "ListPools",
-          "FindWithExtraInfo",
-          "ListQuestForRandom"
-        ],
-        "imports": [
-          "context",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause"
-        ],
-        "side_effects": [
-          "Database transactions",
-          "Modifications to the database state"
-        ],
-        "risks": [
-          "Potential SQL injection if inputs are not properly sanitized",
-          "Data integrity issues if transactions are not handled correctly"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/reward.go": {
         "language": "Go",
-        "purpose": "This file defines a repository interface and its implementation for managing rewards in a system, including operations for finding, creating, and updating reward-related data.",
+        "purpose": "This file defines the RewardRepo interface for managing reward-related data operations in a repository pattern.",
         "key_types": [
           "RewardRepo",
-          "rewardRepo",
-          "UpsertRewardParams"
+          "FindRewardInfoByID",
+          "TopUpPool"
         ],
-        "functions": [
-          "NewRewardRepository",
-          "DeleteAllQuestRewards",
-          "UpsertQuestRewards",
-          "CreateHistory",
-          "NewTx",
-          "ListQuestRewards",
-          "UpsertRewardPool",
-          "ListPools"
-        ],
-        "imports": [
-          "context",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
-        ],
-        "side_effects": [
-          "Database modifications through create, update, and delete operations."
-        ],
-        "risks": [
-          "Potential SQL injection if user inputs are not properly sanitized."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/role.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing roles in a database, including fetching roles with associated permissions.",
+        "purpose": "Defines a repository for managing roles in a database using GORM.",
         "key_types": [
-          "RoleRepository",
-          "roleRepository",
-          "models.RoleWithExtraInfo"
+          "RoleRepository interface",
+          "roleRepository struct",
+          "NewRoleRepository function"
         ],
-        "functions": [
-          "NewRoleRepository",
-          "Roles"
-        ],
-        "imports": [
-          "context",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "go.uber.org/zap",
-          "gorm.io/gorm"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/shop.go": {
         "language": "Go",
-        "purpose": "This file defines a repository interface and its implementation for managing shop categories, items, and purchases in a database.",
+        "purpose": "Defines the ShopRepo interface for managing shop categories, items, tiers, and purchases.",
         "key_types": [
-          "ShopRepo",
-          "shopRepo",
-          "ShopCategoryEntity",
-          "ShopItemTierEntity",
-          "ShopItemEntity",
-          "ShopItemPurchaseEntity",
-          "ShopItemInventoryEntity"
-        ],
-        "functions": [
-          "NewShopRepo",
           "GetCategories",
-          "GetCategoryByID",
-          "CreateCategory",
-          "UpdateCategory",
-          "DeleteCategory",
-          "GetTiersByCategoryID",
-          "CreateTier",
-          "UpdateTier",
-          "DeleteTier",
-          "GetItemByID",
           "CreateItem",
-          "UpdateItem",
-          "DeleteItem"
+          "CreatePurchase"
         ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "strings",
-          "time",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
-        ],
-        "side_effects": [
-          "Database transactions for creating, updating, and deleting categories, items, and tiers."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/sponsor.go": {
         "language": "Go",
-        "purpose": "This file defines a repository interface and its implementation for managing sponsors in a database, including CRUD operations and transaction handling.",
+        "purpose": "Defines the SponsorRepo interface and its implementation for managing sponsor entities in a database.",
         "key_types": [
-          "SponsorRepo",
-          "sponsorRepo",
-          "models.SponsorEntity",
-          "models.HistoryEntity",
-          "models.EventSponsor"
+          "SponsorRepo interface",
+          "sponsorRepo struct",
+          "NewSponsorRepo function"
         ],
-        "functions": [
-          "NewSponsorRepo",
-          "Upsert",
-          "CreateHistory",
-          "NewTx",
-          "Search",
-          "Insert",
-          "Update",
-          "First",
-          "Delete",
-          "Find",
-          "FindSponsorByEv",
-          "CreateEventSponsors",
-          "DeleteEventSponsors"
-        ],
-        "imports": [
-          "context",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause"
-        ],
-        "side_effects": [
-          "Database transactions",
-          "Logging operations"
-        ],
-        "risks": [
-          "Potential SQL injection if input is not properly sanitized",
-          "Error handling may expose sensitive information if not managed correctly"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/user.go": {
         "language": "Go",
-        "purpose": "This file defines a User repository interface and its implementation for interacting with user data in a database.",
+        "purpose": "Defines a user repository interface and its implementation for database operations related to user entities.",
         "key_types": [
-          "UserRepo",
-          "userRepo",
-          "UserEntity"
+          "UserRepo interface",
+          "userRepo struct",
+          "NewUserRepo function"
         ],
-        "functions": [
-          "NewUserRepo",
-          "NewTx",
-          "FindByAddresses",
-          "First",
-          "FindByExternalIdentity",
-          "Insert",
-          "FindByIDs",
-          "FindIDByAddresses"
-        ],
-        "imports": [
-          "context",
-          "strings",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
-        ],
-        "side_effects": [
-          "Database transactions",
-          "Data insertion and retrieval"
-        ],
-        "risks": [
-          "Potential SQL injection if input is not properly sanitized",
-          "Error handling may expose sensitive information"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/user_event.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing user events, including creating, updating, and querying user event data.",
+        "purpose": "Defines a repository interface and implementation for managing user event data in a database.",
         "key_types": [
           "UserEventRepo",
           "userEventRepo",
-          "HistoryEntity",
-          "UserEvent",
-          "TempPremiumUser"
+          "NewUserEventRepo"
         ],
-        "functions": [
-          "NewUserEventRepo",
-          "NewTx",
-          "CreateHistory",
-          "ListUserJoinedEvents",
-          "FindUserEvent",
-          "UpsertUserEvent",
-          "FindEventUserByPool",
-          "CountUserInEvent",
-          "FindTempPremiumUser",
-          "UpsertTempPremiumUser"
-        ],
-        "imports": [
-          "context",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause"
-        ],
-        "side_effects": [
-          "Database transactions are initiated and managed.",
-          "Data is created or updated in the database."
-        ],
-        "risks": [
-          "Potential SQL injection if user input is not properly sanitized.",
-          "Transaction management issues if not handled correctly."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/user_quest.go": {
         "language": "Go",
-        "purpose": "This file defines a repository interface and its implementation for managing user quests in a gaming context.",
+        "purpose": "Defines the UserQuestRepo interface for managing user quests in a repository pattern.",
         "key_types": [
           "UserQuestRepo",
-          "userQuestRepo",
-          "models.UserQuestEntity",
-          "models.UserActionEntity",
-          "models.UserRewardEntity",
-          "models.UserSkipQuestLog",
-          "models.QuestWhitelistEntity",
-          "models.UserQuestFilter"
-        ],
-        "functions": [
-          "NewUserQuestRepo",
           "FindAuditResult",
-          "NewTx",
-          "ListUserQuestIDs",
-          "FindByID",
-          "CreateUserQuestInfo",
-          "CreateUserActions",
-          "CreateUserRewards",
-          "FindActiveActions",
-          "FindActiveRewards",
-          "FindSingleUserQuest",
-          "ListUserQuestByIDs",
-          "FilterUserQuests",
-          "UpdateUserQuestInfo",
-          "FindWhitelist",
-          "CreateSkipQuestLog",
-          "ListSkippedQuests"
+          "CreateUserQuestInfo"
         ],
-        "imports": [
-          "context",
-          "fmt",
-          "strings",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "gorm.io/gorm/clause",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/repositories/user_reward.go": {
         "language": "Go",
-        "purpose": "This file defines a repository for managing user rewards in a quest system, including functionalities for creating history, finding rewards, and updating distributions.",
+        "purpose": "Defines a repository for managing user rewards and related database operations.",
         "key_types": [
-          "UserRewardRepo",
-          "userRewardRepo",
-          "models.UserOffchainRewardAmount",
-          "models.HistoryEntity",
-          "models.UserQuestReward",
-          "models.RewardPoolExtra"
+          "UserRewardRepo interface",
+          "userRewardRepo struct",
+          "NewUserRewardRepo function"
         ],
-        "functions": [
-          "NewUserRewardRepo",
-          "CreateHistory",
-          "NewTx",
-          "FindWaitingUserRewards",
-          "RejectUserReward",
-          "UpdateDistribution",
-          "ListRewardPool",
-          "FindCustomRewardAmounts"
-        ],
-        "imports": [
-          "context",
-          "strings",
-          "go.uber.org/zap",
-          "gorm.io/gorm",
-          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
-          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/shopspring/decimal"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

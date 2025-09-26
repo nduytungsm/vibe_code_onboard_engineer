@@ -1,0 +1,16 @@
+{
+  "content_hash": "a95dec851b472c79671982edafa282b1",
+  "timestamp": "2025-09-26T13:58:19.223522+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles discovery-related functionalities such as listing social platforms, studios, categories, and image uploads.",
+    "key_types": [
+      "Generic interface",
+      "generic struct",
+      "ProvideGenericHandler"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

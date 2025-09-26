@@ -1,0 +1,14 @@
+{
+  "content_hash": "c808d247d412c7d7a779e2d0a660f6bb",
+  "timestamp": "2025-09-26T13:57:31.986988+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the configuration schema for the wallet manager application.",
+    "key_types": [
+      "configSchema"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

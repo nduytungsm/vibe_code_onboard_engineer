@@ -1,0 +1,14 @@
+{
+  "content_hash": "73ef5218e6ead3f0b15f79bddc9d6889",
+  "timestamp": "2025-09-26T13:58:41.920251+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the UserActionEntity model for user actions in a quest system.",
+    "key_types": [
+      "UserActionEntity"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "low"
+  }
+}

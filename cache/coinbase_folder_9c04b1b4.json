@@ -1,9 +1,9 @@
 {
-  "content_hash": "9b91ffab3ec1513c34451fce65c66d96",
-  "timestamp": "2025-09-26T13:31:20.228619+07:00",
+  "content_hash": "75f48b1afe12e2e205d41fd41b0c7234",
+  "timestamp": "2025-09-26T14:05:22.832311+07:00",
   "result": {
     "path": "internal/infras/coinbase",
-    "purpose": "This folder/module is responsible for integrating with the Coinbase API, providing functionalities such as client creation, JWT generation, and handling onramp token requests and responses.",
+    "purpose": "This folder/module is responsible for integrating with the Coinbase API, handling client interactions and data structures for token requests and responses.",
     "languages": {
       "Go": 2
     },
@@ -11,61 +11,31 @@
       "client.go",
       "models.go"
     ],
-    "dependencies": [
-      "github.com/coinbase/cdp-sdk/go/auth",
-      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-      "github.com/samber/lo",
-      "go.uber.org/zap"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the Coinbase API client and related data models, promoting separation of concerns and reusability.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating API client functionality and data models related to the Coinbase integration.",
     "file_summaries": {
       "internal/infras/coinbase/client.go": {
         "language": "Go",
-        "purpose": "This file implements a client for interacting with the Coinbase API, including JWT generation and token retrieval.",
+        "purpose": "This file implements a client for interacting with the Coinbase API, including JWT generation and path retrieval.",
         "key_types": [
-          "CoinbasePath",
           "Config",
           "Client",
           "client"
         ],
-        "functions": [
-          "NewClient",
-          "GenerateJWT",
-          "GetPath",
-          "GetOnrampToken",
-          "GetDefaultFiat"
-        ],
-        "imports": [
-          "context",
-          "errors",
-          "fmt",
-          "strings",
-          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
-          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
-          "github.com/coinbase/cdp-sdk/go/auth",
-          "github.com/samber/lo",
-          "go.uber.org/zap"
-        ],
-        "side_effects": [
-          "Makes HTTP requests to the Coinbase API",
-          "Generates JWT tokens"
-        ],
-        "risks": [
-          "Potential exposure of sensitive information if not handled properly",
-          "Dependency on external services (Coinbase API) may introduce availability issues"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/infras/coinbase/models.go": {
         "language": "Go",
-        "purpose": "Defines data structures for handling onramp token requests and responses in a Coinbase integration.",
+        "purpose": "Defines data structures for handling onramp token requests and responses in the Coinbase integration.",
         "key_types": [
           "Address",
           "OnrampTokenReq",
           "OnrampTokenResp"
         ],
-        "functions": [],
-        "imports": [],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       }
     }

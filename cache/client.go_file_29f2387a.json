@@ -1,0 +1,16 @@
+{
+  "content_hash": "7c0869dc90ee7c8aadf2abb1577656cd",
+  "timestamp": "2025-09-26T13:58:24.937278+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements an internal client for managing device-related operations in a service.",
+    "key_types": [
+      "Config",
+      "InternalClient",
+      "internalClientHTTP"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

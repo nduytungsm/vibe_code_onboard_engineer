@@ -1,0 +1,16 @@
+{
+  "content_hash": "4716c4f4941caea78363bd12035dce69",
+  "timestamp": "2025-09-26T13:58:03.579771+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an RPC service for executing remote procedure calls.",
+    "key_types": [
+      "RpcService",
+      "rpcService",
+      "Execute"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}

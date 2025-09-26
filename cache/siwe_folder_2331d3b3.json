@@ -1,9 +1,9 @@
 {
-  "content_hash": "4e175233e2e88560458081f53b843544",
-  "timestamp": "2025-09-26T13:38:42.981296+07:00",
+  "content_hash": "ce505383ce77ababefff9e51b57584d3",
+  "timestamp": "2025-09-26T14:00:07.309593+07:00",
   "result": {
     "path": "internal/services/siwe",
-    "purpose": "Responsible for handling Sign-In with Ethereum (SIWE) messages, including creation, validation, and error management.",
+    "purpose": "Handles the creation, validation, and error management of Sign-In with Ethereum (SIWE) messages.",
     "languages": {
       "Go": 5
     },
@@ -14,136 +14,65 @@
       "siwe.go",
       "utils.go"
     ],
-    "dependencies": [
-      "github.com/ethereum/go-ethereum",
-      "github.com/relvacode/iso8601",
-      "github.com/cespare/xxhash/v2",
-      "gonum.org/v1/gonum/mathext/prng"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating related functionalities into separate files for error handling, message struct definition, regex parsing, and utility functions.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing related functionalities into separate files for error handling, message struct definition, regex parsing, and utility functions.",
     "file_summaries": {
       "internal/services/siwe/error.go": {
         "language": "Go",
-        "purpose": "Defines error types related to SIWE messages and implements the error interface for them.",
+        "purpose": "Defines error types related to SIWE (Sign-In with Ethereum) messages.",
         "key_types": [
           "ExpiredMessage",
           "InvalidMessage",
           "InvalidSignature"
         ],
-        "functions": [
-          "Error() for ExpiredMessage",
-          "Error() for InvalidMessage",
-          "Error() for InvalidSignature"
-        ],
-        "imports": [
-          "fmt"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "low"
       },
       "internal/services/siwe/message.go": {
         "language": "Go",
-        "purpose": "Defines a Message struct and methods to access its fields related to a signed message.",
+        "purpose": "Defines a Message struct for handling SIWE (Sign-In with Ethereum) messages.",
         "key_types": [
-          "Message"
-        ],
-        "functions": [
+          "Message",
           "GetStatement",
-          "GetDomain",
-          "GetAddress",
-          "GetURI",
-          "GetVersion",
-          "GetNonce",
-          "GetChainID",
-          "GetIssuedAt",
-          "GetExpirationTime",
-          "GetNotBefore"
+          "GetDomain"
         ],
-        "imports": [
-          "net/url",
-          "time",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/relvacode/iso8601"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/siwe/regex.go": {
         "language": "Go",
         "purpose": "Defines regular expressions for parsing SIWE (Sign-In with Ethereum) messages.",
         "key_types": [
-          "string",
-          "regexp.Regexp"
+          "SIWEMsg"
         ],
-        "functions": [],
-        "imports": [
-          "fmt",
-          "regexp"
-        ],
-        "complexity": "medium"
+        "functions": null,
+        "imports": null,
+        "complexity": "low"
       },
       "internal/services/siwe/siwe.go": {
         "language": "Go",
-        "purpose": "This file implements functionality for creating, validating, and verifying messages in the context of Ethereum's EIP-4361 standard.",
+        "purpose": "Handles the creation and validation of messages for Ethereum-based Sign-In with Ethereum (SIWE).",
         "key_types": [
-          "Message"
-        ],
-        "functions": [
-          "buildAuthority",
-          "validateDomain",
-          "validateURI",
           "InitMessage",
-          "parseMessage",
-          "ParseMessage",
-          "eip191Hash",
-          "ValidNow",
-          "ValidAt",
-          "VerifyEIP191",
-          "Verify"
+          "validateDomain",
+          "validateURI"
         ],
-        "imports": [
-          "crypto/ecdsa",
-          "errors",
-          "fmt",
-          "net/url",
-          "strconv",
-          "strings",
-          "time",
-          "github.com/ethereum/go-ethereum/common",
-          "github.com/ethereum/go-ethereum/common/hexutil",
-          "github.com/ethereum/go-ethereum/crypto",
-          "github.com/relvacode/iso8601"
-        ],
-        "risks": [
-          "Potential for invalid domain or URI formats leading to errors",
-          "Improper handling of signatures could lead to security vulnerabilities"
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       },
       "internal/services/siwe/utils.go": {
         "language": "Go",
-        "purpose": "Utility functions for handling timestamps, hashing, and generating nonces in the context of SIWE (Sign-In with Ethereum).",
+        "purpose": "Utility functions for handling timestamps, hashing, and nonce generation in the SIWE context.",
         "key_types": [
-          "map[string]interface{}",
-          "string",
-          "time.Time",
-          "uint64"
-        ],
-        "functions": [
           "parseTimestamp",
           "isEmpty",
-          "hash",
           "GenerateNonce"
         ],
-        "imports": [
-          "fmt",
-          "strings",
-          "time",
-          "github.com/cespare/xxhash/v2",
-          "github.com/relvacode/iso8601",
-          "gonum.org/v1/gonum/mathext/prng"
-        ],
-        "risks": [
-          "Potential exposure of sensitive data if nonce generation is not properly secured."
-        ],
+        "functions": null,
+        "imports": null,
         "complexity": "medium"
       }
     }

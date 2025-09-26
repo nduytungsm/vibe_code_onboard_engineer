@@ -1,0 +1,16 @@
+{
+  "content_hash": "dcf958a4c80975f8eae55e6917773650",
+  "timestamp": "2025-09-26T13:57:39.125671+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the BridgeService interface and its implementation for managing bridge-related operations.",
+    "key_types": [
+      "BridgeService",
+      "bridgeService",
+      "NewBridgeService"
+    ],
+    "functions": null,
+    "imports": null,
+    "complexity": "medium"
+  }
+}
