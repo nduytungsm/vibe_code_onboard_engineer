@@ -1,0 +1,339 @@
+{
+  "content_hash": "d780a52540874be4d2e7cebb7d2809f4",
+  "timestamp": "2025-09-26T13:37:41.39507+07:00",
+  "result": {
+    "path": "internal/routers/dtos/enums",
+    "purpose": "Defines various enums related to actions, activities, notifications, platforms, quests, rewards, and roles, along with methods for JSON marshaling and string conversion.",
+    "languages": {
+      "Go": 15
+    },
+    "key_modules": [
+      "action.go",
+      "activity.go",
+      "coinbase.go",
+      "db.go",
+      "enums.go",
+      "nft_item.go",
+      "noti.go",
+      "platform.go",
+      "quest.go",
+      "resource.go",
+      "reward.go",
+      "roles_v2.go",
+      "service.go"
+    ],
+    "dependencies": [
+      "encoding/json",
+      "strconv",
+      "errors",
+      "fmt",
+      "strings",
+      "database/sql/driver",
+      "github.com/samber/lo"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing enums and related functionalities into separate files for maintainability and clarity.",
+    "file_summaries": {
+      "internal/routers/dtos/enums/action.go": {
+        "language": "Go",
+        "purpose": "Defines enums for various action events related to quests, rewards, and roles.",
+        "key_types": [
+          "AuthActionEvent",
+          "GenericActionEvent",
+          "ResolveActionType"
+        ],
+        "functions": [
+          "String",
+          "NumericStringToAuthActionEvent",
+          "AuthActionEventFromString",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "MarshalText",
+          "UnmarshalText",
+          "ResolveActionTypeFromString",
+          "ResolveActionTypeToString",
+          "GenericActionEventFromString"
+        ],
+        "imports": [
+          "encoding/json",
+          "strconv"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/activity.go": {
+        "language": "Go",
+        "purpose": "Defines enums and constants for various activity types and their statuses, along with methods for string conversion and JSON marshaling/unmarshaling.",
+        "key_types": [
+          "UpdateActivity",
+          "ActivityStatus",
+          "ActivityFrequency",
+          "ActivityType",
+          "Activity",
+          "Platform",
+          "SupportedActivity",
+          "MatchType",
+          "MatchResult"
+        ],
+        "functions": [
+          "String()",
+          "MarshalJSON()",
+          "UnmarshalJSON()",
+          "ActivityFrequencyFromString()",
+          "ActivityFromString()",
+          "PlatformFromString()"
+        ],
+        "imports": [
+          "encoding/json",
+          "errors",
+          "fmt",
+          "strings"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/coinbase.go": {
+        "language": "Go",
+        "purpose": "Defines an enumeration for Coinbase token types and provides methods for JSON marshaling and database scanning.",
+        "key_types": [
+          "CoinbaseTokenType"
+        ],
+        "functions": [
+          "CBTokenTypeFromStr",
+          "String",
+          "Value",
+          "Scan",
+          "MarshalJSON",
+          "UnmarshalJSON"
+        ],
+        "imports": [
+          "database/sql/driver",
+          "encoding/json",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/db.go": {
+        "language": "Go",
+        "purpose": "Defines a set of string constants representing various database operation enums.",
+        "key_types": [
+          "string"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/enums/enums.go": {
+        "language": "Go",
+        "purpose": "This file defines utility functions for converting between string representations and enum-like types.",
+        "key_types": [
+          "enum",
+          "string",
+          "map"
+        ],
+        "functions": [
+          "StringToEnum",
+          "UnmarshalJSON",
+          "EnumFromString",
+          "MarshalText",
+          "UnmarshalText",
+          "UnmarshalV2",
+          "EnumFromStr",
+          "ScanV2"
+        ],
+        "imports": [
+          "encoding/json",
+          "errors",
+          "fmt"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/nft_item.go": {
+        "language": "Go",
+        "purpose": "Defines enums for NFT items and item categories, including methods for JSON marshaling and unmarshaling.",
+        "key_types": [
+          "NFTItem",
+          "ItemCategory"
+        ],
+        "functions": [
+          "String",
+          "MarshalJSON",
+          "NFTItemFromString",
+          "UnmarshalJSON",
+          "ExtractItemCategory"
+        ],
+        "imports": [
+          "encoding/json",
+          "strings"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/noti.go": {
+        "language": "Go",
+        "purpose": "Defines notification status types and provides methods for handling them.",
+        "key_types": [
+          "NotiStatus"
+        ],
+        "functions": [
+          "NotiStatusFromStr",
+          "String",
+          "IsValid",
+          "Value",
+          "Values",
+          "Scan",
+          "MarshalJSON",
+          "UnmarshalJSON"
+        ],
+        "imports": [
+          "encoding/json",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/platform.go": {
+        "language": "Go",
+        "purpose": "Defines an enumeration for client platforms and provides methods for conversion and JSON serialization.",
+        "key_types": [
+          "CliPlatform"
+        ],
+        "functions": [
+          "CliPlatformFromStr",
+          "String",
+          "Value",
+          "Scan",
+          "MarshalJSON",
+          "UnmarshalJSON"
+        ],
+        "imports": [
+          "database/sql/driver",
+          "encoding/json",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/quest.go": {
+        "language": "Go",
+        "purpose": "Defines enums and a state machine for managing quest statuses and transitions.",
+        "key_types": [
+          "QuestStatus",
+          "ParticipantQuestStatus",
+          "ParticipantQuestFilter",
+          "QuestAttribute",
+          "SortDirection",
+          "QuestPublishType",
+          "QuestReviewStage",
+          "QuestResolveAction"
+        ],
+        "functions": [
+          "String",
+          "QuestPublishTypeFromString",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "ReadableString",
+          "QuestStatusFromString",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "String",
+          "QuestReviewStageFromString",
+          "MarshalText",
+          "UnmarshalText",
+          "String",
+          "NewQuestStateMachine",
+          "Transition",
+          "GetCurrentState",
+          "GetPublishType"
+        ],
+        "imports": [
+          "encoding/json",
+          "errors",
+          "strings"
+        ],
+        "side_effects": [
+          "Modifies the current state of the quest based on events."
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/resource.go": {
+        "language": "Go",
+        "purpose": "Defines an enumeration for service resources and provides methods for conversion and JSON handling.",
+        "key_types": [
+          "ServiceResource"
+        ],
+        "functions": [
+          "ServiceResourceFromString",
+          "String",
+          "Value",
+          "Scan",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "IsEligibleResource"
+        ],
+        "imports": [
+          "database/sql/driver",
+          "encoding/json",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/reward.go": {
+        "language": "Go",
+        "purpose": "Defines enums and associated methods for reward statuses, resource types, and reward distribution types.",
+        "key_types": [
+          "PRewardStatus",
+          "RewardDistributionType",
+          "RewardType",
+          "RewardPoolAttribute",
+          "RewardPoolStatus",
+          "RewardPoolAction",
+          "ResourceType"
+        ],
+        "functions": [
+          "PRewardStatusFromString",
+          "String",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "MarshalText",
+          "UnmarshalText",
+          "ResourceTypeFromString",
+          "RewardDistributionTypeFromString",
+          "RewardTypeFromString",
+          "RewardPoolAttributeFromString",
+          "RewardPoolStatusFromString"
+        ],
+        "imports": [
+          "encoding/json"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/roles_v2.go": {
+        "language": "Go",
+        "purpose": "Defines role types and provides methods for handling role data.",
+        "key_types": [
+          "Role"
+        ],
+        "functions": [
+          "RoleFromString",
+          "String",
+          "Value",
+          "Scan",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "IsValid"
+        ],
+        "imports": [
+          "database/sql/driver",
+          "encoding/json",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/service.go": {
+        "language": "Go",
+        "purpose": "Defines an enumeration for service types.",
+        "key_types": [
+          "ServiceType"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

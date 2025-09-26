@@ -1,0 +1,49 @@
+{
+  "content_hash": "63a0e6968b893a3d5db132143fc4d60f",
+  "timestamp": "2025-09-26T12:26:24.547749+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a client for interacting with the Waypoint API, including methods for retrieving public profiles, awarding points, and redeeming points.",
+    "key_types": [
+      "Client",
+      "Config",
+      "HMACAuth",
+      "cli"
+    ],
+    "functions": [
+      "NewClient",
+      "GetPublicProfile",
+      "GetPublicProfileByToken",
+      "AwardPoints",
+      "RedeemPoints",
+      "GetApplicationID",
+      "GetSeasonID",
+      "GetNamespaceUUID",
+      "GenerateDeterministicIdempotencyKey",
+      "IdemKeyV2",
+      "IdemKeyForRedeem"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "net/http",
+      "net/url",
+      "regexp",
+      "strings",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/google/uuid",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "HTTP requests to external API",
+      "Logging errors and information"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information in logs",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

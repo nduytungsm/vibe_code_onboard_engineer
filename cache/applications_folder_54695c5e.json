@@ -1,0 +1,77 @@
+{
+  "content_hash": "c68e48606c82e5b72a5e9d2e632b7dd6",
+  "timestamp": "2025-09-26T13:37:33.958381+07:00",
+  "result": {
+    "path": "internal/applications",
+    "purpose": "This folder/module is responsible for managing the lifecycle of services within the application, including their initialization, execution, and graceful shutdown.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "application.go",
+      "service.go"
+    ],
+    "dependencies": [
+      "go.uber.org/multierr",
+      "go.uber.org/zap",
+      "golang.org/x/sync/errgroup"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating service management functionalities within distinct files, promoting separation of concerns and maintainability.",
+    "file_summaries": {
+      "internal/applications/application.go": {
+        "language": "Go",
+        "purpose": "This file defines an application structure that manages the lifecycle of services, including starting and stopping them gracefully.",
+        "key_types": [
+          "ApplicationConfig",
+          "Application",
+          "application"
+        ],
+        "functions": [
+          "NewApplication",
+          "Start",
+          "Stop",
+          "NameNormalized"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "os",
+          "os/signal",
+          "regexp",
+          "strings",
+          "syscall",
+          "time",
+          "go.uber.org/multierr",
+          "go.uber.org/zap",
+          "golang.org/x/sync/errgroup"
+        ],
+        "side_effects": [
+          "Handles OS signals for graceful shutdown"
+        ],
+        "risks": [
+          "Potential for deadlocks if services do not handle context cancellation properly"
+        ],
+        "complexity": "medium"
+      },
+      "internal/applications/service.go": {
+        "language": "Go",
+        "purpose": "Defines service interfaces and implementations for managing daemon services.",
+        "key_types": [
+          "Service",
+          "DaemonService",
+          "daemonService",
+          "AwaitReadyService"
+        ],
+        "functions": [
+          "Start",
+          "Stop",
+          "Wrap"
+        ],
+        "imports": [
+          "context"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

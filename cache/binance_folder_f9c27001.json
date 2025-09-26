@@ -1,6 +1,6 @@
 {
-  "content_hash": "d40927ade8f5d720a58efcb231f6cf17",
-  "timestamp": "2025-09-26T11:54:12.97539+07:00",
+  "content_hash": "53317cc0d14bf38ddced3665f0495a50",
+  "timestamp": "2025-09-26T13:18:03.516646+07:00",
   "result": {
     "path": "pkg/binance",
     "purpose": "Handles configuration and service for signing payloads using ECDSA for Binance.",
@@ -12,10 +12,6 @@
       "service.go"
     ],
     "dependencies": [
-      "context",
-      "crypto/ecdsa",
-      "crypto/rand",
-      "encoding/base64",
       "github.com/decred/dcrd/dcrec/secp256k1/v4"
     ],
     "architecture": "The folder follows a modular architecture pattern, encapsulating configuration and service logic related to Binance operations.",
@@ -51,7 +47,7 @@
         ],
         "side_effects": [
           "Generates cryptographic signatures",
-          "Encodes signatures in base64"
+          "Uses random number generation"
         ],
         "risks": [
           "Potential exposure of private key if not handled securely"

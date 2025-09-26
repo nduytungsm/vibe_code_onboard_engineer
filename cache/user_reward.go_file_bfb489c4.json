@@ -1,0 +1,22 @@
+{
+  "content_hash": "e25ce6d200607c07355b7da9af2852cc",
+  "timestamp": "2025-09-26T12:28:05.679363+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for user rewards in a quest system.",
+    "key_types": [
+      "UserRewardEntity",
+      "RewardPoolExtra",
+      "DistributeInfoV3",
+      "UserOffchainRewardAmount",
+      "UserQuestReward"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/shopspring/decimal"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "content_hash": "b61c7df360f700f8b2667e50d9c64e48",
+  "timestamp": "2025-09-26T12:13:55.771923+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for wallet push notification service settings.",
+    "key_types": [
+      "application",
+      "server",
+      "metrics",
+      "logger",
+      "notification_consumer",
+      "http_client",
+      "device_manager_client",
+      "push_configs",
+      "hmac_internal",
+      "checkpoint_service"
+    ],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Exposure of sensitive information (e.g., secret keys)",
+      "Potential misconfiguration leading to service downtime"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "content_hash": "a8ce0d7cd6fab9cee34476392b988c43",
+  "timestamp": "2025-09-26T13:30:01.433387+07:00",
+  "result": {
+    "path": "internal/infras/explorer",
+    "purpose": "This folder/module is responsible for interacting with a blockchain service to list contracts and retrieve contract ABIs, as well as defining data structures for handling responses and contract information.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "client.go",
+      "models.go"
+    ],
+    "dependencies": [
+      "context",
+      "fmt",
+      "net/url",
+      "strconv",
+      "strings",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "encoding/json"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to blockchain interactions and data modeling within separate files.",
+    "file_summaries": {
+      "internal/infras/explorer/client.go": {
+        "language": "Go",
+        "purpose": "This file implements a client for interacting with a blockchain service to list contracts and retrieve contract ABIs.",
+        "key_types": [
+          "Config",
+          "Client",
+          "client"
+        ],
+        "functions": [
+          "NewClient",
+          "ListContracts",
+          "GetABI"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "net/url",
+          "strconv",
+          "strings",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "complexity": "medium"
+      },
+      "internal/infras/explorer/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures for handling responses and contract information in an explorer application.",
+        "key_types": [
+          "Response",
+          "ListResult",
+          "Contract",
+          "ContractABIResult",
+          "ABI"
+        ],
+        "functions": [],
+        "imports": [
+          "encoding/json"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "content_hash": "e58bdaa62aa0ce12db12a66388192b1e",
+  "timestamp": "2025-09-26T13:32:57.884562+07:00",
+  "result": {
+    "path": "pkg/validation",
+    "purpose": "This folder/module is responsible for providing validation functionalities for struct data and various data types using custom validation rules.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "error.go",
+      "validate.go",
+      "validator.go"
+    ],
+    "dependencies": [
+      "github.com/go-playground/locales/en",
+      "github.com/go-playground/validator/v10",
+      "github.com/go-playground/universal-translator",
+      "github.com/go-playground/validator/v10/translations/en",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating validation logic in separate files while leveraging external libraries for enhanced functionality.",
+    "file_summaries": {
+      "pkg/validation/error.go": {
+        "language": "Go",
+        "purpose": "Defines custom error types for validation errors.",
+        "key_types": [
+          "Error",
+          "Errors"
+        ],
+        "functions": [
+          "Error()",
+          "Error()",
+          "Is()"
+        ],
+        "imports": [
+          "errors",
+          "strings"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/validation/validate.go": {
+        "language": "Go",
+        "purpose": "This file provides validation functionality for struct data using the validator package.",
+        "key_types": [
+          "validator.Validate",
+          "ut.UniversalTranslator",
+          "Errors",
+          "Error"
+        ],
+        "functions": [
+          "InitValidate",
+          "RegisterCustomValidation",
+          "ValidateStruct",
+          "Validate"
+        ],
+        "imports": [
+          "reflect",
+          "strings",
+          "github.com/go-playground/locales/en",
+          "github.com/go-playground/validator/v10",
+          "github.com/go-playground/universal-translator",
+          "github.com/go-playground/validator/v10/translations/en"
+        ],
+        "side_effects": [
+          "Registers custom validation functions",
+          "Caches struct information for validation"
+        ],
+        "risks": [
+          "Potential for unhandled errors in validation functions",
+          "Improper handling of validation errors may lead to information leakage"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/validation/validator.go": {
+        "language": "Go",
+        "purpose": "This file provides validation functionalities for various data types using custom validation rules.",
+        "key_types": [
+          "validateTag",
+          "Validator",
+          "customValidator"
+        ],
+        "functions": [
+          "New",
+          "NewWithValidate",
+          "Validate",
+          "RegisterStructValidation",
+          "RegisterCustomValidation",
+          "ValidateStringEnum",
+          "ValidateWAddress",
+          "ValidateTxHash"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/go-playground/universal-translator",
+          "github.com/go-playground/validator/v10",
+          "github.com/samber/lo",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

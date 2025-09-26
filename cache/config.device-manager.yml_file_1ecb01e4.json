@@ -1,0 +1,23 @@
+{
+  "content_hash": "dbdcd68254f10c30906088ae9f4c8c7f",
+  "timestamp": "2025-09-26T13:10:04.905729+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for the wallet device manager application.",
+    "key_types": [
+      "application",
+      "http_server",
+      "hmac_internal",
+      "metrics",
+      "postgres",
+      "logger"
+    ],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Exposure of sensitive information due to redacted fields",
+      "Potential misconfiguration of database and server settings"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "content_hash": "91f214b38c72ae9e73cbfbfa3b0dcf6b",
+  "timestamp": "2025-09-26T13:14:15.719738+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a function to extract user addresses from a slice of records, ensuring a minimum row count and validating the format.",
+    "key_types": [
+      "error",
+      "string",
+      "[][]string"
+    ],
+    "functions": [
+      "ExtractUserAddresses"
+    ],
+    "imports": [
+      "errors"
+    ],
+    "side_effects": [
+      "returns an error if the file format is invalid or if the minimum row count is not met"
+    ],
+    "risks": [
+      "potential for index out of range errors if records are not properly validated"
+    ],
+    "complexity": "medium"
+  }
+}

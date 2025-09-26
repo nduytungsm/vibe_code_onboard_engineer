@@ -1,0 +1,98 @@
+{
+  "content_hash": "6c14623b4e3ce5993790619895463acb",
+  "timestamp": "2025-09-26T13:30:46.881283+07:00",
+  "result": {
+    "path": "mocks/repositories",
+    "purpose": "This folder contains mock implementations of repository interfaces for testing purposes, allowing for unit tests without relying on actual database interactions.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "activity_guidance_repository.go",
+      "check_in_log_repository.go",
+      "crawled_data_repository.go"
+    ],
+    "dependencies": [
+      "github.com/stretchr/testify/mock"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each file represents a mock implementation of a specific repository interface, facilitating isolated testing.",
+    "file_summaries": {
+      "mocks/repositories/activity_guidance_repository.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock implementation of the ActivityGuidanceRepository interface for testing purposes.",
+        "key_types": [
+          "ActivityGuidanceRepository",
+          "ActivityGuidanceRepository_Expecter",
+          "ActivityGuidanceRepository_Create_Call",
+          "ActivityGuidanceRepository_Delete_Call",
+          "ActivityGuidanceRepository_FindAll_Call",
+          "ActivityGuidanceRepository_FindByID_Call",
+          "ActivityGuidanceRepository_Update_Call"
+        ],
+        "functions": [
+          "Create",
+          "Delete",
+          "FindAll",
+          "FindByID",
+          "Update"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/stretchr/testify/mock"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/repositories/check_in_log_repository.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock repository for CheckInLog operations, allowing for testing without a real database.",
+        "key_types": [
+          "CheckInLogRepository",
+          "CheckInLogRepository_Expecter",
+          "CheckInLogRepository_CheckIn_Call",
+          "CheckInLogRepository_CurrentCheckInStreak_Call",
+          "CheckInLogRepository_FindCheckInStreaks_Call",
+          "CheckInLogRepository_FindCheckInStreaksWithAddress_Call"
+        ],
+        "functions": [
+          "CheckIn",
+          "CurrentCheckInStreak",
+          "FindCheckInStreaks",
+          "FindCheckInStreaksWithAddress"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/stretchr/testify/mock",
+          "time"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/repositories/crawled_data_repository.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock implementation of the CrawledDataRepository interface for testing purposes.",
+        "key_types": [
+          "CrawledDataRepository",
+          "CrawledDataRepository_Expecter",
+          "CrawledDataRepository_BulkInsertCheckIn_Call",
+          "CrawledDataRepository_DeleteTwitterAction_Call",
+          "CrawledDataRepository_FindGameRegistration_Call",
+          "CrawledDataRepository_FindGameRegistrationByAddress_Call"
+        ],
+        "functions": [
+          "BulkInsertCheckIn",
+          "DeleteTwitterAction",
+          "FindGameRegistration",
+          "FindGameRegistrationByAddress"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/stretchr/testify/mock"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "content_hash": "4d51f995fd972f241ea932e9bd58f988",
+  "timestamp": "2025-09-26T12:36:32.399069+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles the creation of reward orders through an HTTP client.",
+    "key_types": [
+      "RewardOrder",
+      "rewardOrderImpl",
+      "createRewardOrdersReq",
+      "tokenOrderResp",
+      "createRewardOrdersSuccessResp",
+      "createRewardOrdersFailResp"
+    ],
+    "functions": [
+      "NewRewardOrder",
+      "RequestOrder"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "go.uber.org/zap"
+    ],
+    "risks": [
+      "Potential for unhandled errors from HTTP requests.",
+      "Possible exposure of sensitive information in error messages."
+    ],
+    "complexity": "medium"
+  }
+}

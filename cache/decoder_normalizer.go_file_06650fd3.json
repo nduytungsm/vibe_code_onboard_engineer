@@ -1,0 +1,29 @@
+{
+  "content_hash": "782fad12704ef9ed993fa8ff33e608e6",
+  "timestamp": "2025-09-26T12:22:09.495024+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality to normalize decoded parameters from Ethereum transactions.",
+    "key_types": [
+      "DecodedParam",
+      "big.Int",
+      "common.Address"
+    ],
+    "functions": [
+      "normalizeDecodedParams",
+      "normalizeValue",
+      "normalizeMap",
+      "normalizeSlice"
+    ],
+    "imports": [
+      "math/big",
+      "reflect",
+      "strings",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models"
+    ],
+    "complexity": "medium"
+  }
+}

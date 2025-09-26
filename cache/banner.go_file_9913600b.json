@@ -1,0 +1,41 @@
+{
+  "content_hash": "a3c3c76026e1d85b4bae21f7efaf83b9",
+  "timestamp": "2025-09-26T13:12:50.31559+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a router for handling banner-related HTTP requests in a CMS.",
+    "key_types": [
+      "BannerRouter",
+      "bannerRouter",
+      "requests.BannerReq",
+      "requests.EditBannerReq",
+      "requests.BannerIDReq",
+      "requests.BannerByStatusReq"
+    ],
+    "functions": [
+      "NewBannerRouter",
+      "CreateBanner",
+      "EditBanner",
+      "GetBannerByID",
+      "ListBanner"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers/cms",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/cms/requests",
+      "github.com/google/wire",
+      "github.com/labstack/echo/v4",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Interacts with external services through the handler methods."
+    ],
+    "risks": [
+      "Potential for improper error handling leading to information leakage.",
+      "Dependency on external packages may introduce vulnerabilities."
+    ],
+    "complexity": "medium"
+  }
+}

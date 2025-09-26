@@ -1,0 +1,47 @@
+{
+  "content_hash": "4e0cb175f4f9db464058997628a38a82",
+  "timestamp": "2025-09-26T13:13:52.111806+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains helper functions for verifying quest-related actions and managing user check-in activities.",
+    "key_types": [
+      "VerifyActionParams",
+      "quest_enums.ActionPlatform",
+      "models.WalletCheckInLogEntity",
+      "responses.UserAction"
+    ],
+    "functions": [
+      "updateActivityState",
+      "findCheckInInternal",
+      "isXEqualToY",
+      "FindStreak",
+      "isInValidTimeRange",
+      "roundDownLastCheckInAt",
+      "updateProgress",
+      "platformCacheKey",
+      "encryptToken",
+      "decryptToken"
+    ],
+    "imports": [
+      "context",
+      "crypto/sha256",
+      "errors",
+      "fmt",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/encrypt",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "side_effects": [
+      "Modifies user action status based on check-in streaks",
+      "Encrypts and decrypts tokens for user quests"
+    ],
+    "risks": [
+      "Potential for incorrect handling of user quest states",
+      "Security risks associated with token encryption/decryption"
+    ],
+    "complexity": "medium"
+  }
+}

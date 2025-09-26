@@ -1,0 +1,91 @@
+{
+  "content_hash": "8c7db91bfb698532b2a1446f3036021b",
+  "timestamp": "2025-09-26T13:35:48.602668+07:00",
+  "result": {
+    "path": "internal/infras/moralis_solana",
+    "purpose": "This folder/module is responsible for implementing a client to interact with the Moralis Solana API, handling data structures for token balances, NFT details, and token prices.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "client.go",
+      "models.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+      "github.com/samber/lo",
+      "go.uber.org/zap"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, separating client implementation and data models to facilitate interaction with the Moralis Solana API.",
+    "file_summaries": {
+      "internal/infras/moralis_solana/client.go": {
+        "language": "Go",
+        "purpose": "This file implements a client for interacting with the Moralis Solana API, providing methods to retrieve balances, NFT items, and token prices.",
+        "key_types": [
+          "pathConfig",
+          "Client",
+          "Config",
+          "client",
+          "getRequestParams",
+          "postRequestParams"
+        ],
+        "functions": [
+          "NewClient",
+          "GetSolBalance",
+          "GetSplBalance",
+          "GetNftItems",
+          "GetMultipleTokenPrices",
+          "sendGetRequest",
+          "sendPostRequest"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+          "github.com/samber/lo",
+          "go.uber.org/zap"
+        ],
+        "side_effects": [
+          "Makes HTTP requests to external API endpoints"
+        ],
+        "risks": [
+          "Potential for nil pointer dereference if API responses are not handled correctly",
+          "Error handling may expose sensitive information in error messages"
+        ],
+        "complexity": "medium"
+      },
+      "internal/infras/moralis_solana/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures for interacting with the Moralis Solana API, including token balances, NFT details, and token prices.",
+        "key_types": [
+          "ErrorMessage",
+          "GetAllTokenBalance",
+          "GetFungibleBalance",
+          "GetByWallet",
+          "GetNativeBalance",
+          "GetSplBalance",
+          "GetNftItems",
+          "MediaCollectionItem",
+          "NativeBalance",
+          "SplToken",
+          "NftAttribute",
+          "NftCollection",
+          "NftToken",
+          "PortfolioTokens",
+          "TokenPrice"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

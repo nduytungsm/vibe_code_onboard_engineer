@@ -1,0 +1,40 @@
+{
+  "content_hash": "d2ce34b8f2ac269c3d67eeef3d6b86a9",
+  "timestamp": "2025-09-26T13:13:39.890282+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a service for managing events, including caching and retrieving events from a repository and Redis cache.",
+    "key_types": [
+      "EventSvc",
+      "eventSvc"
+    ],
+    "functions": [
+      "NewEventSvc",
+      "GetEventByID",
+      "CacheEventInOneWeek",
+      "RemoveEventFromCache",
+      "FindEventFromCache",
+      "FindEventByQuest"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Interacts with Redis for caching events",
+      "Logs errors using zap logger"
+    ],
+    "risks": [
+      "Potential for cache inconsistency if events are modified in the repository but not in the cache",
+      "Error handling may expose sensitive information in logs"
+    ],
+    "complexity": "medium"
+  }
+}

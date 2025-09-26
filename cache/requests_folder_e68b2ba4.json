@@ -1,0 +1,34 @@
+{
+  "content_hash": "7223ce20bbc6cd386037ecde5bbab188",
+  "timestamp": "2025-09-26T13:35:32.401636+07:00",
+  "result": {
+    "path": "internal/domains/discovery/handlers/dtos/requests",
+    "purpose": "Defines request structures for various discovery-related queries, including validation rules.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "trending-token.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/discovery/models"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing request DTOs for clear separation of concerns and maintainability.",
+    "file_summaries": {
+      "internal/domains/discovery/handlers/dtos/requests/trending-token.go": {
+        "language": "Go",
+        "purpose": "Defines a request structure for trending token queries with validation rules.",
+        "key_types": [
+          "TrendingTokenRequest",
+          "SortDimension",
+          "TimeRange"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/discovery/models"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

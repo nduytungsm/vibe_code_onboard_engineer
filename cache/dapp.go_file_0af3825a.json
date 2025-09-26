@@ -1,0 +1,18 @@
+{
+  "content_hash": "881d9136686b687dcaa207091ff6bf80",
+  "timestamp": "2025-09-26T13:23:27.168805+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for DApp scan results and statuses.",
+    "key_types": [
+      "ScanStatus",
+      "DAppScanResult",
+      "DAppSite"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

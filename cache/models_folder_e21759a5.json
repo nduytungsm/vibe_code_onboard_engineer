@@ -1,0 +1,93 @@
+{
+  "content_hash": "ade3b7035975baa330b0b322ff64073e",
+  "timestamp": "2025-09-26T13:33:38.551239+07:00",
+  "result": {
+    "path": "internal/domains/manager/models",
+    "purpose": "Responsible for defining data models related to application versions, operators, history tracking, mandatory updates, and notifications.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "app_version.go",
+      "auth.go",
+      "generic.go",
+      "mandatory_update.go",
+      "noti.go"
+    ],
+    "dependencies": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing related data models into separate files for clarity and maintainability.",
+    "file_summaries": {
+      "internal/domains/manager/models/app_version.go": {
+        "language": "Go",
+        "purpose": "Defines a VersionEntity struct for managing application version data.",
+        "key_types": [
+          "VersionEntity"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/manager/models/auth.go": {
+        "language": "Go",
+        "purpose": "Defines the OperatorEntity struct for managing operator data in the application.",
+        "key_types": [
+          "OperatorEntity"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/manager/models/generic.go": {
+        "language": "Go",
+        "purpose": "Defines a HistoryEntity struct for tracking changes made by operators.",
+        "key_types": [
+          "HistoryEntity"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/manager/models/mandatory_update.go": {
+        "language": "Go",
+        "purpose": "Defines a data model for mandatory updates in the application.",
+        "key_types": [
+          "MandatoryUpdateEntity"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/manager/models/noti.go": {
+        "language": "Go",
+        "purpose": "Defines data models for notifications and related entities.",
+        "key_types": [
+          "NotificationEntity",
+          "NotificationListingItem",
+          "NotiWhitelistEntity",
+          "NotiWhitelistCount",
+          "ListNotiFilter",
+          "Preference"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

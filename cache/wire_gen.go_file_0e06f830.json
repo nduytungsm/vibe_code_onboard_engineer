@@ -1,0 +1,45 @@
+{
+  "content_hash": "d289c48ad7dbe2462bf3239fbb39b0e5",
+  "timestamp": "2025-09-26T12:10:31.050427+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is generated code for dependency injection using Wire, setting up the CMS application with various services and configurations.",
+    "key_types": [
+      "applications.Application",
+      "cmsConfig",
+      "zap.Logger",
+      "middlewares.EchoMiddleware",
+      "storages.PostgreSQL",
+      "cms.BannerRepository",
+      "banners.BannerService",
+      "cms.BannerHandler",
+      "cms.BannerRouter",
+      "services.RestfulService"
+    ],
+    "functions": [
+      "wireCMSApp",
+      "provideSugarLogger",
+      "provideServices"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers/cms",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/cms",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/cms",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/banners",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Database connection established",
+      "HTTP server setup with routes"
+    ],
+    "risks": [
+      "Potential for database connection errors",
+      "Improper handling of configuration values may lead to runtime errors"
+    ],
+    "complexity": "medium"
+  }
+}

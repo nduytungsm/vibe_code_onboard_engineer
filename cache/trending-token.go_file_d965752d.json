@@ -1,0 +1,18 @@
+{
+  "content_hash": "e1d73e80a6d3c34efa3f19da72702bf6",
+  "timestamp": "2025-09-26T13:22:51.970116+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a request structure for trending token queries with validation rules.",
+    "key_types": [
+      "TrendingTokenRequest",
+      "SortDimension",
+      "TimeRange"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/discovery/models"
+    ],
+    "complexity": "low"
+  }
+}

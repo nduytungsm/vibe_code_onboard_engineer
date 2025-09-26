@@ -1,41 +1,52 @@
 {
-  "content_hash": "b9c8193200b3122fe7243f35954768e3",
-  "timestamp": "2025-09-26T11:54:38.374141+07:00",
+  "content_hash": "88cf6b1938c9c64e265d3c1c069357b4",
+  "timestamp": "2025-09-26T13:29:33.213098+07:00",
   "result": {
     "path": "root",
-    "purpose": "This folder/module is responsible for the wallet-manager project, including configuration, documentation, and service definitions.",
+    "purpose": "This folder/module is responsible for the configuration, documentation, and orchestration of the Ronin Wallet microservices ecosystem.",
     "languages": {
-      "JSON": 2,
+      "Go": 1,
       "Markdown": 2,
-      "YAML": 2,
+      "YAML": 3,
       "bash": 1
     },
     "key_modules": [
       ".golangci.yaml",
+      ".mockery.yaml",
       "README.md",
       "SECURITY.md",
-      "country_iso2_to_currency.json",
-      "country_iso2_to_iso3.json",
+      "config.go",
       "docker-compose.yml",
       "entrypoint.sh"
     ],
     "dependencies": [
-      "PostgreSQL",
-      "Redis"
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy"
     ],
-    "architecture": "The folder follows a modular architecture pattern, organizing configuration, documentation, and service definitions for a Dockerized application.",
+    "architecture": "The folder follows a microservices architecture pattern, utilizing Docker for container orchestration and includes configuration files for linting, service management, and documentation.",
     "file_summaries": {
       ".golangci.yaml": {
         "language": "YAML",
-        "purpose": "Configuration file for GolangCI-Lint, specifying linter settings and rules.",
-        "key_types": [],
+        "purpose": "Configuration file for GolangCI-Lint, specifying linting rules and settings for Go code.",
+        "key_types": [
+          "linters-settings",
+          "rules",
+          "issues"
+        ],
         "functions": [],
         "imports": [],
         "complexity": "medium"
       },
+      ".mockery.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for Mockery tool settings",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
       "README.md": {
         "language": "Markdown",
-        "purpose": "Documentation for the wallet-manager project",
+        "purpose": "Documentation for the Ronin Wallet microservices ecosystem, detailing architecture, services, prerequisites, configuration, development, and security.",
         "key_types": [],
         "functions": [],
         "imports": [],
@@ -49,56 +60,70 @@
         "imports": [],
         "complexity": "low"
       },
-      "country_iso2_to_currency.json": {
-        "language": "JSON",
-        "purpose": "This file maps country ISO2 codes to their respective currencies.",
+      "config.go": {
+        "language": "Go",
+        "purpose": "Defines the configuration structure for the application, including various settings for application, server, databases, logging, and more.",
         "key_types": [
-          "string",
-          "string"
+          "Config",
+          "ApplicationConfig",
+          "ServerConfig",
+          "MetricsConfig",
+          "RedisConfig",
+          "PostgresConfig",
+          "DatabasesConfig",
+          "LoggingConfig",
+          "SentryConfig",
+          "ClientChainConfig",
+          "ClientConstraintConfig",
+          "CacheConfig",
+          "LimitsConfig",
+          "InternalServicesConfig",
+          "ChainConfig",
+          "ChainExtrasConfig",
+          "NativeTokenConfig",
+          "ChainProviderConfig",
+          "HTTPClientConfig",
+          "AuthConfig"
         ],
         "functions": [],
-        "imports": [],
-        "complexity": "low"
-      },
-      "country_iso2_to_iso3.json": {
-        "language": "JSON",
-        "purpose": "This file maps ISO 3166-1 alpha-2 country codes to their corresponding ISO 3166-1 alpha-3 country codes.",
-        "key_types": [
-          "string"
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy"
         ],
-        "functions": [],
-        "imports": [],
-        "complexity": "low"
+        "complexity": "medium"
       },
       "docker-compose.yml": {
         "language": "YAML",
-        "purpose": "Defines services for a Docker application including PostgreSQL and Redis.",
+        "purpose": "Defines a multi-container Docker application with services for PostgreSQL, Redis, and Kafka.",
         "key_types": [
           "services",
-          "environment"
+          "environment",
+          "ports"
         ],
         "functions": [],
         "imports": [],
         "side_effects": [
-          "Creates Docker containers for PostgreSQL and Redis services."
+          "Exposes ports for external access",
+          "Sets environment variables for service configuration"
         ],
         "risks": [
-          "Exposing database ports to the host may lead to unauthorized access."
+          "Potential exposure of sensitive information in environment variables",
+          "Misconfiguration of service ports"
         ],
-        "complexity": "low"
+        "complexity": "medium"
       },
       "entrypoint.sh": {
         "language": "bash",
-        "purpose": "This script serves as an entry point to run a service application.",
+        "purpose": "This script checks for environment variables and runs a binary with a specified configuration.",
         "key_types": [],
-        "functions": [
-          "main"
-        ],
-        "imports": [
-          "./app"
-        ],
+        "functions": [],
+        "imports": [],
         "side_effects": [
-          "Exits the script if any command fails."
+          "Exits with an error message if required environment variables are not set.",
+          "Executes an external binary."
+        ],
+        "risks": [
+          "Potential execution of an arbitrary binary if BINARY_PATH is manipulated."
         ],
         "complexity": "low"
       }

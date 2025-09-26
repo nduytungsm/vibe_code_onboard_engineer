@@ -1,0 +1,26 @@
+{
+  "content_hash": "5ba378d006b9bc88701daa6c0bbe581b",
+  "timestamp": "2025-09-26T12:16:37.592696+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects for paginated responses and server responses.",
+    "key_types": [
+      "Paging",
+      "Paginated[T]",
+      "ServerResponseDTO[T]",
+      "ServerSuccessResponseDTO"
+    ],
+    "functions": [
+      "Paginate[T]",
+      "NewSliceResponse[T]",
+      "NewResponse[T]",
+      "NewSuccessResponse"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "complexity": "medium"
+  }
+}

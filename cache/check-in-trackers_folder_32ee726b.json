@@ -1,0 +1,86 @@
+{
+  "content_hash": "f33f7ba05ce82c22110d7a5aa72d818c",
+  "timestamp": "2025-09-26T13:29:11.021693+07:00",
+  "result": {
+    "path": "internal/services/check-in-trackers",
+    "purpose": "Provides services for tracking game check-ins and calculating streaks.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "game_data.go",
+      "game_data_provider.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+      "go.uber.org/zap",
+      "github.com/go-resty/resty/v2",
+      "go.uber.org/multierr"
+    ],
+    "architecture": "The folder follows a service-oriented architecture, encapsulating game check-in tracking functionalities into distinct modules that handle specific responsibilities.",
+    "file_summaries": {
+      "internal/services/check-in-trackers/game_data.go": {
+        "language": "Go",
+        "purpose": "Provides services for tracking game check-ins and calculating streaks.",
+        "key_types": [
+          "CheckInStreak",
+          "GameDataService",
+          "gameDataService"
+        ],
+        "functions": [
+          "NewGameDataService",
+          "CheckInStreak",
+          "IsRegisterGameByProject"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+          "go.uber.org/zap"
+        ],
+        "side_effects": [
+          "Logs errors when check-in fails"
+        ],
+        "risks": [
+          "Potential for time manipulation if input times are not validated properly"
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/check-in-trackers/game_data_povider.go": {
+        "language": "Go",
+        "purpose": "Provides functionality to check in game events and register game addresses for a specific project.",
+        "key_types": [
+          "CheckInEvent",
+          "GameDataProvider",
+          "gameCheckDataReq",
+          "gameDataProviderImpl"
+        ],
+        "functions": [
+          "NewGameDataProvider",
+          "CheckInGameByTimeRange",
+          "RegisterGameByProject"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+          "github.com/go-resty/resty/v2",
+          "go.uber.org/multierr",
+          "go.uber.org/zap"
+        ],
+        "side_effects": [
+          "Makes HTTP requests to an external service",
+          "Logs errors using a logger"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if the secret is logged or mishandled",
+          "Error handling may not cover all edge cases leading to unhandled errors"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

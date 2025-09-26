@@ -1,0 +1,45 @@
+{
+  "content_hash": "0bdb67335daf8f310d4a52ee769fa7ce",
+  "timestamp": "2025-09-26T13:17:39.922781+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines public API routes for a wallet manager application, including health checks and various resource endpoints.",
+    "key_types": [
+      "APIVersion",
+      "config.Schema",
+      "handlers.ReleaseCandidateHandler",
+      "handlers.NetworkHandler",
+      "handlers.CommonHandler",
+      "handlers.AccountHandler",
+      "handlers.MoonpayHandler",
+      "handlers.LocationHandler",
+      "handlers.AnnouncementHandler",
+      "handlers.BinanceHandler",
+      "handlers.TrustedDomainHandler",
+      "handlers.DAppHandler",
+      "handlers.ExternalAuthHandler",
+      "handlers.BlacklistHandler"
+    ],
+    "functions": [
+      "HealthCheck",
+      "registerPublic"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-manager/config",
+      "github.com/axieinfinity/ronin-wallet-manager/handlers",
+      "github.com/axieinfinity/ronin-wallet-manager/middleware",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "side_effects": [
+      "Modifies the state of the HTTP server by registering routes and handlers."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information through API endpoints if not properly secured.",
+      "Dependency on external libraries which may introduce vulnerabilities."
+    ],
+    "complexity": "medium"
+  }
+}

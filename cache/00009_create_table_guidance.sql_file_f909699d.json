@@ -1,0 +1,30 @@
+{
+  "content_hash": "a628d9912b72eafdb21545c80e8cd5da",
+  "timestamp": "2025-09-26T13:27:27.885024+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to create a table and manage permissions.",
+    "key_types": [
+      "BIGINT",
+      "TEXT",
+      "TIMESTAMPTZ",
+      "activity_type",
+      "platforms"
+    ],
+    "functions": [
+      "INSERT",
+      "UPDATE",
+      "SELECT",
+      "CREATE TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the roles table by updating permission_ids",
+      "Creates a new table activities_guidance"
+    ],
+    "risks": [
+      "Potential SQL injection if user input is not properly sanitized"
+    ],
+    "complexity": "medium"
+  }
+}

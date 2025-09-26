@@ -1,0 +1,19 @@
+{
+  "content_hash": "0509c99e37383f22de68b212acd6590b",
+  "timestamp": "2025-09-26T13:22:58.055713+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for operator management requests.",
+    "key_types": [
+      "CreateOperator",
+      "ListOperators",
+      "DeleteOperator",
+      "GetOperator"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+    ],
+    "complexity": "low"
+  }
+}

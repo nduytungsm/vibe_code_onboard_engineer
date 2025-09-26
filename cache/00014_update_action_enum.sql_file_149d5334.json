@@ -1,0 +1,28 @@
+{
+  "content_hash": "3b436f6a8faa965aa4bf0fdfce40dde3",
+  "timestamp": "2025-09-26T13:27:29.242231+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to update and revert permission actions in a database.",
+    "key_types": [
+      "permission_action",
+      "roles",
+      "permissions"
+    ],
+    "functions": [
+      "ALTER TYPE",
+      "INSERT INTO",
+      "UPDATE",
+      "DELETE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the database schema and data related to permissions and roles."
+    ],
+    "risks": [
+      "Potential data loss if rollback is not handled properly.",
+      "SQL injection if user input is not sanitized."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "content_hash": "1a90351d10a3e7fbd04c01444634ebf8",
+  "timestamp": "2025-09-26T12:25:50.978848+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for handling requests and responses in an OpenAI API context.",
+    "key_types": [
+      "RequestBody",
+      "Tool",
+      "Function",
+      "ChatCompletionResponse",
+      "ToolCall",
+      "Choice",
+      "Message",
+      "Usage",
+      "PromptTokensDetails",
+      "CompletionTokensDetails",
+      "APIErrorResponse",
+      "APIError"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

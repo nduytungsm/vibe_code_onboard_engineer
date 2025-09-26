@@ -1,0 +1,30 @@
+{
+  "content_hash": "8e60f5becabc302dca8fac9a4445fa8b",
+  "timestamp": "2025-09-26T13:27:57.720268+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the CheckInStreak functionality in the check_in_trackers service.",
+    "key_types": [
+      "CheckInEvent",
+      "GameDataProvider",
+      "GameDataService"
+    ],
+    "functions": [
+      "Test_CheckInStreak_CurrentEqualMaxStreak",
+      "Test_CheckInStreak_BreakStreakCurrentLessThanMaxStreak",
+      "Test_CheckInStreak_BreakStreakCurrentEqualThanMaxStreak",
+      "Test_CheckInStreak_NoCheckIn"
+    ],
+    "imports": [
+      "context",
+      "testing",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/check-in-trackers",
+      "github.com/axieinfinity/ronin-wallet-services/mocks/services/check-in-trackers",
+      "github.com/axieinfinity/ronin-wallet-services/tests",
+      "github.com/stretchr/testify/assert",
+      "github.com/test-go/testify/mock"
+    ],
+    "complexity": "medium"
+  }
+}

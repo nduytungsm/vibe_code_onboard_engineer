@@ -1,0 +1,28 @@
+{
+  "content_hash": "7b099e5cd701d187cb5d6678c9918bc6",
+  "timestamp": "2025-09-26T13:27:20.880852+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a function to create a new synchronous Kafka producer using the Sarama library.",
+    "key_types": [
+      "Config",
+      "sarama.SyncProducer"
+    ],
+    "functions": [
+      "NewKafkaProducer"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/IBM/sarama"
+    ],
+    "side_effects": [
+      "Establishes a connection to a Kafka client",
+      "Creates a synchronous producer"
+    ],
+    "risks": [
+      "Potential connection failure to Kafka",
+      "Error handling may expose internal error messages"
+    ],
+    "complexity": "medium"
+  }
+}

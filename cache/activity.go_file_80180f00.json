@@ -1,0 +1,23 @@
+{
+  "content_hash": "080c65cb640c3cd3e6d94f0815c0ca62",
+  "timestamp": "2025-09-26T12:31:03.184361+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for quest activities and actions in a gaming context.",
+    "key_types": [
+      "QuestActivityGenericDTO",
+      "QuestActivityVerifyInfoDTO",
+      "QuestAction",
+      "UserAction",
+      "VerifiedPActDTO",
+      "QuestActivitiesListDTO",
+      "ActionItem",
+      "Preview"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
+    ],
+    "complexity": "medium"
+  }
+}

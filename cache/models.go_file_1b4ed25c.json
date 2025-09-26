@@ -1,0 +1,16 @@
+{
+  "content_hash": "64c603a5b4e8eceb60bd42324d7f8692",
+  "timestamp": "2025-09-26T13:12:05.090771+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for handling onramp token requests and responses in a Coinbase context.",
+    "key_types": [
+      "Address",
+      "OnrampTokenReq",
+      "OnrampTokenResp"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

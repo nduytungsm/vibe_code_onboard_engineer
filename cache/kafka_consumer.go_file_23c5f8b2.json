@@ -1,0 +1,31 @@
+{
+  "content_hash": "c0ba3edad4e6eac9323859c9c7a87742",
+  "timestamp": "2025-09-26T13:12:13.368683+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a Kafka batch consumer that fetches and commits messages from a Kafka topic.",
+    "key_types": [
+      "KafkaBatchConsumer",
+      "kafkaBatchConsumer"
+    ],
+    "functions": [
+      "NewKafkaBatchConsumer",
+      "ConsumeBatch",
+      "Commit",
+      "Close"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "time",
+      "github.com/segmentio/kafka-go"
+    ],
+    "side_effects": [
+      "Sends messages to a commit channel after consuming."
+    ],
+    "risks": [
+      "Potential for deadlocks if not handled properly with context timeouts."
+    ],
+    "complexity": "medium"
+  }
+}

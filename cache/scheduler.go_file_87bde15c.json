@@ -1,0 +1,36 @@
+{
+  "content_hash": "d6ba80f0493f59f73dc5c478eb8a23c7",
+  "timestamp": "2025-09-26T12:21:27.43174+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a scheduler handler for managing asynchronous tasks using the asynq library.",
+    "key_types": [
+      "scheduler",
+      "asynq.Client",
+      "echo.Context"
+    ],
+    "functions": [
+      "NewSchedulerHandler",
+      "Setup",
+      "sendTask"
+    ],
+    "imports": [
+      "net/http",
+      "time",
+      "github.com/hibiken/asynq",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/scheduler/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "side_effects": [
+      "Enqueues tasks to the asynq client",
+      "Responds with JSON data"
+    ],
+    "risks": [
+      "Potential for denial of service if too many tasks are enqueued",
+      "Improper error handling may expose internal logic"
+    ],
+    "complexity": "medium"
+  }
+}

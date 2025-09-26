@@ -1,0 +1,34 @@
+{
+  "content_hash": "377ac6ef1f0b73c49a9037fdd71433dd",
+  "timestamp": "2025-09-26T12:31:47.863516+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains middleware functions for extracting user information from HTTP requests in a web application.",
+    "key_types": [
+      "echo.Context",
+      "repositories.UserRepo",
+      "models.User"
+    ],
+    "functions": [
+      "ExtractAddress",
+      "ExtractUserID",
+      "GetUserIDMiddleware"
+    ],
+    "imports": [
+      "errors",
+      "net/http",
+      "strings",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/labstack/echo/v4"
+    ],
+    "side_effects": [
+      "Modifies the context by setting the user ID parameter."
+    ],
+    "risks": [
+      "Potential for unauthorized access if user identification fails."
+    ],
+    "complexity": "medium"
+  }
+}

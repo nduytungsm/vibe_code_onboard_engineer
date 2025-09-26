@@ -1,0 +1,48 @@
+{
+  "content_hash": "fb2a2bfd613c632bf7f5851356c702b7",
+  "timestamp": "2025-09-26T13:10:08.336716+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is part of a dependency injection setup for a wallet manager application, generating the necessary components and services.",
+    "key_types": [
+      "applications.Application",
+      "configSchema",
+      "generator.IDGenerator",
+      "http.Server",
+      "gorm.DB",
+      "asynq.Client"
+    ],
+    "functions": [
+      "wireWalletManager",
+      "provideHttpServer",
+      "provideServices",
+      "provideZapLogger",
+      "provideAsyncQueueClient"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/validation",
+      "github.com/hibiken/asynq",
+      "github.com/labstack/echo/v4/middleware",
+      "go.uber.org/zap",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Establishes database connections",
+      "Creates HTTP server instances",
+      "Initializes various services and repositories"
+    ],
+    "risks": [
+      "Potential for database connection leaks if not handled properly",
+      "Improper error handling could lead to application crashes"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "content_hash": "84c72a4c991938869282bfebad85291e",
+  "timestamp": "2025-09-26T13:09:59.518953+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is part of a task scheduler application that uses dependency injection to configure and initialize various components such as a scheduler, HTTP server, and services.",
+    "key_types": [
+      "Config",
+      "applications.Application",
+      "asynq.Scheduler",
+      "asynq.Client",
+      "schedulerService",
+      "http.Server"
+    ],
+    "functions": [
+      "wireTaskScheduler",
+      "provideScheduler",
+      "provideAsyncQueueClient",
+      "provideSchedulerService",
+      "provideHttpHandlers",
+      "provideHttpServer",
+      "provideServices",
+      "Start",
+      "Stop"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/scheduler/handlers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/validation",
+      "github.com/hibiken/asynq",
+      "github.com/labstack/echo/v4/middleware",
+      "go.uber.org/zap",
+      "time"
+    ],
+    "side_effects": [
+      "Logs task enqueue success or failure",
+      "Registers scheduled tasks with the scheduler"
+    ],
+    "complexity": "medium"
+  }
+}

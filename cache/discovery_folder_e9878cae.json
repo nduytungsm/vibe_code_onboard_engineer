@@ -1,0 +1,415 @@
+{
+  "content_hash": "162b9b3cb043dfc14814593d4f089180",
+  "timestamp": "2025-09-26T13:28:47.509532+07:00",
+  "result": {
+    "path": "internal/handlers/discovery",
+    "purpose": "Responsible for handling various aspects of a discovery service, including announcements, events, banners, products, and layout management.",
+    "languages": {
+      "Go": 12
+    },
+    "key_modules": [
+      "announcement.go",
+      "event.go",
+      "feature_banner.go",
+      "generic.go",
+      "helpers.go",
+      "home_banner.go",
+      "layout.go",
+      "product.go",
+      "product.helper.go",
+      "tokens.go"
+    ],
+    "dependencies": [
+      "context",
+      "errors",
+      "time",
+      "github.com/google/wire",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "strconv",
+      "fmt",
+      "mime/multipart",
+      "github.com/samber/lo",
+      "golang.org/x/mod/semver"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, with each file representing a specific handler for different functionalities within the discovery service, promoting separation of concerns and maintainability.",
+    "file_summaries": {
+      "internal/handlers/discovery/announcement.go": {
+        "language": "Go",
+        "purpose": "Handles announcements and banner management for a discovery service.",
+        "key_types": [
+          "Announcement",
+          "announcement",
+          "CreateBanner",
+          "UpdateItemStatus",
+          "ListBanners",
+          "BannerItem",
+          "PaginationDTO"
+        ],
+        "functions": [
+          "NewAnnouncementHandler",
+          "CreateBanner",
+          "ListBanners",
+          "DeleteBanner",
+          "GetBannerByID",
+          "EditBanner"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "time",
+          "github.com/google/wire",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Modifies the state of banners in the discovery service."
+        ],
+        "risks": [
+          "Potential for invalid date handling leading to incorrect banner states.",
+          "Error handling may expose internal server errors."
+        ],
+        "complexity": "medium"
+      },
+      "internal/handlers/discovery/event.go": {
+        "language": "Go",
+        "purpose": "Handles event-related operations for discovery, including creating, deleting, and listing events.",
+        "key_types": [
+          "Event",
+          "event",
+          "discovery_requests.CreateEvItem",
+          "discovery_requests.DeleteEvItem",
+          "discovery_responses.Event"
+        ],
+        "functions": [
+          "NewEventHandler",
+          "CreateEventItem",
+          "ListRoninMarketEvents",
+          "DeleteEventItem"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "strconv",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "risks": [
+          "Potential for invalid event types leading to errors.",
+          "Improper handling of timestamps could lead to incorrect event creation."
+        ],
+        "complexity": "medium"
+      },
+      "internal/handlers/discovery/feature_banner.go": {
+        "language": "Go",
+        "purpose": "Handles feature banner operations such as creating, deleting, and retrieving feature banners based on version and platform.",
+        "key_types": [
+          "FeatureBanner",
+          "featureBanner",
+          "discovery_requests.CreateFeatureBanner",
+          "discovery_requests.DeleteFeatureBanner",
+          "discovery_requests.GetVersionFeatureBanners",
+          "discovery_requests.GetLatestFeatureBanner",
+          "discovery_responses.FeatureBanner",
+          "discovery_models.FeatureHeadlineEntity"
+        ],
+        "functions": [
+          "NewFeatureBannerHandler",
+          "Create",
+          "GetByVersion",
+          "GetLatestVersion",
+          "Delete"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery",
+          "github.com/google/wire",
+          "github.com/samber/lo",
+          "golang.org/x/mod/semver"
+        ],
+        "side_effects": [
+          "Interacts with external services to check existence and manage feature banners."
+        ],
+        "risks": [
+          "Potential for errors in handling invalid platform or version inputs.",
+          "Error handling may expose internal service errors."
+        ],
+        "complexity": "medium"
+      },
+      "internal/handlers/discovery/generic.go": {
+        "language": "Go",
+        "purpose": "This file defines a generic handler for discovery-related functionalities, including listing social platforms, studios, categories, and handling image uploads.",
+        "key_types": [
+          "Generic",
+          "generic",
+          "discovery_requests.ListGenericItems",
+          "discovery_responses.SocialPlatforms",
+          "responses.PaginationDTO",
+          "discovery_enums.ProductType"
+        ],
+        "functions": [
+          "NewGenericHandler",
+          "ListSocialPlatforms",
+          "ListStudios",
+          "ListCategories",
+          "Search",
+          "ListGamePlatforms",
+          "CreateStudio",
+          "UploadImg",
+          "RequestImageUpload"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "mime/multipart",
+          "github.com/google/wire",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Logs messages using zap logger",
+          "Modifies the state of the discovery services"
+        ],
+        "risks": [
+          "Potential for unhandled errors from service calls",
+          "Improper handling of file uploads could lead to security vulnerabilities"
+        ],
+        "complexity": "medium"
+      },
+      "internal/handlers/discovery/helpers.go": {
+        "language": "Go",
+        "purpose": "This file contains helper functions for validating and managing widget layouts in a discovery handler.",
+        "key_types": [
+          "HandlerUpdateLayoutWidget",
+          "HandlerUpdateWidgetItems",
+          "HandlerUpsertFullpageWidget",
+          "WidgetItemType",
+          "DisplayStyle",
+          "CustomItemOrder"
+        ],
+        "functions": [
+          "isWidgetDuplicated",
+          "isWidgetItemDuplicated",
+          "validateWidgetLogic",
+          "validateRequireItems",
+          "validateFullpageWidgetLogic",
+          "validateItemType",
+          "validateDisplayStyle",
+          "validateItemPerRow",
+          "validateCustomOrder",
+          "validateDefaultColumns",
+          "validateWidgetTitle",
+          "ensureHierarchy",
+          "findWidgetItemGetter",
+          "marshalWidgetItemResponse",
+          "validateWidgetIDsExistance"
+        ],
+        "imports": [
+          "context",
+          "github.com/samber/lo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "complexity": "medium"
+      },
+      "internal/handlers/discovery/home_banner.go": {
+        "language": "Go",
+        "purpose": "This file defines a handler for managing home banners, including creating, deleting, and listing them.",
+        "key_types": [
+          "HomeBanner",
+          "homeBanner",
+          "discovery_requests.CreateHomeBanner",
+          "discovery_requests.DeleteHomeBanner",
+          "discovery_requests.ListHomeBanners",
+          "discovery_responses.HomeBanner",
+          "responses.PaginationDTO"
+        ],
+        "functions": [
+          "NewHomeBanner",
+          "CreateHomeBanner",
+          "DeleteHomeBanner",
+          "ListHomeBanners",
+          "FindActiveHomeBanner"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery",
+          "github.com/google/wire",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/handlers/discovery/layout.go": {
+        "language": "Go",
+        "purpose": "This file defines a layout handler for managing widget layouts in a discovery service.",
+        "key_types": [
+          "WidgetItem",
+          "Layout",
+          "layout"
+        ],
+        "functions": [
+          "NewLayoutHandler",
+          "CreateLayout",
+          "UpdateLayoutWidgets",
+          "CreateLayoutContacts",
+          "CreateLayoutServices",
+          "GetLayoutWidgets"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "github.com/google/wire",
+          "github.com/samber/lo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Creates and updates layouts and widgets in the discovery service."
+        ],
+        "risks": [
+          "Potential for errors in widget validation leading to incorrect layouts."
+        ],
+        "complexity": "medium"
+      },
+      "internal/handlers/discovery/product.go": {
+        "language": "Go",
+        "purpose": "Handles product-related operations such as creating, updating, deleting, and retrieving products.",
+        "key_types": [
+          "Product",
+          "product",
+          "discovery_requests.HandlerCreateProduct",
+          "discovery_requests.UpdateItemStatus",
+          "discovery_responses.ProductItem",
+          "discovery_responses.ListProductItem",
+          "responses.PaginationDTO"
+        ],
+        "functions": [
+          "NewProductHandler",
+          "CreateProduct",
+          "ListProducts",
+          "DeleteProduct",
+          "RestoreProduct",
+          "UpdateProduct",
+          "GetProductByID",
+          "verifyUpdateProduct",
+          "verifyCreateProduct",
+          "verifyGamePlatforms"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "github.com/google/wire",
+          "github.com/samber/lo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery"
+        ],
+        "risks": [
+          "Potential for invalid product types or game platforms leading to errors.",
+          "Improper handling of context may lead to resource leaks."
+        ],
+        "complexity": "medium"
+      },
+      "internal/handlers/discovery/product.helper.go": {
+        "language": "Go",
+        "purpose": "This file contains helper functions for mapping and copying data related to products and their social platforms.",
+        "key_types": [
+          "ProductSocialPlatform",
+          "ProductSocial",
+          "ListProductItem",
+          "ProductItem",
+          "StudioItem",
+          "CategoryItem"
+        ],
+        "functions": [
+          "mapPlatformIDToSocial",
+          "copyListDappResp",
+          "copyGetProductByIDResp"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "complexity": "medium"
+      },
+      "internal/handlers/discovery/tokens.go": {
+        "language": "Go",
+        "purpose": "This file defines a handler for retrieving trending tokens in a discovery service.",
+        "key_types": [
+          "Tokens",
+          "tokens",
+          "TrendingTokenRequest",
+          "TrendingToken"
+        ],
+        "functions": [
+          "NewTokensHandler",
+          "GetTrending"
+        ],
+        "imports": [
+          "context",
+          "github.com/google/wire",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/discovery/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/discovery/services"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "content_hash": "1ba496e441632e1048e8b1cd31543a85",
+  "timestamp": "2025-09-26T13:34:42.50211+07:00",
+  "result": {
+    "path": "internal/services/discord",
+    "purpose": "Responsible for providing services to interact with Discord, including server membership verification and user information retrieval.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "config.go",
+      "discord_svc.go",
+      "models.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/bwmarrin/discordgo",
+      "go.uber.org/zap",
+      "context",
+      "fmt",
+      "net/http"
+    ],
+    "architecture": "The folder follows a service-oriented architecture, encapsulating Discord-related functionalities in separate files for configuration, service logic, and data models.",
+    "file_summaries": {
+      "internal/services/discord/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for Discord service with HTTP client settings.",
+        "key_types": [
+          "Config",
+          "xhttp.ClientConfig"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "complexity": "low"
+      },
+      "internal/services/discord/discord_svc.go": {
+        "language": "Go",
+        "purpose": "Provides a service for interacting with Discord, including verifying server membership and retrieving user information.",
+        "key_types": [
+          "DiscordService",
+          "discordSvc",
+          "UserSession",
+          "InviteInfo",
+          "ErrorMessage"
+        ],
+        "functions": [
+          "NewDiscordService",
+          "VerifyJoinServer",
+          "GetServerInfoFromInviteCode",
+          "GetUserInfo"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "net/http",
+          "github.com/bwmarrin/discordgo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Logs errors and debug information during API calls.",
+          "Creates and closes Discord client connections."
+        ],
+        "risks": [
+          "Potential exposure of user access tokens if not handled securely.",
+          "Error handling may expose sensitive information in logs."
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/discord/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures for Discord invite information and error messages, along with an error formatting method.",
+        "key_types": [
+          "InviteInfo",
+          "ErrorMessage"
+        ],
+        "functions": [
+          "Error"
+        ],
+        "imports": [
+          "fmt"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

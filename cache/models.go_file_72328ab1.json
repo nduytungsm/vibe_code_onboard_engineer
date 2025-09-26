@@ -1,0 +1,17 @@
+{
+  "content_hash": "26b2011c4210d6aa37ef259fea97a62b",
+  "timestamp": "2025-09-26T13:12:22.005842+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for API responses including listings, errors, and pagination.",
+    "key_types": [
+      "ListingResponse",
+      "LikedPost",
+      "APIError",
+      "Pagination"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

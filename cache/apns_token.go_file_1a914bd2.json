@@ -1,0 +1,31 @@
+{
+  "content_hash": "a5510cbae08ed956c09922ee22fc7726",
+  "timestamp": "2025-09-26T13:23:14.536685+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file manages Apple Provider Authentication Tokens for push notifications.",
+    "key_types": [
+      "Token"
+    ],
+    "functions": [
+      "GetAccessToken",
+      "expired",
+      "refresh",
+      "Apply"
+    ],
+    "imports": [
+      "crypto/ecdsa",
+      "sync",
+      "time",
+      "github.com/go-resty/resty/v2",
+      "github.com/golang-jwt/jwt"
+    ],
+    "side_effects": [
+      "Modifies the state of the Token object by refreshing the token."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if tokens are not handled securely."
+    ],
+    "complexity": "medium"
+  }
+}

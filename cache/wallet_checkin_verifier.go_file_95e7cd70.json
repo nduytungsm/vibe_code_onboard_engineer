@@ -1,0 +1,27 @@
+{
+  "content_hash": "496af74a41ec3d8b8c85a8b2aa7567a3",
+  "timestamp": "2025-09-26T13:13:50.956562+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Verifies wallet check-in for a user in a quest system.",
+    "key_types": [
+      "questVerifier",
+      "VerifyActionParams",
+      "context.Context"
+    ],
+    "functions": [
+      "verifyWalletCheckInProxy"
+    ],
+    "imports": [
+      "context",
+      "errors"
+    ],
+    "side_effects": [
+      "Modifies the state of VerifyActionParams based on wallet check-in information."
+    ],
+    "risks": [
+      "Potential for nil pointer dereference if context does not contain the expected value."
+    ],
+    "complexity": "medium"
+  }
+}

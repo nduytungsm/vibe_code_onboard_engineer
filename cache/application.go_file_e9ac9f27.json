@@ -1,0 +1,41 @@
+{
+  "content_hash": "ab6550921e9a21df5e33503b7aa185a1",
+  "timestamp": "2025-09-26T12:14:14.422894+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines an application structure that manages the lifecycle of services, including starting and stopping them gracefully.",
+    "key_types": [
+      "ApplicationConfig",
+      "Application",
+      "application"
+    ],
+    "functions": [
+      "NewApplication",
+      "Start",
+      "Stop",
+      "NameNormalized"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "os",
+      "os/signal",
+      "regexp",
+      "strings",
+      "syscall",
+      "time",
+      "go.uber.org/multierr",
+      "go.uber.org/zap",
+      "golang.org/x/sync/errgroup"
+    ],
+    "side_effects": [
+      "Handles OS signals for graceful shutdown",
+      "Starts and stops services"
+    ],
+    "risks": [
+      "Potential for deadlocks if services do not handle context cancellation properly",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

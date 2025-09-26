@@ -1,0 +1,355 @@
+{
+  "content_hash": "76c00632b5be2fe0d02a840b830e1ffe",
+  "timestamp": "2025-09-26T13:34:06.177843+07:00",
+  "result": {
+    "path": "internal/routers/dtos/requests",
+    "purpose": "Defines data transfer objects (DTOs) for various requests related to quests, activities, events, rewards, and user interactions in a gaming application.",
+    "languages": {
+      "Go": 20
+    },
+    "key_modules": [
+      "action.go",
+      "activity_guidance.go",
+      "event.go",
+      "pagination.go",
+      "participant.go",
+      "participant_action.go",
+      "quest.go",
+      "quest_pool.go",
+      "rangeDates.go",
+      "reward.go",
+      "shop.go",
+      "sorting.go",
+      "sponsor.go",
+      "user_event.go",
+      "user_quest.go",
+      "user_reward.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/shopspring/decimal",
+      "github.com/jackc/pgtype",
+      "time",
+      "strings"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing data transfer objects by functionality, which promotes separation of concerns and maintainability.",
+    "file_summaries": {
+      "internal/routers/dtos/requests/action.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for actions in a quest system.",
+        "key_types": [
+          "Action",
+          "UpsertActions",
+          "OptionalActItem",
+          "HandlerOptionalAct",
+          "DeleteGuidanceDTO",
+          "GetPreviews"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/requests/activity_guidance.go": {
+        "language": "Go",
+        "purpose": "Defines request data structures for activity guidance operations.",
+        "key_types": [
+          "ActivityGuidanceReq",
+          "UpdateActivityGuidanceReq",
+          "ActivityGuidanceDetailReq"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/requests/event.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for event-related requests in an application.",
+        "key_types": [
+          "UpsertEvent",
+          "DeleteEvent",
+          "ListEvents",
+          "GetPoolsOfEvent",
+          "JoinEvent"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/requests/pagination.go": {
+        "language": "Go",
+        "purpose": "Defines pagination data transfer objects and methods for setting default values and calculating offsets.",
+        "key_types": [
+          "PagingDTODefaultSetter",
+          "PagingDTO"
+        ],
+        "functions": [
+          "SetDefaultPaging",
+          "GetPage",
+          "GetSize",
+          "Offset",
+          "CalOffsetLimit"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/requests/participant.go": {
+        "language": "Go",
+        "purpose": "Defines a data transfer object for getting participant information.",
+        "key_types": [
+          "GetParticipant"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/requests/participant_action.go": {
+        "language": "Go",
+        "purpose": "Defines a data transfer object for user verification actions in a quest.",
+        "key_types": [
+          "UserVerifyActionDTO"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/requests/quest.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for quest-related requests in a gaming application.",
+        "key_types": [
+          "ListQuests",
+          "ListQuestParams",
+          "GetQuest",
+          "GetUserQuest",
+          "TakeQuest",
+          "DeleteQuestDTO",
+          "ManageQuestStatus",
+          "ManageQuestStatusParam",
+          "PublishQuest",
+          "StoreServiceCredentials",
+          "SubmitQuestDTO",
+          "HandlerSubmitQuestDTO",
+          "ResolveQuestDTO",
+          "ApproveQuest",
+          "HandlerResolveQuestDTO",
+          "ModifyQuestDTO",
+          "UpsertQuestInfo",
+          "UpsertQuestParams",
+          "GetLogsDTO",
+          "HandlerGetLogsDTO",
+          "ScheduleRewardDistributionJobReq",
+          "DistributeReward",
+          "HandlerScheduleRewardJobDTO",
+          "ListRewardRequestedUsersDTO",
+          "BlacklistUserDryrunDTO",
+          "GetAuditQuestStatisticsSTO",
+          "UpdateClaimableStatusDTO",
+          "UpdateCompletionDTO"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/requests/quest_pool.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for quest pool operations in a gaming context.",
+        "key_types": [
+          "UpsertPool",
+          "DeletePool",
+          "ListPools",
+          "ListEventPools",
+          "GetPoolWithAnalytics",
+          "ListQuestsByPool",
+          "SpawnUserQuest"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/requests/rangeDates.go": {
+        "language": "Go",
+        "purpose": "Defines a request structure for date range queries and provides methods to handle date range logic.",
+        "key_types": [
+          "RangeDateReq"
+        ],
+        "functions": [
+          "RangeDate",
+          "rangeDefault",
+          "MapFieldToColumn"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/requests/reward.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for reward-related operations in a quest system.",
+        "key_types": [
+          "ListRewardInfo",
+          "GetPoolByID",
+          "DeleteRewardPool",
+          "RejectUserReward",
+          "ApproveUserReward",
+          "QuestRewardItem",
+          "CreateQuestRewardDTO",
+          "ClaimRewardDTO",
+          "ListQuestRewardsDTO",
+          "QuestReward",
+          "UpsertQuestReward",
+          "UpsertRewardPool",
+          "EditPoolReqDTO",
+          "ListRewardPools",
+          "UpdatePoolStatusDTO",
+          "RewardExtraInfo",
+          "UpsertRewardInfo",
+          "ListFundSource",
+          "UpsertFundSource",
+          "TopUpPool",
+          "GetTxHashInfo",
+          "DeleteRewardInfoDTO",
+          "EditRewardInfo"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/jackc/pgtype",
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/requests/shop.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for shop-related operations such as creating, updating, deleting, and retrieving shop categories, tiers, items, and purchases.",
+        "key_types": [
+          "CreateShopCategory",
+          "UpdateShopCategory",
+          "DeleteShopCategory",
+          "GetShopCategory",
+          "CreateShopTier",
+          "UpdateShopTier",
+          "DeleteShopTier",
+          "GetShopTier",
+          "ListShopTiers",
+          "CreateShopItem",
+          "UpdateShopItem",
+          "DeleteShopItem",
+          "GetShopItem",
+          "UpdateShopItemQuantity",
+          "ListShopItems",
+          "CreateShopPurchase",
+          "GetShopPurchase",
+          "GetShopPurchaseByTxHash",
+          "ListShopPurchases",
+          "ListUserShopPurchases",
+          "UpdateShopPurchaseStatus"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/requests/sorting.go": {
+        "language": "Go",
+        "purpose": "Defines a sorting request structure and methods to handle sorting order.",
+        "key_types": [
+          "SortingReq"
+        ],
+        "functions": [
+          "Desc",
+          "Asc",
+          "SortBy"
+        ],
+        "imports": [
+          "strings"
+        ],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/requests/sponsor.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for sponsor-related operations.",
+        "key_types": [
+          "ListSponsorDTO",
+          "UpsertSponsor",
+          "UpsertSponsorParam",
+          "DeleteSponsorDTO",
+          "HandlerDeleteSponsorDTO",
+          "UpdateSponsorDTO",
+          "HandlerUpdateSponsorDTO",
+          "ListSponsors"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/requests/user_event.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects for user event requests.",
+        "key_types": [
+          "VerifyPremiumUser",
+          "GetUserEventAnalytics"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/requests/user_quest.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for user quest-related requests in a quest management system.",
+        "key_types": [
+          "ListUserQuests",
+          "ListUserDailyQuests",
+          "ActionExternalData",
+          "VerifyAction",
+          "RequestRewardDTO",
+          "BlacklistUserDTO",
+          "WhitelistUsersDTO",
+          "ExportAuditResultDTO",
+          "ManualUpdateDistributeStatusDTO",
+          "PrecheckTakeQuestDTO",
+          "ListUserOngoingQuestByEvent",
+          "SkipQuest"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/requests/user_reward.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for user reward requests in a reward system.",
+        "key_types": [
+          "PRewardDTO",
+          "HandlerPRewardDTO",
+          "ListUserRewards"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

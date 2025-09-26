@@ -1,0 +1,26 @@
+{
+  "content_hash": "1ce0057ba8133366f517f5f3425bdf2a",
+  "timestamp": "2025-09-26T12:22:02.798493+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a Signature model and provides functions to convert between database signatures and application signatures.",
+    "key_types": [
+      "Signature",
+      "models.Signature",
+      "pgtype.JSONB"
+    ],
+    "functions": [
+      "fromDBSignatures",
+      "fromDBSignature",
+      "fromSignature"
+    ],
+    "imports": [
+      "time",
+      "github.com/jackc/pgtype",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

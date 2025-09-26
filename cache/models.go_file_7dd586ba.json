@@ -1,0 +1,37 @@
+{
+  "content_hash": "27b45870938c23c981007b6f7944dd81",
+  "timestamp": "2025-09-26T13:24:51.110101+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for handling blockchain-related requests and responses, particularly for fungible and non-fungible tokens.",
+    "key_types": [
+      "RequestBase",
+      "RequestPagination",
+      "FungibleToken",
+      "NftToken",
+      "NftCollection",
+      "Balance",
+      "NativeBalanceResp",
+      "ErrorMessage",
+      "GetFungibleBalance",
+      "GetNftItems",
+      "TokenFiatInfo",
+      "ActivityNftTransfer",
+      "ActivityErc20Transfer",
+      "ActivityNativeTransfer",
+      "ActivityContractItr",
+      "GetAccountCollection",
+      "GetAccountCollections",
+      "AccountCollection",
+      "CollectionDetail",
+      "ContractItr",
+      "Transaction"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

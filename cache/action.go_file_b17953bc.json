@@ -1,0 +1,49 @@
+{
+  "content_hash": "c1e298517a250a669d8acb86bf5a5004",
+  "timestamp": "2025-09-26T13:25:29.825554+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines an HTTP router for handling actions related to activity guidance in a web service.",
+    "key_types": [
+      "Action",
+      "action",
+      "requests.UpsertActions",
+      "responses.ServerResponseDTO",
+      "models.ActivityExtra"
+    ],
+    "functions": [
+      "NewActionRouter",
+      "Upsert",
+      "CreateActivityGuidance",
+      "UpdateActivityGuidance",
+      "ActivityGuidance",
+      "ActivityGuidances",
+      "DeleteGuidance",
+      "GetPreviews",
+      "validateActivityExtraInfo"
+    ],
+    "imports": [
+      "encoding/json",
+      "net/http",
+      "strconv",
+      "github.com/labstack/echo/v4",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares"
+    ],
+    "side_effects": [
+      "Modifies the state of the server by creating, updating, or deleting activity guidance records."
+    ],
+    "risks": [
+      "Potential for unauthorized access if authentication is not properly handled.",
+      "Input validation issues could lead to unexpected behavior or security vulnerabilities."
+    ],
+    "complexity": "medium"
+  }
+}

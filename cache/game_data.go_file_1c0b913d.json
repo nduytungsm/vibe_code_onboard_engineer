@@ -1,0 +1,41 @@
+{
+  "content_hash": "34810c1e821579cf04122cc06c0d200a",
+  "timestamp": "2025-09-26T12:34:22.453639+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for managing game data, including checking in streaks, registrations, and match counts.",
+    "key_types": [
+      "GameDataServiceConfig",
+      "GameDataService",
+      "gameDataService"
+    ],
+    "functions": [
+      "NewGameDataService",
+      "FindGameCheckInStreak",
+      "FindGameRegistrationExternal",
+      "FindPVPWonMatch",
+      "FindAtiaStreak",
+      "acquireData"
+    ],
+    "imports": [
+      "context",
+      "encoding/base64",
+      "errors",
+      "fmt",
+      "strings",
+      "time",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "side_effects": [
+      "Logs errors and information using a logger"
+    ],
+    "risks": [
+      "Potential SQL injection if user input is not properly sanitized in queries"
+    ],
+    "complexity": "medium"
+  }
+}

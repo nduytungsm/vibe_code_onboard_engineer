@@ -1,0 +1,44 @@
+{
+  "content_hash": "44e00a6da0b7a18684d50ca87468b9d4",
+  "timestamp": "2025-09-26T13:12:24.650174+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a repository interface and its implementation for managing crawled game data, including game registrations and participant actions.",
+    "key_types": [
+      "CrawledDataRepository",
+      "crawledDataRepository",
+      "models.GameRegistrationEntity",
+      "models.GameMatchEntity",
+      "models.WalletCheckInLogEntity",
+      "models.ParticipantDiscordActionEntity",
+      "models.ParticipantTwitterActionEntity",
+      "models.PurchaseHistoryLogsEntity"
+    ],
+    "functions": [
+      "NewCrawledDataRepository",
+      "FindGameRegistration",
+      "FindGameRegistrationByAddress",
+      "UpdateGameRegister",
+      "ListCheckIn",
+      "BulkInsertCheckIn",
+      "SaveParticipantDiscordAction",
+      "FindParticipantDiscordAction",
+      "SaveParticipantTwitterAction",
+      "FindParticipantTwitterAction",
+      "DeleteTwitterAction",
+      "ListGameMatches",
+      "UpsertGameMatches",
+      "FindTotalPurchaseItem",
+      "FindTotalGameMatch"
+    ],
+    "imports": [
+      "context",
+      "time",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
+    ],
+    "complexity": "medium"
+  }
+}

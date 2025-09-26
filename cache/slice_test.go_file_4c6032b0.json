@@ -1,0 +1,21 @@
+{
+  "content_hash": "d5d3f6c5ac05be2f1d24e577dde5ff33",
+  "timestamp": "2025-09-26T12:38:59.677739+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the SliceChunk function to validate its behavior with different input slices.",
+    "key_types": [
+      "input",
+      "output",
+      "args",
+      "testCase"
+    ],
+    "functions": [
+      "TestSliceChunk"
+    ],
+    "imports": [
+      "testing"
+    ],
+    "complexity": "medium"
+  }
+}

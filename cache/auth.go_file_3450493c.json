@@ -1,0 +1,17 @@
+{
+  "content_hash": "24e4247049b1081207234c688e1715a3",
+  "timestamp": "2025-09-26T13:10:34.902586+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the OperatorEntity struct for managing operator data in the application.",
+    "key_types": [
+      "OperatorEntity"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+    ],
+    "complexity": "low"
+  }
+}

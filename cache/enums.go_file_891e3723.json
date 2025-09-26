@@ -1,0 +1,28 @@
+{
+  "content_hash": "56030cbb822993ff7b10cfe5773f9baa",
+  "timestamp": "2025-09-26T13:24:13.10043+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines utility functions for converting between string representations and enum-like types.",
+    "key_types": [
+      "string",
+      "int",
+      "T"
+    ],
+    "functions": [
+      "StringToEnum",
+      "UnmarshalJSON",
+      "EnumFromString",
+      "MarshalText",
+      "UnmarshalText",
+      "UnmarshalV2",
+      "EnumFromStr",
+      "ScanV2"
+    ],
+    "imports": [
+      "encoding/json",
+      "fmt"
+    ],
+    "complexity": "medium"
+  }
+}

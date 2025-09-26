@@ -1,0 +1,50 @@
+{
+  "content_hash": "e60f1433f12f1e5d85106b268b7be99d",
+  "timestamp": "2025-09-26T13:41:04.874649+07:00",
+  "result": {
+    "path": "pkg/storages",
+    "purpose": "This folder/module is responsible for managing database connections and configurations, specifically for PostgreSQL.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "postgre_sql.go"
+    ],
+    "dependencies": [
+      "GORM",
+      "Uber Zap",
+      "Prometheus"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating database connection logic and configuration in a single file, promoting separation of concerns.",
+    "file_summaries": {
+      "pkg/storages/postgre_sql.go": {
+        "language": "Go",
+        "purpose": "This file defines a configuration structure and a function to initialize a PostgreSQL database connection using GORM.",
+        "key_types": [
+          "PostgresConfig"
+        ],
+        "functions": [
+          "NewPostgreSQL"
+        ],
+        "imports": [
+          "fmt",
+          "time",
+          "go.uber.org/zap",
+          "gorm.io/driver/postgres",
+          "gorm.io/gorm",
+          "gorm.io/gorm/logger",
+          "gorm.io/gorm/schema",
+          "gorm.io/plugin/prometheus"
+        ],
+        "side_effects": [
+          "Establishes a connection to a PostgreSQL database",
+          "Logs database operations"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if the password is not handled securely"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

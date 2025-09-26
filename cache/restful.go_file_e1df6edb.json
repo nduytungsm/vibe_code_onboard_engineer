@@ -1,0 +1,44 @@
+{
+  "content_hash": "fe050ed63f2e1540e5e99325a6d9fa82",
+  "timestamp": "2025-09-26T13:26:44.682967+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a RESTful service with metrics support using HTTP servers.",
+    "key_types": [
+      "HTTPMetric",
+      "HTTPRestful",
+      "RestfulConfig",
+      "RestfulService",
+      "restfulService"
+    ],
+    "functions": [
+      "NewRestfulService",
+      "ProvideHttpRestful",
+      "ProvideHttpMetric",
+      "Start",
+      "Shutdown",
+      "Stop"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "net/http",
+      "time",
+      "github.com/google/wire",
+      "go.uber.org/zap",
+      "golang.org/x/sync/errgroup",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/middlewares"
+    ],
+    "side_effects": [
+      "Starts HTTP and metrics servers",
+      "Shuts down servers on context cancellation"
+    ],
+    "risks": [
+      "Potential denial of service if servers are not properly managed",
+      "Improper handling of context may lead to resource leaks"
+    ],
+    "complexity": "medium"
+  }
+}

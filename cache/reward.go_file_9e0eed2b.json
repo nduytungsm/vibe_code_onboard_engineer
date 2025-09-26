@@ -1,0 +1,25 @@
+{
+  "content_hash": "aa21ac21cf0c496758463747f91948bc",
+  "timestamp": "2025-09-26T12:21:12.400133+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines handlers for managing rewards in a quest system.",
+    "key_types": [
+      "InternalRewardHandler",
+      "QuestRewardHandler"
+    ],
+    "functions": [
+      "NewInternalRewardHandler",
+      "NewRewardHandler",
+      "Setup"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "side_effects": [
+      "Modifies reward-related data through HTTP routes"
+    ],
+    "complexity": "medium"
+  }
+}

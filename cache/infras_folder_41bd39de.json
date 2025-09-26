@@ -1,0 +1,47 @@
+{
+  "content_hash": "0ca5105e4aecdaf2c7a9c60c7ec8a00d",
+  "timestamp": "2025-09-26T13:40:06.108561+07:00",
+  "result": {
+    "path": "internal/infras",
+    "purpose": "This folder/module is responsible for implementing infrastructure components, specifically a Kafka batch consumer for message handling.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "kafka_consumer.go"
+    ],
+    "dependencies": [
+      "github.com/segmentio/kafka-go"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, focusing on encapsulating infrastructure-related functionalities, allowing for easy integration and maintenance.",
+    "file_summaries": {
+      "internal/infras/kafka_consumer.go": {
+        "language": "Go",
+        "purpose": "This file implements a Kafka batch consumer that fetches and commits messages from a Kafka topic.",
+        "key_types": [
+          "KafkaBatchConsumer",
+          "kafkaBatchConsumer"
+        ],
+        "functions": [
+          "NewKafkaBatchConsumer",
+          "ConsumeBatch",
+          "Commit",
+          "Close"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "time",
+          "github.com/segmentio/kafka-go"
+        ],
+        "side_effects": [
+          "Sends messages to a commit channel after consuming"
+        ],
+        "risks": [
+          "Potential deadlock if commit channel is not handled properly"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

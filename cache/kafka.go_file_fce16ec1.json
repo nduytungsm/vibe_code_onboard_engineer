@@ -1,0 +1,34 @@
+{
+  "content_hash": "4448fbdbc78af06f9f24e747fbc5e3a8",
+  "timestamp": "2025-09-26T12:38:21.401544+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality to create and manage a Kafka container using Testcontainers.",
+    "key_types": [
+      "Kafka",
+      "testcontainers.Container"
+    ],
+    "functions": [
+      "NewKafka",
+      "Start",
+      "Stop",
+      "createKafkaContainer"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "time",
+      "github.com/testcontainers/testcontainers-go",
+      "github.com/testcontainers/testcontainers-go/wait"
+    ],
+    "side_effects": [
+      "Starts a Kafka container",
+      "Allocates a free port for Kafka"
+    ],
+    "risks": [
+      "Potential for resource exhaustion if containers are not stopped properly",
+      "Error handling is done via panic, which may lead to abrupt termination"
+    ],
+    "complexity": "medium"
+  }
+}

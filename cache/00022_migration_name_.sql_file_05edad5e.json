@@ -1,0 +1,12 @@
+{
+  "content_hash": "7daf9b765e0e4e034beedcc1abac74bf",
+  "timestamp": "2025-09-26T13:27:30.161429+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines migration steps for a database schema change.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

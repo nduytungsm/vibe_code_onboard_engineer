@@ -1,0 +1,48 @@
+{
+  "content_hash": "a8ccbf06563f7e94ea80cd364f944d83",
+  "timestamp": "2025-09-26T12:22:25.264883+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements an ABI crawler task handler that processes Ethereum contract ABIs and extracts signatures.",
+    "key_types": [
+      "abiCrawlerConfig",
+      "ABICrawlerTaskHandler",
+      "builder"
+    ],
+    "functions": [
+      "NewABICrawlerTaskHandler",
+      "TaskType",
+      "ProcessTask",
+      "process",
+      "newBuilder",
+      "add",
+      "build"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "encoding/json",
+      "github.com/ethereum/go-ethereum/accounts/abi",
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/hibiken/asynq",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "golang.org/x/time/rate",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/explorer",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Logs warnings for invalid task payloads and contract addresses.",
+      "Processes tasks asynchronously with rate limiting."
+    ],
+    "risks": [
+      "Potential for denial of service if rate limiting is not properly configured.",
+      "Handling of invalid contract addresses may lead to unexpected behavior."
+    ],
+    "complexity": "medium"
+  }
+}

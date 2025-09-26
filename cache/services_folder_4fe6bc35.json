@@ -1,0 +1,82 @@
+{
+  "content_hash": "d17155bcc2bf5a0ce0de628b275bf859",
+  "timestamp": "2025-09-26T13:44:09.455221+07:00",
+  "result": {
+    "path": "internal/domains/dex/services",
+    "purpose": "This folder/module is responsible for routing and managing token exchanges in a decentralized exchange (DEX) context.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "router.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "github.com/shopspring/decimal",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/services/provider",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, focusing on modular services that handle specific functionalities related to token exchanges.",
+    "file_summaries": {
+      "internal/domains/dex/services/router.go": {
+        "language": "Go",
+        "purpose": "This file implements a service for routing and managing token exchanges in a decentralized exchange (DEX) context.",
+        "key_types": [
+          "DexRouterService",
+          "DexRouterConfig",
+          "dexRouterService"
+        ],
+        "functions": [
+          "NewDexRouterService",
+          "IsNoExtraFeeRegion",
+          "bigToDec",
+          "calcAmountUsd",
+          "fetchFiat",
+          "getRouteFiatValues",
+          "GetRoute",
+          "BuildRoute",
+          "ListTokens",
+          "SupportedChains",
+          "errBadRequest"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "net/http",
+          "strings",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/redis/go-redis/v9",
+          "github.com/samber/lo",
+          "github.com/shopspring/decimal",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/services/provider",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Logs errors when fetching token fiat info fails",
+          "Logs errors when getting routes fails"
+        ],
+        "risks": [
+          "Potential for errors in handling fiat conversion leading to incorrect pricing",
+          "Dependency on external services for token data may introduce vulnerabilities"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

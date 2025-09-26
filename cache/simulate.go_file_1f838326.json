@@ -1,0 +1,50 @@
+{
+  "content_hash": "042e1cde362981035afa74ad9c7a43af",
+  "timestamp": "2025-09-26T12:19:09.541187+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines types and methods for simulating Ethereum RPC calls and handling simulation results.",
+    "key_types": [
+      "SimulateRPCMethod",
+      "SimulationStatus",
+      "SimulationResultType",
+      "SimulateParams",
+      "SimulateJsonRPC",
+      "USDDiff",
+      "USDExposure",
+      "JsonRPCValidation",
+      "SimulationErrorDetails",
+      "DecodedMethod",
+      "JsonRPCSimulation",
+      "SimulatedJsonRPC",
+      "TransactionGasEstimation",
+      "TransactionFeature",
+      "Asset",
+      "AssetChange",
+      "Balance",
+      "BalanceChanges",
+      "AssetDiffs",
+      "AssetTrace",
+      "AssetExposure",
+      "AssetSpender"
+    ],
+    "functions": [
+      "Value()",
+      "Values()",
+      "SimulationResultTypeFromString(s string) (SimulationResultType, error)"
+    ],
+    "imports": [
+      "fmt",
+      "strings",
+      "time",
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/samber/lo",
+      "github.com/samber/mo",
+      "github.com/shopspring/decimal",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

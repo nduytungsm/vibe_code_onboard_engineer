@@ -1,0 +1,41 @@
+{
+  "content_hash": "b21a8bc3a84cb0cd3e4c529a5d7288ae",
+  "timestamp": "2025-09-26T13:10:03.404588+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is the main entry point for a wallet manager application, handling configuration, logging, and starting the application.",
+    "key_types": [
+      "configSchema",
+      "context.Context",
+      "logger",
+      "IDGenerator",
+      "app"
+    ],
+    "functions": [
+      "main",
+      "NewConfig",
+      "Struct",
+      "MustNewLogger",
+      "NewIDGenerator",
+      "wireWalletManager",
+      "Start"
+    ],
+    "imports": [
+      "context",
+      "log",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/configs",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+      "github.com/go-playground/validator/v10"
+    ],
+    "side_effects": [
+      "Logs fatal errors and application start messages",
+      "Creates and manages application context"
+    ],
+    "risks": [
+      "Potential for logging sensitive information",
+      "Error handling may expose application state"
+    ],
+    "complexity": "medium"
+  }
+}

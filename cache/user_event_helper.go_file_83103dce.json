@@ -1,0 +1,37 @@
+{
+  "content_hash": "826534a8c7481ba51a4be2616773599e",
+  "timestamp": "2025-09-26T13:24:38.793621+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains handlers for user event-related operations, including querying user events, analytics data, and handling premium user data.",
+    "key_types": [
+      "userEvData",
+      "analyticData",
+      "joinEvData",
+      "analytics"
+    ],
+    "functions": [
+      "findJoinEvData",
+      "queryVerifyPremiumData",
+      "queryAnalyticsData",
+      "aggregateAnalytics",
+      "findUserEvFn",
+      "findTempPremiumUserFn",
+      "findEvFn",
+      "findPoolsAnalyticsFn"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/samber/lo",
+      "github.com/samber/mo"
+    ],
+    "complexity": "medium"
+  }
+}

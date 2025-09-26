@@ -1,0 +1,87 @@
+{
+  "content_hash": "aef75f0f4ae8434f09e524603481f15b",
+  "timestamp": "2025-09-26T13:31:13.08699+07:00",
+  "result": {
+    "path": "internal/domains/proxy/services/testdata/decoder",
+    "purpose": "This folder/module is responsible for decoding and defining the structure of function calls related to token transfers and proposal voting in a blockchain context.",
+    "languages": {
+      "JSON": 4
+    },
+    "key_modules": [
+      "decode_call_01_decoded.json",
+      "decode_call_01_signature.json",
+      "decode_call_02_decoded.json",
+      "decode_call_02_signature.json"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, organizing JSON files that represent decoded function calls and their signatures for smart contract interactions.",
+    "file_summaries": {
+      "internal/domains/proxy/services/testdata/decoder/decode_call_01_decoded.json": {
+        "language": "JSON",
+        "purpose": "This file contains a JSON representation of a function call for a token transfer.",
+        "key_types": [
+          "address",
+          "uint256"
+        ],
+        "functions": [
+          "transfer"
+        ],
+        "imports": [],
+        "side_effects": [
+          "None"
+        ],
+        "risks": [
+          "None"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/proxy/services/testdata/decoder/decode_call_01_signature.json": {
+        "language": "JSON",
+        "purpose": "Defines the ABI and signatures for a smart contract function.",
+        "key_types": [
+          "object",
+          "array"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/domains/proxy/services/testdata/decoder/decode_call_02_decoded.json": {
+        "language": "JSON",
+        "purpose": "Defines a function call for casting a proposal vote in a blockchain network.",
+        "key_types": [
+          "object",
+          "array",
+          "string",
+          "uint256",
+          "uint8"
+        ],
+        "functions": [
+          "castProposalVoteForCurrentNetwork"
+        ],
+        "imports": [],
+        "side_effects": [
+          "Interacts with a blockchain network"
+        ],
+        "risks": [
+          "Potential for incorrect proposal voting",
+          "Security risks associated with smart contract interactions"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/testdata/decoder/decode_call_02_signature.json": {
+        "language": "JSON",
+        "purpose": "Defines the ABI and signature for a function that allows casting a vote on a proposal in a blockchain context.",
+        "key_types": [
+          "struct Proposal.ProposalDetail",
+          "enum Ballot.VoteType"
+        ],
+        "functions": [
+          "castProposalVoteForCurrentNetwork"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      }
+    }
+  }
+}

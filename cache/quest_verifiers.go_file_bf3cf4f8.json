@@ -1,0 +1,60 @@
+{
+  "content_hash": "dc860cc5b433110fe5db7ffcb7550a29",
+  "timestamp": "2025-09-26T12:35:55.460725+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a quest verification service that handles user quest activities and caching of credentials.",
+    "key_types": [
+      "PDistributionInfo",
+      "XVerifyCredentials",
+      "DiscordVerifyCredentials",
+      "QuestVerifier",
+      "VerifyActionParams",
+      "questVerifier",
+      "QuestVerifierConfig"
+    ],
+    "functions": [
+      "NewQuestVerifier",
+      "CacheXCredentials",
+      "CacheDiscordCredentials",
+      "VerifyActivity",
+      "wrapWithRoutine",
+      "withRoutine",
+      "wrapErr"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "runtime",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/google/wire",
+      "github.com/hibiken/asynq",
+      "github.com/redis/go-redis/v9",
+      "github.com/shopspring/decimal",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/x",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/discord",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "side_effects": [
+      "Caches user credentials in Redis",
+      "Logs errors using zap logger"
+    ],
+    "risks": [
+      "Potential exposure of sensitive user information if error handling is not secure",
+      "Improper handling of Redis connections could lead to data loss"
+    ],
+    "complexity": "medium"
+  }
+}

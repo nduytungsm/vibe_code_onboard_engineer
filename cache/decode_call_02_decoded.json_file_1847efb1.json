@@ -1,0 +1,20 @@
+{
+  "content_hash": "eb416e939b13001b3418aaa5661b0232",
+  "timestamp": "2025-09-26T12:20:34.627352+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines a function call structure for casting a proposal vote in a blockchain network.",
+    "key_types": [
+      "object",
+      "array",
+      "string",
+      "uint256",
+      "uint8"
+    ],
+    "functions": [
+      "castProposalVoteForCurrentNetwork"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

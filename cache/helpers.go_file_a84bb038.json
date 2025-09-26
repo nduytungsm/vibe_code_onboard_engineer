@@ -1,0 +1,40 @@
+{
+  "content_hash": "df7b4875fd06e9531f0a056ed40add3f",
+  "timestamp": "2025-09-26T12:17:19.946267+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains helper functions and types for managing application versioning and error handling in a service context.",
+    "key_types": [
+      "appVersionSvc",
+      "mandatoryUpdateSvc",
+      "operatorSvc",
+      "notiSvc",
+      "coinbaseSvc",
+      "createHistoryParams"
+    ],
+    "functions": [
+      "wrapErr",
+      "createHistory",
+      "normalizeVersion"
+    ],
+    "imports": [
+      "encoding/json",
+      "errors",
+      "fmt",
+      "runtime",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/labstack/gommon/log",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Logging errors when wrapping errors",
+      "Marshalling objects to JSON format"
+    ],
+    "risks": [
+      "Potential for logging sensitive information if errors contain sensitive data"
+    ],
+    "complexity": "medium"
+  }
+}

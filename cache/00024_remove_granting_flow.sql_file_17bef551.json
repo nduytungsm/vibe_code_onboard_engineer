@@ -1,0 +1,24 @@
+{
+  "content_hash": "0f29e72fbcf1cb0f18068d31ad3ebca7",
+  "timestamp": "2025-09-26T13:27:32.147494+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to modify database schema by removing and adding tables and altering columns.",
+    "key_types": [
+      "BIGINT",
+      "TIMESTAMP",
+      "NUMERIC",
+      "JSONB"
+    ],
+    "functions": [
+      "DROP TABLE",
+      "ALTER TABLE",
+      "CREATE TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the database schema by dropping and creating tables and altering columns."
+    ],
+    "complexity": "medium"
+  }
+}

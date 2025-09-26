@@ -1,0 +1,21 @@
+{
+  "content_hash": "a51a961a60318bb7482274d41e0cb9a1",
+  "timestamp": "2025-09-26T13:14:41.792105+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration commands to modify database types.",
+    "key_types": [
+      "activity_type",
+      "platforms"
+    ],
+    "functions": [],
+    "imports": [],
+    "side_effects": [
+      "Modifies existing database types by adding new values."
+    ],
+    "risks": [
+      "Potential for data integrity issues if existing data does not accommodate new values."
+    ],
+    "complexity": "low"
+  }
+}

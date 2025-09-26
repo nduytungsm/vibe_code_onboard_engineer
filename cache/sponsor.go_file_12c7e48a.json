@@ -1,0 +1,47 @@
+{
+  "content_hash": "175b76f9f66f179ec838138401177214",
+  "timestamp": "2025-09-26T12:24:09.964463+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles sponsor-related operations such as creating, listing, updating, and deleting sponsors.",
+    "key_types": [
+      "Sponsor",
+      "sponsor",
+      "responses.Sponsor",
+      "requests.UpsertSponsorParam",
+      "requests.ListSponsorDTO",
+      "repositories.SponsorRepo"
+    ],
+    "functions": [
+      "NewSponsorHandler",
+      "wrapErr",
+      "FindSponsors",
+      "ListSponsors",
+      "UpsertSponsor",
+      "DeleteSponsor"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/samber/lo",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Database transactions for upserting and deleting sponsors",
+      "Logging errors and actions"
+    ],
+    "risks": [
+      "Potential SQL injection if inputs are not properly sanitized",
+      "Error handling may expose sensitive information through logs"
+    ],
+    "complexity": "medium"
+  }
+}

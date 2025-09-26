@@ -1,0 +1,38 @@
+{
+  "content_hash": "d708ffbc212a4f41663e34e0e3fc9316",
+  "timestamp": "2025-09-26T13:12:04.779006+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a client for interacting with a JSON-RPC API for blockchain scanning.",
+    "key_types": [
+      "Client",
+      "httpClient",
+      "Config",
+      "ScanRPCRequest",
+      "ScanRPCResponse",
+      "blockAidScanRpcRequest",
+      "blockAidMetadata",
+      "jsonRpcData",
+      "blockAidErrorResponse"
+    ],
+    "functions": [
+      "NewClient",
+      "ScanRPC"
+    ],
+    "imports": [
+      "context",
+      "net/url",
+      "strconv",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "side_effects": [
+      "Makes HTTP requests to an external API."
+    ],
+    "risks": [
+      "Potential for network errors during HTTP requests.",
+      "Error handling may not cover all edge cases."
+    ],
+    "complexity": "medium"
+  }
+}

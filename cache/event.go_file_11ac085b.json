@@ -1,0 +1,40 @@
+{
+  "content_hash": "da9c6fadb6dc819c473f766b2becd501",
+  "timestamp": "2025-09-26T12:26:55.644717+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines an interface and implementation for managing event entities in a database, including creating, listing, retrieving, and deleting events.",
+    "key_types": [
+      "Event",
+      "event",
+      "discovery_models.EventEntity",
+      "discovery_models.WidgetItemEvent"
+    ],
+    "functions": [
+      "NewEventRepo",
+      "Create",
+      "ListRMActiveEvents",
+      "GetWidgetEvents",
+      "FindByID",
+      "DeleteEvItem",
+      "SaveRoninMarketEv"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause"
+    ],
+    "side_effects": [
+      "Database modifications (create, update, delete operations)"
+    ],
+    "risks": [
+      "Potential SQL injection if user inputs are not properly sanitized",
+      "Data integrity issues if concurrent modifications occur without proper handling"
+    ],
+    "complexity": "medium"
+  }
+}

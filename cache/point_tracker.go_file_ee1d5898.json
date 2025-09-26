@@ -1,0 +1,34 @@
+{
+  "content_hash": "0d830126b0e7f421c4240f64e96aec04",
+  "timestamp": "2025-09-26T13:25:20.301407+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for tracking point activities, including creating point activities and managing transactions.",
+    "key_types": [
+      "PointTrackerRepo",
+      "pointTrackerRepo",
+      "context.Context",
+      "models.PointTrackerEntity"
+    ],
+    "functions": [
+      "NewPointTrackerRepo",
+      "CreatePointActivity",
+      "NewTx",
+      "getTxFallback"
+    ],
+    "imports": [
+      "context",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
+    ],
+    "side_effects": [
+      "Database transactions may modify the state of the database."
+    ],
+    "risks": [
+      "Potential for SQL injection if input is not properly sanitized.",
+      "Error handling may not cover all edge cases."
+    ],
+    "complexity": "medium"
+  }
+}

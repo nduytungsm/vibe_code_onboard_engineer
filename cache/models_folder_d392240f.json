@@ -1,0 +1,35 @@
+{
+  "content_hash": "22ed74e31323f5889d9fe883b5dec7ea",
+  "timestamp": "2025-09-26T13:30:44.259815+07:00",
+  "result": {
+    "path": "internal/domains/trusted-domain/models",
+    "purpose": "Defines the TrustedDomain model and its associated methods for domain trust evaluation.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "trusted_domain.go"
+    ],
+    "dependencies": [
+      "time"
+    ],
+    "architecture": "The folder follows a domain-driven design pattern, encapsulating the domain logic related to trusted domains.",
+    "file_summaries": {
+      "internal/domains/trusted-domain/models/trusted_domain.go": {
+        "language": "Go",
+        "purpose": "Defines a TrustedDomain model with methods to check if a domain is malicious or trusted.",
+        "key_types": [
+          "TrustedDomain"
+        ],
+        "functions": [
+          "IsMalicious",
+          "IsTrusted"
+        ],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

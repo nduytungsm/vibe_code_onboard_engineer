@@ -1,0 +1,33 @@
+{
+  "content_hash": "630c4286a569d56b5a4f60c5016e1f81",
+  "timestamp": "2025-09-26T12:26:13.399909+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a client for verifying turnstile challenges.",
+    "key_types": [
+      "Config",
+      "Client",
+      "clientHTTP",
+      "VerificationRequest",
+      "VerificationResponse"
+    ],
+    "functions": [
+      "NewClient",
+      "Verify",
+      "mapErrorCodes"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "slices",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information due to redacted fields.",
+      "Error handling may not cover all edge cases."
+    ],
+    "complexity": "medium"
+  }
+}

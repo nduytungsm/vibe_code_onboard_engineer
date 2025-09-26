@@ -1,0 +1,56 @@
+{
+  "content_hash": "6800172eca6f8588559977e1dd22f75e",
+  "timestamp": "2025-09-26T13:12:07.005389+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles user rewards for quests, including distribution and rejection of rewards.",
+    "key_types": [
+      "UserReward",
+      "userReward",
+      "res.Paginated",
+      "res.DistributeResult",
+      "models.UserQuestReward",
+      "models.RewardPoolExtra"
+    ],
+    "functions": [
+      "NewUserRewardHandler",
+      "wrapErr",
+      "DistributeRewardV4",
+      "distributeOffChainRewards",
+      "distributeOnChainRewards",
+      "RejectUserReward",
+      "ListParticipantRewards",
+      "getUserRewardAmount"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "sort",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/hibiken/asynq",
+      "github.com/samber/lo",
+      "github.com/shopspring/decimal",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
+    ],
+    "side_effects": [
+      "Interacts with external services for reward distribution",
+      "Modifies database records for user rewards"
+    ],
+    "risks": [
+      "Potential for incorrect reward distribution if quest status is not validated properly",
+      "Error handling may expose sensitive information in logs"
+    ],
+    "complexity": "medium"
+  }
+}

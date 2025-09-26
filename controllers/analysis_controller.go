@@ -183,8 +183,8 @@ func (ac *AnalysisController) AnalyzeRepository(c echo.Context) error {
 		})
 	}
 
-	// Run analysis with extended timeout (30 minutes for large repositories)
-	ctx, cancel := context.WithTimeout(c.Request().Context(), 30*time.Minute)
+	// Run analysis with extended timeout (60 minutes for large repositories)
+	ctx, cancel := context.WithTimeout(c.Request().Context(), 60*time.Minute)
 	defer cancel()
 
 	// Create a channel to handle analysis result or timeout
@@ -222,10 +222,10 @@ func (ac *AnalysisController) AnalyzeRepository(c echo.Context) error {
 		})
 		
 	case <-ctx.Done():
-		c.Logger().Warnf("Analysis timed out for %s after 30 minutes", req.URL)
+		c.Logger().Warnf("Analysis timed out for %s after 60 minutes", req.URL)
 		return c.JSON(http.StatusRequestTimeout, AnalysisResponse{
 			Status:     "timeout",
-			Error:      "Analysis timed out after 30 minutes. The repository may be too large or complex for analysis.",
+			Error:      "Analysis timed out after 60 minutes. The repository may be too large or complex for analysis.",
 			Repository: &repoInfo,
 		})
 	}
@@ -503,8 +503,8 @@ func (ac *AnalysisController) StreamAnalyzeRepository(c echo.Context) error {
 	fmt.Println("✅ [STREAM] Analyzer created successfully")
 
 	// Run analysis with extended timeout and progress callbacks
-	fmt.Println("⏱️ [STREAM] Setting up 30-minute context timeout")
-	ctx, cancel := context.WithTimeout(c.Request().Context(), 30*time.Minute)
+	fmt.Println("⏱️ [STREAM] Setting up 60-minute context timeout")
+	ctx, cancel := context.WithTimeout(c.Request().Context(), 60*time.Minute)
 	defer cancel()
 
 	// Run streaming analysis

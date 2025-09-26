@@ -1,0 +1,49 @@
+{
+  "content_hash": "96bbd00e589b30932e2182f0c646c2f4",
+  "timestamp": "2025-09-26T13:24:34.372867+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles user events including verifying premium status, joining events, and retrieving analytics.",
+    "key_types": [
+      "UserEvent",
+      "userEvent",
+      "req.VerifyPremiumUser",
+      "res.VerifyPremiumUser",
+      "req.JoinEvent",
+      "res.GetUserEventAnalytics",
+      "models.UserEvent"
+    ],
+    "functions": [
+      "NewUserEventHandler",
+      "wrapErr",
+      "VerifyPremiumStatus",
+      "JoinEvent",
+      "GetAnalytics"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/samber/lo",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Database updates when a user joins an event or verifies premium status."
+    ],
+    "risks": [
+      "Potential for errors in external service calls (e.g., waypoint client).",
+      "Improper handling of user data could lead to privacy issues."
+    ],
+    "complexity": "medium"
+  }
+}

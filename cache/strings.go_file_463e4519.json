@@ -1,0 +1,31 @@
+{
+  "content_hash": "e6b15b83624dff0c96555bd9731dc876",
+  "timestamp": "2025-09-26T13:27:10.989001+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides utility functions for string manipulation, fallback values, and type-safe value extraction.",
+    "key_types": [
+      "SupportedValExtractType"
+    ],
+    "functions": [
+      "EllipticalTruncate",
+      "FallbackNilString",
+      "FallbackNilInt64",
+      "FallbackNilBool",
+      "FallbackNil",
+      "Capitalize",
+      "ValOrNil",
+      "IsValidURL",
+      "SafePlusPointers"
+    ],
+    "imports": [
+      "regexp",
+      "strconv",
+      "strings",
+      "time",
+      "unicode",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "content_hash": "a8809a1c83cd7d26afad39a9382265cc",
+  "timestamp": "2025-09-26T12:19:49.433748+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service to check the existence of a user profile based on an address.",
+    "key_types": [
+      "ProfileService",
+      "profileService",
+      "WAddress",
+      "ProfileExistence"
+    ],
+    "functions": [
+      "NewProfileService",
+      "wrapError",
+      "CheckProfileExistence"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "runtime",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Logs errors when profile existence check fails."
+    ],
+    "risks": [
+      "Potential for nil pointer dereference if address is nil."
+    ],
+    "complexity": "medium"
+  }
+}

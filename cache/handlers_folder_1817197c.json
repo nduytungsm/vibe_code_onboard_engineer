@@ -1,0 +1,380 @@
+{
+  "content_hash": "1cdb189aa42cf5b1470d4bd4fc5367c9",
+  "timestamp": "2025-09-26T13:32:42.704598+07:00",
+  "result": {
+    "path": "internal/domains/proxy/handlers",
+    "purpose": "Handles various HTTP requests and responses for a proxy service, including activities, balances, profiles, tokens, and AI interactions.",
+    "languages": {
+      "Go": 10
+    },
+    "key_modules": [
+      "activity.go",
+      "ai.go",
+      "balance.go",
+      "config.go",
+      "dapp.go",
+      "fiat.go",
+      "profile.go",
+      "rpc.go",
+      "simulate.go",
+      "token.go"
+    ],
+    "dependencies": [
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each file corresponds to a specific handler for different functionalities, promoting separation of concerns and maintainability.",
+    "file_summaries": {
+      "internal/domains/proxy/handlers/activity.go": {
+        "language": "Go",
+        "purpose": "Handles activity-related HTTP requests and responses for a proxy service.",
+        "key_types": [
+          "activityHandler",
+          "services.ActivityService",
+          "proxy_models.LimitCfgs",
+          "requests.PortfolioActivityDTO",
+          "requests.GetTransfersDTO"
+        ],
+        "functions": [
+          "NewActivityHandler",
+          "Setup",
+          "getActivities",
+          "getFungibleTransfers",
+          "getNftTransfers"
+        ],
+        "imports": [
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Interacts with external services to fetch activities and transfers."
+        ],
+        "risks": [
+          "Potential exposure of sensitive data through improperly handled requests."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/ai.go": {
+        "language": "Go",
+        "purpose": "This file defines an AIHandler for processing chat requests through an AI service.",
+        "key_types": [
+          "AIHandler",
+          "services.AIService",
+          "requests.ToolChoiceRequest"
+        ],
+        "functions": [
+          "NewAIHandler",
+          "Setup",
+          "ProcessChat"
+        ],
+        "imports": [
+          "errors",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/labstack/echo/v4"
+        ],
+        "side_effects": [
+          "Sends JSON responses to HTTP requests",
+          "Interacts with external AI service"
+        ],
+        "risks": [
+          "Potential for unhandled errors from AI service",
+          "Input validation issues leading to unexpected behavior"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/balance.go": {
+        "language": "Go",
+        "purpose": "Handles balance-related requests for a portfolio in a web service.",
+        "key_types": [
+          "balanceHandler",
+          "services.BalanceService",
+          "proxy_models.LimitCfgs",
+          "requests.PortfolioCollectionsDTO",
+          "requests.PortfolioNFTItemsDTO",
+          "requests.PortfolioBalanceDTO",
+          "requests.GetCollectionDetail"
+        ],
+        "functions": [
+          "NewBalanceHandler",
+          "Setup",
+          "getPortfolioCollectionsHandler",
+          "getPortfolioNftItemsHandler",
+          "getPortfolioBalanceHandler",
+          "getPortfolioFiatBalanceHandler",
+          "getPortfolioBalance",
+          "getCollectionDetail"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/labstack/echo/v4"
+        ],
+        "side_effects": [
+          "Modifies the state of the balance service based on incoming requests.",
+          "Interacts with external services to fetch balance data."
+        ],
+        "risks": [
+          "Potential for denial of service if too many requests are made due to limits not being enforced properly.",
+          "Improper error handling could expose sensitive information."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/config.go": {
+        "language": "Go",
+        "purpose": "Handles configuration for blockchain chains in a web server context.",
+        "key_types": [
+          "configHandler",
+          "ChainCfg",
+          "SimulationChainConfig",
+          "ChainConfig"
+        ],
+        "functions": [
+          "NewConfigHandler",
+          "Setup",
+          "getSimulationConfigs",
+          "getChainsConfigs"
+        ],
+        "imports": [
+          "net/http",
+          "sort",
+          "github.com/labstack/echo/v4",
+          "github.com/samber/lo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Modifies the state of the server by setting up routes."
+        ],
+        "risks": [
+          "Potential exposure of sensitive data due to redacted fields."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/dapp.go": {
+        "language": "Go",
+        "purpose": "Handles DApp-related HTTP requests for scanning, retrieving, and deleting DApps.",
+        "key_types": [
+          "dappHandler",
+          "privateDAppHandler",
+          "services.DAppService"
+        ],
+        "functions": [
+          "NewDAppHandler",
+          "Setup",
+          "scanDApp",
+          "NewPrivateDAppHandler",
+          "getDApp",
+          "deleteDApp"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Interacts with external services to scan, retrieve, and delete DApps."
+        ],
+        "risks": [
+          "Potential exposure of sensitive data through improper handling of requests.",
+          "Error handling may not cover all edge cases, leading to unhandled exceptions."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/fiat.go": {
+        "language": "Go",
+        "purpose": "Handles fiat token price requests and responses.",
+        "key_types": [
+          "fiatHandler",
+          "services.FiatService",
+          "proxy_models.LimitCfgs"
+        ],
+        "functions": [
+          "NewFiatHandler",
+          "Setup",
+          "getTokenPrices"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/labstack/echo/v4"
+        ],
+        "side_effects": [
+          "Sends JSON responses to HTTP requests"
+        ],
+        "risks": [
+          "Potential for denial of service if too many tokens are requested"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/profile.go": {
+        "language": "Go",
+        "purpose": "Handles profile-related HTTP requests, specifically checking the existence of a user profile based on an address.",
+        "key_types": [
+          "profileHandler",
+          "services.ProfileService",
+          "requests.CheckProfileExistence",
+          "responses.Response"
+        ],
+        "functions": [
+          "NewProfileHandler",
+          "Setup",
+          "checkProfileExistence"
+        ],
+        "imports": [
+          "errors",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+          "github.com/labstack/echo/v4"
+        ],
+        "side_effects": [
+          "Interacts with external services to check profile existence",
+          "Returns JSON responses to HTTP requests"
+        ],
+        "risks": [
+          "Potential for invalid address input leading to errors",
+          "Dependency on external services which may fail"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/rpc.go": {
+        "language": "Go",
+        "purpose": "This file defines an RPC handler for processing requests related to blockchain chains.",
+        "key_types": [
+          "rpcHandler",
+          "services.RpcService",
+          "requests.RpcRequest"
+        ],
+        "functions": [
+          "NewRpcHandler",
+          "Setup",
+          "executeRpc"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/labstack/echo/v4"
+        ],
+        "side_effects": [
+          "Handles HTTP POST requests",
+          "Interacts with external services via rpcService"
+        ],
+        "risks": [
+          "Potential for unhandled errors in request processing",
+          "Dependency on external services may introduce vulnerabilities"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/simulate.go": {
+        "language": "Go",
+        "purpose": "This file defines a handler for simulating JSON-RPC requests in a web application.",
+        "key_types": [
+          "simulationHandler",
+          "services.SimulationService",
+          "requests.JsonRPCSimulate"
+        ],
+        "functions": [
+          "NewSimulationHandler",
+          "Setup",
+          "simulateJsonRPC"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Sends HTTP responses",
+          "Interacts with external services"
+        ],
+        "risks": [
+          "Potential for denial of service if input is not validated",
+          "Error handling may expose internal errors"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/handlers/token.go": {
+        "language": "Go",
+        "purpose": "Handles token-related HTTP requests and responses for a proxy service.",
+        "key_types": [
+          "tokenHandler",
+          "privateTokenHandler",
+          "tokensRequest"
+        ],
+        "functions": [
+          "NewTokenHandler",
+          "Setup",
+          "GetToken",
+          "ListTokens",
+          "SearchToken",
+          "TokenPriceChart",
+          "NewPrivateTokenHandler",
+          "updateToken",
+          "getToken",
+          "Offset",
+          "newPagingResponse",
+          "decodeTokensRequest"
+        ],
+        "imports": [
+          "encoding/base64",
+          "encoding/json",
+          "errors",
+          "net/http",
+          "time",
+          "github.com/labstack/echo/v4",
+          "github.com/samber/mo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

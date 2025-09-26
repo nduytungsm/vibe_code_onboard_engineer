@@ -1,0 +1,23 @@
+{
+  "content_hash": "5a4b0d6988378d40e097b3b1b5446631",
+  "timestamp": "2025-09-26T13:14:29.68703+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a NonEmptyStr type that ensures a string is non-empty and provides JSON marshaling/unmarshaling.",
+    "key_types": [
+      "NonEmptyStr"
+    ],
+    "functions": [
+      "NewNonEmptyStr",
+      "Value",
+      "isValid",
+      "UnmarshalJSON",
+      "MarshalJSON"
+    ],
+    "imports": [
+      "encoding/json",
+      "strings"
+    ],
+    "complexity": "medium"
+  }
+}

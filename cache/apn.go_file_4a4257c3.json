@@ -1,0 +1,21 @@
+{
+  "content_hash": "0df844fc23d2bf0572136aa43dc09122",
+  "timestamp": "2025-09-26T12:17:42.42797+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines types and constants for Apple Push Notification service (APNs) settings and responses.",
+    "key_types": [
+      "EPushType",
+      "APNSPushResponse",
+      "ApnsSettings"
+    ],
+    "functions": [
+      "AsHeadersMap"
+    ],
+    "imports": [
+      "strconv",
+      "time"
+    ],
+    "complexity": "medium"
+  }
+}

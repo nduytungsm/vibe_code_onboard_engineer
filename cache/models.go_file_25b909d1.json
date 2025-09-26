@@ -1,0 +1,28 @@
+{
+  "content_hash": "160faa7ef6c0f0e46a33b36d7b73438f",
+  "timestamp": "2025-09-26T12:26:26.368815+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for managing wallet and user profile information, including point systems for rewards and redemption.",
+    "key_types": [
+      "WaypointErr",
+      "Wallet",
+      "PublicProfile",
+      "WalletInfo",
+      "LinkedAccount",
+      "Metadata",
+      "RedeemMetadata",
+      "AwardPointsRequest",
+      "AwardPointsResponse",
+      "ProfileUser",
+      "OnchainItem",
+      "RedeemPointsRequest",
+      "RedeemPointsResponse"
+    ],
+    "functions": [],
+    "imports": [
+      "math/big"
+    ],
+    "complexity": "medium"
+  }
+}

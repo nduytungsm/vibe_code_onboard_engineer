@@ -1,0 +1,52 @@
+{
+  "content_hash": "53dffb8aeff2e18d519b8f7e50699773",
+  "timestamp": "2025-09-26T13:22:55.561577+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service provider for interacting with the Katana decentralized exchange, handling token management and cross-chain operations.",
+    "key_types": [
+      "KatanaExtraConfig",
+      "Katana",
+      "Config"
+    ],
+    "functions": [
+      "NewKatana",
+      "ID",
+      "CrossChainSupported",
+      "SupportedChains",
+      "BuildCallData",
+      "Tokens",
+      "TokenByAddress",
+      "GetRoutes",
+      "getTokens",
+      "buildGetQuoteRequest"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "strings",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "github.com/samber/mo",
+      "github.com/shopspring/decimal",
+      "go.uber.org/multierr",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/katana",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Interacts with external services (e.g., Redis, Katana client) for data retrieval and processing."
+    ],
+    "risks": [
+      "Potential for errors in external service calls leading to application crashes.",
+      "Improper handling of token addresses could lead to security vulnerabilities."
+    ],
+    "complexity": "medium"
+  }
+}

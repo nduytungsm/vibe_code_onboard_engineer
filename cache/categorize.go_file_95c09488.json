@@ -1,0 +1,24 @@
+{
+  "content_hash": "b8907535f3969418557a7c8649c2a78a",
+  "timestamp": "2025-09-26T13:24:00.893382+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file categorizes transactions based on user input and transaction details.",
+    "key_types": [
+      "Input",
+      "TransactionCategorize",
+      "AsIs"
+    ],
+    "functions": [
+      "NewInput",
+      "Categorize",
+      "IsActiveAction"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

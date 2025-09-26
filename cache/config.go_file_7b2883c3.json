@@ -1,0 +1,21 @@
+{
+  "content_hash": "ebb6025530e656ad76b9ef8e7450ecc8",
+  "timestamp": "2025-09-26T13:14:27.261709+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Configuration structures for Kafka producer and consumer settings.",
+    "key_types": [
+      "Offset",
+      "Config",
+      "TLSConfig",
+      "ConsumerConfig"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/IBM/sarama",
+      "github.com/inhies/go-bytesize"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "content_hash": "93a80064371ab78add1fc8d28e41dbae",
+  "timestamp": "2025-09-26T13:42:04.369629+07:00",
+  "result": {
+    "path": "internal/domains/deception/services",
+    "purpose": "Provides services for detecting deception in tokens.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "token.go",
+      "token_test.go"
+    ],
+    "dependencies": [
+      "context",
+      "fmt",
+      "regexp",
+      "golang.org/x/text/unicode/norm",
+      "mvdan.cc/xurls/v2",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, focusing on the implementation of services related to token deception detection.",
+    "file_summaries": {
+      "internal/domains/deception/services/token.go": {
+        "language": "Go",
+        "purpose": "Provides a service for detecting deception in tokens.",
+        "key_types": [
+          "DeceptionTokenService",
+          "deceptionTokenServiceImpl",
+          "models.Token",
+          "models.DeceptionResult"
+        ],
+        "functions": [
+          "NewDeceptionTokenService",
+          "DetectToken",
+          "normString"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "regexp",
+          "golang.org/x/text/unicode/norm",
+          "mvdan.cc/xurls/v2",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information through redacted values."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/deception/services/token_test.go": {
+        "language": "Go",
+        "purpose": "This file contains unit tests for the DetectToken method of the deceptionTokenServiceImpl.",
+        "key_types": [
+          "Token",
+          "DeceptionStatus"
+        ],
+        "functions": [
+          "Test_deceptionTokenServiceImpl_DetectToken"
+        ],
+        "imports": [
+          "context",
+          "reflect",
+          "testing",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models"
+        ],
+        "side_effects": [
+          "Prints the reason for the token detection result"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

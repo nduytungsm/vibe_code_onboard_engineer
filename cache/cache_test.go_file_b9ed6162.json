@@ -1,0 +1,25 @@
+{
+  "content_hash": "891af410a4bca6c6b9fbf9050af9b4fc",
+  "timestamp": "2025-09-26T13:14:09.875679+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for cache functionality using a custom codec.",
+    "key_types": [
+      "testCacheValue",
+      "testCacheKey",
+      "testCodec"
+    ],
+    "functions": [
+      "ID",
+      "CacheKey",
+      "TestUnmarshal"
+    ],
+    "imports": [
+      "testing"
+    ],
+    "side_effects": [
+      "Prints output to console"
+    ],
+    "complexity": "medium"
+  }
+}

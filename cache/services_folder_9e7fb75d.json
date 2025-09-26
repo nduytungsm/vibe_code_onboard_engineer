@@ -1,0 +1,118 @@
+{
+  "content_hash": "24108497ddbfcad61ecc8f4a4dc12693",
+  "timestamp": "2025-09-26T13:32:23.292321+07:00",
+  "result": {
+    "path": "mocks/services",
+    "purpose": "This folder contains mock implementations of various services for testing purposes.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "game_data_service.go",
+      "id_generator.go",
+      "quest_alert_service.go",
+      "swanlake_service.go"
+    ],
+    "dependencies": [
+      "github.com/stretchr/testify/mock",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/slack-alerts"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, providing mock implementations of services to facilitate unit testing.",
+    "file_summaries": {
+      "mocks/services/game_data_service.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock implementation of the GameDataService interface for testing purposes.",
+        "key_types": [
+          "GameDataService",
+          "GameDataService_Expecter",
+          "GameDataService_CountAxieBought_Call",
+          "GameDataService_FindAtiaStreak_Call",
+          "GameDataService_FindGameCheckInStreak_Call",
+          "GameDataService_FindGameRegistrationExternal_Call"
+        ],
+        "functions": [
+          "CountAxieBought",
+          "FindAtiaStreak",
+          "FindGameCheckInStreak",
+          "FindGameRegistrationExternal"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/stretchr/testify/mock",
+          "time"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/services/id_generator.go": {
+        "language": "Go",
+        "purpose": "This file provides a mock implementation of an IDGenerator for testing purposes.",
+        "key_types": [
+          "IDGenerator",
+          "IDGenerator_Expecter",
+          "IDGenerator_NextID_Call"
+        ],
+        "functions": [
+          "NextID",
+          "EXPECT",
+          "NewIDGenerator"
+        ],
+        "imports": [
+          "github.com/stretchr/testify/mock"
+        ],
+        "side_effects": [
+          "Panic if no return value is specified for NextID"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/services/quest_alert_service.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock implementation of the QuestAlertService for testing purposes.",
+        "key_types": [
+          "QuestAlertService",
+          "QuestAlertService_Expecter",
+          "QuestAlertService_SendSlackAlert_Call"
+        ],
+        "functions": [
+          "SendSlackAlert",
+          "EXPECT",
+          "NewQuestAlertService"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/slack-alerts",
+          "github.com/stretchr/testify/mock"
+        ],
+        "side_effects": [
+          "Panic if no return value is specified for SendSlackAlert"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/services/swanlake_service.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock service for testing purposes using the mockery library.",
+        "key_types": [
+          "SwanlakeService",
+          "SwanlakeService_Expecter",
+          "SwanlakeService_ChQuack_Call"
+        ],
+        "functions": [
+          "ChQuack",
+          "EXPECT",
+          "NewSwanlakeService"
+        ],
+        "imports": [
+          "context",
+          "github.com/stretchr/testify/mock"
+        ],
+        "side_effects": [
+          "Panic if no return value is specified for ChQuack"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

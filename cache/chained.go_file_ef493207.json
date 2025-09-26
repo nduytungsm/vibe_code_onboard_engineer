@@ -1,0 +1,53 @@
+{
+  "content_hash": "d55831e83a12e900b13d5650d80e3710",
+  "timestamp": "2025-09-26T13:11:14.517041+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a chained provider for handling multiple blockchain service providers with circuit breaker functionality.",
+    "key_types": [
+      "providerCircuitBreakers",
+      "providerWithCircuitBreaker",
+      "ChainedProvider"
+    ],
+    "functions": [
+      "cbSetting",
+      "newProviderCircuitBreakers",
+      "NewChainedProvider",
+      "Name",
+      "IsMethodSupported",
+      "isCircuitBreakerErr",
+      "GetPortfolioBalance",
+      "ListPortfolioNFTItems",
+      "GetTokenFiatInfo",
+      "GetPortfolioNftCollections",
+      "GetPortfolioActivities",
+      "GetCollectionDetail",
+      "GetFungibleTxs",
+      "GetNftTransfers",
+      "circuitBrokeErr",
+      "ExecuteRpc",
+      "IsAddressSupported"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "strings",
+      "github.com/samber/lo",
+      "github.com/sony/gobreaker/v2",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Logs warnings when the circuit breaker state changes."
+    ],
+    "risks": [
+      "Potential for circuit breaker to open and deny service if too many failures occur."
+    ],
+    "complexity": "medium"
+  }
+}

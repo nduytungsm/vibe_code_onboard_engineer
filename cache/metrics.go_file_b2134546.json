@@ -1,0 +1,22 @@
+{
+  "content_hash": "726f680566d3a50fcb3c6fb31ef6b776",
+  "timestamp": "2025-09-26T13:14:28.965428+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines metrics for Kafka consumer performance using Prometheus.",
+    "key_types": [
+      "consumerMetrics"
+    ],
+    "functions": [
+      "initConsumerMetrics"
+    ],
+    "imports": [
+      "github.com/prometheus/client_golang/prometheus",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
+    ],
+    "side_effects": [
+      "Registers metrics collectors with Prometheus"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "content_hash": "ac54d3f79cd876f7b5941596adfc5319",
+  "timestamp": "2025-09-26T12:21:14.100287+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles shop-related routes and operations for an internal and public shop API.",
+    "key_types": [
+      "InternalShopHandler",
+      "ShopHandler",
+      "routers.Shop"
+    ],
+    "functions": [
+      "NewInternalShopHandler",
+      "NewShopHandler",
+      "Setup",
+      "setupCategoryRoutes",
+      "setupTierRoutes",
+      "setupItemRoutes"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "side_effects": [
+      "Modifies HTTP routes for shop categories, tiers, and items."
+    ],
+    "complexity": "medium"
+  }
+}

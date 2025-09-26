@@ -1,0 +1,24 @@
+{
+  "content_hash": "1c07b7a61a5af54b16241214ac607249",
+  "timestamp": "2025-09-26T13:14:06.819039+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a client for interacting with an asynchronous queue using Redis.",
+    "key_types": [
+      "ClientConfig",
+      "ClientConfigV2"
+    ],
+    "functions": [
+      "NewClient",
+      "NewClientV2"
+    ],
+    "imports": [
+      "github.com/hibiken/asynq",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis"
+    ],
+    "risks": [
+      "Use of deprecated functions may lead to issues if not updated."
+    ],
+    "complexity": "medium"
+  }
+}

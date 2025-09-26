@@ -1,0 +1,49 @@
+{
+  "content_hash": "87721c1d681bd636756be5eeaf992eb9",
+  "timestamp": "2025-09-26T13:26:36.398205+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a service for distributing user rewards in a quest system.",
+    "key_types": [
+      "UserRewardSvc",
+      "userRewardSvc",
+      "responses.UserQuestReward",
+      "responses.UserQuestItem",
+      "quest_enums.RewardType"
+    ],
+    "functions": [
+      "NewUserRewardSvc",
+      "DistributeInstantReward",
+      "DistributeQueuedReward",
+      "distributePoint",
+      "distributeToken",
+      "distributeCustom",
+      "findIdempotency",
+      "storeIdempotency",
+      "updateDistributeStatus"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Interacts with Redis for caching idempotency keys",
+      "Updates user reward distribution status in the repository"
+    ],
+    "risks": [
+      "Potential for race conditions when checking and storing idempotency keys",
+      "Error handling may expose sensitive information in logs"
+    ],
+    "complexity": "medium"
+  }
+}

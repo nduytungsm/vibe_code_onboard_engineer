@@ -1,0 +1,42 @@
+{
+  "content_hash": "00b05aa2288fae3c569da86f78468d1f",
+  "timestamp": "2025-09-26T13:11:23.506258+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a TokenService interface and its implementation for managing token-related operations, including fetching, listing, and searching tokens, as well as retrieving price charts.",
+    "key_types": [
+      "TokenService",
+      "caches",
+      "tokenService",
+      "getTokenCodec",
+      "getTokenByAddrCodec"
+    ],
+    "functions": [
+      "NewTokenService",
+      "GetToken",
+      "GetTokenByAddress",
+      "ListTokens",
+      "SearchTokens",
+      "PriceChart",
+      "PriceChartByAddress",
+      "UpdateTokenInternal",
+      "GetTokenInternal"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "github.com/samber/mo",
+      "gorm.io/gorm",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

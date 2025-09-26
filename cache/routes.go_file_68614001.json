@@ -1,0 +1,25 @@
+{
+  "content_hash": "627bfac4ca0ed34eaa6d6b629a26c605",
+  "timestamp": "2025-09-26T13:22:00.252192+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines routes for push notification services in a web application.",
+    "key_types": [
+      "PrivateGroup",
+      "http.GroupHandlers"
+    ],
+    "functions": [
+      "NewPrivateGroup"
+    ],
+    "imports": [
+      "github.com/labstack/echo/v4",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/handlers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "content_hash": "b0e38087f33233826230be7ac68c659d",
+  "timestamp": "2025-09-26T13:16:31.975773+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines an HTTP client for interacting with an Athena service, specifically for linking accounts.",
+    "key_types": [
+      "AthenaClientCfg",
+      "Athena",
+      "athenaClient"
+    ],
+    "functions": [
+      "NewAthenaClient",
+      "LinkAccount"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "encoding/json",
+      "fmt",
+      "net/http",
+      "github.com/axieinfinity/ronin-wallet-manager/models"
+    ],
+    "side_effects": [
+      "Makes HTTP requests to an external service"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data in HTTP requests",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

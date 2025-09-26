@@ -1,185 +1,315 @@
 {
-  "content_hash": "5409ca82a6c5ec0e6b66aeced6cd3346",
-  "timestamp": "2025-09-26T11:54:47.628507+07:00",
+  "content_hash": "f68673631758e34fbb467b9bcbc061bc",
+  "timestamp": "2025-09-26T13:32:36.141752+07:00",
   "result": {
     "path": "config",
-    "purpose": "Configuration management for a service, including loading and parsing configuration files.",
+    "purpose": "This folder contains configuration files for various applications and services related to a wallet management system, defining settings for servers, databases, logging, and other essential components.",
     "languages": {
-      "Go": 3,
-      "YAML": 1
+      "YAML": 12
     },
     "key_modules": [
-      "config/config.go",
-      "config/config.yml",
-      "config/func_print.go",
-      "config/func_print_test.go"
+      "config.antenna.yaml",
+      "config.cms.yaml",
+      "config.consumer.yaml",
+      "config.cron_job.yaml",
+      "config.device-manager.yml",
+      "config.discovery.yml",
+      "config.proxy.yaml",
+      "config.push-notification.yml",
+      "config.quest.center.yml",
+      "config.reward.distributor.yaml",
+      "config.task-scheduler.yaml",
+      "config.task-server.yaml",
+      "config.wallet.manager.yml"
     ],
-    "dependencies": [
-      "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
-      "github.com/axieinfinity/ecosystem-go-common/sso",
-      "github.com/inhies/go-bytesize",
-      "github.com/mitchellh/mapstructure",
-      "github.com/rs/zerolog",
-      "github.com/spf13/viper",
-      "github.com/axieinfinity/ronin-wallet-manager/database/redis",
-      "github.com/axieinfinity/ronin-wallet-manager/httpclient",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
-    ],
-    "architecture": "The folder follows a modular architecture pattern, organizing configuration management into separate files for configuration loading, data hiding, and testing.",
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, where each configuration file is dedicated to a specific application or service, allowing for clear separation of concerns and easier management of settings.",
     "file_summaries": {
-      "config/config.go": {
-        "language": "Go",
-        "purpose": "Configuration management for a service, including loading and parsing configuration files.",
-        "key_types": [
-          "Schema",
-          "Server",
-          "Sentry",
-          "TLSConfig",
-          "Logging",
-          "Profiling"
-        ],
-        "functions": [
-          "StringToByteSizeHookFunc",
-          "Init"
-        ],
-        "imports": [
-          "fmt",
-          "reflect",
-          "runtime",
-          "strconv",
-          "strings",
-          "sync",
-          "time",
-          "github.com/axieinfinity/ecosystem-go-common/database/postgresql",
-          "github.com/axieinfinity/ecosystem-go-common/sso",
-          "github.com/inhies/go-bytesize",
-          "github.com/mitchellh/mapstructure",
-          "github.com/rs/zerolog",
-          "github.com/spf13/viper",
-          "github.com/axieinfinity/ronin-wallet-manager/database/redis",
-          "github.com/axieinfinity/ronin-wallet-manager/httpclient",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/binance",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/blacklist",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/device",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/location",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/moonpay",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/xauth"
-        ],
-        "side_effects": [
-          "Panic on configuration file read errors",
-          "Sets global logging level"
-        ],
-        "risks": [
-          "Potential exposure of sensitive configuration data if not handled properly"
-        ],
-        "complexity": "medium"
-      },
-      "config/config.yml": {
+      "config/config.antenna.yaml": {
         "language": "YAML",
-        "purpose": "Configuration file for a mobile wallet manager service, detailing various settings for services, authentication, logging, and other operational parameters.",
+        "purpose": "Configuration file for the antenna application, defining settings for application, server, metrics, redis, logging, HTTP clients, and various services.",
         "key_types": [
-          "profiler",
+          "application",
           "server",
-          "profiling",
-          "auth_server",
-          "sso_server",
-          "sentry",
-          "hmac_internal",
-          "logging",
+          "metrics",
           "redis",
-          "device_service",
-          "postgres",
-          "api_version",
-          "ref_code",
-          "moonpay",
-          "announcement_config",
-          "ip_location_config",
-          "binance_config",
-          "tracking_config",
-          "external_auth_config",
-          "hide_all_spotlights_config",
-          "enable_quest_coming_soon_config",
-          "disable_nft_portfolio_config",
-          "enable_moonpay_config",
-          "enable_transak_config",
-          "hidden_tab_config",
-          "blacklist_site_config"
+          "logging",
+          "http_client",
+          "skynet",
+          "wallet_manager",
+          "exchange_rate",
+          "block_full_event_consumer",
+          "notification_producer",
+          "checkpoint_service",
+          "notification_filter"
         ],
         "functions": [],
         "imports": [],
         "risks": [
-          "Exposure of sensitive information due to redacted keys and URLs",
-          "Potential for misconfiguration leading to service downtime or security vulnerabilities"
+          "Exposed sensitive information (e.g., passwords) if not properly secured",
+          "Potential misconfiguration leading to service downtime"
         ],
         "complexity": "medium"
       },
-      "config/func_print.go": {
-        "language": "Go",
-        "purpose": "This file contains functions to hide sensitive data in configuration structures.",
+      "config/config.cms.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for a wallet content management system, defining application settings, logging, and database connection parameters.",
         "key_types": [
-          "Schema",
-          "viper.Viper"
+          "application",
+          "restful",
+          "postgres",
+          "logger"
         ],
-        "functions": [
-          "isSecretField",
-          "hideSecret",
-          "hideSensitiveDataInSlice",
-          "hideSensitiveDataInMap",
-          "hideSensitiveDataInStruct",
-          "printConfigSafety"
-        ],
-        "imports": [
-          "reflect",
-          "strings",
-          "github.com/mitchellh/mapstructure",
-          "github.com/rs/zerolog/log",
-          "github.com/spf13/viper"
-        ],
-        "side_effects": [
-          "Modifies the input data structures to hide sensitive information."
-        ],
+        "functions": [],
+        "imports": [],
         "risks": [
-          "Potential exposure of sensitive data if the hiding logic is bypassed or fails."
+          "Exposing sensitive information if the configuration is not secured properly."
+        ],
+        "complexity": "low"
+      },
+      "config/config.consumer.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for a wallet log consumer service.",
+        "key_types": [
+          "logger",
+          "metrics",
+          "log_tracking_service",
+          "postgres"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "config/config.cron_job.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for a cron job system related to a wallet application.",
+        "key_types": [
+          "application",
+          "cron_service",
+          "job_configs",
+          "data_providers",
+          "http_client_config",
+          "nft_collections",
+          "postgres",
+          "logger",
+          "metrics"
+        ],
+        "functions": [],
+        "imports": [],
+        "risks": [
+          "Exposure of sensitive information (e.g., passwords, secrets) if not properly managed."
         ],
         "complexity": "medium"
       },
-      "config/func_print_test.go": {
-        "language": "Go",
-        "purpose": "Unit tests for functions that hide sensitive data in maps and slices.",
+      "config/config.device-manager.yml": {
+        "language": "YAML",
+        "purpose": "Configuration file for the wallet device manager application.",
         "key_types": [
-          "struct",
-          "map",
-          "slice",
-          "interface"
+          "application",
+          "http_server",
+          "hmac_internal",
+          "metrics",
+          "postgres",
+          "logger"
         ],
-        "functions": [
-          "TestHideSecretInMap",
-          "TestHideSecretInSlice"
-        ],
-        "imports": [
-          "fmt",
-          "testing"
-        ],
-        "side_effects": [
-          "Prints test data to the console"
-        ],
+        "functions": [],
+        "imports": [],
         "risks": [
-          "Potential exposure of sensitive data if not properly handled"
+          "Exposure of sensitive information due to redacted fields",
+          "Potential misconfiguration of database and server settings"
+        ],
+        "complexity": "low"
+      },
+      "config/config.discovery.yml": {
+        "language": "YAML",
+        "purpose": "Configuration file for server and service settings.",
+        "key_types": [
+          "server",
+          "sentry",
+          "logging",
+          "postgres",
+          "redis",
+          "id_generator",
+          "hmac_internal",
+          "siwe",
+          "data_service",
+          "external_services"
+        ],
+        "functions": [],
+        "imports": [],
+        "risks": [
+          "Exposure of sensitive information due to redacted fields",
+          "Potential misconfiguration of services"
         ],
         "complexity": "medium"
+      },
+      "config/config.proxy.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for a wallet proxy application, defining settings for application, server, databases, caching, logging, and various blockchain chains.",
+        "key_types": [
+          "application",
+          "server",
+          "databases",
+          "redis",
+          "logging",
+          "cache",
+          "limits",
+          "internal_services",
+          "chains",
+          "circuit_breaker",
+          "http_client",
+          "providers"
+        ],
+        "functions": [],
+        "imports": [],
+        "risks": [
+          "Exposure of sensitive information due to redacted passwords and API keys"
+        ],
+        "complexity": "medium"
+      },
+      "config/config.push-notification.yml": {
+        "language": "YAML",
+        "purpose": "Configuration file for push notification settings and related services.",
+        "key_types": [
+          "application",
+          "server",
+          "metrics",
+          "logger",
+          "notification_consumer",
+          "http_client",
+          "device_manager_client",
+          "push_configs",
+          "hmac_internal",
+          "checkpoint_service"
+        ],
+        "functions": [],
+        "imports": [],
+        "risks": [
+          "Exposure of sensitive information (e.g., secret keys)",
+          "Misconfiguration leading to service downtime"
+        ],
+        "complexity": "medium"
+      },
+      "config/config.quest.center.yml": {
+        "language": "YAML",
+        "purpose": "Configuration file for a wallet quest service, defining various service settings and parameters.",
+        "key_types": [
+          "profiler",
+          "server",
+          "x_service_v2",
+          "turnstile",
+          "wallet_proxy",
+          "quest_svc_cfg",
+          "profiling",
+          "sentry",
+          "game",
+          "siwe",
+          "logging",
+          "postgres",
+          "redis",
+          "id_generator",
+          "skynet_service",
+          "alert_service",
+          "check_in_service",
+          "reward_distribution",
+          "async_queue",
+          "discord",
+          "hmac_internal",
+          "nft_collections",
+          "waypoint",
+          "geth"
+        ],
+        "functions": [],
+        "imports": [],
+        "risks": [
+          "Exposure of sensitive information due to redacted fields",
+          "Potential misconfiguration leading to service downtime"
+        ],
+        "complexity": "medium"
+      },
+      "config/config.reward.distributor.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for the wallet quest reward distributor service.",
+        "key_types": [
+          "processor",
+          "async_queue_server",
+          "logger",
+          "metric",
+          "task_monitor",
+          "postgres"
+        ],
+        "functions": [],
+        "imports": [],
+        "risks": [
+          "Exposing sensitive information such as API keys and passwords if not properly secured."
+        ],
+        "complexity": "medium"
+      },
+      "config/config.task-scheduler.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for a task scheduler application.",
+        "key_types": [
+          "application",
+          "server",
+          "metrics",
+          "redis",
+          "async_queue_scheduler",
+          "scheduled_tasks",
+          "logging"
+        ],
+        "functions": [],
+        "imports": [],
+        "risks": [
+          "Exposing sensitive information if the password is not properly secured."
+        ],
+        "complexity": "low"
+      },
+      "config/config.task-server.yaml": {
+        "language": "YAML",
+        "purpose": "Configuration file for the wallet task server, defining application settings, database connections, task configurations, and logging.",
+        "key_types": [
+          "application",
+          "metrics",
+          "postgres",
+          "redis",
+          "async_queue_server",
+          "async_queue_client",
+          "databases",
+          "tasks",
+          "providers",
+          "logging",
+          "wallet_manager",
+          "notification_producer"
+        ],
+        "functions": [],
+        "imports": [],
+        "risks": [
+          "exposure of sensitive information due to redacted fields",
+          "potential misconfiguration leading to security vulnerabilities"
+        ],
+        "complexity": "medium"
+      },
+      "config/config.wallet.manager.yml": {
+        "language": "YAML",
+        "purpose": "Configuration file for a wallet management application.",
+        "key_types": [
+          "application",
+          "server",
+          "postgres",
+          "logging",
+          "auth",
+          "redis",
+          "http_client",
+          "waypoint",
+          "coinbase"
+        ],
+        "functions": [],
+        "imports": [],
+        "risks": [
+          "exposure of sensitive information due to redacted fields",
+          "potential misconfiguration leading to security vulnerabilities"
+        ],
+        "complexity": "low"
       }
     }
   }

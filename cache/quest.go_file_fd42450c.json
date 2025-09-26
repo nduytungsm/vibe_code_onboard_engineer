@@ -1,0 +1,34 @@
+{
+  "content_hash": "5293c887027d1383cbc704976f04e260",
+  "timestamp": "2025-09-26T13:26:51.117992+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines mock implementations for the Quest type, allowing for testing of functions that interact with quests.",
+    "key_types": [
+      "Quest",
+      "Quest_Expecter",
+      "Quest_GetQuestListingItem_Call",
+      "Quest_GetQuestPublicItem_Call",
+      "Quest_ListQuestFilters_Call",
+      "Quest_ListQuests_Call",
+      "Quest_ListQuestsByPool_Call"
+    ],
+    "functions": [
+      "GetQuestListingItem",
+      "GetQuestPublicItem",
+      "ListQuestFilters",
+      "ListQuests",
+      "ListQuestsByPool"
+    ],
+    "imports": [
+      "context",
+      "github.com/stretchr/testify/mock",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+    ],
+    "side_effects": [
+      "Panic if no return value is specified for mocked functions"
+    ],
+    "complexity": "medium"
+  }
+}

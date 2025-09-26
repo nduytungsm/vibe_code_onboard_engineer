@@ -1,0 +1,25 @@
+{
+  "content_hash": "f9374aa82cb340d8a32462a75e84bdf2",
+  "timestamp": "2025-09-26T12:21:05.88364+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines HTTP handlers for managing sponsors and user quests in a web service.",
+    "key_types": [
+      "InternalGenericsHandler",
+      "GenericsHandler"
+    ],
+    "functions": [
+      "NewInternalGenericsHandler",
+      "NewGenericsHandler",
+      "Setup"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "side_effects": [
+      "Modifies HTTP routes for sponsor and user quest management"
+    ],
+    "complexity": "medium"
+  }
+}

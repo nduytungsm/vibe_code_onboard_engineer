@@ -1,0 +1,29 @@
+{
+  "content_hash": "cd9b71c4921a98ab95dd88a7562d113f",
+  "timestamp": "2025-09-26T13:27:03.250303+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functions to load certificates from PKCS#12 and .p8 formats.",
+    "key_types": [
+      "tls.Certificate",
+      "ecdsa.PrivateKey",
+      "error"
+    ],
+    "functions": [
+      "CertFromP12Bytes",
+      "KeyFromP8Bytes"
+    ],
+    "imports": [
+      "crypto/ecdsa",
+      "crypto/tls",
+      "crypto/x509",
+      "encoding/pem",
+      "errors",
+      "golang.org/x/crypto/pkcs12"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if errors are not handled properly."
+    ],
+    "complexity": "medium"
+  }
+}

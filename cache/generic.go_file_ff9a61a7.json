@@ -1,0 +1,44 @@
+{
+  "content_hash": "1c77b90113b6548a5cce4b7fdb19c9c0",
+  "timestamp": "2025-09-26T13:25:30.368117+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a generic router for handling discovery-related HTTP requests.",
+    "key_types": [
+      "GenericRouter",
+      "genericRouter"
+    ],
+    "functions": [
+      "NewGenericRouter",
+      "ListSocialPlatforms",
+      "ListStudios",
+      "ListCategories",
+      "Search",
+      "ListGamePlatforms",
+      "CreateStudio",
+      "UploadImage",
+      "RequestImageUpload",
+      "openImg"
+    ],
+    "imports": [
+      "errors",
+      "mime/multipart",
+      "net/http",
+      "github.com/google/wire",
+      "github.com/labstack/echo/v4",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+    ],
+    "side_effects": [
+      "Interacts with HTTP context and may modify response based on request handling."
+    ],
+    "risks": [
+      "Potential for handling untrusted input from HTTP requests, which could lead to security vulnerabilities."
+    ],
+    "complexity": "medium"
+  }
+}

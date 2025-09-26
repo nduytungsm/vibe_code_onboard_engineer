@@ -1,0 +1,27 @@
+{
+  "content_hash": "5fa1a6979e9e200327dee69fd1dd9179",
+  "timestamp": "2025-09-26T13:25:09.755638+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines various data models/entities for a discovery repository.",
+    "key_types": [
+      "SocialPlatformEntity",
+      "StudioEntity",
+      "CategoryEntity",
+      "CollectionTimemarkEntity",
+      "CollectionStatsItem",
+      "MavisMarketCollectionStats",
+      "CollectionStatsResponse",
+      "GamePlatformEntity",
+      "StatsItem",
+      "CollectionDataJson",
+      "ImageUploadMetadata",
+      "HistoryEntity"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "medium"
+  }
+}

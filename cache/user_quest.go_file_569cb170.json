@@ -1,0 +1,48 @@
+{
+  "content_hash": "91879125d0007ceaeaed4facca56a5a8",
+  "timestamp": "2025-09-26T13:25:30.729133+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository interface and its implementation for managing user quests in a gaming context.",
+    "key_types": [
+      "UserQuestRepo",
+      "userQuestRepo",
+      "models.UserQuestEntity",
+      "models.UserActionEntity",
+      "models.UserRewardEntity",
+      "models.UserSkipQuestLog",
+      "models.QuestWhitelistEntity",
+      "models.UserQuestFilter"
+    ],
+    "functions": [
+      "NewUserQuestRepo",
+      "FindAuditResult",
+      "NewTx",
+      "ListUserQuestIDs",
+      "FindByID",
+      "CreateUserQuestInfo",
+      "CreateUserActions",
+      "CreateUserRewards",
+      "FindActiveActions",
+      "FindActiveRewards",
+      "FindSingleUserQuest",
+      "ListUserQuestByIDs",
+      "FilterUserQuests",
+      "UpdateUserQuestInfo",
+      "FindWhitelist",
+      "CreateSkipQuestLog",
+      "ListSkippedQuests"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "strings",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
+    ],
+    "complexity": "medium"
+  }
+}

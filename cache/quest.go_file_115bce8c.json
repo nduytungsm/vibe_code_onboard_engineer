@@ -1,0 +1,22 @@
+{
+  "content_hash": "4c4f7305a2350566f52bb05cf03edfae",
+  "timestamp": "2025-09-26T13:11:23.669588+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines HTTP handlers for quest-related operations in a web service.",
+    "key_types": [
+      "InternalQuestHandler",
+      "QuestHandler"
+    ],
+    "functions": [
+      "NewInternalQuestHandler",
+      "NewQuestHandler",
+      "Setup"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "complexity": "medium"
+  }
+}

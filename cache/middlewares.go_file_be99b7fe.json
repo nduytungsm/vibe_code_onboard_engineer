@@ -1,0 +1,36 @@
+{
+  "content_hash": "ae898f1c793aead577f3a7206a436166",
+  "timestamp": "2025-09-26T12:39:21.146739+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines middleware for handling errors and extracting IP addresses in an HTTP context.",
+    "key_types": [
+      "ErrorHandler",
+      "GormRecordNotFoundHandler"
+    ],
+    "functions": [
+      "GlobalErrorHandler",
+      "NewGormRecordNotFoundHandler",
+      "HandleError",
+      "ExtractIPFromHeaders",
+      "trimIp"
+    ],
+    "imports": [
+      "errors",
+      "net/http",
+      "strings",
+      "github.com/jackc/pgconn",
+      "github.com/labstack/echo/v4",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/validation"
+    ],
+    "side_effects": [
+      "Logs errors when JSON response fails"
+    ],
+    "risks": [
+      "Potential exposure of sensitive error messages in responses"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "content_hash": "25b1d7caea6ec78816268f12bd5ec19b",
+  "timestamp": "2025-09-26T12:14:51.130495+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles bridge-related HTTP requests and responses for a wallet service.",
+    "key_types": [
+      "BridgeHandler",
+      "services.BridgeService",
+      "dtos.Response",
+      "bridge_enums.TradeType"
+    ],
+    "functions": [
+      "NewBridgeHandler",
+      "Setup",
+      "getProviders",
+      "getTokens",
+      "getQuotes",
+      "getFeeBalance"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/handlers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/bridge",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/labstack/echo/v4"
+    ],
+    "side_effects": [
+      "Interacts with external services to fetch data.",
+      "Modifies request data based on validation."
+    ],
+    "risks": [
+      "Potential exposure of sensitive data through error messages.",
+      "Improper validation of user input could lead to security vulnerabilities."
+    ],
+    "complexity": "medium"
+  }
+}

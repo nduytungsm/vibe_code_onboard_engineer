@@ -1,0 +1,33 @@
+{
+  "content_hash": "935612a14f53a77b2e21103d40d97eac",
+  "timestamp": "2025-09-26T13:24:56.885225+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a wallet manager client that retrieves user preferences from a specified base URL.",
+    "key_types": [
+      "Config",
+      "Client",
+      "clientHTTP",
+      "PreferencesResponse"
+    ],
+    "functions": [
+      "NewClient",
+      "GetPreferences"
+    ],
+    "imports": [
+      "context",
+      "net/url",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Makes HTTP requests to an external service."
+    ],
+    "risks": [
+      "Potential exposure of sensitive user data if not handled properly.",
+      "Error handling may not cover all edge cases."
+    ],
+    "complexity": "medium"
+  }
+}

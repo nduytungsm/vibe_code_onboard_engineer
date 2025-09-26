@@ -1,0 +1,14 @@
+{
+  "content_hash": "18d5339f3d159758a36c1537b78e3ae2",
+  "timestamp": "2025-09-26T13:13:09.353902+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a struct for activity guidance responses",
+    "key_types": [
+      "ActivityGuidance"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

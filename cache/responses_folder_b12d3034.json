@@ -1,0 +1,29 @@
+{
+  "content_hash": "64ff651c07ada5c042ca2cc3666e4cc2",
+  "timestamp": "2025-09-26T13:43:44.175764+07:00",
+  "result": {
+    "path": "internal/routers/dtos/trusted-domains/responses",
+    "purpose": "Defines data structures for site scan responses including metadata about malicious sites.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "site_scan.go"
+    ],
+    "dependencies": [],
+    "architecture": "The folder follows a modular architecture pattern, focusing on data transfer objects (DTOs) for handling responses related to trusted domains.",
+    "file_summaries": {
+      "internal/routers/dtos/trusted-domains/responses/site_scan.go": {
+        "language": "Go",
+        "purpose": "Defines data structures for site scan responses including metadata about malicious sites.",
+        "key_types": [
+          "SiteScan",
+          "SiteMaliciousMetadata"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

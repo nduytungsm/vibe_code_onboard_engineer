@@ -1,0 +1,15 @@
+{
+  "content_hash": "d3f6ca5d631b26e8a3633b517d2d234c",
+  "timestamp": "2025-09-26T12:31:05.125135+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a struct for an Event response with various attributes.",
+    "key_types": [
+      "Event",
+      "Sponsor"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

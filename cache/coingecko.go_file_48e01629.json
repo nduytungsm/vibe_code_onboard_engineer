@@ -1,0 +1,49 @@
+{
+  "content_hash": "a37f46cf6173c6aa15af4ff953883b11",
+  "timestamp": "2025-09-26T13:11:10.267942+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for interacting with the CoinGecko API to retrieve platform information and token price charts.",
+    "key_types": [
+      "CoingeckoService",
+      "coingeckoService",
+      "marketChartCodec",
+      "coingeckoPlatformsCacheCodec",
+      "dexTokenChartCacheCodec",
+      "dexTokenCacheCodec"
+    ],
+    "functions": [
+      "NewCoingeckoService",
+      "GetCoingeckoPlatforms",
+      "GetTokenPriceChart",
+      "GetDexTokenPriceChart",
+      "fromChartItems",
+      "fromOHLCV"
+    ],
+    "imports": [
+      "cmp",
+      "context",
+      "fmt",
+      "slices",
+      "time",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/coingecko",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Interacts with external APIs (CoinGecko and GeckoTerminal)",
+      "Caches results in Redis"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data through API interactions",
+      "Dependency on external services may lead to failures if those services are down"
+    ],
+    "complexity": "medium"
+  }
+}

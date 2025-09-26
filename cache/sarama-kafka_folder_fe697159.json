@@ -1,0 +1,198 @@
+{
+  "content_hash": "8b3e7365b4efbdbb327617b61f1bfe92",
+  "timestamp": "2025-09-26T13:28:39.090624+07:00",
+  "result": {
+    "path": "pkg/sarama-kafka",
+    "purpose": "This folder/module is responsible for configuring and managing Kafka clients, producers, and consumers using the Sarama library.",
+    "languages": {
+      "Go": 6
+    },
+    "key_modules": [
+      "client.go",
+      "config.go",
+      "consumer.go",
+      "consumer_test.go",
+      "metrics.go",
+      "producer.go"
+    ],
+    "dependencies": [
+      "github.com/IBM/sarama",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/inhies/go-bytesize",
+      "github.com/iimos/saramaprom",
+      "github.com/prometheus/client_golang/prometheus",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/test-go/testify/require",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/docker",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, separating concerns into distinct files for client configuration, producer and consumer implementations, metrics monitoring, and testing.",
+    "file_summaries": {
+      "pkg/sarama-kafka/client.go": {
+        "language": "Go",
+        "purpose": "Configuration and creation of a Kafka client using the Sarama library.",
+        "key_types": [
+          "Config",
+          "sarama.Config",
+          "sarama.Client"
+        ],
+        "functions": [
+          "saramaConfig",
+          "setBrokerConfig",
+          "setConsumerConfig",
+          "setProducerConfig",
+          "newKafkaClient"
+        ],
+        "imports": [
+          "fmt",
+          "net/url",
+          "github.com/IBM/sarama",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Modifies sarama.Config based on provided configuration",
+          "Establishes connection to Kafka brokers"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information (e.g., passwords) if not handled properly"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/sarama-kafka/config.go": {
+        "language": "Go",
+        "purpose": "Configuration structures for Kafka producer and consumer settings.",
+        "key_types": [
+          "Offset",
+          "Config",
+          "TLSConfig",
+          "ConsumerConfig"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/IBM/sarama",
+          "github.com/inhies/go-bytesize"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/sarama-kafka/consumer.go": {
+        "language": "Go",
+        "purpose": "This file implements a Kafka consumer using the Sarama library, handling message consumption and processing.",
+        "key_types": [
+          "Message",
+          "MessageHandler",
+          "Consumer"
+        ],
+        "functions": [
+          "NewConsumer",
+          "SetMetricsNamespace",
+          "Setup",
+          "Cleanup",
+          "ConsumeClaim",
+          "processMessage",
+          "Start",
+          "Stop",
+          "AwaitReady",
+          "init"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "log",
+          "os",
+          "sync",
+          "time",
+          "github.com/IBM/sarama",
+          "github.com/iimos/saramaprom",
+          "github.com/prometheus/client_golang/prometheus",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
+        ],
+        "side_effects": [
+          "Logs messages to stderr",
+          "Creates and manages a Kafka consumer group"
+        ],
+        "risks": [
+          "Potential for message processing errors",
+          "Resource leaks if consumer is not properly stopped"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/sarama-kafka/consumer_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for producing and consuming messages using Kafka.",
+        "key_types": [
+          "testMsg",
+          "testHandler",
+          "ConsumerConfig",
+          "Config"
+        ],
+        "functions": [
+          "CreatedTime",
+          "Parse",
+          "Process",
+          "TestProduceAndConsume"
+        ],
+        "imports": [
+          "context",
+          "strconv",
+          "testing",
+          "time",
+          "github.com/IBM/sarama",
+          "github.com/inhies/go-bytesize",
+          "github.com/test-go/testify/require",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/docker",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
+        ],
+        "side_effects": [
+          "Starts and stops a Kafka container for testing.",
+          "Prints processed message to the console."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/sarama-kafka/metrics.go": {
+        "language": "Go",
+        "purpose": "Defines metrics for Kafka consumer performance monitoring using Prometheus.",
+        "key_types": [
+          "consumerMetrics"
+        ],
+        "functions": [
+          "initConsumerMetrics"
+        ],
+        "imports": [
+          "github.com/prometheus/client_golang/prometheus",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
+        ],
+        "side_effects": [
+          "Registers metrics collectors with the provided namespace."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/sarama-kafka/producer.go": {
+        "language": "Go",
+        "purpose": "This file defines a function to create a new synchronous Kafka producer using the Sarama library.",
+        "key_types": [
+          "Config",
+          "sarama.SyncProducer"
+        ],
+        "functions": [
+          "NewKafkaProducer"
+        ],
+        "imports": [
+          "fmt",
+          "github.com/IBM/sarama"
+        ],
+        "side_effects": [
+          "Establishes a connection to a Kafka client",
+          "Creates a synchronous producer"
+        ],
+        "risks": [
+          "Potential connection failure to Kafka",
+          "Error handling may expose internal error messages"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

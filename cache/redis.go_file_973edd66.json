@@ -1,0 +1,39 @@
+{
+  "content_hash": "b8f9d7bea038b190ac1fe98510175a7a",
+  "timestamp": "2025-09-26T13:14:16.156301+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functionality to manage a Redis container using the Testcontainers library.",
+    "key_types": [
+      "Redis",
+      "testcontainers.Container",
+      "redis.Redis"
+    ],
+    "functions": [
+      "NewRedis",
+      "Start",
+      "Stop",
+      "createRedisContainer"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "strconv",
+      "time",
+      "github.com/docker/go-connections/nat",
+      "github.com/redis/go-redis/v9",
+      "github.com/testcontainers/testcontainers-go",
+      "github.com/testcontainers/testcontainers-go/wait",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis"
+    ],
+    "side_effects": [
+      "Starts a Redis container",
+      "Creates a Redis client"
+    ],
+    "risks": [
+      "Potential for panic if container fails to start or stop",
+      "Hardcoded values may lead to configuration issues"
+    ],
+    "complexity": "medium"
+  }
+}

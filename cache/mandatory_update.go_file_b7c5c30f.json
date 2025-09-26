@@ -1,0 +1,46 @@
+{
+  "content_hash": "cda8b9c152f317817de46ab74a22fd9d",
+  "timestamp": "2025-09-26T13:23:11.263332+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a service for managing mandatory updates in an application.",
+    "key_types": [
+      "MandatoryUpdateSvc",
+      "mandatoryUpdateSvc",
+      "requests.SetMandatoryUpdate",
+      "models.MandatoryUpdateEntity",
+      "repos.MandatoryUpdateRepo",
+      "repos.AppVersionRepo"
+    ],
+    "functions": [
+      "NewMandatoryUpdateSvc",
+      "CreateMandatoryUpdate",
+      "IsForceUpdate",
+      "RemoveMandatoryUpdate"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "golang.org/x/mod/semver",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/google/uuid",
+      "github.com/google/wire",
+      "go.uber.org/zap",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Database transactions for creating and removing mandatory updates",
+      "Logging actions performed in the service"
+    ],
+    "risks": [
+      "Potential for SQL injection if inputs are not properly sanitized",
+      "Error handling may expose sensitive information"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "content_hash": "c6264603ff0708fcbfcc4eed83f79fb5",
+  "timestamp": "2025-09-26T12:34:13.306506+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for managing layout services and widget items in a discovery context.",
+    "key_types": [
+      "ServiceItem",
+      "serviceItem",
+      "ServiceEntity",
+      "WidgetItemWithExtraInfo",
+      "WidgetItemsFilter",
+      "WidgetItemParams"
+    ],
+    "functions": [
+      "NewServiceItem",
+      "CreateLayoutServices",
+      "GetWidgetItems",
+      "FilterDimensions"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "github.com/google/wire",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
+    ],
+    "side_effects": [
+      "Logs errors when creating layout services or getting widget items fails."
+    ],
+    "risks": [
+      "Potential for ID generation failure leading to service creation errors."
+    ],
+    "complexity": "medium"
+  }
+}

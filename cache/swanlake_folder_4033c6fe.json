@@ -1,0 +1,52 @@
+{
+  "content_hash": "72b6cbceeb6dbc8b9ee99ee01be679d9",
+  "timestamp": "2025-09-26T13:34:18.062015+07:00",
+  "result": {
+    "path": "internal/services/swanlake",
+    "purpose": "This folder/module is responsible for providing a service that interacts with a Clickhouse database via HTTP requests.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "service.go"
+    ],
+    "dependencies": [
+      "context",
+      "encoding/base64",
+      "fmt",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the logic for database interactions and HTTP communication within a single service module.",
+    "file_summaries": {
+      "internal/services/swanlake/service.go": {
+        "language": "Go",
+        "purpose": "This file defines a service for interacting with a Clickhouse database via HTTP requests.",
+        "key_types": [
+          "Config",
+          "Service",
+          "httpService",
+          "seriesResponse"
+        ],
+        "functions": [
+          "NewServiceHttp",
+          "ChQuack"
+        ],
+        "imports": [
+          "context",
+          "encoding/base64",
+          "fmt",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Makes HTTP requests to an external service"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information due to redacted fields"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "content_hash": "6a102ff0dca3f644f0729ebd041a9459",
+  "timestamp": "2025-09-26T13:09:47.162513+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file sets up dependency injection for the discovery application using Google Wire.",
+    "key_types": [
+      "DiscoveryConfig",
+      "ManagerRepo",
+      "services.RestfulService",
+      "zap.SugaredLogger",
+      "redis.Client"
+    ],
+    "functions": [
+      "wireDiscoveryApp",
+      "provideAuthSvc",
+      "provideHttpMetric",
+      "provideHttpRestful",
+      "provideManagerServices",
+      "provideZapLogger",
+      "provideRedisClient",
+      "provideGeckoTerminalClient"
+    ],
+    "imports": [
+      "fmt",
+      "net/http",
+      "time",
+      "github.com/google/wire",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/discovery/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
+    ],
+    "side_effects": [
+      "Panic on error during service or database initialization"
+    ],
+    "risks": [
+      "Potential for panic if configuration is incorrect or services fail to initialize"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "content_hash": "6f0ccd22443c0d3b2585b245b88b0b64",
+  "timestamp": "2025-09-26T13:39:06.150751+07:00",
+  "result": {
+    "path": "internal/domains/manager/handlers/dtos/responses",
+    "purpose": "This folder/module is responsible for defining data transfer objects (DTOs) for various response types used in the manager domain.",
+    "languages": {
+      "Go": 6
+    },
+    "key_modules": [
+      "app_version.go",
+      "auth.go",
+      "coinbase.go",
+      "generics.go",
+      "noti.go",
+      "operator.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "net/http"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing response DTOs into separate files for clarity and maintainability.",
+    "file_summaries": {
+      "internal/domains/manager/handlers/dtos/responses/app_version.go": {
+        "language": "Go",
+        "purpose": "Defines a data structure for application version responses.",
+        "key_types": [
+          "Version"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/responses/auth.go": {
+        "language": "Go",
+        "purpose": "Defines a data transfer object (DTO) for authentication responses.",
+        "key_types": [
+          "Auth"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/responses/coinbase.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects for responses related to Coinbase.",
+        "key_types": [
+          "CbSessionToken",
+          "CbSelectAssets"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/responses/generics.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects for paginated responses and server responses.",
+        "key_types": [
+          "Paging",
+          "Paginated[T]",
+          "ServerResponseDTO[T]",
+          "ServerSuccessResponseDTO"
+        ],
+        "functions": [
+          "Paginate[T]",
+          "NewSliceResponse[T]",
+          "NewResponse[T]",
+          "NewSuccessResponse"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/manager/handlers/dtos/responses/noti.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for notification responses.",
+        "key_types": [
+          "UpsertNoti",
+          "NotiButton",
+          "NotiListingItem",
+          "WhitelistNoti"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/responses/operator.go": {
+        "language": "Go",
+        "purpose": "Defines a data transfer object (DTO) for an Operator with various fields.",
+        "key_types": [
+          "Operator"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "content_hash": "8a0dcc26a577e5956085a4b9a316cb21",
+  "timestamp": "2025-09-26T13:28:01.400704+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the origins game played task in the cron jobs service.",
+    "key_types": [
+      "QuestEntity",
+      "GamePlayedLogsEntry",
+      "ServiceHttp",
+      "Logger"
+    ],
+    "functions": [
+      "TestOriginsGamePlayedCrawlerTask",
+      "NewSwanlakeCrawlerTask",
+      "Run"
+    ],
+    "imports": [
+      "fmt",
+      "net/http",
+      "net/http/httptest",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/mock",
+      "github.com/test-go/testify/require",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/cron-jobs",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/swanlake",
+      "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/docker",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
+    ],
+    "side_effects": [
+      "Starts a PostgreSQL container",
+      "Creates and migrates database schema",
+      "Makes HTTP requests to a test server",
+      "Inserts records into the game_played_logs table"
+    ],
+    "risks": [
+      "Potential for database connection leaks if not handled properly",
+      "HTTP server may expose sensitive data if not secured"
+    ],
+    "complexity": "medium"
+  }
+}

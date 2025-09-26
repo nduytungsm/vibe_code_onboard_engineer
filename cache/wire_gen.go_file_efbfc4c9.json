@@ -1,0 +1,61 @@
+{
+  "content_hash": "660853459761f1937b5fcea27fc271fa",
+  "timestamp": "2025-09-26T13:22:13.709357+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is generated code for dependency injection using Wire, setting up various services and configurations for a proxy application.",
+    "key_types": [
+      "applications.Application",
+      "services6.BridgeService",
+      "repos.TokenRepo",
+      "repos.DAppSiteRepo",
+      "repos2.SignatureRepo",
+      "trustedDomainDB"
+    ],
+    "functions": [
+      "wireWalletProxyApp",
+      "provideHttpServer",
+      "provideBridgeService",
+      "provideServices",
+      "provideMetricsService",
+      "provideZapLogger",
+      "provideProxyDB",
+      "providePgTokenRepo",
+      "providePgDAppSiteRepo",
+      "providePgSignatureRepo",
+      "provideTrustedDomainDB",
+      "provideTrustedDomainRepo"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/services/providers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/trusted-domain/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/trusted-domain/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/blockaid",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/coingecko",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/validation",
+      "github.com/labstack/echo/v4/middleware",
+      "github.com/prometheus/client_golang/prometheus",
+      "go.uber.org/zap",
+      "gorm.io/gorm"
+    ],
+    "complexity": "high"
+  }
+}

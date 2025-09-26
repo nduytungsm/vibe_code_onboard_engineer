@@ -1,0 +1,16 @@
+{
+  "content_hash": "4ff981555e3d400dcfe521fcdf7d5584",
+  "timestamp": "2025-09-26T13:25:16.70587+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a SponsorEntity struct for use with a database, including fields for sponsor details.",
+    "key_types": [
+      "SponsorEntity"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

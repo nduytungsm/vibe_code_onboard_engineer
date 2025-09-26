@@ -1,0 +1,14 @@
+{
+  "content_hash": "18d5339f3d159758a36c1537b78e3ae2",
+  "timestamp": "2025-09-26T12:31:03.227112+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a data structure for activity guidance responses.",
+    "key_types": [
+      "ActivityGuidance"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

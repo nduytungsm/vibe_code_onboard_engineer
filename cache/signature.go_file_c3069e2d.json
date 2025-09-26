@@ -1,0 +1,19 @@
+{
+  "content_hash": "008e0ac17b3e113361814c7d7aa37164",
+  "timestamp": "2025-09-26T13:11:33.53296+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for handling signature requests in a web3 context.",
+    "key_types": [
+      "GetSignatures",
+      "GetSignatureCategories",
+      "UpsertSignatures"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "low"
+  }
+}

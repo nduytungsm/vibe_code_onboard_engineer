@@ -1,0 +1,36 @@
+{
+  "content_hash": "9cc37ff4650a8a39a33080e5941b6484",
+  "timestamp": "2025-09-26T12:32:45.99983+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a cron job scheduler service using the gocron library.",
+    "key_types": [
+      "loggingJobMonitor",
+      "cronJobService",
+      "gocron.Scheduler"
+    ],
+    "functions": [
+      "IncrementJob",
+      "RecordJobTiming",
+      "ProvideScheduler",
+      "NewCronJobService",
+      "Start",
+      "Stop"
+    ],
+    "imports": [
+      "context",
+      "time",
+      "github.com/go-co-op/gocron/v2",
+      "github.com/google/uuid",
+      "github.com/google/wire",
+      "go.uber.org/zap",
+      "_ \"k8s.io/client-go/plugin/pkg/client/auth/gcp\"",
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications"
+    ],
+    "side_effects": [
+      "Logs job completion and timing using zap logger",
+      "Starts and stops the scheduler"
+    ],
+    "complexity": "medium"
+  }
+}

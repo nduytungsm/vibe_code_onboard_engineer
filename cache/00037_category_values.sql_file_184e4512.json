@@ -1,0 +1,26 @@
+{
+  "content_hash": "6d402a90f865440b87b3158fc56bd51b",
+  "timestamp": "2025-09-26T13:14:41.65625+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to update the discovery_categories table by truncating it, adding a new column, and inserting new category values.",
+    "key_types": [
+      "TABLE",
+      "COLUMN",
+      "TEXT"
+    ],
+    "functions": [
+      "TRUNCATE",
+      "ALTER TABLE",
+      "INSERT INTO"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the discovery_categories table by truncating it and inserting new data."
+    ],
+    "risks": [
+      "Data loss due to truncation of the table before insertion."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "content_hash": "9d0469364614c64d0c3793713cace3ed",
+  "timestamp": "2025-09-26T13:34:44.71643+07:00",
+  "result": {
+    "path": "internal/commons",
+    "purpose": "Provides common utilities and constants used throughout the application.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "address.go",
+      "constant.go",
+      "date.go"
+    ],
+    "dependencies": [
+      "github.com/ethereum/go-ethereum/common"
+    ],
+    "architecture": "Modular architecture focusing on reusable components for common functionalities.",
+    "file_summaries": {
+      "internal/commons/address.go": {
+        "language": "Go",
+        "purpose": "Converts a hexadecimal hash to a lowercase Ethereum address.",
+        "key_types": [
+          "string",
+          "common.Hash",
+          "common.Address"
+        ],
+        "functions": [
+          "AddressFromTopic"
+        ],
+        "imports": [
+          "strings",
+          "github.com/ethereum/go-ethereum/common"
+        ],
+        "complexity": "low"
+      },
+      "internal/commons/constant.go": {
+        "language": "Go",
+        "purpose": "Defines a set of constants used throughout the application.",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/commons/date.go": {
+        "language": "Go",
+        "purpose": "Provides utility functions for date manipulation in UTC.",
+        "key_types": [
+          "time.Time"
+        ],
+        "functions": [
+          "DateUTC",
+          "NumDaysBetweenTime"
+        ],
+        "imports": [
+          "fmt",
+          "time"
+        ],
+        "risks": [
+          "Potential for incorrect date calculations if edge cases are not handled properly."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

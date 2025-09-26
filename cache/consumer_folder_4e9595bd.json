@@ -1,0 +1,183 @@
+{
+  "content_hash": "b72765340529dc4fd991c5ba0f863af0",
+  "timestamp": "2025-09-26T13:32:28.788789+07:00",
+  "result": {
+    "path": "cmd/consumer",
+    "purpose": "Responsible for the consumer service in a wallet application, including configuration, dependency injection, and application startup.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "config.go",
+      "main.go",
+      "wire.go",
+      "wire_gen.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/google/wire",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for service management and configuration handling.",
+    "file_summaries": {
+      "cmd/consumer/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration structures for a consumer service in a wallet application.",
+        "key_types": [
+          "consumerConfig",
+          "ContractsTrackingServiceConfig",
+          "ContractsTrackingConfig"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
+        ],
+        "complexity": "medium"
+      },
+      "cmd/consumer/main.go": {
+        "language": "Go",
+        "purpose": "This file is the entry point for a consumer application that initializes configuration, logging, and starts the application.",
+        "key_types": [
+          "consumerConfig",
+          "context.Context",
+          "log.Logger"
+        ],
+        "functions": [
+          "main",
+          "NewConfig",
+          "MustNewLogger",
+          "NewIDGenerator",
+          "wireConsumerApp",
+          "Start"
+        ],
+        "imports": [
+          "context",
+          "log",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/configs",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
+        ],
+        "side_effects": [
+          "Logs configuration loading and application startup",
+          "Flushes logger and cancels context on exit"
+        ],
+        "risks": [
+          "Potential for logging sensitive information if configuration contains secrets",
+          "Error handling may expose internal state through logs"
+        ],
+        "complexity": "medium"
+      },
+      "cmd/consumer/wire.go": {
+        "language": "Go",
+        "purpose": "This file sets up dependency injection for the consumer application using Google Wire.",
+        "key_types": [
+          "applications.Application",
+          "applications.Service",
+          "consumers.ContractsTracking",
+          "generator.IDGenerator",
+          "zap.SugaredLogger",
+          "redis.Client"
+        ],
+        "functions": [
+          "wireConsumerApp",
+          "provideConsumerApp",
+          "provideRoninLogConsumer",
+          "provideServices",
+          "provideContractsTracking",
+          "provideZapLogger",
+          "providePostgresConfig",
+          "provideCheckInWalletService",
+          "provideMetricsService",
+          "provideRedisClient"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+          "github.com/google/wire",
+          "github.com/redis/go-redis/v9",
+          "github.com/samber/lo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/quest/consumers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
+        ],
+        "side_effects": [
+          "Panic if dependency injection fails in wireConsumerApp",
+          "Fatal log if Redis client creation fails"
+        ],
+        "risks": [
+          "Potential panic due to misconfiguration in dependency injection",
+          "Logging sensitive information if not handled properly"
+        ],
+        "complexity": "medium"
+      },
+      "cmd/consumer/wire_gen.go": {
+        "language": "Go",
+        "purpose": "This file generates dependency injection code for a consumer application using Wire.",
+        "key_types": [
+          "applications.Application",
+          "consumerConfig",
+          "repositories.UserRepo",
+          "services.CheckInWallet",
+          "metrics.Service",
+          "kafka.Consumer"
+        ],
+        "functions": [
+          "wireConsumerApp",
+          "provideConsumerApp",
+          "provideRoninLogConsumer",
+          "provideServices",
+          "provideContractsTracking",
+          "provideZapLogger",
+          "providePostgresConfig",
+          "provideCheckInWalletService",
+          "provideMetricsService",
+          "provideRedisClient"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/quest/consumers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+          "github.com/redis/go-redis/v9",
+          "github.com/samber/lo",
+          "go.uber.org/zap"
+        ],
+        "side_effects": [
+          "Creates and configures various services and repositories.",
+          "Logs fatal errors if Redis client creation fails."
+        ],
+        "risks": [
+          "Potential for nil pointer dereference if configuration values are not set correctly.",
+          "Logging sensitive information if not handled properly."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

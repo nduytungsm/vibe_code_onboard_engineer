@@ -1,0 +1,44 @@
+{
+  "content_hash": "0c2ce166801da0de34bd3e83b818d352",
+  "timestamp": "2025-09-26T12:21:20.105465+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles retry logic for failed shop purchase completions.",
+    "key_types": [
+      "shopRetryTaskConfig",
+      "FailedPurchaseCompletion",
+      "ShopRetryTaskHandler"
+    ],
+    "functions": [
+      "NewShopRetryTaskHandler",
+      "TaskType",
+      "ProcessTask",
+      "retryPurchaseCompletion",
+      "requeueOrDeadLetter",
+      "moveToDeadLetter"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "fmt",
+      "time",
+      "github.com/hibiken/asynq",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
+    ],
+    "side_effects": [
+      "Interacts with Redis for queue management",
+      "Logs information and errors"
+    ],
+    "risks": [
+      "Potential data loss if retries exceed maximum attempts",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

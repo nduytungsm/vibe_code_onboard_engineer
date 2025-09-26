@@ -1,0 +1,24 @@
+{
+  "content_hash": "c8ad103257390e41e25be1d63be36eac",
+  "timestamp": "2025-09-26T13:27:42.460575+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines a migration for creating and dropping the signature_categories table.",
+    "key_types": [
+      "TABLE",
+      "TEXT",
+      "VARCHAR",
+      "TIMESTAMPTZ"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "DROP TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates a table in the database",
+      "Drops a table from the database"
+    ],
+    "complexity": "low"
+  }
+}

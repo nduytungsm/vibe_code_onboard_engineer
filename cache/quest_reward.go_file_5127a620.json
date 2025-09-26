@@ -1,0 +1,31 @@
+{
+  "content_hash": "08b0bdd7b1da399200bab2b667ae4793",
+  "timestamp": "2025-09-26T12:23:55.042345+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles quest rewards by fetching active rewards based on quest IDs.",
+    "key_types": [
+      "QuestReward",
+      "questReward",
+      "repositories.RewardRepo",
+      "zap.SugaredLogger",
+      "responses.QuestRewardExtra",
+      "models.FilterQuestReward"
+    ],
+    "functions": [
+      "NewQuestReward",
+      "wrapErr",
+      "GetActives"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/samber/lo",
+      "go.uber.org/zap"
+    ],
+    "complexity": "medium"
+  }
+}

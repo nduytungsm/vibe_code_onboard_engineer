@@ -1,0 +1,42 @@
+{
+  "content_hash": "3faa5637a4e252c3fbf76d6b5cd0ab14",
+  "timestamp": "2025-09-26T13:22:50.47528+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles wallet-related operations for device management, including registration, reset, and address synchronization.",
+    "key_types": [
+      "WalletHandler",
+      "DeviceService",
+      "DeviceFilter",
+      "Device"
+    ],
+    "functions": [
+      "NewWalletHandler",
+      "Setup",
+      "Registration",
+      "Reset",
+      "GetDeviceByID",
+      "UpdatePushToken",
+      "SyncDeviceAddresses",
+      "censorPushToken"
+    ],
+    "imports": [
+      "fmt",
+      "net/http",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "side_effects": [
+      "Modifies device push tokens by censoring them before returning responses."
+    ],
+    "risks": [
+      "Potential exposure of sensitive device information if push tokens are not properly censored."
+    ],
+    "complexity": "medium"
+  }
+}

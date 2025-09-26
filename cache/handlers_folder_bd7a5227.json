@@ -1,0 +1,203 @@
+{
+  "content_hash": "814aef7c6a79e6c772d7300ddc689c10",
+  "timestamp": "2025-09-26T13:38:12.254671+07:00",
+  "result": {
+    "path": "internal/domains/manager/handlers",
+    "purpose": "Responsible for handling various operations related to application version management, Coinbase operations, notifications, and operator management within the manager domain.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "app_version.go",
+      "coinbase.go",
+      "noti.go",
+      "operators.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/labstack/echo/v4",
+      "gorm.io/gorm",
+      "github.com/samber/lo",
+      "bufio",
+      "strings",
+      "time",
+      "errors",
+      "fmt"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each file handles specific aspects of the manager domain, promoting separation of concerns and maintainability.",
+    "file_summaries": {
+      "internal/domains/manager/handlers/app_version.go": {
+        "language": "Go",
+        "purpose": "Handles application version management including creating, deleting, and publishing versions, as well as managing mandatory updates.",
+        "key_types": [
+          "AppInternalVersionHandler",
+          "AppVersionHandler"
+        ],
+        "functions": [
+          "NewInternalAppVersionHandler",
+          "NewAppVersionHandler",
+          "Setup",
+          "createVersion",
+          "deleteVersion",
+          "setForceUpdate",
+          "removeForceUpdate",
+          "getByVersion",
+          "publishVersion",
+          "getLatest",
+          "listAppVersions"
+        ],
+        "imports": [
+          "errors",
+          "fmt",
+          "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/labstack/echo/v4",
+          "golang.org/x/mod/semver"
+        ],
+        "side_effects": [
+          "Modifies application version data in the database",
+          "Sends JSON responses to HTTP requests"
+        ],
+        "risks": [
+          "Potential for invalid semantic version errors",
+          "Improper handling of platform validation could lead to incorrect responses"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/manager/handlers/coinbase.go": {
+        "language": "Go",
+        "purpose": "Handles requests related to Coinbase operations such as creating onramp tokens and selecting assets.",
+        "key_types": [
+          "CoinbaseHandler",
+          "services.CoinbaseSvc",
+          "requests.CbSelectAssets"
+        ],
+        "functions": [
+          "NewCoinbaseHandler",
+          "Setup",
+          "createOnrampToken",
+          "selectAssets"
+        ],
+        "imports": [
+          "errors",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/labstack/echo/v4"
+        ],
+        "side_effects": [
+          "Modifies request context with client IP",
+          "Interacts with external Coinbase services"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information through error messages",
+          "Improper handling of user input could lead to security vulnerabilities"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/manager/handlers/noti.go": {
+        "language": "Go",
+        "purpose": "Handles notification-related operations such as creating, listing, and deleting notifications.",
+        "key_types": [
+          "InternalNotiHandler",
+          "NotiHandler"
+        ],
+        "functions": [
+          "NewInternalNotiHandler",
+          "NewNotiHandler",
+          "Setup",
+          "whitelistNoti",
+          "getNotiByID",
+          "listUserNoti",
+          "deleteNoti",
+          "listNoti",
+          "upsertNewsNoti",
+          "extractWhitelistAddress",
+          "validateTriggerTime",
+          "validateLayout",
+          "validateBtns"
+        ],
+        "imports": [
+          "bufio",
+          "errors",
+          "fmt",
+          "strings",
+          "time",
+          "github.com/labstack/echo/v4",
+          "github.com/samber/lo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Reads and processes files from HTTP requests.",
+          "Modifies the state of notifications in the service layer."
+        ],
+        "risks": [
+          "Potential for file upload vulnerabilities if not properly validated.",
+          "Improper handling of user input could lead to errors or unexpected behavior."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/manager/handlers/operators.go": {
+        "language": "Go",
+        "purpose": "Handles operator-related HTTP requests and responses for the manager domain.",
+        "key_types": [
+          "InternalOperatorHandler",
+          "OperatorHandler"
+        ],
+        "functions": [
+          "NewInternalOperatorHandler",
+          "NewOperatorHandler",
+          "Setup",
+          "getSingle",
+          "listActives",
+          "deleteOperator",
+          "createOperator"
+        ],
+        "imports": [
+          "errors",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/labstack/echo/v4",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Modifies the state of operators in the database.",
+          "Interacts with the HTTP context and middleware for authorization."
+        ],
+        "risks": [
+          "Potential for unauthorized access if middleware fails.",
+          "Error handling may expose sensitive information."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

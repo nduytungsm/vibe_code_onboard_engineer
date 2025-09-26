@@ -1,0 +1,34 @@
+{
+  "content_hash": "13cbc44066820990cd53bf8ef90fc4d6",
+  "timestamp": "2025-09-26T13:10:27.516789+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a provider for different decentralized exchanges (DEX) and their configurations, including methods for routing and token management.",
+    "key_types": [
+      "ExtraFee",
+      "Config",
+      "CalcExtraFeeFn",
+      "DexRouter",
+      "tokenKey"
+    ],
+    "functions": [
+      "NewDexRoutersFromConfig"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "time",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "side_effects": [
+      "Creates instances of different DEX routers based on configuration."
+    ],
+    "risks": [
+      "Potential for unsupported DEX provider leading to runtime errors."
+    ],
+    "complexity": "medium"
+  }
+}

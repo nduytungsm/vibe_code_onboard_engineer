@@ -1,8 +1,8 @@
 {
-  "content_hash": "d76a36c08daab281f04f107efecf1acb",
-  "timestamp": "2025-09-26T11:56:01.703911+07:00",
+  "content_hash": "78690cb1d7a3f2f2a1c67b2c2894dbb7",
+  "timestamp": "2025-09-26T13:20:18.244969+07:00",
   "result": {
-    "repo_summary_line": "A wallet manager project for handling user accounts, announcements, device interactions, and decentralized applications.",
+    "repo_summary_line": "The repository is a wallet manager application that integrates announcements, user preferences, DApp management, and tracking features.",
     "architecture": "microservices",
     "repo_layout": "monorepo",
     "main_stacks": [
@@ -25,36 +25,30 @@
         "name": "clean_highlight_dapps",
         "path": "cmd/clean_highlight_dapps",
         "language": "Go",
-        "short_purpose": "Provides a command-line application that cleans expired highlights from a database."
+        "short_purpose": "Cleans expired highlights from a database and logs the process."
       },
       {
         "name": "clean_old_special_offers",
         "path": "cmd/clean_old_special_offers",
         "language": "Go",
-        "short_purpose": "Cleans old special offers from an announcement repository based on a specified time period."
+        "short_purpose": "Cleans old special offers from a PostgreSQL database."
       },
       {
         "name": "ip_location",
         "path": "cmd/ip_location",
         "language": "Go",
-        "short_purpose": "Initializes a Sentry client for error tracking and downloads a new IP location database using Redis."
+        "short_purpose": "Initializes a Sentry client for error tracking and downloads a new IP location database."
       },
       {
         "name": "trigger_announcement",
         "path": "cmd/trigger_announcement",
         "language": "Go",
-        "short_purpose": "Responsible for triggering announcements in the application."
+        "short_purpose": "Triggers announcements in the application."
       }
     ],
     "evidence_paths": [
       "README.md",
-      "docker-compose.yml",
-      "cmd/app/main.go",
-      "cmd/clean_cronjob/main.go",
-      "cmd/clean_highlight_dapps/main.go",
-      "cmd/clean_old_special_offers/main.go",
-      "cmd/ip_location/main.go",
-      "cmd/trigger_announcement/main.go"
+      "docker-compose.yml"
     ],
     "confidence": 0.9
   }

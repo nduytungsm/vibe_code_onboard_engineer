@@ -1,0 +1,58 @@
+{
+  "content_hash": "48ae995705001cffe4dd460f9dff0fa4",
+  "timestamp": "2025-09-26T12:32:09.034841+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a reward router for handling reward-related HTTP requests in a web service.",
+    "key_types": [
+      "Reward",
+      "reward",
+      "requests.DistributeReward",
+      "responses.ServerResponseDTO",
+      "responses.ObjectResultDTO"
+    ],
+    "functions": [
+      "NewRewardRouter",
+      "DistributeReward",
+      "RejectUserReward",
+      "DeleteRewardPool",
+      "DeleteRewardInfo",
+      "GetPoolByID",
+      "ListRewardInfos",
+      "GetClaimRewardSignature",
+      "UpsertQuestRewards",
+      "UpsertRewardPool",
+      "ListRewardPools",
+      "UpsertRewardInfo"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "net/http",
+      "strings",
+      "time",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/labstack/echo/v4",
+      "github.com/shopspring/decimal",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "side_effects": [
+      "Interacts with external services to distribute rewards and manage user rewards.",
+      "Reads and processes files for user reward rejection."
+    ],
+    "risks": [
+      "Potential for errors in file handling leading to data loss.",
+      "Improper validation of user inputs could lead to unexpected behavior."
+    ],
+    "complexity": "medium"
+  }
+}

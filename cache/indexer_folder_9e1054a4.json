@@ -1,0 +1,60 @@
+{
+  "content_hash": "bcdd681811dca843b039049c928e8d29",
+  "timestamp": "2025-09-26T13:35:52.694798+07:00",
+  "result": {
+    "path": "internal/infras/indexer",
+    "purpose": "This folder/module is responsible for implementing a client to interact with a GraphQL API for retrieving staked amounts associated with user addresses.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "client.go",
+      "models.go"
+    ],
+    "dependencies": [
+      "github.com/machinebox/graphql",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating the client logic and data models related to GraphQL interactions, promoting separation of concerns.",
+    "file_summaries": {
+      "internal/infras/indexer/client.go": {
+        "language": "Go",
+        "purpose": "This file implements a client for interacting with a GraphQL API to retrieve staked amounts for a given address.",
+        "key_types": [
+          "Config",
+          "Client",
+          "client"
+        ],
+        "functions": [
+          "NewClient",
+          "GetRonStaked",
+          "sendRequest"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "github.com/machinebox/graphql",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      },
+      "internal/infras/indexer/models.go": {
+        "language": "Go",
+        "purpose": "Defines GraphQL request and response structures for querying staked amounts by user address.",
+        "key_types": [
+          "GraphQLRequest",
+          "StakedAmountByAddressRequest",
+          "StakedAmountResponse"
+        ],
+        "functions": [
+          "QueryString",
+          "Variables"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "content_hash": "a8d25b930191956435e149a2adaa4b3c",
+  "timestamp": "2025-09-26T13:13:14.143875+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for reward-related information in a quest system.",
+    "key_types": [
+      "RewardInfo",
+      "UserQuestReward",
+      "QuestRewardExtra",
+      "QuestReward",
+      "UserRewardSignatureDTO",
+      "RewardPoolInfoDTO",
+      "RewardPool",
+      "RewardSignaturesDTO",
+      "FundSourceDTO",
+      "FundSource",
+      "CampaignDTO",
+      "TxHashInfoDTO",
+      "TopUpSimulation",
+      "ReviewReward"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/shopspring/decimal"
+    ],
+    "complexity": "medium"
+  }
+}

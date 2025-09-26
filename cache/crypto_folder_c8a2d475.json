@@ -1,0 +1,50 @@
+{
+  "content_hash": "140a287adcea8474c6deaf58debb232d",
+  "timestamp": "2025-09-26T13:41:12.348733+07:00",
+  "result": {
+    "path": "pkg/crypto",
+    "purpose": "This folder/module is responsible for handling cryptographic functions, specifically loading certificates from PKCS#12 and .p8 formats.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "key.go"
+    ],
+    "dependencies": [
+      "crypto/ecdsa",
+      "crypto/tls",
+      "crypto/x509",
+      "encoding/pem",
+      "errors",
+      "golang.org/x/crypto/pkcs12"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating cryptographic functionalities in a dedicated package.",
+    "file_summaries": {
+      "pkg/crypto/key.go": {
+        "language": "Go",
+        "purpose": "This file provides functions to load certificates from PKCS#12 and .p8 formats.",
+        "key_types": [
+          "tls.Certificate",
+          "ecdsa.PrivateKey",
+          "error"
+        ],
+        "functions": [
+          "CertFromP12Bytes",
+          "KeyFromP8Bytes"
+        ],
+        "imports": [
+          "crypto/ecdsa",
+          "crypto/tls",
+          "crypto/x509",
+          "encoding/pem",
+          "errors",
+          "golang.org/x/crypto/pkcs12"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if errors are not handled properly."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "content_hash": "95b8b7204eeb3d7d954f0bde3060bd5c",
+  "timestamp": "2025-09-26T12:35:15.70697+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for managing user events, including premium user functionalities.",
+    "key_types": [
+      "UserEventSvc",
+      "userEventSvc",
+      "models.UserEvent",
+      "models.TempPremiumUser"
+    ],
+    "functions": [
+      "NewUserEventSvc",
+      "UserOwnPremiumNFTByGeth",
+      "FindEventPremiumUser",
+      "ListUserJoinedEvents",
+      "FindEventUserByPool",
+      "UpgradeToPremium",
+      "FindEventUser",
+      "CountUserInEvent",
+      "FindTempPremiumUser",
+      "StoreTempPremiumStatus"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/redis/go-redis/v9",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/geth",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Caches premium user status in Redis",
+      "Logs errors using zap logger"
+    ],
+    "risks": [
+      "Potential for unauthorized access if user IDs are not validated properly",
+      "Error handling may expose sensitive information in logs"
+    ],
+    "complexity": "medium"
+  }
+}

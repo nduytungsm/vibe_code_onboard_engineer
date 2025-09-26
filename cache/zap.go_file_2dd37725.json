@@ -1,0 +1,29 @@
+{
+  "content_hash": "a6ad00937bbff281900433d7940b0421",
+  "timestamp": "2025-09-26T13:14:24.76829+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides logging functionality using the Zap logging library, including configuration for Google Cloud Platform logging.",
+    "key_types": [
+      "LoggerConfig",
+      "zap.Logger",
+      "zapcore.EncoderConfig"
+    ],
+    "functions": [
+      "NewZapLogger",
+      "MustNewLogger"
+    ],
+    "imports": [
+      "log",
+      "go.uber.org/zap",
+      "go.uber.org/zap/zapcore"
+    ],
+    "side_effects": [
+      "Logs fatal errors if logger creation fails"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information in logs if not configured properly"
+    ],
+    "complexity": "medium"
+  }
+}

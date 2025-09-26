@@ -1,0 +1,41 @@
+{
+  "content_hash": "6a3a72b9c4cb88370f455b11f493ab62",
+  "timestamp": "2025-09-26T13:12:13.586971+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a client for interacting with a decentralized exchange, providing methods to fetch trending pools, OHLCV charts, and token details.",
+    "key_types": [
+      "Config",
+      "Client",
+      "clientHTTP",
+      "Pool",
+      "Token",
+      "PoolOHLCV",
+      "OHLCVPoint"
+    ],
+    "functions": [
+      "NewClientHTTP",
+      "TrendingPools",
+      "PoolOHLCVChart",
+      "GetDexToken",
+      "urlPools",
+      "urlTrendingPools",
+      "urlNewPools",
+      "urlPoolOHLCVChart",
+      "urlToken",
+      "getPoolURL"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "net/http",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

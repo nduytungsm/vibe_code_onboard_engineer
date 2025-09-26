@@ -1,0 +1,26 @@
+{
+  "content_hash": "19102c0de3e7231da7f7431b1c837ed1",
+  "timestamp": "2025-09-26T13:11:00.671722+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines configuration structures for proxy services including chain configurations, token configurations, and provider settings.",
+    "key_types": [
+      "ChainCfg",
+      "TokenCfg",
+      "ChainProvider",
+      "ChainSimulation",
+      "ProviderCacheCfg",
+      "ProviderCfg",
+      "InternalSvcCfg",
+      "LimitCfgs",
+      "CircuitBreakerCfg"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

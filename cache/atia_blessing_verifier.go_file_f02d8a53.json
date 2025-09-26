@@ -1,0 +1,35 @@
+{
+  "content_hash": "e396f259c5fef7b650cb3c393121ce08",
+  "timestamp": "2025-09-26T13:26:35.001574+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains a service for verifying user quest streaks in a gaming application.",
+    "key_types": [
+      "questVerifier",
+      "VerifyActionParams",
+      "models.WalletCheckInLogEntity"
+    ],
+    "functions": [
+      "verifyAtiaStreakProxy",
+      "updateActivityAtiaState",
+      "findExternalAndUpdateAtiaStreak",
+      "processRestoreStreakTxns"
+    ],
+    "imports": [
+      "context",
+      "strings",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
+    ],
+    "side_effects": [
+      "Database queries to find and update user check-in records.",
+      "Modifications to user quest status based on streak calculations."
+    ],
+    "risks": [
+      "Potential for SQL injection if user input is not properly sanitized.",
+      "Error handling may expose sensitive information if not managed correctly."
+    ],
+    "complexity": "medium"
+  }
+}

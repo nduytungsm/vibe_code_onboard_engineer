@@ -1,0 +1,28 @@
+{
+  "content_hash": "a3b615a3891dfb32a8b3a0e6bcdb8095",
+  "timestamp": "2025-09-26T13:12:10.437068+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a client for executing RPC calls to a blockchain service.",
+    "key_types": [
+      "Client",
+      "client",
+      "Config"
+    ],
+    "functions": [
+      "NewGetBlockCli",
+      "ExecuteRpc"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "go.uber.org/zap"
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if base URL or chain node secret is improperly handled."
+    ],
+    "complexity": "medium"
+  }
+}

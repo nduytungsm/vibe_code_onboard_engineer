@@ -1,0 +1,28 @@
+{
+  "content_hash": "d3bae887dd7e1f6f7b709c04593129ef",
+  "timestamp": "2025-09-26T13:27:41.201068+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to create and drop a devices table and associated types.",
+    "key_types": [
+      "device_status",
+      "device_platform"
+    ],
+    "functions": [
+      "CREATE EXTENSION",
+      "CREATE TYPE",
+      "CREATE TABLE",
+      "CREATE INDEX",
+      "DROP TABLE",
+      "DROP TYPE"
+    ],
+    "imports": [
+      "uuid-ossp"
+    ],
+    "side_effects": [
+      "Creates a new table in the database",
+      "Creates new types for device status and platform"
+    ],
+    "complexity": "medium"
+  }
+}

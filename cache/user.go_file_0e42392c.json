@@ -1,0 +1,49 @@
+{
+  "content_hash": "39802a5cda7535775c9e917019d4942f",
+  "timestamp": "2025-09-26T13:13:46.677144+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a user service for managing user data, including finding or creating users and caching user information.",
+    "key_types": [
+      "User",
+      "UserSvc",
+      "userSvc"
+    ],
+    "functions": [
+      "NewUserSvc",
+      "FindUserOrCreate",
+      "FindUserByID",
+      "findUserOrCreate",
+      "findUserFromCache",
+      "cacheUser",
+      "wrapErr",
+      "marshalUser"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "strings",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Caches user data in Redis",
+      "Logs errors using zap logger"
+    ],
+    "risks": [
+      "Potential exposure of user data if Redis is not secured",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

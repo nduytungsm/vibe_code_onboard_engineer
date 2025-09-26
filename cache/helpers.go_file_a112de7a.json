@@ -1,0 +1,23 @@
+{
+  "content_hash": "508910f62e63c860e6ae8a347605771f",
+  "timestamp": "2025-09-26T12:31:33.808005+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains helper functions for managing quest parameters in a router context.",
+    "key_types": [
+      "requests.UpsertQuestInfo",
+      "requests.UpsertQuestParams",
+      "manager_mdw.OperatorInfo"
+    ],
+    "functions": [
+      "copyCreateQuestParams"
+    ],
+    "imports": [
+      "strings",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "complexity": "medium"
+  }
+}

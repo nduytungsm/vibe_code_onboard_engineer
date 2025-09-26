@@ -1,0 +1,45 @@
+{
+  "content_hash": "9fcfa72794944e18a30a5675661923e3",
+  "timestamp": "2025-09-26T13:28:04.090937+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains unit tests for off-chain actions related to quests in a gaming service.",
+    "key_types": [
+      "ParticipantEntity",
+      "PQuestRelatedInfo",
+      "QuestEntity",
+      "ParticipantQuestEntity",
+      "ActivityEntity",
+      "PActEntity",
+      "OffChainViaHTTPAction"
+    ],
+    "functions": [
+      "Test_OffChainAction_Once_ShouldReturnQuestComplete",
+      "Test_OffChainAction_Once_ShouldNotUpdateStatus",
+      "Test_OffChainAction_Streak_ShouldReturnQuestComplete",
+      "Test_OffChainAction_Streak_ShouldUpdateStatus"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "fmt",
+      "net/http",
+      "net/http/httptest",
+      "strings",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/assert",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/tests"
+    ],
+    "side_effects": [
+      "HTTP requests to a test server",
+      "Logging test information"
+    ],
+    "complexity": "medium"
+  }
+}

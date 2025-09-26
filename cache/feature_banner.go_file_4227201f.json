@@ -1,0 +1,45 @@
+{
+  "content_hash": "c8001b79dc339640142b6735bb897b25",
+  "timestamp": "2025-09-26T13:26:19.268693+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a service for managing feature banners, including creating, retrieving, checking existence, and deleting banners.",
+    "key_types": [
+      "FeatureBanner",
+      "featureBanner",
+      "FeatureBannerEntity",
+      "FeatureHeadlineEntity"
+    ],
+    "functions": [
+      "NewFeatureBanner",
+      "CheckExistsOfVersion",
+      "Create",
+      "GetByVersionID",
+      "CheckExists",
+      "Delete"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/google/wire",
+      "go.uber.org/zap",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Database transactions for creating and deleting banners and headlines",
+      "Logging errors and actions"
+    ],
+    "risks": [
+      "Potential for SQL injection if inputs are not properly sanitized",
+      "Error handling may expose internal error messages"
+    ],
+    "complexity": "medium"
+  }
+}

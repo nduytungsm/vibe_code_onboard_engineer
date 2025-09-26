@@ -1,0 +1,109 @@
+{
+  "content_hash": "13e79be0c3409f28755835412c2e5cf2",
+  "timestamp": "2025-09-26T13:36:25.879292+07:00",
+  "result": {
+    "path": "internal/domains/web3/tasks",
+    "purpose": "Responsible for generating and processing tasks related to crawling ABI data from Ethereum contracts.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "abi_crawl_task_generator.go",
+      "abi_crawler.go"
+    ],
+    "dependencies": [
+      "github.com/hibiken/asynq",
+      "go.uber.org/zap",
+      "github.com/ethereum/go-ethereum/accounts/abi",
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/samber/lo",
+      "golang.org/x/time/rate",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/explorer",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating task generation and processing logic for ABI data, utilizing asynchronous task handling.",
+    "file_summaries": {
+      "internal/domains/web3/tasks/abi_crawl_task_generator.go": {
+        "language": "Go",
+        "purpose": "Generates and enqueues tasks for crawling ABI data from contracts.",
+        "key_types": [
+          "ABICrawlTaskGeneratorTaskHandler",
+          "explorer.Client",
+          "asynq.Client",
+          "zap.SugaredLogger"
+        ],
+        "functions": [
+          "NewABICrawlTaskGeneratorTaskHandler",
+          "TaskType",
+          "ProcessTask"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "errors",
+          "time",
+          "github.com/hibiken/asynq",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/explorer"
+        ],
+        "side_effects": [
+          "Enqueues tasks to an asynchronous queue",
+          "Logs warnings for duplicate tasks"
+        ],
+        "risks": [
+          "Potential for task duplication leading to unnecessary processing",
+          "Error handling may expose sensitive information in logs"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/web3/tasks/abi_crawler.go": {
+        "language": "Go",
+        "purpose": "This file defines a task handler for crawling and processing ABI (Application Binary Interface) data from Ethereum contracts.",
+        "key_types": [
+          "abiCrawlerConfig",
+          "ABICrawlerTaskHandler",
+          "builder"
+        ],
+        "functions": [
+          "NewABICrawlerTaskHandler",
+          "TaskType",
+          "ProcessTask",
+          "process",
+          "newBuilder",
+          "add",
+          "build"
+        ],
+        "imports": [
+          "bytes",
+          "context",
+          "encoding/json",
+          "github.com/ethereum/go-ethereum/accounts/abi",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/hibiken/asynq",
+          "github.com/samber/lo",
+          "go.uber.org/zap",
+          "golang.org/x/time/rate",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/explorer",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Logs warnings for invalid task payloads and contract addresses.",
+          "Processes tasks that may involve network calls to fetch contract ABIs."
+        ],
+        "risks": [
+          "Potential for denial of service if rate limiting is not properly configured.",
+          "Handling of invalid or malicious contract addresses could lead to unexpected behavior."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

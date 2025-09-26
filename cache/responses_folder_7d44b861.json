@@ -1,0 +1,307 @@
+{
+  "content_hash": "f48cb809bbd9f9a93081e3f49e699359",
+  "timestamp": "2025-09-26T13:33:19.715284+07:00",
+  "result": {
+    "path": "internal/routers/dtos/responses",
+    "purpose": "Defines data transfer objects (DTOs) for various responses in a gaming and wallet service context.",
+    "languages": {
+      "Go": 20
+    },
+    "key_modules": [
+      "activity.go",
+      "default.go",
+      "quest.go",
+      "reward.go",
+      "shop.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/shopspring/decimal",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing DTOs by their respective functionalities and ensuring separation of concerns for different response types.",
+    "file_summaries": {
+      "internal/routers/dtos/responses/activity.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for quest activities and actions in a gaming context.",
+        "key_types": [
+          "QuestActivityGenericDTO",
+          "QuestActivityVerifyInfoDTO",
+          "QuestAction",
+          "UserAction",
+          "VerifiedPActDTO",
+          "QuestActivitiesListDTO",
+          "ActionItem",
+          "Preview"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/responses/activity_guidance.go": {
+        "language": "Go",
+        "purpose": "Defines a struct for activity guidance responses.",
+        "key_types": [
+          "ActivityGuidance"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/responses/default.go": {
+        "language": "Go",
+        "purpose": "Defines response structures and pagination logic for API responses.",
+        "key_types": [
+          "Paging",
+          "Paginated[T]",
+          "ServerResponseDTO[T]",
+          "ServerSuccessResponseDTO",
+          "SliceResultDTO[T]",
+          "ObjectResultDTO[T]"
+        ],
+        "functions": [
+          "Paginate[T]",
+          "calcPAndPs",
+          "FormPagination",
+          "FormPaginationWithPage",
+          "NewSliceResponse[T]",
+          "NewResponse[T]",
+          "NewSuccessResponse",
+          "NewSliceResultDTO[T]",
+          "NewObjectResultDTO[T]"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/responses/event.go": {
+        "language": "Go",
+        "purpose": "Defines a struct for event responses in an application.",
+        "key_types": [
+          "Event",
+          "Sponsor"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/responses/nonce.go": {
+        "language": "Go",
+        "purpose": "Defines a data structure for a nonce response with relevant fields.",
+        "key_types": [
+          "NonceResponse"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/responses/operator.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for operator responses.",
+        "key_types": [
+          "OperatorItemDTO",
+          "ListOperatorsDTO"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/responses/pagination.go": {
+        "language": "Go",
+        "purpose": "Defines a Pagination Data Transfer Object (DTO) with methods to retrieve pagination details.",
+        "key_types": [
+          "PaginationDTO"
+        ],
+        "functions": [
+          "GetPage",
+          "GetOffset",
+          "GetSize"
+        ],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/responses/participant.go": {
+        "language": "Go",
+        "purpose": "Defines a data structure for user response items.",
+        "key_types": [
+          "UserItem"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/responses/quest.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for quest-related information and operations.",
+        "key_types": [
+          "QuestRewardInfoDTO",
+          "QuestInfo",
+          "QuestListingItem",
+          "ListFilterDTO",
+          "ListLogItemDTO",
+          "DistributionDTO",
+          "QuestAuditStatisticsDTO",
+          "WhitelistUsersDTO",
+          "UpdateClaimableStatusDTO",
+          "SubmitQuestDTO",
+          "ManualUpdateResult"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/responses/quest_pool.go": {
+        "language": "Go",
+        "purpose": "Defines a data structure for a quest pool response in a gaming application.",
+        "key_types": [
+          "QuestPool",
+          "time.Duration",
+          "decimal.Decimal"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/responses/reward.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for reward-related information in a quest system.",
+        "key_types": [
+          "RewardInfo",
+          "UserQuestReward",
+          "QuestRewardExtra",
+          "QuestReward",
+          "UserRewardSignatureDTO",
+          "RewardPoolInfoDTO",
+          "RewardPool",
+          "RewardSignaturesDTO",
+          "FundSourceDTO",
+          "FundSource",
+          "CampaignDTO",
+          "TxHashInfoDTO",
+          "TopUpSimulation",
+          "ReviewReward"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/responses/shop.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for shop-related responses in a wallet service.",
+        "key_types": [
+          "ShopCategory",
+          "ShopCategoryWithTiers",
+          "ShopTier",
+          "ShopTierWithItems",
+          "ShopItem",
+          "ShopInventory",
+          "UserItemQuantity",
+          "PurchaseAvailability",
+          "CreatePurchaseResponse"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/responses/sponsor.go": {
+        "language": "Go",
+        "purpose": "Defines a Sponsor data structure for responses.",
+        "key_types": [
+          "Sponsor"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/responses/user_action.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for user actions related to wallet check-ins.",
+        "key_types": [
+          "UserCheckInWalletActionDTO",
+          "UserActionDTO"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/responses/user_event.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for user event responses.",
+        "key_types": [
+          "VerifyPremiumUser",
+          "Completion",
+          "GetUserEventAnalytics"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
+        ],
+        "complexity": "low"
+      },
+      "internal/routers/dtos/responses/user_quest.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for user quests in a quest management system.",
+        "key_types": [
+          "UserQuestItem",
+          "PQuestInfoDTO",
+          "QuestUpdatableFieldsDTO",
+          "RewardRejectedUsersDTO",
+          "DistributeResult",
+          "PreTakeQuestAct",
+          "VerifyResponse"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/responses/user_reward.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for user rewards and related information.",
+        "key_types": [
+          "ShortenedParticipantQuestDTO",
+          "UserRewardDTO",
+          "PRewardStatusDTO",
+          "UserReward",
+          "AuditedPRewardDTO"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/responses/user_role.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for user roles and permissions.",
+        "key_types": [
+          "ListRoleItemDTO",
+          "User",
+          "UserRole"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "content_hash": "a31658bb5a7a35b5e85fcb61f568baa8",
-  "timestamp": "2025-09-26T11:54:35.243928+07:00",
+  "content_hash": "d8a6eef0b336d52c163d519e2c3577f5",
+  "timestamp": "2025-09-26T13:17:54.197195+07:00",
   "result": {
     "path": "middleware",
-    "purpose": "This folder contains middleware components for an Echo web server application, handling various aspects such as authentication, error handling, request tracking, and metrics.",
+    "purpose": "This folder/module is responsible for implementing various middleware functions for an Echo web server application, including error handling, authentication, request tracking, and API version checking.",
     "languages": {
       "Go": 7
     },
@@ -31,7 +31,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/tracking",
       "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each middleware file encapsulates specific functionality and can be independently used within the Echo web server framework.",
+    "architecture": "The folder follows a modular architecture pattern, where each middleware file encapsulates specific functionality related to request processing, error handling, and authentication, promoting separation of concerns.",
     "file_summaries": {
       "middleware/custom_requests_total_prometheus.go": {
         "language": "Go",
@@ -65,6 +65,7 @@
         "language": "Go",
         "purpose": "Handles errors globally for an Echo web server application.",
         "key_types": [
+          "error",
           "echo.Context",
           "mErrs.Error",
           "jwt.ValidationError",
@@ -91,7 +92,7 @@
         ],
         "side_effects": [
           "Logs error details to the context's logger",
-          "Sends JSON response with error details to the client"
+          "Responds with JSON error messages to the client"
         ],
         "risks": [
           "Potential exposure of sensitive error details in logs",
@@ -105,7 +106,8 @@
         "key_types": [
           "hmac.Config",
           "echo.Context",
-          "echo.HandlerFunc"
+          "echo.MiddlewareFunc",
+          "error"
         ],
         "functions": [
           "HmacAuthentication"
@@ -198,11 +200,11 @@
       },
       "middleware/wallet_auth.go": {
         "language": "Go",
-        "purpose": "This file implements middleware for verifying wallet signatures in HTTP requests.",
+        "purpose": "Middleware for verifying wallet signatures in HTTP requests.",
         "key_types": [
           "hmac.Config",
           "echo.Context",
-          "echo.HandlerFunc"
+          "error"
         ],
         "functions": [
           "VerifyWalletSignature",

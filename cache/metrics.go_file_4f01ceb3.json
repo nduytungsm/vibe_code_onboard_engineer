@@ -1,0 +1,30 @@
+{
+  "content_hash": "71a325a4eb80ac5848225c5167b6da4b",
+  "timestamp": "2025-09-26T12:37:41.212928+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a middleware for metrics tracking in an asynchronous task processing system.",
+    "key_types": [
+      "asynq.Handler",
+      "asynq.Task",
+      "prometheus.CounterVec",
+      "prometheus.GaugeVec"
+    ],
+    "functions": [
+      "createMetricsMiddleware"
+    ],
+    "imports": [
+      "context",
+      "github.com/hibiken/asynq",
+      "github.com/prometheus/client_golang/prometheus",
+      "github.com/prometheus/client_golang/prometheus/promauto"
+    ],
+    "side_effects": [
+      "Modifies metrics counters and gauges based on task processing outcomes."
+    ],
+    "risks": [
+      "Potential for incorrect metrics if error handling is not properly managed."
+    ],
+    "complexity": "medium"
+  }
+}

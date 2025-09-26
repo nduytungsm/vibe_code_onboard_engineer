@@ -1,0 +1,24 @@
+{
+  "content_hash": "0f5d2eb2c0d7f6afd8a61c5af7e6014c",
+  "timestamp": "2025-09-26T13:11:43.280794+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a health check handler that returns application configuration details in JSON format.",
+    "key_types": [
+      "applications.ApplicationConfig",
+      "echo.Context"
+    ],
+    "functions": [
+      "NewHealthCheck"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications"
+    ],
+    "side_effects": [
+      "Returns HTTP response with JSON data"
+    ],
+    "complexity": "low"
+  }
+}

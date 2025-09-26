@@ -1,0 +1,34 @@
+{
+  "content_hash": "6e085cf01003d924f2734de8c7e65cbd",
+  "timestamp": "2025-09-26T12:30:28.79598+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines enums and associated methods for reward statuses, resource types, and reward distribution types.",
+    "key_types": [
+      "PRewardStatus",
+      "RewardDistributionType",
+      "RewardType",
+      "RewardPoolAttribute",
+      "RewardPoolStatus",
+      "RewardPoolAction",
+      "ResourceType"
+    ],
+    "functions": [
+      "PRewardStatusFromString",
+      "String",
+      "MarshalJSON",
+      "UnmarshalJSON",
+      "MarshalText",
+      "UnmarshalText",
+      "ResourceTypeFromString",
+      "RewardDistributionTypeFromString",
+      "RewardTypeFromString",
+      "RewardPoolAttributeFromString",
+      "RewardPoolStatusFromString"
+    ],
+    "imports": [
+      "encoding/json"
+    ],
+    "complexity": "medium"
+  }
+}

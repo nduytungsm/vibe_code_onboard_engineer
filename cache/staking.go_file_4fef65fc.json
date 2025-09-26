@@ -1,0 +1,23 @@
+{
+  "content_hash": "d41fbd3111c33fd01f51e2b79ceccc7e",
+  "timestamp": "2025-09-26T13:26:34.698326+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service to retrieve the amount of Ron staked for a given address.",
+    "key_types": [
+      "StakingService",
+      "stakingService",
+      "decimal.Decimal"
+    ],
+    "functions": [
+      "NewStakingService",
+      "GetRonStaked"
+    ],
+    "imports": [
+      "context",
+      "github.com/shopspring/decimal",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/indexer"
+    ],
+    "complexity": "medium"
+  }
+}

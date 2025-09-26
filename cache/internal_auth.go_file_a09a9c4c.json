@@ -1,0 +1,33 @@
+{
+  "content_hash": "533176125f65ad2bf4f5199d77ebd32f",
+  "timestamp": "2025-09-26T12:31:43.087325+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements HMAC authentication middleware for validating requests in a web application.",
+    "key_types": [
+      "hmac.Config",
+      "echo.Context",
+      "http.Request",
+      "mErrs.Error"
+    ],
+    "functions": [
+      "NewHmacAuthentication"
+    ],
+    "imports": [
+      "fmt",
+      "net/http",
+      "regexp",
+      "strings",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors"
+    ],
+    "side_effects": [
+      "Modifies the request context by validating the HMAC signature."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if the HMAC validation fails."
+    ],
+    "complexity": "medium"
+  }
+}

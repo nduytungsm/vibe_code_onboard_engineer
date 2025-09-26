@@ -1,0 +1,32 @@
+{
+  "content_hash": "a334d550108df2960cebd037b83e0c97",
+  "timestamp": "2025-09-26T12:27:24.100476+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service item repository for managing service items in a database, including creating layout services and retrieving widget service items.",
+    "key_types": [
+      "ServiceItem",
+      "serviceItem"
+    ],
+    "functions": [
+      "NewServiceItem",
+      "CreateLayoutServices",
+      "GetWidgetServiceItem"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/google/wire",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Database operations that modify or retrieve data"
+    ],
+    "risks": [
+      "Potential SQL injection if user input is not properly sanitized",
+      "Error handling may expose sensitive information"
+    ],
+    "complexity": "medium"
+  }
+}

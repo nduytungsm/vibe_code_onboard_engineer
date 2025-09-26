@@ -1,0 +1,47 @@
+{
+  "content_hash": "a902ebc23c41c21fd1a97d7a2e2df52b",
+  "timestamp": "2025-09-26T13:26:29.474436+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a service for managing quest pools, including listing, finding, and caching pools and events.",
+    "key_types": [
+      "PoolSvc",
+      "poolSvc",
+      "responses.QuestPool",
+      "models.QuestPool",
+      "models.Event"
+    ],
+    "functions": [
+      "NewPoolSvc",
+      "ListPoolsByEventID",
+      "FindPoolEvent",
+      "GetActivePool",
+      "RemovePoolFromCache",
+      "cachePoolInOneWeek",
+      "findPoolFromCache"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Caches quest pools and events in Redis",
+      "Logs errors when caching fails"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data if cache is not properly secured",
+      "Error handling may not cover all edge cases leading to unhandled exceptions"
+    ],
+    "complexity": "medium"
+  }
+}

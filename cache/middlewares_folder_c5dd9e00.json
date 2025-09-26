@@ -1,0 +1,64 @@
+{
+  "content_hash": "77198be48fea548f553907f64096e651",
+  "timestamp": "2025-09-26T13:44:43.980414+07:00",
+  "result": {
+    "path": "pkg/middlewares",
+    "purpose": "This folder/module is responsible for defining middleware configurations and functions for the Echo web framework.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "echo.go"
+    ],
+    "dependencies": [
+      "github.com/go-playground/validator",
+      "github.com/labstack/echo-contrib/echoprometheus",
+      "github.com/labstack/echo/v4",
+      "github.com/labstack/echo/v4/middleware",
+      "github.com/labstack/gommon/log",
+      "go.uber.org/zap"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating middleware functionalities that can be reused across the application.",
+    "file_summaries": {
+      "pkg/middlewares/echo.go": {
+        "language": "Go",
+        "purpose": "This file defines middleware configurations and functions for the Echo web framework, including logging, Prometheus metrics, gzip compression, recovery from panics, and request timeouts.",
+        "key_types": [
+          "EchoLoggerConfig",
+          "EchoPrometheusConfig",
+          "EchoGzipConfig",
+          "EchoRecoverConfig",
+          "EchoTimeoutConfig",
+          "EchoValidator"
+        ],
+        "functions": [
+          "NewEchoMiddleware",
+          "NewEchoLoggerMiddleware",
+          "NewEchoPrometheusMiddleware",
+          "NewEchoGZipMiddleware",
+          "NewEchoRecoverMiddleware",
+          "NewEchoTimeoutMiddleware",
+          "NewEchoValidator",
+          "Validate"
+        ],
+        "imports": [
+          "time",
+          "github.com/go-playground/validator",
+          "github.com/labstack/echo-contrib/echoprometheus",
+          "github.com/labstack/echo/v4",
+          "github.com/labstack/echo/v4/middleware",
+          "github.com/labstack/gommon/log",
+          "go.uber.org/zap"
+        ],
+        "side_effects": [
+          "Logs request details based on configuration",
+          "May modify response behavior based on middleware applied"
+        ],
+        "risks": [
+          "Potential exposure of sensitive request data in logs if not configured properly"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

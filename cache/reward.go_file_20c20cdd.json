@@ -1,0 +1,60 @@
+{
+  "content_hash": "89dbc8b09d26da059b6bb8a0dcbc9e26",
+  "timestamp": "2025-09-26T13:12:04.23127+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a handler for managing reward pools and reward information in a quest system.",
+    "key_types": [
+      "Reward",
+      "reward",
+      "req.HandleClaimRewardDTO",
+      "res.RewardSignaturesDTO",
+      "res.Paginated",
+      "res.RewardPool",
+      "res.RewardInfo"
+    ],
+    "functions": [
+      "NewRewardHandler",
+      "DeleteRewardPool",
+      "DeleteRewardInfo",
+      "ListRewardsInfo",
+      "GetClaimRewardSig",
+      "UpsertRewardPool",
+      "ListRewardPools"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "net/http",
+      "strconv",
+      "strings",
+      "github.com/samber/lo",
+      "github.com/shopspring/decimal",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
+    ],
+    "side_effects": [
+      "Database transactions for reward pool and reward info management",
+      "Logging errors and actions taken during operations"
+    ],
+    "risks": [
+      "Potential for SQL injection if inputs are not properly sanitized",
+      "Error handling may expose sensitive information in logs"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "content_hash": "28e2bb24d5a5f49dadc692d288a42e50",
+  "timestamp": "2025-09-26T12:38:08.333054+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides functions to encrypt and decrypt data using AES encryption in CBC mode.",
+    "key_types": [
+      "[]byte",
+      "string"
+    ],
+    "functions": [
+      "Encrypt",
+      "Decrypt",
+      "PKCS5Padding",
+      "PKCS5UnPadding"
+    ],
+    "imports": [
+      "bytes",
+      "crypto/aes",
+      "crypto/cipher",
+      "encoding/base64"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data if the key is not managed securely",
+      "IV reuse can lead to vulnerabilities in encryption"
+    ],
+    "complexity": "medium"
+  }
+}

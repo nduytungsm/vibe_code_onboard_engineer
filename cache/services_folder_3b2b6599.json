@@ -1,0 +1,106 @@
+{
+  "content_hash": "747893697b62d8aaa3d1807bf649b01b",
+  "timestamp": "2025-09-26T13:39:18.869665+07:00",
+  "result": {
+    "path": "internal/domains/notification/services",
+    "purpose": "Responsible for managing notifications and checkpoints within the notification system.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "checkpoint.go",
+      "notification.go"
+    ],
+    "dependencies": [
+      "github.com/avast/retry-go/v4",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "github.com/samber/lo",
+      "go.uber.org/multierr",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/services/push",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/devicemanager",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, where each file represents a distinct service responsible for specific functionalities within the notification domain.",
+    "file_summaries": {
+      "internal/domains/notification/services/checkpoint.go": {
+        "language": "Go",
+        "purpose": "Provides a service for managing checkpoints in a notification system, allowing for the marking and checking of processed transactions.",
+        "key_types": [
+          "CheckpointServiceConfig",
+          "CheckpointService",
+          "checkpointService"
+        ],
+        "functions": [
+          "NewCheckpointService",
+          "CheckProcessed",
+          "MarkProcessed"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "time",
+          "github.com/avast/retry-go/v4",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/redis/go-redis/v9",
+          "go.uber.org/zap"
+        ],
+        "side_effects": [
+          "Interacts with Redis to store and retrieve checkpoint data."
+        ],
+        "risks": [
+          "Potential for Redis connection issues leading to errors in processing.",
+          "Improper handling of errors may lead to undetected failures."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/notification/services/notification.go": {
+        "language": "Go",
+        "purpose": "This file implements a notification service that sends notifications to users or devices.",
+        "key_types": [
+          "NotificationService",
+          "service",
+          "PostNotificationRequest",
+          "PushStatus"
+        ],
+        "functions": [
+          "NewNotificationService",
+          "SendNotification",
+          "SendNotifications",
+          "sendToDevices",
+          "getDevices",
+          "getDevicesByID"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "net/http",
+          "strings",
+          "github.com/samber/lo",
+          "go.uber.org/multierr",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/notification/services/push",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/devicemanager",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Logs errors and information during notification sending process",
+          "Modifies the state of the checkpoint service"
+        ],
+        "risks": [
+          "Potential for denial of service if too many notifications are sent simultaneously",
+          "Improper handling of user input could lead to unexpected errors"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

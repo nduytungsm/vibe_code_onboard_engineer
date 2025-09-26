@@ -1,0 +1,135 @@
+{
+  "content_hash": "22215015ec5d700f8fdb38f12f71f2d0",
+  "timestamp": "2025-09-26T13:31:08.331569+07:00",
+  "result": {
+    "path": "cmd/cms",
+    "purpose": "Responsible for the configuration, initialization, and dependency injection of a CMS application.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "config.go",
+      "main.go",
+      "wire.go",
+      "wire_gen.go"
+    ],
+    "dependencies": [
+      "github.com/google/wire",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/configs"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for service management and configuration handling.",
+    "file_summaries": {
+      "cmd/cms/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration structure for a CMS application.",
+        "key_types": [
+          "cmsConfig",
+          "applications.ApplicationConfig",
+          "services.RestfulConfig",
+          "loggers.LoggerConfig",
+          "storages.PostgresConfig"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
+        ],
+        "complexity": "low"
+      },
+      "cmd/cms/main.go": {
+        "language": "Go",
+        "purpose": "This file is the entry point for a reward distributor application, initializing configuration and logging.",
+        "key_types": [
+          "configs.Config",
+          "log.Logger",
+          "context.Context"
+        ],
+        "functions": [
+          "main",
+          "NewConfig",
+          "MustNewLogger",
+          "WithCancel",
+          "Start"
+        ],
+        "imports": [
+          "context",
+          "log",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/configs",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
+        ],
+        "side_effects": [
+          "Logs configuration loading and application startup",
+          "Flushes logger resources on exit"
+        ],
+        "risks": [
+          "Potential for logging sensitive configuration information",
+          "Error handling may expose application state"
+        ],
+        "complexity": "medium"
+      },
+      "cmd/cms/wire.go": {
+        "language": "Go",
+        "purpose": "This file sets up dependency injection for the CMS application using Google Wire.",
+        "key_types": [
+          "applications.Application",
+          "services.RestfulService",
+          "cmsConfig",
+          "zap.Logger",
+          "zap.SugaredLogger"
+        ],
+        "functions": [
+          "wireCMSApp",
+          "provideSugarLogger",
+          "provideServices"
+        ],
+        "imports": [
+          "github.com/google/wire",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/cms",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
+        ],
+        "side_effects": [
+          "Panic if dependency injection fails"
+        ],
+        "complexity": "medium"
+      },
+      "cmd/cms/wire_gen.go": {
+        "language": "Go",
+        "purpose": "This file is part of a dependency injection setup using Wire for a CMS application, configuring various services and handlers.",
+        "key_types": [
+          "applications.Application",
+          "cmsConfig",
+          "zap.Logger",
+          "middlewares.EchoMiddleware",
+          "services.RestfulService"
+        ],
+        "functions": [
+          "wireCMSApp",
+          "provideSugarLogger",
+          "provideServices"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+          "github.com/axieinfinity/ronin-wallet-services/internal/handlers/cms",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/cms",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/cms",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/banners",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+          "go.uber.org/zap"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

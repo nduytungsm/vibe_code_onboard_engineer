@@ -1,0 +1,59 @@
+{
+  "content_hash": "85f1d062fccbfe6ad8fa2cad7e7f4b8a",
+  "timestamp": "2025-09-26T12:16:05.881748+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a RelaySwap service for cross-chain token swaps, including caching and quote retrieval functionalities.",
+    "key_types": [
+      "RelaySwap",
+      "Config",
+      "relay.Config",
+      "relay.Client",
+      "models.RouteRequest",
+      "models.RouteResponse",
+      "models.CallData"
+    ],
+    "functions": [
+      "NewRelaySwap",
+      "CrossChainSupported",
+      "cacheQuote",
+      "GetRoutes",
+      "BuildCallData",
+      "Tokens",
+      "TokenByAddress",
+      "SupportedChains",
+      "ID",
+      "marshalQuoteConfig",
+      "wrapErr",
+      "marshalTokens"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "runtime",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/bridge/services/providers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/dex/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/relay",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "github.com/shopspring/decimal",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Caches relay quotes in Redis",
+      "Logs errors and debug information"
+    ],
+    "risks": [
+      "Potential for Redis cache poisoning if not properly validated",
+      "Error handling may expose sensitive information in logs"
+    ],
+    "complexity": "medium"
+  }
+}

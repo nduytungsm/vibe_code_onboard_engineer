@@ -1,9 +1,9 @@
 {
-  "content_hash": "467654e713beb055da1e2463871e5a7d",
-  "timestamp": "2025-09-26T11:53:50.247304+07:00",
+  "content_hash": "fca98510bfc4cc834399d6c4fe985dfb",
+  "timestamp": "2025-09-26T13:43:16.026991+07:00",
   "result": {
     "path": "pkg/worker",
-    "purpose": "Responsible for managing a pool of worker goroutines to process jobs concurrently.",
+    "purpose": "Responsible for managing a pool of workers to process jobs concurrently.",
     "languages": {
       "Go": 4
     },
@@ -17,7 +17,7 @@
       "sync",
       "github.com/rs/zerolog/log"
     ],
-    "architecture": "The folder follows a modular architecture pattern, encapsulating the worker pool functionality with clear separation of concerns among configuration, job management, and worker execution.",
+    "architecture": "The folder follows a modular architecture pattern, encapsulating worker management and job processing functionalities.",
     "file_summaries": {
       "pkg/worker/config.go": {
         "language": "Go",
@@ -31,7 +31,7 @@
       },
       "pkg/worker/dispatcher.go": {
         "language": "Go",
-        "purpose": "This file implements a dispatcher that manages a pool of worker goroutines to process jobs concurrently.",
+        "purpose": "This file implements a dispatcher that manages a pool of workers to process jobs concurrently.",
         "key_types": [
           "Dispatcher",
           "Config",
@@ -50,16 +50,16 @@
         ],
         "side_effects": [
           "Starts goroutines for workers",
-          "Blocks on worker availability"
+          "Blocks on job processing"
         ],
         "risks": [
-          "Potential deadlock if jobQueue is not managed properly"
+          "Potential deadlock if job queue is full and no workers are available"
         ],
         "complexity": "medium"
       },
       "pkg/worker/job.go": {
         "language": "Go",
-        "purpose": "Defines a Job struct with an executable function.",
+        "purpose": "Defines a Job type with an executable function.",
         "key_types": [
           "Job"
         ],
@@ -88,7 +88,8 @@
           "Modifies WaitGroup state"
         ],
         "risks": [
-          "Potential deadlock if WaitGroup is not managed correctly"
+          "Potential deadlock if not managed properly",
+          "Error handling may not cover all cases"
         ],
         "complexity": "medium"
       }

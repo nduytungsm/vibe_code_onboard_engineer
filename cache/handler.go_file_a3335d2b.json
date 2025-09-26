@@ -1,0 +1,19 @@
+{
+  "content_hash": "144d326d2850c32cb20c6f3457f709ac",
+  "timestamp": "2025-09-26T13:26:38.770322+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a function to create a new ServeMux for handling reward distribution tasks.",
+    "key_types": [
+      "asynq.Handler",
+      "asynq.ServeMux"
+    ],
+    "functions": [
+      "NewMuxHandler"
+    ],
+    "imports": [
+      "github.com/hibiken/asynq"
+    ],
+    "complexity": "low"
+  }
+}

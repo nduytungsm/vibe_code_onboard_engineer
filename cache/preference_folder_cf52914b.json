@@ -1,6 +1,6 @@
 {
-  "content_hash": "65b6b7c1466f4e6b337f11bc857a2cf8",
-  "timestamp": "2025-09-26T11:55:37.57293+07:00",
+  "content_hash": "3975055d271ea5747e9c89ce1b0beac7",
+  "timestamp": "2025-09-26T13:18:11.949348+07:00",
   "result": {
     "path": "pkg/preference",
     "purpose": "This folder/module is responsible for managing user preferences related to a wallet application, including fetching and updating preferences based on device and address.",
@@ -21,7 +21,7 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating user preference management functionalities within a dedicated service file.",
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating the logic for user preference management within a dedicated service file.",
     "file_summaries": {
       "pkg/preference/pref_svc.go": {
         "language": "Go",
@@ -64,12 +64,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/repositories"
         ],
         "side_effects": [
-          "Logs information and errors during preference migration and updates.",
+          "Logs information and errors related to device preferences and notifications.",
           "Asynchronously migrates notification settings for devices."
         ],
         "risks": [
-          "Potential for unauthorized access if device IDs or addresses are not properly validated.",
-          "Error handling may expose sensitive information through logs."
+          "Potential exposure of sensitive user preferences if not properly secured.",
+          "Improper handling of device IDs and addresses may lead to unauthorized access."
         ],
         "complexity": "medium"
       }

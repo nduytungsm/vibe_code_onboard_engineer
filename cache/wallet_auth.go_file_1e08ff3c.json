@@ -1,0 +1,41 @@
+{
+  "content_hash": "f114272725dfecbc028df0f38c4e2263",
+  "timestamp": "2025-09-26T12:31:53.677678+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains middleware for wallet authentication, verifying signatures and handling requests related to the Ronin wallet.",
+    "key_types": [
+      "http.Request",
+      "zap.SugaredLogger",
+      "SIWEConfig"
+    ],
+    "functions": [
+      "extractSIWEMsg",
+      "verifySIWESignature",
+      "verifyUnstandardSignature",
+      "VerifyWalletSignature",
+      "newClockSkewValidator"
+    ],
+    "imports": [
+      "errors",
+      "fmt",
+      "net/http",
+      "net/url",
+      "strings",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/siwe",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/labstack/echo/v4",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Logs errors when signature validation fails"
+    ],
+    "risks": [
+      "Potential for unauthorized access if signature validation fails",
+      "Improper handling of errors may expose sensitive information"
+    ],
+    "complexity": "medium"
+  }
+}

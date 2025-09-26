@@ -1,0 +1,39 @@
+{
+  "content_hash": "bb4653942f8c2b70a46e79b65ce3b27f",
+  "timestamp": "2025-09-26T12:10:09.675722+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a configuration structure for the application with various required components.",
+    "key_types": [
+      "config",
+      "applications.ApplicationConfig",
+      "loggers.LoggerConfig",
+      "xhttp.ServerConfig",
+      "kafka.ConsumerConfig",
+      "pushnotification.ProducerConfig",
+      "services.CheckpointServiceConfig",
+      "consumers.NotificationFilterConfig",
+      "skynet.Config",
+      "walletmanager.Config",
+      "exchangerate.Config",
+      "redis.Redis",
+      "metrics.Config"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/consumers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/exchangerate",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/pushnotification",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletmanager",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka"
+    ],
+    "complexity": "medium"
+  }
+}

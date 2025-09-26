@@ -1,0 +1,20 @@
+{
+  "content_hash": "e0e134a4d3547138402e22cb18d74324",
+  "timestamp": "2025-09-26T13:12:56.803907+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for banner creation, editing, listing, and retrieval in a discovery module.",
+    "key_types": [
+      "CreateBanner",
+      "EditBanner",
+      "ListBanners",
+      "GetBannerByID"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests"
+    ],
+    "complexity": "low"
+  }
+}

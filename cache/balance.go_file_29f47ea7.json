@@ -1,0 +1,46 @@
+{
+  "content_hash": "35b4440bdae84a8064214e5cfd60044b",
+  "timestamp": "2025-09-26T13:23:23.102171+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles balance-related requests for a portfolio in a web service.",
+    "key_types": [
+      "balanceHandler",
+      "services.BalanceService",
+      "proxy_models.LimitCfgs",
+      "requests.PortfolioCollectionsDTO",
+      "requests.PortfolioNFTItemsDTO",
+      "requests.PortfolioBalanceDTO",
+      "requests.GetCollectionDetail"
+    ],
+    "functions": [
+      "NewBalanceHandler",
+      "Setup",
+      "getPortfolioCollectionsHandler",
+      "getPortfolioNftItemsHandler",
+      "getPortfolioBalanceHandler",
+      "getPortfolioFiatBalanceHandler",
+      "getPortfolioBalance",
+      "getCollectionDetail"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/labstack/echo/v4"
+    ],
+    "side_effects": [
+      "Modifies the state of the balance service based on incoming requests.",
+      "Interacts with external services to fetch balance data."
+    ],
+    "risks": [
+      "Potential for denial of service if too many requests are made due to limits not being enforced properly.",
+      "Improper error handling could expose sensitive information."
+    ],
+    "complexity": "medium"
+  }
+}

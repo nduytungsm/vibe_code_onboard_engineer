@@ -1,0 +1,35 @@
+{
+  "content_hash": "5560d2184436e3e79e6be86c9a31cd67",
+  "timestamp": "2025-09-26T13:16:59.114143+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides HMAC signing functions using SHA256 and SHA512 algorithms.",
+    "key_types": [
+      "[]byte",
+      "map[string]string"
+    ],
+    "functions": [
+      "SHA256",
+      "SHA512",
+      "Sign"
+    ],
+    "imports": [
+      "crypto/hmac",
+      "crypto/sha256",
+      "crypto/sha512",
+      "encoding/base64",
+      "errors",
+      "fmt",
+      "sort",
+      "strings"
+    ],
+    "side_effects": [
+      "Generates HMAC signatures",
+      "Encodes signatures in base64"
+    ],
+    "risks": [
+      "Potential for key leakage if not handled securely"
+    ],
+    "complexity": "medium"
+  }
+}

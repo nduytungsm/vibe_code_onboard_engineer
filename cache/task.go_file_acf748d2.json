@@ -1,0 +1,40 @@
+{
+  "content_hash": "640753741cc219833df4deb394d87fbf",
+  "timestamp": "2025-09-26T13:13:29.531562+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a cron job for crawling quests and processing them using a service.",
+    "key_types": [
+      "CronTask",
+      "CrawlTaskLogic",
+      "SwanlakeCrawlerTask"
+    ],
+    "functions": [
+      "isQuestEligibleForCrawl",
+      "getEligibleQuests",
+      "Run",
+      "Name",
+      "NewSwanlakeCrawlerTask"
+    ],
+    "imports": [
+      "context",
+      "slices",
+      "time",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/swanlake",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "side_effects": [
+      "Logging errors and information during quest processing",
+      "Modifying the database through UpsertResultSet and CleanupStaled"
+    ],
+    "risks": [
+      "Potential for SQL injection if queries are not properly sanitized",
+      "Error handling may not cover all edge cases"
+    ],
+    "complexity": "medium"
+  }
+}

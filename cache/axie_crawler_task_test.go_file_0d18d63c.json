@@ -1,0 +1,48 @@
+{
+  "content_hash": "ba8d28b8268f7a9769b2e427945453b6",
+  "timestamp": "2025-09-26T13:27:59.33994+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the Axie Crawler Task in the cron jobs service.",
+    "key_types": [
+      "QuestEntity",
+      "PurchaseHistoryLogsEntity",
+      "ServiceHttp",
+      "Logger"
+    ],
+    "functions": [
+      "TestPurchaseAxieCrawlerTask",
+      "NewPurchaseAxieCrawlerTaskLogic",
+      "NewSwanlakeCrawlerTask",
+      "FindByActivityTypes"
+    ],
+    "imports": [
+      "fmt",
+      "net/http",
+      "net/http/httptest",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/mock",
+      "github.com/test-go/testify/require",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/cron-jobs",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/swanlake",
+      "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/docker",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
+    ],
+    "side_effects": [
+      "Starts a PostgreSQL container",
+      "Creates a mock HTTP server",
+      "Inserts records into the purchase_history_logs table"
+    ],
+    "risks": [
+      "Potential for SQL injection if inputs are not properly sanitized",
+      "Dependency on external services (HTTP server) may lead to flaky tests"
+    ],
+    "complexity": "medium"
+  }
+}

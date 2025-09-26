@@ -1,0 +1,36 @@
+{
+  "content_hash": "70063ec767d2386eea0e2791378c5ff9",
+  "timestamp": "2025-09-26T13:22:33.816212+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the configuration structure for the application, including various settings for application, server, databases, logging, and more.",
+    "key_types": [
+      "Config",
+      "ApplicationConfig",
+      "ServerConfig",
+      "MetricsConfig",
+      "RedisConfig",
+      "PostgresConfig",
+      "DatabasesConfig",
+      "LoggingConfig",
+      "SentryConfig",
+      "ClientChainConfig",
+      "ClientConstraintConfig",
+      "CacheConfig",
+      "LimitsConfig",
+      "InternalServicesConfig",
+      "ChainConfig",
+      "ChainExtrasConfig",
+      "NativeTokenConfig",
+      "ChainProviderConfig",
+      "HTTPClientConfig",
+      "AuthConfig"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy"
+    ],
+    "complexity": "medium"
+  }
+}

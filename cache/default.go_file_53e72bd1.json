@@ -1,0 +1,34 @@
+{
+  "content_hash": "3113f5d7b43f0182361c0d8367864a89",
+  "timestamp": "2025-09-26T12:31:08.352866+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines response structures and pagination logic for API responses.",
+    "key_types": [
+      "Paging",
+      "Paginated[T]",
+      "ServerResponseDTO[T]",
+      "ServerSuccessResponseDTO",
+      "SliceResultDTO[T]",
+      "ObjectResultDTO[T]",
+      "PaginationDTO"
+    ],
+    "functions": [
+      "Paginate[T]",
+      "calcPAndPs",
+      "FormPagination",
+      "FormPaginationWithPage",
+      "NewSliceResponse[T]",
+      "NewResponse[T]",
+      "NewSuccessResponse",
+      "NewSliceResultDTO[T]",
+      "NewObjectResultDTO[T]"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "complexity": "medium"
+  }
+}

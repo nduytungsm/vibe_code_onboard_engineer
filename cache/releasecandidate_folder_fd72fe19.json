@@ -1,6 +1,6 @@
 {
-  "content_hash": "2f5fdf9f2cec11d61c705ec9a59b7ce0",
-  "timestamp": "2025-09-26T11:55:23.634593+07:00",
+  "content_hash": "f093f09bde9bfd44c85ebd293defa022",
+  "timestamp": "2025-09-26T13:19:41.761944+07:00",
   "result": {
     "path": "pkg/releasecandidate",
     "purpose": "Responsible for managing feature configurations and whitelist devices for mobile wallet candidates.",
@@ -33,13 +33,7 @@
           "GetCountWhitelistDevices"
         ],
         "functions": [
-          "NewService",
-          "CheckAllowFeature",
-          "SetFeatureConfig",
-          "SetWhitelistFeatures",
-          "SetConfigForDevice",
-          "CountWhitelistDevices",
-          "VerifyWhitelistFeature"
+          "NewService"
         ],
         "imports": [
           "github.com/redis/go-redis/v9",
@@ -84,12 +78,12 @@
           "github.com/axieinfinity/ronin-wallet-manager/pkg/device"
         ],
         "side_effects": [
-          "Modifies Redis state for feature access and device configurations.",
+          "Modifies Redis state for allowed devices and feature configurations.",
           "Logs information and errors during execution."
         ],
         "risks": [
           "Potential race conditions when accessing shared resources.",
-          "Improper error handling could lead to silent failures."
+          "Improper handling of Redis errors could lead to incorrect feature access."
         ],
         "complexity": "medium"
       }

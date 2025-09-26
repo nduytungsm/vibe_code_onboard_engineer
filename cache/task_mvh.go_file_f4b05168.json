@@ -1,0 +1,51 @@
+{
+  "content_hash": "99da720630db3e85b47b6726af1a3f89",
+  "timestamp": "2025-09-26T12:33:04.864328+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a task for crawling console games and updating their information in a database.",
+    "key_types": [
+      "ConsoleGamesCrawlerTask",
+      "consoleGame",
+      "consoleGameDetail",
+      "discovery_models.ProductWithExtraInfo",
+      "discovery_models.StudioEntity",
+      "discovery_models.ProductEntity"
+    ],
+    "functions": [
+      "NewConsoleGamesCrawlerTask",
+      "Name",
+      "Run",
+      "getAllGames",
+      "getGameDetail",
+      "getExistingGamesByName",
+      "insertStudioIfNeeded",
+      "upsertProduct",
+      "newProductEntity"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "net/http",
+      "net/url",
+      "strings",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
+    ],
+    "side_effects": [
+      "Makes HTTP requests to external services to fetch game data.",
+      "Updates the database with new or modified game information."
+    ],
+    "risks": [
+      "Potential for HTTP request failures leading to incomplete data updates.",
+      "Handling of existing game data may lead to inconsistencies if not managed properly."
+    ],
+    "complexity": "medium"
+  }
+}

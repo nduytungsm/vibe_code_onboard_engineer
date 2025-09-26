@@ -1,0 +1,29 @@
+{
+  "content_hash": "3449ae0787262f3b2ed2be5cae424d4c",
+  "timestamp": "2025-09-26T12:21:31.730426+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service to match URLs against trusted domains.",
+    "key_types": [
+      "TrustedDomainService",
+      "trustedDomainService",
+      "TrustedDomain"
+    ],
+    "functions": [
+      "NewTrustedDomainService",
+      "MatchURL",
+      "parseDomain",
+      "generateWildcardDomains"
+    ],
+    "imports": [
+      "context",
+      "net/url",
+      "slices",
+      "strings",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/trusted-domain/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/trusted-domain/repos"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "content_hash": "88a89c4e0e859f9f0b169bb809d9c20b",
+  "timestamp": "2025-09-26T13:26:03.7536+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for managing banners, including creating, editing, retrieving, and listing banners based on their status.",
+    "key_types": [
+      "Banner",
+      "BannerService",
+      "bannerService"
+    ],
+    "functions": [
+      "NewBannerService",
+      "CreateBanner",
+      "EditBanner",
+      "GetBannerByID",
+      "ListBannerByStatus",
+      "toBanner"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/cms",
+      "github.com/google/uuid",
+      "github.com/samber/lo"
+    ],
+    "side_effects": [
+      "Interacts with the banner repository to persist changes to the database."
+    ],
+    "risks": [
+      "Potential for UUID collision, though unlikely; error handling may not cover all edge cases."
+    ],
+    "complexity": "medium"
+  }
+}

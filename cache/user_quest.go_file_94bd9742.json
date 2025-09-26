@@ -1,0 +1,47 @@
+{
+  "content_hash": "6527920b58a597672d0bc513e3636bd6",
+  "timestamp": "2025-09-26T12:24:25.639857+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles user quests including spawning, taking, and retrieving user quests.",
+    "key_types": [
+      "UserQuest",
+      "userQuest",
+      "spawnQuestInfo"
+    ],
+    "functions": [
+      "NewUserQuestHandler",
+      "wrapErr",
+      "findSpawnData",
+      "SpawnUserQuest",
+      "GetUserQuest"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "encoding/csv",
+      "errors",
+      "net/http",
+      "sort",
+      "strconv",
+      "strings",
+      "time",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-verifiers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/reward-randomize",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/samber/lo"
+    ],
+    "complexity": "medium"
+  }
+}

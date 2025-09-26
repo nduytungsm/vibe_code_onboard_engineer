@@ -1,0 +1,52 @@
+{
+  "content_hash": "b281f89cb6cd2df673a1282c63e58218",
+  "timestamp": "2025-09-26T12:20:14.248045+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides an interface for interacting with the Moralis API for Solana blockchain services.",
+    "key_types": [
+      "MoralisSolanaProvider",
+      "models.ProviderCfg",
+      "models.ChainCfg",
+      "proxy_enums.ProviderMethod",
+      "moralis_solana.Client"
+    ],
+    "functions": [
+      "MoralisSolanaProviderName",
+      "MoralisSolanaProviderCreator",
+      "wrapError",
+      "Name",
+      "IsMethodSupported",
+      "GetPortfolioBalance",
+      "ListPortfolioNFTItems",
+      "GetTokenFiatInfo",
+      "GetPortfolioNftCollections"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "runtime",
+      "strings",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/moralis_solana",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+      "github.com/samber/lo",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Logs errors and warnings using zap logger",
+      "May return errors related to context cancellation"
+    ],
+    "risks": [
+      "Potential for logging sensitive information if errors are not handled properly",
+      "Dependency on external Moralis API which may introduce availability issues"
+    ],
+    "complexity": "medium"
+  }
+}

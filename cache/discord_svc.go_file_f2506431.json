@@ -1,0 +1,38 @@
+{
+  "content_hash": "0d88069e5e98d8249df8c2ca2afe806a",
+  "timestamp": "2025-09-26T13:13:30.381443+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides a service for interacting with Discord, including verifying server membership and retrieving user information.",
+    "key_types": [
+      "DiscordService",
+      "discordSvc",
+      "UserSession",
+      "InviteInfo",
+      "ErrorMessage"
+    ],
+    "functions": [
+      "NewDiscordService",
+      "VerifyJoinServer",
+      "GetServerInfoFromInviteCode",
+      "GetUserInfo"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "net/http",
+      "github.com/bwmarrin/discordgo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "side_effects": [
+      "Logs errors and debug information during execution.",
+      "Creates and closes Discord client connections."
+    ],
+    "risks": [
+      "Potential exposure of user access tokens if not handled securely.",
+      "Dependency on external Discord API which may change."
+    ],
+    "complexity": "medium"
+  }
+}

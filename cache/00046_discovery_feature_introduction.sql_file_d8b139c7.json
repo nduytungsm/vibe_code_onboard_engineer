@@ -1,0 +1,24 @@
+{
+  "content_hash": "62e15ba66dab55c4562334ef54875332",
+  "timestamp": "2025-09-26T13:27:37.987444+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines database schema for discovery feature including banners, headlines, and action logs.",
+    "key_types": [
+      "BIGINT",
+      "VARCHAR",
+      "TEXT",
+      "BOOLEAN",
+      "TIMESTAMP"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "CREATE INDEX"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates tables in the database if they do not exist"
+    ],
+    "complexity": "medium"
+  }
+}

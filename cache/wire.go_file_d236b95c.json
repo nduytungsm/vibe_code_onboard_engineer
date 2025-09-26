@@ -1,0 +1,65 @@
+{
+  "content_hash": "b793293874214376cac2c8f301ff856f",
+  "timestamp": "2025-09-26T13:22:28.076501+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file sets up dependency injection for various services and components in a web application using Google Wire.",
+    "key_types": [
+      "applications.Application",
+      "zap.SugaredLogger",
+      "generator.IDGenerator",
+      "xhttp.Server",
+      "manager_svc.AuthSvc",
+      "waypoint.Client"
+    ],
+    "functions": [
+      "wireRestfulService",
+      "provideHttpServer",
+      "provideServices",
+      "provideAuthSvc",
+      "provideWaypointClient",
+      "provideZapLogger",
+      "provideRedisClient"
+    ],
+    "imports": [
+      "github.com/google/wire",
+      "github.com/labstack/echo/v4/middleware",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/captcha/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/geth",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/indexer",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/turnstile",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/x",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/discord",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-verifiers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/reward-randomize",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/validation"
+    ],
+    "side_effects": [
+      "Creates and configures various services and components for the application.",
+      "Logs errors and panics if service initialization fails."
+    ],
+    "risks": [
+      "Potential for panics if service initialization fails.",
+      "Improper handling of Redis client errors may lead to application crashes."
+    ],
+    "complexity": "high"
+  }
+}

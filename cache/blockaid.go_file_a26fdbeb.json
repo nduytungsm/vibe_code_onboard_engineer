@@ -1,0 +1,25 @@
+{
+  "content_hash": "2fb822cbd4de75b3be7dc92277456fa2",
+  "timestamp": "2025-09-26T13:12:03.255187+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a configuration structure and functions to create clients for interacting with the BlockAid API.",
+    "key_types": [
+      "Config",
+      "blockaidclientgo.Client",
+      "blockaidclientgo.SiteService",
+      "blockaidclientgo.EvmService"
+    ],
+    "functions": [
+      "NewBlockAidClient",
+      "NewBlockAidSiteService",
+      "NewBlockAidEvmService"
+    ],
+    "imports": [
+      "github.com/blockaid-official/blockaid-client-go",
+      "github.com/blockaid-official/blockaid-client-go/option",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "content_hash": "f8bf1e9502ed586ce78b39f6e3ffbf52",
+  "timestamp": "2025-09-26T12:38:32.072214+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides utility functions for handling big integers and numeric types, including conversions and arithmetic operations.",
+    "key_types": [
+      "big.Int",
+      "pgtype.Numeric",
+      "decimal.Decimal",
+      "big.Float"
+    ],
+    "functions": [
+      "strToBig",
+      "BigToNumeric",
+      "StrToDec",
+      "numericToBig",
+      "NumericToString",
+      "PlusNumeric",
+      "SubNumeric",
+      "ALessThanBNumeric",
+      "AEqualBNumeric",
+      "AGreaterThanB",
+      "ZeroNumeric",
+      "MulBigFloat",
+      "FormatTokenAmount",
+      "FormattedToRawAmount"
+    ],
+    "imports": [
+      "errors",
+      "math",
+      "math/big",
+      "strings",
+      "github.com/jackc/pgtype",
+      "github.com/shopspring/decimal"
+    ],
+    "risks": [
+      "Potential for nil pointer dereference in MulBigFloat if inputs are nil."
+    ],
+    "complexity": "medium"
+  }
+}

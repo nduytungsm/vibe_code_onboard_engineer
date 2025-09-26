@@ -1,0 +1,18 @@
+{
+  "content_hash": "d7ff0519a603b75a0ef4e0f2a98cac79",
+  "timestamp": "2025-09-26T12:27:09.080924+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for events in the discovery module.",
+    "key_types": [
+      "EventEntity",
+      "WidgetItemEvent"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery"
+    ],
+    "complexity": "medium"
+  }
+}

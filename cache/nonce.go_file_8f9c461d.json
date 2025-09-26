@@ -1,0 +1,37 @@
+{
+  "content_hash": "677c8c9d7da5073ad0036a21f422c967",
+  "timestamp": "2025-09-26T13:25:59.738925+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles nonce generation and retrieval for authentication purposes.",
+    "key_types": [
+      "Nonce",
+      "nonce",
+      "responses.ServerResponseDTO",
+      "responses.ObjectResultDTO",
+      "responses.NonceResponse"
+    ],
+    "functions": [
+      "NewNonceRouter",
+      "FetchNonce"
+    ],
+    "imports": [
+      "net/http",
+      "strings",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/siwe",
+      "github.com/labstack/echo/v4",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Logs errors using zap logger",
+      "Modifies HTTP response"
+    ],
+    "risks": [
+      "Potential exposure of sensitive nonce data if not handled securely"
+    ],
+    "complexity": "medium"
+  }
+}

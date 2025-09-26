@@ -1,0 +1,60 @@
+{
+  "content_hash": "95cb51a323266c25924930eaa8b95490",
+  "timestamp": "2025-09-26T13:30:53.586711+07:00",
+  "result": {
+    "path": "internal/enums/bridge",
+    "purpose": "Defines enumerations related to trading and provides methods for validation and conversion.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "trade_type.go",
+      "trade_type_test.go"
+    ],
+    "dependencies": [
+      "encoding/json",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums",
+      "github.com/samber/lo",
+      "testing"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating related functionalities and tests within a dedicated namespace.",
+    "file_summaries": {
+      "internal/enums/bridge/trade_type.go": {
+        "language": "Go",
+        "purpose": "Defines an enumeration for trade types and provides methods for conversion and validation.",
+        "key_types": [
+          "TradeType"
+        ],
+        "functions": [
+          "TradeTypeFromStr",
+          "Value",
+          "Values",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "IsValid"
+        ],
+        "imports": [
+          "encoding/json",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/enums/bridge/trade_type_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for unmarshalling TradeType from JSON",
+        "key_types": [
+          "TradeType"
+        ],
+        "functions": [
+          "TestTradeType_UnmarshalJSON"
+        ],
+        "imports": [
+          "encoding/json",
+          "testing"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

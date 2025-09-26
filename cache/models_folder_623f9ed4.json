@@ -1,0 +1,447 @@
+{
+  "content_hash": "d68f09ca0c76cc8d673d315e351e186f",
+  "timestamp": "2025-09-26T13:29:03.686205+07:00",
+  "result": {
+    "path": "internal/repositories/models",
+    "purpose": "Responsible for defining data models and structures related to various entities in a gaming and quest management system.",
+    "languages": {
+      "Go": 30
+    },
+    "key_modules": [
+      "action.go",
+      "activity_guidance.go",
+      "campaign.go",
+      "events.go",
+      "external_services.go",
+      "model.go",
+      "point_tracker.go",
+      "pool.go",
+      "preference.go",
+      "quest.go",
+      "quest_pool.go",
+      "quest_resolve.go",
+      "quest_reward.go",
+      "reward.go",
+      "reward_allocation.go",
+      "shop.go",
+      "sponsor.go",
+      "user.go",
+      "user_action.go",
+      "user_quest.go",
+      "user_reward.go",
+      "user_role.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+      "github.com/shopspring/decimal",
+      "github.com/mitchellh/mapstructure",
+      "github.com/jackc/pgtype",
+      "github.com/lib/pq",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing files by entity types and their respective data models, ensuring separation of concerns and maintainability.",
+    "file_summaries": {
+      "internal/repositories/models/action.go": {
+        "language": "Go",
+        "purpose": "Defines data structures and validation methods for various action types in a quest system.",
+        "key_types": [
+          "QuestActionEntity",
+          "ActivityExtra",
+          "XAction",
+          "RonStakedAction",
+          "OnChainAssetAction",
+          "Arg",
+          "OnChainActivityAction",
+          "LogEventConfig",
+          "EventArg"
+        ],
+        "functions": [
+          "Validate (XAction)",
+          "Validate (RonStakedAction)",
+          "Validate (OnChainAssetAction)",
+          "UnmarshalJSON (LogEventConfig)",
+          "UnmarshalJSON (OnChainActivityAction)",
+          "Validate (OnChainActivityAction)",
+          "Validate (OffChainViaHTTPAction)"
+        ],
+        "imports": [
+          "encoding/json",
+          "errors",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/activity_guidance.go": {
+        "language": "Go",
+        "purpose": "Defines a struct for Activity Guidance entity with database mapping.",
+        "key_types": [
+          "ActivityGuidanceEntity"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "internal/repositories/models/campaign.go": {
+        "language": "Go",
+        "purpose": "Defines data models for campaign and reward pool log entities.",
+        "key_types": [
+          "CampaignEntity",
+          "RewardPoolLogEntity"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "internal/repositories/models/events.go": {
+        "language": "Go",
+        "purpose": "Defines data models for events and user interactions with those events.",
+        "key_types": [
+          "Event",
+          "EventSponsor",
+          "UserEvent",
+          "TempPremiumUser"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/external_services.go": {
+        "language": "Go",
+        "purpose": "Defines data models for external services related to gaming and user interactions.",
+        "key_types": [
+          "GameRegistrationEntity",
+          "WalletCheckInLogEntity",
+          "GameCheckInLogExternal",
+          "PvPGameMatchExternal",
+          "GameRegisterExternal",
+          "GameCheckInResp",
+          "GameRegisterResp",
+          "GamePvPMatchResp",
+          "ActionExternalData",
+          "ParticipantDiscordActionEntity",
+          "ParticipantTwitterActionEntity",
+          "GameMatchEntity",
+          "AtiaStreakExternal",
+          "AtiaStreakResp",
+          "BuyAxieCountResp",
+          "PurchaseHistoryLogsEntity",
+          "QueryBoughtHistoryParams",
+          "QueryGameParams",
+          "GamePlayedLogsEntry",
+          "CheckInStreakInfo"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/model.go": {
+        "language": "Go",
+        "purpose": "Defines common errors for use in data models.",
+        "key_types": [],
+        "functions": [],
+        "imports": [
+          "errors"
+        ],
+        "complexity": "low"
+      },
+      "internal/repositories/models/point_tracker.go": {
+        "language": "Go",
+        "purpose": "Defines a PointTrackerEntity model for tracking user points in a database.",
+        "key_types": [
+          "PointTrackerEntity"
+        ],
+        "functions": [
+          "TableName"
+        ],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "internal/repositories/models/pool.go": {
+        "language": "Go",
+        "purpose": "Defines data models for reward pools and related entities in a reward system.",
+        "key_types": [
+          "RewardPoolEntity",
+          "PoolExtraInfo",
+          "PoolAllRelatedInfo",
+          "FundSourceEntity",
+          "FundSourceExtra",
+          "ListRewardPoolFilter"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/preference.go": {
+        "language": "Go",
+        "purpose": "Defines data models for user preferences and provides a method to convert preference filters to a map.",
+        "key_types": [
+          "Preference",
+          "PreferenceFilter"
+        ],
+        "functions": [
+          "ToMap"
+        ],
+        "imports": [
+          "time",
+          "github.com/mitchellh/mapstructure"
+        ],
+        "side_effects": [
+          "Decoding errors may occur if the structure does not match the expected format."
+        ],
+        "risks": [
+          "Potential for nil pointer dereference if ToMap is called on an uninitialized PreferenceFilter."
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/quest.go": {
+        "language": "Go",
+        "purpose": "Defines data models for quests in a gaming context, including entities and parameters for filtering and listing quests.",
+        "key_types": [
+          "QuestEntity",
+          "WhitelistQuestParams",
+          "QuestPlayers",
+          "StatusFilter",
+          "ListQuestFilters",
+          "ListQuestParams"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/quest_pool.go": {
+        "language": "Go",
+        "purpose": "Defines data models for quest pools and related information in a gaming context.",
+        "key_types": [
+          "QuestPool",
+          "PoolWithEventInfo",
+          "QuestWithRecurInfo"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/quest_resolve.go": {
+        "language": "Go",
+        "purpose": "Defines data models for history tracking in a quest resolution system.",
+        "key_types": [
+          "HistoryEntity",
+          "LogInfo"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "internal/repositories/models/quest_reward.go": {
+        "language": "Go",
+        "purpose": "Defines data models for quest rewards in a gaming application.",
+        "key_types": [
+          "QuestRewardEntity",
+          "FilterQuestReward"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/reward.go": {
+        "language": "Go",
+        "purpose": "Defines data models for rewards and transactions in a quest system.",
+        "key_types": [
+          "RewardInfoEntity",
+          "TopUpTxEntity",
+          "CombineTxHashInfoDTO"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/reward_allocation.go": {
+        "language": "Go",
+        "purpose": "Defines the RewardAllocation model for a reward allocation system.",
+        "key_types": [
+          "RewardAllocation",
+          "pgtype.Numeric",
+          "time.Time",
+          "RewardPoolEntity",
+          "RewardInfoEntity"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/jackc/pgtype"
+        ],
+        "complexity": "low"
+      },
+      "internal/repositories/models/shop.go": {
+        "language": "Go",
+        "purpose": "Defines models and types for a shop system, including items, categories, and purchase requests/responses.",
+        "key_types": [
+          "ShopItemCategory",
+          "ShopItemType",
+          "ShopItem",
+          "ShopItemTier",
+          "ShopCategory",
+          "GetShopItemsRequest",
+          "GetShopItemsResponse",
+          "GetShopCategoriesResponse",
+          "GetShopItemTiersRequest",
+          "GetShopItemTiersResponse",
+          "PurchaseShopItemRequest",
+          "PurchaseShopItemResponse",
+          "ShopTierFilters",
+          "ShopItemFilters",
+          "ShopPurchaseFilters",
+          "ShopItemEntity",
+          "ShopItemTierEntity",
+          "ShopCategoryEntity",
+          "ShopItemPurchaseEntity"
+        ],
+        "functions": [
+          "TableName() for ShopItemEntity",
+          "TableName() for ShopItemTierEntity",
+          "TableName() for ShopCategoryEntity"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/sponsor.go": {
+        "language": "Go",
+        "purpose": "Defines a SponsorEntity struct for use with a database, including fields for sponsor details.",
+        "key_types": [
+          "SponsorEntity"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "internal/repositories/models/user.go": {
+        "language": "Go",
+        "purpose": "Defines a UserEntity struct for representing user data in a database.",
+        "key_types": [
+          "UserEntity"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
+        ],
+        "complexity": "low"
+      },
+      "internal/repositories/models/user_action.go": {
+        "language": "Go",
+        "purpose": "Defines a UserActionEntity struct for managing user actions in a quest system.",
+        "key_types": [
+          "UserActionEntity",
+          "quest_enums.UserQuestStatus",
+          "time.Time"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
+        ],
+        "complexity": "low"
+      },
+      "internal/repositories/models/user_quest.go": {
+        "language": "Go",
+        "purpose": "Defines data models related to user quests in a quest management system.",
+        "key_types": [
+          "UserQuestEntity",
+          "PQuestAuditResult",
+          "QuestWhitelistEntity",
+          "UserActionCount",
+          "UserQuestFilter",
+          "ProfileQuestEntity",
+          "UserQuestInPool",
+          "UserSkipQuestLog"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/user_reward.go": {
+        "language": "Go",
+        "purpose": "Defines data models for user rewards in a quest system.",
+        "key_types": [
+          "UserRewardEntity",
+          "RewardPoolExtra",
+          "DistributeInfoV3",
+          "UserOffchainRewardAmount",
+          "UserQuestReward"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/models/user_role.go": {
+        "language": "Go",
+        "purpose": "Defines data models for user roles and permissions in a system.",
+        "key_types": [
+          "RoleEntity",
+          "RoleWithExtraInfo",
+          "OperatorPermissionList",
+          "UserRole"
+        ],
+        "functions": [],
+        "imports": [
+          "time",
+          "github.com/lib/pq"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

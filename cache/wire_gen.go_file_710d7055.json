@@ -1,0 +1,31 @@
+{
+  "content_hash": "e14668dedc02f393348e62fc180c8bb8",
+  "timestamp": "2025-09-26T12:10:55.970633+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains code for generating dependency injection for a cron job application using Google Wire.",
+    "key_types": [
+      "applications.Application",
+      "cronJobConfig",
+      "generator.IDGenerator",
+      "zap.Logger",
+      "zap.SugaredLogger"
+    ],
+    "functions": [
+      "wireCronJob",
+      "provideSugarLogger",
+      "provideServices",
+      "provideHttpMetric"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/cron-jobs",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "go.uber.org/zap"
+    ],
+    "complexity": "medium"
+  }
+}

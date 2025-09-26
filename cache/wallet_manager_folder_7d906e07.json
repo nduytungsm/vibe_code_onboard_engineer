@@ -1,0 +1,200 @@
+{
+  "content_hash": "6a5451a670473557beb41ea731bd0be0",
+  "timestamp": "2025-09-26T13:33:15.29195+07:00",
+  "result": {
+    "path": "cmd/wallet_manager",
+    "purpose": "Responsible for managing wallet operations, including configuration, routing, and dependency injection for the wallet manager application.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "config.go",
+      "main.go",
+      "routes.go",
+      "wire.go",
+      "wire_gen.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/go-playground/validator/v10",
+      "github.com/hibiken/asynq",
+      "gorm.io/gorm",
+      "github.com/google/wire",
+      "go.uber.org/zap",
+      "github.com/labstack/echo/v4",
+      "github.com/labstack/echo/v4/middleware"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, utilizing dependency injection for service management and routing for handling wallet-related operations.",
+    "file_summaries": {
+      "cmd/wallet_manager/config.go": {
+        "language": "Go",
+        "purpose": "Defines a configuration schema for a wallet manager application.",
+        "key_types": [
+          "configSchema",
+          "applications.ApplicationConfig",
+          "xhttp.ServerConfig",
+          "loggers.LoggerConfig",
+          "storages.PostgresConfig",
+          "services.AuthCfg",
+          "async_queue.ClientConfigV2",
+          "generator.IDGeneratorConfig",
+          "xhttp.ClientConfig",
+          "waypoint.Config",
+          "coinbase.Config"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/coinbase",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
+        ],
+        "complexity": "medium"
+      },
+      "cmd/wallet_manager/main.go": {
+        "language": "Go",
+        "purpose": "This file is the main entry point for a wallet manager application, handling configuration, logging, and starting the application.",
+        "key_types": [
+          "configSchema",
+          "context.Context",
+          "logger",
+          "IDGenerator",
+          "app"
+        ],
+        "functions": [
+          "main",
+          "NewConfig",
+          "Struct",
+          "MustNewLogger",
+          "NewIDGenerator",
+          "wireWalletManager",
+          "Start"
+        ],
+        "imports": [
+          "context",
+          "log",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/configs",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+          "github.com/go-playground/validator/v10"
+        ],
+        "side_effects": [
+          "Logs fatal errors if configuration loading or validation fails.",
+          "Starts the wallet manager application."
+        ],
+        "risks": [
+          "Potential for logging sensitive information if configuration contains secrets.",
+          "Failure to handle context cancellation properly could lead to resource leaks."
+        ],
+        "complexity": "medium"
+      },
+      "cmd/wallet_manager/routes.go": {
+        "language": "Go",
+        "purpose": "Defines routes for wallet management services, including public and private groups with associated handlers and middlewares.",
+        "key_types": [
+          "PublicGroup",
+          "PrivateGroup",
+          "http.GroupHandlers"
+        ],
+        "functions": [
+          "NewPrivateGroup",
+          "NewPublicGroup"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/labstack/echo/v4"
+        ],
+        "complexity": "medium"
+      },
+      "cmd/wallet_manager/wire.go": {
+        "language": "Go",
+        "purpose": "This file sets up dependency injection for the wallet manager application using Google Wire.",
+        "key_types": [
+          "applications.Application",
+          "http.Server",
+          "generator.IDGenerator",
+          "zap.SugaredLogger",
+          "gorm.DB",
+          "asynq.Client"
+        ],
+        "functions": [
+          "wireWalletManager",
+          "provideHttpServer",
+          "provideServices",
+          "provideZapLogger",
+          "provideAsyncQueueClient"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+          "github.com/hibiken/asynq",
+          "github.com/labstack/echo/v4/middleware",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/validation",
+          "github.com/google/wire",
+          "go.uber.org/zap"
+        ],
+        "side_effects": [
+          "Creates and configures HTTP server",
+          "Initializes application services"
+        ],
+        "complexity": "medium"
+      },
+      "cmd/wallet_manager/wire_gen.go": {
+        "language": "Go",
+        "purpose": "This file is used to generate dependency injection code for the wallet manager application using Wire.",
+        "key_types": [
+          "applications.Application",
+          "configSchema",
+          "generator.IDGenerator",
+          "http.Server",
+          "gorm.DB",
+          "asynq.Client"
+        ],
+        "functions": [
+          "wireWalletManager",
+          "provideHttpServer",
+          "provideServices",
+          "provideZapLogger",
+          "provideAsyncQueueClient"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/validation",
+          "github.com/hibiken/asynq",
+          "github.com/labstack/echo/v4/middleware",
+          "go.uber.org/zap",
+          "gorm.io/gorm"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

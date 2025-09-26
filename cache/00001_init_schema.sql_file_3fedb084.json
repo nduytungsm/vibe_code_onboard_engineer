@@ -1,0 +1,18 @@
+{
+  "content_hash": "3745b395cc131a58ff741f87339189b1",
+  "timestamp": "2025-09-26T13:14:32.036118+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Initial schema setup for a database, including type definitions and table creation.",
+    "key_types": [
+      "ENUM",
+      "TABLE"
+    ],
+    "functions": [],
+    "imports": [],
+    "side_effects": [
+      "Dropping existing types if they exist."
+    ],
+    "complexity": "medium"
+  }
+}

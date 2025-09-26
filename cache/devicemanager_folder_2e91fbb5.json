@@ -1,0 +1,80 @@
+{
+  "content_hash": "a27ef87659217aead7c8b23c93433fe2",
+  "timestamp": "2025-09-26T13:33:02.554469+07:00",
+  "result": {
+    "path": "internal/infras/devicemanager",
+    "purpose": "This folder/module is responsible for managing device-related operations and interactions with device APIs.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "client.go",
+      "models.go"
+    ],
+    "dependencies": [
+      "context",
+      "fmt",
+      "net/http",
+      "net/url",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "errors",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating device management functionality in separate files for client interactions and data models.",
+    "file_summaries": {
+      "internal/infras/devicemanager/client.go": {
+        "language": "Go",
+        "purpose": "This file implements a device management client for interacting with device-related APIs.",
+        "key_types": [
+          "Config",
+          "InternalClient",
+          "internalClientHTTP"
+        ],
+        "functions": [
+          "NewInternalClient",
+          "GetDeviceByUser",
+          "GetDeviceByID",
+          "ListDevices"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "net/http",
+          "net/url",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Logs errors when API requests fail"
+        ],
+        "risks": [
+          "Potential exposure of sensitive device information if not properly secured"
+        ],
+        "complexity": "medium"
+      },
+      "internal/infras/devicemanager/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures and types for managing devices in a device manager system.",
+        "key_types": [
+          "Paging",
+          "OrderBy",
+          "SliceResponse",
+          "PagingResponse",
+          "Device",
+          "ListDevicesRequest"
+        ],
+        "functions": [],
+        "imports": [
+          "errors",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

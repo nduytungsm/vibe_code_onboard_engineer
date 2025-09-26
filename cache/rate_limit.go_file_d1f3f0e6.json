@@ -1,0 +1,34 @@
+{
+  "content_hash": "7f67911776d1341e5ddfce9b12ab5552",
+  "timestamp": "2025-09-26T13:26:57.360261+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Implements rate limiting for asynchronous task handling.",
+    "key_types": [
+      "RateLimitError",
+      "asynq.Task",
+      "rate.Limiter"
+    ],
+    "functions": [
+      "Error",
+      "IsRateLimitError",
+      "retryDelay",
+      "HandlerWithLimit"
+    ],
+    "imports": [
+      "errors",
+      "fmt",
+      "math/rand/v2",
+      "time",
+      "github.com/hibiken/asynq",
+      "golang.org/x/time/rate"
+    ],
+    "side_effects": [
+      "Uses random number generation for retry delay."
+    ],
+    "risks": [
+      "Potential use of insecure random number generation."
+    ],
+    "complexity": "medium"
+  }
+}

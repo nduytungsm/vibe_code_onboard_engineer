@@ -1,0 +1,22 @@
+{
+  "content_hash": "59210602b69a621ad98f7aedf87132ca",
+  "timestamp": "2025-09-26T13:14:44.612847+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to create and drop indexes for various tables.",
+    "key_types": [
+      "INDEX",
+      "TABLE"
+    ],
+    "functions": [
+      "CREATE INDEX",
+      "DROP INDEX",
+      "ALTER TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the database schema by adding and removing indexes."
+    ],
+    "complexity": "medium"
+  }
+}

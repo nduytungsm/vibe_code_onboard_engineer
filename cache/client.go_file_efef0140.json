@@ -1,0 +1,29 @@
+{
+  "content_hash": "dcca1254759f7ea1c417684c70349ddd",
+  "timestamp": "2025-09-26T13:12:08.539095+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a client for fetching token prices from an external service.",
+    "key_types": [
+      "Config",
+      "Client",
+      "clientHTTP",
+      "Response"
+    ],
+    "functions": [
+      "NewClient",
+      "GetTokensPrice"
+    ],
+    "imports": [
+      "context",
+      "net/url",
+      "strings",
+      "github.com/samber/lo",
+      "github.com/samber/mo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

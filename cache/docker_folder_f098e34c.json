@@ -1,0 +1,154 @@
+{
+  "content_hash": "5a1af46e487906815cf3536c12cdb574",
+  "timestamp": "2025-09-26T13:37:47.054054+07:00",
+  "result": {
+    "path": "pkg/docker",
+    "purpose": "This folder/module is responsible for managing Docker containers for various services such as Kafka, PostgreSQL, and Redis.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "helper.go",
+      "kafka.go",
+      "postgres.go",
+      "redis.go"
+    ],
+    "dependencies": [
+      "github.com/testcontainers/testcontainers-go",
+      "github.com/docker/go-connections/nat",
+      "github.com/pressly/goose",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "github.com/redis/go-redis/v9",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality for different services in separate files while utilizing Testcontainers for container management.",
+    "file_summaries": {
+      "pkg/docker/helper.go": {
+        "language": "Go",
+        "purpose": "This file provides a function to find a free TCP port on the localhost.",
+        "key_types": [
+          "net.TCPAddr",
+          "net.TCPListener"
+        ],
+        "functions": [
+          "getFreePort"
+        ],
+        "imports": [
+          "net"
+        ],
+        "side_effects": [
+          "Opens a TCP listener on a free port"
+        ],
+        "risks": [
+          "Potential resource leak if listener is not closed properly"
+        ],
+        "complexity": "low"
+      },
+      "pkg/docker/kafka.go": {
+        "language": "Go",
+        "purpose": "This file provides functionality to create and manage a Kafka container using Testcontainers.",
+        "key_types": [
+          "Kafka",
+          "testcontainers.Container",
+          "testcontainers.ContainerRequest"
+        ],
+        "functions": [
+          "NewKafka",
+          "Start",
+          "Stop",
+          "createKafkaContainer"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "time",
+          "github.com/testcontainers/testcontainers-go",
+          "github.com/testcontainers/testcontainers-go/wait"
+        ],
+        "side_effects": [
+          "Starts a Kafka container",
+          "Stops a Kafka container"
+        ],
+        "risks": [
+          "Potential for resource exhaustion if containers are not properly stopped",
+          "Error handling is done via panic, which may lead to application crashes"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/docker/postgres.go": {
+        "language": "Go",
+        "purpose": "This file provides functionality to manage a PostgreSQL database container using Docker.",
+        "key_types": [
+          "Postgres",
+          "storages.PostgresConfig",
+          "testcontainers.Container"
+        ],
+        "functions": [
+          "NewPostgres",
+          "Start",
+          "Stop",
+          "Migrate",
+          "createContainer"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "strconv",
+          "time",
+          "github.com/docker/go-connections/nat",
+          "github.com/pressly/goose",
+          "github.com/testcontainers/testcontainers-go",
+          "github.com/testcontainers/testcontainers-go/wait",
+          "go.uber.org/zap",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
+        ],
+        "side_effects": [
+          "Starts and stops a Docker container for PostgreSQL",
+          "Creates a database connection"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information (e.g., passwords) if not handled properly"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/docker/redis.go": {
+        "language": "Go",
+        "purpose": "This file provides functionality to manage a Redis container using Docker.",
+        "key_types": [
+          "Redis",
+          "testcontainers.Container",
+          "redis.Redis",
+          "redis2.Client"
+        ],
+        "functions": [
+          "NewRedis",
+          "Start",
+          "Stop",
+          "createRedisContainer"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "strconv",
+          "time",
+          "github.com/docker/go-connections/nat",
+          "github.com/redis/go-redis/v9",
+          "github.com/testcontainers/testcontainers-go",
+          "github.com/testcontainers/testcontainers-go/wait",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/redis"
+        ],
+        "side_effects": [
+          "Starts a Docker container for Redis",
+          "Creates a Redis client"
+        ],
+        "risks": [
+          "Potential for panic on errors during container operations"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

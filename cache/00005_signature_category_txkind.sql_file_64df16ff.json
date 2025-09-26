@@ -1,0 +1,12 @@
+{
+  "content_hash": "070d39145295884e399673407077eb5b",
+  "timestamp": "2025-09-26T13:27:42.712137+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines database migrations for adding and removing columns in the signature_categories table.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

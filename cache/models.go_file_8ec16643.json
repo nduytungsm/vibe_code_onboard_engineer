@@ -1,0 +1,20 @@
+{
+  "content_hash": "9778eb5440f42f5739874630353d030f",
+  "timestamp": "2025-09-26T12:25:07.337134+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for handling responses and contract information in an explorer application.",
+    "key_types": [
+      "Response",
+      "ListResult",
+      "Contract",
+      "ContractABIResult",
+      "ABI"
+    ],
+    "functions": [],
+    "imports": [
+      "encoding/json"
+    ],
+    "complexity": "medium"
+  }
+}

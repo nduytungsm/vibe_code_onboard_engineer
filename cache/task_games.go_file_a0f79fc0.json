@@ -1,0 +1,41 @@
+{
+  "content_hash": "f2c57bba02bcd756865b1c506e717a28",
+  "timestamp": "2025-09-26T13:13:29.463139+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines cron jobs for tracking game activities in a gaming platform, specifically for classic and origins games.",
+    "key_types": [
+      "ClassicGamePlayedCrawlerTaskLogic",
+      "OriginsGamePlayedCrawlerTaskLogic",
+      "pvpBattlePlayed"
+    ],
+    "functions": [
+      "NewClassicGamePlayedCrawlerTaskLogic",
+      "NewOriginsGamePlayedCrawlerTaskLogic",
+      "Name",
+      "EligibleQuestActivities",
+      "GetSwanlakeQuery",
+      "UpsertResultSet",
+      "CleanupStaled",
+      "transformBattles"
+    ],
+    "imports": [
+      "fmt",
+      "time",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "side_effects": [
+      "Database operations for logging game activities",
+      "Potentially modifies the state of the database"
+    ],
+    "risks": [
+      "SQL injection if user input is not properly sanitized",
+      "Data integrity issues if concurrent modifications occur"
+    ],
+    "complexity": "medium"
+  }
+}

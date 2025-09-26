@@ -1,0 +1,16 @@
+{
+  "content_hash": "cd5abc1f22c0dd8c2f3b2065b52d6bf3",
+  "timestamp": "2025-09-26T13:23:01.175465+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a HistoryEntity struct for tracking changes made by operators.",
+    "key_types": [
+      "HistoryEntity"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

@@ -79,7 +79,7 @@ type MonorepoService struct {
 func NewClient(cfg *config.Config) *Client {
 	// Create HTTP client with longer timeout for analysis operations
 	httpClient := &http.Client{
-		Timeout: 10 * time.Minute, // 10-minute timeout for individual API calls
+		Timeout: 15 * time.Minute, // 15-minute timeout for individual API calls
 	}
 	
 	// Configure OpenAI client with custom HTTP client

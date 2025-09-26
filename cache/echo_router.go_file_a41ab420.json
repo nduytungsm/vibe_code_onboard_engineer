@@ -1,0 +1,49 @@
+{
+  "content_hash": "f69e118d495d26f7a27c2fbdd1e7940c",
+  "timestamp": "2025-09-26T13:25:31.102852+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines routes for various services in a web application using Echo framework.",
+    "key_types": [
+      "routerList",
+      "AnnouncementRouter",
+      "ProductRouter",
+      "GenericRouter",
+      "LayoutRouter",
+      "TokensRouter",
+      "EventRouter",
+      "HomeBannerRouter",
+      "FeatureBannerRouter"
+    ],
+    "functions": [
+      "NewEchoRouter",
+      "groupFeatureBannerRoutes",
+      "groupBannerRoutes",
+      "groupProductsRoutes",
+      "groupGenericRoutes",
+      "groupLayoutRoutes",
+      "groupWidgetRoutes",
+      "groupTokensRoutes",
+      "groupEventRoutes",
+      "groupHomeBannerRoutes"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/hmac",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Modifies HTTP routes and handlers",
+      "Interacts with external services through middleware"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data through improperly secured routes",
+      "Dependency on external services may introduce vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

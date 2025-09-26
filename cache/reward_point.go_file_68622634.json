@@ -1,0 +1,30 @@
+{
+  "content_hash": "cf52306a296f6f4e42931aff9711cf99",
+  "timestamp": "2025-09-26T13:26:44.13378+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a reward point system that randomizes rewards based on defined probabilities and tiers.",
+    "key_types": [
+      "RewardPoint",
+      "struct"
+    ],
+    "functions": [
+      "NewRewardPoint",
+      "getCryptoRandomFloat64",
+      "GetRandomReward"
+    ],
+    "imports": [
+      "crypto/rand",
+      "encoding/binary",
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
+    ],
+    "side_effects": [
+      "Generates random numbers using cryptographic functions"
+    ],
+    "risks": [
+      "Potential for incorrect reward assignment if the probability table is misconfigured"
+    ],
+    "complexity": "medium"
+  }
+}

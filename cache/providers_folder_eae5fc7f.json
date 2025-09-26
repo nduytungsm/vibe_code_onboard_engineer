@@ -1,0 +1,447 @@
+{
+  "content_hash": "35ea9bac7dbef7b4593337edf3fff727",
+  "timestamp": "2025-09-26T13:28:25.901061+07:00",
+  "result": {
+    "path": "internal/domains/proxy/services/providers",
+    "purpose": "This folder/module is responsible for providing various blockchain service providers that interact with different APIs to retrieve portfolio and transaction data, including token balances and NFT collections.",
+    "languages": {
+      "Go": 10
+    },
+    "key_modules": [
+      "alchemy.go",
+      "cache.go",
+      "chained.go",
+      "getblock.go",
+      "moralis.evm.go",
+      "moralis.solana.go",
+      "provider.go",
+      "skynet.go",
+      "utils.go"
+    ],
+    "dependencies": [
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "github.com/sony/gobreaker/v2",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each provider is encapsulated in its own file, allowing for easy extension and maintenance. It utilizes interfaces for multi-chain support and includes caching mechanisms for performance optimization.",
+    "file_summaries": {
+      "internal/domains/proxy/services/providers/alchemy.go": {
+        "language": "Go",
+        "purpose": "Provides functionality for interacting with the Alchemy API to retrieve token balances and NFT collections.",
+        "key_types": [
+          "AlchemyProvider",
+          "ProviderCfg",
+          "ChainCfg",
+          "ChainProvider",
+          "TokenBalancesReq",
+          "NFTCollectionsReq"
+        ],
+        "functions": [
+          "AlchemyProviderName",
+          "AlchemyProviderCreator",
+          "Name",
+          "IsMethodSupported",
+          "getTokenBalance",
+          "getNftCollections",
+          "GetPortfolioBalance",
+          "wrapError",
+          "ListPortfolioNFTItems",
+          "GetTokenFiatInfo",
+          "GetPortfolioNftCollections",
+          "GetPortfolioActivities",
+          "GetCollectionDetail",
+          "GetFungibleTxs",
+          "GetNftTransfers"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "runtime",
+          "slices",
+          "github.com/samber/lo",
+          "github.com/samber/mo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/alchemy",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Logs errors when API calls fail",
+          "May panic if unimplemented methods are called"
+        ],
+        "risks": [
+          "Potential exposure of sensitive API keys",
+          "Error handling may not cover all edge cases"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/providers/cache.go": {
+        "language": "Go",
+        "purpose": "Provides caching functionality for portfolio-related data using a Redis client.",
+        "key_types": [
+          "CachedProvider",
+          "cacheInstances",
+          "fiatTokenCacheKey",
+          "tokenFiatCodec"
+        ],
+        "functions": [
+          "GetPortfolioBalance",
+          "ListPortfolioNFTItems",
+          "GetTokenFiatInfo",
+          "GetPortfolioNftCollections",
+          "GetPortfolioActivities",
+          "GetCollectionDetail",
+          "GetFungibleTxs",
+          "GetNftTransfers",
+          "ExecuteRpc",
+          "NewCachedProvider",
+          "Name",
+          "IsMethodSupported",
+          "IsAddressSupported"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "github.com/redis/go-redis/v9",
+          "github.com/samber/lo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/providers/chained.go": {
+        "language": "Go",
+        "purpose": "This file implements a chained provider for handling multiple blockchain service providers with circuit breaker functionality.",
+        "key_types": [
+          "providerCircuitBreakers",
+          "providerWithCircuitBreaker",
+          "ChainedProvider"
+        ],
+        "functions": [
+          "cbSetting",
+          "newProviderCircuitBreakers",
+          "NewChainedProvider",
+          "Name",
+          "IsMethodSupported",
+          "isCircuitBreakerErr",
+          "GetPortfolioBalance",
+          "ListPortfolioNFTItems",
+          "GetTokenFiatInfo",
+          "GetPortfolioNftCollections",
+          "GetPortfolioActivities",
+          "GetCollectionDetail",
+          "GetFungibleTxs",
+          "GetNftTransfers",
+          "circuitBrokeErr",
+          "ExecuteRpc",
+          "IsAddressSupported"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "strings",
+          "github.com/samber/lo",
+          "github.com/sony/gobreaker/v2",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Logs warnings when the circuit breaker state changes."
+        ],
+        "risks": [
+          "Potential for circuit breaker to open and deny service if too many failures occur."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/providers/getblock.go": {
+        "language": "Go",
+        "purpose": "Provides functionality to interact with a blockchain service for retrieving block and portfolio information.",
+        "key_types": [
+          "GetBlockProvider",
+          "requests.PortfolioBalanceSingleChain",
+          "requests.PortfolioNFTItemsSingle",
+          "models.PortfolioTokenItem",
+          "models.PortfolioNftItem",
+          "models.TokenFiatInfo",
+          "models.PortfolioCollectionOverview",
+          "models.CollectionDetail",
+          "activitiesListingResp"
+        ],
+        "functions": [
+          "GetBlockProviderName",
+          "GetBlockProviderCreator",
+          "wrapError",
+          "Name",
+          "IsMethodSupported",
+          "GetPortfolioBalance",
+          "ListPortfolioNFTItems",
+          "GetTokenFiatInfo",
+          "GetPortfolioNftCollections",
+          "GetPortfolioActivities",
+          "GetCollectionDetail",
+          "GetFungibleTxs",
+          "GetNftTransfers",
+          "ExecuteRpc",
+          "IsAddressSupported"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "runtime",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/getblock",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+          "github.com/samber/lo",
+          "go.uber.org/zap"
+        ],
+        "side_effects": [
+          "Logs errors when RPC execution fails or context is canceled."
+        ],
+        "risks": [
+          "Potential exposure of sensitive information if secrets are not handled properly."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/providers/moralis.evm.go": {
+        "language": "Go",
+        "purpose": "This file defines a Moralis provider for interacting with Ethereum Virtual Machine (EVM) based services, including fetching portfolio balances and NFT items.",
+        "key_types": [
+          "moralisProvider",
+          "PortfolioTokenItem",
+          "PortfolioNftItem",
+          "ProviderCfg",
+          "ChainCfg",
+          "InternalSvcCfg"
+        ],
+        "functions": [
+          "MoralisProviderName",
+          "EvmMoralisProviderCreator",
+          "IsMethodSupported",
+          "Name",
+          "wrapError",
+          "GetPortfolioBalance",
+          "findBalanceFetcher",
+          "getERC20Balance",
+          "getBothBalance",
+          "getNativeBalance",
+          "getFungibleBalance",
+          "ListPortfolioNFTItems",
+          "getUserNftItems"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "errors",
+          "fmt",
+          "math",
+          "net/http",
+          "runtime",
+          "strconv",
+          "strings",
+          "github.com/samber/lo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/categorize",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/moralis",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/providers/moralis.solana.go": {
+        "language": "Go",
+        "purpose": "Provides an interface for interacting with the Moralis API for Solana blockchain services.",
+        "key_types": [
+          "MoralisSolanaProvider",
+          "models.ProviderCfg",
+          "models.ChainCfg",
+          "proxy_enums.ProviderMethod",
+          "moralis_solana.Client"
+        ],
+        "functions": [
+          "MoralisSolanaProviderName",
+          "MoralisSolanaProviderCreator",
+          "wrapError",
+          "Name",
+          "IsMethodSupported",
+          "GetPortfolioBalance",
+          "ListPortfolioNFTItems",
+          "GetTokenFiatInfo",
+          "GetPortfolioNftCollections"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "runtime",
+          "strings",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/moralis_solana",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+          "github.com/samber/lo",
+          "go.uber.org/zap"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/providers/provider.go": {
+        "language": "Go",
+        "purpose": "Defines a multi-chain provider interface and related types for handling portfolio and transaction data.",
+        "key_types": [
+          "PaginatedResponse",
+          "MultiChainProvider",
+          "activitiesListingResp"
+        ],
+        "functions": [
+          "IsAddressSupported",
+          "Name",
+          "IsMethodSupported",
+          "IsAddressSupported",
+          "GetPortfolioBalance",
+          "ListPortfolioNFTItems",
+          "GetTokenFiatInfo",
+          "GetPortfolioNftCollections",
+          "GetPortfolioActivities",
+          "GetCollectionDetail",
+          "GetFungibleTxs",
+          "GetNftTransfers",
+          "ExecuteRpc"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+          "github.com/ethereum/go-ethereum/common"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/providers/skynet.go": {
+        "language": "Go",
+        "purpose": "This file defines a Skynet provider for handling portfolio balances and NFT items in a blockchain context.",
+        "key_types": [
+          "decodeResult",
+          "skynetProvider"
+        ],
+        "functions": [
+          "SkynetProviderName",
+          "SkynetTestnetProviderName",
+          "SkynetProviderCreator",
+          "IsMethodSupported",
+          "Name",
+          "wrapError",
+          "GetPortfolioBalance",
+          "getAddressBalance",
+          "findFiatMap",
+          "ListPortfolioNFTItems",
+          "getUserNftItems"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "maps",
+          "math",
+          "net/http",
+          "runtime",
+          "strings",
+          "sync",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/samber/lo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/providers/utils.go": {
+        "language": "Go",
+        "purpose": "Utility functions for handling NFT and transaction metadata in a proxy service.",
+        "key_types": [
+          "loopFetcher",
+          "onNextCursor",
+          "transferDecodeResult"
+        ],
+        "functions": [
+          "extractMetadataAttributes",
+          "displayTypeMapper",
+          "snakeCaseToReadable",
+          "getTransferDirection",
+          "decodeTx",
+          "marshalMoralisMetadata",
+          "marshalMoralisErc20Transfers",
+          "marshalMoralisNftTransfers",
+          "marshalMoralisApprovals",
+          "marshalNativeTransfers",
+          "copyGenerics",
+          "copyToken"
+        ],
+        "imports": [
+          "fmt",
+          "math",
+          "math/big",
+          "strings",
+          "github.com/samber/lo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/moralis",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

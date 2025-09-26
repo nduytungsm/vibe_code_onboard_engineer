@@ -1,0 +1,27 @@
+{
+  "content_hash": "f89d8875fed9365a568824fd3568045f",
+  "timestamp": "2025-09-26T13:27:40.557741+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines a migration for creating and dropping a point_trackers table in a database.",
+    "key_types": [
+      "BIGSERIAL",
+      "BIGINT",
+      "VARCHAR",
+      "TIMESTAMPTZ"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "DROP TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates a new table in the database",
+      "Drops an existing table from the database"
+    ],
+    "risks": [
+      "Potential data loss when dropping the table"
+    ],
+    "complexity": "low"
+  }
+}

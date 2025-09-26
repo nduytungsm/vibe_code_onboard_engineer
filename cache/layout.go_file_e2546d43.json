@@ -1,0 +1,51 @@
+{
+  "content_hash": "d550a831360049d217149ab800915cf1",
+  "timestamp": "2025-09-26T13:26:27.838267+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for managing layouts and widgets in a discovery service.",
+    "key_types": [
+      "Layout",
+      "layout",
+      "LayoutEntity",
+      "WidgetEntity",
+      "LayoutWidgetEntity",
+      "WidgetItemEntity"
+    ],
+    "functions": [
+      "NewLayoutService",
+      "CreateLayout",
+      "GetActiveLayout",
+      "UpdateLayoutWidgets",
+      "GetLayoutWidgets",
+      "GetLayoutWidgetItems",
+      "GetWidgetByID",
+      "FindWidgetsByIDs",
+      "CreateFullpageWidget"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "github.com/google/wire",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Logs errors when operations fail",
+      "Generates new IDs for layouts and widgets"
+    ],
+    "risks": [
+      "Potential for unhandled errors when interacting with the database",
+      "Improper error handling could lead to information leakage"
+    ],
+    "complexity": "medium"
+  }
+}

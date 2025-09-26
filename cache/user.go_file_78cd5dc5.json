@@ -1,0 +1,27 @@
+{
+  "content_hash": "729f635a8cd3b89b4742872e1f4d7128",
+  "timestamp": "2025-09-26T12:37:09.83461+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a mock implementation of a User type for testing purposes using the mockery library.",
+    "key_types": [
+      "User",
+      "User_Expecter",
+      "User_FindUsers_Call"
+    ],
+    "functions": [
+      "FindUsers",
+      "EXPECT",
+      "NewUser"
+    ],
+    "imports": [
+      "context",
+      "github.com/stretchr/testify/mock",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+    ],
+    "side_effects": [
+      "Panic if no return value is specified for FindUsers"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "content_hash": "4e0cb175f4f9db464058997628a38a82",
+  "timestamp": "2025-09-26T13:26:39.513461+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains helper functions for verifying quests and managing user actions related to quests.",
+    "key_types": [
+      "VerifyActionParams",
+      "UserAction",
+      "WalletCheckInLogEntity",
+      "ActionPlatform"
+    ],
+    "functions": [
+      "updateActivityState",
+      "findCheckInInternal",
+      "isXEqualToY",
+      "FindStreak",
+      "isInValidTimeRange",
+      "roundDownLastCheckInAt",
+      "updateProgress",
+      "platformCacheKey",
+      "encryptToken",
+      "decryptToken"
+    ],
+    "imports": [
+      "context",
+      "crypto/sha256",
+      "errors",
+      "fmt",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/encrypt",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "side_effects": [
+      "Modifies user action status based on quest progress",
+      "Handles encryption and decryption of tokens"
+    ],
+    "risks": [
+      "Potential for incorrect handling of user quest states",
+      "Error handling may expose sensitive information in logs"
+    ],
+    "complexity": "medium"
+  }
+}

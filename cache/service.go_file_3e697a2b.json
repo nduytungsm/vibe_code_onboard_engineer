@@ -1,0 +1,14 @@
+{
+  "content_hash": "760d9916c15ace0fd7599b0fa3d75cb6",
+  "timestamp": "2025-09-26T13:25:43.238273+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an enumeration for service types.",
+    "key_types": [
+      "ServiceType"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "content_hash": "1729422a0f974a7a3c099dc4e636e64f",
+  "timestamp": "2025-09-26T13:10:09.960595+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for a wallet management application.",
+    "key_types": [
+      "application",
+      "server",
+      "postgres",
+      "logging",
+      "auth",
+      "redis",
+      "async_queue_client",
+      "http_client",
+      "waypoint",
+      "coinbase"
+    ],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Exposed sensitive information due to redacted fields.",
+      "Potential misconfiguration of database and server settings."
+    ],
+    "complexity": "low"
+  }
+}

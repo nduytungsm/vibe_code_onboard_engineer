@@ -1,0 +1,46 @@
+{
+  "content_hash": "d83a2c3f1392b97cc5a14f8522d9073f",
+  "timestamp": "2025-09-26T13:27:51.721539+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the ActivityHandler in the handlers package, verifying the behavior of bulk insert and upsert operations.",
+    "key_types": [
+      "ActivityHandlerTestKit",
+      "HandlerActItem",
+      "HandlerCreateActsDTO",
+      "ActivityEntity",
+      "HistoryEntity",
+      "BulkInsertActivityDTO",
+      "HandlerOptionalAct",
+      "HandlerUpsertActDTO"
+    ],
+    "functions": [
+      "SetupActivityHandler",
+      "TestBulkInsert_Should_CopyAllFields",
+      "TestBulkInsert_Should_CreateCorrectHistory",
+      "TestBulkInsert_Should_MarshalResp",
+      "TestUpsert_Should_CreateIDForAll"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "strconv",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/mock",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/discord",
+      "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/mocks/services",
+      "github.com/axieinfinity/ronin-wallet-services/tests"
+    ],
+    "complexity": "medium"
+  }
+}

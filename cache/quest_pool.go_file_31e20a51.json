@@ -1,0 +1,23 @@
+{
+  "content_hash": "88d7b570134a1427c7dd8a1a59eebc16",
+  "timestamp": "2025-09-26T13:13:08.611028+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for quest pool operations in a gaming application.",
+    "key_types": [
+      "UpsertPool",
+      "DeletePool",
+      "ListPools",
+      "ListEventPools",
+      "GetPoolWithAnalytics",
+      "ListQuestsByPool",
+      "SpawnUserQuest"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/shopspring/decimal"
+    ],
+    "complexity": "medium"
+  }
+}

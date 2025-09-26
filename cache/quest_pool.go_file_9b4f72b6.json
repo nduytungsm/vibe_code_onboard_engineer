@@ -1,0 +1,39 @@
+{
+  "content_hash": "c35fa5ce9395f4c352a74ceb6ecc5d27",
+  "timestamp": "2025-09-26T13:25:23.47578+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing quest pools, including creating, updating, and retrieving quest pool data.",
+    "key_types": [
+      "ListPoolFilter",
+      "QuestPoolRepo",
+      "poolRepo"
+    ],
+    "functions": [
+      "NewQuestPoolRepo",
+      "CreateHistory",
+      "NewTx",
+      "Upsert",
+      "GetByID",
+      "ListPools",
+      "FindWithExtraInfo",
+      "ListQuestForRandom"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause"
+    ],
+    "side_effects": [
+      "Database transactions",
+      "Modifications to the database state"
+    ],
+    "risks": [
+      "Potential SQL injection if inputs are not properly sanitized",
+      "Data integrity issues if transactions are not handled correctly"
+    ],
+    "complexity": "medium"
+  }
+}

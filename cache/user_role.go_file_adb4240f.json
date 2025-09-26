@@ -1,0 +1,20 @@
+{
+  "content_hash": "0bfff8df082026aa03a2f1d47a594fc9",
+  "timestamp": "2025-09-26T13:12:41.535+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for user roles and permissions in a system.",
+    "key_types": [
+      "RoleEntity",
+      "RoleWithExtraInfo",
+      "OperatorPermissionList",
+      "UserRole"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/lib/pq"
+    ],
+    "complexity": "medium"
+  }
+}

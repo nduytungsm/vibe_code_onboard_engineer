@@ -1,0 +1,25 @@
+{
+  "content_hash": "3d8ae7de3b979f8c455325ee2e8a53fa",
+  "timestamp": "2025-09-26T13:12:58.552099+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for layout-related requests in a discovery service.",
+    "key_types": [
+      "CreateLayout",
+      "GetProductActiveLayout",
+      "UpdateWidgetItems",
+      "UpdateLayoutWidget",
+      "LayoutContact",
+      "LayoutService",
+      "GetWidgetItems",
+      "GetLayoutWidget",
+      "UpsertFullpageWidget"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "content_hash": "5d4a0866d813de4b08e76fddce225dee",
+  "timestamp": "2025-09-26T13:09:28.787476+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the Ronin Wallet microservices ecosystem, detailing architecture, services, prerequisites, configuration, development, and security.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

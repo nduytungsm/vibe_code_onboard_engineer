@@ -1,0 +1,38 @@
+{
+  "content_hash": "981f82222be0ffdffe63cd1cd09368aa",
+  "timestamp": "2025-09-26T12:12:03.644548+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file sets up and starts a push notification application.",
+    "key_types": [
+      "pushNotificationConfig",
+      "context.Context",
+      "logger"
+    ],
+    "functions": [
+      "main",
+      "NewConfig",
+      "Struct",
+      "MustNewLogger",
+      "PrintConfigSafety",
+      "wirePushNotificationApp",
+      "Start"
+    ],
+    "imports": [
+      "context",
+      "log",
+      "github.com/go-playground/validator/v10",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/configs",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
+    ],
+    "side_effects": [
+      "Logs errors and application start information",
+      "Flushes logger on exit"
+    ],
+    "risks": [
+      "Potential for configuration loading errors",
+      "Validation errors leading to application failure"
+    ],
+    "complexity": "medium"
+  }
+}

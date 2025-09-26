@@ -1,0 +1,543 @@
+{
+  "content_hash": "441aef65cc2f1be981e67a2b562d3b3d",
+  "timestamp": "2025-09-26T13:43:41.118467+07:00",
+  "result": {
+    "path": "internal/domains/proxy/services",
+    "purpose": "This folder/module is responsible for providing various services related to user activities, balances, AI processing, DApp management, fiat information, token management, and interactions with external APIs.",
+    "languages": {
+      "Go": 20
+    },
+    "key_modules": [
+      "activity.go",
+      "ai.go",
+      "balance.go",
+      "coingecko.go",
+      "config.go",
+      "dapp.go",
+      "fiat.go",
+      "metrics.go",
+      "profile.go",
+      "provider.go",
+      "rpc.go",
+      "simulate.go",
+      "token.go",
+      "utils.go"
+    ],
+    "dependencies": [
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "github.com/redis/go-redis/v9",
+      "github.com/prometheus/client_golang/prometheus",
+      "github.com/ethereum/go-ethereum",
+      "github.com/blockaid-official/blockaid-client-go",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services/providers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, where each file represents a distinct service with its own responsibilities, utilizing Go's concurrency features and external APIs for functionality.",
+    "file_summaries": {
+      "internal/domains/proxy/services/activity.go": {
+        "language": "Go",
+        "purpose": "This file defines an ActivityService that handles fetching and managing user activity and transfer history for a portfolio.",
+        "key_types": [
+          "ActivityService",
+          "activityService",
+          "requests.PortfolioActivityDTO",
+          "responses.Paginated",
+          "models.UserCursor",
+          "providers.PaginatedResponse"
+        ],
+        "functions": [
+          "NewActivityService",
+          "GetActivities",
+          "GetTransfersHistory",
+          "getCursorMap",
+          "getActivities",
+          "saveUserCursors",
+          "maskActivityUnsafeToken",
+          "historyGetter"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "github.com/samber/lo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services/providers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Logs errors when fetching user cursors or saving user cursors",
+          "Modifies activity items by masking sensitive token information"
+        ],
+        "risks": [
+          "Potential exposure of sensitive token information if not properly masked",
+          "Error handling may not cover all edge cases, leading to unhandled errors"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/ai.go": {
+        "language": "Go",
+        "purpose": "Provides an AI service for processing chat requests using OpenAI's API.",
+        "key_types": [
+          "AIService",
+          "ai",
+          "requests.ToolChoiceRequest",
+          "responses.ChatCompletionResponse",
+          "openai.RequestBody"
+        ],
+        "functions": [
+          "NewAISvc",
+          "ProcessChat"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/openai",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/samber/lo",
+          "go.uber.org/zap"
+        ],
+        "risks": [
+          "Potential for unhandled errors from external API calls",
+          "Possible exposure of sensitive data in logs"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/balance.go": {
+        "language": "Go",
+        "purpose": "This file defines a balance service for managing and retrieving portfolio balances and NFT items for users.",
+        "key_types": [
+          "BalanceService",
+          "balanceService",
+          "PortfolioBalanceDTO",
+          "PortfolioNFTItemsDTO",
+          "Paginated",
+          "UserCursor"
+        ],
+        "functions": [
+          "NewBalanceSvc",
+          "GetPortfolioBalance",
+          "ListPortfolioNftItems",
+          "GetPortfolioCollections",
+          "GetCollectionDetail",
+          "getCursorMap",
+          "saveUserCursors",
+          "aggCollectionItems"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "go.uber.org/zap",
+          "github.com/samber/lo",
+          "github.com/samber/mo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services/providers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Logs errors when fetching user cursors or saving user cursors fails."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/coingecko.go": {
+        "language": "Go",
+        "purpose": "This file defines a service for interacting with the CoinGecko API to retrieve platform information and token price charts.",
+        "key_types": [
+          "CoingeckoService",
+          "coingeckoService",
+          "marketChartCodec",
+          "coingeckoPlatformsCacheCodec",
+          "dexTokenChartCacheCodec",
+          "dexTokenCacheCodec"
+        ],
+        "functions": [
+          "NewCoingeckoService",
+          "GetCoingeckoPlatforms",
+          "GetTokenPriceChart",
+          "GetDexTokenPriceChart",
+          "fromChartItems",
+          "fromOHLCV"
+        ],
+        "imports": [
+          "cmp",
+          "context",
+          "fmt",
+          "slices",
+          "time",
+          "github.com/redis/go-redis/v9",
+          "github.com/samber/lo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/coingecko",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Interacts with external APIs (CoinGecko, Redis) to fetch data.",
+          "Caches results in Redis."
+        ],
+        "risks": [
+          "Potential exposure of sensitive data through API interactions.",
+          "Dependency on external services may lead to failures if those services are down."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/config.go": {
+        "language": "Go",
+        "purpose": "Defines configuration structures for services including token and cache settings.",
+        "key_types": [
+          "Config",
+          "Token",
+          "Coingecko",
+          "CDN"
+        ],
+        "functions": [],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/proxy/services/dapp.go": {
+        "language": "Go",
+        "purpose": "This file implements a service for managing decentralized application (DApp) sites, including retrieving, deleting, and scanning DApps for malicious content.",
+        "key_types": [
+          "DAppService",
+          "dappService",
+          "DAppSite",
+          "DAppScanResult"
+        ],
+        "functions": [
+          "NewDAppService",
+          "GetDApp",
+          "DeleteDApp",
+          "Scan",
+          "scanByProviderWithCache",
+          "scanByProvider",
+          "findCachedResult",
+          "updateCache",
+          "normDomain"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "strings",
+          "time",
+          "github.com/blockaid-official/blockaid-client-go",
+          "go.uber.org/zap",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/trusted-domain/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/blockaid",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Updates cache with scan results",
+          "Logs errors when scanning fails",
+          "Performs database operations for DApp sites"
+        ],
+        "risks": [
+          "Potential exposure of sensitive data through logging",
+          "Database operations may lead to data integrity issues if not handled properly"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/fiat.go": {
+        "language": "Go",
+        "purpose": "Provides a service for retrieving fiat information related to tokens.",
+        "key_types": [
+          "FiatService",
+          "fiatService",
+          "requests.GetTokenFiatInfoDTO",
+          "responses.Paginated",
+          "models.TokenFiatInfo"
+        ],
+        "functions": [
+          "NewFiatSvc",
+          "GetTokenFiatInfo",
+          "getTokenFiat"
+        ],
+        "imports": [
+          "context",
+          "go.uber.org/zap",
+          "github.com/samber/lo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/metrics.go": {
+        "language": "Go",
+        "purpose": "This file defines metrics for a wallet proxy service using Prometheus.",
+        "key_types": [
+          "prometheus.Collector",
+          "prometheus.HistogramVec",
+          "prometheus.CounterVec"
+        ],
+        "functions": [
+          "observeProviderFn",
+          "observeServiceFn",
+          "observeServiceFnPaginated",
+          "histogramVec",
+          "counterVec"
+        ],
+        "imports": [
+          "strconv",
+          "github.com/prometheus/client_golang/prometheus",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
+        ],
+        "side_effects": [
+          "Metrics are recorded and updated based on function execution."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/profile.go": {
+        "language": "Go",
+        "purpose": "Provides a service to check the existence of user profiles.",
+        "key_types": [
+          "ProfileService",
+          "profileService",
+          "WAddress",
+          "ProfileExistence"
+        ],
+        "functions": [
+          "NewProfileService",
+          "wrapError",
+          "CheckProfileExistence"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "runtime",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/waypoint",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+          "go.uber.org/zap"
+        ],
+        "side_effects": [
+          "Logs errors when profile checking fails"
+        ],
+        "risks": [
+          "Potential nil pointer dereference if address is nil"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/provider.go": {
+        "language": "Go",
+        "purpose": "Provides a service for managing multi-chain providers and their registration based on chain IDs and methods.",
+        "key_types": [
+          "ProviderService",
+          "providerMap",
+          "providerMapBuilder",
+          "providerService",
+          "providerCreator"
+        ],
+        "functions": [
+          "register",
+          "find",
+          "add",
+          "build",
+          "NewProviderService",
+          "GetProvider"
+        ],
+        "imports": [
+          "fmt",
+          "strings",
+          "github.com/redis/go-redis/v9",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services/providers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy"
+        ],
+        "side_effects": [
+          "Logs provider registration and errors."
+        ],
+        "risks": [
+          "Potential for nil pointer dereference if provider is not found.",
+          "Error handling may expose sensitive information in error messages."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/rpc.go": {
+        "language": "Go",
+        "purpose": "Defines an RPC service for executing remote procedure calls.",
+        "key_types": [
+          "RpcService",
+          "rpcService",
+          "requests.RpcRequest"
+        ],
+        "functions": [
+          "NewRpcService",
+          "Execute"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "go.uber.org/zap"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/simulate.go": {
+        "language": "Go",
+        "purpose": "This file defines a simulation service for processing and simulating JSON-RPC requests related to blockchain transactions.",
+        "key_types": [
+          "SimulationService",
+          "blockaidSimulationService",
+          "models.SimulateParams",
+          "models.SimulateJsonRPC",
+          "models.SimulatedJsonRPC"
+        ],
+        "functions": [
+          "NewSimulationService",
+          "SimulateRPC",
+          "removeUnknownAssets",
+          "decodeSimulated",
+          "transformAsset"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "fmt",
+          "math/big",
+          "net/url",
+          "strings",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/samber/lo",
+          "github.com/samber/mo",
+          "github.com/shopspring/decimal",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/blockaid",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Logs errors when simulation fails",
+          "Modifies simulation results based on asset transformations"
+        ],
+        "risks": [
+          "Potential for incorrect simulation results if external dependencies fail",
+          "Error handling may expose sensitive information in logs"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/token.go": {
+        "language": "Go",
+        "purpose": "This file defines a TokenService interface and its implementation for managing tokens, including fetching, listing, and searching tokens, as well as retrieving price charts.",
+        "key_types": [
+          "TokenService",
+          "caches",
+          "tokenService",
+          "getTokenCodec",
+          "getTokenByAddrCodec"
+        ],
+        "functions": [
+          "NewTokenService",
+          "GetToken",
+          "GetTokenByAddress",
+          "ListTokens",
+          "SearchTokens",
+          "PriceChart",
+          "PriceChartByAddress",
+          "UpdateTokenInternal",
+          "GetTokenInternal"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "github.com/redis/go-redis/v9",
+          "github.com/samber/lo",
+          "github.com/samber/mo",
+          "gorm.io/gorm",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/repos",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/cache",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/proxy/services/utils.go": {
+        "language": "Go",
+        "purpose": "Utility functions for combining and sorting NFT and token items in a portfolio.",
+        "key_types": [
+          "models.PortfolioNftItem",
+          "models.PortfolioTokenItem",
+          "models.PortfolioCollectionOverview",
+          "models.ActivityItem",
+          "models.TxToken",
+          "models.TokenBalanceDiff"
+        ],
+        "functions": [
+          "combineNftItems",
+          "inlineSortNftItems",
+          "combineFungibles",
+          "combineCollectionAmounts",
+          "inlineSortTxs",
+          "combineTxTokens",
+          "calcBalanceDiffs",
+          "indexTxs",
+          "detectTokens"
+        ],
+        "imports": [
+          "context",
+          "fmt",
+          "math/big",
+          "slices",
+          "sort",
+          "github.com/samber/lo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

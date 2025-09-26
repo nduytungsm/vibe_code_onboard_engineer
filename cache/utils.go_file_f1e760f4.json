@@ -1,0 +1,42 @@
+{
+  "content_hash": "612d0db885294f16d6f5a9acea4df841",
+  "timestamp": "2025-09-26T12:20:45.030428+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Utility functions for combining and sorting NFT and token items in a portfolio.",
+    "key_types": [
+      "models.PortfolioNftItem",
+      "models.PortfolioTokenItem",
+      "models.PortfolioCollectionOverview",
+      "models.ActivityItem",
+      "models.TxToken",
+      "models.TokenBalanceDiff"
+    ],
+    "functions": [
+      "combineNftItems",
+      "inlineSortNftItems",
+      "combineFungibles",
+      "combineCollectionAmounts",
+      "inlineSortTxs",
+      "combineTxTokens",
+      "calcBalanceDiffs",
+      "indexTxs",
+      "detectTokens"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "math/big",
+      "slices",
+      "sort",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/deception/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

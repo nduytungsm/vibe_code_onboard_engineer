@@ -1,0 +1,44 @@
+{
+  "content_hash": "577a16b3d9ea0fbe3abc9376179c86c3",
+  "timestamp": "2025-09-26T12:29:11.600098+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a router for handling feature banner operations in a web service.",
+    "key_types": [
+      "FeatureBannerRouter",
+      "featureBanner",
+      "discovery_requests.CreateFeatureBanner",
+      "discovery_requests.GetVersionFeatureBanners",
+      "discovery_requests.DeleteFeatureBanner",
+      "discovery_requests.GetLatestFeatureBanner"
+    ],
+    "functions": [
+      "NewFeatureBannerRouter",
+      "Create",
+      "GetByVersion",
+      "Delete",
+      "GetLatest"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/google/wire",
+      "github.com/labstack/echo/v4"
+    ],
+    "side_effects": [
+      "Modifies the state of feature banners in the database",
+      "Interacts with middleware for authentication"
+    ],
+    "risks": [
+      "Potential for unauthorized access if authentication fails",
+      "Error handling may expose internal error messages"
+    ],
+    "complexity": "medium"
+  }
+}

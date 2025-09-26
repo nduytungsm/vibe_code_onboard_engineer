@@ -1,0 +1,22 @@
+{
+  "content_hash": "95268b28085cad1e19869fb17d7c7d7c",
+  "timestamp": "2025-09-26T12:14:26.359045+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines metrics for monitoring consumer behavior in an antenna service using Prometheus.",
+    "key_types": [
+      "metricCollectors"
+    ],
+    "functions": [
+      "initMetrics"
+    ],
+    "imports": [
+      "github.com/prometheus/client_golang/prometheus",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
+    ],
+    "side_effects": [
+      "Registers metrics collectors with Prometheus"
+    ],
+    "complexity": "medium"
+  }
+}

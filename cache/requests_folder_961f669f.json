@@ -1,0 +1,128 @@
+{
+  "content_hash": "c94a5189d65fff520b408ffec1463be2",
+  "timestamp": "2025-09-26T13:41:42.275593+07:00",
+  "result": {
+    "path": "internal/domains/manager/handlers/dtos/requests",
+    "purpose": "Defines data transfer objects (DTOs) for various requests related to application management, authorization, notifications, and updates.",
+    "languages": {
+      "Go": 7
+    },
+    "key_modules": [
+      "app_version.go",
+      "auth.go",
+      "coinbase.go",
+      "generic.go",
+      "mandatory_update.go",
+      "noti.go",
+      "operator.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+      "net/http"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing DTOs for different functionalities into separate files for clarity and maintainability.",
+    "file_summaries": {
+      "internal/domains/manager/handlers/dtos/requests/app_version.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for managing application versions.",
+        "key_types": [
+          "CreateVersion",
+          "PublishVersion",
+          "Delete",
+          "GetVersionInfo",
+          "ListVersions"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/requests/auth.go": {
+        "language": "Go",
+        "purpose": "Defines a data structure for authorization requests including HTTP request and required roles.",
+        "key_types": [
+          "Authorization"
+        ],
+        "functions": [],
+        "imports": [
+          "net/http",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/requests/coinbase.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for handling requests related to Coinbase.",
+        "key_types": [
+          "Address",
+          "CbOnrampToken",
+          "CbSelectAssets"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/requests/generic.go": {
+        "language": "Go",
+        "purpose": "Defines a Paging struct for handling pagination parameters in requests.",
+        "key_types": [
+          "Paging"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/requests/mandatory_update.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for mandatory update requests.",
+        "key_types": [
+          "SetMandatoryUpdate",
+          "GetVersionStatus",
+          "GetLatestVersion"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      },
+      "internal/domains/manager/handlers/dtos/requests/noti.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for notification requests in a notification management system.",
+        "key_types": [
+          "WhitelistNoti",
+          "NotiButton",
+          "UpsertNewsNoti",
+          "ListNoti",
+          "ListUserNoti",
+          "DeleteNoti",
+          "GetNotiByID"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/manager/handlers/dtos/requests/operator.go": {
+        "language": "Go",
+        "purpose": "Defines data transfer objects (DTOs) for operator management requests.",
+        "key_types": [
+          "CreateOperator",
+          "ListOperators",
+          "DeleteOperator",
+          "GetOperator"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

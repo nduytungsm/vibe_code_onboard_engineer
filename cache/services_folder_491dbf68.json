@@ -1,0 +1,232 @@
+{
+  "content_hash": "c438f8aa6ed1c0aa31e8bfc448e4ce0e",
+  "timestamp": "2025-09-26T13:33:29.770686+07:00",
+  "result": {
+    "path": "tests/services",
+    "purpose": "This folder contains unit tests for various services related to gaming functionalities, ensuring the correctness and reliability of service implementations.",
+    "languages": {
+      "Go": 6
+    },
+    "key_modules": [
+      "atia_blessing_test.go",
+      "check_in_game_test.go",
+      "check_in_wallet_test.go",
+      "distribute_reward_test.go",
+      "offchain_action_test.go",
+      "ron_staked_test.go"
+    ],
+    "dependencies": [
+      "github.com/agiledragon/gomonkey/v2",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/mock",
+      "github.com/go-redis/redismock/v9",
+      "github.com/shopspring/decimal"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each test file corresponds to a specific service, encapsulating related test cases and dependencies.",
+    "file_summaries": {
+      "tests/services/atia_blessing_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the Atia blessing service functionality",
+        "key_types": [
+          "ParticipantEntity",
+          "PQuestRelatedInfo",
+          "QuestEntity",
+          "ParticipantQuestEntity",
+          "ActivityEntity",
+          "PActEntity",
+          "WalletCheckInLogEntity",
+          "AtiaStreakExternal"
+        ],
+        "functions": [
+          "Test_PullPrayHistoryFromData_ShouldReturnCorrectStreak",
+          "Test_PullFromData_AndAfterFixDiffReset_ShouldReturnCorrectStreak",
+          "Test_MaxStreakGreaterThanRequireStreak_ShouldReturnQuestComplete",
+          "Test_MissingPray1Day_ShouldReturnBreakStreak"
+        ],
+        "imports": [
+          "context",
+          "testing",
+          "time",
+          "github.com/agiledragon/gomonkey/v2",
+          "github.com/stretchr/testify/assert",
+          "github.com/stretchr/testify/mock",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services",
+          "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/mocks/services",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/tests"
+        ],
+        "side_effects": [
+          "Modifies the behavior of time.Now() for testing purposes",
+          "Interacts with mock repositories and services"
+        ],
+        "complexity": "medium"
+      },
+      "tests/services/check_in_game_test.go": {
+        "language": "Go",
+        "purpose": "Contains test cases for the check-in game service",
+        "key_types": [],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "tests/services/check_in_wallet_test.go": {
+        "language": "Go",
+        "purpose": "This file contains unit tests for the CheckInWallet service in the services package.",
+        "key_types": [
+          "context.Context",
+          "time.Time",
+          "services.CheckInWalletService",
+          "mock_repositories.ParticipantRepository",
+          "mock_repositories.CheckInLogRepository"
+        ],
+        "functions": [
+          "Test_ChecKInStreak"
+        ],
+        "imports": [
+          "context",
+          "testing",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services",
+          "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/tests",
+          "github.com/stretchr/testify/assert"
+        ],
+        "side_effects": [
+          "Mocks are set up for participant and check-in repositories."
+        ],
+        "complexity": "medium"
+      },
+      "tests/services/distribute_reward_test.go": {
+        "language": "Go",
+        "purpose": "Unit test for distributing rewards in a gaming service",
+        "key_types": [
+          "context.Context",
+          "testing.T",
+          "models.RewardByQuest",
+          "models.RewardDistribution",
+          "async_queue.ClientConfig"
+        ],
+        "functions": [
+          "Test_DistributeReward",
+          "mock_services.NewIDGenerator",
+          "mock_services.NewGameDataService",
+          "mock_repositories.NewCrawledDataRepository",
+          "mock_repositories.NewQuestRepository",
+          "mock_repositories.NewUserQuestRepository",
+          "mock_repositories.NewRewardRepository",
+          "mock_repositories.NewParticipantRewardRepository",
+          "mock_repositories.NewActivityRepository",
+          "mock_repositories.NewParticipantActivityRepository",
+          "mock_repositories.NewParticipantRepository",
+          "mock_services.NewDiscordService",
+          "redismock.NewClientMock",
+          "async_queue.NewClient",
+          "services.NewQuestService",
+          "helper.StrToNumeric",
+          "questService.QueueDistributeOrderV3"
+        ],
+        "imports": [
+          "context",
+          "testing",
+          "time",
+          "github.com/go-redis/redismock/v9",
+          "github.com/stretchr/testify/assert",
+          "github.com/stretchr/testify/mock",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services",
+          "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/mocks/services",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/async-queue",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/tests"
+        ],
+        "side_effects": [
+          "Interacts with Redis for queuing rewards",
+          "Logs information during the test execution"
+        ],
+        "complexity": "medium"
+      },
+      "tests/services/offchain_action_test.go": {
+        "language": "Go",
+        "purpose": "This file contains unit tests for off-chain actions related to quests in a gaming service.",
+        "key_types": [
+          "ParticipantEntity",
+          "PQuestRelatedInfo",
+          "QuestEntity",
+          "ParticipantQuestEntity",
+          "ActivityEntity",
+          "PActEntity",
+          "OffChainViaHTTPAction"
+        ],
+        "functions": [
+          "Test_OffChainAction_Once_ShouldReturnQuestComplete",
+          "Test_OffChainAction_Once_ShouldNotUpdateStatus",
+          "Test_OffChainAction_Streak_ShouldReturnQuestComplete",
+          "Test_OffChainAction_Streak_ShouldUpdateStatus"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "fmt",
+          "net/http",
+          "net/http/httptest",
+          "strings",
+          "testing",
+          "time",
+          "github.com/stretchr/testify/assert",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services",
+          "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/tests"
+        ],
+        "side_effects": [
+          "HTTP requests to a test server",
+          "Logging test information"
+        ],
+        "complexity": "medium"
+      },
+      "tests/services/ron_staked_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the staking service related to quests in the Ronin wallet services.",
+        "key_types": [
+          "ParticipantEntity",
+          "PQuestRelatedInfo",
+          "QuestEntity",
+          "ParticipantQuestEntity",
+          "ActivityEntity",
+          "PActEntity"
+        ],
+        "functions": [
+          "Test_StakedRon_ShouldReturnQuestComplete",
+          "Test_StakedRon_ShouldReturnQuestInProgressWhenAmountEq",
+          "Test_StakedRon_ShouldNotChangeStatus"
+        ],
+        "imports": [
+          "context",
+          "testing",
+          "time",
+          "github.com/shopspring/decimal",
+          "github.com/stretchr/testify/assert",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services",
+          "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/mocks/services",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/tests"
+        ],
+        "side_effects": [
+          "Logs test information using SugaredLogger",
+          "Mocks repository and service interactions"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

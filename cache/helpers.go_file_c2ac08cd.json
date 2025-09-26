@@ -1,0 +1,46 @@
+{
+  "content_hash": "503f3a7a675ca5a595cbed1e515dad68",
+  "timestamp": "2025-09-26T12:33:39.655812+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains helper functions for managing discovery services, including extracting social platform IDs and fetching market events.",
+    "key_types": [
+      "HandlerLayoutContact",
+      "ContactWithExtraInfo",
+      "MavisSale",
+      "GameInfo",
+      "EventEntity"
+    ],
+    "functions": [
+      "extractSocialPlatformID",
+      "combineCreateLayoutContactInfo",
+      "getRMSaleEvents",
+      "getRMGameEvent",
+      "loopFetch",
+      "mapSaleEvents",
+      "mapGameEvents"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "strconv",
+      "strings",
+      "time",
+      "github.com/labstack/gommon/log",
+      "github.com/machinebox/graphql",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "side_effects": [
+      "Logs errors when fetching events from the Ronin market"
+    ],
+    "complexity": "medium"
+  }
+}

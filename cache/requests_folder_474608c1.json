@@ -1,0 +1,32 @@
+{
+  "content_hash": "bed6523f34fca072941e856d18b4a6ce",
+  "timestamp": "2025-09-26T13:43:12.491389+07:00",
+  "result": {
+    "path": "internal/domains/scheduler/handlers/dtos/requests",
+    "purpose": "Responsible for defining data transfer objects related to task scheduling requests.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "scheduler.go"
+    ],
+    "dependencies": [
+      "encoding/json"
+    ],
+    "architecture": "Follows a modular architecture pattern, focusing on data transfer objects to facilitate communication between different components of the scheduler.",
+    "file_summaries": {
+      "internal/domains/scheduler/handlers/dtos/requests/scheduler.go": {
+        "language": "Go",
+        "purpose": "Defines a data transfer object for sending tasks with a type and body.",
+        "key_types": [
+          "SendTask"
+        ],
+        "functions": [],
+        "imports": [
+          "encoding/json"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

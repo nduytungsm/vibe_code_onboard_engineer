@@ -1,0 +1,32 @@
+{
+  "content_hash": "ab6438287e9367a7341ee82a2fdbd538",
+  "timestamp": "2025-09-26T13:27:49.779016+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the QuestRepository, specifically testing the FindByActivityTypes method.",
+    "key_types": [
+      "QuestEntity",
+      "ActivityEntity"
+    ],
+    "functions": [
+      "TestQuestRepo_FindByActivityTypes"
+    ],
+    "imports": [
+      "context",
+      "testing",
+      "time",
+      "github.com/test-go/testify/require",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/docker"
+    ],
+    "side_effects": [
+      "Starts a PostgreSQL container",
+      "Migrates database schema",
+      "Creates test data in the database"
+    ],
+    "complexity": "medium"
+  }
+}

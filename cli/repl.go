@@ -218,8 +218,8 @@ func (r *REPL) analyzeRepository() error {
 		return fmt.Errorf("failed to create analyzer: %v", err)
 	}
 
-	// Run analysis
-	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Minute)
+	// Run analysis with extended timeout for large repositories
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Minute)
 	defer cancel()
 
 	result, err := analyzer.AnalyzeProject(ctx)

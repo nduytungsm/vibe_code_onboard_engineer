@@ -1,0 +1,60 @@
+{
+  "content_hash": "48ae995705001cffe4dd460f9dff0fa4",
+  "timestamp": "2025-09-26T13:26:05.612579+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a reward router for handling reward-related operations in a web service.",
+    "key_types": [
+      "Reward",
+      "reward",
+      "requests.DistributeReward",
+      "requests.RejectUserReward",
+      "responses.ServerResponseDTO",
+      "responses.ObjectResultDTO",
+      "responses.RewardPool"
+    ],
+    "functions": [
+      "NewRewardRouter",
+      "DistributeReward",
+      "RejectUserReward",
+      "DeleteRewardPool",
+      "DeleteRewardInfo",
+      "GetPoolByID",
+      "ListRewardInfos",
+      "GetClaimRewardSignature",
+      "UpsertQuestRewards",
+      "UpsertRewardPool",
+      "ListRewardPools",
+      "UpsertRewardInfo"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "net/http",
+      "strings",
+      "time",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/labstack/echo/v4",
+      "github.com/shopspring/decimal",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "side_effects": [
+      "Modifies reward pools and information in the database.",
+      "Handles file operations for rejected user rewards."
+    ],
+    "risks": [
+      "Potential for unauthorized access if context authentication is not properly validated.",
+      "Error handling may expose sensitive information if not managed correctly."
+    ],
+    "complexity": "medium"
+  }
+}

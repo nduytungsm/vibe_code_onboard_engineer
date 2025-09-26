@@ -1,0 +1,176 @@
+{
+  "content_hash": "862dc8920ffd2cacffdb152aebe2882b",
+  "timestamp": "2025-09-26T13:28:29.834913+07:00",
+  "result": {
+    "path": "internal/domains/web3/services",
+    "purpose": "This folder/module is responsible for providing services related to Ethereum transactions, including decoding, normalizing parameters, managing signatures, and monitoring metrics.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "decoder.go",
+      "decoder_normalizer.go",
+      "decoder_test.go",
+      "metrics.go",
+      "signature.go"
+    ],
+    "dependencies": [
+      "github.com/ethereum/go-ethereum",
+      "github.com/prometheus/client_golang/prometheus",
+      "gorm.io/gorm",
+      "github.com/stretchr/testify",
+      "github.com/test-go/testify"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, where each file represents a specific service or functionality related to web3 operations, promoting modularity and separation of concerns.",
+    "file_summaries": {
+      "internal/domains/web3/services/decoder.go": {
+        "language": "Go",
+        "purpose": "This file implements a decoder service for Ethereum transactions, calls, and events.",
+        "key_types": [
+          "DecoderService",
+          "decoderService",
+          "models.Decoded",
+          "models.Signature",
+          "models.SimpleTx",
+          "models.Token"
+        ],
+        "functions": [
+          "NewDecoderService",
+          "DecodeTx",
+          "DecodeCall",
+          "DecodeEvent",
+          "decodeCall",
+          "getSignaturesSorted",
+          "decodeCallWithSignature",
+          "decodeEventWithSignature"
+        ],
+        "imports": [
+          "bytes",
+          "context",
+          "fmt",
+          "slices",
+          "strings",
+          "github.com/ethereum/go-ethereum/accounts/abi",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/samber/lo",
+          "go.uber.org/multierr",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/categorize",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/web3/services/decoder_normalizer.go": {
+        "language": "Go",
+        "purpose": "This file provides functionality to normalize decoded parameters from Ethereum transactions.",
+        "key_types": [
+          "DecodedParam",
+          "big.Int",
+          "common.Address"
+        ],
+        "functions": [
+          "normalizeDecodedParams",
+          "normalizeValue",
+          "normalizeMap",
+          "normalizeSlice"
+        ],
+        "imports": [
+          "math/big",
+          "reflect",
+          "strings",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/samber/lo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/web3/services/decoder_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for decoding call signatures in a web3 service.",
+        "key_types": [
+          "decoderSignature",
+          "decodeCallTestcase"
+        ],
+        "functions": [
+          "loadDecodeCallTestCases",
+          "TestDecoderService_DecodeCallWithSignature",
+          "BenchmarkDecoderService_DecodeCallWithSignature_Mix"
+        ],
+        "imports": [
+          "encoding/hex",
+          "encoding/json",
+          "fmt",
+          "os",
+          "path/filepath",
+          "regexp",
+          "testing",
+          "time",
+          "github.com/stretchr/testify/assert",
+          "github.com/test-go/testify/require",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "File system access to read test data files"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/web3/services/metrics.go": {
+        "language": "Go",
+        "purpose": "This file defines metrics for a web3 service using Prometheus for monitoring.",
+        "key_types": [
+          "prometheus.HistogramVec",
+          "prometheus.CounterVec"
+        ],
+        "functions": [
+          "observeServiceFn",
+          "histogramVec",
+          "counterVec"
+        ],
+        "imports": [
+          "github.com/prometheus/client_golang/prometheus",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
+        ],
+        "side_effects": [
+          "Records metrics for service duration and request counts."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/web3/services/signature.go": {
+        "language": "Go",
+        "purpose": "Provides a service for managing signatures, including upserting and finding signatures in a repository.",
+        "key_types": [
+          "SignatureService",
+          "signatureService",
+          "models.Signature",
+          "repos.SignatureRepo",
+          "types.WAddress"
+        ],
+        "functions": [
+          "NewSignatureService",
+          "Upsert",
+          "Find"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/repos",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Modifies existing signatures in the repository if they exist.",
+          "Inserts new signatures into the repository if they do not exist."
+        ],
+        "risks": [
+          "Potential for SQL injection if inputs are not properly sanitized.",
+          "Error handling may expose internal errors to the caller."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

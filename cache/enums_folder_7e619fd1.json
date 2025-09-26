@@ -1,0 +1,96 @@
+{
+  "content_hash": "887f3bb686d49cd627d0d5a86883288c",
+  "timestamp": "2025-09-26T13:32:50.346309+07:00",
+  "result": {
+    "path": "internal/enums",
+    "purpose": "Defines enumerations for various device-related types and provides utility functions for handling these enums.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "deviceplatform.go",
+      "devicestatus.go",
+      "enums.go",
+      "pushnotification.go"
+    ],
+    "dependencies": [
+      "github.com/samber/lo",
+      "encoding/json",
+      "fmt"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating related enumerations and utility functions in separate files for maintainability and clarity.",
+    "file_summaries": {
+      "internal/enums/deviceplatform.go": {
+        "language": "Go",
+        "purpose": "Defines an enumeration for different device platforms and provides methods to retrieve their values.",
+        "key_types": [
+          "DevicePlatform"
+        ],
+        "functions": [
+          "Value",
+          "Values"
+        ],
+        "imports": [
+          "github.com/samber/lo"
+        ],
+        "complexity": "low"
+      },
+      "internal/enums/devicestatus.go": {
+        "language": "Go",
+        "purpose": "Defines device status types and provides methods to retrieve their values.",
+        "key_types": [
+          "DeviceStatus"
+        ],
+        "functions": [
+          "Value",
+          "Values"
+        ],
+        "imports": [
+          "github.com/samber/lo"
+        ],
+        "complexity": "low"
+      },
+      "internal/enums/enums.go": {
+        "language": "Go",
+        "purpose": "This file defines utility functions for converting between string representations and enum-like types.",
+        "key_types": [
+          "string",
+          "int",
+          "T"
+        ],
+        "functions": [
+          "StringToEnum",
+          "UnmarshalJSON",
+          "EnumFromString",
+          "MarshalText",
+          "UnmarshalText",
+          "UnmarshalV2",
+          "EnumFromStr",
+          "ScanV2"
+        ],
+        "imports": [
+          "encoding/json",
+          "fmt"
+        ],
+        "complexity": "medium"
+      },
+      "internal/enums/pushnotification.go": {
+        "language": "Go",
+        "purpose": "Defines enums for push notification providers and recipients, along with utility methods to retrieve their string values.",
+        "key_types": [
+          "NotificationPushProvider",
+          "PushRecipient",
+          "RecipientFilterField"
+        ],
+        "functions": [
+          "Value",
+          "Values"
+        ],
+        "imports": [
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

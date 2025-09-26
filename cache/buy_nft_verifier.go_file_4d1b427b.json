@@ -1,0 +1,28 @@
+{
+  "content_hash": "4a5c1c7d2b428a9c33945cba779acb24",
+  "timestamp": "2025-09-26T13:26:34.196019+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains a verifier for buying NFTs, specifically for verifying actions related to purchasing Axies.",
+    "key_types": [
+      "questVerifier",
+      "VerifyActionParams",
+      "enums.NFTItem",
+      "models.QueryBoughtHistoryParams"
+    ],
+    "functions": [
+      "verifyBuyAxieProxy",
+      "findCollectionAddress",
+      "findTotalPurchased"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/ethereum/go-ethereum/common"
+    ],
+    "complexity": "medium"
+  }
+}

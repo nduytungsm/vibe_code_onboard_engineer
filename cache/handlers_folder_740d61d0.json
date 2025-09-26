@@ -1,0 +1,236 @@
+{
+  "content_hash": "39938faa2337367ea203d536dd1fe50d",
+  "timestamp": "2025-09-26T13:36:35.789882+07:00",
+  "result": {
+    "path": "mocks/handlers",
+    "purpose": "This folder contains mock implementations of various types and interfaces for testing purposes, allowing for the simulation of interactions without relying on actual implementations.",
+    "languages": {
+      "Go": 8
+    },
+    "key_modules": [
+      "quest.go",
+      "quest_action.go",
+      "quest_reward.go",
+      "reward.go",
+      "sponsor.go",
+      "user.go",
+      "user_quest.go",
+      "user_reward.go"
+    ],
+    "dependencies": [
+      "github.com/stretchr/testify/mock",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each file defines mocks for specific types or interfaces, facilitating unit testing by isolating dependencies.",
+    "file_summaries": {
+      "mocks/handlers/quest.go": {
+        "language": "Go",
+        "purpose": "This file defines mock implementations for the Quest type, allowing for testing of functions that interact with quests.",
+        "key_types": [
+          "Quest",
+          "Quest_Expecter",
+          "Quest_GetQuestListingItem_Call",
+          "Quest_GetQuestPublicItem_Call",
+          "Quest_ListQuestFilters_Call",
+          "Quest_ListQuests_Call",
+          "Quest_ListQuestsByPool_Call"
+        ],
+        "functions": [
+          "GetQuestListingItem",
+          "GetQuestPublicItem",
+          "ListQuestFilters",
+          "ListQuests",
+          "ListQuestsByPool"
+        ],
+        "imports": [
+          "context",
+          "github.com/stretchr/testify/mock",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "side_effects": [
+          "Panic if no return value is specified for mocked functions"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/handlers/quest_action.go": {
+        "language": "Go",
+        "purpose": "This file defines mock implementations for the QuestAction interface, allowing for testing without relying on actual implementations.",
+        "key_types": [
+          "QuestAction",
+          "QuestAction_Expecter",
+          "QuestAction_ActivityGuidanceByID_Call",
+          "QuestAction_ActivityGuidances_Call",
+          "QuestAction_CreateActivityGuidance_Call",
+          "QuestAction_DeleteGuidance_Call"
+        ],
+        "functions": [
+          "ActivityGuidanceByID",
+          "ActivityGuidances",
+          "CreateActivityGuidance",
+          "DeleteGuidance",
+          "GetPreview"
+        ],
+        "imports": [
+          "context",
+          "github.com/stretchr/testify/mock",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/handlers/quest_reward.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock implementation of the QuestReward type for testing purposes.",
+        "key_types": [
+          "QuestReward",
+          "QuestReward_Expecter",
+          "QuestReward_GetActives_Call"
+        ],
+        "functions": [
+          "GetActives",
+          "EXPECT",
+          "NewQuestReward"
+        ],
+        "imports": [
+          "context",
+          "github.com/stretchr/testify/mock",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "side_effects": [
+          "Panic if no return value is specified for GetActives"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/handlers/reward.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock implementation of the Reward type for testing purposes.",
+        "key_types": [
+          "Reward",
+          "Reward_Expecter"
+        ],
+        "functions": [
+          "DeleteRewardInfo",
+          "DeleteRewardPool",
+          "GetClaimRewardSig",
+          "GetPoolByID",
+          "GetTxHashInfo"
+        ],
+        "imports": [
+          "context",
+          "github.com/stretchr/testify/mock",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "side_effects": [
+          "Panic if no return value is specified for mocked functions"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/handlers/sponsor.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock implementation of the Sponsor type for testing purposes using the mockery library.",
+        "key_types": [
+          "Sponsor",
+          "Sponsor_Expecter",
+          "Sponsor_DeleteSponsor_Call",
+          "Sponsor_FindSponsors_Call",
+          "Sponsor_ListSponsors_Call",
+          "Sponsor_UpsertSponsor_Call"
+        ],
+        "functions": [
+          "DeleteSponsor",
+          "FindSponsors",
+          "ListSponsors",
+          "UpsertSponsor",
+          "NewSponsor"
+        ],
+        "imports": [
+          "context",
+          "github.com/stretchr/testify/mock",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/handlers/user.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock implementation of a User type for testing purposes using the mockery library.",
+        "key_types": [
+          "User",
+          "User_Expecter",
+          "User_FindUsers_Call"
+        ],
+        "functions": [
+          "FindUsers",
+          "EXPECT",
+          "NewUser"
+        ],
+        "imports": [
+          "context",
+          "github.com/stretchr/testify/mock",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "side_effects": [
+          "Panic if no return value is specified for FindUsers"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/handlers/user_quest.go": {
+        "language": "Go",
+        "purpose": "This file defines mock implementations for the UserQuest type, allowing for testing of functions related to user quests.",
+        "key_types": [
+          "UserQuest",
+          "UserQuest_Expecter",
+          "UserQuest_ExportAuditResult_Call",
+          "UserQuest_GetUserQuest_Call",
+          "UserQuest_ListUserOngoingQuestByEvent_Call",
+          "UserQuest_ListUserQuests_Call"
+        ],
+        "functions": [
+          "ExportAuditResult",
+          "GetUserQuest",
+          "ListUserOngoingQuestByEvent",
+          "ListUserQuests",
+          "EXPECT"
+        ],
+        "imports": [
+          "bytes",
+          "context",
+          "github.com/stretchr/testify/mock",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "complexity": "medium"
+      },
+      "mocks/handlers/user_reward.go": {
+        "language": "Go",
+        "purpose": "This file defines a mock implementation of the UserReward type for testing purposes using the mockery library.",
+        "key_types": [
+          "UserReward",
+          "UserReward_Expecter",
+          "UserReward_DistributeRewardV4_Call",
+          "UserReward_ListParticipantRewards_Call",
+          "UserReward_RejectUserReward_Call"
+        ],
+        "functions": [
+          "DistributeRewardV4",
+          "ListParticipantRewards",
+          "RejectUserReward",
+          "NewUserReward"
+        ],
+        "imports": [
+          "context",
+          "github.com/stretchr/testify/mock",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "side_effects": [
+          "Panic if no return value is specified for mocked functions"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

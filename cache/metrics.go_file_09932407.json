@@ -1,0 +1,31 @@
+{
+  "content_hash": "c156c84431c1ba2e980386949e374173",
+  "timestamp": "2025-09-26T13:14:23.551768+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines metrics for HTTP client performance monitoring using Prometheus.",
+    "key_types": [
+      "MetricConfigOpt",
+      "prometheus.GaugeVec",
+      "prometheus.CounterVec",
+      "prometheus.HistogramVec"
+    ],
+    "functions": [
+      "MetricsHistogramOpt",
+      "MetricsAfterNextOpt",
+      "gaugeVec",
+      "counterVec",
+      "histogramVec",
+      "registerTraceMetrics"
+    ],
+    "imports": [
+      "github.com/labstack/echo-contrib/echoprometheus",
+      "github.com/labstack/echo/v4",
+      "github.com/prometheus/client_golang/prometheus"
+    ],
+    "side_effects": [
+      "Registers various metrics with Prometheus"
+    ],
+    "complexity": "medium"
+  }
+}

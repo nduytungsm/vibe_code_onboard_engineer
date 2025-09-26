@@ -1,0 +1,36 @@
+{
+  "content_hash": "660bad8ab325c1d8592bef8b5ee4255e",
+  "timestamp": "2025-09-26T13:13:10.627928+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for shop-related operations such as creating, updating, deleting, and retrieving shop categories, tiers, items, and purchases.",
+    "key_types": [
+      "CreateShopCategory",
+      "UpdateShopCategory",
+      "DeleteShopCategory",
+      "GetShopCategory",
+      "CreateShopTier",
+      "UpdateShopTier",
+      "DeleteShopTier",
+      "GetShopTier",
+      "ListShopTiers",
+      "CreateShopItem",
+      "UpdateShopItem",
+      "DeleteShopItem",
+      "GetShopItem",
+      "UpdateShopItemQuantity",
+      "ListShopItems",
+      "CreateShopPurchase",
+      "GetShopPurchase",
+      "GetShopPurchaseByTxHash",
+      "ListShopPurchases",
+      "ListUserShopPurchases",
+      "UpdateShopPurchaseStatus"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
+    ],
+    "complexity": "medium"
+  }
+}

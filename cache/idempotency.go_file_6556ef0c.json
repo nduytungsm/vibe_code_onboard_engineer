@@ -1,0 +1,35 @@
+{
+  "content_hash": "fe6daa0b5e2f0a5b0e3ebfe3db37ead6",
+  "timestamp": "2025-09-26T12:14:23.590812+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles idempotency for messages processed from Kafka using Redis for deduplication.",
+    "key_types": [
+      "IdempotencyMessageHandler",
+      "IdempotencyMessage"
+    ],
+    "functions": [
+      "NewIdempotencyHandler",
+      "Parse",
+      "Process"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "time",
+      "github.com/IBM/sarama",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/antenna/models",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka"
+    ],
+    "side_effects": [
+      "Interacts with Redis for storing and retrieving message states."
+    ],
+    "risks": [
+      "Potential for Redis errors affecting message processing.",
+      "Improper handling of idempotency keys may lead to duplicate processing."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "content_hash": "f469d90be64d8796aefa67db2553b2d9",
+  "timestamp": "2025-09-26T13:27:38.438864+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to modify the database schema by adding new columns and values to existing types.",
+    "key_types": [
+      "TABLE",
+      "COLUMN",
+      "TYPE"
+    ],
+    "functions": [
+      "ALTER TABLE",
+      "ALTER TYPE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the database schema",
+      "Adds new columns and values"
+    ],
+    "risks": [
+      "Potential data loss if not properly managed during migration"
+    ],
+    "complexity": "medium"
+  }
+}

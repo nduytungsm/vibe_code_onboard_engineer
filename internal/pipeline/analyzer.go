@@ -534,12 +534,27 @@ func (a *Analyzer) mapPhaseWithProgress(ctx context.Context, files []FileInfo, c
 	totalFiles := len(files)
 	processedCount := 0
 	
+	// Calculate optimal worker count based on file count and configuration
+	// For large repositories, we can use more workers up to a reasonable limit
+	baseWorkers := a.config.RateLimiting.ConcurrentWorkers
+	maxWorkers := 12 // Maximum workers to avoid overwhelming the API
+	
+	var numWorkers int
+	if totalFiles > 100 {
+		// For large repositories, scale workers up to maxWorkers
+		numWorkers = min(maxWorkers, max(baseWorkers, totalFiles/20))
+	} else {
+		// For smaller repositories, use base configuration
+		numWorkers = baseWorkers
+	}
+	
+	fmt.Printf("📊 [PERFORMANCE] Processing %d files with %d concurrent workers\n", totalFiles, numWorkers)
+	
 	// Create buffered channels for work distribution
 	jobs := make(chan FileInfo, totalFiles)
 	results := make(chan fileResult, totalFiles)
 	
 	// Start worker goroutines
-	numWorkers := a.config.RateLimiting.ConcurrentWorkers
 	for i := 0; i < numWorkers; i++ {
 		go a.fileWorker(ctx, jobs, results)
 	}
@@ -563,11 +578,21 @@ func (a *Analyzer) mapPhaseWithProgress(ctx context.Context, files []FileInfo, c
 			
 			fileSummaries[result.file.RelativePath] = result.summary
 			
-			// Send progress update every 5 files or at milestones
+			// Dynamic progress reporting frequency based on repository size
 			progressPercentage := 35 + int(float64(processedCount)/float64(totalFiles)*15) // 35-50% range
-			if processedCount%5 == 0 || processedCount == totalFiles {
+			
+			var reportFrequency int
+			if totalFiles > 500 {
+				reportFrequency = 50 // Every 50 files for very large repos
+			} else if totalFiles > 100 {
+				reportFrequency = 20 // Every 20 files for large repos
+			} else {
+				reportFrequency = 5 // Every 5 files for smaller repos
+			}
+			
+			if processedCount%reportFrequency == 0 || processedCount == totalFiles {
 				callback("progress", "🧠 Analyzing individual files...", 
-					fmt.Sprintf("Analyzed %d/%d files", processedCount, totalFiles), 
+					fmt.Sprintf("Analyzed %d/%d files (%d workers)", processedCount, totalFiles, numWorkers), 
 					progressPercentage, nil)
 			}
 			
@@ -582,9 +607,22 @@ func (a *Analyzer) mapPhaseWithProgress(ctx context.Context, files []FileInfo, c
 // mapPhase analyzes individual files (legacy method for backward compatibility)
 func (a *Analyzer) mapPhase(ctx context.Context, files []FileInfo) (map[string]*internalOpenai.FileSummary, error) {
 	fileSummaries := make(map[string]*internalOpenai.FileSummary)
+	totalFiles := len(files)
+	
+	// Calculate optimal worker count (same logic as mapPhaseWithProgress)
+	baseWorkers := a.config.RateLimiting.ConcurrentWorkers
+	maxWorkers := 12
+	
+	var workerCount int
+	if totalFiles > 100 {
+		workerCount = min(maxWorkers, max(baseWorkers, totalFiles/20))
+	} else {
+		workerCount = baseWorkers
+	}
+	
+	fmt.Printf("📊 [PERFORMANCE] Processing %d files with %d concurrent workers (legacy mode)\n", totalFiles, workerCount)
 	
 	// Create worker pool
-	workerCount := a.config.RateLimiting.ConcurrentWorkers
 	jobs := make(chan FileInfo, len(files))
 	results := make(chan fileResult, len(files))
 	
@@ -1485,6 +1523,22 @@ func (a *Analyzer) getAnalysisKey() string {
 // minInt returns the minimum of two integers
 func minInt(a, b int) int {
 	if a < b {
+		return a
+	}
+	return b
+}
+
+// min returns the minimum of two integers (Go 1.21+ builtin alternative)
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+// max returns the maximum of two integers (Go 1.21+ builtin alternative)
+func max(a, b int) int {
+	if a > b {
 		return a
 	}
 	return b

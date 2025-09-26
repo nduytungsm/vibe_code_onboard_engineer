@@ -1,0 +1,12 @@
+{
+  "content_hash": "0375a58bec72614c4292bea2e491b0ce",
+  "timestamp": "2025-09-26T13:10:43.30989+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines constants used in the notification domain models.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

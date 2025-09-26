@@ -1,0 +1,142 @@
+{
+  "content_hash": "5008ab1ee266124e47e898e891c2fe46",
+  "timestamp": "2025-09-26T13:38:22.011981+07:00",
+  "result": {
+    "path": "tests/repositories",
+    "purpose": "This folder contains unit tests for various repository components related to game data, ensuring the functionality and integrity of data operations.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "crawled_data_test.go",
+      "game_played_logs_test.go",
+      "purchase_history_logs_test.go",
+      "quest_test.go"
+    ],
+    "dependencies": [
+      "github.com/test-go/testify/require",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/docker"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each test file corresponds to a specific repository and contains tests for its functionalities, utilizing dependency injection for database interactions.",
+    "file_summaries": {
+      "tests/repositories/crawled_data_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for the repositories related to crawled data, specifically testing the functionality of finding total game matches.",
+        "key_types": [
+          "GamePlayedLogsEntry",
+          "ParticipantEntity",
+          "QueryGameParams"
+        ],
+        "functions": [
+          "TestFindTotalGameMatch"
+        ],
+        "imports": [
+          "context",
+          "testing",
+          "time",
+          "github.com/test-go/testify/require",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/docker"
+        ],
+        "side_effects": [
+          "Starts a PostgreSQL container",
+          "Performs database migrations",
+          "Inserts test data into the database"
+        ],
+        "complexity": "medium"
+      },
+      "tests/repositories/game_played_logs_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the GamePlayedLogs repository, including upserting and cleaning up game played logs.",
+        "key_types": [
+          "GamePlayedLogsEntry",
+          "Postgres",
+          "require"
+        ],
+        "functions": [
+          "TestGamePlayedUpsertAndCleanup",
+          "UpsertBatch",
+          "CleanupStaled"
+        ],
+        "imports": [
+          "testing",
+          "time",
+          "github.com/test-go/testify/require",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/docker"
+        ],
+        "side_effects": [
+          "Starts a Postgres container",
+          "Modifies the database by inserting and cleaning up records"
+        ],
+        "complexity": "medium"
+      },
+      "tests/repositories/purchase_history_logs_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the PurchaseHistoryLogsRepository, validating upsert and cleanup operations on purchase history logs.",
+        "key_types": [
+          "PurchaseHistoryLogsEntity",
+          "Postgres",
+          "testing.T"
+        ],
+        "functions": [
+          "TestPurchaseHistoryUpsert",
+          "UpsertBatch",
+          "CleanupStaled"
+        ],
+        "imports": [
+          "testing",
+          "time",
+          "github.com/test-go/testify/require",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/docker"
+        ],
+        "side_effects": [
+          "Starts a Postgres container",
+          "Migrates database schema",
+          "Inserts data into the purchase_history_logs table",
+          "Cleans up stale records in the purchase_history_logs table"
+        ],
+        "complexity": "medium"
+      },
+      "tests/repositories/quest_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for the QuestRepository, specifically testing the FindByActivityTypes method.",
+        "key_types": [
+          "QuestEntity",
+          "ActivityEntity"
+        ],
+        "functions": [
+          "TestQuestRepo_FindByActivityTypes"
+        ],
+        "imports": [
+          "context",
+          "testing",
+          "time",
+          "github.com/test-go/testify/require",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/docker"
+        ],
+        "side_effects": [
+          "Starts a PostgreSQL container",
+          "Migrates database schema",
+          "Creates test data in the database"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

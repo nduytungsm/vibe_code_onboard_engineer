@@ -1,0 +1,32 @@
+{
+  "content_hash": "7127bfc3db8f883c275c423a4cf8cec6",
+  "timestamp": "2025-09-26T13:26:50.309022+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Utility functions for handling timestamps, hashing, and generating nonces in the context of SIWE (Sign-In with Ethereum).",
+    "key_types": [
+      "map[string]interface{}",
+      "string",
+      "time.Time",
+      "uint64"
+    ],
+    "functions": [
+      "parseTimestamp",
+      "isEmpty",
+      "hash",
+      "GenerateNonce"
+    ],
+    "imports": [
+      "fmt",
+      "strings",
+      "time",
+      "github.com/cespare/xxhash/v2",
+      "github.com/relvacode/iso8601",
+      "gonum.org/v1/gonum/mathext/prng"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data if nonce generation is not properly secured."
+    ],
+    "complexity": "medium"
+  }
+}

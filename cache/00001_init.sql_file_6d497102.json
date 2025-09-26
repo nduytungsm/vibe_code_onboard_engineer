@@ -1,0 +1,25 @@
+{
+  "content_hash": "713ba27443de9fc8a6db2ca88514c4aa",
+  "timestamp": "2025-09-26T13:27:42.020232+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts for initializing database tables and indices related to version management and updates.",
+    "key_types": [
+      "v3_versions",
+      "v3_mandatory_updates",
+      "v3_histories",
+      "v3_operators"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "CREATE INDEX",
+      "DROP TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates multiple tables and indices in the database",
+      "Drops tables when migrating down"
+    ],
+    "complexity": "medium"
+  }
+}

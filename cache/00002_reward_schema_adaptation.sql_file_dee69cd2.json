@@ -1,0 +1,25 @@
+{
+  "content_hash": "3c71a4b5f9fa3c4317cd88cfacbc139f",
+  "timestamp": "2025-09-26T13:14:34.027349+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts for modifying database schemas related to rewards and campaigns.",
+    "key_types": [
+      "modify_reward_pool_action",
+      "supported_token_standard",
+      "reward_pool_status"
+    ],
+    "functions": [
+      "CREATE TYPE",
+      "ALTER TABLE",
+      "CREATE TABLE",
+      "DROP TABLE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies existing tables and types in the database",
+      "Creates new tables and types"
+    ],
+    "complexity": "medium"
+  }
+}

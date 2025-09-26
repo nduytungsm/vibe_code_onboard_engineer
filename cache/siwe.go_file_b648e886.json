@@ -1,0 +1,42 @@
+{
+  "content_hash": "23c3989ff969a468a9e41a1a6afa3693",
+  "timestamp": "2025-09-26T13:26:50.615979+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements functionality for creating, validating, and verifying messages in the context of Ethereum's EIP-4361 standard.",
+    "key_types": [
+      "Message"
+    ],
+    "functions": [
+      "buildAuthority",
+      "validateDomain",
+      "validateURI",
+      "InitMessage",
+      "parseMessage",
+      "ParseMessage",
+      "eip191Hash",
+      "ValidNow",
+      "ValidAt",
+      "VerifyEIP191",
+      "Verify"
+    ],
+    "imports": [
+      "crypto/ecdsa",
+      "errors",
+      "fmt",
+      "net/url",
+      "strconv",
+      "strings",
+      "time",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/ethereum/go-ethereum/crypto",
+      "github.com/relvacode/iso8601"
+    ],
+    "risks": [
+      "Potential for invalid domain or URI formats leading to errors",
+      "Improper handling of signatures could lead to security vulnerabilities"
+    ],
+    "complexity": "medium"
+  }
+}

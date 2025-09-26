@@ -1,0 +1,539 @@
+{
+  "content_hash": "bf65342696bea7d69632adab09868137",
+  "timestamp": "2025-09-26T13:29:45.271592+07:00",
+  "result": {
+    "path": "internal/routers",
+    "purpose": "This folder/module is responsible for defining various HTTP routers that handle different aspects of a web service, including actions, events, quests, rewards, and user interactions.",
+    "languages": {
+      "Go": 15
+    },
+    "key_modules": [
+      "action.go",
+      "event.go",
+      "quest.go",
+      "reward.go",
+      "router.go",
+      "shop.go",
+      "sponsors.go",
+      "user_event.go",
+      "user_quest.go",
+      "user_reward.go"
+    ],
+    "dependencies": [
+      "github.com/labstack/echo/v4",
+      "go.uber.org/zap",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/samber/lo",
+      "github.com/shopspring/decimal",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+    ],
+    "architecture": "The folder follows a modular architecture pattern where each file defines a specific router for handling related HTTP requests, utilizing middleware for authentication and logging, and interacting with various services and models.",
+    "file_summaries": {
+      "internal/routers/action.go": {
+        "language": "Go",
+        "purpose": "This file defines an HTTP router for handling actions related to activity guidance in a web service.",
+        "key_types": [
+          "Action",
+          "action",
+          "requests.UpsertActions",
+          "responses.ServerResponseDTO",
+          "models.ActivityExtra"
+        ],
+        "functions": [
+          "NewActionRouter",
+          "Upsert",
+          "CreateActivityGuidance",
+          "UpdateActivityGuidance",
+          "ActivityGuidance",
+          "ActivityGuidances",
+          "DeleteGuidance",
+          "GetPreviews",
+          "validateActivityExtraInfo"
+        ],
+        "imports": [
+          "encoding/json",
+          "net/http",
+          "strconv",
+          "github.com/labstack/echo/v4",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares"
+        ],
+        "side_effects": [
+          "Modifies the state of the server by creating, updating, or deleting activity guidance records."
+        ],
+        "risks": [
+          "Potential for unauthorized access if authentication is not properly handled.",
+          "Input validation issues could lead to unexpected behavior or security vulnerabilities."
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/errors.go": {
+        "language": "Go",
+        "purpose": "Defines various error messages for handling different error scenarios in the application.",
+        "key_types": [
+          "error"
+        ],
+        "functions": [],
+        "imports": [
+          "errors"
+        ],
+        "complexity": "low"
+      },
+      "internal/routers/event.go": {
+        "language": "Go",
+        "purpose": "This file defines a router for handling event-related operations in a web service.",
+        "key_types": [
+          "Event",
+          "event"
+        ],
+        "functions": [
+          "NewEventRouter",
+          "UpsertEvent",
+          "DeleteEvent",
+          "ListEvents",
+          "GetPoolsOfEvent",
+          "GetOngoingEvent"
+        ],
+        "imports": [
+          "errors",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/labstack/echo/v4",
+          "github.com/samber/lo"
+        ],
+        "side_effects": [
+          "Modifies event data in the database",
+          "Returns JSON responses to HTTP requests"
+        ],
+        "risks": [
+          "Potential for invalid input leading to errors",
+          "Improper handling of authentication information could lead to unauthorized access"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/helpers.go": {
+        "language": "Go",
+        "purpose": "This file contains helper functions for managing quest parameters in a router context.",
+        "key_types": [
+          "requests.UpsertQuestInfo",
+          "manager_mdw.OperatorInfo",
+          "requests.UpsertQuestParams"
+        ],
+        "functions": [
+          "copyCreateQuestParams"
+        ],
+        "imports": [
+          "strings",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/nonce.go": {
+        "language": "Go",
+        "purpose": "Handles nonce generation and retrieval for authentication purposes.",
+        "key_types": [
+          "Nonce",
+          "nonce",
+          "responses.ServerResponseDTO",
+          "responses.ObjectResultDTO",
+          "responses.NonceResponse"
+        ],
+        "functions": [
+          "NewNonceRouter",
+          "FetchNonce"
+        ],
+        "imports": [
+          "net/http",
+          "strings",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/siwe",
+          "github.com/labstack/echo/v4",
+          "go.uber.org/zap"
+        ],
+        "side_effects": [
+          "Logs errors using zap logger",
+          "Modifies HTTP response"
+        ],
+        "risks": [
+          "Potential exposure of sensitive nonce data if not handled securely"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/quest.go": {
+        "language": "Go",
+        "purpose": "Defines a router for handling quest-related HTTP requests in a web service.",
+        "key_types": [
+          "Quest",
+          "quest",
+          "requests.StoreServiceCredentials",
+          "requests.PublishQuest",
+          "requests.GetQuest",
+          "requests.ListQuests",
+          "requests.ManageQuestStatus",
+          "requests.UpsertQuestInfo",
+          "responses.NewSuccessResponse",
+          "responses.NewResponse",
+          "responses.NewSliceResponse"
+        ],
+        "functions": [
+          "NewQuestRouter",
+          "StoreServiceCredential",
+          "PublishQuest",
+          "GetInternal",
+          "GetPublic",
+          "ListPublic",
+          "ListInternal",
+          "DeleteQuest",
+          "PauseQuest",
+          "UpsertQuestInfo",
+          "ListQuestFilters",
+          "WhitelistUsers"
+        ],
+        "imports": [
+          "errors",
+          "fmt",
+          "net/http",
+          "strconv",
+          "strings",
+          "time",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/labstack/echo/v4",
+          "github.com/samber/lo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "side_effects": [
+          "Interacts with external services to store and manage quest data.",
+          "Modifies the state of quests based on HTTP requests."
+        ],
+        "risks": [
+          "Potential for unauthorized access if authentication is not properly handled.",
+          "Input validation issues could lead to security vulnerabilities."
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/quest_pool.go": {
+        "language": "Go",
+        "purpose": "This file defines a router for managing quest pools, including operations to upsert, delete, and list pools.",
+        "key_types": [
+          "QuestPool",
+          "questPool"
+        ],
+        "functions": [
+          "NewQuestPoolRouter",
+          "UpsertPool",
+          "DeletePool",
+          "ListPools",
+          "ListEventPools",
+          "ListEventPoolsPublic"
+        ],
+        "imports": [
+          "errors",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/labstack/echo/v4"
+        ],
+        "side_effects": [
+          "Interacts with the context to retrieve authentication information.",
+          "Modifies the request object with operator ID."
+        ],
+        "risks": [
+          "Potential for unauthorized access if authentication is not properly handled.",
+          "Error handling may expose internal error messages."
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/reward.go": {
+        "language": "Go",
+        "purpose": "Defines a reward router for handling reward-related operations in a web service.",
+        "key_types": [
+          "Reward",
+          "reward",
+          "requests.DistributeReward",
+          "requests.RejectUserReward",
+          "responses.ServerResponseDTO",
+          "responses.ObjectResultDTO",
+          "responses.RewardPool"
+        ],
+        "functions": [
+          "NewRewardRouter",
+          "DistributeReward",
+          "RejectUserReward",
+          "DeleteRewardPool",
+          "DeleteRewardInfo",
+          "GetPoolByID",
+          "ListRewardInfos",
+          "GetClaimRewardSignature",
+          "UpsertQuestRewards",
+          "UpsertRewardPool",
+          "ListRewardPools",
+          "UpsertRewardInfo"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "net/http",
+          "strings",
+          "time",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/labstack/echo/v4",
+          "github.com/shopspring/decimal",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Modifies reward pools and information in the database.",
+          "Handles file operations for rejected user rewards."
+        ],
+        "risks": [
+          "Potential for unauthorized access if context authentication is not properly validated.",
+          "Error handling may expose sensitive information if not managed correctly."
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/router.go": {
+        "language": "Go",
+        "purpose": "Defines routes and middleware for an Echo web server application.",
+        "key_types": [
+          "Routes",
+          "CustomValidator",
+          "AuthMdwsParams"
+        ],
+        "functions": [
+          "Validate",
+          "RegisterRoutes",
+          "UseAuthMdws",
+          "FormRouteGroup",
+          "Binding",
+          "CreateEchoHandler"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/hmac",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/go-playground/validator",
+          "github.com/labstack/echo-contrib/echoprometheus",
+          "github.com/labstack/echo/v4",
+          "github.com/labstack/echo/v4/middleware",
+          "go.uber.org/zap"
+        ],
+        "side_effects": [
+          "Logs request details",
+          "Handles HTTP errors globally",
+          "Applies middleware for CORS and request logging"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information in logs",
+          "Improper validation may lead to security vulnerabilities"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/shop.go": {
+        "language": "Go",
+        "purpose": "This file defines a router for handling shop-related operations such as creating, updating, deleting categories, tiers, and items, as well as managing user inventory and purchases.",
+        "key_types": [
+          "Shop",
+          "shop"
+        ],
+        "functions": [
+          "NewShopRouter",
+          "CreateCategory",
+          "UpdateCategory",
+          "DeleteCategory",
+          "GetCategory",
+          "ListCategories",
+          "CreateTier",
+          "UpdateTier",
+          "DeleteTier",
+          "GetTiersByCategoryID",
+          "CreateItem",
+          "UpdateItem",
+          "DeleteItem",
+          "GetItemsByTier",
+          "UpdateItemQuantity",
+          "CreatePurchase",
+          "GetUserInventory",
+          "GetUserItemQuantity"
+        ],
+        "imports": [
+          "net/http",
+          "strconv",
+          "github.com/labstack/echo/v4",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/sponsors.go": {
+        "language": "Go",
+        "purpose": "This file defines a router for managing sponsors, including listing, creating, and deleting sponsors.",
+        "key_types": [
+          "Sponsor",
+          "sponsor",
+          "requests.ListSponsorDTO",
+          "requests.UpsertSponsor",
+          "requests.DeleteSponsorDTO",
+          "responses.ServerResponseDTO",
+          "responses.ObjectResultDTO"
+        ],
+        "functions": [
+          "NewSponsorRouter",
+          "ListSponsors",
+          "CreateSponsor",
+          "DeleteSponsor"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/labstack/echo/v4",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/user_event.go": {
+        "language": "Go",
+        "purpose": "This file defines a router for user event-related operations in a web application.",
+        "key_types": [
+          "UserEvent",
+          "userEvent"
+        ],
+        "functions": [
+          "NewUserEvRouter",
+          "JoinEvent",
+          "VerifyPremiumStatus",
+          "GetAnalytics"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/labstack/echo/v4"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/user_quest.go": {
+        "language": "Go",
+        "purpose": "This file defines a router for user quest-related functionalities in a web service.",
+        "key_types": [
+          "UserQuest",
+          "userQuest"
+        ],
+        "functions": [
+          "NewUserQuestRouter",
+          "SpawnUserQuest",
+          "GetUserQuest",
+          "TakeQuest",
+          "ListUserQuests",
+          "ListUserDailyQuest",
+          "VerifyAction",
+          "ExportAuditResult",
+          "ListUserOngoingQuestByEvent",
+          "SkipQuest"
+        ],
+        "imports": [
+          "errors",
+          "fmt",
+          "net/http",
+          "strconv",
+          "strings",
+          "time",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/labstack/echo/v4",
+          "github.com/samber/lo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/captcha/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Interacts with external services for quest handling and captcha verification."
+        ],
+        "risks": [
+          "Potential for invalid user input leading to errors in quest handling."
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/user_reward.go": {
+        "language": "Go",
+        "purpose": "Defines a router for user reward functionalities in a web application.",
+        "key_types": [
+          "UserReward",
+          "userReward",
+          "zap.SugaredLogger",
+          "handlers.UserReward",
+          "requests.ListUserRewards",
+          "responses.NewSliceResponse"
+        ],
+        "functions": [
+          "NewUserRewardRouter",
+          "ListUserRewards"
+        ],
+        "imports": [
+          "strings",
+          "github.com/labstack/echo/v4",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses"
+        ],
+        "side_effects": [
+          "Modifies user address to lowercase",
+          "Returns JSON response"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

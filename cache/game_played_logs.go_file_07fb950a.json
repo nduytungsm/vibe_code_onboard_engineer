@@ -1,0 +1,33 @@
+{
+  "content_hash": "bcd195a05e1f51d5eb2989a044e4aed8",
+  "timestamp": "2025-09-26T13:25:12.775336+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing game played logs, including methods for upserting and cleaning up stale entries.",
+    "key_types": [
+      "GamePlayedLogsRepository",
+      "gamePlayedLogsRepository",
+      "gorm.DB"
+    ],
+    "functions": [
+      "NewGamePlayedLogsRepository",
+      "UpsertBatch",
+      "CleanupStaled"
+    ],
+    "imports": [
+      "time",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+    ],
+    "side_effects": [
+      "Database operations that modify the state of the database"
+    ],
+    "risks": [
+      "Potential SQL injection if inputs are not properly sanitized",
+      "Data integrity issues if concurrent writes are not handled correctly"
+    ],
+    "complexity": "medium"
+  }
+}

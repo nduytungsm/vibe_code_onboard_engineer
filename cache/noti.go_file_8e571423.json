@@ -1,0 +1,26 @@
+{
+  "content_hash": "df50fe353740fe411974d344e8153903",
+  "timestamp": "2025-09-26T13:25:40.740561+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines notification status types and provides methods for handling them.",
+    "key_types": [
+      "NotiStatus"
+    ],
+    "functions": [
+      "NotiStatusFromStr",
+      "String",
+      "IsValid",
+      "Value",
+      "Values",
+      "Scan",
+      "MarshalJSON",
+      "UnmarshalJSON"
+    ],
+    "imports": [
+      "encoding/json",
+      "github.com/samber/lo"
+    ],
+    "complexity": "medium"
+  }
+}

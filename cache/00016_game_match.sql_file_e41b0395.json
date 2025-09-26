@@ -1,0 +1,25 @@
+{
+  "content_hash": "53cd9dd1c0b0d0bf4c099df034c3b30f",
+  "timestamp": "2025-09-26T13:14:35.50069+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts for updating the game_match_history_logs and reward_pools tables.",
+    "key_types": [
+      "VARCHAR",
+      "BOOLEAN"
+    ],
+    "functions": [
+      "ALTER TABLE",
+      "SELECT"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies database schema",
+      "Changes primary key constraints"
+    ],
+    "risks": [
+      "Potential data loss if not properly backed up before migration"
+    ],
+    "complexity": "medium"
+  }
+}

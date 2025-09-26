@@ -1,0 +1,19 @@
+{
+  "content_hash": "4a0a1d05ab187f71317b5b581adc3078",
+  "timestamp": "2025-09-26T13:22:31.615595+07:00",
+  "result": {
+    "language": "bash",
+    "purpose": "This script checks for environment variables and runs a binary with a specified configuration.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "side_effects": [
+      "Exits with an error message if required environment variables are not set.",
+      "Executes an external binary."
+    ],
+    "risks": [
+      "Potential execution of an arbitrary binary if BINARY_PATH is manipulated."
+    ],
+    "complexity": "low"
+  }
+}

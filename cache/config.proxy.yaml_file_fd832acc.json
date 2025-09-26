@@ -1,0 +1,28 @@
+{
+  "content_hash": "9f2bd2a81827197eef973493887c6ea1",
+  "timestamp": "2025-09-26T13:22:27.825984+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Configuration file for a wallet proxy application, defining settings for application, server, databases, caching, logging, and various blockchain chains.",
+    "key_types": [
+      "application",
+      "server",
+      "databases",
+      "redis",
+      "logging",
+      "cache",
+      "limits",
+      "internal_services",
+      "chains",
+      "circuit_breaker",
+      "http_client",
+      "providers"
+    ],
+    "functions": [],
+    "imports": [],
+    "risks": [
+      "Exposure of sensitive information due to redacted passwords and API keys"
+    ],
+    "complexity": "medium"
+  }
+}

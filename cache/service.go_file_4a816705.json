@@ -1,0 +1,23 @@
+{
+  "content_hash": "f5dad4ac56b2fac02c8c1ea7ec80a534",
+  "timestamp": "2025-09-26T12:14:13.619365+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines service interfaces and implementations for starting and stopping services.",
+    "key_types": [
+      "Service",
+      "DaemonService",
+      "daemonService",
+      "AwaitReadyService"
+    ],
+    "functions": [
+      "Start",
+      "Stop",
+      "Wrap"
+    ],
+    "imports": [
+      "context"
+    ],
+    "complexity": "medium"
+  }
+}

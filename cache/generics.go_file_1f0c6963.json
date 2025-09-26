@@ -1,0 +1,30 @@
+{
+  "content_hash": "7fd671e2e2b7a12c3937cae9225a0939",
+  "timestamp": "2025-09-26T12:34:27.321819+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides a function to wrap errors with logging and a fallback message.",
+    "key_types": [
+      "error",
+      "logger",
+      "string"
+    ],
+    "functions": [
+      "wrapError"
+    ],
+    "imports": [
+      "errors",
+      "fmt",
+      "runtime",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Logs error messages using the provided logger"
+    ],
+    "risks": [
+      "Potential information leakage through error messages"
+    ],
+    "complexity": "medium"
+  }
+}

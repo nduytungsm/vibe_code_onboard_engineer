@@ -1,0 +1,20 @@
+{
+  "content_hash": "77bcb44913f540e669001ae33387a5e9",
+  "timestamp": "2025-09-26T12:18:33.753054+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for configuration responses related to blockchain simulations.",
+    "key_types": [
+      "SimulationChainConfig",
+      "ChainConfig",
+      "TokenCfg"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "content_hash": "cdebf9226f3b3a07a8e560d41ba39ae5",
+  "timestamp": "2025-09-26T13:27:57.193034+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit test for the ConsoleGamesCrawlerTask in the cron_jobs package.",
+    "key_types": [
+      "idGen",
+      "PublicHttpServiceConfig",
+      "ConsoleGamesCrawlerTask",
+      "ProductEntity"
+    ],
+    "functions": [
+      "NextID",
+      "TestConsoleGamesCrawlerTask"
+    ],
+    "imports": [
+      "testing",
+      "github.com/test-go/testify/require",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/cron-jobs",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/docker",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
+    ],
+    "side_effects": [
+      "Starts a PostgreSQL container",
+      "Migrates database schema",
+      "Inserts data into the database"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "content_hash": "2be1fefe035bd5e561cbcf0e16de81c1",
+  "timestamp": "2025-09-26T12:11:25.545577+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file is part of a dependency injection setup using Wire for a discovery service in a wallet application.",
+    "key_types": [
+      "DiscoveryConfig",
+      "ManagerRepo",
+      "services.RestfulService",
+      "zap.SugaredLogger",
+      "redis.Client"
+    ],
+    "functions": [
+      "wireDiscoveryApp",
+      "provideAuthSvc",
+      "provideHttpMetric",
+      "provideHttpRestful",
+      "provideManagerServices",
+      "provideZapLogger",
+      "provideRedisClient",
+      "provideGeckoTerminalClient"
+    ],
+    "imports": [
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/discovery/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/geckoterminal",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/google/wire",
+      "github.com/redis/go-redis/v9",
+      "go.uber.org/zap",
+      "net/http",
+      "time"
+    ],
+    "side_effects": [
+      "Establishes database connections",
+      "Creates HTTP servers"
+    ],
+    "risks": [
+      "Potential for panic if database connections fail",
+      "Improper handling of Redis client errors"
+    ],
+    "complexity": "high"
+  }
+}

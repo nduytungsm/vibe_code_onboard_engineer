@@ -1,0 +1,29 @@
+{
+  "content_hash": "5598f4629b2f11ab012a9ed231eddb89",
+  "timestamp": "2025-09-26T13:27:36.238181+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to manage the ID sequence for the discovery_studios table.",
+    "key_types": [
+      "SEQUENCE",
+      "TABLE",
+      "ROW_NUMBER"
+    ],
+    "functions": [
+      "CREATE SEQUENCE",
+      "UPDATE",
+      "ALTER TABLE",
+      "SELECT"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the id column of the discovery_studios table",
+      "Creates a new sequence if it does not exist"
+    ],
+    "risks": [
+      "Potential data loss if IDs are not managed correctly",
+      "Risk of race conditions during concurrent updates"
+    ],
+    "complexity": "medium"
+  }
+}

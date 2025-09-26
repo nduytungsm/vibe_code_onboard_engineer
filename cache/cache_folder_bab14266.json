@@ -1,0 +1,185 @@
+{
+  "content_hash": "29db5b95bd864a95ebe816a766828b5a",
+  "timestamp": "2025-09-26T13:30:07.783542+07:00",
+  "result": {
+    "path": "pkg/cache",
+    "purpose": "Responsible for implementing caching mechanisms, including interfaces for cache operations, metrics collection, and Redis integration.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "cache.go",
+      "metrics.go",
+      "redis.go",
+      "cache_test.go",
+      "redis_test.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/redis/go-redis/v9",
+      "github.com/google/uuid",
+      "github.com/samber/lo",
+      "go.uber.org/multierr",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/docker",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+      "github.com/test-go/testify/require"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating cache-related functionalities and tests, promoting separation of concerns and reusability.",
+    "file_summaries": {
+      "pkg/cache/cache.go": {
+        "language": "Go",
+        "purpose": "Defines cache-related interfaces and a JSON codec for serializing and deserializing cache values.",
+        "key_types": [
+          "Codec",
+          "Instance",
+          "PaginationInstance",
+          "CodecJson"
+        ],
+        "functions": [
+          "CacheValue",
+          "FromCache",
+          "SliceCacheValue",
+          "SliceFromCache",
+          "Resolve",
+          "ResolveWithCallback",
+          "ResolveSlice",
+          "ResolveBatch",
+          "SetTTL",
+          "SetUserCursor",
+          "GetUserCursor",
+          "GetAllUserCursors",
+          "RemoveCursor",
+          "NewMasterCursor"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "time"
+        ],
+        "side_effects": [
+          "Marshalling and unmarshalling of data to and from JSON format"
+        ],
+        "risks": [
+          "Potential for JSON unmarshalling errors",
+          "Handling of nil pointers in unmarshalling"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/cache/cache_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for cache functionality using a custom codec.",
+        "key_types": [
+          "testCacheValue",
+          "testCacheKey",
+          "testCodec"
+        ],
+        "functions": [
+          "ID",
+          "CacheKey",
+          "TestUnmarshal"
+        ],
+        "imports": [
+          "testing"
+        ],
+        "side_effects": [
+          "Prints output to console"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/cache/metrics.go": {
+        "language": "Go",
+        "purpose": "This file defines a cache metrics collector for a wallet service, including constants and metrics registration.",
+        "key_types": [
+          "float64",
+          "CounterVec",
+          "HistogramVec"
+        ],
+        "functions": [
+          "GetOrRegisterCollector"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
+        ],
+        "side_effects": [
+          "Registers metrics collectors for tracking requests and durations."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/cache/redis.go": {
+        "language": "Go",
+        "purpose": "This file implements a caching mechanism using Redis, providing functionalities to resolve, store, and manage cached values and cursors.",
+        "key_types": [
+          "redisInstance",
+          "paginationInstance",
+          "CacheCfg",
+          "CacheCursor"
+        ],
+        "functions": [
+          "NewRedisInstance",
+          "Resolve",
+          "ResolveWithCallback",
+          "ResolveSlice",
+          "ResolveBatch",
+          "SetTTL",
+          "NewPaginationInstance",
+          "SetUserCursor",
+          "GetUserCursor",
+          "GetAllUserCursors",
+          "RemoveCursor",
+          "NewMasterCursor"
+        ],
+        "imports": [
+          "context",
+          "crypto/sha256",
+          "encoding/hex",
+          "errors",
+          "fmt",
+          "time",
+          "github.com/google/uuid",
+          "github.com/redis/go-redis/v9",
+          "github.com/samber/lo",
+          "go.uber.org/multierr",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
+        ],
+        "side_effects": [
+          "Logs warnings and errors when cache operations fail or return invalid data.",
+          "Uses goroutines for asynchronous callback execution."
+        ],
+        "risks": [
+          "Potential race conditions due to concurrent access to shared resources.",
+          "Improper error handling may lead to silent failures."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/cache/redis_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for a Redis cache implementation, testing both single and batch resolution of cache keys.",
+        "key_types": [
+          "testCacheKey",
+          "testCacheValue",
+          "testCodec"
+        ],
+        "functions": [
+          "TestRedisCache",
+          "TestRedisCacheBatch"
+        ],
+        "imports": [
+          "context",
+          "testing",
+          "time",
+          "github.com/test-go/testify/require",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/docker",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/loggers"
+        ],
+        "side_effects": [
+          "Starts a Redis container for testing purposes."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "content_hash": "aaa2587bc820f79d48737060263ebc1f",
+  "timestamp": "2025-09-26T13:34:14.545444+07:00",
+  "result": {
+    "path": "internal/infras/exchangerate",
+    "purpose": "This folder/module is responsible for fetching and handling exchange rate prices from external APIs.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "client.go",
+      "models.go"
+    ],
+    "dependencies": [
+      "github.com/samber/lo",
+      "github.com/samber/mo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+      "github.com/shopspring/decimal"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to exchange rates in separate files for client interactions and data models.",
+    "file_summaries": {
+      "internal/infras/exchangerate/client.go": {
+        "language": "Go",
+        "purpose": "This file defines a client for fetching token prices from an external API.",
+        "key_types": [
+          "Config",
+          "Client",
+          "clientHTTP",
+          "Response"
+        ],
+        "functions": [
+          "NewClient",
+          "GetTokensPrice"
+        ],
+        "imports": [
+          "context",
+          "net/url",
+          "strings",
+          "github.com/samber/lo",
+          "github.com/samber/mo",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Makes HTTP requests to an external API"
+        ],
+        "risks": [
+          "Potential exposure of sensitive data in error responses",
+          "Improper handling of HTTP errors may lead to application crashes"
+        ],
+        "complexity": "medium"
+      },
+      "internal/infras/exchangerate/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures for handling exchange rate prices.",
+        "key_types": [
+          "Price",
+          "Response"
+        ],
+        "functions": [],
+        "imports": [
+          "github.com/shopspring/decimal"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

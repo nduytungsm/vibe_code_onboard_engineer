@@ -1,0 +1,42 @@
+{
+  "content_hash": "c50a98fd4d0e72ebc770806be9d399bb",
+  "timestamp": "2025-09-26T13:25:25.250646+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository for managing user events, including creating, updating, and querying user event data.",
+    "key_types": [
+      "UserEventRepo",
+      "userEventRepo",
+      "HistoryEntity",
+      "UserEvent",
+      "TempPremiumUser"
+    ],
+    "functions": [
+      "NewUserEventRepo",
+      "NewTx",
+      "CreateHistory",
+      "ListUserJoinedEvents",
+      "FindUserEvent",
+      "UpsertUserEvent",
+      "FindEventUserByPool",
+      "CountUserInEvent",
+      "FindTempPremiumUser",
+      "UpsertTempPremiumUser"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause"
+    ],
+    "side_effects": [
+      "Database transactions are initiated and managed.",
+      "Data is created or updated in the database."
+    ],
+    "risks": [
+      "Potential SQL injection if user input is not properly sanitized.",
+      "Transaction management issues if not handled correctly."
+    ],
+    "complexity": "medium"
+  }
+}

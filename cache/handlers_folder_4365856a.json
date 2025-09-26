@@ -1,0 +1,100 @@
+{
+  "content_hash": "cae0e5a17d13368a485a69b384bda113",
+  "timestamp": "2025-09-26T13:28:35.141856+07:00",
+  "result": {
+    "path": "internal/domains/web3/handlers",
+    "purpose": "Handles HTTP requests related to Ethereum transactions and signatures in a web3 application.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "decode.go",
+      "signature.go"
+    ],
+    "dependencies": [
+      "github.com/ethereum/go-ethereum/common/hexutil",
+      "github.com/labstack/echo/v4",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, separating concerns by handling different aspects of web3 functionality through distinct files for decoding transactions and managing signatures.",
+    "file_summaries": {
+      "internal/domains/web3/handlers/decode.go": {
+        "language": "Go",
+        "purpose": "Handles decoding of Ethereum transactions, calls, and logs via HTTP endpoints.",
+        "key_types": [
+          "decodeHandler",
+          "services.DecoderService",
+          "models.SimpleTx",
+          "requests.DecodeTx",
+          "requests.DecodeCall",
+          "requests.DecodeLog"
+        ],
+        "functions": [
+          "NewDecodeHandler",
+          "Setup",
+          "decodeTx",
+          "decodeCall",
+          "decodeLog"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/labstack/echo/v4",
+          "github.com/samber/lo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Interacts with external services to decode transactions, calls, and logs."
+        ],
+        "risks": [
+          "Potential for improper handling of user input leading to security vulnerabilities."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/web3/handlers/signature.go": {
+        "language": "Go",
+        "purpose": "Handles HTTP requests related to signatures in a web3 application.",
+        "key_types": [
+          "signatureHandler",
+          "services.SignatureService",
+          "requests.GetSignatures",
+          "requests.UpsertSignatures",
+          "models.Signature"
+        ],
+        "functions": [
+          "NewSignatureHandler",
+          "Setup",
+          "getSignatures",
+          "upsertSignatures"
+        ],
+        "imports": [
+          "net/http",
+          "github.com/labstack/echo/v4",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/handlers/dtos/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Modifies the state of signatures in the database",
+          "Sends HTTP responses"
+        ],
+        "risks": [
+          "Potential for SQL injection if input is not properly validated",
+          "Error handling may expose sensitive information"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

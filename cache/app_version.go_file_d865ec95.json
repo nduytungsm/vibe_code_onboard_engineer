@@ -1,0 +1,52 @@
+{
+  "content_hash": "f55fba455e117541e6e1c4a223491d91",
+  "timestamp": "2025-09-26T13:10:41.544733+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for managing application versions, including creating, deleting, publishing, and retrieving version information.",
+    "key_types": [
+      "AppVersionSvc",
+      "appVersionSvc",
+      "requests.CreateVersion",
+      "requests.Delete",
+      "responses.Version",
+      "responses.Paginated",
+      "models.VersionEntity"
+    ],
+    "functions": [
+      "NewAppVersionSvc",
+      "CreateVersion",
+      "DeleteVersion",
+      "GetLatestPublicVersion",
+      "PublishVersion",
+      "GetVersionInfo",
+      "ListPlatformVersions"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/repos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/google/uuid",
+      "github.com/google/wire",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "golang.org/x/mod/semver",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Database transactions for creating and deleting versions",
+      "Logging actions performed on versions"
+    ],
+    "risks": [
+      "Potential for SQL injection if inputs are not properly sanitized",
+      "Error handling may expose sensitive information"
+    ],
+    "complexity": "medium"
+  }
+}

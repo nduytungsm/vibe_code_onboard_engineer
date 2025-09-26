@@ -1,0 +1,118 @@
+{
+  "content_hash": "9800d67b0bfb8d16b94f354e8f802bf6",
+  "timestamp": "2025-09-26T13:42:40.366664+07:00",
+  "result": {
+    "path": "internal/domains/web3/repos",
+    "purpose": "This folder/module is responsible for managing signatures in a web3 context through repository interfaces and their PostgreSQL implementations.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "signature.go",
+      "signature_model.go",
+      "signature_test.go"
+    ],
+    "dependencies": [
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/samber/lo",
+      "gorm.io/gorm",
+      "gorm.io/gorm/clause",
+      "github.com/jackc/pgtype",
+      "github.com/test-go/testify/require"
+    ],
+    "architecture": "The folder follows a repository pattern, encapsulating data access logic and providing a clear interface for CRUD operations related to signatures.",
+    "file_summaries": {
+      "internal/domains/web3/repos/signature.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository interface and its PostgreSQL implementation for managing signatures in a web3 context.",
+        "key_types": [
+          "SignatureRepo",
+          "pgSignatureRepo",
+          "models.Signature",
+          "gorm.DB",
+          "types.WAddress"
+        ],
+        "functions": [
+          "NewPgSignatureRepo",
+          "Find",
+          "Get",
+          "Insert",
+          "Update"
+        ],
+        "imports": [
+          "context",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/samber/lo",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Database operations that may modify the state of the database."
+        ],
+        "risks": [
+          "Potential SQL injection if input is not properly sanitized.",
+          "Error handling may expose sensitive information."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/web3/repos/signature_model.go": {
+        "language": "Go",
+        "purpose": "This file defines a Signature model and functions to convert between database representations and application models.",
+        "key_types": [
+          "Signature",
+          "models.Signature",
+          "pgtype.JSONB"
+        ],
+        "functions": [
+          "fromDBSignatures",
+          "fromDBSignature",
+          "fromSignature"
+        ],
+        "imports": [
+          "time",
+          "github.com/jackc/pgtype",
+          "github.com/samber/lo",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/web3/repos/signature_test.go": {
+        "language": "Go",
+        "purpose": "This file contains tests for the CRUD operations of the PgSignatureRepo in a web3 context.",
+        "key_types": [
+          "PgSignatureRepo",
+          "Signature",
+          "Category",
+          "TransactionCategory"
+        ],
+        "functions": [
+          "TestPgSignatureRepo_CRUD",
+          "Insert",
+          "Get",
+          "Update",
+          "Find"
+        ],
+        "imports": [
+          "context",
+          "testing",
+          "time",
+          "github.com/test-go/testify/require",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/docker",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Starts and stops a Docker container for PostgreSQL",
+          "Migrates the database schema"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

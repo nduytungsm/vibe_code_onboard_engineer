@@ -1,0 +1,45 @@
+{
+  "content_hash": "d1dc6e3c3300e01c2f295d6d26750e3c",
+  "timestamp": "2025-09-26T13:22:50.622592+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles device-related HTTP requests and responses for a device management service.",
+    "key_types": [
+      "DeviceHandler",
+      "DeviceService",
+      "DeviceFilter",
+      "Paging",
+      "OrderBy"
+    ],
+    "functions": [
+      "NewDeviceHandler",
+      "Setup",
+      "GetDevicesByUser",
+      "GetDeviceByID",
+      "ListDevices",
+      "getDevices",
+      "CreateDevice",
+      "MigrateNotificationSetting"
+    ],
+    "imports": [
+      "net/http",
+      "github.com/labstack/echo/v4",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/devicemanager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/errors",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "side_effects": [
+      "Interacts with the device service to retrieve and manipulate device data.",
+      "Returns JSON responses to HTTP requests."
+    ],
+    "risks": [
+      "Potential exposure of device information if not properly secured.",
+      "Deprecated functions may lead to unexpected behavior if used."
+    ],
+    "complexity": "medium"
+  }
+}

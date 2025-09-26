@@ -1,0 +1,31 @@
+{
+  "content_hash": "382cf48e00e272b3317fb0ad83f3e40d",
+  "timestamp": "2025-09-26T13:12:37.599839+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file provides helper functions for database operations using GORM, specifically for cleaning up stale records and managing transactions in context.",
+    "key_types": [
+      "TxKey",
+      "gorm.DB"
+    ],
+    "functions": [
+      "cleanupStaledByKeys",
+      "bindTx",
+      "txFromContext"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "strings",
+      "time",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Modifies the database by deleting stale records."
+    ],
+    "risks": [
+      "Potential SQL injection if keys are not properly sanitized."
+    ],
+    "complexity": "medium"
+  }
+}

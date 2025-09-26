@@ -1,0 +1,86 @@
+{
+  "content_hash": "0bd705f7a463b07103dae5485c52c536",
+  "timestamp": "2025-09-26T13:38:35.185332+07:00",
+  "result": {
+    "path": "internal/infras/x",
+    "purpose": "Responsible for defining data structures for API responses and providing a service to interact with Twitter's API for managing user likes and reposts.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "models.go",
+      "x_svc.go"
+    ],
+    "dependencies": [
+      "github.com/michimani/gotwi/tweet/searchtweet/types",
+      "github.com/michimani/gotwi/user/userlookup",
+      "github.com/michimani/gotwi/user/userlookup/types",
+      "github.com/michimani/gotwi",
+      "github.com/michimani/gotwi/fields",
+      "github.com/michimani/gotwi/resources",
+      "github.com/michimani/gotwi/tweet/searchtweet"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating API interaction logic and data structures within dedicated files.",
+    "file_summaries": {
+      "internal/infras/x/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures for API responses including listings, errors, and pagination.",
+        "key_types": [
+          "ListingResponse",
+          "LikedPost",
+          "APIError",
+          "Pagination"
+        ],
+        "functions": [],
+        "imports": [],
+        "complexity": "low"
+      },
+      "internal/infras/x/x_svc.go": {
+        "language": "Go",
+        "purpose": "This file defines a service for interacting with Twitter's API to manage user likes and reposts.",
+        "key_types": [
+          "XServiceConfig",
+          "UserSession",
+          "XService",
+          "xService",
+          "LikedPost",
+          "ListingResponse",
+          "getRequestParams"
+        ],
+        "functions": [
+          "NewXService",
+          "GetUserInfo",
+          "GetLikes",
+          "GetRepostsOfPostID",
+          "get"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "errors",
+          "fmt",
+          "io",
+          "net/http",
+          "net/url",
+          "time",
+          "github.com/michimani/gotwi/tweet/searchtweet/types",
+          "github.com/michimani/gotwi/user/userlookup",
+          "github.com/michimani/gotwi/user/userlookup/types",
+          "github.com/michimani/gotwi",
+          "github.com/michimani/gotwi/fields",
+          "github.com/michimani/gotwi/resources",
+          "github.com/michimani/gotwi/tweet/searchtweet"
+        ],
+        "side_effects": [
+          "Makes HTTP requests to external Twitter API",
+          "Reads and parses HTTP response bodies"
+        ],
+        "risks": [
+          "Potential exposure of sensitive tokens in logs or errors",
+          "Handling of external API responses may lead to unexpected behavior if not properly validated"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

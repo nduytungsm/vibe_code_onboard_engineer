@@ -1,0 +1,28 @@
+{
+  "content_hash": "09930e737ea68a7c72fdad3d8bfba50c",
+  "timestamp": "2025-09-26T12:23:30.466966+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles the creation of history records for actions performed in the application.",
+    "key_types": [
+      "models.HistoryEntity",
+      "createHistoryParams"
+    ],
+    "functions": [
+      "CreateHistoryRecord",
+      "createHistoryV2"
+    ],
+    "imports": [
+      "encoding/json",
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/labstack/gommon/log"
+    ],
+    "side_effects": [
+      "Logs an error if JSON marshalling fails in createHistoryV2"
+    ],
+    "complexity": "medium"
+  }
+}

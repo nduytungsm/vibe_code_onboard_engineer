@@ -1,0 +1,23 @@
+{
+  "content_hash": "192672755cda8a2b53d394b07dae8f5e",
+  "timestamp": "2025-09-26T13:09:42.660682+07:00",
+  "result": {
+    "language": "YAML",
+    "purpose": "Defines the API specifications for the Quest API used in Ronin Wallet.",
+    "key_types": [
+      "responses.PaginationDTO",
+      "responses.ParticipantQuestDetailInfoDTO",
+      "responses.RolePermission",
+      "responses.ServerResponseDTO-responses_SliceResultDTO-responses_ParticipantQuestDetailInfoDTO",
+      "responses.ServerResponseDTO-responses_SliceResultDTO-responses_RolePermission",
+      "responses.SliceResultDTO-responses_ParticipantQuestDetailInfoDTO",
+      "responses.SliceResultDTO-responses_RolePermission"
+    ],
+    "functions": [
+      "get quest by ID",
+      "get all roles with pagination"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

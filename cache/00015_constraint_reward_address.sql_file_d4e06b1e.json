@@ -1,0 +1,25 @@
+{
+  "content_hash": "75cf092950513819a187a3bc5e821fed",
+  "timestamp": "2025-09-26T13:14:35.999402+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts for altering database schema, specifically adding constraints and modifying types.",
+    "key_types": [
+      "TABLE",
+      "CONSTRAINT",
+      "TYPE"
+    ],
+    "functions": [
+      "ALTER TABLE",
+      "ALTER TYPE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies the database schema by adding constraints and types."
+    ],
+    "risks": [
+      "Potential for data integrity issues if constraints are not properly managed."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "content_hash": "f4734d597577e79d7e750ae6240002db",
+  "timestamp": "2025-09-26T13:27:42.203244+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines database migrations for creating and dropping tables related to tokens and their platforms.",
+    "key_types": [
+      "VARCHAR",
+      "text",
+      "float8",
+      "bool",
+      "jsonb",
+      "bigint",
+      "INT",
+      "timestamptz"
+    ],
+    "functions": [
+      "CREATE TABLE",
+      "DROP TABLE",
+      "CREATE INDEX"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Creates tables in the database",
+      "Drops tables if they exist"
+    ],
+    "complexity": "medium"
+  }
+}

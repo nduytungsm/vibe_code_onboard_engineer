@@ -1,0 +1,22 @@
+{
+  "content_hash": "3c8a0fa8f013aa630d26f416a37a65cb",
+  "timestamp": "2025-09-26T13:22:37.882089+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a TokenTransfer struct for handling token transfer data in a blockchain context.",
+    "key_types": [
+      "TokenTransfer",
+      "proxy_enums.TokenStandards",
+      "types.WAddress",
+      "types.BigInt",
+      "common.Hash"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "low"
+  }
+}

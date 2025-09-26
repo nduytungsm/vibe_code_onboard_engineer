@@ -1,0 +1,42 @@
+{
+  "content_hash": "916b1b52ee25bb8189de8ba92a7fdea6",
+  "timestamp": "2025-09-26T13:10:38.380787+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles operator-related HTTP requests and responses for the manager domain.",
+    "key_types": [
+      "InternalOperatorHandler",
+      "OperatorHandler"
+    ],
+    "functions": [
+      "NewInternalOperatorHandler",
+      "NewOperatorHandler",
+      "Setup",
+      "getSingle",
+      "listActives",
+      "deleteOperator",
+      "createOperator"
+    ],
+    "imports": [
+      "errors",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/labstack/echo/v4",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Modifies the state of operators in the database.",
+      "Interacts with the HTTP context and middleware for authorization."
+    ],
+    "risks": [
+      "Potential for unauthorized access if middleware fails.",
+      "Error handling may expose sensitive information."
+    ],
+    "complexity": "medium"
+  }
+}

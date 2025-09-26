@@ -1,0 +1,110 @@
+{
+  "content_hash": "265aba7c4c69d46e8936a190f705e1c8",
+  "timestamp": "2025-09-26T13:31:34.094264+07:00",
+  "result": {
+    "path": "internal/routers/dtos/enums/proxy",
+    "purpose": "Defines enumerations and types related to various aspects of transactions, blockchain types, provider methods, and token standards, including utility functions for handling these types.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "activity.go",
+      "chain.go",
+      "method.go",
+      "token.go"
+    ],
+    "dependencies": [
+      "encoding/json",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/samber/lo"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing related enumerations and utility functions into separate files for clarity and maintainability.",
+    "file_summaries": {
+      "internal/routers/dtos/enums/proxy/activity.go": {
+        "language": "Go",
+        "purpose": "Defines enumerations and types related to transaction statuses and kinds, including JSON marshaling and unmarshaling functionality.",
+        "key_types": [
+          "TxStatus",
+          "TxDirection",
+          "TxKind",
+          "CompareType"
+        ],
+        "functions": [
+          "MarshalJSON",
+          "TxKindFromString",
+          "Equals",
+          "Value",
+          "Values",
+          "UnmarshalJSON"
+        ],
+        "imports": [
+          "encoding/json",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/proxy/chain.go": {
+        "language": "Go",
+        "purpose": "Defines an enumeration for different blockchain types and provides utility functions for handling them.",
+        "key_types": [
+          "ChainType"
+        ],
+        "functions": [
+          "ChainTypeFromString",
+          "Equals",
+          "MarshalJSON",
+          "Value",
+          "Values"
+        ],
+        "imports": [
+          "encoding/json",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/proxy/method.go": {
+        "language": "Go",
+        "purpose": "Defines provider methods as constants and provides utility functions for handling them.",
+        "key_types": [
+          "ProviderMethod"
+        ],
+        "functions": [
+          "MethodFromString",
+          "UniqueProviderMethods"
+        ],
+        "imports": [
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/proxy/token.go": {
+        "language": "Go",
+        "purpose": "Defines token standards and provides methods for conversion and validation of these standards.",
+        "key_types": [
+          "TokenStandards"
+        ],
+        "functions": [
+          "String",
+          "TokenStandardsFromString",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "MarshalText",
+          "UnmarshalText",
+          "Equals",
+          "IsValid",
+          "IsNft",
+          "IsMetaplexStandard",
+          "ToEvmEquivalent"
+        ],
+        "imports": [
+          "encoding/json",
+          "strings",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

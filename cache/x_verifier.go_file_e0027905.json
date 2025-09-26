@@ -1,0 +1,54 @@
+{
+  "content_hash": "073e469db538964fadc24771113d499c",
+  "timestamp": "2025-09-26T13:13:55.267715+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains a quest verifier service that handles user actions related to quests, including verifying reposts and managing cooldown periods.",
+    "key_types": [
+      "questVerifier",
+      "VerifyActionParams",
+      "x.UserSession",
+      "models.XAction",
+      "models.ParticipantTwitterActionEntity"
+    ],
+    "functions": [
+      "verifyLikeAndRepostX",
+      "shouldCheck",
+      "unmarshalActivityRef",
+      "findXUserCache",
+      "hasRepostedX",
+      "cacheCooldownTime",
+      "needsToWait",
+      "xAccountUsed",
+      "markXAccountUsed"
+    ],
+    "imports": [
+      "context",
+      "crypto/rand",
+      "encoding/json",
+      "errors",
+      "fmt",
+      "math/big",
+      "strconv",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/x",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/mitchellh/mapstructure",
+      "github.com/redis/go-redis/v9",
+      "gorm.io/gorm"
+    ],
+    "side_effects": [
+      "Interacts with Redis for caching user actions and cooldowns.",
+      "Logs errors and debug information."
+    ],
+    "risks": [
+      "Potential for denial of service if Redis is unavailable.",
+      "Improper error handling may expose sensitive information."
+    ],
+    "complexity": "medium"
+  }
+}

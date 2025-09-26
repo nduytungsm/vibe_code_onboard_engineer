@@ -1,0 +1,43 @@
+{
+  "content_hash": "e88e867e0ba08da00febe014f8e89fb1",
+  "timestamp": "2025-09-26T13:24:24.992024+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a layout handler for managing widget layouts in a discovery service.",
+    "key_types": [
+      "WidgetItem",
+      "Layout",
+      "layout"
+    ],
+    "functions": [
+      "NewLayoutHandler",
+      "CreateLayout",
+      "UpdateLayoutWidgets",
+      "CreateLayoutContacts",
+      "CreateLayoutServices",
+      "GetLayoutWidgets"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "github.com/google/wire",
+      "github.com/samber/lo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+    ],
+    "side_effects": [
+      "Creates and updates layouts and widgets in the discovery service."
+    ],
+    "risks": [
+      "Potential for errors in widget validation leading to incorrect layouts."
+    ],
+    "complexity": "medium"
+  }
+}

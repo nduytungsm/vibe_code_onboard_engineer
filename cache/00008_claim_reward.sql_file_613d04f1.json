@@ -1,0 +1,27 @@
+{
+  "content_hash": "bcf0add47731115df21ebfe7d2fe9ff1",
+  "timestamp": "2025-09-26T13:14:33.868591+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "Defines and modifies database schema for participant rewards and related entities.",
+    "key_types": [
+      "participant_reward_status",
+      "reward_claim_status"
+    ],
+    "functions": [
+      "CREATE TYPE",
+      "CREATE TABLE",
+      "ALTER TABLE",
+      "DROP TABLE",
+      "UPDATE",
+      "DELETE"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies database schema",
+      "Alters existing data types",
+      "Updates permissions in roles"
+    ],
+    "complexity": "medium"
+  }
+}

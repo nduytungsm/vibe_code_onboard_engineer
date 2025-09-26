@@ -1,0 +1,22 @@
+{
+  "content_hash": "d2ad641e1a8bbd2fe9cf5e26f1bd7e1a",
+  "timestamp": "2025-09-26T13:23:51.031419+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines metrics for tracking consumer check-ins using Prometheus.",
+    "key_types": [
+      "metricCollectors"
+    ],
+    "functions": [
+      "initMetrics"
+    ],
+    "imports": [
+      "github.com/prometheus/client_golang/prometheus",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
+    ],
+    "side_effects": [
+      "Registers metrics with Prometheus"
+    ],
+    "complexity": "low"
+  }
+}

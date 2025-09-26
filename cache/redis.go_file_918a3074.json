@@ -1,0 +1,52 @@
+{
+  "content_hash": "ac84edd840f9ecdb99790a21f7f0afb1",
+  "timestamp": "2025-09-26T13:27:02.758494+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a caching mechanism using Redis, providing functionalities to resolve, store, and manage cached values and cursors.",
+    "key_types": [
+      "redisInstance",
+      "paginationInstance",
+      "CacheCfg",
+      "CacheCursor"
+    ],
+    "functions": [
+      "NewRedisInstance",
+      "Resolve",
+      "ResolveWithCallback",
+      "ResolveSlice",
+      "ResolveBatch",
+      "SetTTL",
+      "NewPaginationInstance",
+      "SetUserCursor",
+      "GetUserCursor",
+      "GetAllUserCursors",
+      "RemoveCursor",
+      "NewMasterCursor"
+    ],
+    "imports": [
+      "context",
+      "crypto/sha256",
+      "encoding/hex",
+      "errors",
+      "fmt",
+      "time",
+      "github.com/google/uuid",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "go.uber.org/multierr",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics"
+    ],
+    "side_effects": [
+      "Logs warnings and errors when cache operations fail or return invalid data.",
+      "Uses goroutines for asynchronous callback execution."
+    ],
+    "risks": [
+      "Potential race conditions due to concurrent access to shared resources.",
+      "Improper error handling may lead to silent failures."
+    ],
+    "complexity": "medium"
+  }
+}

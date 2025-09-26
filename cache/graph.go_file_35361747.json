@@ -1,0 +1,31 @@
+{
+  "content_hash": "672bd2287e0cde761b9f504c20949b22",
+  "timestamp": "2025-09-26T12:27:13.79206+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data structures for handling sales and game information in a discovery module.",
+    "key_types": [
+      "MavisSalesResponse",
+      "MavisSale",
+      "LaunchpadStages",
+      "CollectionMetadata",
+      "MediaLink",
+      "GameResponse",
+      "GameList",
+      "GameInfo",
+      "ConsoleMetadata",
+      "FullThumbnailURL",
+      "MediaItem",
+      "Genre",
+      "Platform",
+      "SocialLink",
+      "CreatorInfo",
+      "GameCampaignList",
+      "GameCampaign",
+      "GameCampaignMeta"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

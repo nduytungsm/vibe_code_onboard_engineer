@@ -1,0 +1,26 @@
+{
+  "content_hash": "f1eb91e2963919b37986cb366ae6e6d6",
+  "timestamp": "2025-09-26T13:27:40.303772+07:00",
+  "result": {
+    "language": "SQL",
+    "purpose": "This file contains SQL migration scripts to modify the quest_rewards and quest_pools tables.",
+    "key_types": [
+      "TABLE",
+      "COLUMN",
+      "NUMERIC"
+    ],
+    "functions": [
+      "ALTER TABLE",
+      "SELECT"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Modifies database schema by dropping and adding columns"
+    ],
+    "risks": [
+      "Potential data loss from dropping columns",
+      "Schema changes may affect application functionality"
+    ],
+    "complexity": "low"
+  }
+}

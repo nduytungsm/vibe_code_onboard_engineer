@@ -1,0 +1,63 @@
+{
+  "content_hash": "6cc742e9224150eae418a15e3a9ebcf7",
+  "timestamp": "2025-09-26T13:39:22.971567+07:00",
+  "result": {
+    "path": "internal/domains/trusted-domain/services",
+    "purpose": "Provides services for matching URLs against a list of trusted domains.",
+    "languages": {
+      "Go": 2
+    },
+    "key_modules": [
+      "trusted_domain.go",
+      "trusted_domain_test.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/trusted-domain/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/trusted-domain/repos",
+      "github.com/test-go/testify/require"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, encapsulating domain-specific logic and providing a clear interface for domain services.",
+    "file_summaries": {
+      "internal/domains/trusted-domain/services/trusted_domain.go": {
+        "language": "Go",
+        "purpose": "Provides a service for matching URLs against a list of trusted domains.",
+        "key_types": [
+          "TrustedDomainService",
+          "trustedDomainService",
+          "models.TrustedDomain"
+        ],
+        "functions": [
+          "NewTrustedDomainService",
+          "MatchURL",
+          "parseDomain",
+          "generateWildcardDomains"
+        ],
+        "imports": [
+          "context",
+          "net/url",
+          "slices",
+          "strings",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/trusted-domain/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/trusted-domain/repos"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/trusted-domain/services/trusted_domain_test.go": {
+        "language": "Go",
+        "purpose": "This file contains unit tests for the function generateWildcardDomains.",
+        "key_types": [
+          "struct"
+        ],
+        "functions": [
+          "Test_generateWildcardDomains"
+        ],
+        "imports": [
+          "testing",
+          "github.com/test-go/testify/require"
+        ],
+        "complexity": "low"
+      }
+    }
+  }
+}

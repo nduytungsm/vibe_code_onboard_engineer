@@ -1,9 +1,9 @@
 {
-  "content_hash": "a0e431efe65285d9adeb2ea66145ff2c",
-  "timestamp": "2025-09-26T11:53:46.940347+07:00",
+  "content_hash": "047ab46d41b6e59b86d1fe44684760b2",
+  "timestamp": "2025-09-26T13:19:38.431251+07:00",
   "result": {
     "path": "cmd/clean_highlight_dapps",
-    "purpose": "This folder/module is responsible for providing a command-line application that cleans expired highlights from a database.",
+    "purpose": "This folder/module is responsible for cleaning expired highlights from a database and logging the process.",
     "languages": {
       "Go": 1
     },
@@ -21,17 +21,19 @@
       "github.com/axieinfinity/ronin-wallet-manager/pkg/dapp",
       "github.com/axieinfinity/ronin-wallet-manager/repositories"
     ],
-    "architecture": "The folder follows a command-line application architecture, utilizing a main entry point that initializes necessary services and connects to databases to perform its operations.",
+    "architecture": "The folder follows a modular architecture pattern, where the main entry point initializes necessary services and dependencies to perform the cleaning operation.",
     "file_summaries": {
       "cmd/clean_highlight_dapps/main.go": {
         "language": "Go",
-        "purpose": "This file is the main entry point for a command-line application that cleans expired highlights from a database.",
+        "purpose": "This file is the main entry point for a program that cleans expired highlights from a database and logs the process.",
         "key_types": [
           "context.Context",
           "time.Time",
           "gorm.DB",
           "config.Config",
-          "redis.Client",
+          "repositories.QuickAccessDAppRepo",
+          "repositories.HighlightRepo",
+          "redis.RedisClient",
           "dapp.CleanService",
           "md.Highlight"
         ],
@@ -67,7 +69,7 @@
         "risks": [
           "Potential failure in Sentry initialization",
           "Database connection failures",
-          "Error handling for cleaning highlights may not be comprehensive"
+          "Error handling for cleaning highlights may not be robust"
         ],
         "complexity": "medium"
       }

@@ -1,0 +1,21 @@
+{
+  "content_hash": "6bcd6ffaf45b431fa5abb35f2b8306c4",
+  "timestamp": "2025-09-26T13:11:42.19408+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines and manages log parameter types for a quest system.",
+    "key_types": [
+      "LogParamType"
+    ],
+    "functions": [
+      "LogParamTypeFromStr",
+      "Value",
+      "Values",
+      "IsValid"
+    ],
+    "imports": [
+      "github.com/samber/lo"
+    ],
+    "complexity": "medium"
+  }
+}

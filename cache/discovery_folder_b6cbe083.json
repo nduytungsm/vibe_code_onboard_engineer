@@ -1,0 +1,412 @@
+{
+  "content_hash": "1ae1289b8d05f81069a6ba3bd645a72b",
+  "timestamp": "2025-09-26T13:41:37.89993+07:00",
+  "result": {
+    "path": "internal/repositories/discovery",
+    "purpose": "This folder/module is responsible for managing various aspects of a discovery service, including announcements, collections, contacts, events, feature banners, home banners, layouts, products, and service items.",
+    "languages": {
+      "Go": 10
+    },
+    "key_modules": [
+      "announcement.go",
+      "collection.go",
+      "contact.go",
+      "event.go",
+      "feature_banner.go",
+      "generic.go",
+      "home_banner.go",
+      "layout.go",
+      "product.go",
+      "service_item.go"
+    ],
+    "dependencies": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/google/wire",
+      "go.uber.org/zap",
+      "gorm.io/gorm",
+      "github.com/lib/pq"
+    ],
+    "architecture": "The folder follows a repository pattern, encapsulating data access logic for different entities related to the discovery service, utilizing GORM for database interactions and Redis for caching.",
+    "file_summaries": {
+      "internal/repositories/discovery/announcement.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing announcements, including creating, deleting, listing, and editing announcements.",
+        "key_types": [
+          "Announcement",
+          "announcement",
+          "FilterListAnnouncement"
+        ],
+        "functions": [
+          "NewAnnouncementRepo",
+          "CreateAnnouncement",
+          "ListAnnouncements",
+          "DeleteAnnouncement",
+          "EditAnnouncement",
+          "FindWidgetAnnouncements"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/google/wire",
+          "go.uber.org/zap",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Database modifications (create, update, delete announcements)"
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not properly sanitized",
+          "Data integrity issues if concurrent modifications occur"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/collection.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing collections in a discovery service, including CRUD operations and data retrieval from Redis and a database.",
+        "key_types": [
+          "Collection",
+          "collection",
+          "discovery_models.CollectionStatsItem",
+          "discovery_models.CollectionEntity",
+          "discovery_requests.WidgetItemParams"
+        ],
+        "functions": [
+          "NewCollection",
+          "GetCollection",
+          "SetCollection",
+          "SearchCollection",
+          "GetCollectionsByAddress",
+          "GetCollectionsByRange",
+          "GetTotalCollections",
+          "UpsertCollection"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "fmt",
+          "strings",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/discovery/requests",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+          "github.com/google/wire",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause"
+        ],
+        "side_effects": [
+          "Interacts with Redis for caching collection stats",
+          "Interacts with a database for CRUD operations on collections"
+        ],
+        "risks": [
+          "Potential for SQL injection if input is not properly sanitized",
+          "Data inconsistency if Redis and database are not synchronized"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/contact.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing contact-related data in a database, including creating contacts and retrieving widget-specific contacts.",
+        "key_types": [
+          "Contact",
+          "contact",
+          "discovery_models.ContactEntity",
+          "discovery_models.WidgetItemContact"
+        ],
+        "functions": [
+          "NewContactRepo",
+          "CreateLayoutContact",
+          "GetWidgetContacts"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/google/wire",
+          "go.uber.org/zap",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Database operations that modify or retrieve data"
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not properly sanitized",
+          "Error handling may expose sensitive information if not managed correctly"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/event.go": {
+        "language": "Go",
+        "purpose": "This file defines an interface and a struct for managing event-related database operations in a discovery repository.",
+        "key_types": [
+          "Event",
+          "event",
+          "discovery_models.EventEntity",
+          "discovery_models.WidgetItemEvent"
+        ],
+        "functions": [
+          "NewEventRepo",
+          "Create",
+          "ListRMActiveEvents",
+          "GetWidgetEvents",
+          "FindByID",
+          "DeleteEvItem",
+          "SaveRoninMarketEv"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause"
+        ],
+        "side_effects": [
+          "Database modifications (create, update, delete operations)"
+        ],
+        "risks": [
+          "Potential SQL injection if inputs are not properly sanitized",
+          "Data integrity issues if concurrent modifications occur"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/feature_banner.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository interface and its implementation for managing feature banners and their associated headlines in a database.",
+        "key_types": [
+          "FeatureBanner",
+          "featureBanner",
+          "FeatureBannerEntity",
+          "FeatureHeadlineEntity",
+          "HistoryEntity"
+        ],
+        "functions": [
+          "NewFeatureBanner",
+          "Tx",
+          "CreateBanner",
+          "CreateHeadlines",
+          "Find",
+          "FindBannerHeadlines",
+          "FindBannerByID",
+          "DeleteBanner",
+          "DeleteHeadlines",
+          "CreateHistory"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Database transactions",
+          "Modifications to the database state"
+        ],
+        "risks": [
+          "Potential SQL injection if inputs are not properly sanitized",
+          "Data integrity issues if transactions are not handled correctly"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/generic.go": {
+        "language": "Go",
+        "purpose": "This file defines a generic repository for managing social platforms, studios, categories, and home banners in a database using GORM.",
+        "key_types": [
+          "Generic",
+          "generic",
+          "context.Context",
+          "discovery_models.SocialPlatformEntity",
+          "discovery_models.StudioEntity",
+          "discovery_models.CategoryEntity",
+          "discovery_models.HomeBannerEntity",
+          "discovery_models.HistoryEntity"
+        ],
+        "functions": [
+          "NewGenericRepo",
+          "ListSocialPlatforms",
+          "UpsertStudio",
+          "ListStudios",
+          "ListCategories",
+          "GetSocialPlatformByIDs",
+          "GetCategoriesByIDs",
+          "CreateStudio",
+          "CreateHomeBanner",
+          "FindHomeBanner",
+          "DeleteBanner",
+          "ListHomeBanners",
+          "bindTx",
+          "getTx"
+        ],
+        "imports": [
+          "context",
+          "github.com/google/wire",
+          "go.uber.org/zap",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery"
+        ],
+        "side_effects": [
+          "Database transactions for creating and deleting banners",
+          "Database updates for studios and banners"
+        ],
+        "risks": [
+          "Potential SQL injection if inputs are not properly sanitized",
+          "Error handling may not cover all edge cases"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/home_banner.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository interface and its implementation for managing home banners in a database.",
+        "key_types": [
+          "HomeBanner",
+          "homeBanner",
+          "HomeBannerEntity",
+          "HistoryEntity",
+          "WidgetItemHomeBanner"
+        ],
+        "functions": [
+          "NewHomeBanner",
+          "CreateHomeBanner",
+          "FindActiveHomeBanner",
+          "DeleteBanner",
+          "ListHomeBanners",
+          "GetWidgetItems"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Database transactions for creating and deleting banners",
+          "Database queries for retrieving banners and widget items"
+        ],
+        "risks": [
+          "Potential SQL injection if inputs are not properly sanitized",
+          "Data integrity issues if transactions fail and are not handled correctly"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/layout.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing layout and widget entities in a database, providing methods for creating, updating, and retrieving layouts and widgets.",
+        "key_types": [
+          "Layout",
+          "layout",
+          "LayoutEntity",
+          "LayoutWidgetEntity",
+          "WidgetEntity",
+          "WidgetItemEntity",
+          "LayoutWidgetExtraInfo"
+        ],
+        "functions": [
+          "NewLayoutRepo",
+          "CreateLayout",
+          "UpdateLayoutWidgets",
+          "GetActiveLayout",
+          "FindLayoutWidgets",
+          "GetWidgetByID",
+          "FindWidgetsByIDs",
+          "CreateFullpageWidget"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/discovery",
+          "github.com/google/wire",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause"
+        ],
+        "side_effects": [
+          "Database transactions for creating and updating layouts and widgets",
+          "Modifications to the database state (e.g., marking widgets as inactive)"
+        ],
+        "risks": [
+          "Potential SQL injection if inputs are not properly sanitized",
+          "Data inconsistency if transactions fail and are not handled correctly"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/product.go": {
+        "language": "Go",
+        "purpose": "This file defines a product repository for managing product data, including CRUD operations and queries related to products and their social media presence.",
+        "key_types": [
+          "Product",
+          "product",
+          "ListProductParams"
+        ],
+        "functions": [
+          "NewProductRepo",
+          "GetProductByID",
+          "CreateProduct",
+          "UpdateProduct",
+          "UpdateProductStatus",
+          "ListProductsWithExtraInfo",
+          "ListProductSocials",
+          "SearchProducts",
+          "GetWidgetProducts"
+        ],
+        "imports": [
+          "context",
+          "github.com/google/wire",
+          "github.com/lib/pq",
+          "go.uber.org/zap",
+          "gorm.io/gorm",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models"
+        ],
+        "side_effects": [
+          "Database transactions for creating and updating products"
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not properly sanitized in queries"
+        ],
+        "complexity": "medium"
+      },
+      "internal/repositories/discovery/service_item.go": {
+        "language": "Go",
+        "purpose": "This file defines a service item repository for managing service items in a database, including creating layout services and retrieving widget service items.",
+        "key_types": [
+          "ServiceItem",
+          "serviceItem"
+        ],
+        "functions": [
+          "NewServiceItem",
+          "CreateLayoutServices",
+          "GetWidgetServiceItem"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/discovery/models",
+          "github.com/google/wire",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Database operations that modify or retrieve data"
+        ],
+        "risks": [
+          "Potential SQL injection if user input is not properly sanitized",
+          "Error handling may expose sensitive information if not managed correctly"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

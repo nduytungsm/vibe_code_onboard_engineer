@@ -1,0 +1,49 @@
+{
+  "content_hash": "784fe44a297e837016a62067b2971f43",
+  "timestamp": "2025-09-26T13:27:53.169026+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for the RewardHandler in the handlers package.",
+    "key_types": [
+      "RewardHandlerTestKit",
+      "HandlerQuestRewardItemDTO",
+      "HandlerCreateQuestRewardDTO",
+      "QuestRewardEntity",
+      "HistoryEntity"
+    ],
+    "functions": [
+      "SetupRewardHandler",
+      "TestCreateBulk_Should_CopyAllFields",
+      "TestRewardBulkInsert_ShouldErr_When_InvalidDistributionTime",
+      "TestRewardBulkInsert_Should_CreateCorrectHistory",
+      "TestRewardBulkInsert_Should_MarshalResp"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "fmt",
+      "strconv",
+      "testing",
+      "time",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/mock",
+      "github.com/axieinfinity/ronin-wallet-services/internal/handlers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "github.com/axieinfinity/ronin-wallet-services/mocks/infras",
+      "github.com/axieinfinity/ronin-wallet-services/mocks/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/mocks/services",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/tests"
+    ],
+    "side_effects": [
+      "Mocks are set up to simulate interactions with repositories and services."
+    ],
+    "complexity": "medium"
+  }
+}

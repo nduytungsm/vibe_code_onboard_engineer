@@ -1,0 +1,22 @@
+{
+  "content_hash": "ff9ae9227ac8b472b8e4c140eca32eb9",
+  "timestamp": "2025-09-26T13:25:10.085089+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for products and their associated information in a discovery repository.",
+    "key_types": [
+      "ProductEntity",
+      "ProductWithStudioInfo",
+      "ProductWithExtraInfo",
+      "ProductSocialEntity",
+      "ProductSocialPlatform",
+      "WidgetItemProduct"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/lib/pq"
+    ],
+    "complexity": "medium"
+  }
+}

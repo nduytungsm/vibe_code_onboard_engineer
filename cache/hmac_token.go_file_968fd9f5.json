@@ -1,0 +1,26 @@
+{
+  "content_hash": "1a57662f849ae21088273c694f4835f3",
+  "timestamp": "2025-09-26T13:14:16.566281+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Generates an HMAC access token for HTTP requests.",
+    "key_types": [
+      "map[string]string",
+      "error"
+    ],
+    "functions": [
+      "GenerateHMACAccessToken"
+    ],
+    "imports": [
+      "fmt",
+      "net/http",
+      "strings",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/hmac"
+    ],
+    "risks": [
+      "Exposure of secret key if not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "content_hash": "d936d8f4d3d87c43ae33b9e4b236f5e7",
+  "timestamp": "2025-09-26T13:13:15.025182+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for reward-related operations in a quest system.",
+    "key_types": [
+      "ListRewardInfo",
+      "GetPoolByID",
+      "DeleteRewardPool",
+      "RejectUserReward",
+      "ApproveUserReward",
+      "QuestRewardItem",
+      "CreateQuestRewardDTO",
+      "ClaimRewardDTO",
+      "ListQuestRewardsDTO",
+      "QuestReward",
+      "UpsertQuestReward",
+      "UpsertRewardPool",
+      "EditPoolReqDTO",
+      "ListRewardPools",
+      "UpdatePoolStatusDTO",
+      "RewardExtraInfo",
+      "UpsertRewardInfo",
+      "ListFundSource",
+      "UpsertFundSource",
+      "ExpandPoolDTO",
+      "TopUpPool",
+      "GetTxHashInfo",
+      "DeleteRewardInfoDTO",
+      "EditRewardInfo"
+    ],
+    "functions": [
+      "ListRewardInfo",
+      "GetPoolByID",
+      "DeleteRewardPool",
+      "RejectUserReward",
+      "ApproveUserReward",
+      "CreateQuestRewardDTO",
+      "ClaimRewardDTO",
+      "ListQuestRewardsDTO",
+      "UpsertQuestReward",
+      "UpsertRewardPool",
+      "EditPoolReqDTO",
+      "UpdatePoolStatusDTO",
+      "UpsertRewardInfo",
+      "ListFundSource",
+      "UpsertFundSource",
+      "ExpandPoolDTO",
+      "TopUpPool",
+      "GetTxHashInfo",
+      "DeleteRewardInfoDTO",
+      "EditRewardInfo"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/jackc/pgtype",
+      "github.com/shopspring/decimal"
+    ],
+    "complexity": "medium"
+  }
+}

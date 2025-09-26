@@ -1,0 +1,144 @@
+{
+  "content_hash": "b611cd896a4175969ade5470a1d2e389",
+  "timestamp": "2025-09-26T13:41:17.12658+07:00",
+  "result": {
+    "path": "internal/infras/blockaid",
+    "purpose": "This folder/module is responsible for interacting with the BlockAid API and handling blockchain asset validation and simulation.",
+    "languages": {
+      "Go": 4
+    },
+    "key_modules": [
+      "blockaid.go",
+      "client.go",
+      "models.go",
+      "models_test.go"
+    ],
+    "dependencies": [
+      "github.com/blockaid-official/blockaid-client-go",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/samber/mo",
+      "github.com/shopspring/decimal",
+      "github.com/test-go/testify/require"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating functionality related to the BlockAid API and blockchain interactions in separate files, promoting separation of concerns and reusability.",
+    "file_summaries": {
+      "internal/infras/blockaid/blockaid.go": {
+        "language": "Go",
+        "purpose": "This file defines a configuration structure and functions to create clients for interacting with the BlockAid API.",
+        "key_types": [
+          "Config",
+          "blockaidclientgo.Client",
+          "blockaidclientgo.SiteService",
+          "blockaidclientgo.EvmService"
+        ],
+        "functions": [
+          "NewBlockAidClient",
+          "NewBlockAidSiteService",
+          "NewBlockAidEvmService"
+        ],
+        "imports": [
+          "github.com/blockaid-official/blockaid-client-go",
+          "github.com/blockaid-official/blockaid-client-go/option",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "complexity": "medium"
+      },
+      "internal/infras/blockaid/client.go": {
+        "language": "Go",
+        "purpose": "This file defines a client for interacting with a JSON-RPC API for blockchain scanning.",
+        "key_types": [
+          "Client",
+          "httpClient",
+          "Config",
+          "ScanRPCRequest",
+          "ScanRPCResponse",
+          "blockAidScanRpcRequest",
+          "blockAidMetadata",
+          "jsonRpcData",
+          "blockAidErrorResponse"
+        ],
+        "functions": [
+          "NewClient",
+          "ScanRPC"
+        ],
+        "imports": [
+          "context",
+          "net/url",
+          "strconv",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Makes HTTP requests to an external service."
+        ],
+        "risks": [
+          "Potential exposure of sensitive data in error responses.",
+          "Dependency on external service availability."
+        ],
+        "complexity": "medium"
+      },
+      "internal/infras/blockaid/models.go": {
+        "language": "Go",
+        "purpose": "Defines data structures and types for handling blockchain asset validation and simulation.",
+        "key_types": [
+          "Status",
+          "ResultType",
+          "Feature",
+          "Validation",
+          "Params",
+          "AssetDetails",
+          "ExposureSpender",
+          "AddressExposure",
+          "Trace",
+          "CustomNullDecimal",
+          "TokenID",
+          "AssetChange",
+          "AssetDiff",
+          "UsdDiff",
+          "ErrorDetails",
+          "AddressDetails",
+          "Simulation",
+          "ScanRPCResponse",
+          "ScanRPCRequest",
+          "blockAidMetadata",
+          "jsonRpcData",
+          "blockAidScanRpcRequest",
+          "blockAidErrorResponse"
+        ],
+        "functions": [
+          "UnmarshalJSON (TokenID)",
+          "String (TokenID)",
+          "UnmarshalJSON (CustomNullDecimal)"
+        ],
+        "imports": [
+          "math/big",
+          "strings",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/ethereum/go-ethereum/common/hexutil",
+          "github.com/samber/mo",
+          "github.com/shopspring/decimal",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy"
+        ],
+        "complexity": "medium"
+      },
+      "internal/infras/blockaid/models_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the TokenID UnmarshalJSON method",
+        "key_types": [
+          "TokenID",
+          "container"
+        ],
+        "functions": [
+          "TestTokenID_UnmarshalJSON"
+        ],
+        "imports": [
+          "encoding/json",
+          "testing",
+          "github.com/test-go/testify/require"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

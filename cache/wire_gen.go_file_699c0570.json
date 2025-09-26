@@ -1,0 +1,53 @@
+{
+  "content_hash": "9d9d5852fe5a4c9540aeb428c2ea4616",
+  "timestamp": "2025-09-26T12:10:44.711943+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file generates dependency injection code for a consumer application using the Wire framework.",
+    "key_types": [
+      "applications.Application",
+      "consumerConfig",
+      "repositories.UserRepo",
+      "services.CheckInWallet",
+      "metrics.Service",
+      "kafka.Consumer"
+    ],
+    "functions": [
+      "wireConsumerApp",
+      "provideConsumerApp",
+      "provideRoninLogConsumer",
+      "provideServices",
+      "provideContractsTracking",
+      "provideZapLogger",
+      "providePostgresConfig",
+      "provideCheckInWalletService",
+      "provideMetricsService",
+      "provideRedisClient"
+    ],
+    "imports": [
+      "context",
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/quest/consumers",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/sarama-kafka",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages",
+      "github.com/redis/go-redis/v9",
+      "github.com/samber/lo",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Creates and configures various services and repositories",
+      "Logs fatal errors if Redis client creation fails"
+    ],
+    "risks": [
+      "Potential for nil pointer dereference if configuration values are not properly set",
+      "Logging sensitive information if not handled properly"
+    ],
+    "complexity": "medium"
+  }
+}

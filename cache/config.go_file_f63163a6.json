@@ -1,0 +1,27 @@
+{
+  "content_hash": "de17677fefcceb9ed580760be222fa1f",
+  "timestamp": "2025-09-26T12:10:56.812139+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines the configuration structure for the device manager application.",
+    "key_types": [
+      "deviceManagerConfig",
+      "applications.ApplicationConfig",
+      "xhttp.ServerConfig",
+      "hmac.Config",
+      "metrics.Config",
+      "loggers.LoggerConfig",
+      "storages.PostgresConfig"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/applications",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/hmac",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/loggers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/metrics",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/storages"
+    ],
+    "complexity": "low"
+  }
+}

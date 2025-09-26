@@ -1,0 +1,17 @@
+{
+  "content_hash": "3cb968fdcfcedcee7167bcf042170e74",
+  "timestamp": "2025-09-26T12:27:35.820285+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data models for campaign and reward pool log entities.",
+    "key_types": [
+      "CampaignEntity",
+      "RewardPoolLogEntity"
+    ],
+    "functions": [],
+    "imports": [
+      "time"
+    ],
+    "complexity": "low"
+  }
+}

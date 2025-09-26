@@ -1,0 +1,46 @@
+{
+  "content_hash": "905ff69295b757dd632cee40c9748a25",
+  "timestamp": "2025-09-26T12:38:49.348258+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Provides utility functions for decoding and binding struct fields to environment variables using mapstructure.",
+    "key_types": [
+      "mapstructure.DecodeHookFunc",
+      "reflect.Type",
+      "viper.Viper",
+      "bytesize.ByteSize",
+      "types.WAddress"
+    ],
+    "functions": [
+      "StringToByteSizeHookFunc",
+      "BindStructPathsToEnvs",
+      "extractMapstructurePaths",
+      "getMapstructurePath",
+      "getAllEnvNamesWithPrefix",
+      "ParseSliceOfStructHookFunc",
+      "StringToTimeLocationHookFunc",
+      "StringToWrapAddressHookFunc"
+    ],
+    "imports": [
+      "fmt",
+      "os",
+      "reflect",
+      "regexp",
+      "strings",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+      "github.com/fatih/structtag",
+      "github.com/inhies/go-bytesize",
+      "github.com/mitchellh/mapstructure",
+      "github.com/spf13/viper",
+      "github.com/stoewer/go-strcase"
+    ],
+    "side_effects": [
+      "Modifies environment variable bindings based on struct fields."
+    ],
+    "risks": [
+      "Potential for incorrect environment variable binding if struct tags are misconfigured."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "content_hash": "c49bf85bab92ee81c45b18e26e911ea1",
+  "timestamp": "2025-09-26T13:24:43.261121+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a client for interacting with the CoinGecko API to retrieve information about cryptocurrencies and NFTs.",
+    "key_types": [
+      "Client",
+      "Config",
+      "clientHTTP",
+      "CoinPlatform",
+      "Coin",
+      "SimpleCoin",
+      "SimpleNFT",
+      "Platform",
+      "MarketChart",
+      "Error"
+    ],
+    "functions": [
+      "NewClient",
+      "GetPlatforms",
+      "GetCoin",
+      "GetCoinByAddress",
+      "AllCoins",
+      "GetMarketChart",
+      "AllNFTs"
+    ],
+    "imports": [
+      "context",
+      "fmt",
+      "time",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "side_effects": [
+      "Logs errors when API requests fail"
+    ],
+    "risks": [
+      "Potential exposure of sensitive data through error logging"
+    ],
+    "complexity": "medium"
+  }
+}

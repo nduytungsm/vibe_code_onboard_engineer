@@ -1,0 +1,17 @@
+{
+  "content_hash": "5fa3a5f04fb695490290dbb5a05cd299",
+  "timestamp": "2025-09-26T13:12:40.512837+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines a UserEntity struct for representing user data in the application.",
+    "key_types": [
+      "UserEntity"
+    ],
+    "functions": [],
+    "imports": [
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center"
+    ],
+    "complexity": "low"
+  }
+}

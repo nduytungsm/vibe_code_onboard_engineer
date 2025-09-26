@@ -1,0 +1,35 @@
+{
+  "content_hash": "8da67e1f01e8f765342ecc3563ba17b6",
+  "timestamp": "2025-09-26T12:34:33.460487+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a service for tracking points related to user rewards in a quest system.",
+    "key_types": [
+      "PointTrackerService",
+      "pointTrackerService",
+      "PointTrackerEntity"
+    ],
+    "functions": [
+      "NewPointTrackerService",
+      "CreatePoints",
+      "wrapErr"
+    ],
+    "imports": [
+      "context",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator"
+    ],
+    "side_effects": [
+      "Modifies points based on whether they are earned or not.",
+      "Creates a new point activity in the repository."
+    ],
+    "risks": [
+      "Potential for incorrect point tracking if the ID generation fails.",
+      "Error handling may expose internal error messages."
+    ],
+    "complexity": "medium"
+  }
+}

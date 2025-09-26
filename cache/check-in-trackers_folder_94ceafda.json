@@ -1,0 +1,53 @@
+{
+  "content_hash": "e82bf852d2d4a753b4e0756f0f7c7012",
+  "timestamp": "2025-09-26T13:33:50.097992+07:00",
+  "result": {
+    "path": "tests/services/check-in-trackers",
+    "purpose": "Unit tests for the CheckInStreak functionality in the check_in_trackers service.",
+    "languages": {
+      "Go": 1
+    },
+    "key_modules": [
+      "game_data_test.go"
+    ],
+    "dependencies": [
+      "context",
+      "testing",
+      "time",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services/check-in-trackers",
+      "github.com/axieinfinity/ronin-wallet-services/mocks/services/check-in-trackers",
+      "github.com/axieinfinity/ronin-wallet-services/tests",
+      "github.com/stretchr/testify/assert",
+      "github.com/test-go/testify/mock"
+    ],
+    "architecture": "The folder follows a test-driven development approach, focusing on unit testing the service's functionality with dependencies mocked for isolation.",
+    "file_summaries": {
+      "tests/services/check-in-trackers/game_data_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the CheckInStreak functionality in the check_in_trackers service.",
+        "key_types": [
+          "CheckInEvent",
+          "GameDataProvider",
+          "GameDataService"
+        ],
+        "functions": [
+          "Test_CheckInStreak_CurrentEqualMaxStreak",
+          "Test_CheckInStreak_BreakStreakCurrentLessThanMaxStreak",
+          "Test_CheckInStreak_BreakStreakCurrentEqualThanMaxStreak",
+          "Test_CheckInStreak_NoCheckIn"
+        ],
+        "imports": [
+          "context",
+          "testing",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/check-in-trackers",
+          "github.com/axieinfinity/ronin-wallet-services/mocks/services/check-in-trackers",
+          "github.com/axieinfinity/ronin-wallet-services/tests",
+          "github.com/stretchr/testify/assert",
+          "github.com/test-go/testify/mock"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

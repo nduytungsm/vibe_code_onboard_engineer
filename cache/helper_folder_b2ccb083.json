@@ -1,105 +1,215 @@
 {
-  "content_hash": "b17bca388380051588ee74eb0f88cbf8",
-  "timestamp": "2025-09-26T11:53:40.417308+07:00",
+  "content_hash": "9480c71599feb0cb788b2eb8fe950f02",
+  "timestamp": "2025-09-26T13:44:34.157228+07:00",
   "result": {
     "path": "pkg/helper",
-    "purpose": "This folder/module provides various helper functions and utilities for encryption, file handling, token generation, and data manipulation in a Go application.",
+    "purpose": "Provides various utility functions and helpers for data manipulation, processing, and integration with web frameworks and external services.",
     "languages": {
-      "Go": 8
+      "Go": 30
     },
     "key_modules": [
-      "aes.go",
+      "asyncq.go",
+      "big.go",
       "binder.go",
+      "bytes.go",
+      "copy.go",
+      "file.go",
       "hmac_token.go",
+      "map.go",
+      "mapstruct.go",
+      "mapstruct_hook.go",
+      "number.go",
+      "operations.go",
+      "pagination.go",
       "pointer.go",
-      "random.go",
+      "push_token.go",
       "ronin.go",
       "slice.go",
-      "tls.go"
+      "strings.go",
+      "sync.go",
+      "time.go",
+      "tls.go",
+      "type.go"
     ],
     "dependencies": [
-      "crypto/aes",
-      "crypto/cipher",
-      "crypto/rand",
-      "crypto/sha256",
-      "encoding/base64",
-      "encoding/json",
-      "io",
-      "fmt",
-      "mime/multipart",
-      "reflect",
-      "strings",
+      "github.com/hibiken/asynq",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/redis",
+      "github.com/jackc/pgtype",
+      "github.com/shopspring/decimal",
       "github.com/labstack/echo/v4",
-      "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac",
       "github.com/ethereum/go-ethereum/common",
-      "github.com/ethereum/go-ethereum/common/hexutil",
-      "github.com/ethereum/go-ethereum/crypto",
-      "crypto/tls",
-      "crypto/x509"
+      "github.com/go-playground/validator/v10",
+      "github.com/mitchellh/mapstructure",
+      "github.com/spf13/viper",
+      "github.com/samber/lo",
+      "github.com/test-go/testify/require"
     ],
-    "architecture": "The folder follows a modular architecture pattern, where each file encapsulates specific functionalities related to helper operations, promoting code reusability and separation of concerns.",
+    "architecture": "The folder follows a modular architecture pattern, organizing utility functions and helpers into separate files based on their functionality, promoting reusability and maintainability.",
     "file_summaries": {
-      "pkg/helper/aes.go": {
+      "pkg/helper/asyncq.go": {
         "language": "Go",
-        "purpose": "Provides functions for AES encryption of messages using a hashed key.",
+        "purpose": "Defines a function to create a configuration for connecting to an asynchronous queue using Redis.",
         "key_types": [
-          "string",
-          "[]byte",
-          "interface{}",
-          "error"
+          "redis.Redis",
+          "asynq.RedisConnOpt",
+          "asynq.RedisClientOpt"
         ],
         "functions": [
-          "hashKey",
-          "EncryptEAS"
+          "NewAsyncQConnectConfig"
         ],
         "imports": [
-          "crypto/aes",
-          "crypto/cipher",
-          "crypto/rand",
-          "crypto/sha256",
-          "encoding/base64",
-          "encoding/json",
-          "io"
-        ],
-        "side_effects": [
-          "Generates random initialization vector (IV) for encryption."
+          "fmt",
+          "github.com/hibiken/asynq",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/redis"
         ],
         "risks": [
-          "Potential exposure of sensitive data if the key is weak or compromised."
+          "Exposure of sensitive information due to redacted password"
+        ],
+        "complexity": "low"
+      },
+      "pkg/helper/big.go": {
+        "language": "Go",
+        "purpose": "Provides utility functions for handling big integers and numeric types, including conversions and arithmetic operations.",
+        "key_types": [
+          "big.Int",
+          "pgtype.Numeric",
+          "decimal.Decimal",
+          "big.Float"
+        ],
+        "functions": [
+          "strToBig",
+          "BigToNumeric",
+          "StrToDec",
+          "numericToBig",
+          "NumericToString",
+          "PlusNumeric",
+          "SubNumeric",
+          "ALessThanBNumeric",
+          "AEqualBNumeric",
+          "AGreaterThanB",
+          "ZeroNumeric",
+          "MulBigFloat",
+          "FormatTokenAmount",
+          "FormattedToRawAmount"
+        ],
+        "imports": [
+          "errors",
+          "math",
+          "math/big",
+          "strings",
+          "github.com/jackc/pgtype",
+          "github.com/shopspring/decimal"
+        ],
+        "risks": [
+          "Potential for nil pointer dereference in MulBigFloat if inputs are nil."
         ],
         "complexity": "medium"
       },
       "pkg/helper/binder.go": {
         "language": "Go",
-        "purpose": "This file provides helper functions for binding multipart file uploads in an Echo web framework context.",
+        "purpose": "Provides a binding utility for Echo framework to bind headers and request data.",
         "key_types": [
           "BindFunc",
-          "multipart.FileHeader"
+          "echo.Context",
+          "echo.Binder"
         ],
         "functions": [
-          "BindFunc.Bind",
-          "NewBindWithHeaders",
-          "NewBindFile",
-          "echoBindFile",
-          "getFiles"
+          "Bind",
+          "NewBindWithHeaders"
         ],
         "imports": [
+          "github.com/labstack/echo/v4"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/bytes.go": {
+        "language": "Go",
+        "purpose": "This file provides helper functions for handling file uploads and processing CSV data in a web context.",
+        "key_types": [
+          "multipart.File",
+          "bytes.Buffer",
+          "echo.Context"
+        ],
+        "functions": [
+          "OpenRequestFile",
+          "ParseFileToRecords",
+          "ParseRecordsToBytes",
+          "EmbedBytesToResponse"
+        ],
+        "imports": [
+          "bytes",
+          "encoding/csv",
           "fmt",
+          "io",
           "mime/multipart",
-          "reflect",
           "strings",
           "github.com/labstack/echo/v4"
         ],
         "side_effects": [
-          "Modifies the input struct by binding uploaded files to its fields."
+          "Modifies HTTP response headers",
+          "Writes to HTTP response body"
+        ],
+        "risks": [
+          "Potential for file upload vulnerabilities",
+          "Improper handling of CSV data may lead to injection attacks"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/copy.go": {
+        "language": "Go",
+        "purpose": "This file provides type converters for various data types using the copier library, facilitating data transformation between different formats.",
+        "key_types": [
+          "TypeConverter",
+          "pgtype.Numeric",
+          "pgtype.TextArray",
+          "common.Address"
+        ],
+        "functions": [
+          "Copy"
+        ],
+        "imports": [
+          "errors",
+          "fmt",
+          "strconv",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/jackc/pgtype",
+          "github.com/samber/lo",
+          "github.com/jinzhu/copier"
+        ],
+        "risks": [
+          "Potential errors in type conversion if input data does not match expected types."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/file.go": {
+        "language": "Go",
+        "purpose": "This file provides a function to extract user addresses from a slice of records, ensuring a minimum row count and validating the format.",
+        "key_types": [
+          "error",
+          "string",
+          "[][]string"
+        ],
+        "functions": [
+          "ExtractUserAddresses"
+        ],
+        "imports": [
+          "errors"
+        ],
+        "side_effects": [
+          "returns an error if the input format is invalid"
+        ],
+        "risks": [
+          "potential for panics if records are not properly validated"
         ],
         "complexity": "medium"
       },
       "pkg/helper/hmac_token.go": {
         "language": "Go",
-        "purpose": "Generates an HMAC access token for authentication purposes.",
+        "purpose": "Generates an HMAC access token for HTTP requests.",
         "key_types": [
-          "string",
+          "map[string]string",
           "error"
         ],
         "functions": [
@@ -107,79 +217,363 @@
         ],
         "imports": [
           "fmt",
+          "net/http",
           "strings",
-          "github.com/axieinfinity/ronin-wallet-manager/pkg/crypto/hmac"
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/hmac"
+        ],
+        "risks": [
+          "Potential exposure of the secret key if not handled properly."
         ],
         "complexity": "medium"
       },
-      "pkg/helper/pointer.go": {
+      "pkg/helper/map.go": {
         "language": "Go",
-        "purpose": "Defines a generic function to create a pointer to a value of any type.",
+        "purpose": "Provides utility functions for manipulating maps and extracting values.",
+        "key_types": [
+          "map",
+          "interface{}",
+          "string",
+          "int",
+          "float64",
+          "bool"
+        ],
+        "functions": [
+          "MapToKeys",
+          "MapValOrNil",
+          "MapNonEmptyVal",
+          "MergeMap",
+          "MergeSliceMap"
+        ],
+        "imports": [
+          "fmt",
+          "strconv",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/mapstruct.go": {
+        "language": "Go",
+        "purpose": "This file provides a function to decode a map into a struct and validate it using the validator package.",
+        "key_types": [
+          "T",
+          "map[string]any"
+        ],
+        "functions": [
+          "DecodeStructAndValidate"
+        ],
+        "imports": [
+          "github.com/go-playground/validator/v10",
+          "github.com/mitchellh/mapstructure"
+        ],
+        "side_effects": [
+          "Validates the struct after decoding, which may affect the state of the struct if validation fails."
+        ],
+        "risks": [
+          "Potential for panics if the input data does not match the expected structure."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/mapstruct_hook.go": {
+        "language": "Go",
+        "purpose": "This file provides utility functions for decoding and binding struct fields to environment variables using mapstructure.",
+        "key_types": [
+          "mapstructure.DecodeHookFunc",
+          "reflect.Type",
+          "viper.Viper",
+          "bytesize.ByteSize",
+          "types.WAddress"
+        ],
+        "functions": [
+          "StringToByteSizeHookFunc",
+          "BindStructPathsToEnvs",
+          "extractMapstructurePaths",
+          "getMapstructurePath",
+          "getAllEnvNamesWithPrefix",
+          "ParseSliceOfStructHookFunc",
+          "StringToTimeLocationHookFunc",
+          "StringToWrapAddressHookFunc"
+        ],
+        "imports": [
+          "fmt",
+          "os",
+          "reflect",
+          "regexp",
+          "strings",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+          "github.com/fatih/structtag",
+          "github.com/inhies/go-bytesize",
+          "github.com/mitchellh/mapstructure",
+          "github.com/spf13/viper",
+          "github.com/stoewer/go-strcase"
+        ],
+        "side_effects": [
+          "Modifies the state of the viper instance by binding environment variables."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/mapstruct_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for decoding a struct and validating its fields",
+        "key_types": [
+          "testStruct"
+        ],
+        "functions": [
+          "TestDecodeStructAndValidate"
+        ],
+        "imports": [
+          "testing",
+          "github.com/test-go/testify/require"
+        ],
+        "side_effects": [
+          "Error handling for invalid input"
+        ],
+        "risks": [
+          "Potential for panic if DecodeStructAndValidate is not implemented correctly"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/number.go": {
+        "language": "Go",
+        "purpose": "Provides utility functions for parsing integers and floats, type assignment, and converting hexadecimal strings to big integers.",
+        "key_types": [
+          "int64",
+          "float64",
+          "uint64",
+          "uint8",
+          "big.Int"
+        ],
+        "functions": [
+          "ParseInt64",
+          "ParseFloat64",
+          "MustTypeAssign",
+          "HexToBig"
+        ],
+        "imports": [
+          "fmt",
+          "math/big",
+          "strconv",
+          "strings",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/operations.go": {
+        "language": "Go",
+        "purpose": "Provides a generic ternary function to return one of two values based on a condition.",
         "key_types": [
           "T"
         ],
         "functions": [
-          "NewPointer"
+          "Ternary"
         ],
         "imports": [],
         "complexity": "low"
       },
-      "pkg/helper/random.go": {
+      "pkg/helper/pagination.go": {
         "language": "Go",
-        "purpose": "Generates a random string of specified length using alphanumeric characters.",
+        "purpose": "Provides pagination helper functions for calculating offsets and limits.",
         "key_types": [
-          "rune",
-          "big.Int"
+          "int64",
+          "T"
         ],
         "functions": [
-          "RandStr"
+          "CalOffsetLimit",
+          "FallbackPage",
+          "FallbackPageSize",
+          "enforceLimitBound",
+          "LimitPerItem"
+        ],
+        "imports": [],
+        "complexity": "medium"
+      },
+      "pkg/helper/pointer.go": {
+        "language": "Go",
+        "purpose": "Provides utility functions for working with pointers and default values.",
+        "key_types": [
+          "T"
+        ],
+        "functions": [
+          "NewPointer",
+          "UnwrapOrDefault"
+        ],
+        "imports": [],
+        "complexity": "low"
+      },
+      "pkg/helper/push_token.go": {
+        "language": "Go",
+        "purpose": "This file provides helper functions to hide sensitive tokens.",
+        "key_types": [
+          "string",
+          "[]string"
+        ],
+        "functions": [
+          "HideToken",
+          "HideTokens"
         ],
         "imports": [
-          "crypto/rand",
-          "math/big"
+          "fmt",
+          "strings"
+        ],
+        "risks": [
+          "Potential exposure of sensitive token data if not properly handled."
         ],
         "complexity": "medium"
       },
       "pkg/helper/ronin.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for normalizing Ethereum addresses, hashing messages, and validating signatures.",
+        "purpose": "Provides utility functions for Ethereum address normalization, message hashing, signature validation, and transaction hash validation.",
         "key_types": [
           "string",
-          "common.Hash"
+          "common.Hash",
+          "validator.FieldLevel"
         ],
         "functions": [
           "NormalizeAddress",
           "HashMessage",
-          "IsValidSignature"
+          "IsValidSignature",
+          "IsValidSignatureV2",
+          "IsValidTxHash",
+          "NormalizeTxHash",
+          "IsRONToken",
+          "IsAddressValid",
+          "HideAddress",
+          "HideAddresses"
         ],
         "imports": [
           "fmt",
+          "reflect",
+          "regexp",
           "strings",
           "github.com/ethereum/go-ethereum/common",
           "github.com/ethereum/go-ethereum/common/hexutil",
-          "github.com/ethereum/go-ethereum/crypto"
+          "github.com/ethereum/go-ethereum/crypto",
+          "github.com/go-playground/validator/v10"
         ],
         "risks": [
-          "Potential for signature forgery if not properly validated."
+          "Potential for incorrect address normalization leading to security issues.",
+          "Improper handling of signature verification could lead to unauthorized access."
         ],
         "complexity": "medium"
       },
       "pkg/helper/slice.go": {
         "language": "Go",
-        "purpose": "Provides utility functions for manipulating slices, including filtering, finding index, converting slices to maps, and mapping elements.",
+        "purpose": "Provides utility functions for manipulating slices, including filtering, mapping, and chunking.",
         "key_types": [
           "T",
           "T1",
-          "T2"
+          "T2",
+          "Key",
+          "Value"
         ],
         "functions": [
           "Filter",
           "IndexOf",
           "SliceToMap",
-          "Map"
+          "SliceToMapSlice",
+          "Map",
+          "ItemInSlice",
+          "RemoveDuplicated",
+          "SliceToAggMap",
+          "SliceChunk",
+          "NewEmptySliceOf",
+          "IsSlice"
         ],
-        "imports": [],
+        "imports": [
+          "reflect"
+        ],
         "complexity": "medium"
+      },
+      "pkg/helper/slice_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for the SliceChunk function to validate its behavior with different input slices.",
+        "key_types": [
+          "input",
+          "output",
+          "args",
+          "testCase"
+        ],
+        "functions": [
+          "TestSliceChunk"
+        ],
+        "imports": [
+          "testing"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/strings.go": {
+        "language": "Go",
+        "purpose": "Provides utility functions for string manipulation, fallback values, and type-safe value extraction.",
+        "key_types": [
+          "SupportedValExtractType"
+        ],
+        "functions": [
+          "EllipticalTruncate",
+          "FallbackNilString",
+          "FallbackNilInt64",
+          "FallbackNilBool",
+          "FallbackNil",
+          "Capitalize",
+          "ValOrNil",
+          "IsValidURL",
+          "SafePlusPointers"
+        ],
+        "imports": [
+          "regexp",
+          "strconv",
+          "strings",
+          "time",
+          "unicode",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/sync.go": {
+        "language": "Go",
+        "purpose": "Provides helper functions for concurrent processing of slices with error handling.",
+        "key_types": [
+          "sync.WaitGroup",
+          "mo.Result",
+          "func"
+        ],
+        "functions": [
+          "SliceRoutine",
+          "Routine",
+          "AggResult",
+          "AggToSlice",
+          "AggSliceResult",
+          "SliceAggregator",
+          "IdentityMapper"
+        ],
+        "imports": [
+          "sync",
+          "github.com/samber/mo"
+        ],
+        "side_effects": [
+          "Concurrent execution of functions using goroutines."
+        ],
+        "risks": [
+          "Potential race conditions if shared data is not handled properly."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/time.go": {
+        "language": "Go",
+        "purpose": "Provides helper functions for working with time and timestamps.",
+        "key_types": [
+          "time.Time",
+          "int64"
+        ],
+        "functions": [
+          "NewCurrentTime",
+          "NewCurrentEpoch",
+          "NewZeroTime"
+        ],
+        "imports": [
+          "time"
+        ],
+        "complexity": "low"
       },
       "pkg/helper/tls.go": {
         "language": "Go",
@@ -195,6 +589,23 @@
         "imports": [
           "crypto/tls",
           "crypto/x509"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/helper/type.go": {
+        "language": "Go",
+        "purpose": "This file defines a generic Set data structure with methods to add, remove, and retrieve items.",
+        "key_types": [
+          "Set[T]"
+        ],
+        "functions": [
+          "NewSet[T]",
+          "Add(items ...T)",
+          "Remove(item T)",
+          "Items()"
+        ],
+        "imports": [
+          "github.com/samber/lo"
         ],
         "complexity": "medium"
       }

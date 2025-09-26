@@ -1,0 +1,182 @@
+{
+  "content_hash": "2102f7f8171bc4bf3e930da746f0a17b",
+  "timestamp": "2025-09-26T13:32:02.565276+07:00",
+  "result": {
+    "path": "internal/domains/quest/handlers",
+    "purpose": "This folder/module is responsible for defining HTTP handlers for various operations related to quests, events, users, pools, rewards, and shops in a web application.",
+    "languages": {
+      "Go": 8
+    },
+    "key_modules": [
+      "events.go",
+      "generics.go",
+      "pools.go",
+      "quest.go",
+      "quest_action.go",
+      "reward.go",
+      "shop.go",
+      "user.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, where each file defines specific handlers for different aspects of the quest system, promoting separation of concerns and reusability.",
+    "file_summaries": {
+      "internal/domains/quest/handlers/events.go": {
+        "language": "Go",
+        "purpose": "This file defines event handlers for managing events and user events in a web application.",
+        "key_types": [
+          "EventHandler",
+          "InternalEventHandler"
+        ],
+        "functions": [
+          "NewEventHandler",
+          "NewInternalEventHandler",
+          "Setup"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/quest/handlers/generics.go": {
+        "language": "Go",
+        "purpose": "Defines HTTP handlers for managing sponsors and user quests.",
+        "key_types": [
+          "InternalGenericsHandler",
+          "GenericsHandler"
+        ],
+        "functions": [
+          "NewInternalGenericsHandler",
+          "NewGenericsHandler",
+          "Setup"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Modifies HTTP routes for sponsor and user quest management."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/quest/handlers/pools.go": {
+        "language": "Go",
+        "purpose": "Defines handlers for managing pools in a quest system, including public and internal routes.",
+        "key_types": [
+          "PoolHandler",
+          "InternalPoolHandler"
+        ],
+        "functions": [
+          "NewPoolHandler",
+          "NewInternalPoolHandler",
+          "Setup"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/quest/handlers/quest.go": {
+        "language": "Go",
+        "purpose": "Defines HTTP handlers for quest-related operations in a web service.",
+        "key_types": [
+          "InternalQuestHandler",
+          "QuestHandler"
+        ],
+        "functions": [
+          "NewInternalQuestHandler",
+          "NewQuestHandler",
+          "Setup"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/quest/handlers/quest_action.go": {
+        "language": "Go",
+        "purpose": "Defines HTTP handlers for quest actions in a web service.",
+        "key_types": [
+          "InternalActionHandler",
+          "ActionHandler"
+        ],
+        "functions": [
+          "NewInternalActionHandler",
+          "NewActionHandler",
+          "Setup"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/quest/handlers/reward.go": {
+        "language": "Go",
+        "purpose": "Defines handlers for managing rewards in a quest system.",
+        "key_types": [
+          "InternalRewardHandler",
+          "QuestRewardHandler"
+        ],
+        "functions": [
+          "NewInternalRewardHandler",
+          "NewRewardHandler",
+          "Setup"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/quest/handlers/shop.go": {
+        "language": "Go",
+        "purpose": "Handles shop-related routes and operations for an internal shop system.",
+        "key_types": [
+          "InternalShopHandler",
+          "ShopHandler",
+          "routers.Shop"
+        ],
+        "functions": [
+          "NewInternalShopHandler",
+          "NewShopHandler",
+          "Setup",
+          "setupCategoryRoutes",
+          "setupTierRoutes",
+          "setupItemRoutes"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Modifies HTTP routes for shop categories, tiers, and items."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/quest/handlers/user.go": {
+        "language": "Go",
+        "purpose": "Defines handlers for user-related operations in a quest system.",
+        "key_types": [
+          "InternalUserHandler",
+          "PublicUserHandler"
+        ],
+        "functions": [
+          "NewInternalUserHandler",
+          "NewPublicUserHandler",
+          "Setup"
+        ],
+        "imports": [
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

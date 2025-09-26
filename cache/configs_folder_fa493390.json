@@ -1,0 +1,113 @@
+{
+  "content_hash": "6e764348288f5c805b70d553564b94b0",
+  "timestamp": "2025-09-26T13:32:46.900615+07:00",
+  "result": {
+    "path": "pkg/configs",
+    "purpose": "This folder/module is responsible for managing configuration files, including loading, parsing, and ensuring sensitive data is handled securely.",
+    "languages": {
+      "Go": 3
+    },
+    "key_modules": [
+      "configs.go",
+      "func_print.go",
+      "func_print_test.go"
+    ],
+    "dependencies": [
+      "github.com/mitchellh/mapstructure",
+      "github.com/spf13/pflag",
+      "github.com/spf13/viper",
+      "go.uber.org/zap"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, encapsulating configuration management and sensitive data handling in separate files, promoting separation of concerns.",
+    "file_summaries": {
+      "pkg/configs/configs.go": {
+        "language": "Go",
+        "purpose": "This file defines a function to load and parse configuration files into a specified struct type.",
+        "key_types": [
+          "T",
+          "viper.Viper"
+        ],
+        "functions": [
+          "NewConfig"
+        ],
+        "imports": [
+          "bytes",
+          "flag",
+          "fmt",
+          "log",
+          "os",
+          "path/filepath",
+          "strings",
+          "github.com/mitchellh/mapstructure",
+          "github.com/spf13/pflag",
+          "github.com/spf13/viper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Modifies global viper configuration",
+          "Reads from the filesystem"
+        ],
+        "risks": [
+          "Potential for file read errors",
+          "Possible panic if binding fails"
+        ],
+        "complexity": "medium"
+      },
+      "pkg/configs/func_print.go": {
+        "language": "Go",
+        "purpose": "This file contains functions to hide sensitive data in configurations, particularly focusing on secret fields.",
+        "key_types": [
+          "struct",
+          "interface",
+          "reflect.Value",
+          "zap.SugaredLogger"
+        ],
+        "functions": [
+          "isSecretField",
+          "hideSecret",
+          "hideSensitiveDataInSlice",
+          "hideSensitiveDataInMap",
+          "hideSensitiveDataInStruct",
+          "PrintConfigSafety"
+        ],
+        "imports": [
+          "reflect",
+          "strings",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Modifies the input data by hiding sensitive information."
+        ],
+        "risks": [
+          "Potential exposure of sensitive data if the hiding logic is bypassed or fails."
+        ],
+        "complexity": "medium"
+      },
+      "pkg/configs/func_print_test.go": {
+        "language": "Go",
+        "purpose": "Unit tests for functions that hide sensitive data in maps and slices.",
+        "key_types": [
+          "struct",
+          "map",
+          "slice"
+        ],
+        "functions": [
+          "TestHideSecretInMap",
+          "TestHideSecretInSlice"
+        ],
+        "imports": [
+          "fmt",
+          "testing"
+        ],
+        "side_effects": [
+          "Modifies sensitive data in provided maps and slices."
+        ],
+        "risks": [
+          "Potential exposure of sensitive data if tests are not properly secured."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

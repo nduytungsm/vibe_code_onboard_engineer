@@ -1,0 +1,43 @@
+{
+  "content_hash": "c5c770a8a404255e28db5bfb7b0116c5",
+  "timestamp": "2025-09-26T13:24:53.72478+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements a client for interacting with the Moralis Solana API, providing methods to retrieve balances, NFT items, and token prices.",
+    "key_types": [
+      "pathConfig",
+      "Client",
+      "Config",
+      "client",
+      "getRequestParams",
+      "postRequestParams"
+    ],
+    "functions": [
+      "NewClient",
+      "GetSolBalance",
+      "GetSplBalance",
+      "GetNftItems",
+      "GetMultipleTokenPrices",
+      "sendGetRequest",
+      "sendPostRequest"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+      "github.com/samber/lo",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Makes HTTP requests to external API endpoints"
+    ],
+    "risks": [
+      "Potential for nil pointer dereference if API responses are not handled correctly",
+      "Error handling may expose sensitive information in error messages"
+    ],
+    "complexity": "medium"
+  }
+}

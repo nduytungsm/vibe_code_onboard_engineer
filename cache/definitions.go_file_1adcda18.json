@@ -1,0 +1,30 @@
+{
+  "content_hash": "6c1b86735bed70e499065b42bf39a524",
+  "timestamp": "2025-09-26T13:26:12.511534+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines error constants and a function for error handling in the context of quest management.",
+    "key_types": [
+      "error",
+      "string",
+      "int"
+    ],
+    "functions": [
+      "wrapError"
+    ],
+    "imports": [
+      "errors",
+      "fmt",
+      "runtime",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+      "go.uber.org/zap"
+    ],
+    "side_effects": [
+      "Logs errors using a logger"
+    ],
+    "risks": [
+      "Potential for unhandled errors if not properly logged or managed"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "content_hash": "e8c63313ea9e41af58ab84690ce2afac",
+  "timestamp": "2025-09-26T12:16:51.38774+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file implements middleware for authentication and authorization in a web application using the Echo framework.",
+    "key_types": [
+      "AuthorizeMdw",
+      "OperatorInfo"
+    ],
+    "functions": [
+      "AuthenMdw",
+      "ProvideOperatorAuth",
+      "SetCtxAuthInfo",
+      "GetCtxAuthInfo"
+    ],
+    "imports": [
+      "errors",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/labstack/echo/v4"
+    ],
+    "side_effects": [
+      "Sets authentication information in the context of the Echo framework."
+    ],
+    "risks": [
+      "Potential for unauthorized access if the authentication service is compromised."
+    ],
+    "complexity": "medium"
+  }
+}

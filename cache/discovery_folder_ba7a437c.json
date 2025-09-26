@@ -1,0 +1,158 @@
+{
+  "content_hash": "2d03d25077ec2c174860ccdafc1fd296",
+  "timestamp": "2025-09-26T13:38:39.27687+07:00",
+  "result": {
+    "path": "internal/routers/dtos/enums/discovery",
+    "purpose": "Defines various enums and types related to discovery services, including announcement types, event categories, home banner statuses, layout properties, and product classifications.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "announcement.go",
+      "event.go",
+      "generics.go",
+      "layout.go",
+      "product.go"
+    ],
+    "dependencies": [
+      "encoding/json",
+      "database/sql/driver",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/samber/lo"
+    ],
+    "architecture": "The folder follows a modular architecture pattern, organizing related enums and types into separate files for clarity and maintainability, with a focus on serialization and deserialization methods.",
+    "file_summaries": {
+      "internal/routers/dtos/enums/discovery/annoucement.go": {
+        "language": "Go",
+        "purpose": "Defines enums for announcement types and statuses, including methods for JSON marshaling and unmarshaling.",
+        "key_types": [
+          "AnnouncementType",
+          "AnnouncementStatus"
+        ],
+        "functions": [
+          "String",
+          "AnnouncementTypeFromString",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "AnnouncementStatusFromString",
+          "MarshalText",
+          "UnmarshalText"
+        ],
+        "imports": [
+          "encoding/json",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/discovery/event.go": {
+        "language": "Go",
+        "purpose": "Defines event types and categories for a discovery service, including serialization and deserialization methods.",
+        "key_types": [
+          "EventType",
+          "EventCategory"
+        ],
+        "functions": [
+          "EventTypeFromStr",
+          "String",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "Value",
+          "Scan",
+          "EventCategoryFromStr"
+        ],
+        "imports": [
+          "database/sql/driver",
+          "encoding/json",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/discovery/generics.go": {
+        "language": "Go",
+        "purpose": "Defines an enumeration for home banner statuses and provides methods for conversion and JSON handling.",
+        "key_types": [
+          "HomeBannerStatus"
+        ],
+        "functions": [
+          "HomeBannerStatusFromStr",
+          "String",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "UnmarshalText",
+          "Value",
+          "Scan"
+        ],
+        "imports": [
+          "database/sql/driver",
+          "encoding/json",
+          "errors",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/samber/lo"
+        ],
+        "side_effects": [
+          "Errors may be returned during JSON unmarshalling or text unmarshalling if invalid values are provided."
+        ],
+        "risks": [
+          "Potential for invalid home banner values leading to errors."
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/discovery/layout.go": {
+        "language": "Go",
+        "purpose": "Defines enums and types related to discovery layouts and their properties.",
+        "key_types": [
+          "ProductName",
+          "WidgetItemType",
+          "DisplayStyle",
+          "CustomItemOrder",
+          "LayoutService"
+        ],
+        "functions": [
+          "String()",
+          "ProductNameFromString(s string)",
+          "MarshalJSON()",
+          "UnmarshalJSON(b []byte)",
+          "IsValid()",
+          "DynamicItems()",
+          "ToProductType()",
+          "LayoutServiceFromStr(str string)"
+        ],
+        "imports": [
+          "database/sql/driver",
+          "encoding/json",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/samber/lo"
+        ],
+        "complexity": "medium"
+      },
+      "internal/routers/dtos/enums/discovery/product.go": {
+        "language": "Go",
+        "purpose": "Defines enums for verified levels, preview directions, product types, and game platforms with associated methods for conversion and validation.",
+        "key_types": [
+          "VerifiedLevel",
+          "PreviewDirection",
+          "ProductType",
+          "GamePlatform"
+        ],
+        "functions": [
+          "String",
+          "VerifiedLevelFromString",
+          "MarshalJSON",
+          "UnmarshalJSON",
+          "PreviewDirectionFromString",
+          "ProductTypeFromString",
+          "GamePlatformFromString",
+          "IsValid",
+          "StringsFromProductTypes",
+          "StringsFromGamePlatforms"
+        ],
+        "imports": [
+          "encoding/json",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

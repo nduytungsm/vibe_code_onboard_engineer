@@ -1,0 +1,199 @@
+{
+  "content_hash": "47169e29a5014d94ef7a81131df15922",
+  "timestamp": "2025-09-26T13:31:57.795782+07:00",
+  "result": {
+    "path": "internal/domains/manager/repos",
+    "purpose": "This folder contains repositories responsible for managing various entities related to application versions, mandatory updates, notifications, and operators in a database using GORM.",
+    "languages": {
+      "Go": 5
+    },
+    "key_modules": [
+      "app_version.go",
+      "mandatory_update.go",
+      "noti.go",
+      "operator.go",
+      "helpers.go"
+    ],
+    "dependencies": [
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums"
+    ],
+    "architecture": "The folder follows a repository pattern, encapsulating database access logic for different entities and providing a clean interface for data operations.",
+    "file_summaries": {
+      "internal/domains/manager/repos/app_version.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing application versions, including creating, deleting, and retrieving version information.",
+        "key_types": [
+          "appVersionRepo",
+          "AppVersionRepo",
+          "models.VersionEntity",
+          "enums.CliPlatform",
+          "models.HistoryEntity"
+        ],
+        "functions": [
+          "NewAppVersionRepo",
+          "NewTx",
+          "Create",
+          "Delete",
+          "FindVersion",
+          "GetSuccessorVersions",
+          "PublishVersion",
+          "CreateHistory",
+          "List"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Database transactions are performed which may modify the state of the database."
+        ],
+        "risks": [
+          "Potential SQL injection if inputs are not properly sanitized.",
+          "Concurrency issues if transactions are not managed correctly."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/manager/repos/helpers.go": {
+        "language": "Go",
+        "purpose": "This file contains helper functions for managing database transactions using GORM in a context.",
+        "key_types": [
+          "context.Context",
+          "gorm.DB"
+        ],
+        "functions": [
+          "bindTx",
+          "txFromContext"
+        ],
+        "imports": [
+          "context",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Modifies context by adding a transaction object."
+        ],
+        "risks": [
+          "Potential for nil pointer dereference if context does not contain a transaction."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/manager/repos/mandatory_update.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository for managing mandatory updates in a database using GORM.",
+        "key_types": [
+          "mandatoryUpdateRepo",
+          "MandatoryUpdateRepo",
+          "context.Context",
+          "models.MandatoryUpdateEntity",
+          "enums.CliPlatform"
+        ],
+        "functions": [
+          "NewMandatoryUpdateRepo",
+          "NewTx",
+          "Create",
+          "DeleteAll",
+          "Find",
+          "Delete",
+          "Exists"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Database transactions may modify the state of the database."
+        ],
+        "risks": [
+          "Potential SQL injection if input is not properly sanitized."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/manager/repos/noti.go": {
+        "language": "Go",
+        "purpose": "This file defines a repository interface and its implementation for managing notifications and whitelists in a database.",
+        "key_types": [
+          "NotiRepo",
+          "notiRepo",
+          "NotificationListingItem",
+          "NotificationEntity",
+          "NotiWhitelistEntity",
+          "HistoryEntity",
+          "ListNotiFilter",
+          "NotiWhitelistCount",
+          "Preference"
+        ],
+        "functions": [
+          "NewNotiRepo",
+          "FindActiveNoti",
+          "UpsertNoti",
+          "WhitelistNoti",
+          "HardDeleteWhitelist",
+          "FindActiveWhitelists",
+          "CreateHistory",
+          "NewTx",
+          "ListNoti",
+          "CountWhitelist",
+          "FindUserWhitelists",
+          "FindUserPreference",
+          "CountReceiveNewsDevices"
+        ],
+        "imports": [
+          "context",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
+          "gorm.io/gorm",
+          "gorm.io/gorm/clause"
+        ],
+        "side_effects": [
+          "Database operations such as create, read, update, and delete on notifications and whitelists."
+        ],
+        "risks": [
+          "Potential SQL injection if user inputs are not properly sanitized.",
+          "Data integrity issues if transactions are not handled correctly."
+        ],
+        "complexity": "medium"
+      },
+      "internal/domains/manager/repos/operator.go": {
+        "language": "Go",
+        "purpose": "Defines an interface and implementation for managing operator entities in a database.",
+        "key_types": [
+          "OperatorRepo",
+          "operatorRepo",
+          "context.Context",
+          "gorm.DB",
+          "models.OperatorEntity",
+          "models.HistoryEntity"
+        ],
+        "functions": [
+          "NewOperatorRepo",
+          "NewTx",
+          "FindActive",
+          "CreateHistory",
+          "Create",
+          "Delete",
+          "List"
+        ],
+        "imports": [
+          "context",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/manager/models",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Database transactions",
+          "Modifications to the database state"
+        ],
+        "risks": [
+          "Potential SQL injection if inputs are not properly sanitized",
+          "Transaction management issues if not handled correctly"
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

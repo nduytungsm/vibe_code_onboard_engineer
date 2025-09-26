@@ -1,0 +1,34 @@
+{
+  "content_hash": "26d5da3614eb533acd6134595f543702",
+  "timestamp": "2025-09-26T13:25:41.081078+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an enumeration for home banner statuses and provides methods for conversion and JSON handling.",
+    "key_types": [
+      "HomeBannerStatus"
+    ],
+    "functions": [
+      "HomeBannerStatusFromStr",
+      "String",
+      "MarshalJSON",
+      "UnmarshalJSON",
+      "UnmarshalText",
+      "Value",
+      "Scan"
+    ],
+    "imports": [
+      "database/sql/driver",
+      "encoding/json",
+      "errors",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+      "github.com/samber/lo"
+    ],
+    "side_effects": [
+      "Errors may be returned during JSON unmarshalling or text unmarshalling if invalid values are provided."
+    ],
+    "risks": [
+      "Potential for invalid home banner values leading to errors."
+    ],
+    "complexity": "medium"
+  }
+}

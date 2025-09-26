@@ -1,0 +1,518 @@
+{
+  "content_hash": "1638c9fa74651dd59f3e878540338978",
+  "timestamp": "2025-09-26T13:39:52.32132+07:00",
+  "result": {
+    "path": "internal/services/quest-verifiers",
+    "purpose": "This folder/module is responsible for verifying user actions related to quests in a gaming application, including streaks, NFT purchases, Discord interactions, game registrations, staking, and on-chain activities.",
+    "languages": {
+      "Go": 15
+    },
+    "key_modules": [
+      "atia_blessing_verifier.go",
+      "buy_nft_verifier.go",
+      "discord_verifier.go",
+      "game_verifier.go",
+      "helpers.go",
+      "quest_verifiers.go",
+      "staking.go",
+      "staking_verifier.go",
+      "verifier_http.go",
+      "verifier_onchain.go",
+      "verifier_pixel_fest.go",
+      "wallet_checkin_verifier.go",
+      "x_verifier.go"
+    ],
+    "dependencies": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+      "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/redis/go-redis/v9",
+      "gorm.io/gorm",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/google/wire",
+      "github.com/shopspring/decimal",
+      "github.com/mitchellh/mapstructure",
+      "github.com/samber/lo",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/encrypt",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "architecture": "The folder follows a service-oriented architecture pattern, where each file represents a specific verifier service handling different aspects of quest verification, utilizing various external dependencies for functionality.",
+    "file_summaries": {
+      "internal/services/quest-verifiers/atia_blessing_verifier.go": {
+        "language": "Go",
+        "purpose": "This file contains a service for verifying user quest streaks in a gaming application.",
+        "key_types": [
+          "questVerifier",
+          "VerifyActionParams",
+          "models.WalletCheckInLogEntity"
+        ],
+        "functions": [
+          "verifyAtiaStreakProxy",
+          "updateActivityAtiaState",
+          "findExternalAndUpdateAtiaStreak",
+          "processRestoreStreakTxns"
+        ],
+        "imports": [
+          "context",
+          "strings",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
+        ],
+        "side_effects": [
+          "Database queries to find and update user check-in records.",
+          "Modifications to user quest status based on streak calculations."
+        ],
+        "risks": [
+          "Potential for SQL injection if user input is not properly sanitized.",
+          "Error handling may expose sensitive information if not managed correctly."
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/buy_nft_verifier.go": {
+        "language": "Go",
+        "purpose": "This file contains a verifier for buying NFTs, specifically for verifying actions related to purchasing Axies.",
+        "key_types": [
+          "questVerifier",
+          "VerifyActionParams",
+          "enums.NFTItem",
+          "models.QueryBoughtHistoryParams"
+        ],
+        "functions": [
+          "verifyBuyAxieProxy",
+          "findCollectionAddress",
+          "findTotalPurchased"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/ethereum/go-ethereum/common"
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/discord_verifier.go": {
+        "language": "Go",
+        "purpose": "This file contains a service for verifying Discord user actions related to quests.",
+        "key_types": [
+          "questVerifier",
+          "VerifyActionParams",
+          "discord.UserSession",
+          "models.ParticipantDiscordActionEntity"
+        ],
+        "functions": [
+          "verifyJoinProxy",
+          "findDiscordUserCache",
+          "discordAccountUsed",
+          "markDiscordAccountUsed"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "errors",
+          "strconv",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/discord",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/redis/go-redis/v9",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Interacts with Redis to retrieve user credentials.",
+          "Logs errors when operations fail."
+        ],
+        "risks": [
+          "Potential exposure of sensitive user data if errors are not handled properly.",
+          "Improper handling of Discord user IDs could lead to unauthorized access."
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/game_verifier.go": {
+        "language": "Go",
+        "purpose": "This file contains functions for verifying game registrations and user actions related to quests.",
+        "key_types": [
+          "questVerifier",
+          "VerifyActionParams",
+          "models.GameRegistrationEntity",
+          "models.QueryGameParams",
+          "models.WalletCheckInLogEntity"
+        ],
+        "functions": [
+          "verifyRegisterProxy",
+          "verifyNotRegisteredProxy",
+          "verifyNotRegisteredPreQuest",
+          "findGameRegister",
+          "findGameRegisterExternal",
+          "verifyGameProxy",
+          "findGameMatch",
+          "verifyGameLoginProxy",
+          "findExternalAndUpdateStreak"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models"
+        ],
+        "side_effects": [
+          "Logs user registration status",
+          "Updates game registration in the database"
+        ],
+        "risks": [
+          "Potential for database errors",
+          "Handling of user data may expose sensitive information if not managed properly"
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/helpers.go": {
+        "language": "Go",
+        "purpose": "This file contains helper functions for verifying quests and managing user actions related to quests.",
+        "key_types": [
+          "VerifyActionParams",
+          "UserAction",
+          "WalletCheckInLogEntity",
+          "ActionPlatform"
+        ],
+        "functions": [
+          "updateActivityState",
+          "findCheckInInternal",
+          "isXEqualToY",
+          "FindStreak",
+          "isInValidTimeRange",
+          "roundDownLastCheckInAt",
+          "updateProgress",
+          "platformCacheKey",
+          "encryptToken",
+          "decryptToken"
+        ],
+        "imports": [
+          "context",
+          "crypto/sha256",
+          "errors",
+          "fmt",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/crypto/encrypt",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Modifies user action status based on quest progress",
+          "Handles encryption and decryption of tokens"
+        ],
+        "risks": [
+          "Potential for incorrect handling of user quest states",
+          "Error handling may expose sensitive information in logs"
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/quest_verifiers.go": {
+        "language": "Go",
+        "purpose": "This file defines a quest verification service that handles user quest activities and caching of credentials.",
+        "key_types": [
+          "PDistributionInfo",
+          "XVerifyCredentials",
+          "DiscordVerifyCredentials",
+          "QuestVerifier",
+          "VerifyActionParams",
+          "questVerifier",
+          "QuestVerifierConfig"
+        ],
+        "functions": [
+          "NewQuestVerifier",
+          "CacheXCredentials",
+          "CacheDiscordCredentials",
+          "VerifyActivity",
+          "wrapWithRoutine",
+          "withRoutine",
+          "wrapErr"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "errors",
+          "fmt",
+          "runtime",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/id-generator",
+          "github.com/google/wire",
+          "github.com/hibiken/asynq",
+          "github.com/redis/go-redis/v9",
+          "github.com/shopspring/decimal",
+          "go.uber.org/zap",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/x",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/discord",
+          "github.com/axieinfinity/ronin-wallet-services/internal/services/quest-center",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper"
+        ],
+        "side_effects": [
+          "Logs errors when operations fail",
+          "Caches user credentials in Redis"
+        ],
+        "risks": [
+          "Potential exposure of sensitive user data if error handling is not secure",
+          "Dependency on external services (e.g., Discord, X) may lead to failures if those services are down"
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/staking.go": {
+        "language": "Go",
+        "purpose": "Provides a service to retrieve the amount of Ron staked for a given address.",
+        "key_types": [
+          "StakingService",
+          "stakingService",
+          "decimal.Decimal"
+        ],
+        "functions": [
+          "NewStakingService",
+          "GetRonStaked"
+        ],
+        "imports": [
+          "context",
+          "github.com/shopspring/decimal",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/indexer"
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/staking_verifier.go": {
+        "language": "Go",
+        "purpose": "This file contains functions for verifying staking actions in a quest system.",
+        "key_types": [
+          "RonStakedAction",
+          "VerifyActionParams",
+          "WAddress"
+        ],
+        "functions": [
+          "unmarshalRonStackedCondition",
+          "verifyRonStakedProxy",
+          "verifyRonStaked"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types",
+          "github.com/mitchellh/mapstructure",
+          "github.com/shopspring/decimal"
+        ],
+        "side_effects": [
+          "Logs errors when fetching Ron staked amount fails"
+        ],
+        "risks": [
+          "Potential for nil pointer dereference if context does not contain expected values",
+          "Error handling may expose internal error messages"
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/verifier_http.go": {
+        "language": "Go",
+        "purpose": "This file contains functionality to verify user activities via HTTP requests in a quest system.",
+        "key_types": [
+          "httpActionVerifyResponse",
+          "models.OffChainViaHTTPAction",
+          "VerifyActionParams"
+        ],
+        "functions": [
+          "unmarshalOffChainAction",
+          "verifyViaHTTP",
+          "doVerifyHTTP"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "errors",
+          "fmt",
+          "net/http",
+          "net/url",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Makes HTTP requests to external services",
+          "Logs errors if verification fails"
+        ],
+        "risks": [
+          "Potential exposure of sensitive information in logs",
+          "Handling of external HTTP responses may lead to unexpected behavior if not properly managed"
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/verifier_onchain.go": {
+        "language": "Go",
+        "purpose": "This file contains functions for verifying on-chain assets and activities related to quests in a blockchain environment.",
+        "key_types": [
+          "VerificationState",
+          "OnChainAssetAction",
+          "OnChainActivityAction",
+          "VerifyActionParams"
+        ],
+        "functions": [
+          "unmarshalOnChainAssetAction",
+          "unmarshalOnChainActivityAction",
+          "verifyOnChainAsset",
+          "verifyFungibleAsset",
+          "verifyNFTAsset",
+          "getUserAddress",
+          "verifyOnChainAction",
+          "verifyOnChainActivity",
+          "verifyOnChainActivityWithAccumulation",
+          "initializeVerificationState",
+          "activityMatchesCriteria"
+        ],
+        "imports": [
+          "context",
+          "encoding/json",
+          "errors",
+          "fmt",
+          "math/big",
+          "reflect",
+          "strings",
+          "github.com/ethereum/go-ethereum/common",
+          "github.com/samber/lo",
+          "github.com/shopspring/decimal",
+          "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/skynet",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/walletproxy",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/middlewares",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+        ],
+        "side_effects": [
+          "Interacts with external blockchain services to verify asset ownership and activities."
+        ],
+        "risks": [
+          "Potential for incorrect asset verification if external service responses are not handled properly.",
+          "Error handling may expose sensitive information in error messages."
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/verifier_pixel_fest.go": {
+        "language": "Go",
+        "purpose": "This file contains a service for verifying quests in a pixel fest event using user wallet information.",
+        "key_types": [
+          "pixelFestVerifyResponse",
+          "questVerifier",
+          "VerifyActionParams"
+        ],
+        "functions": [
+          "verifyPixelFest",
+          "doVerifyPixelFest"
+        ],
+        "imports": [
+          "context",
+          "errors",
+          "fmt",
+          "net/url",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/http"
+        ],
+        "side_effects": [
+          "Logs errors when verification fails"
+        ],
+        "risks": [
+          "Potential exposure of wallet addresses if not handled securely",
+          "Error handling may expose sensitive information in logs"
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/wallet_checkin_verifier.go": {
+        "language": "Go",
+        "purpose": "Verifies wallet check-in for a user in a quest system.",
+        "key_types": [
+          "questVerifier",
+          "VerifyActionParams",
+          "CheckInStreak"
+        ],
+        "functions": [
+          "verifyWalletCheckInProxy",
+          "updateActivityState"
+        ],
+        "imports": [
+          "context",
+          "errors"
+        ],
+        "risks": [
+          "Potential for nil pointer dereference if context does not contain expected value."
+        ],
+        "complexity": "medium"
+      },
+      "internal/services/quest-verifiers/x_verifier.go": {
+        "language": "Go",
+        "purpose": "This file contains a quest verifier service that verifies user actions related to quests, including checking reposts and managing cooldowns.",
+        "key_types": [
+          "questVerifier",
+          "VerifyActionParams",
+          "UserAction",
+          "XAction",
+          "UserSession",
+          "ParticipantTwitterActionEntity"
+        ],
+        "functions": [
+          "verifyLikeAndRepostX",
+          "shouldCheck",
+          "unmarshalActivityRef",
+          "findXUserCache",
+          "hasRepostedX",
+          "cacheCooldownTime",
+          "needsToWait",
+          "xAccountUsed",
+          "markXAccountUsed"
+        ],
+        "imports": [
+          "context",
+          "crypto/rand",
+          "encoding/json",
+          "errors",
+          "fmt",
+          "math/big",
+          "strconv",
+          "time",
+          "github.com/axieinfinity/ronin-wallet-services/internal/enums/quest_center",
+          "github.com/axieinfinity/ronin-wallet-services/internal/infras/x",
+          "github.com/axieinfinity/ronin-wallet-services/internal/repositories/models",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos",
+          "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/responses",
+          "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+          "github.com/mitchellh/mapstructure",
+          "github.com/redis/go-redis/v9",
+          "gorm.io/gorm"
+        ],
+        "side_effects": [
+          "Interacts with Redis for caching user actions and cooldowns.",
+          "Logs errors and debug information."
+        ],
+        "risks": [
+          "Potential for denial of service if Redis is unavailable.",
+          "Improper error handling could expose sensitive information."
+        ],
+        "complexity": "medium"
+      }
+    }
+  }
+}

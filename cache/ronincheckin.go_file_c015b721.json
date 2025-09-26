@@ -1,0 +1,44 @@
+{
+  "content_hash": "7037f0e9e71eeb4e656441865895b3b5",
+  "timestamp": "2025-09-26T13:11:23.995495+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Handles check-in events for contracts by processing messages from a Kafka topic.",
+    "key_types": [
+      "ContractsTracking",
+      "contractsTrackingMap",
+      "RoninCheckInHandler",
+      "Log",
+      "BlockFullEvent"
+    ],
+    "functions": [
+      "key",
+      "add",
+      "find",
+      "createContractsTrackingMap",
+      "NewRoninCheckInHandler",
+      "Parse",
+      "Process",
+      "CreatedTime"
+    ],
+    "imports": [
+      "context",
+      "encoding/json",
+      "fmt",
+      "strings",
+      "time",
+      "github.com/IBM/sarama",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/commons",
+      "github.com/axieinfinity/ronin-wallet-services/internal/services"
+    ],
+    "side_effects": [
+      "Logs messages for found contracts and errors during wallet check-in."
+    ],
+    "risks": [
+      "Potential for nil pointer dereference if contracts are not properly initialized.",
+      "Error handling may not cover all edge cases."
+    ],
+    "complexity": "medium"
+  }
+}
