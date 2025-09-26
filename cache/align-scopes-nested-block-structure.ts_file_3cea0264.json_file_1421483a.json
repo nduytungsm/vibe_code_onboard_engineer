@@ -1,0 +1,22 @@
+{
+  "content_hash": "5a6466febe9e3090a289448bd643fc23",
+  "timestamp": "2025-09-26T08:50:31.335672+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file contains a test fixture for demonstrating scope alignment in a block-fallthrough structure.",
+    "key_types": [
+      "function",
+      "object"
+    ],
+    "functions": [
+      "useFoo"
+    ],
+    "imports": [
+      "shared-runtime"
+    ],
+    "side_effects": [
+      "mutates the variable 's' based on conditions"
+    ],
+    "complexity": "medium"
+  }
+}

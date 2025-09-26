@@ -1,0 +1,45 @@
+{
+  "content_hash": "d2b4eef9bfc416eba50165fab2904bb3",
+  "timestamp": "2025-09-26T08:44:49.277106+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validates that all known effect dependencies are memoized in a reactive function.",
+    "key_types": [
+      "CompilerError",
+      "ReactiveFunction",
+      "ReactiveScopeBlock",
+      "ScopeId",
+      "ReactiveInstruction"
+    ],
+    "functions": [
+      "validateMemoizedEffectDependencies",
+      "isEffectHook",
+      "visitScope",
+      "visitInstruction"
+    ],
+    "imports": [
+      "CompilerError",
+      "ErrorCategory",
+      "Identifier",
+      "Instruction",
+      "ReactiveFunction",
+      "ReactiveInstruction",
+      "ReactiveScopeBlock",
+      "ScopeId",
+      "isUseEffectHookType",
+      "isUseInsertionEffectHookType",
+      "isUseLayoutEffectHookType",
+      "isMutable",
+      "ReactiveFunctionVisitor",
+      "visitReactiveFunction",
+      "Result"
+    ],
+    "side_effects": [
+      "Modifies the state of CompilerError based on validation results."
+    ],
+    "risks": [
+      "Potential for infinite loops or unexpected behavior if effect dependencies are not properly memoized."
+    ],
+    "complexity": "medium"
+  }
+}

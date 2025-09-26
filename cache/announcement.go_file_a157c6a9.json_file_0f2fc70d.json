@@ -1,0 +1,41 @@
+{
+  "content_hash": "851c7f1e4165031d5f46131e3ab76780",
+  "timestamp": "2025-09-26T08:53:52.028168+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a repository interface and its implementation for managing announcements in a database.",
+    "key_types": [
+      "AnnouncementRepo",
+      "announcementRepo",
+      "AnnouncementInfo"
+    ],
+    "functions": [
+      "AddNew",
+      "MarkPublished",
+      "GetAnnouncementByID",
+      "GetAnnouncementsListAsAdmin",
+      "GetAnnouncementsListAsUser",
+      "GetOldPublished",
+      "CountAnnouncements",
+      "DeleteAnnouncement",
+      "GetSpecialOfferLog",
+      "SaveSendSpecialOfferLog",
+      "GetSpecialOfferLogsList",
+      "CountSpecialOffers"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "slices",
+      "time",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper"
+    ],
+    "side_effects": [
+      "Database transactions for creating, updating, and deleting announcements and special offers."
+    ],
+    "complexity": "medium"
+  }
+}

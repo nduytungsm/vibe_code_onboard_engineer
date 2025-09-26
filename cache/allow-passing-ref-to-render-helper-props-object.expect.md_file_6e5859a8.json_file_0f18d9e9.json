@@ -1,0 +1,26 @@
+{
+  "content_hash": "a4f40bafa39eb0b74a578a0b8f7a213f",
+  "timestamp": "2025-09-26T08:51:28.983904+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that uses a ref and renders a child component based on props.",
+    "key_types": [
+      "Component",
+      "ref"
+    ],
+    "functions": [
+      "Component"
+    ],
+    "imports": [
+      "useRef",
+      "_c"
+    ],
+    "side_effects": [
+      "None"
+    ],
+    "risks": [
+      "Potential for incorrect ref handling if not validated properly"
+    ],
+    "complexity": "medium"
+  }
+}

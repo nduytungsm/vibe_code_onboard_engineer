@@ -1,0 +1,71 @@
+{
+  "content_hash": "d7d81a49bb4e33be68e678d8ba98b6a0",
+  "timestamp": "2025-09-26T08:49:06.749197+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This folder/module is responsible for providing middleware functions to adapt between the Fiber web framework and the net/http standard library.",
+    "key_types": [
+      "disableLogger",
+      "sync.Pool",
+      "fasthttp.RequestCtx",
+      "fiber.Ctx",
+      "http.Request",
+      "contextKey",
+      "http.ResponseWriter",
+      "fasthttp.Request"
+    ],
+    "functions": [
+      "Printf",
+      "HTTPHandlerFunc",
+      "HTTPHandler",
+      "ConvertRequest",
+      "CopyContextToFiberContext",
+      "HTTPMiddleware",
+      "FiberHandler",
+      "FiberHandlerFunc",
+      "FiberApp",
+      "handlerFunc",
+      "Test_HTTPHandler",
+      "Test_HTTPMiddleware",
+      "Test_HTTPMiddlewareWithCookies",
+      "Test_FiberHandler",
+      "Test_FiberApp",
+      "Test_FiberHandlerDefaultPort",
+      "Test_FiberAppDefaultPort"
+    ],
+    "imports": [
+      "io",
+      "net",
+      "net/http",
+      "reflect",
+      "sync",
+      "unsafe",
+      "github.com/gofiber/fiber/v3",
+      "github.com/gofiber/utils/v2",
+      "github.com/valyala/fasthttp",
+      "github.com/valyala/fasthttp/fasthttpadaptor",
+      "bytes",
+      "context",
+      "fmt",
+      "net/http/httptest",
+      "net/url",
+      "strings",
+      "testing",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require"
+    ],
+    "side_effects": [
+      "Modifies HTTP request and response headers",
+      "Uses unsafe package to access potentially unexported fields",
+      "Reads from HTTP request body",
+      "Alters context values in HTTP requests"
+    ],
+    "risks": [
+      "Potential for unsafe memory access",
+      "Improper handling of HTTP headers could lead to security vulnerabilities",
+      "Potential for memory leaks if not handled properly",
+      "Improper handling of context values may lead to unexpected behavior"
+    ],
+    "complexity": "medium"
+  }
+}

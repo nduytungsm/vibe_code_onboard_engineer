@@ -1,0 +1,27 @@
+{
+  "content_hash": "fc4dd72443280a1f534b5b20c968a4df",
+  "timestamp": "2025-09-26T08:51:06.459285+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that uses hooks and allows global mutation.",
+    "key_types": [
+      "Component",
+      "Function"
+    ],
+    "functions": [
+      "Component",
+      "_temp"
+    ],
+    "imports": [
+      "react",
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Modifies global window object by setting window.foo to true"
+    ],
+    "risks": [
+      "Potential global namespace pollution by modifying window object"
+    ],
+    "complexity": "medium"
+  }
+}

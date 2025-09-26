@@ -1,0 +1,32 @@
+{
+  "content_hash": "890c6bb0668cfa6fbc828d1b1dfab8bf",
+  "timestamp": "2025-09-26T08:43:14.590611+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file rewrites the InstructionKind of instructions that declare or assign variables based on whether they are reassigned.",
+    "key_types": [
+      "DeclarationId",
+      "HIRFunction",
+      "InstructionKind",
+      "LValue",
+      "LValuePattern",
+      "Place"
+    ],
+    "functions": [
+      "rewriteInstructionKindsBasedOnReassignment"
+    ],
+    "imports": [
+      "../CompilerError",
+      "../HIR/HIR",
+      "../HIR/PrintHIR",
+      "../HIR/visitors"
+    ],
+    "side_effects": [
+      "Modifies the kind of instructions based on reassignment"
+    ],
+    "risks": [
+      "Potential for incorrect handling of variable declarations and reassignments leading to runtime errors"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "content_hash": "30b7dc8351c514d803c83da44435bd54",
+  "timestamp": "2025-09-26T08:43:16.360296+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines error types and events for the Ronin Gateway V2 smart contract.",
+    "key_types": [
+      "error",
+      "event"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "content_hash": "01e0c126c1ec6e441cf734814b44a9a5",
+  "timestamp": "2025-09-26T08:48:14.764845+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines commands for managing Hasura Actions in a CLI application.",
+    "key_types": [
+      "cobra.Command",
+      "cli.ExecutionContext",
+      "viper.Viper",
+      "codegenFramework"
+    ],
+    "functions": [
+      "NewActionsCmd",
+      "getCodegenFrameworks"
+    ],
+    "imports": [
+      "encoding/json",
+      "io/ioutil",
+      "path/filepath",
+      "github.com/hasura/graphql-engine/cli/v2",
+      "github.com/hasura/graphql-engine/cli/v2/internal/errors",
+      "github.com/hasura/graphql-engine/cli/v2/util",
+      "github.com/spf13/cobra",
+      "github.com/spf13/viper"
+    ],
+    "side_effects": [
+      "Modifies the execution context and validates configuration settings."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information through command-line flags."
+    ],
+    "complexity": "medium"
+  }
+}

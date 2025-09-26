@@ -172,9 +172,9 @@ func (ac *AnalysisController) AnalyzeRepository(c echo.Context) error {
 	
 	c.Logger().Infof("Successfully cloned repository %s", req.URL)
 
-	// Perform analysis using existing pipeline
+	// Perform analysis using existing pipeline with URL for proper caching
 	c.Logger().Infof("Starting analysis of cloned repository")
-	analyzer, err := pipeline.NewAnalyzer(ac.config, tempDir)
+	analyzer, err := pipeline.NewAnalyzerWithURL(ac.config, tempDir, req.URL)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, AnalysisResponse{
 			Status:     "error", 
@@ -492,9 +492,9 @@ func (ac *AnalysisController) StreamAnalyzeRepository(c echo.Context) error {
 	
 	progressCallback("progress", "✅ Repository cloned successfully", "Repository files downloaded", 15, nil)
 
-	// Perform analysis with progress updates
+	// Perform analysis with progress updates using URL for proper caching
 	fmt.Println("🔬 [STREAM] Creating analyzer")
-	analyzer, err := pipeline.NewAnalyzer(ac.config, tempDir)
+	analyzer, err := pipeline.NewAnalyzerWithURL(ac.config, tempDir, req.URL)
 	if err != nil {
 		fmt.Printf("❌ [STREAM] Failed to create analyzer: %v\n", err)
 		progressCallback("error", "", fmt.Sprintf("Failed to create analyzer: %v", err), 0, nil)

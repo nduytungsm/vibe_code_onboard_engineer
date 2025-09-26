@@ -1,0 +1,14 @@
+{
+  "content_hash": "89ee5d229412536861a13b939e2841f6",
+  "timestamp": "2025-09-26T08:45:50.263923+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines a category for an addon with metadata.",
+    "key_types": [
+      "object"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

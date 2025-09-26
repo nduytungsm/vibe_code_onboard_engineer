@@ -1,0 +1,21 @@
+{
+  "content_hash": "721ddbf26f7a690638375458cda2fe0c",
+  "timestamp": "2025-09-26T08:44:03.800197+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Defines an immutable stack data structure with O(1) push/pop operations.",
+    "key_types": [
+      "Stack\u003cT\u003e",
+      "Node\u003cT\u003e",
+      "Empty\u003cT\u003e",
+      "StackInterface\u003cT\u003e"
+    ],
+    "functions": [
+      "_assertStackInterface",
+      "create",
+      "empty"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

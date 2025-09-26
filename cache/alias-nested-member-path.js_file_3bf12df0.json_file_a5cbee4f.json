@@ -1,0 +1,17 @@
+{
+  "content_hash": "9123f31ffb54eba2deecf6525a8faa13",
+  "timestamp": "2025-09-26T08:50:13.854814+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a component function and exports a fixture entry point object.",
+    "key_types": [
+      "Array",
+      "Object"
+    ],
+    "functions": [
+      "component"
+    ],
+    "imports": [],
+    "complexity": "low"
+  }
+}

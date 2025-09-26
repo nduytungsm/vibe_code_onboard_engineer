@@ -1,0 +1,16 @@
+{
+  "content_hash": "f3e86a03f48f4f549049872c6ca3d959",
+  "timestamp": "2025-09-26T08:46:02.918016+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Organizes API specifications into separate JSON files for requests and responses related to token balances.",
+    "key_types": [
+      "boolean",
+      "array",
+      "object"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

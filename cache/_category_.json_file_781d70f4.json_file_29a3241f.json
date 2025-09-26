@@ -1,0 +1,14 @@
+{
+  "content_hash": "d938c8b6b6e5f17c3759ce8b39431b57",
+  "timestamp": "2025-09-26T08:45:49.433272+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines a category for a client in a documentation structure.",
+    "key_types": [
+      "object"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

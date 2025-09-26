@@ -1,0 +1,16 @@
+{
+  "content_hash": "6cf71fa4cee2251bb19a41421a6ac50b",
+  "timestamp": "2025-09-26T08:49:51.427271+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects for AI tool choice requests.",
+    "key_types": [
+      "ToolChoiceRequest",
+      "Message",
+      "Function"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

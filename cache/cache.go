@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"repo-explanation/config"
@@ -178,6 +179,58 @@ func (c *Cache) SetProjectSummary(projectPath string, folderSummaries map[string
 	return c.saveCacheEntry(cacheFile, entry)
 }
 
+// GetRepositoryDetails retrieves cached detailed repository analysis
+func (c *Cache) GetRepositoryDetails(repositoryURL string, folderSummaries map[string]openai.FolderSummary, fileSummaries map[string]openai.FileSummary, importantFiles map[string]string) (*openai.RepositoryAnalysis, bool) {
+	if !c.config.Cache.Enabled {
+		return nil, false
+	}
+
+	// Create composite hash from all inputs
+	hash := c.hashRepositoryDetailsInputs(folderSummaries, fileSummaries, importantFiles)
+	cacheFile := c.getRepositoryDetailsCachePath(repositoryURL)
+	
+	entry, err := c.loadCacheEntry(cacheFile)
+	if err != nil {
+		return nil, false
+	}
+
+	// Check if hash matches and entry is not expired
+	if entry.ContentHash != hash || c.isExpired(entry.Timestamp) {
+		return nil, false
+	}
+
+	// Convert result to RepositoryAnalysis
+	resultBytes, err := json.Marshal(entry.Result)
+	if err != nil {
+		return nil, false
+	}
+
+	var analysis openai.RepositoryAnalysis
+	if err := json.Unmarshal(resultBytes, &analysis); err != nil {
+		return nil, false
+	}
+
+	return &analysis, true
+}
+
+// SetRepositoryDetails caches detailed repository analysis
+func (c *Cache) SetRepositoryDetails(repositoryURL string, folderSummaries map[string]openai.FolderSummary, fileSummaries map[string]openai.FileSummary, importantFiles map[string]string, analysis *openai.RepositoryAnalysis) error {
+	if !c.config.Cache.Enabled {
+		return nil
+	}
+
+	hash := c.hashRepositoryDetailsInputs(folderSummaries, fileSummaries, importantFiles)
+	cacheFile := c.getRepositoryDetailsCachePath(repositoryURL)
+	
+	entry := CacheEntry{
+		ContentHash: hash,
+		Timestamp:   time.Now(),
+		Result:      analysis,
+	}
+
+	return c.saveCacheEntry(cacheFile, entry)
+}
+
 // ClearCache removes all cached entries
 func (c *Cache) ClearCache() error {
 	return os.RemoveAll(c.config.Cache.Directory)
@@ -203,6 +256,25 @@ func (c *Cache) hashFolderSummaries(summaries map[string]openai.FolderSummary) s
 	return fmt.Sprintf("%x", hash)
 }
 
+// hashRepositoryDetailsInputs creates a hash for all repository details inputs
+func (c *Cache) hashRepositoryDetailsInputs(folderSummaries map[string]openai.FolderSummary, fileSummaries map[string]openai.FileSummary, importantFiles map[string]string) string {
+	type compositeInput struct {
+		FolderSummaries map[string]openai.FolderSummary `json:"folder_summaries"`
+		FileSummaries   map[string]openai.FileSummary   `json:"file_summaries"`
+		ImportantFiles  map[string]string               `json:"important_files"`
+	}
+	
+	input := compositeInput{
+		FolderSummaries: folderSummaries,
+		FileSummaries:   fileSummaries,
+		ImportantFiles:  importantFiles,
+	}
+	
+	data, _ := json.Marshal(input)
+	hash := md5.Sum(data)
+	return fmt.Sprintf("%x", hash)
+}
+
 // getFileCachePath generates cache file path
 func (c *Cache) getFileCachePath(originalPath, cacheType string) string {
 	// Create safe filename from path
@@ -216,6 +288,61 @@ func (c *Cache) getFileCachePath(originalPath, cacheType string) string {
 	filename := fmt.Sprintf("%s_%s_%s.json", safeFilename, cacheType, pathHash[:8])
 	
 	return filepath.Join(c.config.Cache.Directory, filename)
+}
+
+// getRepositoryDetailsCachePath generates cache file path for repository details
+func (c *Cache) getRepositoryDetailsCachePath(repositoryURL string) string {
+	// Create safe filename from repository URL
+	safeFilename := c.getSafeFilenameFromURL(repositoryURL)
+	
+	// Add hash of full URL to avoid collisions
+	urlHash := c.hashContent(repositoryURL)
+	filename := fmt.Sprintf("%s_details_%s.json", safeFilename, urlHash[:8])
+	
+	return filepath.Join(c.config.Cache.Directory, filename)
+}
+
+// getSafeFilenameFromURL creates a safe filename from repository URL
+func (c *Cache) getSafeFilenameFromURL(url string) string {
+	// Extract owner/repo from GitHub URL
+	// e.g., https://github.com/owner/repo -> owner-repo
+	url = strings.TrimSuffix(url, ".git")
+	if strings.HasPrefix(url, "https://github.com/") {
+		parts := strings.Split(strings.TrimPrefix(url, "https://github.com/"), "/")
+		if len(parts) >= 2 {
+			return fmt.Sprintf("%s-%s", parts[0], parts[1])
+		}
+	}
+	
+	// Fallback: use domain and sanitize
+	if strings.HasPrefix(url, "http") {
+		parts := strings.Split(url, "/")
+		if len(parts) >= 3 {
+			domain := strings.Replace(parts[2], ".", "-", -1)
+			if len(parts) >= 5 {
+				return fmt.Sprintf("%s-%s-%s", domain, parts[3], parts[4])
+			}
+			return domain
+		}
+	}
+	
+	// Ultimate fallback: sanitize the whole URL
+	safe := strings.NewReplacer(
+		"/", "-",
+		":", "-",
+		".", "-",
+		"?", "-",
+		"&", "-",
+		"=", "-",
+		" ", "_",
+	).Replace(url)
+	
+	// Limit length
+	if len(safe) > 50 {
+		safe = safe[:50]
+	}
+	
+	return safe
 }
 
 // loadCacheEntry loads cache entry from file

@@ -1,0 +1,62 @@
+{
+  "content_hash": "fd6c62a2d64b999184c64e0fa290015d",
+  "timestamp": "2025-09-26T08:54:19.750591+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines an announcement handler for managing announcements and user preferences in a web application.",
+    "key_types": [
+      "AnnouncementHandler",
+      "announcementHandler",
+      "md.ScheduleNewAnnouncementRequest",
+      "md.ScheduleNewSpecialOfferRequest",
+      "md.GetAnnouncementByID",
+      "md.GetAnnouncementsListRequest",
+      "md.InternalGetWalletPreferencesRequest",
+      "md.InternalGetWalletPreferenceResponse",
+      "md.PublicAnnouncementListItem",
+      "md.ListResponse",
+      "md.GetCountNewAnnouncementsRequest",
+      "md.GetCountNewAnnouncementsResponse"
+    ],
+    "functions": [
+      "InternalScheduleNewAnnouncement",
+      "InternalScheduleNewSpecialOffer",
+      "InternalGetAnnouncementByID",
+      "InternalGetAnnouncementsList",
+      "InternalMarkPublished",
+      "InternalManualCleanPublishedJobs",
+      "InternalDeleteAnnouncement",
+      "InternalGetWalletPreferences",
+      "PublicGetAnnouncementByID",
+      "PublicGetAnnouncementsList",
+      "PublicCountNewAnnouncements",
+      "PrivateGetPreferences",
+      "PrivateUpdatePreferences",
+      "PrivateGetDevicePreference",
+      "PrivateUpdateDevicePreference",
+      "NewAnnouncementHandler"
+    ],
+    "imports": [
+      "errors",
+      "net/http",
+      "slices",
+      "github.com/axieinfinity/ecosystem-go-common/echo/middleware",
+      "github.com/axieinfinity/ecosystem-go-common/errors",
+      "github.com/labstack/echo/v4",
+      "gorm.io/gorm",
+      "github.com/axieinfinity/ronin-wallet-manager/models",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/announcement",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-manager/pkg/preference"
+    ],
+    "side_effects": [
+      "Interacts with external services for scheduling and managing announcements.",
+      "Modifies user preferences in the database."
+    ],
+    "risks": [
+      "Potential exposure of sensitive user data if not properly secured.",
+      "Error handling may expose internal error messages."
+    ],
+    "complexity": "medium"
+  }
+}

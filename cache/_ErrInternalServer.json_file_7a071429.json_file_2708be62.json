@@ -1,0 +1,14 @@
+{
+  "content_hash": "e6d4a650f62cbc88165f7287b22e7191",
+  "timestamp": "2025-09-26T08:45:20.294013+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines the structure for an internal server error response",
+    "key_types": [
+      "object"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

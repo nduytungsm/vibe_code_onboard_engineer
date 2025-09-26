@@ -1,0 +1,33 @@
+{
+  "content_hash": "107c668a31bb2c8f030d718dbec3cc7d",
+  "timestamp": "2025-09-26T08:48:37.422855+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "[REDACTED]",
+    "key_types": [
+      "Gas",
+      "TxToken",
+      "TokenBalanceDiff",
+      "ActivityGenericInfo",
+      "ContractApproval",
+      "ActivityItem",
+      "TxDetail",
+      "BlockInfo",
+      "Log",
+      "DecodedEvent",
+      "EventParam",
+      "DecodedCall"
+    ],
+    "functions": [
+      "NewActivityItem",
+      "AddGenericInfo",
+      "AddToken",
+      "AddApprovals"
+    ],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

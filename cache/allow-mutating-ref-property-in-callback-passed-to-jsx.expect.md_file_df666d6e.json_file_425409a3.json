@@ -1,0 +1,25 @@
+{
+  "content_hash": "7a2ee3185f7bbbd895dc683f793c65f5",
+  "timestamp": "2025-09-26T08:51:27.738944+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that uses a ref to manipulate an input's value on button click.",
+    "key_types": [
+      "Component",
+      "ref"
+    ],
+    "functions": [
+      "Component",
+      "onClick"
+    ],
+    "imports": [
+      "useRef",
+      "react",
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "Modifies the value of an input element when the button is clicked."
+    ],
+    "complexity": "medium"
+  }
+}

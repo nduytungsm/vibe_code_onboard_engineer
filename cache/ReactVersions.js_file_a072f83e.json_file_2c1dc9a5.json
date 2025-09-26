@@ -1,0 +1,16 @@
+{
+  "content_hash": "bd7e0323acd76bf5aef92b5aa5c6de48",
+  "timestamp": "2025-09-26T08:42:44.648654+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines versioning information for React packages published to npm.",
+    "key_types": [
+      "string",
+      "object",
+      "array"
+    ],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

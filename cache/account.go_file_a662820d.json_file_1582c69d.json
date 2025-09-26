@@ -1,0 +1,20 @@
+{
+  "content_hash": "ec55529ef7518aac6cf3a75069ad6d40",
+  "timestamp": "2025-09-26T08:47:11.52557+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "[REDACTED]",
+    "key_types": [
+      "GetSMUserInfoRequest",
+      "GetSMUserInfoResponse",
+      "LinkAccountRequest",
+      "RefreshTokenRequest",
+      "RevokeTokenRequest"
+    ],
+    "functions": [
+      "ToAuthOptions"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

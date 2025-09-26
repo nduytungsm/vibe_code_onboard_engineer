@@ -1,0 +1,48 @@
+{
+  "content_hash": "894e6321c1e9d464d567f20c41fb61ed",
+  "timestamp": "2025-09-26T08:49:03.075866+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Unit tests for HTTP handlers and middleware in a Fiber application.",
+    "key_types": [
+      "fiber.App",
+      "fiber.Ctx",
+      "http.Request",
+      "http.ResponseWriter",
+      "context.Context"
+    ],
+    "functions": [
+      "Test_HTTPHandler",
+      "Test_HTTPMiddleware",
+      "Test_HTTPMiddlewareWithCookies",
+      "Test_FiberHandler",
+      "Test_FiberApp"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "fmt",
+      "io",
+      "net",
+      "net/http",
+      "net/http/httptest",
+      "net/url",
+      "strings",
+      "testing",
+      "github.com/gofiber/fiber/v3",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Modifies HTTP response headers",
+      "Reads from HTTP request body",
+      "Sets context values in HTTP requests"
+    ],
+    "risks": [
+      "Potential memory leaks if not handled properly",
+      "Improper handling of HTTP methods may lead to unexpected behavior"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "content_hash": "a816f2751cfe418f908f9ca0e4d219a8",
+  "timestamp": "2025-09-26T08:49:11.347938+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for HTTP handlers and middleware in a Fiber web application.",
+    "key_types": [
+      "fiber.Ctx",
+      "http.Request",
+      "http.ResponseWriter",
+      "fasthttp.RequestCtx",
+      "fasthttp.Request",
+      "contextKey"
+    ],
+    "functions": [
+      "Test_HTTPHandler",
+      "Test_HTTPMiddleware",
+      "Test_HTTPMiddlewareWithCookies",
+      "Test_FiberHandler",
+      "Test_FiberApp",
+      "Test_FiberHandlerDefaultPort",
+      "Test_FiberAppDefaultPort"
+    ],
+    "imports": [
+      "bytes",
+      "context",
+      "fmt",
+      "io",
+      "net",
+      "net/http",
+      "net/http/httptest",
+      "net/url",
+      "strings",
+      "testing",
+      "github.com/gofiber/fiber/v3",
+      "github.com/stretchr/testify/assert",
+      "github.com/stretchr/testify/require",
+      "github.com/valyala/fasthttp"
+    ],
+    "side_effects": [
+      "Modifies HTTP response headers",
+      "Reads from HTTP request body",
+      "Alters context values in HTTP requests"
+    ],
+    "risks": [
+      "Potential for memory leaks if not handled properly",
+      "Improper handling of context values may lead to unexpected behavior"
+    ],
+    "complexity": "medium"
+  }
+}

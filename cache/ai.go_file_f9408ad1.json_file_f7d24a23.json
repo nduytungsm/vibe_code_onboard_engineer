@@ -1,0 +1,36 @@
+{
+  "content_hash": "8387cf915f7d5f8993388ea29cc229a5",
+  "timestamp": "2025-09-26T08:49:57.301488+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines an AIHandler for processing chat requests in a web application.",
+    "key_types": [
+      "AIHandler",
+      "services.AIService",
+      "requests.ToolChoiceRequest"
+    ],
+    "functions": [
+      "NewAIHandler",
+      "Setup",
+      "ProcessChat"
+    ],
+    "imports": [
+      "errors",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/http",
+      "github.com/labstack/echo/v4"
+    ],
+    "side_effects": [
+      "Interacts with external services through AIService",
+      "Modifies HTTP response based on chat processing"
+    ],
+    "risks": [
+      "Potential for unhandled errors leading to application crashes",
+      "Input validation issues could lead to unexpected behavior"
+    ],
+    "complexity": "medium"
+  }
+}

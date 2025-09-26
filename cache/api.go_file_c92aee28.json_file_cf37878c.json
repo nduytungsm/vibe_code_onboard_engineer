@@ -1,0 +1,19 @@
+{
+  "content_hash": "9a6fcbeed4aac89ecf4143bd12dfe33e",
+  "timestamp": "2025-09-26T08:56:32.051007+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines an Application struct and a constructor function for it.",
+    "key_types": [
+      "Application",
+      "ports.DbPort"
+    ],
+    "functions": [
+      "NewApplication"
+    ],
+    "imports": [
+      "github.com/matigumma/go-fiber-sql-hexagonal/internal/ports"
+    ],
+    "complexity": "low"
+  }
+}

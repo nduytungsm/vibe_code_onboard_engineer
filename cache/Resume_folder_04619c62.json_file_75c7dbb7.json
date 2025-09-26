@@ -1,0 +1,35 @@
+{
+  "content_hash": "fae57aace0b6814c9731a92ecd8630c6",
+  "timestamp": "2025-09-26T08:43:03.32916+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "A React component that displays a resume and allows users to download it as a PDF.",
+    "key_types": [
+      "ResumeNew",
+      "Container",
+      "Row",
+      "Button",
+      "Document",
+      "Page"
+    ],
+    "functions": [
+      "ResumeNew",
+      "useState",
+      "useEffect"
+    ],
+    "imports": [
+      "React",
+      "react-bootstrap",
+      "Particle",
+      "react-icons/ai",
+      "react-pdf"
+    ],
+    "side_effects": [
+      "Modifies the component's width based on the window size."
+    ],
+    "risks": [
+      "Potential exposure of sensitive information if the PDF contains personal data."
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "content_hash": "8b5100c5196c07ce156152d5b64a4066",
+  "timestamp": "2025-09-26T08:44:31.428236+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Utility functions for type manipulation and substitution in a type system.",
+    "key_types": [
+      "ConcreteType",
+      "ResolvedType",
+      "TypeParameter",
+      "TypeParameterId"
+    ],
+    "functions": [
+      "substitute",
+      "mapType",
+      "diff",
+      "filterOptional"
+    ],
+    "imports": [
+      "../HIR",
+      "../Utils/utils",
+      "./TypeErrors",
+      "./Types"
+    ],
+    "side_effects": [
+      "Logs substitution details to the console if DEBUG is enabled."
+    ],
+    "complexity": "medium"
+  }
+}

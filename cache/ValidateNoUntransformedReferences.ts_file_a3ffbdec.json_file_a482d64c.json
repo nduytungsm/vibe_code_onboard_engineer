@@ -1,0 +1,44 @@
+{
+  "content_hash": "4582ff8e3e7002be02b8c5e239ef6263",
+  "timestamp": "2025-09-26T08:45:10.779819+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "Validates that there are no untransformed references in React components during compilation.",
+    "key_types": [
+      "NodePath",
+      "CompilerError",
+      "EnvironmentConfig",
+      "Logger",
+      "TraversalState",
+      "CheckInvalidReferenceFn"
+    ],
+    "functions": [
+      "throwInvalidReact",
+      "isAutodepsSigil",
+      "assertValidEffectImportReference",
+      "assertValidFireImportReference",
+      "validateNoUntransformedReferences",
+      "validateImportSpecifier",
+      "validateNamespacedImport",
+      "transformProgram"
+    ],
+    "imports": [
+      "@babel/core",
+      "@babel/types",
+      "..",
+      "../Utils/utils",
+      "../HIR",
+      "../HIR/Environment",
+      "./Program",
+      "../CompilerError"
+    ],
+    "side_effects": [
+      "Logs errors when invalid references are detected.",
+      "Modifies the state of the logger and program scope."
+    ],
+    "risks": [
+      "Potential for runtime errors if untransformed references are not handled correctly."
+    ],
+    "complexity": "medium"
+  }
+}

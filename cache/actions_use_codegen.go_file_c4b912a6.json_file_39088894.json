@@ -1,0 +1,35 @@
+{
+  "content_hash": "ec3d552bdbf3758e0ff6a744113c1a29",
+  "timestamp": "2025-09-26T08:48:25.931106+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file defines a command for generating code for Hasura Actions using a specified codegen framework.",
+    "key_types": [
+      "codegenFramework",
+      "actionsUseCodegenOptions"
+    ],
+    "functions": [
+      "newActionsUseCodegenCmd",
+      "run"
+    ],
+    "imports": [
+      "fmt",
+      "path/filepath",
+      "sort",
+      "strconv",
+      "github.com/hasura/graphql-engine/cli/v2",
+      "github.com/hasura/graphql-engine/cli/v2/internal/errors",
+      "github.com/hasura/graphql-engine/cli/v2/util",
+      "github.com/spf13/cobra"
+    ],
+    "side_effects": [
+      "Clones starter kit if specified",
+      "Updates configuration file"
+    ],
+    "risks": [
+      "Potential for command injection if user input is not properly sanitized",
+      "Network errors when fetching codegen frameworks"
+    ],
+    "complexity": "medium"
+  }
+}

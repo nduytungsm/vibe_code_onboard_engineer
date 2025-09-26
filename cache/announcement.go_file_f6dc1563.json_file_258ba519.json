@@ -1,0 +1,40 @@
+{
+  "content_hash": "ff62b37de19d307247ac4d335be81364",
+  "timestamp": "2025-09-26T08:54:45.763185+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines models and structures for handling announcements and related notifications.",
+    "key_types": [
+      "Buttons",
+      "Announcement",
+      "PublicAnnouncementListItem",
+      "PublicAnnouncement",
+      "ScheduleNewAnnouncementRequest",
+      "ScheduleNewSpecialOfferRequest",
+      "SpecialOffer"
+    ],
+    "functions": [
+      "Scan",
+      "Value",
+      "createNotificationData",
+      "ToPushNotificationRequest",
+      "ToTargetPushNotificationRequest",
+      "ToPublicListItem",
+      "ToPublicFullContent",
+      "ToAnnouncement"
+    ],
+    "imports": [
+      "database/sql/driver",
+      "encoding/json",
+      "errors",
+      "mime/multipart",
+      "strconv",
+      "strings",
+      "time",
+      "github.com/ethereum/go-ethereum/common",
+      "github.com/mitchellh/mapstructure",
+      "github.com/rs/zerolog/log"
+    ],
+    "complexity": "medium"
+  }
+}

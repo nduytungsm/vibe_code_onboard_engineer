@@ -1,0 +1,30 @@
+{
+  "content_hash": "c4698f47cba9b86d0770049b73a2253e",
+  "timestamp": "2025-09-26T08:42:34.786679+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation for the Ruby on Rails web application framework.",
+    "key_types": [
+      "Model",
+      "View",
+      "Controller",
+      "ActiveRecord::Base",
+      "ActionController::Base"
+    ],
+    "functions": [],
+    "imports": [
+      "Active Record",
+      "Active Model",
+      "Action Pack",
+      "Action View",
+      "Action Mailer",
+      "Action Mailbox",
+      "Active Job",
+      "Action Cable",
+      "Active Storage",
+      "Action Text",
+      "Active Support"
+    ],
+    "complexity": "low"
+  }
+}

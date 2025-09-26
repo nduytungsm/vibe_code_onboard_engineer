@@ -1,0 +1,26 @@
+{
+  "content_hash": "e313d1ca2e6abacc1a37c4d302dd067e",
+  "timestamp": "2025-09-26T08:50:42.501289+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a function that attempts to create and mutate an object based on certain conditions, and exports a fixture entry point.",
+    "key_types": [
+      "function",
+      "object"
+    ],
+    "functions": [
+      "Foo"
+    ],
+    "imports": [
+      "shared-runtime",
+      "react/compiler-runtime"
+    ],
+    "side_effects": [
+      "mutate function may alter the state of 'thing' if CONST_TRUE is true"
+    ],
+    "risks": [
+      "Potential for uncaught exceptions in the try-catch block"
+    ],
+    "complexity": "medium"
+  }
+}

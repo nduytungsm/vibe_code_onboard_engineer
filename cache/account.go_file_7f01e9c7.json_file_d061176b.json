@@ -1,0 +1,20 @@
+{
+  "content_hash": "7f0150523bee6967702094caa522dbef",
+  "timestamp": "2025-09-26T08:47:01.573813+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines request and response structures for user information and account linking in an authentication system.",
+    "key_types": [
+      "GetSMUserInfoRequest",
+      "GetSMUserInfoResponse",
+      "LinkAccountRequest",
+      "RefreshTokenRequest",
+      "RevokeTokenRequest"
+    ],
+    "functions": [
+      "ToAuthOptions"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "content_hash": "bd64e19de629d29be647604579ba151e",
+  "timestamp": "2025-09-26T08:43:41.31859+07:00",
+  "result": {
+    "language": "Markdown",
+    "purpose": "Documentation of the security policy for the project, including supported versions and vulnerability reporting.",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

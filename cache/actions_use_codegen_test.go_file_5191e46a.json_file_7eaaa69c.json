@@ -1,0 +1,37 @@
+{
+  "content_hash": "793b66fced0a126e87d8bf5b983f580e",
+  "timestamp": "2025-09-26T08:48:27.828983+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "This file contains tests for the Hasura actions use-codegen command.",
+    "key_types": [
+      "string",
+      "func",
+      "session"
+    ],
+    "functions": [
+      "BeforeEach",
+      "AfterEach",
+      "Describe",
+      "Context",
+      "It",
+      "Expect",
+      "Eventually"
+    ],
+    "imports": [
+      "fmt",
+      "io/ioutil",
+      "os",
+      "path/filepath",
+      "github.com/hasura/graphql-engine/cli/v2/internal/testutil",
+      "github.com/onsi/ginkgo",
+      "github.com/onsi/gomega",
+      "github.com/onsi/gomega/gexec"
+    ],
+    "side_effects": [
+      "Creates and removes a temporary project directory.",
+      "Starts and stops a Hasura instance."
+    ],
+    "complexity": "medium"
+  }
+}

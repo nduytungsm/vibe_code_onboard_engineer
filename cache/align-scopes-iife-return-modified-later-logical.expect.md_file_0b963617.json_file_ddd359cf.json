@@ -1,0 +1,23 @@
+{
+  "content_hash": "204e0a1e10a61a95010361485c0be772",
+  "timestamp": "2025-09-26T08:50:27.702311+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that manages a list of items based on props and returns it.",
+    "key_types": [
+      "Component",
+      "Object"
+    ],
+    "functions": [
+      "Component"
+    ],
+    "imports": [
+      "getNull",
+      "_c"
+    ],
+    "side_effects": [
+      "Modifies the items array based on props"
+    ],
+    "complexity": "medium"
+  }
+}

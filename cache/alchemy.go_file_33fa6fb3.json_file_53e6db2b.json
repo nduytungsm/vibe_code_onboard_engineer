@@ -1,0 +1,53 @@
+{
+  "content_hash": "1c75f795b5185edf41f509bb2e1c5f5d",
+  "timestamp": "2025-09-26T08:50:02.346783+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "[REDACTED]",
+    "key_types": [
+      "AlchemyProvider",
+      "models.ProviderCfg",
+      "models.ChainCfg",
+      "models.ChainProvider",
+      "proxy_enums.ProviderMethod",
+      "alchemy.TokenBalancesReq",
+      "alchemy.NFTCollectionsReq"
+    ],
+    "functions": [
+      "AlchemyProviderName",
+      "AlchemyProviderCreator",
+      "Name",
+      "IsMethodSupported",
+      "getTokenBalance",
+      "getNftCollections",
+      "GetPortfolioBalance",
+      "wrapError",
+      "ListPortfolioNFTItems",
+      "GetTokenFiatInfo",
+      "GetPortfolioNftCollections",
+      "GetPortfolioActivities",
+      "GetCollectionDetail",
+      "GetFungibleTxs",
+      "GetNftTransfers"
+    ],
+    "imports": [
+      "context",
+      "errors",
+      "fmt",
+      "runtime",
+      "slices",
+      "github.com/samber/lo",
+      "github.com/samber/mo",
+      "go.uber.org/zap",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/requests",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/handlers/dtos/responses",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/web3/services",
+      "github.com/axieinfinity/ronin-wallet-services/internal/infras/alchemy",
+      "github.com/axieinfinity/ronin-wallet-services/internal/routers/dtos/enums/proxy",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/helper",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}

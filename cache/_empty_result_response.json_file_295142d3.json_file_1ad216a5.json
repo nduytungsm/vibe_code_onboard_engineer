@@ -1,0 +1,12 @@
+{
+  "content_hash": "ad58be73df529a953cc6ec7cbbc7aae6",
+  "timestamp": "2025-09-26T08:45:59.324454+07:00",
+  "result": {
+    "language": "JSON",
+    "purpose": "Defines an empty result response structure",
+    "key_types": [],
+    "functions": [],
+    "imports": [],
+    "complexity": "low"
+  }
+}

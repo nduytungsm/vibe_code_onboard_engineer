@@ -1,0 +1,23 @@
+{
+  "content_hash": "a7bc99b2829b95689f2f35e93944c4e1",
+  "timestamp": "2025-09-26T08:42:47.039619+07:00",
+  "result": {
+    "language": "TypeScript",
+    "purpose": "This file checks for the presence of the reanimated plugin in Babel plugins and injects a flag into plugin options.",
+    "key_types": [
+      "BabelCore.PluginItem",
+      "ParsedPluginOptions"
+    ],
+    "functions": [
+      "hasModule",
+      "pipelineUsesReanimatedPlugin",
+      "injectReanimatedFlag"
+    ],
+    "imports": [
+      "@babel/core",
+      "../Utils/utils",
+      "./Options"
+    ],
+    "complexity": "medium"
+  }
+}

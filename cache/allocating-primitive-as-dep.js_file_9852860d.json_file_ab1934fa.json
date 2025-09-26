@@ -1,0 +1,19 @@
+{
+  "content_hash": "42b6d2adc9e56517b447976b45d7fbec",
+  "timestamp": "2025-09-26T08:50:52.306176+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a function that computes a value based on a property from props and memoizes it.",
+    "key_types": [
+      "Function"
+    ],
+    "functions": [
+      "AllocatingPrimitiveAsDep"
+    ],
+    "imports": [],
+    "side_effects": [
+      "Memoization of the result from bar(props).b"
+    ],
+    "complexity": "medium"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "content_hash": "b22aff2173180faacca62bbb809249ad",
+  "timestamp": "2025-09-26T08:51:17.783793+07:00",
+  "result": {
+    "language": "JavaScript",
+    "purpose": "Defines a React component that modifies a global variable on click and exports a fixture for testing.",
+    "key_types": [
+      "Component",
+      "Object"
+    ],
+    "functions": [
+      "Component",
+      "onClick"
+    ],
+    "imports": [
+      "react"
+    ],
+    "side_effects": [
+      "Modifies the global variable 'someGlobal' when the component is clicked."
+    ],
+    "risks": [
+      "Potential for unintended side effects due to global state modification."
+    ],
+    "complexity": "medium"
+  }
+}

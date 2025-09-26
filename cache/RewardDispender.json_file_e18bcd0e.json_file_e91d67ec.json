@@ -1,0 +1,23 @@
+{
+  "content_hash": "f2b95b22e78989eae723e1306638c244",
+  "timestamp": "2025-09-26T08:43:12.02857+07:00",
+  "result": {
+    "language": "Solidity",
+    "purpose": "Defines the ABI for a reward dispenser contract, including events, errors, and functions related to managing reward pools.",
+    "key_types": [
+      "error",
+      "event",
+      "function"
+    ],
+    "functions": [
+      "cancelPool",
+      "createRewardPool",
+      "dispendRewardBatch",
+      "getPoolInfo",
+      "getPoolRewardList",
+      "getPools"
+    ],
+    "imports": [],
+    "complexity": "medium"
+  }
+}

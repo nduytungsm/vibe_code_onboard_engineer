@@ -28,6 +28,7 @@ type Analyzer struct {
 	openaiClient *internalOpenai.Client
 	cache      *cache.Cache
 	crawler    *Crawler
+	repositoryURL string // Repository URL for consistent cache keys
 }
 
 // HelpfulQuestion represents a project-specific question and answer pair
@@ -62,6 +63,23 @@ func NewAnalyzer(cfg *config.Config, basePath string) (*Analyzer, error) {
 		openaiClient: internalOpenai.NewClient(cfg),
 		cache:        cache.NewCache(cfg),
 		crawler:      crawler,
+		repositoryURL: "", // Will be set by controller if available
+	}, nil
+}
+
+// NewAnalyzerWithURL creates a new analyzer with repository URL for caching
+func NewAnalyzerWithURL(cfg *config.Config, basePath, repositoryURL string) (*Analyzer, error) {
+	crawler, err := NewCrawler(cfg, basePath)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create crawler: %v", err)
+	}
+	
+	return &Analyzer{
+		config:       cfg,
+		openaiClient: internalOpenai.NewClient(cfg),
+		cache:        cache.NewCache(cfg),
+		crawler:      crawler,
+		repositoryURL: repositoryURL,
 	}, nil
 }
 
@@ -172,7 +190,7 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 		}
 	}
 	
-	// Perform detailed analysis with error recovery
+	// Perform detailed analysis with caching and error recovery
 	var detailedAnalysis *internalOpenai.RepositoryAnalysis
 	var detailedErr error
 	
@@ -184,7 +202,28 @@ func (a *Analyzer) AnalyzeProjectWithProgress(ctx context.Context, callback Prog
 				detailedErr = fmt.Errorf("detailed analysis panicked: %v", r)
 			}
 		}()
+		
+		// Check cache first if we have repository URL
+		if a.repositoryURL != "" {
+			if cachedAnalysis, found := a.cache.GetRepositoryDetails(a.repositoryURL, folderSummariesForAnalysis, fileSummariesForAnalysis, importantFiles); found {
+				fmt.Printf("✅ Using cached detailed analysis for: %s\n", a.repositoryURL)
+				detailedAnalysis = cachedAnalysis
+				return
+			}
+		}
+		
+		// Generate new detailed analysis via LLM
+		fmt.Printf("🤖 Generating new detailed analysis via LLM for: %s\n", a.getAnalysisKey())
 		detailedAnalysis, detailedErr = a.openaiClient.AnalyzeRepositoryDetails(ctx, a.crawler.basePath, folderSummariesForAnalysis, fileSummariesForAnalysis, importantFiles)
+		
+		// Cache the result if successful and we have repository URL
+		if detailedErr == nil && detailedAnalysis != nil && a.repositoryURL != "" {
+			if cacheErr := a.cache.SetRepositoryDetails(a.repositoryURL, folderSummariesForAnalysis, fileSummariesForAnalysis, importantFiles, detailedAnalysis); cacheErr != nil {
+				fmt.Printf("⚠️  Failed to cache detailed analysis: %v\n", cacheErr)
+			} else {
+				fmt.Printf("✅ Cached detailed analysis for: %s\n", a.repositoryURL)
+			}
+		}
 	}()
 	
 	if detailedErr != nil {
@@ -391,7 +430,7 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 		}
 	}
 	
-	// Perform detailed analysis with error recovery
+	// Perform detailed analysis with caching and error recovery
 	var detailedAnalysis *internalOpenai.RepositoryAnalysis
 	var detailedErr error
 	
@@ -403,7 +442,28 @@ func (a *Analyzer) AnalyzeProject(ctx context.Context) (*AnalysisResult, error) 
 				detailedErr = fmt.Errorf("detailed analysis panicked: %v", r)
 			}
 		}()
+		
+		// Check cache first if we have repository URL
+		if a.repositoryURL != "" {
+			if cachedAnalysis, found := a.cache.GetRepositoryDetails(a.repositoryURL, folderSummariesForAnalysis, fileSummariesForAnalysis, importantFiles); found {
+				fmt.Printf("✅ Using cached detailed analysis for: %s\n", a.repositoryURL)
+				detailedAnalysis = cachedAnalysis
+				return
+			}
+		}
+		
+		// Generate new detailed analysis via LLM
+		fmt.Printf("🤖 Generating new detailed analysis via LLM for: %s\n", a.getAnalysisKey())
 		detailedAnalysis, detailedErr = a.openaiClient.AnalyzeRepositoryDetails(ctx, a.crawler.basePath, folderSummariesForAnalysis, fileSummariesForAnalysis, importantFiles)
+		
+		// Cache the result if successful and we have repository URL
+		if detailedErr == nil && detailedAnalysis != nil && a.repositoryURL != "" {
+			if cacheErr := a.cache.SetRepositoryDetails(a.repositoryURL, folderSummariesForAnalysis, fileSummariesForAnalysis, importantFiles, detailedAnalysis); cacheErr != nil {
+				fmt.Printf("⚠️  Failed to cache detailed analysis: %v\n", cacheErr)
+			} else {
+				fmt.Printf("✅ Cached detailed analysis for: %s\n", a.repositoryURL)
+			}
+		}
 	}()
 	
 	if detailedErr != nil {
@@ -696,6 +756,12 @@ func (a *Analyzer) reducePhaseFolder(ctx context.Context, fileSummaries map[stri
 func (a *Analyzer) reducePhaseProject(ctx context.Context, folderSummaries map[string]*internalOpenai.FolderSummary) (*internalOpenai.ProjectSummary, error) {
 	projectPath := a.crawler.basePath
 	
+	// Use repository URL for cache key if available, otherwise fall back to local path
+	cacheKey := projectPath
+	if a.repositoryURL != "" {
+		cacheKey = a.repositoryURL
+	}
+	
 	// Convert pointer map to value map for cache and API calls (with nil checks)
 	foldersForAPI := make(map[string]internalOpenai.FolderSummary)
 	for k, v := range folderSummaries {
@@ -704,20 +770,24 @@ func (a *Analyzer) reducePhaseProject(ctx context.Context, folderSummaries map[s
 		}
 	}
 	
-	// Check cache
-	if summary, found := a.cache.GetProjectSummary(projectPath, foldersForAPI); found {
+	// Check cache using repository URL as key
+	if summary, found := a.cache.GetProjectSummary(cacheKey, foldersForAPI); found {
+		fmt.Printf("✅ Using cached project summary for: %s\n", cacheKey)
 		return summary, nil
 	}
 	
 	// Analyze with OpenAI
+	fmt.Printf("🤖 Generating new project summary via LLM for: %s\n", cacheKey)
 	summary, err := a.openaiClient.AnalyzeProject(ctx, projectPath, foldersForAPI)
 	if err != nil {
 		return nil, err
 	}
 	
-	// Cache the result
-	if err := a.cache.SetProjectSummary(projectPath, foldersForAPI, summary); err != nil {
+	// Cache the result using repository URL as key
+	if err := a.cache.SetProjectSummary(cacheKey, foldersForAPI, summary); err != nil {
 		fmt.Printf("⚠️  Failed to cache project result: %v\n", err)
+	} else {
+		fmt.Printf("✅ Cached project summary for: %s\n", cacheKey)
 	}
 	
 	return summary, nil
@@ -1397,6 +1467,14 @@ func (a *Analyzer) generateFallbackQuestions(projectType *detector.DetectionResu
 	
 	fmt.Printf("✅ [DEBUG] Generated %d fallback questions\n", len(fallbackQuestions))
 	return fallbackQuestions
+}
+
+// getAnalysisKey returns a key for logging (URL if available, otherwise local path)
+func (a *Analyzer) getAnalysisKey() string {
+	if a.repositoryURL != "" {
+		return a.repositoryURL
+	}
+	return a.crawler.basePath
 }
 
 // minInt returns the minimum of two integers

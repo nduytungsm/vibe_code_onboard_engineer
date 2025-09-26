@@ -1,0 +1,21 @@
+{
+  "content_hash": "ba0e2e332e31af608795dedc382ce1fa",
+  "timestamp": "2025-09-26T08:48:33.65879+07:00",
+  "result": {
+    "language": "Go",
+    "purpose": "Defines data transfer objects (DTOs) for handling portfolio activities and transactions in a proxy service.",
+    "key_types": [
+      "PortfolioActivityDTO",
+      "PortfolioActivitySingleChain",
+      "GetTxByHashDTO",
+      "GetTransfersDTO",
+      "GetTransfersSingle"
+    ],
+    "functions": [],
+    "imports": [
+      "github.com/axieinfinity/ronin-wallet-services/internal/domains/proxy/models",
+      "github.com/axieinfinity/ronin-wallet-services/pkg/types"
+    ],
+    "complexity": "medium"
+  }
+}
