@@ -65,11 +65,11 @@ function App() {
     if (!repositoryUrl.trim()) return;
 
     // Create cache key (include token status for private repos)
-    const cacheKey = `${repositoryUrl}${useToken ? '_with_token' : ''}`;
-    
+    const cacheKey = `${repositoryUrl}${useToken ? "_with_token" : ""}`;
+
     // Check cache first
     if (analysisCache.has(cacheKey)) {
-      console.log('📋 Using cached analysis results');
+      console.log("📋 Using cached analysis results");
       const cachedResults = analysisCache.get(cacheKey);
       setAnalysisResults(cachedResults);
       setAnalysisComplete(true);
@@ -132,12 +132,16 @@ function App() {
       setAnalysisProgress(100);
       setAnalysisStage("Analysis completed!");
       setShowTokenInput(false); // Hide token input on success
-      
+
       // Cache the successful result
-      setAnalysisCache(prevCache => new Map(prevCache.set(cacheKey, response)));
+      setAnalysisCache(
+        (prevCache) => new Map(prevCache.set(cacheKey, response))
+      );
     } catch (err) {
-      console.error("❌ Analysis failed:", err);
-      clearInterval(progressInterval);
+      if (err.code !== "ECONNABORTED" && !err.message.includes("timeout")) {
+        console.error("❌ Analysis failed:", err);
+        clearInterval(progressInterval);
+      }
 
       // Handle different types of errors
       if (
@@ -153,9 +157,6 @@ function App() {
         err.code === "ECONNABORTED" ||
         err.message.includes("timeout")
       ) {
-        setError(
-          "Analysis timed out. The repository may be too large or complex. Please try with a smaller repository."
-        );
       } else if (err.response?.status === 408) {
         setError(
           "Analysis timed out on the server after 30 minutes. The repository may be too large or complex for analysis."
@@ -169,8 +170,10 @@ function App() {
         );
       }
 
-      setAnalysisProgress(0);
-      setAnalysisStage("");
+      if (err.code !== "ECONNABORTED" && !err.message.includes("timeout")) {
+        setAnalysisProgress(0);
+        setAnalysisStage("");
+      }
     } finally {
       clearInterval(progressInterval);
       setIsAnalyzing(false);
@@ -190,7 +193,7 @@ function App() {
     if (!analysisResults || !analysisResults.results) {
       return null;
     }
-    
+
     const results = analysisResults.results;
     return {
       projectSummary: results.project_summary || {},
@@ -200,22 +203,25 @@ function App() {
       databaseSchema: results.database_schema || null,
       fileSummaries: results.file_summaries || {},
       folderSummaries: results.folder_summaries || {},
-      stats: results.stats || {}
+      stats: results.stats || {},
     };
   };
 
   // Check if analysis failed or returned insufficient data
   const isAnalysisIncomplete = () => {
     if (!analysisResults) return true;
-    
+
     const data = getAnalysisData();
     if (!data) return true;
-    
+
     // Check if we have at least some meaningful data
-    const hasProjectInfo = data.projectType.primary_type || data.projectSummary.purpose;
+    const hasProjectInfo =
+      data.projectType.primary_type || data.projectSummary.purpose;
     const hasFileStats = data.stats.total_files > 0;
-    const hasLanguages = data.projectSummary.languages && Object.keys(data.projectSummary.languages).length > 0;
-    
+    const hasLanguages =
+      data.projectSummary.languages &&
+      Object.keys(data.projectSummary.languages).length > 0;
+
     return !hasProjectInfo && !hasFileStats && !hasLanguages;
   };
 
@@ -558,24 +564,44 @@ function App() {
                 <div className="card-content">
                   <div className="text-center py-12">
                     <div className="text-red-400 mb-4">
-                      <svg className="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <svg
+                        className="h-16 w-16 mx-auto"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.5}
+                          d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
                       </svg>
                     </div>
                     <h3 className="text-xl font-semibold text-red-800 mb-2">
                       Analysis Failed or Incomplete
                     </h3>
                     <p className="text-red-600 mb-6 max-w-md mx-auto">
-                      The analysis process couldn't extract sufficient information from this repository. 
-                      This might happen if the repository is empty, private without access token, or contains 
-                      unsupported project types.
+                      The analysis process couldn't extract sufficient
+                      information from this repository. This might happen if the
+                      repository is empty, private without access token, or
+                      contains unsupported project types.
                     </p>
                     <div className="space-y-2 text-sm text-red-500">
-                      <p><strong>Possible solutions:</strong></p>
+                      <p>
+                        <strong>Possible solutions:</strong>
+                      </p>
                       <ul className="list-disc list-inside space-y-1 max-w-md mx-auto">
-                        <li>Verify the repository URL is correct and accessible</li>
-                        <li>For private repositories, ensure you provided a valid GitHub token</li>
-                        <li>Check that the repository contains source code files</li>
+                        <li>
+                          Verify the repository URL is correct and accessible
+                        </li>
+                        <li>
+                          For private repositories, ensure you provided a valid
+                          GitHub token
+                        </li>
+                        <li>
+                          Check that the repository contains source code files
+                        </li>
                         <li>Try analyzing a different repository</li>
                       </ul>
                     </div>
@@ -601,446 +627,535 @@ function App() {
             ) : (
               <>
                 {activeTab === "overview" && (
-              <div className="space-y-6">
-                {/* Project Summary */}
-                <div className="card">
-                  <div className="card-header">
-                    <h2 className="text-gray-800 font-semibold">
-                      Project Analysis Summary
-                    </h2>
-                  </div>
-                  <div className="card-content">
+                  <div className="space-y-6">
+                    {/* Project Summary */}
+                    <div className="card">
+                      <div className="card-header">
+                        <h2 className="text-gray-800 font-semibold">
+                          Project Analysis Summary
+                        </h2>
+                      </div>
+                      <div className="card-content">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                          <div className="text-center">
+                            <div className="text-3xl font-bold text-gray-800">
+                              {(() => {
+                                const data = getAnalysisData();
+                                return (
+                                  data?.projectType?.primary_type || "Unknown"
+                                );
+                              })()}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              Project Type
+                            </div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-3xl font-bold text-green-600">
+                              {(() => {
+                                const data = getAnalysisData();
+                                return data?.projectType?.confidence || 0;
+                              })()}
+                              %
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              Confidence
+                            </div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-3xl font-bold text-blue-600">
+                              {(() => {
+                                const data = getAnalysisData();
+                                return data?.services?.length || 0;
+                              })()}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              Services
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Quick Stats */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-gray-800">
-                          {(() => {
-                            const data = getAnalysisData();
-                            return data?.projectType?.primary_type || "Unknown";
-                          })()}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          Project Type
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-green-600">
-                          {(() => {
-                            const data = getAnalysisData();
-                            return data?.projectType?.confidence || 0;
-                          })()}%
-                        </div>
-                        <div className="text-sm text-gray-500">Confidence</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-blue-600">
-                          {(() => {
-                            const data = getAnalysisData();
-                            return data?.services?.length || 0;
-                          })()}
-                        </div>
-                        <div className="text-sm text-gray-500">Services</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Quick Stats */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="card">
-                    <div className="card-content">
-                      <div className="flex items-center">
-                        <Server className="h-8 w-8 text-blue-600" />
-                        <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-500">
-                            Architecture
-                          </div>
-                          <div className="text-lg font-semibold text-gray-800">
-                            {(() => {
-                              const data = getAnalysisData();
-                              return data?.projectSummary?.detailed_analysis?.architecture || "Unknown";
-                            })()}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="card">
-                    <div className="card-content">
-                      <div className="flex items-center">
-                        <Database className="h-8 w-8 text-green-600" />
-                        <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-500">
-                            Database Tables
-                          </div>
-                          <div className="text-lg font-semibold text-gray-800">
-                            {(() => {
-                              const data = getAnalysisData();
-                              const databaseSchema = data?.databaseSchema;
-                              return databaseSchema?.tables ? Object.keys(databaseSchema.tables).length : 0;
-                            })()}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="card">
-                    <div className="card-content">
-                      <div className="flex items-center">
-                        <GitBranch className="h-8 w-8 text-purple-600" />
-                        <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-500">
-                            Dependencies
-                          </div>
-                          <div className="text-lg font-semibold text-gray-800">
-                            {(() => {
-                              const data = getAnalysisData();
-                              return data?.relationships?.length || 0;
-                            })()}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Tech Stack */}
-                <div className="card">
-                  <div className="card-header">
-                    <h3 className="text-gray-800 font-semibold">
-                      Technology Stack
-                    </h3>
-                  </div>
-                  <div className="card-content">
-                    <div className="flex flex-wrap gap-2">
-                      {(() => {
-                        const data = getAnalysisData();
-                        const languages = data?.projectSummary?.languages || {};
-                        const languageEntries = Object.entries(languages);
-                        
-                        if (languageEntries.length === 0) {
-                          return (
-                            <div className="text-center py-4 text-gray-500 w-full">
-                              <Code2 className="h-8 w-8 mx-auto mb-2 opacity-50" />
-                              <p>No programming languages detected</p>
-                            </div>
-                          );
-                        }
-                        
-                        return languageEntries.map(([lang, lines]) => (
-                          <span key={lang} className="badge badge-primary">
-                            {lang} ({lines} lines)
-                          </span>
-                        ));
-                      })()}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeTab === "services" && (
-              <div className="space-y-6">
-                <div className="card">
-                  <div className="card-header">
-                    <h2 className="text-gray-800 font-semibold">
-                      Discovered Services
-                    </h2>
-                  </div>
-                  <div className="card-content">
-                    <div className="space-y-4">
-                      {(() => {
-                        const data = getAnalysisData();
-                        const services = data?.services || [];
-                        
-                        if (services.length === 0) {
-                          return (
-                            <div className="text-center py-8 text-gray-500">
-                              <Server className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                              <p>No microservices detected in this repository</p>
-                            </div>
-                          );
-                        }
-                        
-                        return services.map((service) => (
-                          <div
-                            key={service.name}
-                            className="notion-service-item flex items-center justify-between p-4"
-                          >
-                            <div className="flex items-center">
-                              <Server className="h-6 w-6 text-blue-600 mr-3" />
-                              <div>
-                                <div className="font-medium text-gray-800">
-                                  {service.name}
-                                </div>
-                                <div className="text-sm text-gray-500">
-                                  {service.port && `Port: ${service.port}`}
-                                </div>
-                                {service.description && (
-                                  <div className="text-xs text-gray-400 mt-1">
-                                    {service.description}
-                                  </div>
-                                )}
+                      <div className="card">
+                        <div className="card-content">
+                          <div className="flex items-center">
+                            <Server className="h-8 w-8 text-blue-600" />
+                            <div className="ml-4">
+                              <div className="text-sm font-medium text-gray-500">
+                                Architecture
+                              </div>
+                              <div className="text-lg font-semibold text-gray-800">
+                                {(() => {
+                                  const data = getAnalysisData();
+                                  return (
+                                    data?.projectSummary?.detailed_analysis
+                                      ?.architecture || "Unknown"
+                                  );
+                                })()}
                               </div>
                             </div>
-                            <span
-                              className={`badge ${
-                                service.api_type === "grpc"
-                                  ? "badge-warning"
-                                  : "badge-primary"
-                              }`}
-                            >
-                              {service.api_type}
-                            </span>
                           </div>
-                        ));
-                      })()}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+                        </div>
+                      </div>
 
-            {activeTab === "database" && (
-              <div className="space-y-6">
-                <div className="card">
-                  <div className="card-header">
-                    <h2 className="text-gray-800 font-semibold">
-                      Database Schema
-                    </h2>
-                  </div>
-                  <div className="card-content">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      {(() => {
-                        const data = getAnalysisData();
-                        const databaseSchema = data?.databaseSchema;
-                        
-                        if (!databaseSchema || !databaseSchema.tables || Object.keys(databaseSchema.tables).length === 0) {
-                          return (
-                            <div className="col-span-full text-center py-8 text-gray-500">
-                              <Database className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                              <p>No database schema detected in this repository</p>
-                            </div>
-                          );
-                        }
-                        
-                        return Object.entries(databaseSchema.tables).map(([tableName, tableInfo]) => (
-                          <div
-                            key={tableName}
-                            className="notion-db-item p-4 text-center"
-                          >
-                            <Database className="h-6 w-6 text-green-600 mx-auto mb-2" />
-                            <div className="font-medium text-gray-800">
-                              {tableName}
-                            </div>
-                            <div className="text-xs text-gray-500 mt-1">
-                              {Object.keys(tableInfo.columns || {}).length} columns
+                      <div className="card">
+                        <div className="card-content">
+                          <div className="flex items-center">
+                            <Database className="h-8 w-8 text-green-600" />
+                            <div className="ml-4">
+                              <div className="text-sm font-medium text-gray-500">
+                                Database Tables
+                              </div>
+                              <div className="text-lg font-semibold text-gray-800">
+                                {(() => {
+                                  const data = getAnalysisData();
+                                  const databaseSchema = data?.databaseSchema;
+                                  return databaseSchema?.tables
+                                    ? Object.keys(databaseSchema.tables).length
+                                    : 0;
+                                })()}
+                              </div>
                             </div>
                           </div>
-                        ));
-                      })()}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+                        </div>
+                      </div>
 
-            {activeTab === "relationships" && (
-              <div className="space-y-6">
-                <div className="card">
-                  <div className="card-header">
-                    <h2 className="text-gray-800 font-semibold">
-                      Service Dependencies
-                    </h2>
-                  </div>
-                  <div className="card-content">
-                    {(() => {
-                      const data = getAnalysisData();
-                      const relationships = data?.relationships || [];
-                      
-                      if (relationships.length === 0) {
-                        return (
-                          <div className="text-center py-8 text-gray-500">
-                            <GitBranch className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                            <p>No service dependencies detected</p>
+                      <div className="card">
+                        <div className="card-content">
+                          <div className="flex items-center">
+                            <GitBranch className="h-8 w-8 text-purple-600" />
+                            <div className="ml-4">
+                              <div className="text-sm font-medium text-gray-500">
+                                Dependencies
+                              </div>
+                              <div className="text-lg font-semibold text-gray-800">
+                                {(() => {
+                                  const data = getAnalysisData();
+                                  return data?.relationships?.length || 0;
+                                })()}
+                              </div>
+                            </div>
                           </div>
-                        );
-                      }
-                      
-                      return (
-                        <div className="space-y-4">
-                          {relationships.map((rel, index) => (
-                            <div key={index} className="notion-service-item p-4 border-l-4 border-blue-500">
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center">
-                                  <GitBranch className="h-5 w-5 text-blue-600 mr-3" />
-                                  <span className="font-medium text-gray-800">{rel.from}</span>
-                                  <span className="mx-2 text-gray-400">→</span>
-                                  <span className="font-medium text-gray-800">{rel.to}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Tech Stack */}
+                    <div className="card">
+                      <div className="card-header">
+                        <h3 className="text-gray-800 font-semibold">
+                          Technology Stack
+                        </h3>
+                      </div>
+                      <div className="card-content">
+                        <div className="flex flex-wrap gap-2">
+                          {(() => {
+                            const data = getAnalysisData();
+                            const languages =
+                              data?.projectSummary?.languages || {};
+                            const languageEntries = Object.entries(languages);
+
+                            if (languageEntries.length === 0) {
+                              return (
+                                <div className="text-center py-4 text-gray-500 w-full">
+                                  <Code2 className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                                  <p>No programming languages detected</p>
                                 </div>
-                                <div className="text-right">
-                                  <span className="badge badge-secondary">{rel.evidence_type}</span>
-                                  {rel.confidence && (
-                                    <div className="text-xs text-gray-500 mt-1">
-                                      {rel.confidence}% confidence
+                              );
+                            }
+
+                            return languageEntries.map(([lang, lines]) => (
+                              <span key={lang} className="badge badge-primary">
+                                {lang} ({lines} lines)
+                              </span>
+                            ));
+                          })()}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "services" && (
+                  <div className="space-y-6">
+                    <div className="card">
+                      <div className="card-header">
+                        <h2 className="text-gray-800 font-semibold">
+                          Discovered Services
+                        </h2>
+                      </div>
+                      <div className="card-content">
+                        <div className="space-y-4">
+                          {(() => {
+                            const data = getAnalysisData();
+                            const services = data?.services || [];
+
+                            if (services.length === 0) {
+                              return (
+                                <div className="text-center py-8 text-gray-500">
+                                  <Server className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                                  <p>
+                                    No microservices detected in this repository
+                                  </p>
+                                </div>
+                              );
+                            }
+
+                            return services.map((service) => (
+                              <div
+                                key={service.name}
+                                className="notion-service-item flex items-center justify-between p-4"
+                              >
+                                <div className="flex items-center">
+                                  <Server className="h-6 w-6 text-blue-600 mr-3" />
+                                  <div>
+                                    <div className="font-medium text-gray-800">
+                                      {service.name}
+                                    </div>
+                                    <div className="text-sm text-gray-500">
+                                      {service.port && `Port: ${service.port}`}
+                                    </div>
+                                    {service.description && (
+                                      <div className="text-xs text-gray-400 mt-1">
+                                        {service.description}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                                <span
+                                  className={`badge ${
+                                    service.api_type === "grpc"
+                                      ? "badge-warning"
+                                      : "badge-primary"
+                                  }`}
+                                >
+                                  {service.api_type}
+                                </span>
+                              </div>
+                            ));
+                          })()}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "database" && (
+                  <div className="space-y-6">
+                    <div className="card">
+                      <div className="card-header">
+                        <h2 className="text-gray-800 font-semibold">
+                          Database Schema
+                        </h2>
+                      </div>
+                      <div className="card-content">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                          {(() => {
+                            const data = getAnalysisData();
+                            const databaseSchema = data?.databaseSchema;
+
+                            if (
+                              !databaseSchema ||
+                              !databaseSchema.tables ||
+                              Object.keys(databaseSchema.tables).length === 0
+                            ) {
+                              return (
+                                <div className="col-span-full text-center py-8 text-gray-500">
+                                  <Database className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                                  <p>
+                                    No database schema detected in this
+                                    repository
+                                  </p>
+                                </div>
+                              );
+                            }
+
+                            return Object.entries(databaseSchema.tables).map(
+                              ([tableName, tableInfo]) => (
+                                <div
+                                  key={tableName}
+                                  className="notion-db-item p-4 text-center"
+                                >
+                                  <Database className="h-6 w-6 text-green-600 mx-auto mb-2" />
+                                  <div className="font-medium text-gray-800">
+                                    {tableName}
+                                  </div>
+                                  <div className="text-xs text-gray-500 mt-1">
+                                    {
+                                      Object.keys(tableInfo.columns || {})
+                                        .length
+                                    }{" "}
+                                    columns
+                                  </div>
+                                </div>
+                              )
+                            );
+                          })()}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "relationships" && (
+                  <div className="space-y-6">
+                    <div className="card">
+                      <div className="card-header">
+                        <h2 className="text-gray-800 font-semibold">
+                          Service Dependencies
+                        </h2>
+                      </div>
+                      <div className="card-content">
+                        {(() => {
+                          const data = getAnalysisData();
+                          const relationships = data?.relationships || [];
+
+                          if (relationships.length === 0) {
+                            return (
+                              <div className="text-center py-8 text-gray-500">
+                                <GitBranch className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                                <p>No service dependencies detected</p>
+                              </div>
+                            );
+                          }
+
+                          return (
+                            <div className="space-y-4">
+                              {relationships.map((rel, index) => (
+                                <div
+                                  key={index}
+                                  className="notion-service-item p-4 border-l-4 border-blue-500"
+                                >
+                                  <div className="flex items-center justify-between">
+                                    <div className="flex items-center">
+                                      <GitBranch className="h-5 w-5 text-blue-600 mr-3" />
+                                      <span className="font-medium text-gray-800">
+                                        {rel.from}
+                                      </span>
+                                      <span className="mx-2 text-gray-400">
+                                        →
+                                      </span>
+                                      <span className="font-medium text-gray-800">
+                                        {rel.to}
+                                      </span>
+                                    </div>
+                                    <div className="text-right">
+                                      <span className="badge badge-secondary">
+                                        {rel.evidence_type}
+                                      </span>
+                                      {rel.confidence && (
+                                        <div className="text-xs text-gray-500 mt-1">
+                                          {rel.confidence}% confidence
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+                                  {rel.evidence_path && (
+                                    <div className="mt-2 text-xs text-gray-400">
+                                      Evidence: {rel.evidence_path}
                                     </div>
                                   )}
                                 </div>
+                              ))}
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "files" && (
+                  <div className="space-y-6">
+                    <div className="card">
+                      <div className="card-header">
+                        <h2 className="text-gray-800 font-semibold">
+                          File Analysis
+                        </h2>
+                      </div>
+                      <div className="card-content">
+                        {(() => {
+                          const data = getAnalysisData();
+                          const stats = data?.stats || {};
+                          const fileSummaries = data?.fileSummaries || {};
+
+                          return (
+                            <div className="space-y-6">
+                              {/* File Statistics */}
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="text-center p-4 bg-gray-50 rounded-lg">
+                                  <div className="text-2xl font-bold text-gray-800">
+                                    {stats.total_files || 0}
+                                  </div>
+                                  <div className="text-sm text-gray-500">
+                                    Total Files
+                                  </div>
+                                </div>
+                                <div className="text-center p-4 bg-gray-50 rounded-lg">
+                                  <div className="text-2xl font-bold text-gray-800">
+                                    {(stats.total_size_mb || 0).toFixed(1)} MB
+                                  </div>
+                                  <div className="text-sm text-gray-500">
+                                    Total Size
+                                  </div>
+                                </div>
+                                <div className="text-center p-4 bg-gray-50 rounded-lg">
+                                  <div className="text-2xl font-bold text-gray-800">
+                                    {Object.keys(stats.extensions || {}).length}
+                                  </div>
+                                  <div className="text-sm text-gray-500">
+                                    File Types
+                                  </div>
+                                </div>
                               </div>
-                              {rel.evidence_path && (
-                                <div className="mt-2 text-xs text-gray-400">
-                                  Evidence: {rel.evidence_path}
+
+                              {/* File Extensions */}
+                              {stats.extensions &&
+                                Object.keys(stats.extensions).length > 0 && (
+                                  <div>
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                                      File Extensions
+                                    </h3>
+                                    <div className="flex flex-wrap gap-2">
+                                      {Object.entries(stats.extensions).map(
+                                        ([ext, count]) => (
+                                          <span
+                                            key={ext}
+                                            className="badge badge-secondary"
+                                          >
+                                            {ext}: {count} files
+                                          </span>
+                                        )
+                                      )}
+                                    </div>
+                                  </div>
+                                )}
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "analysis" && (
+                  <div className="space-y-6">
+                    <div className="card">
+                      <div className="card-header">
+                        <h2 className="text-gray-800 font-semibold">
+                          Detailed Analysis
+                        </h2>
+                      </div>
+                      <div className="card-content">
+                        {(() => {
+                          const data = getAnalysisData();
+                          const projectSummary = data?.projectSummary || {};
+
+                          return (
+                            <div className="space-y-6">
+                              {/* Purpose */}
+                              {projectSummary.purpose && (
+                                <div>
+                                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                                    Purpose
+                                  </h3>
+                                  <p className="text-gray-700">
+                                    {projectSummary.purpose}
+                                  </p>
                                 </div>
                               )}
-                            </div>
-                          ))}
-                        </div>
-                      );
-                    })()}
-                  </div>
-                </div>
-              </div>
-            )}
 
-            {activeTab === "files" && (
-              <div className="space-y-6">
-                <div className="card">
-                  <div className="card-header">
-                    <h2 className="text-gray-800 font-semibold">
-                      File Analysis
-                    </h2>
-                  </div>
-                  <div className="card-content">
-                    {(() => {
-                      const data = getAnalysisData();
-                      const stats = data?.stats || {};
-                      const fileSummaries = data?.fileSummaries || {};
-                      
-                      return (
-                        <div className="space-y-6">
-                          {/* File Statistics */}
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div className="text-center p-4 bg-gray-50 rounded-lg">
-                              <div className="text-2xl font-bold text-gray-800">
-                                {stats.total_files || 0}
-                              </div>
-                              <div className="text-sm text-gray-500">Total Files</div>
-                            </div>
-                            <div className="text-center p-4 bg-gray-50 rounded-lg">
-                              <div className="text-2xl font-bold text-gray-800">
-                                {(stats.total_size_mb || 0).toFixed(1)} MB
-                              </div>
-                              <div className="text-sm text-gray-500">Total Size</div>
-                            </div>
-                            <div className="text-center p-4 bg-gray-50 rounded-lg">
-                              <div className="text-2xl font-bold text-gray-800">
-                                {Object.keys(stats.extensions || {}).length}
-                              </div>
-                              <div className="text-sm text-gray-500">File Types</div>
-                            </div>
-                          </div>
-                          
-                          {/* File Extensions */}
-                          {stats.extensions && Object.keys(stats.extensions).length > 0 && (
-                            <div>
-                              <h3 className="text-lg font-semibold text-gray-800 mb-3">File Extensions</h3>
-                              <div className="flex flex-wrap gap-2">
-                                {Object.entries(stats.extensions).map(([ext, count]) => (
-                                  <span key={ext} className="badge badge-secondary">
-                                    {ext}: {count} files
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })()}
-                  </div>
-                </div>
-              </div>
-            )}
+                              {/* Architecture */}
+                              {projectSummary.architecture && (
+                                <div>
+                                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                                    Architecture
+                                  </h3>
+                                  <p className="text-gray-700">
+                                    {projectSummary.architecture}
+                                  </p>
+                                </div>
+                              )}
 
-            {activeTab === "analysis" && (
-              <div className="space-y-6">
-                <div className="card">
-                  <div className="card-header">
-                    <h2 className="text-gray-800 font-semibold">
-                      Detailed Analysis
-                    </h2>
-                  </div>
-                  <div className="card-content">
-                    {(() => {
-                      const data = getAnalysisData();
-                      const projectSummary = data?.projectSummary || {};
-                      
-                      return (
-                        <div className="space-y-6">
-                          {/* Purpose */}
-                          {projectSummary.purpose && (
-                            <div>
-                              <h3 className="text-lg font-semibold text-gray-800 mb-2">Purpose</h3>
-                              <p className="text-gray-700">{projectSummary.purpose}</p>
-                            </div>
-                          )}
-                          
-                          {/* Architecture */}
-                          {projectSummary.architecture && (
-                            <div>
-                              <h3 className="text-lg font-semibold text-gray-800 mb-2">Architecture</h3>
-                              <p className="text-gray-700">{projectSummary.architecture}</p>
-                            </div>
-                          )}
-                          
-                          {/* Data Models */}
-                          {projectSummary.data_models && projectSummary.data_models.length > 0 && (
-                            <div>
-                              <h3 className="text-lg font-semibold text-gray-800 mb-2">Data Models</h3>
-                              <div className="flex flex-wrap gap-2">
-                                {projectSummary.data_models.map((model) => (
-                                  <span key={model} className="badge badge-primary">{model}</span>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                          
-                          {/* External Services */}
-                          {projectSummary.external_services && projectSummary.external_services.length > 0 && (
-                            <div>
-                              <h3 className="text-lg font-semibold text-gray-800 mb-2">External Services</h3>
-                              <div className="flex flex-wrap gap-2">
-                                {projectSummary.external_services.map((service) => (
-                                  <span key={service} className="badge badge-secondary">{service}</span>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })()}
-                  </div>
-                </div>
-              </div>
-            )}
+                              {/* Data Models */}
+                              {projectSummary.data_models &&
+                                projectSummary.data_models.length > 0 && (
+                                  <div>
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                                      Data Models
+                                    </h3>
+                                    <div className="flex flex-wrap gap-2">
+                                      {projectSummary.data_models.map(
+                                        (model) => (
+                                          <span
+                                            key={model}
+                                            className="badge badge-primary"
+                                          >
+                                            {model}
+                                          </span>
+                                        )
+                                      )}
+                                    </div>
+                                  </div>
+                                )}
 
-            {/* Placeholder for unimplemented tabs */}
-            {!["overview", "services", "database", "relationships", "files", "analysis"].includes(activeTab) && (
-              <div className="card">
-                <div className="card-content">
-                  <div className="text-center py-12">
-                    <Code2 className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-gray-800 mb-2">
-                      {tabs.find((t) => t.id === activeTab)?.name} Coming Soon
-                    </h3>
-                    <p className="text-gray-500">
-                      This section will display detailed {activeTab}{" "}
-                      information.
-                    </p>
+                              {/* External Services */}
+                              {projectSummary.external_services &&
+                                projectSummary.external_services.length > 0 && (
+                                  <div>
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                                      External Services
+                                    </h3>
+                                    <div className="flex flex-wrap gap-2">
+                                      {projectSummary.external_services.map(
+                                        (service) => (
+                                          <span
+                                            key={service}
+                                            className="badge badge-secondary"
+                                          >
+                                            {service}
+                                          </span>
+                                        )
+                                      )}
+                                    </div>
+                                  </div>
+                                )}
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            )}
+                )}
+
+                {/* Placeholder for unimplemented tabs */}
+                {![
+                  "overview",
+                  "services",
+                  "database",
+                  "relationships",
+                  "files",
+                  "analysis",
+                ].includes(activeTab) && (
+                  <div className="card">
+                    <div className="card-content">
+                      <div className="text-center py-12">
+                        <Code2 className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                        <h3 className="text-lg font-medium text-gray-800 mb-2">
+                          {tabs.find((t) => t.id === activeTab)?.name} Coming
+                          Soon
+                        </h3>
+                        <p className="text-gray-500">
+                          This section will display detailed {activeTab}{" "}
+                          information.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </>
             )}
           </div>

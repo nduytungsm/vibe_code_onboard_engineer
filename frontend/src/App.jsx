@@ -139,7 +139,7 @@ function App() {
         // onError callback
         (errorMessage) => {
           console.error("❌ Streaming analysis failed:", errorMessage);
-          setIsAnalyzing(false);
+          if (!errorMessage.includes("timeout")) setIsAnalyzing(false);
 
           // Handle different types of errors
           if (
@@ -151,9 +151,6 @@ function App() {
               "This repository appears to be private. Please provide a GitHub Personal Access Token below."
             );
           } else if (errorMessage.includes("timeout")) {
-            setError(
-              "Analysis timed out. The repository may be too large or complex. Please try with a smaller repository."
-            );
           } else {
             setError(
               errorMessage ||
@@ -161,8 +158,10 @@ function App() {
             );
           }
 
-          setAnalysisProgress(0);
-          setAnalysisStage("");
+          if (!errorMessage.includes("timeout")) {
+            setAnalysisProgress(0);
+            setAnalysisStage("");
+          }
         }
       );
     } catch (err) {
