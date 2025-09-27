@@ -59,8 +59,31 @@ const checkHeartbeat = () => {
 };
 ```
 
+#### Keep-Alive Mechanism
+- **30-second interval pings** to maintain connection
+- Lightweight health checks to prevent proxy timeouts
+- Automatic cleanup when stream completes
+
+```javascript
+// Set up keep-alive mechanism to prevent connection closure
+const sendKeepAlive = () => {
+  if (!isCompleted) {
+    console.log("💗 Sending keep-alive ping to maintain SSE connection");
+    fetch(`${API_BASE_URL}/health`, {
+      method: "GET",
+      headers: { "Cache-Control": "no-cache" },
+    }).catch((error) => {
+      console.warn("⚠️ Keep-alive ping failed:", error.message);
+    });
+  }
+};
+
+// Set up keep-alive interval (every 30 seconds)
+keepAliveInterval = setInterval(sendKeepAlive, 30000);
+```
+
 #### Enhanced Error Handling
-- Clear all timeouts on completion/error
+- Clear all timeouts and intervals on completion/error
 - Better detection of stream completion
 - Improved logging for debugging
 
@@ -118,11 +141,12 @@ const checkHeartbeat = () => {
 
 ## How This Fixes the Issue
 
-1. **Prevents Buffering**: `X-Accel-Buffering: no` and strong cache control headers
-2. **Ensures Delivery**: Force flushing after each event
-3. **Detects Problems**: Heartbeat mechanism catches proxy buffering
-4. **Proper Cleanup**: All timeouts cleared on completion/error
-5. **Clear Termination**: Explicit stream close signal
+1. **Prevents Connection Timeout**: 30-second keep-alive pings maintain long SSE connections
+2. **Prevents Buffering**: `X-Accel-Buffering: no` and strong cache control headers
+3. **Ensures Delivery**: Force flushing after each event
+4. **Detects Problems**: Heartbeat mechanism catches proxy buffering
+5. **Proper Cleanup**: All timeouts and intervals cleared on completion/error
+6. **Clear Termination**: Explicit stream close signal
 
 ## Testing
 
@@ -157,6 +181,7 @@ curl -X POST http://13.239.135.39:8080/api/analyze/stream \
 
 Watch for these log messages:
 - `🌐 Using streaming URL` - Confirms correct endpoint
+- `💗 Sending keep-alive ping` - Connection maintenance active
 - `⚠️ No data received for 30 seconds` - Proxy buffering detected
 - `📡 Stream completed by server` - Normal completion
 - `🎉 Analysis completed successfully` - Success

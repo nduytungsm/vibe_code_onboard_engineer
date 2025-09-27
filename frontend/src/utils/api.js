@@ -1,7 +1,9 @@
 import axios from "axios";
 
 // API base configuration
-const API_BASE_URL = "http://vibe-code-onboard-engineer.yachts/api";
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://vibe-code-onboard-engineer.yachts/api";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -62,6 +64,8 @@ export const repositoryAPI = {
 
     let isCompleted = false;
     let lastProgressData = null;
+    let heartbeatTimeout;
+    let keepAliveInterval;
 
     // Set up a timeout to handle cases where stream doesn't complete properly
     const timeoutId = setTimeout(() => {
@@ -69,6 +73,8 @@ export const repositoryAPI = {
         console.warn(
           "⚠️ Stream timeout reached, checking if we have usable data"
         );
+        clearTimeout(heartbeatTimeout);
+        clearInterval(keepAliveInterval);
         // If we received substantial progress data, treat it as a completion
         if (lastProgressData && lastProgressData.progress >= 75) {
           console.log("✅ Using last received data as completion");
@@ -117,7 +123,25 @@ export const repositoryAPI = {
         const decoder = new TextDecoder();
         let buffer = "";
         let lastDataTime = Date.now();
-        let heartbeatTimeout;
+
+        // Set up keep-alive mechanism to prevent connection closure
+        const sendKeepAlive = () => {
+          if (!isCompleted) {
+            console.log("💗 Sending keep-alive ping to maintain SSE connection");
+            // Send a lightweight ping request to keep the connection alive
+            fetch(`${API_BASE_URL}/health`, {
+              method: "GET",
+              headers: {
+                "Cache-Control": "no-cache",
+              },
+            }).catch((error) => {
+              console.warn("⚠️ Keep-alive ping failed:", error.message);
+            });
+          }
+        };
+
+        // Set up keep-alive interval (every 30 seconds)
+        keepAliveInterval = setInterval(sendKeepAlive, 30000);
 
         // Set up heartbeat detection for proxy buffering issues
         const checkHeartbeat = () => {
@@ -128,6 +152,7 @@ export const repositoryAPI = {
               "⚠️ No data received for 30 seconds - possible proxy buffering"
             );
             clearTimeout(heartbeatTimeout);
+            clearInterval(keepAliveInterval);
             if (!isCompleted) {
               isCompleted = true;
               onError?.("Stream timeout - possible proxy buffering issue");
@@ -147,6 +172,7 @@ export const repositoryAPI = {
                 console.log("📡 Stream completed by server");
                 clearTimeout(timeoutId);
                 clearTimeout(heartbeatTimeout);
+                clearInterval(keepAliveInterval);
 
                 // If we haven't received a completion event but have good data, use it
                 if (
@@ -221,6 +247,7 @@ export const repositoryAPI = {
                         console.log("🎉 Analysis completed successfully");
                         clearTimeout(timeoutId);
                         clearTimeout(heartbeatTimeout);
+                        clearInterval(keepAliveInterval);
                         isCompleted = true;
                         onComplete?.(data.data);
                         return; // Stop reading
@@ -231,6 +258,7 @@ export const repositoryAPI = {
                         );
                         clearTimeout(timeoutId);
                         clearTimeout(heartbeatTimeout);
+                        clearInterval(keepAliveInterval);
                         isCompleted = true;
                         onError?.(data.error || data.message);
                         return; // Stop reading
@@ -241,6 +269,7 @@ export const repositoryAPI = {
                     console.error("Error parsing SSE data:", error, eventData);
                     clearTimeout(timeoutId);
                     clearTimeout(heartbeatTimeout);
+                    clearInterval(keepAliveInterval);
                     isCompleted = true;
                     onError?.("Failed to parse server response");
                     return;
@@ -255,6 +284,7 @@ export const repositoryAPI = {
               console.error("Error reading stream:", error);
               clearTimeout(timeoutId);
               clearTimeout(heartbeatTimeout);
+              clearInterval(keepAliveInterval);
               if (!isCompleted) {
                 isCompleted = true;
                 onError?.("Stream reading error: " + error.message);
@@ -268,12 +298,16 @@ export const repositoryAPI = {
         // Return cleanup function
         return () => {
           reader.cancel();
+          clearTimeout(timeoutId);
+          clearTimeout(heartbeatTimeout);
+          clearInterval(keepAliveInterval);
         };
       })
       .catch((error) => {
         console.error("Failed to initiate streaming analysis:", error);
         clearTimeout(timeoutId);
         clearTimeout(heartbeatTimeout);
+        clearInterval(keepAliveInterval);
         if (!isCompleted) {
           isCompleted = true;
           onError?.(error.message);
