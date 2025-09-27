@@ -1,8 +1,7 @@
 import axios from "axios";
 
 // API base configuration
-const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://13.239.135.39:8080/api";
+const API_BASE_URL = "http://vibe-code-onboard-engineer.yachts/api";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -82,12 +81,15 @@ export const repositoryAPI = {
     }, 35 * 60 * 1000); // 35 minute timeout
 
     // Check if we're on Vercel and may need direct backend connection
-    const isVercel = window.location.hostname.includes('vercel.app') || 
-                     window.location.hostname.includes('vercel.io');
+    const isVercel =
+      window.location.hostname.includes("vercel.app") ||
+      window.location.hostname.includes("vercel.io");
     const streamUrl = `${API_BASE_URL}/analyze/stream`; // Always try proxy first
-      
-    console.log(`🌐 Using streaming URL: ${streamUrl} (Vercel detected: ${isVercel})`);
-    
+
+    console.log(
+      `🌐 Using streaming URL: ${streamUrl} (Vercel detected: ${isVercel})`
+    );
+
     // Use fetch with streaming response for SSE
     fetch(streamUrl, {
       method: "POST",
@@ -120,8 +122,11 @@ export const repositoryAPI = {
         // Set up heartbeat detection for proxy buffering issues
         const checkHeartbeat = () => {
           const now = Date.now();
-          if (now - lastDataTime > 30000) { // 30 seconds without data
-            console.warn("⚠️ No data received for 30 seconds - possible proxy buffering");
+          if (now - lastDataTime > 30000) {
+            // 30 seconds without data
+            console.warn(
+              "⚠️ No data received for 30 seconds - possible proxy buffering"
+            );
             clearTimeout(heartbeatTimeout);
             if (!isCompleted) {
               isCompleted = true;
@@ -131,7 +136,7 @@ export const repositoryAPI = {
             heartbeatTimeout = setTimeout(checkHeartbeat, 5000);
           }
         };
-        
+
         heartbeatTimeout = setTimeout(checkHeartbeat, 5000);
 
         const readStream = () => {
